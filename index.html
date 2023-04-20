@@ -1,1 +1,125 @@
-<h1>hi</h1>
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Roguelike Showdown</h1>
+
+<button onclick="getChoices()">get choices</button>
+<br>
+<pre id="choice1"></pre>
+<pre id="choice2"></pre>
+<pre id="choice3"></pre>
+
+
+<script>
+
+const STATS = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
+const NATURES = ['Hardy', 'Lonely', 'Brave', 'Adamant', 'Naughty', 'Bold',
+  'Docile', 'Relaxed', 'Impish', 'Lax', 'Timid', 'Hasty', 'Serious',
+  'Jolly', 'Naive', 'Modest', 'Mild', 'Quiet', 'Bashful',
+  'Rash', 'Calm', 'Gentle', 'Sassy', 'Careful', 'Quirky'];
+
+let pokedex;
+loadPokedex();
+let learnsets;
+loadLearnsets();
+let moves;
+loadMoves();
+
+function loadPokedex() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    pokedex = JSON.parse(this.responseText);
+  }
+  xhttp.open("GET", "pokedex.json");
+  xhttp.send();
+}
+function loadLearnsets() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    learnsets = JSON.parse(this.responseText);
+  }
+  xhttp.open("GET", "learnsets.json");
+  xhttp.send();
+}
+function loadMoves() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    moves = JSON.parse(this.responseText);
+  }
+  xhttp.open("GET", "moves.json");
+  xhttp.send();
+}
+
+function getChoices() {
+  document.getElementById("choice1").textContent = randomPokemon();
+  document.getElementById("choice2").textContent = randomPokemon();
+  document.getElementById("choice3").textContent = randomPokemon();
+  
+  // // useful for testing
+  // for (const pokemonId of Object.keys(pokedex)) {
+  //   console.log(randomOfSpecies(pokemonId));
+  // }
+}
+
+function randomPokemon() {
+  return randomOfSpecies(randomKey(pokedex));
+}
+
+function randomOfSpecies(pokemonId) {
+  console.log(pokemonId)
+  const pokemon = pokedex[pokemonId];
+
+  let out = pokemon.name;
+  if (pokemon.requiredItem)
+    out += ' @ ' + pokemon.requiredItem;
+  out += '\nAbility: ' + randomProperty(pokemon.abilities);
+  out += '\nTera Type: ' + randomElement(pokemon.types);
+  out += '\nEVs: 1 HP';
+  out += '\n' + randomElement(NATURES) + ' Nature';
+  out += '\nIVs: ';
+  for (const stat of STATS)
+    out += randomInt(31) + ' ' + stat + ' / ';
+  out = out.slice(0, -3);
+
+  // add moveset
+  if (pokemonId.substring(0, 8) === 'pokestar') {
+    const moveset = randomElement(learnsets[pokemonId].eventData).moves;
+    for (const move of moveset)
+      out += '\n- ' + moves[move].name;
+  } else {
+    let learnsetData = learnsets[pokemonId];
+    if (!learnsetData?.learnset)
+      learnsetData = learnsets[pokemon.baseSpecies.toLowerCase()];
+    
+    let possibleMoves = Object.keys(learnsetData.learnset);
+    for (let i = 0; i < 4 && possibleMoves.length > 0; i++) {
+      const moveIndex = randomInt(possibleMoves.length);
+      out += '\n- ' + moves[possibleMoves[moveIndex]].name;
+      possibleMoves.splice(moveIndex, 1);
+    }
+  }
+
+  return out;
+}
+
+function randomProperty(obj) {
+  return obj[randomKey(obj)];
+}
+
+function randomElement(array) {
+  return array[randomInt(array.length)];
+}
+function randomKey(obj) {
+  const keys = Object.keys(obj);
+  return keys[randomInt(keys.length)];
+}
+
+function randomInt(max) {
+  return Math.floor(Math.random() * max); 
+}
+
+</script>
+
+</body>
+</html>
