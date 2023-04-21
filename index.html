@@ -72,7 +72,6 @@ function randomPokemon() {
 }
 
 function randomOfSpecies(pokemonId) {
-  console.log(pokemonId)
   const pokemon = pokedex[pokemonId];
 
   let out = pokemon.name;
@@ -89,10 +88,16 @@ function randomOfSpecies(pokemonId) {
       out += '\n- ' + moves[move].name;
   } else {
     let learnsetData = learnsets[pokemonId];
+
     if (!learnsetData?.learnset)
       learnsetData = learnsets[pokemon.baseSpecies.toLowerCase()];
-    
+
     let possibleMoves = Object.keys(learnsetData.learnset);
+    if (possibleMoves.length < 4 && pokemon.baseSpecies) {
+      let baseSpeciesLearnset = learnsets[pokemon.baseSpecies.toLowerCase()].learnset;
+      possibleMoves.push(...Object.keys(baseSpeciesLearnset));
+    }
+    
     for (let i = 0; i < 4 && possibleMoves.length > 0; i++) {
       const moveIndex = randomInt(possibleMoves.length);
       out += '\n- ' + moves[possibleMoves[moveIndex]].name;
