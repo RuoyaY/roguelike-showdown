@@ -84,6 +84,8 @@ function randomOfSpecies(pokemonId) {
   const nature = randomKey(NATURES);
   out += '\n' + nature + ' Nature';
   const natureData = NATURES[nature];
+  if (natureData[0] !== natureData[1])
+    out += ' (+' + STATS[natureData[0]] + ', -' + STATS[natureData[1]] + ')';
   // out += '\nIVs: ';
   // for (const stat of STATS)
   //   out += randomInt(31) + ' ' + stat + ' / ';
