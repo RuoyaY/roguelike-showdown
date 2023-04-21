@@ -65,7 +65,10 @@ function getChoices() {
 }
 
 function randomPokemon() {
-  return randomOfSpecies(randomKey(pokedex));
+  let pokemonId = 'charizardgmax';
+  while (pokedex[pokemonId]?.forme === 'Gmax')
+    pokemonId = randomKey(pokedex);
+  return randomOfSpecies(pokemonId);
 }
 
 function randomOfSpecies(pokemonId) {
