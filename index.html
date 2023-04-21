@@ -81,8 +81,9 @@ function randomOfSpecies(pokemonId) {
   out += '\nAbility: ' + randomProperty(pokemon.abilities);
   out += '\nTera Type: ' + randomElement(pokemon.types);
   out += '\nEVs: 1 HP';
-  let nature = randomKey(NATURES);
+  const nature = randomKey(NATURES);
   out += '\n' + nature + ' Nature';
+  const natureData = NATURES[nature];
   // out += '\nIVs: ';
   // for (const stat of STATS)
   //   out += randomInt(31) + ' ' + stat + ' / ';
@@ -114,11 +115,11 @@ function randomOfSpecies(pokemonId) {
       statNum = Math.floor(2 * pokemon.baseStats[stat.toLowerCase()] + 31) + 100 + 10;
     else {
       let multiplier = 1;
-      if (STATS[NATURES[nature][0]] === stat)
-        multiplier += .2;
-      if (STATS[NATURES[nature][1]] === stat)
-        multiplier -= .2;
-      statNum = Math.floor((Math.floor(2 * pokemon.baseStats[stat.toLowerCase()] + 31) + 5) * multiplier);
+      if (STATS[natureData[0]] === stat)
+        multiplier += .1;
+      if (STATS[natureData[1]] === stat)
+        multiplier -= .1;
+      statNum = Math.floor((2 * pokemon.baseStats[stat.toLowerCase()] + 31 + 5) * multiplier);
     }
     statTotal += statNum;
     out += statNum + ' ' + stat + ' / ';
