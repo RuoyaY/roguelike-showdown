@@ -81,15 +81,6 @@ function randomOfSpecies(pokemonId) {
   out += '\nAbility: ' + randomProperty(pokemon.abilities);
   out += '\nTera Type: ' + randomElement(pokemon.types);
   out += '\nEVs: 1 HP';
-  const nature = randomKey(NATURES);
-  out += '\n' + nature + ' Nature';
-  const natureData = NATURES[nature];
-  if (natureData[0] !== natureData[1])
-    out += ' (+' + STATS[natureData[0]] + ', -' + STATS[natureData[1]] + ')';
-  // out += '\nIVs: ';
-  // for (const stat of STATS)
-  //   out += randomInt(31) + ' ' + stat + ' / ';
-  // out = out.slice(0, -3);
 
   // add moveset
   if (pokemonId.substring(0, 8) === 'pokestar') {
@@ -114,14 +105,9 @@ function randomOfSpecies(pokemonId) {
   for (const stat of STATS) {
     let statNum;
     if (stat === 'HP')
-      statNum = Math.floor(2 * pokemon.baseStats[stat.toLowerCase()] + 31) + 100 + 10;
+      statNum = 2 * pokemon.baseStats[stat.toLowerCase()] + 31 + 100 + 10;
     else {
-      let multiplier = 1;
-      if (STATS[natureData[0]] === stat)
-        multiplier += .1;
-      if (STATS[natureData[1]] === stat)
-        multiplier -= .1;
-      statNum = Math.floor((2 * pokemon.baseStats[stat.toLowerCase()] + 31 + 5) * multiplier);
+      statNum = 2 * pokemon.baseStats[stat.toLowerCase()] + 31 + 5;
     }
     statTotal += statNum;
     out += statNum + ' ' + stat + ' / ';
@@ -146,10 +132,6 @@ function randomKey(obj) {
 
 function randomInt(max) {
   return Math.floor(Math.random() * max); 
-}
-
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.substring(1);
 }
 
 </script>
