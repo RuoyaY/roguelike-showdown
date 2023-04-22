@@ -5,6 +5,9 @@
 <style>
 pre {
   background-color: whitesmoke;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
 }
 </style>
 </head>
@@ -84,7 +87,12 @@ function addRandomPokemon(choicesDiv) {
   
   const pre = document.createElement('pre');
   pre.appendChild(document.createTextNode(randomOfSpecies(pokemonId)));
+  pre.style.backgroundImage = getImageURL(pokemonId);
   choicesDiv.prepend(pre);
+}
+
+function getImageURL(pokemonId) {
+  return 'url(https://play.pokemonshowdown.com/sprites/dex/' + pokedex[pokemonId].name.toLowerCase().replace(/\s+/g, '') + '.png)';
 }
 
 function randomOfSpecies(pokemonId) {
