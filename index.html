@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+<style>
+pre {
+  background-color: whitesmoke;
+}
+</style>
+</head>
+
 <body>
 
 <h1>Roguelike Showdown</h1>
 
 <button onclick="getChoices()">get choices</button>
 <br>
-<pre id="choice1"></pre>
-<pre id="choice2"></pre>
-<pre id="choice3"></pre>
+<div id="choices"></div>
 
 
 <script>
@@ -58,9 +65,11 @@ function loadMoves() {
 }
 
 function getChoices() {
-  document.getElementById("choice1").textContent = randomPokemon();
-  document.getElementById("choice2").textContent = randomPokemon();
-  document.getElementById("choice3").textContent = randomPokemon();
+  const choicesDiv = document.getElementById('choices');
+  choicesDiv.prepend(document.createElement('hr'));
+  addRandomPokemon(choicesDiv);
+  addRandomPokemon(choicesDiv);
+  addRandomPokemon(choicesDiv);
   
   // // useful for testing
   // for (const pokemonId of Object.keys(pokedex)) {
@@ -68,11 +77,14 @@ function getChoices() {
   // }
 }
 
-function randomPokemon() {
+function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
   while (pokedex[pokemonId]?.forme === 'Gmax')
     pokemonId = randomKey(pokedex);
-  return randomOfSpecies(pokemonId);
+  
+  const pre = document.createElement('pre');
+  pre.appendChild(document.createTextNode(randomOfSpecies(pokemonId)));
+  choicesDiv.prepend(pre);
 }
 
 function randomOfSpecies(pokemonId) {
