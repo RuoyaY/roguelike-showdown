@@ -20,6 +20,10 @@ Bold: [2,1], Docile: [2,2], Impish: [2,3], Lax: [2,4], Relaxed: [2,5],
 Modest: [3,1], Mild: [3,2], Bashful: [3,3], Rash: [3,4], Quiet: [3,5], 
 Calm: [4,1], Gentle: [4,2], Careful: [4,3], Quirky: [4,4], Sassy: [4,5], 
 Timid: [5,1], Hasty: [5,2], Jolly: [5,3], Naive: [5,4], Serious: [5,5]};
+const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
+  'Ice', 'Fighting', 'Poison', 'Ground', 'Flying',
+  'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
+  'Dragon', 'Steel', 'Fairy'];
 
 let pokedex;
 loadPokedex();
@@ -78,7 +82,7 @@ function randomOfSpecies(pokemonId) {
   if (pokemon.requiredItem)
     out += ' @ ' + pokemon.requiredItem;
   out += '\nAbility: ' + randomProperty(pokemon.abilities);
-  out += '\nTera Type: ' + randomElement(pokemon.types);
+  out += '\nTera Type: ' + randomElement(TYPES);
   out += '\nEVs: 1 HP';
 
   // add moveset
