@@ -125,9 +125,7 @@ function randomOfSpecies(pokemonId) {
   const level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
   out += '<br>' + spanWithClass('Level: ' + level, 'gray');
   levelStats += level + ', ';
-  
-  if (pokemon.requiredItem)
-    out += ' @ ' + pokemon.requiredItem;
+
   out += '<br>Ability: ' + randomProperty(pokemon.abilities);
 
   out += '<br>Tera Type: ' + randomElement(TYPES);
