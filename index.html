@@ -103,11 +103,22 @@ function getChoices() {
   //   randomOfSpecies(pokemonId);
   // }
   // console.log(levelStats);
+
+  // // list all formes
+  // let formes = {};
+  // for (const pokemonId of Object.keys(pokedex)) {
+  //   if (pokedex[pokemonId].forme) {
+  //     if (!formes[pokedex[pokemonId].forme])
+  //       formes[pokedex[pokemonId].forme] = [];
+  //     formes[pokedex[pokemonId].forme].push(pokemonId);
+  //   }
+  // }
+  // console.log(formes);
 }
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  // pokemonId = 'pikachuoriginal';
+  // pokemonId = 'kyogreprimal';
   while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
             || ILLEGAL_MONS.includes(pokemonId))
     pokemonId = randomKey(pokedex);
@@ -137,7 +148,7 @@ function randomOfSpecies(pokemonId) {
   out += '<br>' + spanWithClass('Level: ' + level, 'gray');
   levelStats += level + ', ';
 
-  if (pokemon.forme && pokemon.forme.includes('Mega'))
+  if (pokemon.forme && (pokemon.forme.includes('Mega') || pokemon.forme === 'Primal'))
     out += '<br>' + spanWithClass('Tera Type: ' + randomElement(TYPES), 'gray');
   else
     out += '<br>Tera Type: ' + randomElement(TYPES);
