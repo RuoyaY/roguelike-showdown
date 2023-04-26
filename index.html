@@ -148,14 +148,24 @@ function randomOfSpecies(pokemonId) {
       learnsetData = learnsets[pokemon.baseSpecies.toLowerCase()];
 
     let possibleMoves = Object.keys(learnsetData.learnset);
-    if (possibleMoves.length < 4 && pokemon.baseSpecies) {
-      let baseSpeciesLearnset = learnsets[pokemon.baseSpecies.toLowerCase()].learnset;
-      possibleMoves.push(...Object.keys(baseSpeciesLearnset));
+    if (possibleMoves.length < 4) {
+      let changesFrom;
+      if (pokemon.changesFrom)
+        changesFrom = pokemon.changesFrom;
+      else if (pokemon.baseSpecies)
+        changesFrom = pokemon.baseSpecies;
+      
+      if (changesFrom) {
+        let baseSpeciesId = Object.keys(pokedex).find(pokemonId => pokedex[pokemonId].name === changesFrom);
+        possibleMoves.push(...Object.keys(learnsets[baseSpeciesId].learnset));
+      }
     }
     
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
-        const moveIndex = randomInt(possibleMoves.length);
+        let moveIndex = randomInt(possibleMoves.length);
+        if (i === 0 && pokemon.changesFrom === 'Pikachu-Cosplay')
+          moveIndex = 0; // guarantee the cosplay-specific move
         out += '<br>- ' + moves[possibleMoves[moveIndex]].name;
         possibleMoves.splice(moveIndex, 1);
       } else {
