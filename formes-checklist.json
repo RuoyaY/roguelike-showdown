@@ -1,49 +1,4 @@
 {
-  "Primal": [
-    "Kyogre-Primal",
-    "Groudon-Primal"
-  ],
-  "Attack": [
-    "Deoxys-Attack"
-  ],
-  "Defense": [
-    "Deoxys-Defense"
-  ],
-  "Speed": [
-    "Deoxys-Speed"
-  ],
-  "Sandy": [
-    "Wormadam-Sandy"
-  ],
-  "Trash": [
-    "Wormadam-Trash"
-  ],
-  "Sunshine": [
-    "Cherrim-Sunshine"
-  ],
-  "Heat": [
-    "Rotom-Heat"
-  ],
-  "Wash": [
-    "Rotom-Wash"
-  ],
-  "Frost": [
-    "Rotom-Frost"
-  ],
-  "Fan": [
-    "Rotom-Fan"
-  ],
-  "Mow": [
-    "Rotom-Mow"
-  ],
-  "Origin": [
-    "Dialga-Origin",
-    "Palkia-Origin",
-    "Giratina-Origin"
-  ],
-  "Sky": [
-    "Shaymin-Sky"
-  ],
   "Bug": [
     "Arceus-Bug",
     "Silvally-Bug"
