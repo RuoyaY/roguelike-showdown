@@ -1,0 +1,413 @@
+{
+  "Cosplay": [
+    "Pikachu-Cosplay"
+  ],
+  "Rock-Star": [
+    "Pikachu-Rock-Star"
+  ],
+  "Belle": [
+    "Pikachu-Belle"
+  ],
+  "Pop-Star": [
+    "Pikachu-Pop-Star"
+  ],
+  "PhD": [
+    "Pikachu-PhD"
+  ],
+  "Libre": [
+    "Pikachu-Libre"
+  ],
+  "Original": [
+    "Pikachu-Original",
+    "Magearna-Original"
+  ],
+  "Hoenn": [
+    "Pikachu-Hoenn"
+  ],
+  "Sinnoh": [
+    "Pikachu-Sinnoh"
+  ],
+  "Unova": [
+    "Pikachu-Unova"
+  ],
+  "Kalos": [
+    "Pikachu-Kalos"
+  ],
+  "Partner": [
+    "Pikachu-Partner"
+  ],
+  "Starter": [
+    "Pikachu-Starter",
+    "Eevee-Starter"
+  ],
+  "World": [
+    "Pikachu-World"
+  ],
+  "Galar": [
+    "Meowth-Galar",
+    "Ponyta-Galar",
+    "Rapidash-Galar",
+    "Slowpoke-Galar",
+    "Slowbro-Galar",
+    "Farfetch’d-Galar",
+    "Weezing-Galar",
+    "Mr. Mime-Galar",
+    "Articuno-Galar",
+    "Zapdos-Galar",
+    "Moltres-Galar",
+    "Slowking-Galar",
+    "Corsola-Galar",
+    "Zigzagoon-Galar",
+    "Linoone-Galar",
+    "Darumaka-Galar",
+    "Darmanitan-Galar",
+    "Yamask-Galar",
+    "Stunfisk-Galar"
+  ],
+  "Hisui": [
+    "Growlithe-Hisui",
+    "Arcanine-Hisui",
+    "Voltorb-Hisui",
+    "Electrode-Hisui",
+    "Typhlosion-Hisui",
+    "Qwilfish-Hisui",
+    "Sneasel-Hisui",
+    "Samurott-Hisui",
+    "Lilligant-Hisui",
+    "Zorua-Hisui",
+    "Zoroark-Hisui",
+    "Braviary-Hisui",
+    "Sliggoo-Hisui",
+    "Goodra-Hisui",
+    "Avalugg-Hisui",
+    "Decidueye-Hisui"
+  ],
+  "Paldea-Combat": [
+    "Tauros-Paldea-Combat"
+  ],
+  "Paldea-Blaze": [
+    "Tauros-Paldea-Blaze"
+  ],
+  "Paldea-Aqua": [
+    "Tauros-Paldea-Aqua"
+  ],
+  "Spiky-eared": [
+    "Pichu-Spiky-eared"
+  ],
+  "Paldea": [
+    "Wooper-Paldea"
+  ],
+  "Sunny": [
+    "Castform-Sunny"
+  ],
+  "Rainy": [
+    "Castform-Rainy"
+  ],
+  "Snowy": [
+    "Castform-Snowy"
+  ],
+  "Primal": [
+    "Kyogre-Primal",
+    "Groudon-Primal"
+  ],
+  "Attack": [
+    "Deoxys-Attack"
+  ],
+  "Defense": [
+    "Deoxys-Defense"
+  ],
+  "Speed": [
+    "Deoxys-Speed"
+  ],
+  "Sandy": [
+    "Wormadam-Sandy"
+  ],
+  "Trash": [
+    "Wormadam-Trash"
+  ],
+  "Sunshine": [
+    "Cherrim-Sunshine"
+  ],
+  "Heat": [
+    "Rotom-Heat"
+  ],
+  "Wash": [
+    "Rotom-Wash"
+  ],
+  "Frost": [
+    "Rotom-Frost"
+  ],
+  "Fan": [
+    "Rotom-Fan"
+  ],
+  "Mow": [
+    "Rotom-Mow"
+  ],
+  "Origin": [
+    "Dialga-Origin",
+    "Palkia-Origin",
+    "Giratina-Origin"
+  ],
+  "Sky": [
+    "Shaymin-Sky"
+  ],
+  "Bug": [
+    "Arceus-Bug",
+    "Silvally-Bug"
+  ],
+  "Dark": [
+    "Arceus-Dark",
+    "Silvally-Dark"
+  ],
+  "Dragon": [
+    "Arceus-Dragon",
+    "Silvally-Dragon"
+  ],
+  "Electric": [
+    "Arceus-Electric",
+    "Silvally-Electric"
+  ],
+  "Fairy": [
+    "Arceus-Fairy",
+    "Silvally-Fairy"
+  ],
+  "Fighting": [
+    "Arceus-Fighting",
+    "Silvally-Fighting"
+  ],
+  "Fire": [
+    "Arceus-Fire",
+    "Silvally-Fire"
+  ],
+  "Flying": [
+    "Arceus-Flying",
+    "Silvally-Flying"
+  ],
+  "Ghost": [
+    "Arceus-Ghost",
+    "Silvally-Ghost"
+  ],
+  "Grass": [
+    "Arceus-Grass",
+    "Silvally-Grass"
+  ],
+  "Ground": [
+    "Arceus-Ground",
+    "Silvally-Ground"
+  ],
+  "Ice": [
+    "Arceus-Ice",
+    "Silvally-Ice",
+    "Calyrex-Ice"
+  ],
+  "Poison": [
+    "Arceus-Poison",
+    "Silvally-Poison"
+  ],
+  "Psychic": [
+    "Arceus-Psychic",
+    "Silvally-Psychic"
+  ],
+  "Rock": [
+    "Arceus-Rock",
+    "Silvally-Rock"
+  ],
+  "Steel": [
+    "Arceus-Steel",
+    "Silvally-Steel"
+  ],
+  "Water": [
+    "Arceus-Water",
+    "Silvally-Water"
+  ],
+  "Blue-Striped": [
+    "Basculin-Blue-Striped"
+  ],
+  "White-Striped": [
+    "Basculin-White-Striped"
+  ],
+  "Zen": [
+    "Darmanitan-Zen"
+  ],
+  "Galar-Zen": [
+    "Darmanitan-Galar-Zen"
+  ],
+  "Therian": [
+    "Tornadus-Therian",
+    "Thundurus-Therian",
+    "Landorus-Therian",
+    "Enamorus-Therian"
+  ],
+  "Black": [
+    "Kyurem-Black"
+  ],
+  "White": [
+    "Kyurem-White",
+    "Squawkabilly-White"
+  ],
+  "Resolute": [
+    "Keldeo-Resolute"
+  ],
+  "Pirouette": [
+    "Meloetta-Pirouette"
+  ],
+  "Douse": [
+    "Genesect-Douse"
+  ],
+  "Shock": [
+    "Genesect-Shock"
+  ],
+  "Burn": [
+    "Genesect-Burn"
+  ],
+  "Chill": [
+    "Genesect-Chill"
+  ],
+  "Ash": [
+    "Greninja-Ash"
+  ],
+  "Fancy": [
+    "Vivillon-Fancy"
+  ],
+  "Pokeball": [
+    "Vivillon-Pokeball"
+  ],
+  "Eternal": [
+    "Floette-Eternal"
+  ],
+  "F": [
+    "Meowstic-F",
+    "Indeedee-F",
+    "Basculegion-F",
+    "Oinkologne-F"
+  ],
+  "Blade": [
+    "Aegislash-Blade"
+  ],
+  "Small": [
+    "Pumpkaboo-Small",
+    "Gourgeist-Small"
+  ],
+  "Large": [
+    "Pumpkaboo-Large",
+    "Gourgeist-Large"
+  ],
+  "Super": [
+    "Pumpkaboo-Super",
+    "Gourgeist-Super"
+  ],
+  "Neutral": [
+    "Xerneas-Neutral"
+  ],
+  "10%": [
+    "Zygarde-10%"
+  ],
+  "Complete": [
+    "Zygarde-Complete"
+  ],
+  "Unbound": [
+    "Hoopa-Unbound"
+  ],
+  "Totem": [
+    "Gumshoos-Totem",
+    "Vikavolt-Totem",
+    "Ribombee-Totem",
+    "Araquanid-Totem",
+    "Lurantis-Totem",
+    "Salazzle-Totem",
+    "Togedemaru-Totem",
+    "Mimikyu-Totem",
+    "Kommo-o-Totem"
+  ],
+  "Pom-Pom": [
+    "Oricorio-Pom-Pom"
+  ],
+  "Pa'u": [
+    "Oricorio-Pa'u"
+  ],
+  "Sensu": [
+    "Oricorio-Sensu"
+  ],
+  "Midnight": [
+    "Lycanroc-Midnight"
+  ],
+  "Dusk": [
+    "Lycanroc-Dusk"
+  ],
+  "School": [
+    "Wishiwashi-School"
+  ],
+  "Meteor": [
+    "Minior-Meteor"
+  ],
+  "Busted": [
+    "Mimikyu-Busted"
+  ],
+  "Busted-Totem": [
+    "Mimikyu-Busted-Totem"
+  ],
+  "Dusk-Mane": [
+    "Necrozma-Dusk-Mane"
+  ],
+  "Dawn-Wings": [
+    "Necrozma-Dawn-Wings"
+  ],
+  "Ultra": [
+    "Necrozma-Ultra"
+  ],
+  "Gulping": [
+    "Cramorant-Gulping"
+  ],
+  "Gorging": [
+    "Cramorant-Gorging"
+  ],
+  "Low-Key": [
+    "Toxtricity-Low-Key"
+  ],
+  "Noice": [
+    "Eiscue-Noice"
+  ],
+  "Hangry": [
+    "Morpeko-Hangry"
+  ],
+  "Crowned": [
+    "Zacian-Crowned",
+    "Zamazenta-Crowned"
+  ],
+  "Eternamax": [
+    "Eternatus-Eternamax"
+  ],
+  "Rapid-Strike": [
+    "Urshifu-Rapid-Strike"
+  ],
+  "Dada": [
+    "Zarude-Dada"
+  ],
+  "Shadow": [
+    "Calyrex-Shadow"
+  ],
+  "Four": [
+    "Maushold-Four"
+  ],
+  "Blue": [
+    "Squawkabilly-Blue"
+  ],
+  "Yellow": [
+    "Squawkabilly-Yellow"
+  ],
+  "Hero": [
+    "Palafin-Hero"
+  ],
+  "Three-Segment": [
+    "Dudunsparce-Three-Segment"
+  ],
+  "Roaming": [
+    "Gimmighoul-Roaming"
+  ],
+  "Epilogue": [
+    "Venomicon-Epilogue"
+  ],
+  "PropU2": [
+    "Pokestar UFO-PropU2"
+  ]
+}
