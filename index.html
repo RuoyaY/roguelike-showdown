@@ -119,7 +119,7 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  // pokemonId = 'kyogreprimal';
+  // pokemonId = 'silvallybug';
   while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
             || ILLEGAL_MONS.includes(pokemonId))
     pokemonId = randomKey(pokedex);
@@ -139,6 +139,13 @@ function randomOfSpecies(pokemonId) {
   const pokemon = pokedex[pokemonId];
 
   let out = pokemon.name;
+  if (TYPES.includes(pokemon.forme)) {
+    if (pokemon.baseSpecies === 'Arceus')
+      out += ' @ ' + randomElement(pokemon.requiredItems);
+    else if (pokemon.baseSpecies === 'Silvally')
+      out += ' @ ' + pokemon.requiredItem;
+  }
+
 
   out += '<br>Ability: ' + randomProperty(pokemon.abilities);
 
