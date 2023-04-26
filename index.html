@@ -35,6 +35,11 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
   'Dragon', 'Steel', 'Fairy'];
 
+const STAT_TOTAL_GOAL = 600;
+
+// for testing/studying purposes
+let levelStats = '';
+
 let pokedex;
 loadPokedex();
 let learnsets;
@@ -76,8 +81,9 @@ function getChoices() {
   
   // // useful for testing
   // for (const pokemonId of Object.keys(pokedex)) {
-  //   console.log(randomOfSpecies(pokemonId));
+  //   randomOfSpecies(pokemonId);
   // }
+  // console.log(levelStats);
 }
 
 function addRandomPokemon(choicesDiv) {
@@ -102,6 +108,14 @@ function randomOfSpecies(pokemonId) {
   if (pokemon.requiredItem)
     out += ' @ ' + pokemon.requiredItem;
   out += '\nAbility: ' + randomProperty(pokemon.abilities);
+
+  let bst = 0;
+  for (const stat of STATS)
+    bst += pokemon.baseStats[stat.toLowerCase()];
+  const level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
+  out += '\nLevel: ' + level;
+  levelStats += level + ', ';
+
   out += '\nTera Type: ' + randomElement(TYPES);
   out += '\nEVs: 1 HP';
 
@@ -129,7 +143,6 @@ function randomOfSpecies(pokemonId) {
     }
   }
 
-  let statTotal = 0;
   out += '\n\nSTATS: '
   for (const stat of STATS) {
     let statNum;
@@ -137,15 +150,13 @@ function randomOfSpecies(pokemonId) {
       if (pokemonId === 'shedinja')
         statNum = 1;
       else
-        statNum = 2 * pokemon.baseStats[stat.toLowerCase()] + 31 + 100 + 10;
+        statNum = Math.floor((2*pokemon.baseStats[stat.toLowerCase()] + 31) * level/100) + level + 10;
     } else {
-      statNum = 2 * pokemon.baseStats[stat.toLowerCase()] + 31 + 5;
+      statNum = Math.floor((2*pokemon.baseStats[stat.toLowerCase()] + 31) * level/100) + 5;
     }
-    statTotal += statNum;
     out += statNum + ' ' + stat + ' / ';
   }
   out = out.slice(0, -2);
-  out += '(' + statTotal + ')';
 
   return out;
 }
