@@ -263,9 +263,6 @@
     "Basculegion-F",
     "Oinkologne-F"
   ],
-  "Blade": [
-    "Aegislash-Blade"
-  ],
   "Small": [
     "Pumpkaboo-Small",
     "Gourgeist-Small"
@@ -280,12 +277,6 @@
   ],
   "Neutral": [
     "Xerneas-Neutral"
-  ],
-  "10%": [
-    "Zygarde-10%"
-  ],
-  "Complete": [
-    "Zygarde-Complete"
   ],
   "Unbound": [
     "Hoopa-Unbound"
@@ -351,13 +342,6 @@
   ],
   "Hangry": [
     "Morpeko-Hangry"
-  ],
-  "Crowned": [
-    "Zacian-Crowned",
-    "Zamazenta-Crowned"
-  ],
-  "Eternamax": [
-    "Eternatus-Eternamax"
   ],
   "Rapid-Strike": [
     "Urshifu-Rapid-Strike"
