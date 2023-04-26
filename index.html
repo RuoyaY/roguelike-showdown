@@ -48,6 +48,9 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
 
 const STAT_TOTAL_GOAL = 600;
 const ILLEGAL_FORMES = ['Antique', 'GMax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
+const ILLEGAL_MONS = ['magearnaoriginal',
+  // cap Pikachus are functionally identical. if you unban these, make sure they always get Thunder, too
+  'pikachuhoenn', 'pikachusinnoh', 'pikachuunova', 'pikachukalos', 'pikachualola', 'pikachupartner', 'pikachuworld'];
 
 // for testing/studying purposes
 let levelStats = '';
@@ -101,7 +104,9 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  while (pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme))
+  // pokemonId = 'pikachuoriginal';
+  while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
+            || ILLEGAL_MONS.includes(pokemonId))
     pokemonId = randomKey(pokedex);
   
   const pokemonEle = document.createElement('p');
@@ -164,8 +169,12 @@ function randomOfSpecies(pokemonId) {
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
         let moveIndex = randomInt(possibleMoves.length);
-        if (i === 0 && pokemon.changesFrom === 'Pikachu-Cosplay')
-          moveIndex = 0; // guarantee the cosplay-specific move
+        if (i === 0) {
+          if (pokemon.changesFrom === 'Pikachu-Cosplay')
+            moveIndex = 0; // guarantee the cosplay-specific move
+          else if (pokemonId === 'pikachuoriginal')
+            moveIndex = possibleMoves.indexOf('thunderbolt');
+        }
         out += '<br>- ' + moves[possibleMoves[moveIndex]].name;
         possibleMoves.splice(moveIndex, 1);
       } else {
