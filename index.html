@@ -3,7 +3,8 @@
 
 <head>
 <style>
-pre {
+.pokemon {
+  font-family: monospace;
   background-color: whitesmoke;
   background-repeat: no-repeat;
   background-position-x: right;
@@ -15,6 +16,9 @@ pre {
   display: flex;
   flex-direction: row;
   justify-content: left;
+}
+.gray {
+  color: lightgray;
 }
 </style>
 </head>
@@ -99,10 +103,11 @@ function addRandomPokemon(choicesDiv) {
   while (pokedex[pokemonId]?.forme === 'Gmax')
     pokemonId = randomKey(pokedex);
   
-  const pre = document.createElement('pre');
-  pre.appendChild(document.createTextNode(randomOfSpecies(pokemonId)));
-  pre.style.backgroundImage = getImageURL(pokemonId);
-  choicesDiv.prepend(pre);
+  const pokemonEle = document.createElement('p');
+  pokemonEle.classList.add('pokemon');
+  pokemonEle.innerHTML = randomOfSpecies(pokemonId);
+  pokemonEle.style.backgroundImage = getImageURL(pokemonId);
+  choicesDiv.prepend(pokemonEle);
 }
 
 function getImageURL(pokemonId) {
@@ -115,23 +120,23 @@ function randomOfSpecies(pokemonId) {
   let out = pokemon.name;
   if (pokemon.requiredItem)
     out += ' @ ' + pokemon.requiredItem;
-  out += '\nAbility: ' + randomProperty(pokemon.abilities);
+  out += '<br>Ability: ' + randomProperty(pokemon.abilities);
 
   let bst = 0;
   for (const stat of STATS)
     bst += pokemon.baseStats[stat.toLowerCase()];
   const level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
-  out += '\nLevel: ' + level;
+  out += '<br>' + spanWithClass('Level: ' + level, 'gray');
   levelStats += level + ', ';
 
-  out += '\nTera Type: ' + randomElement(TYPES);
-  out += '\nEVs: 1 HP';
+  out += '<br>Tera Type: ' + randomElement(TYPES);
+  out += '<br>' + spanWithClass('EVs: 1 HP', 'gray');
 
   // add moveset
   if (pokemonId.substring(0, 8) === 'pokestar') {
     const moveset = randomElement(learnsets[pokemonId].eventData).moves;
     for (const move of moveset)
-      out += '\n- ' + moves[move].name;
+      out += '<br>- ' + moves[move].name;
   } else {
     let learnsetData = learnsets[pokemonId];
 
@@ -147,15 +152,15 @@ function randomOfSpecies(pokemonId) {
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
         const moveIndex = randomInt(possibleMoves.length);
-        out += '\n- ' + moves[possibleMoves[moveIndex]].name;
+        out += '<br>- ' + moves[possibleMoves[moveIndex]].name;
         possibleMoves.splice(moveIndex, 1);
       } else {
-        out += '\n';
+        out += '<br>';
       }
     }
   }
 
-  out += '\n\nSTATS: '
+  out += '<br><br>STATS: '
   for (const stat of STATS) {
     let statNum;
     if (stat === 'HP') {
@@ -168,17 +173,21 @@ function randomOfSpecies(pokemonId) {
     }
     out += nSpaces(3 - (statNum + '').length) + statNum + ' ' + stat + ' / ';
     if (stat === 'Def')
-      out += '\n' + nSpaces('STATS: ... HP /'.length);
+      out += '<br>' + nSpaces('STATS: ... HP /'.length);
   }
   out = out.slice(0, -2);
 
   return out;
 }
 
+function spanWithClass(str, class_) {
+  return '<span class="' + class_ + '">' + str + '</span>';
+}
+
 function nSpaces(n) {
   let out = '';
   for (let i = 0; i < n; i++)
-    out += ' ';
+    out += '&nbsp';
   return out;
 }
 
