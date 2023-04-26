@@ -128,7 +128,11 @@ function randomOfSpecies(pokemonId) {
   out += '<br>' + spanWithClass('Level: ' + level, 'gray');
   levelStats += level + ', ';
 
-  out += '<br>Tera Type: ' + randomElement(TYPES);
+  if (pokemon.forme && pokemon.forme.includes('Mega'))
+    out += '<br>' + spanWithClass('Tera Type: ' + randomElement(TYPES), 'gray');
+  else
+    out += '<br>Tera Type: ' + randomElement(TYPES);
+    
   out += '<br>' + spanWithClass('EVs: 1 HP', 'gray');
 
   // add moveset
