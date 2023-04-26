@@ -50,7 +50,10 @@ const STAT_TOTAL_GOAL = 600;
 const ILLEGAL_FORMES = ['Antique', 'GMax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = ['magearnaoriginal',
   // cap Pikachus are functionally identical. if you unban these, make sure they always get Thunder, too
-  'pikachuhoenn', 'pikachusinnoh', 'pikachuunova', 'pikachukalos', 'pikachualola', 'pikachupartner', 'pikachuworld'];
+  'pikachuhoenn', 'pikachusinnoh', 'pikachuunova', 'pikachukalos', 'pikachualola', 'pikachupartner', 'pikachuworld',
+  'pichuspikyeared', 
+  'castformsunny', 'castformrainy', 'castformsnowy',
+];
 
 // for testing/studying purposes
 let levelStats = '';
@@ -95,7 +98,7 @@ function getChoices() {
   addRandomPokemon(choicesDiv);
   addRandomPokemon(choicesDiv);
   
-  // // useful for testing
+  // // get level distribution
   // for (const pokemonId of Object.keys(pokedex)) {
   //   randomOfSpecies(pokemonId);
   // }
