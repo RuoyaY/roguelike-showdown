@@ -47,6 +47,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Dragon', 'Steel', 'Fairy'];
 
 const STAT_TOTAL_GOAL = 600;
+const ILLEGAL_FORMES = ['Antique', 'GMax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 
 // for testing/studying purposes
 let levelStats = '';
@@ -100,7 +101,7 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  while (pokedex[pokemonId].forme && pokedex[pokemonId].forme.includes('Gmax'))
+  while (pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme))
     pokemonId = randomKey(pokedex);
   
   const pokemonEle = document.createElement('p');
