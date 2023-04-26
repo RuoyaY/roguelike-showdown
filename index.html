@@ -100,7 +100,7 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  while (pokedex[pokemonId]?.forme === 'Gmax')
+  while (pokedex[pokemonId].forme && pokedex[pokemonId].forme.includes('Gmax'))
     pokemonId = randomKey(pokedex);
   
   const pokemonEle = document.createElement('p');
