@@ -8,6 +8,13 @@ pre {
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
+  margin-right: 1rem;
+  margin-bottom: 0rem;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 }
 </style>
 </head>
@@ -73,8 +80,9 @@ function loadMoves() {
 }
 
 function getChoices() {
-  const choicesDiv = document.getElementById('choices');
-  choicesDiv.prepend(document.createElement('hr'));
+  const choicesDiv = document.createElement('div');
+  choicesDiv.classList.add('flex-row');
+  document.getElementById('choices').prepend(choicesDiv);
   addRandomPokemon(choicesDiv);
   addRandomPokemon(choicesDiv);
   addRandomPokemon(choicesDiv);
@@ -136,10 +144,14 @@ function randomOfSpecies(pokemonId) {
       possibleMoves.push(...Object.keys(baseSpeciesLearnset));
     }
     
-    for (let i = 0; i < 4 && possibleMoves.length > 0; i++) {
-      const moveIndex = randomInt(possibleMoves.length);
-      out += '\n- ' + moves[possibleMoves[moveIndex]].name;
-      possibleMoves.splice(moveIndex, 1);
+    for (let i = 0; i < 4; i++) {
+      if (possibleMoves.length > 0) {
+        const moveIndex = randomInt(possibleMoves.length);
+        out += '\n- ' + moves[possibleMoves[moveIndex]].name;
+        possibleMoves.splice(moveIndex, 1);
+      } else {
+        out += '\n';
+      }
     }
   }
 
@@ -154,10 +166,19 @@ function randomOfSpecies(pokemonId) {
     } else {
       statNum = Math.floor((2*pokemon.baseStats[stat.toLowerCase()] + 31) * level/100) + 5;
     }
-    out += statNum + ' ' + stat + ' / ';
+    out += nSpaces(3 - (statNum + '').length) + statNum + ' ' + stat + ' / ';
+    if (stat === 'Def')
+      out += '\n' + nSpaces('STATS: ... HP /'.length);
   }
   out = out.slice(0, -2);
 
+  return out;
+}
+
+function nSpaces(n) {
+  let out = '';
+  for (let i = 0; i < n; i++)
+    out += ' ';
   return out;
 }
 
