@@ -1,35 +1,4 @@
 {
-  "Blue-Striped": [
-    "Basculin-Blue-Striped"
-  ],
-  "White-Striped": [
-    "Basculin-White-Striped"
-  ],
-  "Zen": [
-    "Darmanitan-Zen"
-  ],
-  "Galar-Zen": [
-    "Darmanitan-Galar-Zen"
-  ],
-  "Therian": [
-    "Tornadus-Therian",
-    "Thundurus-Therian",
-    "Landorus-Therian",
-    "Enamorus-Therian"
-  ],
-  "Black": [
-    "Kyurem-Black"
-  ],
-  "White": [
-    "Kyurem-White",
-    "Squawkabilly-White"
-  ],
-  "Resolute": [
-    "Keldeo-Resolute"
-  ],
-  "Pirouette": [
-    "Meloetta-Pirouette"
-  ],
   "Douse": [
     "Genesect-Douse"
   ],
@@ -151,12 +120,6 @@
   ],
   "Four": [
     "Maushold-Four"
-  ],
-  "Blue": [
-    "Squawkabilly-Blue"
-  ],
-  "Yellow": [
-    "Squawkabilly-Yellow"
   ],
   "Hero": [
     "Palafin-Hero"
