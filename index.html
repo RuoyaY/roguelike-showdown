@@ -9,13 +9,21 @@
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
-  margin-right: 1rem;
-  margin-bottom: 0rem;
+  margin: 3px;
+  position: relative;
 }
 .flex-row {
   display: flex;
   flex-direction: row;
   justify-content: left;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.overlay > img {
+  margin-left: 1px;
 }
 .gray {
   color: lightgray;
@@ -213,6 +221,12 @@ function randomOfSpecies(pokemonId) {
         out += '<br>';
       }
     }
+
+    out += '<div class="overlay">';
+    out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[0] + '.png">';
+    if (pokemon.types[1])
+      out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[1] + '.png">';
+    out += '</div>';
   }
 
   out += '<br><br>STATS: '
