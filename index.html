@@ -215,12 +215,6 @@ function randomOfSpecies(pokemonId) {
         out += '<br>';
       }
     }
-
-    out += '<div class="overlay">';
-    out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[0] + '.png">';
-    if (pokemon.types[1])
-      out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[1] + '.png">';
-    out += '</div>';
   }
 
   out += '<br><br>STATS: '
@@ -239,6 +233,12 @@ function randomOfSpecies(pokemonId) {
       out += '<br>' + nSpaces('STATS: ... HP /'.length);
   }
   out = out.slice(0, -2);
+
+  out += '<div class="overlay">';
+  out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[0] + '.png">';
+  if (pokemon.types[1])
+    out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[1] + '.png">';
+  out += '</div>';
 
   return out;
 }
