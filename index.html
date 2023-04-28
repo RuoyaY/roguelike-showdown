@@ -59,6 +59,13 @@ body {
 .type-fairy { color: #EE99AC }
 
 .attr { color: #A0A0A0 }
+
+.stat-hp { color: #FF0000 }
+.stat-atk { color: #F08030 }
+.stat-def { color: #F8D030 }
+.stat-spa { color: #6890F0 }
+.stat-spd { color: #78C850 }
+.stat-spe { color: #F85888 }
 </style>
 </head>
 
@@ -250,7 +257,7 @@ function randomOfSpecies(pokemonId) {
     }
   }
 
-  out += '<br><br>STATS: '
+  out += '<br><br>'
   for (const stat of STATS) {
     let statNum;
     if (stat === 'HP') {
@@ -261,9 +268,9 @@ function randomOfSpecies(pokemonId) {
     } else {
       statNum = Math.floor((2*pokemon.baseStats[stat.toLowerCase()] + 31) * level/100) + 5;
     }
-    out += nSpaces(3 - (statNum + '').length) + statNum + ' ' + stat + ' / ';
+    out += nSpaces(3 - (statNum + '').length) + spanWithClass(statNum + ' ' + stat, 'stat-' + stat.toLowerCase()) + ' / ';
     if (stat === 'Def')
-      out += '<br>' + nSpaces('STATS: ... HP /'.length);
+      out += '<br>' + nSpaces('... HP /'.length);
   }
   out = out.slice(0, -2);
 
