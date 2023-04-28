@@ -55,7 +55,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Dragon', 'Steel', 'Fairy'];
 
 const STAT_TOTAL_GOAL = 600;
-const ILLEGAL_FORMES = ['Antique', 'GMax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
+const ILLEGAL_FORMES = ['Antique', 'Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // cap Pikachus are functionally identical. if you unban these, make sure they always get Thunder, too
   'pikachuhoenn', 'pikachusinnoh', 'pikachuunova', 'pikachukalos', 'pikachualola', 'pikachupartner', 'pikachuworld',
@@ -140,7 +140,7 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  // pokemonId = 'genesect';
+  // pokemonId = 'butterfreegmax';
   while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
             || ILLEGAL_MONS.includes(pokemonId))
     pokemonId = randomKey(pokedex);
