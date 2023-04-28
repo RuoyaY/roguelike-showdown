@@ -209,12 +209,6 @@ function randomOfSpecies(pokemonId) {
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
         let moveIndex = randomInt(possibleMoves.length);
-        if (i === 0) {
-          if (pokemon.changesFrom === 'Pikachu-Cosplay')
-            moveIndex = 0; // guarantee the cosplay-specific move
-          else if (pokemonId === 'pikachuoriginal')
-            moveIndex = possibleMoves.indexOf('thunderbolt');
-        }
         out += '<br>- ' + moves[possibleMoves[moveIndex]].name;
         possibleMoves.splice(moveIndex, 1);
       } else {
