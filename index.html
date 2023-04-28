@@ -3,13 +3,21 @@
 
 <head>
 <style>
+body {
+  background-color: darkslateblue;
+  color: white;
+}
+
 .pokemon {
   font-family: monospace;
-  background-color: whitesmoke;
+  background-color: black;
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
-  margin: 3px;
+  padding: 2px;
+  margin: 2px;
+  border-radius: 4px;
+  /* border-top-right-radius: 1px; */
   position: relative;
 }
 .flex-row {
@@ -24,10 +32,33 @@
 }
 .overlay > img {
   margin-left: 1px;
+  margin-top: -1px;
 }
+
 .gray {
-  color: lightgray;
+  color: #333;
 }
+
+.type-normal { color: #A8A878 }
+.type-fighting { color: #C03028 }
+.type-flying { color: #A890F0 }
+.type-poison { color: #A040A0 }
+.type-ground { color: #E0C068 }
+.type-rock { color: #B8A038 }
+.type-bug { color: #A8B820 }
+.type-ghost { color: #705898 }
+.type-steel { color: #B8B8D0 }
+.type-fire { color: #F08030 }
+.type-water { color: #6890F0 }
+.type-grass { color: #78C850 }
+.type-electric { color: #F8D030 }
+.type-psychic { color: #F85888 }
+.type-ice { color: #98D8D8 }
+.type-dragon { color: #7038F8 }
+.type-dark { color: #705848 }
+.type-fairy { color: #EE99AC }
+
+.attr { color: #A0A0A0 }
 </style>
 </head>
 
@@ -140,7 +171,7 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  // pokemonId = 'butterfreegmax';
+  // pokemonId = 'pokestarbrycenman';
   while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
             || ILLEGAL_MONS.includes(pokemonId))
     pokemonId = randomKey(pokedex);
@@ -159,13 +190,13 @@ function getImageURL(pokemonId) {
 function randomOfSpecies(pokemonId) {
   const pokemon = pokedex[pokemonId];
 
-  let out = pokemon.name;
+  let out = spanWithClass(pokemon.name, 'type-' + pokemon.types[0].toLowerCase());
   if (pokemon.baseSpecies === 'Arceus')
     out += ' @ ' + randomElement(pokemon.requiredItems);
   else if (pokemon.baseSpecies === 'Silvally' || pokemon.baseSpecies === 'Genesect')
     out += ' @ ' + pokemon.requiredItem;
 
-  out += '<br>Ability: ' + randomProperty(pokemon.abilities);
+  out += '<br>' + spanWithClass('Ability: ', 'attr') + randomProperty(pokemon.abilities);
 
   let bst = 0;
   for (const stat of STATS)
@@ -176,8 +207,10 @@ function randomOfSpecies(pokemonId) {
 
   if (pokemon.forme && (pokemon.forme.includes('Mega') || pokemon.forme === 'Primal'))
     out += '<br>' + spanWithClass('Tera Type: ' + randomElement(TYPES), 'gray');
-  else
-    out += '<br>Tera Type: ' + randomElement(TYPES);
+  else {
+    const teraType = randomElement(TYPES);
+    out += '<br>' + spanWithClass('Tera Type: ', 'attr') + spanWithClass(teraType, 'type-' + teraType.toLowerCase());
+  }
     
   out += '<br>' + spanWithClass('EVs: 1 HP', 'gray');
 
@@ -185,7 +218,7 @@ function randomOfSpecies(pokemonId) {
   if (pokemonId.substring(0, 8) === 'pokestar') {
     const moveset = randomElement(learnsets[pokemonId].eventData).moves;
     for (const move of moveset)
-      out += '<br>- ' + moves[move].name;
+      out += '<br>' + moveWithColor(move);
   } else {
     let learnsetData = learnsets[pokemonId];
 
@@ -209,7 +242,7 @@ function randomOfSpecies(pokemonId) {
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
         let moveIndex = randomInt(possibleMoves.length);
-        out += '<br>- ' + moves[possibleMoves[moveIndex]].name;
+        out += '<br>' + moveWithColor(possibleMoves[moveIndex]);
         possibleMoves.splice(moveIndex, 1);
       } else {
         out += '<br>';
@@ -241,6 +274,10 @@ function randomOfSpecies(pokemonId) {
   out += '</div>';
 
   return out;
+}
+
+function moveWithColor(moveId) {
+  return spanWithClass('- ' + moves[moveId].name, 'type-' + moves[moveId].type.toLowerCase());
 }
 
 function spanWithClass(str, class_) {
