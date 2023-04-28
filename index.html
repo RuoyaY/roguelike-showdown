@@ -197,7 +197,7 @@ function getImageURL(pokemonId) {
 function randomOfSpecies(pokemonId) {
   const pokemon = pokedex[pokemonId];
 
-  let out = spanWithClass(pokemon.name, 'type-' + pokemon.types[0].toLowerCase());
+  let out = pokemon.name;
   if (pokemon.baseSpecies === 'Arceus')
     out += ' @ ' + randomElement(pokemon.requiredItems);
   else if (pokemon.baseSpecies === 'Silvally' || pokemon.baseSpecies === 'Genesect')
