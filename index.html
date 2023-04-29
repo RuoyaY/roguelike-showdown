@@ -39,6 +39,10 @@ body {
   color: #444;
 }
 
+.hasHoverText {
+  text-decoration: dashed underline; 
+}
+
 .type-normal { color: #A8A878 }
 .type-fighting { color: #C03028 }
 .type-flying { color: #A890F0 }
@@ -124,6 +128,8 @@ let learnsets;
 loadLearnsets();
 let moves;
 loadMoves();
+let abilities;
+loadAbilities();
 
 function loadPokedex() {
   const xhttp = new XMLHttpRequest();
@@ -148,6 +154,24 @@ function loadMoves() {
   }
   xhttp.open("GET", "moves.json");
   xhttp.send();
+}
+function loadAbilities() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    abilities = JSON.parse(this.responseText);
+  }
+  xhttp.open("GET", "abilities.json");
+  xhttp.send();
+}
+
+function getPokemonId(pokemonName) {
+  return Object.keys(pokedex).find(pokemonId => pokedex[pokemonId].name === pokemonName);
+}
+function getMoveId(moveName) {
+  return Object.keys(moves).find(moveId => moves[moveId].name === moveName);
+}
+function getAbilityId(abilityName) {
+  return Object.keys(abilities).find(abilityId => abilities[abilityId].name === abilityName);
 }
 
 function getChoices() {
@@ -203,7 +227,8 @@ function randomOfSpecies(pokemonId) {
   else if (pokemon.baseSpecies === 'Silvally' || pokemon.baseSpecies === 'Genesect')
     out += ' @ ' + pokemon.requiredItem;
 
-  out += '<br>' + spanWithClass('Ability: ', 'attr') + randomProperty(pokemon.abilities);
+  const abilityName = randomProperty(pokemon.abilities);
+  out += '<br>' + spanWithClass('Ability: ', 'attr') + spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
 
   let bst = 0;
   for (const stat of STATS)
@@ -225,7 +250,7 @@ function randomOfSpecies(pokemonId) {
   if (pokemonId.substring(0, 8) === 'pokestar') {
     const moveset = randomElement(learnsets[pokemonId].eventData).moves;
     for (const move of moveset)
-      out += '<br>' + moveWithColor(move);
+      out += '<br>' + moveInHTML(move);
   } else {
     let learnsetData = learnsets[pokemonId];
 
@@ -241,7 +266,7 @@ function randomOfSpecies(pokemonId) {
         changesFrom = pokemon.baseSpecies;
       
       if (changesFrom) {
-        let baseSpeciesId = Object.keys(pokedex).find(pokemonId => pokedex[pokemonId].name === changesFrom);
+        let baseSpeciesId = getPokemonId(pokemon.changesFrom);
         possibleMoves.push(...Object.keys(learnsets[baseSpeciesId].learnset));
       }
     }
@@ -249,7 +274,7 @@ function randomOfSpecies(pokemonId) {
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
         let moveIndex = randomInt(possibleMoves.length);
-        out += '<br>' + moveWithColor(possibleMoves[moveIndex]);
+        out += '<br>' + moveInHTML(possibleMoves[moveIndex]);
         possibleMoves.splice(moveIndex, 1);
       } else {
         out += '<br>';
@@ -283,12 +308,21 @@ function randomOfSpecies(pokemonId) {
   return out;
 }
 
-function moveWithColor(moveId) {
-  return spanWithClass('- ' + moves[moveId].name, 'type-' + moves[moveId].type.toLowerCase());
+function moveInHTML(moveId) {
+  const move = moves[moveId];
+  let title = move.shortDesc + '\n\nType: ' + move.type + '\nCat: ' + move.category;
+  if (move.basePower && move.basePower !== 0)
+    title += '\nPow: ' + move.basePower;
+  if (move.accuracy && move.accuracy !== true)
+    title += '\nAcc: ' + move.accuracy;
+  return spanWithClass('- ' + spanWithTitle(move.name, title), 'type-' + move.type.toLowerCase());
 }
 
 function spanWithClass(str, class_) {
   return '<span class="' + class_ + '">' + str + '</span>';
+}
+function spanWithTitle(str, title) {
+  return '<span class="hasHoverText" title="' + title + '">' + str + '</span>';
 }
 
 function nSpaces(n) {
