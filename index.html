@@ -310,11 +310,12 @@ function randomOfSpecies(pokemonId) {
 
 function moveInHTML(moveId) {
   const move = moves[moveId];
-  let title = move.shortDesc + '\n\nType: ' + move.type + '\nCat: ' + move.category;
+  let title = 'Type: ' + move.type + '\nCat: ' + move.category;
   if (move.basePower && move.basePower !== 0)
     title += '\nPow: ' + move.basePower;
   if (move.accuracy && move.accuracy !== true)
     title += '\nAcc: ' + move.accuracy;
+  title += '\n\n' + move.shortDesc;
   return spanWithClass('- ' + spanWithTitle(move.name, title), 'type-' + move.type.toLowerCase());
 }
 
