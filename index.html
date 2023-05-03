@@ -35,7 +35,7 @@ body {
   margin-top: -1px;
 }
 
-.margin-left {
+.ml-4px {
   margin-left: 4px;
 }
 
@@ -88,15 +88,18 @@ h2 {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
-    <button onclick="getChoices()">get choices</button>
+    <div class="flex-row">
+      <input id="species" placeholder="get a specific species">
+      <button class="ml-4px" onclick="getChoices()">get choices</button>
+    </div>
     <br>
     <div id="choices"></div>
   </div>
-  <div class="margin-left">
+  <div class="ml-4px">
     <h2>Party</h2>
     <textarea rows="52"></textarea>
   </div>
-  <div class="margin-left">
+  <div class="ml-4px">
     <h2>Box</h2>
     <textarea rows="52"></textarea>
   </div>
@@ -199,9 +202,15 @@ function getChoices() {
   const choicesDiv = document.createElement('div');
   choicesDiv.classList.add('flex-row');
   document.getElementById('choices').prepend(choicesDiv);
-  addRandomPokemon(choicesDiv);
-  addRandomPokemon(choicesDiv);
-  addRandomPokemon(choicesDiv);
+  
+  const speciesName = document.getElementById('species').value;
+  if (speciesName === '') {
+    addRandomPokemon(choicesDiv);
+    addRandomPokemon(choicesDiv);
+    addRandomPokemon(choicesDiv);
+  } else {
+    addRandomPokemon(choicesDiv, getPokemonId(speciesName));
+  }
   
   // get level distribution
   // for (const pokemonId of Object.keys(pokedex)) {
@@ -221,12 +230,13 @@ function getChoices() {
   // console.log(formes);
 }
 
-function addRandomPokemon(choicesDiv) {
-  let pokemonId = randomKey(pokedex);
-  // pokemonId = 'missingno';
-  while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
-            || ILLEGAL_MONS.includes(pokemonId))
+function addRandomPokemon(choicesDiv, pokemonId) {
+  if (!pokemonId) {
     pokemonId = randomKey(pokedex);
+    while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
+              || ILLEGAL_MONS.includes(pokemonId))
+      pokemonId = randomKey(pokedex);
+  }
   
   const pokemonEle = document.createElement('p');
   pokemonEle.classList.add('pokemon');
