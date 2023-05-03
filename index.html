@@ -359,13 +359,23 @@ function randomOfSpecies(pokemonId) {
 
 function moveInHTML(moveId) {
   const move = moves[moveId];
+
+  let moveName = move.name;
+  if (moveId === 'hiddenpower') {
+    let type = 'Normal';
+    while (type === 'Normal' || type === 'Fairy')
+      type = randomElement(TYPES);
+    moveName += ' [' + type + ']';
+  }
+
   let title = 'Type: ' + move.type + '\nCat: ' + move.category;
   if (move.basePower && move.basePower !== 0)
     title += '\nPow: ' + move.basePower;
   if (move.accuracy && move.accuracy !== true)
     title += '\nAcc: ' + move.accuracy;
   title += '\n\n' + move.shortDesc;
-  return spanWithClass('- ' + spanWithTitle(move.name, title), 'type-' + move.type.toLowerCase());
+
+  return spanWithClass('- ' + spanWithTitle(moveName, title), 'type-' + move.type.toLowerCase());
 }
 
 function spanWithClass(str, class_) {
