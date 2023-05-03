@@ -379,8 +379,14 @@ function spanWithTitle(str, title) {
 function choosePokemon(buttonEle) {
   const divEle = buttonEle.parentElement;
   const pokemonEle = divEle.childNodes[0];
+  const pokemonText = pokemonEle.textContent.substring(0, pokemonEle.textContent.indexOf('\n\n')) + '\n\n';
   const partyTextarea = document.getElementById('partyTextarea');
-  partyTextarea.value += pokemonEle.textContent.substring(0, pokemonEle.textContent.indexOf('\n\n')) + '\n\n';
+  if (partyTextarea.value.trim().split('\n\n').length < 6) 
+    partyTextarea.value = pokemonText + partyTextarea.value.trimStart();
+  else {
+    const boxTextarea = document.getElementById('boxTextarea');
+    boxTextarea.value = pokemonText + boxTextarea.value.trimStart();
+  }
 
   for (const divInRow of divEle.parentElement.childNodes) {
     divInRow.removeChild(divInRow.childNodes[1]);
