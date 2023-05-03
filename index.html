@@ -15,15 +15,21 @@ body {
   background-position-x: right;
   background-position-y: center;
   padding: 2px;
-  margin: 2px;
+  margin: 0px;
   border-radius: 4px;
   /* border-top-right-radius: 1px; */
   position: relative;
+  white-space: pre;
 }
 .flex-row {
   display: flex;
   flex-direction: row;
   justify-content: left;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .overlay {
   position: absolute;
@@ -35,6 +41,9 @@ body {
   margin-top: -1px;
 }
 
+.m-2px {
+  margin: 2px;
+}
 .ml-4px {
   margin-left: 4px;
 }
@@ -97,11 +106,11 @@ h2 {
   </div>
   <div class="ml-4px">
     <h2>Party</h2>
-    <textarea rows="52"></textarea>
+    <textarea id="partyTextarea" rows="52"></textarea>
   </div>
   <div class="ml-4px">
     <h2>Box</h2>
-    <textarea rows="52"></textarea>
+    <textarea id="boxTextarea" rows="52"></textarea>
   </div>
 </div>
 
@@ -238,11 +247,18 @@ function addRandomPokemon(choicesDiv, pokemonId) {
       pokemonId = randomKey(pokedex);
   }
   
+  const divEle = document.createElement('div');
+  divEle.classList.add('flex-column', 'm-2px');
   const pokemonEle = document.createElement('p');
   pokemonEle.classList.add('pokemon');
   pokemonEle.innerHTML = randomOfSpecies(pokemonId);
   pokemonEle.style.backgroundImage = getImageURL(pokemonId);
-  choicesDiv.prepend(pokemonEle);
+  divEle.append(pokemonEle);
+  const buttonEle = document.createElement('button');
+  buttonEle.textContent = 'choose';
+  buttonEle.onclick = function() {choosePokemon(buttonEle)};
+  divEle.append(buttonEle);
+  choicesDiv.append(divEle);
 }
 
 function getImageURL(pokemonId) {
@@ -260,31 +276,31 @@ function randomOfSpecies(pokemonId) {
 
   const abilityName = randomProperty(pokemon.abilities);
   if (abilityName)
-    out += '<br>' + spanWithClass('Ability: ', 'attr') + spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
+    out += '\n' + spanWithClass('Ability: ', 'attr') + spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
   else
-    out += '<br>' + spanWithClass('Ability:', 'attr');
+    out += '\n' + spanWithClass('Ability:', 'attr');
 
   let bst = 0;
   for (const stat of STATS)
     bst += pokemon.baseStats[stat.toLowerCase()];
   const level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
-  out += '<br>' + spanWithClass('Level: ' + level, 'gray');
+  out += '\n' + spanWithClass('Level: ' + level, 'gray');
   levelStats += level + ', ';
 
   if (pokemon.forme && (pokemon.forme.includes('Mega') || pokemon.forme === 'Primal' || pokemon.forme === 'Ultra'))
-    out += '<br>' + spanWithClass('Tera Type: ' + randomElement(TYPES), 'gray');
+    out += '\n' + spanWithClass('Tera Type: ' + randomElement(TYPES), 'gray');
   else {
     const teraType = randomElement(TYPES);
-    out += '<br>' + spanWithClass('Tera Type: ', 'attr') + spanWithClass(teraType, 'type-' + teraType.toLowerCase());
+    out += '\n' + spanWithClass('Tera Type: ', 'attr') + spanWithClass(teraType, 'type-' + teraType.toLowerCase());
   }
     
-  out += '<br>' + spanWithClass('EVs: 1 HP', 'gray');
+  out += '\n' + spanWithClass('EVs: 1 HP', 'gray');
 
   // add moveset
   if (pokemonId.substring(0, 8) === 'pokestar') {
     const moveset = randomElement(learnsets[pokemonId].eventData).moves;
     for (const move of moveset)
-      out += '<br>' + moveInHTML(move);
+      out += '\n' + moveInHTML(move);
   } else {
     let learnsetData = learnsets[pokemonId];
 
@@ -308,15 +324,15 @@ function randomOfSpecies(pokemonId) {
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
         let moveIndex = randomInt(possibleMoves.length);
-        out += '<br>' + moveInHTML(possibleMoves[moveIndex]);
+        out += '\n' + moveInHTML(possibleMoves[moveIndex]);
         possibleMoves.splice(moveIndex, 1);
       } else {
-        out += '<br>';
+        out += '\n';
       }
     }
   }
 
-  out += '<br><br>'
+  out += '\n\n'
   for (const stat of STATS) {
     let statNum;
     if (stat === 'HP') {
@@ -329,7 +345,7 @@ function randomOfSpecies(pokemonId) {
     }
     out += nSpaces(3 - (statNum + '').length) + spanWithClass(statNum + ' ' + stat, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
-      out += '<br>' + nSpaces('... HP '.length);
+      out += '\n' + nSpaces('... HP '.length);
   }
   out = out.slice(0, -1);
 
@@ -358,6 +374,17 @@ function spanWithClass(str, class_) {
 }
 function spanWithTitle(str, title) {
   return '<span class="hasHoverText" title="' + title + '">' + str + '</span>';
+}
+
+function choosePokemon(buttonEle) {
+  const divEle = buttonEle.parentElement;
+  const pokemonEle = divEle.childNodes[0];
+  const partyTextarea = document.getElementById('partyTextarea');
+  partyTextarea.value += pokemonEle.textContent.substring(0, pokemonEle.textContent.indexOf('\n\n')) + '\n\n';
+
+  for (const divInRow of divEle.parentElement.childNodes) {
+    divInRow.removeChild(divInRow.childNodes[1]);
+  }
 }
 
 function nSpaces(n) {
