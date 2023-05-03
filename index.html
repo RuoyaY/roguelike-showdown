@@ -204,10 +204,9 @@ function getChoices() {
   addRandomPokemon(choicesDiv);
   
   // get level distribution
-  for (const pokemonId of Object.keys(pokedex)) {
-    console.log(pokemonId);
-    randomOfSpecies(pokemonId);
-  }
+  // for (const pokemonId of Object.keys(pokedex)) {
+  //   randomOfSpecies(pokemonId);
+  // }
   // console.log(levelStats);
 
   // // list all formes
@@ -224,7 +223,7 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv) {
   let pokemonId = randomKey(pokedex);
-  // pokemonId = 'necrozmaultra';
+  // pokemonId = 'missingno';
   while ((pokedex[pokemonId].forme && ILLEGAL_FORMES.includes(pokedex[pokemonId].forme)) 
             || ILLEGAL_MONS.includes(pokemonId))
     pokemonId = randomKey(pokedex);
@@ -250,7 +249,10 @@ function randomOfSpecies(pokemonId) {
     out += ' @ ' + pokemon.requiredItem;
 
   const abilityName = randomProperty(pokemon.abilities);
-  out += '<br>' + spanWithClass('Ability: ', 'attr') + spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
+  if (abilityName)
+    out += '<br>' + spanWithClass('Ability: ', 'attr') + spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
+  else
+    out += '<br>' + spanWithClass('Ability:', 'attr');
 
   let bst = 0;
   for (const stat of STATS)
