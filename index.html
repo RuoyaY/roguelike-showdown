@@ -284,11 +284,33 @@ function randomOfSpecies(speciesName) {
   const pokemonId = getPokemonId(speciesName);
   const pokemon = pokedex[pokemonId];
 
-  let out = speciesName;
-  if (pokemon.baseSpecies === 'Arceus')
-    out = pokemon.baseSpecies + ' @ ' + randomElement(pokemon.requiredItems);
-  else if (pokemon.baseSpecies === 'Silvally' || pokemon.baseSpecies === 'Genesect')
-    out = pokemon.baseSpecies + ' @ ' + pokemon.requiredItem;
+  let displayName = speciesName;
+  let gender;
+  let heldItem;
+
+  if (pokemon.gender)
+    gender = pokemon.gender;
+  else {
+    let probMale = .5;
+    if (pokemon.genderRatio)
+      probMale = pokemon.genderRatio.M;
+    gender = Math.random() < probMale ? 'M' : 'F';
+  }
+
+  if (pokemon.baseSpecies === 'Arceus') {
+    displayName = pokemon.baseSpecies;
+    heldItem = randomElement(pokemon.requiredItems);
+  }
+  else if (pokemon.baseSpecies === 'Silvally' || pokemon.baseSpecies === 'Genesect') {
+    displayName = pokemon.baseSpecies;
+    heldItem = pokemon.requiredItem;
+  }
+
+  let out = displayName;
+  if (gender !== 'N')
+    out += ' (' + gender + ')';
+  if (heldItem)
+    out += ' @ ' + heldItem;
 
   const abilityName = randomProperty(pokemon.abilities);
   if (abilityName)
