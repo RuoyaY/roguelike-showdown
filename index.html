@@ -269,9 +269,9 @@ function randomOfSpecies(pokemonId) {
 
   let out = pokemon.name;
   if (pokemon.baseSpecies === 'Arceus')
-    out += ' @ ' + randomElement(pokemon.requiredItems);
+    out = pokemon.baseSpecies + ' @ ' + randomElement(pokemon.requiredItems);
   else if (pokemon.baseSpecies === 'Silvally' || pokemon.baseSpecies === 'Genesect')
-    out += ' @ ' + pokemon.requiredItem;
+    out = pokemon.baseSpecies + ' @ ' + pokemon.requiredItem;
 
   const abilityName = randomProperty(pokemon.abilities);
   if (abilityName)
