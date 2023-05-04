@@ -107,6 +107,7 @@ textarea {
       <button class="ml-4px" onclick="getChoices()">get choices</button>
     </div>
     <br>
+    <p id="speciesError" style="display:none">ERROR: species name not recognized</p>
     <div id="choices"></div>
   </div>
   <div class="ml-4px">
@@ -261,6 +262,14 @@ function addRandomPokemon(choicesDiv, speciesName) {
       if (randy < pokemon.cosmeticFormes.length)
         speciesName = pokemon.cosmeticFormes[randy];
     }
+  }
+  
+  const speciesErrorEle = document.getElementById('speciesError');
+  if (!getPokemonId(speciesName)) {
+    speciesErrorEle.style.display = 'initial';
+    return;
+  } else {
+    speciesErrorEle.style.display = 'none';
   }
   
   const divEle = document.createElement('div');
