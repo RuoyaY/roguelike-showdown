@@ -219,7 +219,7 @@ function getChoices() {
   choicesDiv.classList.add('flex-row');
   document.getElementById('choices').prepend(choicesDiv);
   
-  const speciesName = document.getElementById('species').value;
+  const speciesName = document.getElementById('species').value.trim();
   if (speciesName === '') {
     addRandomPokemon(choicesDiv);
     addRandomPokemon(choicesDiv);
