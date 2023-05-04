@@ -335,7 +335,9 @@ function randomOfSpecies(speciesName) {
   let bst = 0;
   for (const stat of STATS)
     bst += pokemon.baseStats[stat.toLowerCase()];
-  const level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
+  let level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
+  if (pokemonId === 'pokestarspirit')
+    level = 1;
   out += '\n' + spanWithClass('Level: ' + level, 'gray');
   levelStats += level + ', ';
 
