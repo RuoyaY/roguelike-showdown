@@ -56,6 +56,9 @@ h2 {
 textarea {
   white-space: pre;
 }
+button:focus {
+  box-shadow: 0 0 0 2px rgba(0,0,0,.5);
+}
 
 .gray {
   color: #444;
@@ -111,7 +114,7 @@ textarea {
     <div id="choices"></div>
   </div>
   <div class="ml-4px">
-    <h2>Party</h2>
+    <h2>Party <button onclick="copyParty()" class="clipboard-button">📋</button></h2>
     <textarea id="partyTextarea" rows="52"></textarea>
   </div>
   <div class="ml-4px">
@@ -456,6 +459,11 @@ function choosePokemon(buttonEle) {
   for (const divInRow of divEle.parentElement.childNodes) {
     divInRow.removeChild(divInRow.childNodes[1]);
   }
+}
+
+function copyParty() {
+  const partyTextarea = document.getElementById('partyTextarea');
+  navigator.clipboard.writeText(partyTextarea.value);
 }
 
 function nSpaces(n) {
