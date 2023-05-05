@@ -166,8 +166,8 @@ const ILLEGAL_MONS = [
 // for testing/studying purposes
 let levelStats = '';
 
-let pokedex;
-loadPokedex();
+let allSpecies;
+loadAllSpecies();
 let learnsets;
 loadLearnsets();
 let moves;
@@ -175,10 +175,10 @@ loadMoves();
 let abilities;
 loadAbilities();
 
-function loadPokedex() {
+function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    pokedex = JSON.parse(this.responseText);
+    allSpecies = JSON.parse(this.responseText);
   }
   xhttp.open("GET", "pokedex.json");
   xhttp.send();
@@ -209,8 +209,8 @@ function loadAbilities() {
 }
 
 function getSpeciesId(speciesName) {
-  return Object.keys(pokedex).find(speciesId => pokedex[speciesId].name === speciesName 
-    || pokedex[speciesId].cosmeticFormes?.includes(speciesName));
+  return Object.keys(allSpecies).find(speciesId => allSpecies[speciesId].name === speciesName 
+    || allSpecies[speciesId].cosmeticFormes?.includes(speciesName));
 }
 function getMoveId(moveName) {
   return Object.keys(moves).find(moveId => moves[moveId].name === moveName);
@@ -233,18 +233,18 @@ function getChoices() {
   }
   
   // // get level distribution
-  // for (const species of Object.values(pokedex)) {
+  // for (const species of Object.values(allSpecies)) {
   //   randomOfSpecies(species.name);
   // }
   // console.log(levelStats);
 
   // // list all formes
   // let formes = {};
-  // for (const speciesId of Object.keys(pokedex)) {
-  //   if (pokedex[speciesId].forme) {
-  //     if (!formes[pokedex[speciesId].forme])
-  //       formes[pokedex[speciesId].forme] = [];
-  //     formes[pokedex[speciesId].forme].push(speciesId);
+  // for (const speciesId of Object.keys(allSpecies)) {
+  //   if (allSpecies[speciesId].forme) {
+  //     if (!formes[allSpecies[speciesId].forme])
+  //       formes[allSpecies[speciesId].forme] = [];
+  //     formes[allSpecies[speciesId].forme].push(speciesId);
   //   }
   // }
   // console.log(formes);
@@ -252,12 +252,12 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv, speciesName) {  
   if (!speciesName) {
-    let speciesId = randomKey(pokedex);
-    let species = pokedex[speciesId];
+    let speciesId = randomKey(allSpecies);
+    let species = allSpecies[speciesId];
     while ((species.forme && ILLEGAL_FORMES.includes(species.forme)) 
               || ILLEGAL_MONS.includes(speciesId)) {
-      speciesId = randomKey(pokedex);
-      species = pokedex[speciesId];
+      speciesId = randomKey(allSpecies);
+      species = allSpecies[speciesId];
     }
 
     speciesName = species.name;
@@ -311,7 +311,7 @@ function getImageURL(speciesName) {
 
 function randomOfSpecies(speciesName) {
   const speciesId = getSpeciesId(speciesName);
-  const species = pokedex[speciesId];
+  const species = allSpecies[speciesId];
 
   let displayName = speciesName;
   let gender;
@@ -423,7 +423,7 @@ function pokemonInHTML(pokemonStr) {
   out = '';
 
   const speciesId = speciesIdOfPokemon(strLines[0]);
-  const species = pokedex[speciesId];
+  const species = allSpecies[speciesId];
 
   for (const strLine of strLines) {
     if (strLine.startsWith('Ability: ')) {
@@ -476,7 +476,7 @@ function pokemonInHTML(pokemonStr) {
 
 function statsInHTML(pokemonStr) {
   const speciesId = speciesIdOfPokemon(pokemonStr);
-  const species = pokedex[speciesId];
+  const species = allSpecies[speciesId];
   const strLines = pokemonStr.split('\n');
 
   const levelStr = strLines.find(line => line.startsWith('Level: '));
