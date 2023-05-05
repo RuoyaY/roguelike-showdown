@@ -449,7 +449,7 @@ function pokemonInHTML(pokemonStr) {
       if (moveName.startsWith('Hidden Power')) {
         moveId = 'hiddenpower';
         move = moves[moveId];
-        type = moveName.substring(moveName.indexOf('['), moveName.indexOf(']'));
+        type = moveName.substring(moveName.indexOf('[')+1, moveName.indexOf(']'));
       } else {
         moveId = getMoveId(moveName);
         move = moves[moveId];
