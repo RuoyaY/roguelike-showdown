@@ -279,7 +279,7 @@ function addRandomPokemon(choicesDiv, speciesName) {
   divEle.classList.add('flex-column', 'm-2px');
   const pokemonEle = document.createElement('p');
   pokemonEle.classList.add('pokemon');
-  pokemonEle.innerHTML = randomOfSpecies(speciesName);
+  pokemonEle.innerHTML = pokemonInHTML(randomOfSpecies(speciesName));
   pokemonEle.style.backgroundImage = getImageURL(speciesName);
   divEle.append(pokemonEle);
   const buttonEle = document.createElement('button');
@@ -290,7 +290,7 @@ function addRandomPokemon(choicesDiv, speciesName) {
 }
 
 function isPokestar(pokemonId) {
-  return pokemonId.substring(0, 8) === 'pokestar';
+  return pokemonId.startsWith('pokestar');
 }
 
 function getImageURL(speciesName) {
@@ -330,10 +330,9 @@ function randomOfSpecies(speciesName) {
     out += ' @ ' + heldItem;
 
   const abilityName = randomProperty(pokemon.abilities);
+  out += '\nAbility: ';
   if (abilityName)
-    out += '\n' + spanWithClass('Ability: ', 'attr') + spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
-  else
-    out += '\n' + spanWithClass('Ability:', 'attr');
+   out += abilityName;
 
   let bst = 0;
   for (const stat of STATS)
@@ -341,23 +340,22 @@ function randomOfSpecies(speciesName) {
   let level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
   if (pokemonId === 'pokestarspirit')
     level = 1;
-  out += '\n' + spanWithClass('Level: ' + level, 'gray');
+  out += '\nLevel: ' + level;
   levelStats += level + ', ';
 
   if (pokemon.forme && (pokemon.forme.includes('Mega') || pokemon.forme === 'Primal' || pokemon.forme === 'Ultra'))
-    out += '\n' + spanWithClass('Tera Type: ' + randomElement(TYPES), 'gray');
+    out += '\n';
   else {
-    const teraType = randomElement(TYPES);
-    out += '\n' + spanWithClass('Tera Type: ', 'attr') + spanWithClass(teraType, 'type-' + teraType.toLowerCase());
+    out += '\nTera Type: ' + randomElement(TYPES);
   }
     
-  out += '\n' + spanWithClass('EVs: 1 HP', 'gray');
+  out += '\nEVs: 1 HP';
 
   // add moveset
   if (isPokestar(pokemonId)) {
     const moveset = randomElement(learnsets[pokemonId].eventData).moves;
-    for (const move of moveset)
-      out += '\n' + moveInHTML(move);
+    for (const moveId of moveset)
+      out += '\n- ' + addHiddenPowerType(moves[moveId].name);
   } else {
     let learnsetData = learnsets[pokemonId];
 
@@ -380,8 +378,9 @@ function randomOfSpecies(speciesName) {
     
     for (let i = 0; i < 4; i++) {
       if (possibleMoves.length > 0) {
-        let moveIndex = randomInt(possibleMoves.length);
-        out += '\n' + moveInHTML(possibleMoves[moveIndex]);
+        const moveIndex = randomInt(possibleMoves.length);
+        const moveId = possibleMoves[moveIndex];
+        out += '\n- ' + addHiddenPowerType(moves[moveId].name);
         possibleMoves.splice(moveIndex, 1);
       } else {
         out += '\n';
@@ -400,9 +399,9 @@ function randomOfSpecies(speciesName) {
     } else {
       statNum = Math.floor((2*pokemon.baseStats[stat.toLowerCase()] + 31) * level/100) + 5;
     }
-    out += nSpaces(3 - (statNum + '').length) + spanWithClass(statNum + ' ' + stat, 'stat-' + stat.toLowerCase()) + ' ';
+    out += spanWithClass((statNum + ' ').padStart(4) + stat, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
-      out += '\n' + nSpaces('... HP '.length);
+      out += '\n' + ' '.repeat('... HP '.length);
   }
   out = out.slice(0, -1);
 
@@ -415,26 +414,64 @@ function randomOfSpecies(speciesName) {
   return out;
 }
 
-function moveInHTML(moveId) {
-  const move = moves[moveId];
+function getSpeciesId(pokemonStr) {
+  getPokemonId(pokemonStr.substring(0, pokemonStr.indexOf(' ')));
+}
 
-  let moveName = move.name;
-  let type = move.type;
-  if (moveId === 'hiddenpower') {
-    type = 'Normal';
-    while (type === 'Normal' || type === 'Fairy')
-      type = randomElement(TYPES);
-    moveName += ' [' + type + ']';
+function pokemonInHTML(pokemonStr) {
+  const pokemonLines = pokemonStr.split('\n');
+  out = '';
+
+  const speciesId = getSpeciesId(pokemonLines[0]);
+  const species = pokedex[speciesId];
+
+  for (const pokemonLine of pokemonLines) {
+    if (pokemonLine.startsWith('Ability: ')) {
+      const abilityName = pokemonLine.substring('Ability: '.length);
+      out += spanWithClass('Ability: ', 'attr');
+      out += spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
+
+    } else if (pokemonLine.startsWith('Level: ')) {
+      out += spanWithClass(pokemonLine, 'gray');
+      
+    } else if (pokemonLine.startsWith('Tera Type: ')) {
+      const teraType = pokemonLine.substring('Tera Type: '.length);
+      out += spanWithClass('Tera Type: ', 'attr');
+      out += spanWithClass(teraType, 'type-' + teraType.toLowerCase());
+
+    } else if (pokemonLine.startsWith('EVs: ')) {
+      out += spanWithClass(pokemonLine, 'gray');
+
+    } else if (pokemonLine.startsWith('- ')) {
+      const moveName = pokemonLine.substring('- '.length);
+
+      let moveId, move, type;
+      if (moveName.startsWith('Hidden Power')) {
+        moveId = 'hiddenpower';
+        move = moves[moveId];
+        type = moveName.substring(moveName.indexOf('['), moveName.indexOf(']'));
+      } else {
+        moveId = getMoveId(moveName);
+        move = moves[moveId];
+        type = move.type;
+      }
+
+      let title = 'Type: ' + type + '\nCat: ' + move.category;
+      if (move.basePower && move.basePower !== 0)
+        title += '\nPow: ' + move.basePower;
+      if (move.accuracy && move.accuracy !== true)
+        title += '\nAcc: ' + move.accuracy;
+      title += '\n\n' + move.shortDesc;
+
+      out += spanWithClass('- ' + spanWithTitle(moveName, title), 'type-' + type.toLowerCase());
+
+    } else {
+      out += pokemonLine;
+    }
+    out += '\n';
   }
 
-  let title = 'Type: ' + type + '\nCat: ' + move.category;
-  if (move.basePower && move.basePower !== 0)
-    title += '\nPow: ' + move.basePower;
-  if (move.accuracy && move.accuracy !== true)
-    title += '\nAcc: ' + move.accuracy;
-  title += '\n\n' + move.shortDesc;
-
-  return spanWithClass('- ' + spanWithTitle(moveName, title), 'type-' + type.toLowerCase());
+  return out;
 }
 
 function spanWithClass(str, class_) {
@@ -466,11 +503,14 @@ function copyParty() {
   navigator.clipboard.writeText(partyTextarea.value);
 }
 
-function nSpaces(n) {
-  let out = '';
-  for (let i = 0; i < n; i++)
-    out += '&nbsp';
-  return out;
+function addHiddenPowerType(moveName) {
+  if (moveName === 'Hidden Power') {
+    let type = randomElement(TYPES);
+    while (type === 'Normal' || type === 'Fairy')
+      type = randomElement(TYPES);
+    moveName += ' [' + type + ']';
+  }
+  return moveName;
 }
 
 function randomProperty(obj) {
