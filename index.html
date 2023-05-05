@@ -478,7 +478,7 @@ function pokemonInHTML(pokemonStr) {
     out += '\n';
   }
 
-  return out;
+  return out.slice(0, -1);
 }
 
 function statsInHTML(pokemonStr) {
@@ -540,7 +540,7 @@ function spanWithTitle(str, title) {
 function choosePokemon(buttonEle) {
   const divEle = buttonEle.parentElement;
   const pokemonEle = divEle.childNodes[0];
-  const pokemonStr = pokemonEle.textContent.substring(0, pokemonEle.textContent.indexOf('\n\n')) + '\n\n';
+  const pokemonStr = pokemonEle.textContent + '\n\n';
   const partyTextarea = document.getElementById('partyTextarea');
   if (partyTextarea.value.trim().split('\n\n').length < 6) 
     partyTextarea.value = pokemonStr + partyTextarea.value.trimStart();
