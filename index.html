@@ -232,19 +232,19 @@ function getChoices() {
     addRandomPokemon(choicesDiv, speciesName);
   }
   
-  // get level distribution
-  // for (const pokemonId of Object.keys(pokedex)) {
-  //   randomOfSpecies(pokemonId);
+  // // get level distribution
+  // for (const species of Object.values(pokedex)) {
+  //   randomOfSpecies(species.name);
   // }
   // console.log(levelStats);
 
   // // list all formes
   // let formes = {};
-  // for (const pokemonId of Object.keys(pokedex)) {
-  //   if (pokedex[pokemonId].forme) {
-  //     if (!formes[pokedex[pokemonId].forme])
-  //       formes[pokedex[pokemonId].forme] = [];
-  //     formes[pokedex[pokemonId].forme].push(pokemonId);
+  // for (const speciesId of Object.keys(pokedex)) {
+  //   if (pokedex[speciesId].forme) {
+  //     if (!formes[pokedex[speciesId].forme])
+  //       formes[pokedex[speciesId].forme] = [];
+  //     formes[pokedex[speciesId].forme].push(speciesId);
   //   }
   // }
   // console.log(formes);
