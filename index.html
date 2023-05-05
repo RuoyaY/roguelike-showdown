@@ -206,9 +206,9 @@ function loadAbilities() {
   xhttp.send();
 }
 
-function getPokemonId(pokemonName) {
-  return Object.keys(pokedex).find(pokemonId => pokedex[pokemonId].name === pokemonName 
-    || pokedex[pokemonId].cosmeticFormes?.includes(pokemonName));
+function getSpeciesId(speciesName) {
+  return Object.keys(pokedex).find(speciesId => pokedex[speciesId].name === speciesName 
+    || pokedex[speciesId].cosmeticFormes?.includes(speciesName));
 }
 function getMoveId(moveName) {
   return Object.keys(moves).find(moveId => moves[moveId].name === moveName);
@@ -250,25 +250,25 @@ function getChoices() {
 
 function addRandomPokemon(choicesDiv, speciesName) {  
   if (!speciesName) {
-    let pokemonId = randomKey(pokedex);
-    let pokemon = pokedex[pokemonId];
-    while ((pokemon.forme && ILLEGAL_FORMES.includes(pokemon.forme)) 
-              || ILLEGAL_MONS.includes(pokemonId)) {
-      pokemonId = randomKey(pokedex);
-      pokemon = pokedex[pokemonId];
+    let speciesId = randomKey(pokedex);
+    let species = pokedex[speciesId];
+    while ((species.forme && ILLEGAL_FORMES.includes(species.forme)) 
+              || ILLEGAL_MONS.includes(speciesId)) {
+      speciesId = randomKey(pokedex);
+      species = pokedex[speciesId];
     }
 
-    speciesName = pokemon.name;
+    speciesName = species.name;
 
-    if (pokemon.cosmeticFormes && !isPokestar(pokemonId)) {
-      const randy = randomInt(pokemon.cosmeticFormes.length + 1);
-      if (randy < pokemon.cosmeticFormes.length)
-        speciesName = pokemon.cosmeticFormes[randy];
+    if (species.cosmeticFormes && !isPokestar(speciesId)) {
+      const randy = randomInt(species.cosmeticFormes.length + 1);
+      if (randy < species.cosmeticFormes.length)
+        speciesName = species.cosmeticFormes[randy];
     }
   }
   
   const speciesErrorEle = document.getElementById('speciesError');
-  if (!getPokemonId(speciesName)) {
+  if (!getSpeciesId(speciesName)) {
     speciesErrorEle.style.display = 'initial';
     return;
   } else {
@@ -289,8 +289,8 @@ function addRandomPokemon(choicesDiv, speciesName) {
   choicesDiv.append(divEle);
 }
 
-function isPokestar(pokemonId) {
-  return pokemonId.startsWith('pokestar');
+function isPokestar(speciesId) {
+  return speciesId.startsWith('pokestar');
 }
 
 function getImageURL(speciesName) {
@@ -298,80 +298,80 @@ function getImageURL(speciesName) {
 }
 
 function randomOfSpecies(speciesName) {
-  const pokemonId = getPokemonId(speciesName);
-  const pokemon = pokedex[pokemonId];
+  const speciesId = getSpeciesId(speciesName);
+  const species = pokedex[speciesId];
 
   let displayName = speciesName;
   let gender;
   let heldItem;
 
-  if (pokemon.gender)
-    gender = pokemon.gender;
+  if (species.gender)
+    gender = species.gender;
   else {
     let probMale = .5;
-    if (pokemon.genderRatio)
-      probMale = pokemon.genderRatio.M;
+    if (species.genderRatio)
+      probMale = species.genderRatio.M;
     gender = Math.random() < probMale ? 'M' : 'F';
   }
 
-  if (pokemon.baseSpecies === 'Arceus') {
-    displayName = pokemon.baseSpecies;
-    heldItem = randomElement(pokemon.requiredItems);
+  if (species.baseSpecies === 'Arceus') {
+    displayName = species.baseSpecies;
+    heldItem = randomElement(species.requiredItems);
   }
-  else if (pokemon.baseSpecies === 'Silvally' || pokemon.baseSpecies === 'Genesect') {
-    displayName = pokemon.baseSpecies;
-    heldItem = pokemon.requiredItem;
+  else if (species.baseSpecies === 'Silvally' || species.baseSpecies === 'Genesect') {
+    displayName = species.baseSpecies;
+    heldItem = species.requiredItem;
   }
 
-  let out = displayName;
+  let pokemonStr = displayName;
   if (gender !== 'N')
-    out += ' (' + gender + ')';
+    pokemonStr += ' (' + gender + ')';
   if (heldItem)
-    out += ' @ ' + heldItem;
+    pokemonStr += ' @ ' + heldItem;
 
-  const abilityName = randomProperty(pokemon.abilities);
-  out += '\nAbility: ';
+  const abilityName = randomProperty(species.abilities);
+  pokemonStr += '\nAbility: ';
   if (abilityName)
-   out += abilityName;
+   pokemonStr += abilityName;
 
   let bst = 0;
   for (const stat of STATS)
-    bst += pokemon.baseStats[stat.toLowerCase()];
+    bst += species.baseStats[stat.toLowerCase()];
   let level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
-  if (pokemonId === 'pokestarspirit')
+  if (speciesId === 'pokestarspirit')
     level = 1;
-  out += '\nLevel: ' + level;
+  pokemonStr += '\nLevel: ' + level;
   levelStats += level + ', ';
 
-  if (pokemon.forme && (pokemon.forme.includes('Mega') || pokemon.forme === 'Primal' || pokemon.forme === 'Ultra'))
-    out += '\n';
+  if (species.forme && (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
+    pokemonStr += '\n';
   else {
-    out += '\nTera Type: ' + randomElement(TYPES);
+    pokemonStr += '\nTera Type: ' + randomElement(TYPES);
   }
     
-  out += '\nEVs: 1 HP';
+  pokemonStr += '\nEVs: 1 HP';
 
   // add moveset
-  if (isPokestar(pokemonId)) {
-    const moveset = randomElement(learnsets[pokemonId].eventData).moves;
+  if (isPokestar(speciesId)) {
+    const moveset = randomElement(learnsets[speciesId].eventData).moves;
     for (const moveId of moveset)
-      out += '\n- ' + addHiddenPowerType(moves[moveId].name);
+      pokemonStr += '\n- ' + addHiddenPowerType(moves[moveId].name);
   } else {
-    let learnsetData = learnsets[pokemonId];
+    let learnsetData = learnsets[speciesId];
 
     if (!learnsetData?.learnset)
-      learnsetData = learnsets[pokemon.baseSpecies.toLowerCase()];
+      learnsetData = learnsets[species.baseSpecies.toLowerCase()];
 
     let possibleMoves = Object.keys(learnsetData.learnset);
     if (possibleMoves.length < 4) {
       let changesFrom;
-      if (pokemon.changesFrom)
-        changesFrom = pokemon.changesFrom;
-      else if (pokemon.baseSpecies)
-        changesFrom = pokemon.baseSpecies;
+      if (species.changesFrom)
+        changesFrom = species.changesFrom;
+      else if (species.baseSpecies)
+        changesFrom = species.baseSpecies;
       
       if (changesFrom) {
-        let baseSpeciesId = getPokemonId(changesFrom);
+        let baseSpeciesId = getSpeciesId(changesFrom);
         possibleMoves.push(...Object.keys(learnsets[baseSpeciesId].learnset));
       }
     }
@@ -380,70 +380,70 @@ function randomOfSpecies(speciesName) {
       if (possibleMoves.length > 0) {
         const moveIndex = randomInt(possibleMoves.length);
         const moveId = possibleMoves[moveIndex];
-        out += '\n- ' + addHiddenPowerType(moves[moveId].name);
+        pokemonStr += '\n- ' + addHiddenPowerType(moves[moveId].name);
         possibleMoves.splice(moveIndex, 1);
       } else {
-        out += '\n';
+        pokemonStr += '\n';
       }
     }
   }
 
-  out += '\n\n'
+  pokemonStr += '\n\n'
   for (const stat of STATS) {
     let statNum;
     if (stat === 'HP') {
-      if (pokemonId === 'shedinja')
+      if (speciesId === 'shedinja')
         statNum = 1;
       else
-        statNum = Math.floor((2*pokemon.baseStats[stat.toLowerCase()] + 31) * level/100) + level + 10;
+        statNum = Math.floor((2*species.baseStats[stat.toLowerCase()] + 31) * level/100) + level + 10;
     } else {
-      statNum = Math.floor((2*pokemon.baseStats[stat.toLowerCase()] + 31) * level/100) + 5;
+      statNum = Math.floor((2*species.baseStats[stat.toLowerCase()] + 31) * level/100) + 5;
     }
-    out += spanWithClass((statNum + ' ').padStart(4) + stat, 'stat-' + stat.toLowerCase()) + ' ';
+    pokemonStr += spanWithClass((statNum + ' ').padStart(4) + stat, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
-      out += '\n' + ' '.repeat('... HP '.length);
+      pokemonStr += '\n' + ' '.repeat('... HP '.length);
   }
-  out = out.slice(0, -1);
+  pokemonStr = pokemonStr.slice(0, -1);
 
-  out += '<div class="overlay">';
-  out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[0] + '.png">';
-  if (pokemon.types[1])
-    out += '<img src="https://play.pokemonshowdown.com/sprites/types/' + pokemon.types[1] + '.png">';
-  out += '</div>';
+  pokemonStr += '<div class="overlay">';
+  pokemonStr += '<img src="https://play.pokemonshowdown.com/sprites/types/' + species.types[0] + '.png">';
+  if (species.types[1])
+    pokemonStr += '<img src="https://play.pokemonshowdown.com/sprites/types/' + species.types[1] + '.png">';
+  pokemonStr += '</div>';
 
-  return out;
+  return pokemonStr;
 }
 
-function getSpeciesId(pokemonStr) {
-  getPokemonId(pokemonStr.substring(0, pokemonStr.indexOf(' ')));
+function speciesIdOfPokemon(pokemonStr) {
+  return getSpeciesId(pokemonStr.substring(0, pokemonStr.indexOf(' ')));
 }
 
 function pokemonInHTML(pokemonStr) {
-  const pokemonLines = pokemonStr.split('\n');
+  const strLines = pokemonStr.split('\n');
   out = '';
 
-  const speciesId = getSpeciesId(pokemonLines[0]);
+  const speciesId = speciesIdOfPokemon(strLines[0]);
   const species = pokedex[speciesId];
 
-  for (const pokemonLine of pokemonLines) {
-    if (pokemonLine.startsWith('Ability: ')) {
-      const abilityName = pokemonLine.substring('Ability: '.length);
+  for (const strLine of strLines) {
+    if (strLine.startsWith('Ability: ')) {
+      const abilityName = strLine.substring('Ability: '.length);
       out += spanWithClass('Ability: ', 'attr');
       out += spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
 
-    } else if (pokemonLine.startsWith('Level: ')) {
-      out += spanWithClass(pokemonLine, 'gray');
+    } else if (strLine.startsWith('Level: ')) {
+      out += spanWithClass(strLine, 'gray');
       
-    } else if (pokemonLine.startsWith('Tera Type: ')) {
-      const teraType = pokemonLine.substring('Tera Type: '.length);
+    } else if (strLine.startsWith('Tera Type: ')) {
+      const teraType = strLine.substring('Tera Type: '.length);
       out += spanWithClass('Tera Type: ', 'attr');
       out += spanWithClass(teraType, 'type-' + teraType.toLowerCase());
 
-    } else if (pokemonLine.startsWith('EVs: ')) {
-      out += spanWithClass(pokemonLine, 'gray');
+    } else if (strLine.startsWith('EVs: ')) {
+      out += spanWithClass(strLine, 'gray');
 
-    } else if (pokemonLine.startsWith('- ')) {
-      const moveName = pokemonLine.substring('- '.length);
+    } else if (strLine.startsWith('- ')) {
+      const moveName = strLine.substring('- '.length);
 
       let moveId, move, type;
       if (moveName.startsWith('Hidden Power')) {
@@ -466,7 +466,7 @@ function pokemonInHTML(pokemonStr) {
       out += spanWithClass('- ' + spanWithTitle(moveName, title), 'type-' + type.toLowerCase());
 
     } else {
-      out += pokemonLine;
+      out += strLine;
     }
     out += '\n';
   }
@@ -484,13 +484,13 @@ function spanWithTitle(str, title) {
 function choosePokemon(buttonEle) {
   const divEle = buttonEle.parentElement;
   const pokemonEle = divEle.childNodes[0];
-  const pokemonText = pokemonEle.textContent.substring(0, pokemonEle.textContent.indexOf('\n\n')) + '\n\n';
+  const pokemonStr = pokemonEle.textContent.substring(0, pokemonEle.textContent.indexOf('\n\n')) + '\n\n';
   const partyTextarea = document.getElementById('partyTextarea');
   if (partyTextarea.value.trim().split('\n\n').length < 6) 
-    partyTextarea.value = pokemonText + partyTextarea.value.trimStart();
+    partyTextarea.value = pokemonStr + partyTextarea.value.trimStart();
   else {
     const boxTextarea = document.getElementById('boxTextarea');
-    boxTextarea.value = pokemonText + boxTextarea.value.trimStart();
+    boxTextarea.value = pokemonStr + boxTextarea.value.trimStart();
   }
 
   for (const divInRow of divEle.parentElement.childNodes) {
