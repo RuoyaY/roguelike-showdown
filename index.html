@@ -19,7 +19,6 @@ body {
   padding: 2px;
   margin: 0px;
   border-radius: 4px;
-  position: relative;
   white-space: pre;
 }
 
@@ -32,6 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 .overlay {
   position: absolute;
@@ -288,6 +288,15 @@ function addRandomPokemon(choicesDiv, speciesName) {
   pokemonEle.style.backgroundImage = getImageURL(speciesName);
   divEle.append(pokemonEle);
 
+  const typesEle = document.createElement('div');
+  typesEle.classList.add('overlay');
+  for (const type of allSpecies[getSpeciesId(speciesName)].types) {
+    const typeImage = document.createElement('img');
+    typeImage.src = 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
+    typesEle.append(typeImage);
+  }
+  divEle.append(typesEle);
+
   const statsEle = document.createElement('p');
   statsEle.classList.add('info-box');
   statsEle.innerHTML = statsInHTML(pokemonStr);
@@ -399,12 +408,6 @@ function randomOfSpecies(speciesName) {
       }
     }
   }
-
-  pokemonStr += '\n<div class="overlay">';
-  pokemonStr += '<img src="https://play.pokemonshowdown.com/sprites/types/' + species.types[0] + '.png">';
-  if (species.types[1])
-    pokemonStr += '<img src="https://play.pokemonshowdown.com/sprites/types/' + species.types[1] + '.png">';
-  pokemonStr += '</div>';
 
   return pokemonStr;
 }
