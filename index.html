@@ -365,7 +365,7 @@ function randomOfSpecies(speciesName) {
   levelStats += level + ', ';
 
   if (species.forme && (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
-    pokemonStr += '\n';
+    pokemonStr += '\nTera Type: ';
   else {
     pokemonStr += '\nTera Type: ' + randomElement(TYPES);
   }
@@ -439,8 +439,12 @@ function pokemonInHTML(pokemonStr) {
       
     } else if (strLine.startsWith('Tera Type: ')) {
       const teraType = strLine.substring('Tera Type: '.length);
-      out += spanWithClass('Tera Type: ', 'attr');
-      out += spanWithClass(teraType, 'type-' + teraType.toLowerCase());
+      if (teraType !== '') {
+        out += spanWithClass('Tera Type: ', 'attr');
+        out += spanWithClass(teraType, 'type-' + teraType.toLowerCase());
+      } else {
+        out += spanWithClass('Tera Type: ', 'gray');
+      }
 
     } else if (strLine.startsWith('EVs: ')) {
       out += spanWithClass(strLine, 'gray');
