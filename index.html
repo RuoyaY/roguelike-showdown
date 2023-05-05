@@ -9,18 +9,20 @@ body {
 }
 
 .pokemon {
-  font-family: monospace;
-  background-color: black;
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
+}
+.info-box {
+  font-family: monospace;
+  background-color: black;
   padding: 2px;
   margin: 0px;
   border-radius: 4px;
-  /* border-top-right-radius: 1px; */
   position: relative;
   white-space: pre;
 }
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -275,17 +277,27 @@ function addRandomPokemon(choicesDiv, speciesName) {
     speciesErrorEle.style.display = 'none';
   }
   
+  const pokemonStr = randomOfSpecies(speciesName);
+
   const divEle = document.createElement('div');
   divEle.classList.add('flex-column', 'm-2px');
+
   const pokemonEle = document.createElement('p');
-  pokemonEle.classList.add('pokemon');
-  pokemonEle.innerHTML = pokemonInHTML(randomOfSpecies(speciesName));
+  pokemonEle.classList.add('pokemon', 'info-box');
+  pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
   pokemonEle.style.backgroundImage = getImageURL(speciesName);
   divEle.append(pokemonEle);
+
+  const statsEle = document.createElement('p');
+  statsEle.classList.add('info-box');
+  statsEle.innerHTML = statsInHTML(pokemonStr);
+  divEle.append(statsEle);
+
   const buttonEle = document.createElement('button');
   buttonEle.textContent = 'choose';
   buttonEle.onclick = function() {choosePokemon(buttonEle)};
   divEle.append(buttonEle);
+
   choicesDiv.append(divEle);
 }
 
@@ -388,24 +400,7 @@ function randomOfSpecies(speciesName) {
     }
   }
 
-  pokemonStr += '\n\n'
-  for (const stat of STATS) {
-    let statNum;
-    if (stat === 'HP') {
-      if (speciesId === 'shedinja')
-        statNum = 1;
-      else
-        statNum = Math.floor((2*species.baseStats[stat.toLowerCase()] + 31) * level/100) + level + 10;
-    } else {
-      statNum = Math.floor((2*species.baseStats[stat.toLowerCase()] + 31) * level/100) + 5;
-    }
-    pokemonStr += spanWithClass((statNum + ' ').padStart(4) + stat, 'stat-' + stat.toLowerCase()) + ' ';
-    if (stat === 'Def')
-      pokemonStr += '\n' + ' '.repeat('... HP '.length);
-  }
-  pokemonStr = pokemonStr.slice(0, -1);
-
-  pokemonStr += '<div class="overlay">';
+  pokemonStr += '\n<div class="overlay">';
   pokemonStr += '<img src="https://play.pokemonshowdown.com/sprites/types/' + species.types[0] + '.png">';
   if (species.types[1])
     pokemonStr += '<img src="https://play.pokemonshowdown.com/sprites/types/' + species.types[1] + '.png">';
@@ -415,7 +410,12 @@ function randomOfSpecies(speciesName) {
 }
 
 function speciesIdOfPokemon(pokemonStr) {
-  return getSpeciesId(pokemonStr.substring(0, pokemonStr.indexOf(' ')));
+  let firstLine = pokemonStr.split('\n')[0];
+  if (firstLine.includes('@'))
+    firstLine = firstLine.substring(0, firstLine.indexOf(' @'));
+  if (firstLine.includes('('))
+    firstLine = firstLine.substring(0, firstLine.indexOf(' ('));
+  return getSpeciesId(firstLine);
 }
 
 function pokemonInHTML(pokemonStr) {
@@ -474,6 +474,55 @@ function pokemonInHTML(pokemonStr) {
   return out;
 }
 
+function statsInHTML(pokemonStr) {
+  const speciesId = speciesIdOfPokemon(pokemonStr);
+  const species = pokedex[speciesId];
+  const strLines = pokemonStr.split('\n');
+
+  const levelStr = strLines.find(line => line.startsWith('Level: '));
+  const level = parseInt(levelStr.substring('Level: '.length));
+
+  const evsStr = strLines.find(line => line.startsWith('EVs: '));
+
+  const nature = strLines.find(line => line.trim().endsWith(' Nature'))?.slice(0, -1 * ' Nature'.length);
+  const raisedStat = nature ? STATS[NATURES[nature][0]] : '';
+  const loweredStat = nature ? STATS[NATURES[nature][1]] : '';
+
+  let out = '';
+  let statTotal = 0;
+  for (const stat of STATS) {
+    const baseStat = species.baseStats[stat.toLowerCase()];
+
+    let ev = 0;
+    if (evsStr.includes(stat)) {
+      const evsStrUpToEv = evsStr.substring(0, evsStr.indexOf(stat) - 1);
+      ev = parseInt(evsStrUpToEv.substring(evsStrUpToEv.lastIndexOf(' ') + 1));
+    }
+
+    let statNum;
+    if (stat === 'HP') {
+      if (speciesId === 'shedinja')
+        statNum = 1;
+      else
+        statNum = Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + level + 10;
+    } else {
+      let multiplier = 1;
+      if (stat === raisedStat)
+        multiplier += .1;
+      if (stat === loweredStat)
+        multiplier -= .1;
+      statNum = Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
+    }
+    statTotal += statNum;
+    out += spanWithClass((statNum + ' ').padStart(4) + stat, 'stat-' + stat.toLowerCase()) + ' ';
+    if (stat === 'Def')
+    out += '\n' + ' '.repeat('... HP '.length);
+  }
+  out = out.slice(0, -1);
+
+  return out;
+}
+
 function spanWithClass(str, class_) {
   return '<span class="' + class_ + '">' + str + '</span>';
 }
@@ -494,7 +543,7 @@ function choosePokemon(buttonEle) {
   }
 
   for (const divInRow of divEle.parentElement.childNodes) {
-    divInRow.removeChild(divInRow.childNodes[1]);
+    divInRow.removeChild(divInRow.lastChild);
   }
 }
 
