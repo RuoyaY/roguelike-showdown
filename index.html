@@ -595,13 +595,14 @@ function choosePokemon(buttonEle) {
     if (partyPokeEle.textContent.trim() === '') {
       partyPokeEle.textContent = pokemonStr;
       updatePokemonDiv(partyPokeDiv);
-      break;
+      for (const divInRow of divEle.parentElement.childNodes) {
+        divInRow.removeChild(divInRow.querySelector('button'));
+      }
+      return;
     }
   }
 
-  for (const divInRow of divEle.parentElement.childNodes) {
-    divInRow.removeChild(divInRow.querySelector('button'));
-  }
+  alert('Your party is full!');
 }
 
 function copyParty() {
