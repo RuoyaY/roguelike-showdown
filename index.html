@@ -14,6 +14,7 @@ body {
   padding: 6px;
   margin: 0px;
   white-space: pre;
+  width: 30ch;
 }
 .pokemon {
   background-repeat: no-repeat;
@@ -21,13 +22,13 @@ body {
   background-position-y: center;
   border-top-left-radius: 6px;
   height: 10rem;
-  width: 30ch;
 }
 .stats {
   border-top: none;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
   margin-bottom: 2px;
+  height: 2rem;
 }
 
 .flex-row {
@@ -41,6 +42,7 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  margin: 2px;
 }
 
 .overlay {
@@ -52,9 +54,6 @@ body {
   margin-right: 1px;
 }
 
-.m-2px {
-  margin: 2px;
-}
 .ml-4px {
   margin-left: 4px;
 }
@@ -64,9 +63,7 @@ h2 {
   margin-bottom: 8px;
   text-align: center;
 }
-textarea {
-  white-space: pre;
-}
+
 button:focus {
   box-shadow: 0 0 0 2px rgba(0,0,0,.5);
 }
@@ -124,13 +121,21 @@ button:focus {
     <p id="speciesError" style="display:none">ERROR: species name not recognized</p>
     <div id="choices"></div>
   </div>
-  <div class="ml-4px">
+  <div id="party" class="ml-4px">
     <h2>Party <button onclick="copyParty()" class="clipboard-button">📋</button></h2>
-    <textarea id="partyTextarea" rows="52"></textarea>
-  </div>
-  <div class="ml-4px">
-    <h2>Box</h2>
-    <textarea id="boxTextarea" rows="52"></textarea>
+    <div class="flex-row">
+      <div class="pokemon-div"></div>
+      <div class="pokemon-div">
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="pokemon-div"></div>
+      <div class="pokemon-div"></div>
+    </div>
+    <div class="flex-row">
+      <div class="pokemon-div"></div>
+      <div class="pokemon-div"></div>
+    </div>
   </div>
 </div>
 
@@ -184,6 +189,8 @@ loadMoves();
 let abilities;
 loadAbilities();
 
+fillPartyDivs();
+
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
@@ -215,6 +222,47 @@ function loadAbilities() {
   }
   xhttp.open("GET", "abilities.json");
   xhttp.send();
+}
+
+function fillPartyDivs() {
+  for (const pokemonDiv of document.getElementById('party').getElementsByClassName('pokemon-div')) {
+    fillPokemonDiv(pokemonDiv);
+    const pokemonEle = pokemonDiv.querySelector('.pokemon');
+    pokemonEle.setAttribute('contenteditable', true);
+  }
+}
+function fillPokemonDiv(div) {
+  const pokemonEle = document.createElement('p');
+  pokemonEle.classList.add('info-box', 'pokemon');
+  div.append(pokemonEle);
+
+  const typesEle = document.createElement('div');
+  typesEle.classList.add('overlay');
+  div.append(typesEle);
+
+  const statsEle = document.createElement('p');
+  statsEle.classList.add('info-box', 'stats');
+  div.append(statsEle);
+}
+function updatePokemonDiv(div) {
+  const pokemonEle = div.querySelector('.pokemon');
+  const pokemonStr = pokemonEle.textContent;
+  pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
+
+  const speciesName = getSpeciesNameOfPokemon(pokemonStr);
+  pokemonEle.style.backgroundImage = getImageURL(speciesName);
+
+  const typesEle = div.querySelector('.overlay');
+  while (typesEle.firstChild)
+    typesEle.removeChild(typesEle.firstChild);
+  for (const type of allSpecies[getSpeciesId(speciesName)].types) {
+    const typeImage = document.createElement('img');
+    typeImage.src = 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
+    typesEle.append(typeImage);
+  }
+
+  const statsEle = div.querySelector('.stats');
+  statsEle.innerHTML = statsInHTML(pokemonStr);
 }
 
 function getSpeciesId(speciesName) {
@@ -289,32 +337,19 @@ function addRandomPokemon(choicesDiv, speciesName) {
   const pokemonStr = randomOfSpecies(speciesName);
 
   const divEle = document.createElement('div');
-  divEle.classList.add('pokemon-div', 'm-2px');
+  divEle.classList.add('pokemon-div');
 
-  const pokemonEle = document.createElement('p');
-  pokemonEle.classList.add('info-box', 'pokemon');
-  pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
-  pokemonEle.style.backgroundImage = getImageURL(speciesName);
-  divEle.append(pokemonEle);
+  fillPokemonDiv(divEle);
 
-  const typesEle = document.createElement('div');
-  typesEle.classList.add('overlay');
-  for (const type of allSpecies[getSpeciesId(speciesName)].types) {
-    const typeImage = document.createElement('img');
-    typeImage.src = 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
-    typesEle.append(typeImage);
-  }
-  divEle.append(typesEle);
-
-  const statsEle = document.createElement('p');
-  statsEle.classList.add('info-box', 'stats');
-  statsEle.innerHTML = statsInHTML(pokemonStr);
-  divEle.append(statsEle);
+  const pokemonEle = divEle.querySelector('.pokemon');
+  pokemonEle.innerHTML = pokemonStr;
 
   const buttonEle = document.createElement('button');
   buttonEle.textContent = 'choose';
   buttonEle.onclick = function() {choosePokemon(buttonEle)};
   divEle.append(buttonEle);
+
+  updatePokemonDiv(divEle);
 
   choicesDiv.append(divEle);
 }
@@ -421,20 +456,23 @@ function randomOfSpecies(speciesName) {
   return pokemonStr;
 }
 
-function speciesIdOfPokemon(pokemonStr) {
+function getSpeciesNameOfPokemon(pokemonStr) {
   let firstLine = pokemonStr.split('\n')[0];
   if (firstLine.includes('@'))
     firstLine = firstLine.substring(0, firstLine.indexOf(' @'));
   if (firstLine.includes('('))
     firstLine = firstLine.substring(0, firstLine.indexOf(' ('));
-  return getSpeciesId(firstLine);
+  return firstLine;
+}
+function getSpeciesIdOfPokemon(pokemonStr) {
+  return getSpeciesId(getSpeciesNameOfPokemon(pokemonStr));
 }
 
 function pokemonInHTML(pokemonStr) {
   const strLines = pokemonStr.split('\n');
   out = '';
 
-  const speciesId = speciesIdOfPokemon(strLines[0]);
+  const speciesId = getSpeciesIdOfPokemon(pokemonStr);
   const species = allSpecies[speciesId];
 
   for (const strLine of strLines) {
@@ -491,7 +529,7 @@ function pokemonInHTML(pokemonStr) {
 }
 
 function statsInHTML(pokemonStr) {
-  const speciesId = speciesIdOfPokemon(pokemonStr);
+  const speciesId = getSpeciesIdOfPokemon(pokemonStr);
   const species = allSpecies[speciesId];
   const strLines = pokemonStr.split('\n');
 
@@ -549,17 +587,20 @@ function spanWithTitle(str, title) {
 function choosePokemon(buttonEle) {
   const divEle = buttonEle.parentElement;
   const pokemonEle = divEle.childNodes[0];
-  const pokemonStr = pokemonEle.textContent + '\n\n';
-  const partyTextarea = document.getElementById('partyTextarea');
-  if (partyTextarea.value.trim().split('\n\n').length < 6) 
-    partyTextarea.value = pokemonStr + partyTextarea.value.trimStart();
-  else {
-    const boxTextarea = document.getElementById('boxTextarea');
-    boxTextarea.value = pokemonStr + boxTextarea.value.trimStart();
+  const pokemonStr = pokemonEle.textContent;
+
+  const partyDiv = document.getElementById('party');
+  for (const partyPokeDiv of partyDiv.querySelectorAll('.pokemon-div')) {
+    const partyPokeEle = partyPokeDiv.querySelector('.pokemon');
+    if (partyPokeEle.textContent.trim() === '') {
+      partyPokeEle.textContent = pokemonStr;
+      updatePokemonDiv(partyPokeDiv);
+      break;
+    }
   }
 
   for (const divInRow of divEle.parentElement.childNodes) {
-    divInRow.removeChild(divInRow.lastChild);
+    divInRow.removeChild(divInRow.querySelector('button'));
   }
 }
 
