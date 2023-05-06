@@ -605,8 +605,14 @@ function choosePokemon(buttonEle) {
 }
 
 function copyParty() {
-  const partyTextarea = document.getElementById('partyTextarea');
-  navigator.clipboard.writeText(partyTextarea.value);
+  const partyDiv = document.getElementById('party');
+  let partyStr = '';
+  for (const pokemonEle of partyDiv.querySelectorAll('.pokemon')) {
+    const pokemonStr = pokemonEle.textContent.trim();
+    if (pokemonStr !== '')
+      partyStr += pokemonStr + '\n\n';
+  }
+  navigator.clipboard.writeText(partyStr);
 }
 
 function addHiddenPowerType(moveName) {
