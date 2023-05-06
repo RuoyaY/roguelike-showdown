@@ -4,22 +4,28 @@
 <head>
 <style>
 body {
-  background-color: darkslateblue;
+  background-color: black;
   color: white;
 }
 
+.info-box {
+  font-family: monospace;
+  border: 1px solid;
+  padding: 8px;
+  margin: 0px;
+  white-space: pre;
+}
 .pokemon {
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
+  border-top-left-radius: 6px;
 }
-.info-box {
-  font-family: monospace;
-  background-color: black;
-  padding: 2px;
-  margin: 0px;
-  border-radius: 4px;
-  white-space: pre;
+.stats {
+  border-top: none;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  margin-bottom: 2px;
 }
 
 .flex-row {
@@ -27,20 +33,26 @@ body {
   flex-direction: row;
   justify-content: left;
 }
-.flex-column {
+
+.pokemon-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
 }
+
+.editable {
+  min-height: 10rem;
+  min-width: 30ch;
+}
+
 .overlay {
   position: absolute;
   top: 0;
   right: 0;
 }
 .overlay > img {
-  margin-left: 1px;
-  margin-top: -1px;
+  margin-right: 1px;
 }
 
 .m-2px {
@@ -280,10 +292,10 @@ function addRandomPokemon(choicesDiv, speciesName) {
   const pokemonStr = randomOfSpecies(speciesName);
 
   const divEle = document.createElement('div');
-  divEle.classList.add('flex-column', 'm-2px');
+  divEle.classList.add('pokemon-div', 'm-2px');
 
   const pokemonEle = document.createElement('p');
-  pokemonEle.classList.add('pokemon', 'info-box');
+  pokemonEle.classList.add('info-box', 'pokemon');
   pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
   pokemonEle.style.backgroundImage = getImageURL(speciesName);
   divEle.append(pokemonEle);
@@ -298,7 +310,7 @@ function addRandomPokemon(choicesDiv, speciesName) {
   divEle.append(typesEle);
 
   const statsEle = document.createElement('p');
-  statsEle.classList.add('info-box');
+  statsEle.classList.add('info-box', 'stats');
   statsEle.innerHTML = statsInHTML(pokemonStr);
   divEle.append(statsEle);
 
