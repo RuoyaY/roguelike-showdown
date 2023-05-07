@@ -315,6 +315,8 @@ function getChoices() {
 }
 
 function addRandomPokemon(choicesDiv, speciesName) {  
+  let hasChooseButton = speciesName === undefined;
+
   if (!speciesName) {
     let speciesId = randomKey(allSpecies);
     let species = allSpecies[speciesId];
@@ -351,10 +353,12 @@ function addRandomPokemon(choicesDiv, speciesName) {
   const pokemonEle = divEle.querySelector('.pokemon');
   pokemonEle.innerHTML = pokemonStr;
 
-  const buttonEle = document.createElement('button');
-  buttonEle.textContent = 'choose';
-  buttonEle.onclick = function() {choosePokemon(buttonEle)};
-  divEle.append(buttonEle);
+  if (hasChooseButton) {
+    const buttonEle = document.createElement('button');
+    buttonEle.textContent = 'choose';
+    buttonEle.onclick = function() {choosePokemon(buttonEle)};
+    divEle.append(buttonEle);
+  }
 
   updatePokemonDiv(divEle);
 
