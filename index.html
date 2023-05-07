@@ -193,6 +193,8 @@ let moves;
 loadMoves();
 let abilities;
 loadAbilities();
+let heldItems;
+loadHeldItems();
 
 fillPartyDivs();
 
@@ -226,6 +228,14 @@ function loadAbilities() {
     abilities = JSON.parse(this.responseText);
   }
   xhttp.open("GET", "abilities.json");
+  xhttp.send();
+}
+function loadHeldItems() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    heldItems = JSON.parse(this.responseText);
+  }
+  xhttp.open("GET", "items.json");
   xhttp.send();
 }
 
@@ -281,6 +291,9 @@ function getMoveId(moveName) {
 }
 function getAbilityId(abilityName) {
   return Object.keys(abilities).find(abilityId => abilities[abilityId].name === abilityName);
+}
+function getHeldItemId(heldItemName) {
+  return Object.keys(heldItems).find(heldItemId => heldItems[heldItemId].name === heldItemName);
 }
 
 function getChoices() {
@@ -487,7 +500,11 @@ function pokemonInHTML(pokemonStr) {
   const species = allSpecies[speciesId];
 
   for (const strLine of strLines) {
-    if (strLine.startsWith('Ability: ')) {
+    if (strLine.includes(' @ ')) {
+      strLineSplit = strLine.split(' @ ');
+      const heldItem = heldItems[getHeldItemId(strLineSplit[1].trimEnd())];
+      out += strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
+    } else if (strLine.startsWith('Ability: ')) {
       const abilityName = strLine.substring('Ability: '.length);
       out += spanWithClass('Ability: ', 'attr');
       out += spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
