@@ -235,6 +235,7 @@ function fillPartyDivs() {
     const pokemonEle = pokemonDiv.querySelector('.pokemon');
     pokemonEle.setAttribute('contenteditable', true);
     pokemonEle.classList.add('editable');
+    pokemonEle.addEventListener('focusout', function() {updatePokemonDiv(pokemonDiv)}, false);
   }
 }
 function fillPokemonDiv(div) {
