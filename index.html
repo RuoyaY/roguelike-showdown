@@ -21,14 +21,18 @@ body {
   background-position-x: right;
   background-position-y: center;
   border-top-left-radius: 6px;
-  height: 10rem;
+  min-height: 10rem;
 }
 .stats {
   border-top: none;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
   margin-bottom: 2px;
-  height: 2rem;
+  min-height: 2rem;
+}
+
+.editable {
+  box-shadow: inset 0 0 10px white;
 }
 
 .flex-row {
@@ -229,6 +233,7 @@ function fillPartyDivs() {
     fillPokemonDiv(pokemonDiv);
     const pokemonEle = pokemonDiv.querySelector('.pokemon');
     pokemonEle.setAttribute('contenteditable', true);
+    pokemonEle.classList.add('editable');
   }
 }
 function fillPokemonDiv(div) {
