@@ -528,10 +528,12 @@ function pokemonInHTML(pokemonStr) {
 
   let heldItem;
 
-  for (const strLine of strLines) {
+  for (let strLine of strLines) {
+    strLine = strLine.trimEnd();
+
     if (strLine.includes(' @ ')) {
       strLineSplit = strLine.split(' @ ');
-      heldItem = heldItems[getHeldItemId(strLineSplit[1].trimEnd())];
+      heldItem = heldItems[getHeldItemId(strLineSplit[1])];
       out += strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
 
     } else if (strLine.startsWith('Ability: ')) {
