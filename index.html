@@ -273,7 +273,7 @@ function fillPokemonDiv(div) {
 }
 function updatePokemonDiv(div) {
   const pokemonEle = div.querySelector('.pokemon');
-  const pokemonStr = pokemonEle.textContent;
+  const pokemonStr = pokemonEle.innerText;
   pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
 
   const speciesName = getSpeciesNameOfPokemon(pokemonStr);
@@ -378,7 +378,7 @@ function addRandomPokemon(choicesDiv, speciesName) {
 
   if (hasChooseButton) {
     const buttonEle = document.createElement('button');
-    buttonEle.textContent = 'choose';
+    buttonEle.innerText = 'choose';
     buttonEle.onclick = function() {choosePokemon(buttonEle)};
     divEle.append(buttonEle);
   }
@@ -625,13 +625,13 @@ function spanWithTitle(str, title) {
 function choosePokemon(buttonEle) {
   const divEle = buttonEle.parentElement;
   const pokemonEle = divEle.childNodes[0];
-  const pokemonStr = pokemonEle.textContent;
+  const pokemonStr = pokemonEle.innerText;
 
   const partyDiv = document.getElementById('party');
   for (const partyPokeDiv of partyDiv.querySelectorAll('.pokemon-div')) {
     const partyPokeEle = partyPokeDiv.querySelector('.pokemon');
-    if (partyPokeEle.textContent.trim() === '') {
-      partyPokeEle.textContent = pokemonStr;
+    if (partyPokeEle.innerText.trim() === '') {
+      partyPokeEle.innerText = pokemonStr;
       updatePokemonDiv(partyPokeDiv);
       for (const divInRow of divEle.parentElement.childNodes) {
         divInRow.removeChild(divInRow.querySelector('button'));
@@ -647,7 +647,7 @@ function copyParty() {
   const partyDiv = document.getElementById('party');
   let partyStr = '';
   for (const pokemonEle of partyDiv.querySelectorAll('.pokemon')) {
-    const pokemonStr = pokemonEle.textContent.trim();
+    const pokemonStr = pokemonEle.innerText.trim();
     if (pokemonStr !== '')
       partyStr += pokemonStr + '\n\n';
   }
