@@ -569,7 +569,22 @@ function pokemonInHTML(pokemonStr) {
       }
 
     } else if (strLine.startsWith('EVs: ')) {
-      out += spanWithClass(strLine, 'gray');
+      if (strLine === 'EVs: 1 HP') {
+        out += spanWithClass(strLine, 'gray');
+      } else {
+        out += spanWithClass('EVs: ', 'attr');
+        const statStrs = strLine.substring('EVs: '.length).split('/');
+        for (const statStr of statStrs) {
+          const splitBySpace = statStr.trim().split(' ');
+          const statNum = parseInt(splitBySpace[0]);
+          const stat = splitBySpace[1];
+          if (statNum < 4)
+            out += spanWithClass(statStr, 'gray') + '/';
+          else
+            out += spanWithClass(statStr, 'stat-' + stat.toLowerCase()) + '/';
+        }
+        out = out.slice(0, -1);
+      }
 
     } else if (strLine.startsWith('- ')) {
       const moveName = strLine.substring('- '.length);
