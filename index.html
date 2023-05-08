@@ -516,10 +516,11 @@ function pokemonInHTML(pokemonStr) {
       heldItem = heldItems[getHeldItemId(strLineSplit[1].trimEnd())];
       out += strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
     } else if (strLine.startsWith('Ability: ')) {
-      const abilityName = strLine.substring('Ability: '.length);
       out += spanWithClass('Ability: ', 'attr');
-      out += spanWithTitle(abilityName, abilities[getAbilityId(abilityName)].shortDesc);
-
+      const abilityName = strLine.substring('Ability: '.length);
+      const ability = abilities[getAbilityId(abilityName)];
+      if (ability)
+        out += spanWithTitle(abilityName, ability.shortDesc);
     } else if (strLine.startsWith('Level: ')) {
       out += spanWithClass(strLine, 'gray');
       
