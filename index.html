@@ -15,6 +15,7 @@ body {
 .info-box {
   font-family: monospace;
   border: 1px solid;
+  border-color: inherit;
   padding: 6px;
   margin: 0px;
   white-space: pre;
@@ -52,6 +53,9 @@ body {
   justify-content: center;
   position: relative;
   margin: 2px;
+}
+.chosen {
+  border-color: lightgreen;
 }
 
 .overlay {
@@ -648,6 +652,8 @@ function choosePokemon(buttonEle) {
       for (const divInRow of divEle.parentElement.childNodes) {
         divInRow.removeChild(divInRow.querySelector('button'));
       }
+
+      divEle.classList.add('chosen');
       return;
     }
   }
