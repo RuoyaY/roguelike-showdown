@@ -629,9 +629,13 @@ function canTera(species, heldItem) {
   if (species.forme && 
     (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
     return false;
-  if (heldItem &&
-    (heldItem.name.endsWith(' Z') || heldItem.desc.includes('Mega Evolve') || heldItem.desc.includes('Primal Reversion')))
-    return false;
+  if (heldItem) {
+    if (heldItem.name.endsWith(' Z'))
+      return false;
+    if ((heldItem.desc.includes('Mega Evolve') || heldItem.desc.includes('Primal Reversion'))
+          && heldItem.desc.includes(species.name))
+      return false;
+  }
   return true;
 }
 
