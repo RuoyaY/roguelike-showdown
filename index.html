@@ -586,6 +586,13 @@ function pokemonInHTML(pokemonStr) {
         out = out.slice(0, -1);
       }
 
+    } else if (strLine.endsWith(' Nature')) {
+      const nature = strLine.slice(0, -1 * ' Nature'.length);
+      const raisedStat = STATS[NATURES[nature][0]];
+      const loweredStat = STATS[NATURES[nature][1]];
+      const titleText = '+' + raisedStat + ', -' + loweredStat;
+      out += spanWithTitle(nature, titleText) + ' Nature';
+
     } else if (strLine.startsWith('- ')) {
       const moveName = strLine.substring('- '.length);
 
