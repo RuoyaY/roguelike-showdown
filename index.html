@@ -611,7 +611,7 @@ function statsInHTML(pokemonStr) {
   const strLines = pokemonStr.split('\n');
 
   const levelStr = strLines.find(line => line.startsWith('Level: '));
-  const level = parseInt(levelStr.substring('Level: '.length));
+  const level = levelStr ? parseInt(levelStr.substring('Level: '.length)) : 100;
 
   const evsStr = strLines.find(line => line.startsWith('EVs: '));
 
