@@ -278,6 +278,14 @@ function fillPokemonDiv(div) {
 function updatePokemonDiv(div) {
   const pokemonEle = div.querySelector('.pokemon');
   const pokemonStr = pokemonEle.innerText;
+
+  if (pokemonStr.trim() === '') {
+    pokemonEle.style.backgroundImage = '';
+    killAllChildren(div.querySelector('.overlay'));
+    div.querySelector('.stats').innerHTML = '';
+    return;
+  }
+
   pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
 
   const speciesName = getSpeciesNameOfPokemon(pokemonStr);
