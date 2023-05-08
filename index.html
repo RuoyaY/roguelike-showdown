@@ -248,7 +248,7 @@ function loadHeldItems() {
   xhttp.onload = function() {
     heldItems = JSON.parse(this.responseText);
   }
-  xhttp.open("GET", "items.json");
+  xhttp.open("GET", "heldItems.json");
   xhttp.send();
 }
 
