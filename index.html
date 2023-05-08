@@ -34,7 +34,7 @@ body {
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
   margin-bottom: 2px;
-  height: 2rem;
+  height: 3rem;
 }
 
 .editable {
@@ -624,11 +624,12 @@ function statsInHTML(pokemonStr) {
       statNum = Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
     }
     statTotal += statNum;
-    out += spanWithClass((statNum + ' ').padStart(4) + stat, 'stat-' + stat.toLowerCase()) + ' ';
+    out += spanWithClass((statNum+'').padStart(3) + ' ' + stat, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
     out += '\n' + ' '.repeat('... HP '.length);
   }
   out = out.slice(0, -1);
+  out = spanWithClass(' '.repeat(10) + 'TOTAL: ' + statTotal, 'gray') + '\n' + out;
 
   return out;
 }
