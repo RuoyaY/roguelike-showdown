@@ -439,10 +439,7 @@ function randomOfSpecies(speciesName) {
   if (abilityName)
    pokemonStr += abilityName;
 
-  let bst = 0;
-  for (const stat of STATS)
-    bst += species.baseStats[stat.toLowerCase()];
-  let level = Math.round(100 * (STAT_TOTAL_GOAL - 10 - 5*5) / (2 * bst + 100 + 31*6));
+  let level = getLevel(species, STAT_TOTAL_GOAL);
   if (speciesId === 'pokestarspirit')
     level = 1;
   pokemonStr += '\nLevel: ' + level;
@@ -493,6 +490,21 @@ function randomOfSpecies(speciesName) {
   }
 
   return pokemonStr;
+}
+
+function getLevel(species, statTotalGoal) {
+  let prevStatTotal = 0;
+  for (let level = 1; level <= 100; level++) {
+    const statTotal = getStatTotal(species, level, 'EVs: 1 HP', null);
+    if (statTotal > statTotalGoal) {
+      if (statTotalGoal - prevStatTotal < statTotal - statTotalGoal)
+        return level-1;
+      else
+        return level;
+    }
+    prevStatTotal = statTotal;
+  }
+  return 100;
 }
 
 function getSpeciesNameOfPokemon(pokemonStr) {
@@ -595,43 +607,52 @@ function statsInHTML(pokemonStr) {
   const evsStr = strLines.find(line => line.startsWith('EVs: '));
 
   const nature = strLines.find(line => line.trim().endsWith(' Nature'))?.slice(0, -1 * ' Nature'.length);
-  const raisedStat = nature ? STATS[NATURES[nature][0]] : '';
-  const loweredStat = nature ? STATS[NATURES[nature][1]] : '';
 
   let out = '';
-  let statTotal = 0;
   for (const stat of STATS) {
-    const baseStat = species.baseStats[stat.toLowerCase()];
-
-    let ev = 0;
-    if (evsStr.includes(stat)) {
-      const evsStrUpToEv = evsStr.substring(0, evsStr.indexOf(stat) - 1);
-      ev = parseInt(evsStrUpToEv.substring(evsStrUpToEv.lastIndexOf(' ') + 1));
-    }
-
-    let statNum;
-    if (stat === 'HP') {
-      if (speciesId === 'shedinja')
-        statNum = 1;
-      else
-        statNum = Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + level + 10;
-    } else {
-      let multiplier = 1;
-      if (stat === raisedStat)
-        multiplier += .1;
-      if (stat === loweredStat)
-        multiplier -= .1;
-      statNum = Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
-    }
-    statTotal += statNum;
+    const statNum = getStat(species, level, evsStr, nature, stat);
     out += spanWithClass((statNum+'').padStart(3) + ' ' + stat, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
-    out += '\n' + ' '.repeat('... HP '.length);
+      out += '\n' + ' '.repeat('... HP '.length);
   }
   out = out.slice(0, -1);
+
+  const statTotal = getStatTotal(species, level, evsStr, nature);
   out = spanWithClass(' '.repeat(10) + 'TOTAL: ' + statTotal, 'gray') + '\n' + out;
 
   return out;
+}
+
+function getStatTotal(species, level, evsStr, nature) {
+  let statTotal = 0;
+  for (const stat of STATS)
+    statTotal += getStat(species, level, evsStr, nature, stat);
+  return statTotal;
+}
+function getStat(species, level, evsStr, nature, stat) {
+  const baseStat = species.baseStats[stat.toLowerCase()];
+
+  let ev = 0;
+  if (evsStr.includes(stat)) {
+    const evsStrUpToEv = evsStr.substring(0, evsStr.indexOf(stat) - 1);
+    ev = parseInt(evsStrUpToEv.substring(evsStrUpToEv.lastIndexOf(' ') + 1));
+  }
+
+  if (stat === 'HP') {
+    if (species.name === 'Shedinja')
+    return 1;
+    else
+    return Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + level + 10;
+  } else {
+    const raisedStat = nature ? STATS[NATURES[nature][0]] : '';
+    const loweredStat = nature ? STATS[NATURES[nature][1]] : '';
+    let multiplier = 1;
+    if (stat === raisedStat)
+      multiplier += .1;
+    if (stat === loweredStat)
+      multiplier -= .1;
+    return Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
+  }
 }
 
 function spanWithClass(str, class_) {
