@@ -132,14 +132,13 @@ button:focus {
     </div>
     <br>
     <p id="speciesError" style="display:none">ERROR: species name not recognized</p>
-    <div id="choices"></div>
+    <div id="choices" class="flex-row"></div>
   </div>
   <div id="party" class="ml-4px">
     <h2>Party <button onclick="copyParty()" class="clipboard-button">📋</button></h2>
     <div class="flex-row">
       <div class="pokemon-div"></div>
-      <div class="pokemon-div">
-      </div>
+      <div class="pokemon-div"></div>
     </div>
     <div class="flex-row">
       <div class="pokemon-div"></div>
@@ -284,8 +283,7 @@ function updatePokemonDiv(div) {
   pokemonEle.style.backgroundImage = getImageURL(speciesName);
 
   const typesEle = div.querySelector('.overlay');
-  while (typesEle.firstChild)
-    typesEle.removeChild(typesEle.firstChild);
+  killAllChildren(typesEle);
   for (const type of allSpecies[getSpeciesId(speciesName)].types) {
     const typeImage = document.createElement('img');
     typeImage.src = 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
@@ -310,10 +308,14 @@ function getHeldItemId(heldItemName) {
   return Object.keys(heldItems).find(heldItemId => heldItems[heldItemId].name === heldItemName);
 }
 
+function killAllChildren(div) {
+  while (div.firstChild)
+    div.removeChild(div.firstChild);
+}
+
 function getChoices() {
-  const choicesDiv = document.createElement('div');
-  choicesDiv.classList.add('flex-row');
-  document.getElementById('choices').prepend(choicesDiv);
+  const choicesDiv = document.getElementById('choices');
+  killAllChildren(choicesDiv);
   
   const speciesName = document.getElementById('species').value.trim();
   if (speciesName === '') {
