@@ -533,14 +533,20 @@ function pokemonInHTML(pokemonStr) {
       strLineSplit = strLine.split(' @ ');
       heldItem = heldItems[getHeldItemId(strLineSplit[1].trimEnd())];
       out += strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
+
     } else if (strLine.startsWith('Ability: ')) {
       out += spanWithClass('Ability: ', 'attr');
       const abilityName = strLine.substring('Ability: '.length);
       const ability = abilities[getAbilityId(abilityName)];
       if (ability)
         out += spanWithTitle(abilityName, ability.shortDesc);
+      
     } else if (strLine.startsWith('Level: ')) {
-      out += spanWithClass(strLine, 'gray');
+      const level = parseInt(strLine.substring('Level: '.length));
+      if (level === getLevel(species, STAT_TOTAL_GOAL))
+        out += spanWithClass(strLine, 'gray');
+      else
+        out += spanWithClass('Level: ', 'attr') + level;
       
     } else if (strLine.startsWith('Tera Type: ')) {
       const teraType = strLine.substring('Tera Type: '.length);
@@ -618,7 +624,12 @@ function statsInHTML(pokemonStr) {
   out = out.slice(0, -1);
 
   const statTotal = getStatTotal(species, level, evsStr, nature);
-  out = spanWithClass(' '.repeat(10) + 'TOTAL: ' + statTotal, 'gray') + '\n' + out;
+  let statTotalStr = '';
+  if (statTotal === getStatTotal(species, getLevel(species, STAT_TOTAL_GOAL), 'EVs: 1 HP', null))
+    statTotalStr += spanWithClass('TOTAL: ' + statTotal, 'gray');
+  else
+    statTotalStr += spanWithClass('TOTAL: ', 'attr') + statTotal;
+  out = statTotalStr + '\n' + out;
 
   return out;
 }
