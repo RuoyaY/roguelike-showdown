@@ -442,7 +442,10 @@ function randomOfSpecies(speciesName) {
   pokemonStr += '\nLevel: ' + level;
   levelStats += level + ', ';
 
-  pokemonStr += '\nTera Type: ' + randomElement(TYPES);
+  let teraType = randomElement(species.types);
+  if (!TYPES.includes(teraType))
+    teraType = 'Normal';
+  pokemonStr += '\nTera Type: ' + teraType;
     
   pokemonStr += '\nEVs: 1 HP';
 
