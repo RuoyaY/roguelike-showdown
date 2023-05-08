@@ -442,11 +442,7 @@ function randomOfSpecies(speciesName) {
   pokemonStr += '\nLevel: ' + level;
   levelStats += level + ', ';
 
-  if (species.forme && (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
-    pokemonStr += '\nTera Type: ';
-  else {
-    pokemonStr += '\nTera Type: ' + randomElement(TYPES);
-  }
+  pokemonStr += '\nTera Type: ' + randomElement(TYPES);
     
   pokemonStr += '\nEVs: 1 HP';
 
@@ -509,10 +505,12 @@ function pokemonInHTML(pokemonStr) {
   const speciesId = getSpeciesIdOfPokemon(pokemonStr);
   const species = allSpecies[speciesId];
 
+  let heldItem;
+
   for (const strLine of strLines) {
     if (strLine.includes(' @ ')) {
       strLineSplit = strLine.split(' @ ');
-      const heldItem = heldItems[getHeldItemId(strLineSplit[1].trimEnd())];
+      heldItem = heldItems[getHeldItemId(strLineSplit[1].trimEnd())];
       out += strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
     } else if (strLine.startsWith('Ability: ')) {
       const abilityName = strLine.substring('Ability: '.length);
@@ -524,11 +522,11 @@ function pokemonInHTML(pokemonStr) {
       
     } else if (strLine.startsWith('Tera Type: ')) {
       const teraType = strLine.substring('Tera Type: '.length);
-      if (teraType !== '') {
+      if (canTera(species, heldItem)) {
         out += spanWithClass('Tera Type: ', 'attr');
         out += spanWithClass(teraType, 'type-' + teraType.toLowerCase());
       } else {
-        out += spanWithClass('Tera Type: ', 'gray');
+        out += spanWithClass(strLine, 'gray');
       }
 
     } else if (strLine.startsWith('EVs: ')) {
@@ -564,6 +562,16 @@ function pokemonInHTML(pokemonStr) {
   }
 
   return out.slice(0, -1);
+}
+
+function canTera(species, heldItem) {
+  if (species.forme && 
+    (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
+    return false;
+  if (heldItem &&
+    (heldItem.name.endsWith(' Z') || heldItem.desc.includes('Mega Evolve') || heldItem.desc.includes('Primal Reversion')))
+    return false;
+  return true;
 }
 
 function statsInHTML(pokemonStr) {
