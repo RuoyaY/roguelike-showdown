@@ -18,8 +18,7 @@ body {
   border-color: inherit;
   padding: 6px;
   margin: 0px;
-  white-space: pre;
-  overflow: scroll;
+  white-space: pre-wrap;
 }
 .pokemon {
   background-repeat: no-repeat;
@@ -28,6 +27,8 @@ body {
   border-top-left-radius: 6px;
   width: 30ch;
   height: 10rem;
+  white-space: pre;
+  overflow: scroll;
 }
 .stats {
   border-top: none;
@@ -37,21 +38,20 @@ body {
   width: 30ch;
   height: 3rem;
 }
-.item {
+.item-type {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  width: 45ch;
-  white-space: pre-wrap;
+  width: 6ch;
+}
+.item {
+  border-left: none;
+  width: 40ch;
 }
 .item-price {
   border-left: none;
   /* border-top-right-radius: 6px; */
   border-bottom-right-radius: 6px;
-  width: 8ch;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 6ch;
 }
 
 .editable {
@@ -62,6 +62,12 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: left;
+}
+.flex-col-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .pokemon-div {
@@ -94,6 +100,9 @@ body {
 .mb-4px {
   margin-top: 0px;
   margin-bottom: 4px;
+}
+.m-0 {
+  margin: 0;
 }
 
 .checkbox {
@@ -155,10 +164,12 @@ button:focus {
     <button>next round</button>
     <div class="flex-row mb-4px">
       <input id="freeze" type="checkbox" class="checkbox">
+      <div class="info-box item-type flex-col-centered">
+        <h2 class="attr m-0">Poké Ball</h2>
+      </div>
 <div class="info-box item"><b>Poké Ball</b>
-<span class="attr hasHoverText" title="hasHoverText">Poké Ball</span>
 You may add one of two random Pokemon to your party.</div>
-      <div class="info-box item-price">
+      <div class="info-box item-price flex-col-centered">
         <h2 class="mb-4px">$10</h2>
         <button class="mb-4px" onclick="setChoicesDiv()">buy</button>
       </div>
