@@ -162,6 +162,7 @@ button:focus {
     <h1>Roguelike Showdown</h1>
     <label for="money">$</label> <input id="money" type="number" class="mb-1" value="0">
     <button>next round</button> <button>$1 - refresh</button>
+    <div id="shop"></div>
     <div class="flex-row mb-4px">
       <input id="freeze" type="checkbox" class="checkbox">
       <div class="info-box item-type flex-col-centered">
@@ -253,6 +254,8 @@ let heldItems;
 loadHeldItems();
 
 fillPartyDivs();
+fillShopDiv();
+
 document.getElementById('speciesInput').addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -299,6 +302,11 @@ function loadHeldItems() {
   }
   xhttp.open("GET", "heldItems.json");
   xhttp.send();
+}
+
+function fillShopDiv() {
+  const shopDiv = document.getElementById('shop');
+  // TODO: fill it
 }
 
 function fillPartyDivs() {
