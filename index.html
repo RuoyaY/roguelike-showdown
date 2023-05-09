@@ -70,6 +70,7 @@ body {
   justify-content: center;
   position: relative;
   margin: 2px;
+  width: min-content;
 }
 .chosen {
   border-color: lightgreen;
@@ -159,16 +160,17 @@ button:focus {
 You may add one of two random Pokemon to your party.</div>
       <div class="info-box item-price">
         <h2 class="mb-4px">$10</h2>
-        <button class="mb-4px">buy</button>
+        <button class="mb-4px" onclick="setChoicesDiv()">buy</button>
       </div>
     </div>
+    <div id="choices" class="flex-row"></div>
     <hr>
     <div class="mb-1">
-      <input id="species" placeholder="get a specific species">
-      <button onclick="getChoices()">get choices</button>
+      <label for="speciesInput">Get a specific species: </label><input id="speciesInput">
+      <button onclick="setSpeciesDiv()">generate</button>
     </div>
     <p id="speciesError" style="display:none">ERROR: species name not recognized</p>
-    <div id="choices" class="flex-row"></div>
+    <div id="species" class=""></div>
   </div>
   <div id="party" class="ml-1">
     <h2 class="text-center">Party <button onclick="copyParty()" class="clipboard-button">📋</button></h2>
@@ -240,10 +242,10 @@ let heldItems;
 loadHeldItems();
 
 fillPartyDivs();
-document.getElementById('species').addEventListener('keyup', function(event) {
+document.getElementById('speciesInput').addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
-    getChoices();
+    setSpeciesDiv();
   }
 })
 
@@ -358,17 +360,17 @@ function killAllChildren(div) {
     div.removeChild(div.firstChild);
 }
 
-function getChoices() {
+function setChoicesDiv() {
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
-  
-  const speciesName = document.getElementById('species').value.trim();
-  if (speciesName === '') {
-    addRandomPokemon(choicesDiv);
-    addRandomPokemon(choicesDiv);
-  } else {
-    addRandomPokemon(choicesDiv, speciesName);
-  }
+
+  addRandomPokemon(choicesDiv);
+  addRandomPokemon(choicesDiv);
+}
+function setSpeciesDiv() {
+  const speciesDiv = document.getElementById('species');
+  const speciesName = document.getElementById('speciesInput').value.trim();
+  addRandomPokemon(speciesDiv, speciesName);
   
   // // get level distribution
   // for (const species of Object.values(allSpecies)) {
@@ -388,10 +390,10 @@ function getChoices() {
   // console.log(formes);
 }
 
-function addRandomPokemon(choicesDiv, speciesName) {  
+function addRandomPokemon(div, speciesName) {  
   let hasChooseButton = speciesName === undefined;
 
-  if (!speciesName) {
+  if (hasChooseButton) {
     let speciesId = randomKey(allSpecies);
     let species = allSpecies[speciesId];
     while ((species.forme && ILLEGAL_FORMES.includes(species.forme)) 
@@ -436,7 +438,7 @@ function addRandomPokemon(choicesDiv, speciesName) {
 
   updatePokemonDiv(divEle);
 
-  choicesDiv.append(divEle);
+  div.prepend(divEle);
 }
 
 function isPokestar(speciesId) {
