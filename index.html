@@ -586,14 +586,17 @@ function pokemonInHTML(pokemonStr) {
 
   let heldItem;
 
-  for (let strLine of strLines) {
-    strLine = strLine.trimEnd();
+  for (let i = 0; i < strLines.length; i++) {
+    let strLine = strLines[i].trimEnd();
 
-    if (strLine.includes(' @ ')) {
-      strLineSplit = strLine.split(' @ ');
-      heldItem = heldItems[getHeldItemId(strLineSplit[1])];
-      out += strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
-
+    if (i === 0) {
+      let beforeBold = strLine;
+      if (strLine.includes(' @ ')) {
+        strLineSplit = strLine.split(' @ ');
+        heldItem = heldItems[getHeldItemId(strLineSplit[1])];
+        beforeBold = strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
+      }
+      out += '<b>' + beforeBold + '</b>';
     } else if (strLine.startsWith('Ability: ')) {
       out += spanWithClass('Ability: ', 'attr');
       const abilityName = strLine.substring('Ability: '.length);
