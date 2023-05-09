@@ -68,6 +68,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .pokemon-div {
@@ -252,6 +253,12 @@ let abilities;
 loadAbilities();
 let heldItems;
 loadHeldItems();
+let items = {
+  'Misc': [],
+  'Held Item': [],
+  'Poke Ball': [],
+};
+loadItems();
 
 fillPartyDivs();
 fillShopDiv();
@@ -301,6 +308,23 @@ function loadHeldItems() {
     heldItems = JSON.parse(this.responseText);
   }
   xhttp.open("GET", "heldItems.json");
+  xhttp.send();
+}
+function loadItems() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const responseLines = this.response.split('\n');
+    for (let i = 1; i < responseLines.length; i++) {
+      const splitByTab = responseLines[i].split('\t');
+      items[splitByTab[1]].push({
+        name: splitByTab[0],
+        price: splitByTab[2],
+        desc: splitByTab[3],
+      });
+    }
+    console.log(items)
+  }
+  xhttp.open("GET", "items.tsv");
   xhttp.send();
 }
 

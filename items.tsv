@@ -1,0 +1,10 @@
+Name	Type	Price	Description
+Poké Ball	Poke Ball	10	You may obtain (at most) one of two random pokemon.
+Great Ball	Poke Ball	15	You may obtain (at most) one of <b>three</b> random pokemon.
+Ultra Ball	Poke Ball	18	You may obtain (at most) one of <b>four</b> random pokemon.
+Rare Candy	Misc	12	Increase a Pokemon's level by one.
+Rare Penta-Candy	Misc	60	Increase a Pokemon's level by 5.
+HP Max	Misc	32	Set a Pokemon's HP EV to 252. (Can't go above 508 total EVs.)
+Max Protein	Misc	32	Set a Pokemon's Atk EV to 252. (Can't go above 508 total EVs.)
+Leftovers	Held Item	200	
+Normal Gem	Held Item	100	
