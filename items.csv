@@ -1,0 +1,8 @@
+Name,Type,Price,Description
+Poké Ball,Poké Ball,10,You may add one of two random Pokemon to your party.
+Great Ball,Poké Ball,15,You may add one of <i>three</i> random Pokemon to your party.
+Ultra Ball,Poké Ball,18,You may add one of <i>four</i> random Pokemon to your party.
+Rare Candy,Misc,12,Increase a Pokemon's level by one.
+Penta-Rare Candy,Misc,60,Increase a Pokemon's level by 5.
+Leftovers,Held Item,200,
+Normal Gem,Held Item,,
