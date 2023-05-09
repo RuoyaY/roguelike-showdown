@@ -38,14 +38,10 @@ body {
   width: 30ch;
   height: 3rem;
 }
-.item-type {
+.item {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  width: 6ch;
-}
-.item {
-  border-left: none;
-  width: 40ch;
+  width: 50ch;
 }
 .item-price {
   border-left: none;
@@ -162,15 +158,13 @@ button:focus {
   <div>
     <h1>Roguelike Showdown</h1>
     <label for="money">$</label> <input id="money" type="number" class="mb-1" value="0">
-    <button>next round</button> <button>$1 - refresh</button>
+    <button>next round</button> <button>$5 - refresh</button>
     <div id="shop"></div>
     <div class="flex-row mb-4px">
       <input id="freeze" type="checkbox" class="checkbox">
-      <div class="info-box item-type flex-col-centered">
-        <h3 class="attr m-0 hasHoverText">Poké<br>Ball</h3>
-      </div>
 <div class="info-box item"><b>Poké Ball</b>
-You may obtain (at most) one of two random pokemon.</div>
+<span class="attr">Poké Ball</span>
+You may obtain (at most) 1 of 2 random pokemon.</div>
       <div class="info-box item-price flex-col-centered">
         <h2 class="mb-4px">$5</h2>
         <button class="mb-4px" onclick="setChoicesDiv()">buy</button>
@@ -239,6 +233,10 @@ const ILLEGAL_MONS = [
   'maushold',
   'dudunsparcethreesegment',
 ];
+const ITEM_TYPES = {
+  misc: 'Misc',
+  heldItem: ''
+}
 
 // for testing/studying purposes
 let levelStats = '';
@@ -253,15 +251,10 @@ let abilities;
 loadAbilities();
 let heldItems;
 loadHeldItems();
-let items = {
-  'Misc': [],
-  'Held Item': [],
-  'Poke Ball': [],
-};
+let items = [];
 loadItems();
 
 fillPartyDivs();
-fillShopDiv();
 
 document.getElementById('speciesInput').addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {
@@ -316,21 +309,16 @@ function loadItems() {
     const responseLines = this.response.split('\n');
     for (let i = 1; i < responseLines.length; i++) {
       const splitByTab = responseLines[i].split('\t');
-      items[splitByTab[1]].push({
+      items.push({
         name: splitByTab[0],
+        type: splitByTab[1],
         price: splitByTab[2],
         desc: splitByTab[3],
       });
     }
-    console.log(items)
   }
   xhttp.open("GET", "items.tsv");
   xhttp.send();
-}
-
-function fillShopDiv() {
-  const shopDiv = document.getElementById('shop');
-  // TODO: fill it
 }
 
 function fillPartyDivs() {
