@@ -389,13 +389,18 @@ function killAllChildren(div) {
     div.removeChild(div.firstChild);
 }
 
-function throwPokeball(itemDiv) {
+function throwPokeball(itemDiv, pokeballName) {
   const choicesRow = document.createElement('div');
   choicesRow.classList.add('flex-row');
   itemDiv.insertAdjacentElement('afterend', choicesRow);
 
-  addRandomPokemon(choicesRow);
-  addRandomPokemon(choicesRow);
+  let numPokemon = 2;
+  if (pokeballName === 'Great Ball')
+    numPokemon = 3;
+  else if (pokeballName === 'Ultra Ball')
+    numPokemon = 4;
+  for (let i = 0; i < numPokemon; i++)
+    addRandomPokemon(choicesRow);
 }
 function generateOneOfSpecies() {
   const speciesDiv = document.getElementById('species');
@@ -926,7 +931,7 @@ function buyItem(itemDiv, item) {
   itemDiv.classList.add('chosen');
 
   if (item.type === 'Poké Ball')
-    throwPokeball(itemDiv);
+    throwPokeball(itemDiv, item.name);
 }
 
 function pay(price) {
