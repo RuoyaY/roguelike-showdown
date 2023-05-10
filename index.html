@@ -161,7 +161,7 @@ button:focus {
   <div>
     <h1>Roguelike Showdown</h1>
     <label for="money">$</label> <input id="money" type="number" class="mb-1" value="0">
-    <button>next round</button> <button onclick="refreshShop()">$5 - refresh</button>
+    <button>next round</button> <button onclick="refreshShop(true)" id="refresh">$1 - refresh</button>
     <div id="shop"></div>
     <div id="choices" class="flex-row"></div>
     <hr>
@@ -816,9 +816,7 @@ function addHiddenPowerType(moveName) {
   return moveName;
 }
 
-function refreshShop() {
-  pay(5);
-
+function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   const frozenItems = [];
   let numItemsToAdd = NUM_SHOP_OPTIONS;
@@ -829,9 +827,16 @@ function refreshShop() {
       numItemsToAdd--;
     }
   }
-  if (numItemsToAdd <= 0) {
-    alert('But nothing would happen!');
-    return;
+
+  if (isViaMoney) {
+    if (numItemsToAdd <= 0) {
+      alert('But nothing would happen!');
+      return;
+    }
+    const refreshButton = document.getElementById('refresh');
+    const price = parseInt(refreshButton.textContent.substring(1, refreshButton.textContent.indexOf(' ')));
+    pay(price);
+    refreshButton.textContent = '$' + (price+1) + ' - refresh';
   }
 
   killAllChildren(shopDiv);
