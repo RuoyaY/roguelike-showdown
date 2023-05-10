@@ -161,7 +161,7 @@ button:focus {
   <div>
     <h1>Roguelike Showdown</h1>
     <label for="money">$</label> <input id="money" type="number" class="mb-1" value="0">
-    <button>next round</button> <button onclick="refreshShop(true)" id="refresh">$1 - refresh</button>
+    <button onclick="nextRound()">next round</button> <button onclick="refreshShop(true)" id="refresh">$1 - refresh</button>
     <div id="shop"></div>
     <div id="choices" class="flex-row"></div>
     <hr>
@@ -206,6 +206,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
 
 const STAT_TOTAL_GOAL = 600;
 const NUM_SHOP_OPTIONS = 3;
+const INCOME = 50;
 const ILLEGAL_FORMES = ['Antique', 'Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // cap Pikachus are functionally identical. if you unban these, make sure they always get Thunder, too
@@ -816,6 +817,21 @@ function addHiddenPowerType(moveName) {
   return moveName;
 }
 
+function nextRound() {
+  const moneyEle = document.getElementById('money');
+  let money = parseInt(moneyEle.value);
+  if (isNaN(money)) {
+    alert('Invalid money value!');
+    return;
+  }
+  moneyEle.value = money + INCOME;
+
+  refreshShop(false);
+
+  const refreshButton = document.getElementById('refresh');
+  refreshButton.textContent = '$1 - refresh';
+}
+
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   const frozenItems = [];
@@ -887,12 +903,15 @@ function itemInHTML(item) {
 function pay(price) {
   const moneyEle = document.getElementById('money');
   let money = parseInt(moneyEle.value);
-  if (money >= price) {
-    money -= price;
-    moneyEle.value = money;
-  } else {
+  if (isNaN(money)) {
+    alert('Invalid money value!');
+    throw new Error('invalid money value');
+  } if (money < price) {
     alert('Not enough money!');
     throw new Error('not enough money');
+  } else {
+    money -= price;
+    moneyEle.value = money;
   }
 }
 
