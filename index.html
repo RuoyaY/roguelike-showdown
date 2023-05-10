@@ -158,18 +158,8 @@ button:focus {
   <div>
     <h1>Roguelike Showdown</h1>
     <label for="money">$</label> <input id="money" type="number" class="mb-1" value="0">
-    <button>next round</button> <button>$5 - refresh</button>
+    <button>next round</button> <button onclick="refreshShop()">$5 - refresh</button>
     <div id="shop"></div>
-    <div class="flex-row mb-4px">
-      <input id="freeze" type="checkbox" class="checkbox">
-<div class="info-box item"><b>Poké Ball</b>
-<span class="attr">Poké Ball</span>
-You may obtain (at most) 1 of 2 random pokemon.</div>
-      <div class="info-box item-price flex-col-centered">
-        <h2 class="mb-4px">$5</h2>
-        <button class="mb-4px" onclick="setChoicesDiv()">buy</button>
-      </div>
-    </div>
     <div id="choices" class="flex-row"></div>
     <hr>
     <div class="mb-1">
@@ -212,6 +202,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Dragon', 'Steel', 'Fairy'];
 
 const STAT_TOTAL_GOAL = 600;
+const NUM_SHOP_OPTIONS = 3;
 const ILLEGAL_FORMES = ['Antique', 'Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // cap Pikachus are functionally identical. if you unban these, make sure they always get Thunder, too
@@ -233,10 +224,6 @@ const ILLEGAL_MONS = [
   'maushold',
   'dudunsparcethreesegment',
 ];
-const ITEM_TYPES = {
-  misc: 'Misc',
-  heldItem: ''
-}
 
 // for testing/studying purposes
 let levelStats = '';
@@ -824,6 +811,67 @@ function addHiddenPowerType(moveName) {
     moveName += ' [' + type + ']';
   }
   return moveName;
+}
+
+function refreshShop() {
+  const shopDiv = document.getElementById('shop');
+  const frozenItems = [];
+  let numItemsToAdd = NUM_SHOP_OPTIONS;
+  for (let i = 0; i < shopDiv.childNodes.length; i++) {
+    const itemDiv = shopDiv.childNodes[i];
+    if (itemDiv.querySelector('input').checked) {
+      frozenItems[i] = itemDiv;
+      numItemsToAdd--;
+    }
+  }
+  if (numItemsToAdd <= 0) {
+    alert('But nothing would happen!');
+    return;
+  }
+
+  killAllChildren(shopDiv);
+
+  for (let i = 0; i < numItemsToAdd; i++) {
+    while (frozenItems[shopDiv.childNodes.length])
+      shop.append(frozenItems[shopDiv.childNodes.length]);
+
+    const item = randomElement(items);
+
+    const itemDiv = document.createElement('div');
+    itemDiv.classList.add('flex-row', 'mb-4px');
+
+    const freezeInput = document.createElement('input');
+    freezeInput.type = 'checkbox';
+    freezeInput.classList.add('checkbox');
+
+    const itemEle = document.createElement('div');
+    itemEle.classList.add('info-box', 'item');
+    itemEle.innerHTML = itemInHTML(item);
+
+    const itemPriceEle = document.createElement('div');
+    itemPriceEle.classList.add('info-box', 'item-price', 'flex-col-centered');
+    const priceEle = document.createElement('h2');
+    priceEle.classList.add('mb-4px');
+    priceEle.innerText = '$' + item.price;
+    const buyButton = document.createElement('button');
+    buyButton.classList.add('mb-4px');
+    buyButton.onclick = setChoicesDiv;
+    buyButton.innerText = 'buy';
+    itemPriceEle.append(priceEle, buyButton);
+
+    itemDiv.append(freezeInput, itemEle, itemPriceEle);
+    shopDiv.append(itemDiv);
+  }
+  for (let i = shopDiv.childNodes.length; i < frozenItems.length; i++) {
+    if (frozenItems[i])
+      shopDiv.append(frozenItems[i]);
+  }
+}
+function itemInHTML(item) {
+  let out = '<b>' + item.name + '</b>';
+  out += '\n' + spanWithClass(item.type, 'attr');
+  out += '\n' + item.desc;
+  return out;
 }
 
 function randomProperty(obj) {
