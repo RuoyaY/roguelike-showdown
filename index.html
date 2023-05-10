@@ -892,6 +892,8 @@ function refreshShop(isViaMoney) {
     if (frozenItems[i])
       shopDiv.append(frozenItems[i]);
   }
+
+  killAllChildren(document.getElementById('choices'));
 }
 function itemInHTML(item) {
   let out = '<b>' + item.name + '</b>';
