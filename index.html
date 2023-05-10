@@ -221,26 +221,42 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
 const STAT_TOTAL_GOAL = 600;
 const NUM_SHOP_OPTIONS = 3;
 const INCOME = 50;
-const ILLEGAL_FORMES = ['Antique', 'Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
+const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
-  // cap Pikachus are functionally identical. if you unban these, make sure they always get Thunder, too
-  'pikachuhoenn', 'pikachusinnoh', 'pikachuunova', 'pikachukalos', 'pikachualola', 'pikachupartner', 'pikachuworld',
-  // functionally identical
-  'magearnaoriginal',
-  'pichuspikyeared', 
-  'squawkabilly', 'squawkabillyyellow',
-  'vivillonfancy',
-  'xerneasneutral',
-  'zarudedada',
-  // functionally identical because of their ability
+  // functionally identical because of their ability, and...
+  //    misleading type
   'castformsunny', 'castformrainy', 'castformsnowy',
-  'cherrimsunshine',
-  'keldeoresolute',
+  //    diferent stat total -> different level
   'wishiwashi',
   'miniormeteor',
+];
+const IDENTICAL_MONS = [
+  ['sinistea', 'sinisteaantique'],
+  ['polteageist', 'polteageistantique'],
+  ['pikachuoriginal', 'pikachuhoenn', 'pikachusinnoh', 'pikachuunova', 'pikachukalos', 'pikachualola', 'pikachupartner', 'pikachuworld'],
+  ['magearna', 'magearnaoriginal'],
+  ['pichu', 'pichuspikyeared'], 
+  ['xerneas', 'xerneasneutral'],
+  ['zarude', 'zarudedada'],
+  ['keldeo', 'keldeoresolute'],
+  ['cherrim', 'cherrimsunshine'],
+  // identical except for hidden ability
+  ['squawkabilly', 'squawkabillyblue', 'squawkabillyyellow', 'squawkabillywhite'],
+  // identical but for 1 move
+  ['pikachucosplay', 'pikachurockstar', 'pikachubelle', 'pikachupopstar', 'pikachuphd', 'pikachulibre'],
+  // identical but for 1 ability (or for White-Stripe, 1 move)
+  ['basculin', 'basculinbluestriped', 'basculinwhitestriped'],
+  // identical but for Hold Hands/presence of hidden ability
+  [...Array(18).fill('vivillon'), 'vivillonfancy', 'vivillonpokeball'],
+  // identical except for Techno Blast's type (and whether it holds an item)
+  ['genesect', 'genesectdouse', 'genesectshock', 'genesectburn', 'genesectchill'],
   // identical except for weight
-  'maushold',
-  'dudunsparcethreesegment',
+  ['maushold', 'mausholdfour'],
+  ['dudunsparce', 'dudunsparcethreesegment'],
+  // identical but for 1 move & 1 ability
+  ['toxtricity', 'toxtricitylowkey'],
+  // different type OR stats is sufficient for exclusion, even for interchangable formes, 
+  // provided forme change is not instantaneous
 ];
 
 // for testing/studying purposes
@@ -432,14 +448,24 @@ function generateOneOfSpecies() {
   // console.log(formes);
 }
 
+function isLegal(speciesId, species) {
+  if (species.forme && ILLEGAL_FORMES.includes(species.forme))
+    return false;
+  if (ILLEGAL_MONS.includes(speciesId))
+    return false;
+  const identicals = IDENTICAL_MONS.find(arr => arr.includes(speciesId));
+  if (identicals && speciesId != randomElement(identicals)) // each forme has a 1/n chance of being legal
+    return false;
+  return true;
+}
+
 function addRandomPokemon(div, speciesName) {  
   let hasChooseButton = speciesName === undefined;
 
   if (hasChooseButton) {
     let speciesId = randomKey(allSpecies);
     let species = allSpecies[speciesId];
-    while ((species.forme && ILLEGAL_FORMES.includes(species.forme)) 
-              || ILLEGAL_MONS.includes(speciesId)) {
+    while (!isLegal(speciesId, species)) {
       speciesId = randomKey(allSpecies);
       species = allSpecies[speciesId];
     }
