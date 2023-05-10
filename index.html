@@ -817,6 +817,8 @@ function addHiddenPowerType(moveName) {
 }
 
 function refreshShop() {
+  pay(5);
+
   const shopDiv = document.getElementById('shop');
   const frozenItems = [];
   let numItemsToAdd = NUM_SHOP_OPTIONS;
@@ -875,6 +877,18 @@ function itemInHTML(item) {
   out += '\n' + spanWithClass(item.type, 'attr');
   out += '\n' + item.desc;
   return out;
+}
+
+function pay(price) {
+  const moneyEle = document.getElementById('money');
+  let money = parseInt(moneyEle.value);
+  if (money >= price) {
+    money -= price;
+    moneyEle.value = money;
+  } else {
+    alert('Not enough money!');
+    throw new Error('not enough money');
+  }
 }
 
 function randomProperty(obj) {
