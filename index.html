@@ -132,6 +132,14 @@ button:focus {
   text-decoration: dashed underline; 
 }
 
+.item-title {
+  font-size: large;
+  font-weight: 700;
+}
+.pokeball { color: red }
+.misc { color: lightgray }
+.heldItem { color: orange }
+
 .type-normal { color: #A8A878 }
 .type-fighting { color: #C03028 }
 .type-flying { color: #A890F0 }
@@ -919,9 +927,13 @@ function createItemDiv(item, isExtra) {
   return itemDiv;
 }
 function itemInHTML(item) {
-  let out = '<b>' + item.name + '</b>';
-  out += '\n' + spanWithClass(item.type, 'attr');
-  out += '\n' + item.desc;
+  let out = '<span class="' + item.type + ' item-title">' + item.name + '</span>';
+  if (item.type === 'heldItem') {
+    const desc = heldItems[getHeldItemId(item.name)].desc;
+    out += '\nSet a pokemon\'s held item to ' + item.name + '.\n' + spanWithClass(desc, 'attr');
+  } else {
+    out += '\n' + item.desc;
+  }
   return out;
 }
 
@@ -937,7 +949,7 @@ function buyItem(itemDiv, item) {
 
   itemDiv.classList.add('chosen');
 
-  if (item.type === 'Poké Ball')
+  if (item.type === 'pokeball')
     throwPokeball(itemDiv, item.name);
 }
 
