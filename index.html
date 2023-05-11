@@ -848,7 +848,7 @@ function choosePokemon(buttonEle) {
 
   const partyPokeDiv = getEmptyPartyDiv();
   if (!partyPokeDiv)
-    alert('Your party is full!');
+    alert('Your party is full! You must delete a Pokemon first.');
 
   partyPokeDiv.querySelector('.pokemon').innerText = pokemonStr;
   updatePokemonDiv(partyPokeDiv);
