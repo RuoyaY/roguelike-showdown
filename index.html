@@ -901,12 +901,12 @@ function refreshShop(isViaMoney) {
 
   if (isViaMoney) {
     if (numItemsToAdd <= 0) {
-      alert('But nothing would happen!');
+      alert('Too many frozen items!');
       return;
     }
     const refreshButton = document.getElementById('refresh');
     const price = parseInt(refreshButton.textContent.substring(1, refreshButton.textContent.indexOf(' ')));
-    pay(price);
+    if(!pay(price)) return;
     refreshButton.textContent = '$' + (price+1) + ' - refresh';
   }
 
@@ -964,7 +964,7 @@ function itemInHTML(item) {
 }
 
 function buyItem(itemDiv, item) {
-  pay(item.price);
+  if (!pay(item.price)) return;
   
   const buyButton = itemDiv.querySelector('button');
   const checkmarkEle = document.createElement('h2');
@@ -988,13 +988,14 @@ function pay(price) {
   let money = parseInt(moneyEle.value);
   if (isNaN(money)) {
     alert('Invalid money value!');
-    throw new Error('invalid money value');
-  } if (money < price) {
+    return false;
+  } else if (money < price) {
     alert('Not enough money!');
-    throw new Error('not enough money');
+    return false;
   } else {
     money -= price;
     moneyEle.value = money;
+    return true;
   }
 }
 
