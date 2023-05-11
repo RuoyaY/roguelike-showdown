@@ -569,10 +569,11 @@ function randomOfSpecies(speciesName) {
   pokemonStr += '\nLevel: ' + level;
   levelStats += level + ', ';
 
-  let teraType = randomElement(species.types);
-  if (!TYPES.includes(teraType))
-    teraType = 'Normal';
-  pokemonStr += '\nTera Type: ' + teraType;
+  // let teraType = randomElement(species.types);
+  // if (!TYPES.includes(teraType))
+  //   teraType = 'Normal';
+  // pokemonStr += '\nTera Type: ' + teraType;
+  pokemonStr += '\nTera Type: ' + randomElement(TYPES);
     
   pokemonStr += '\nEVs: 1 HP';
   // const randomMove = moves[randomElement(getLearnset(speciesId))];
