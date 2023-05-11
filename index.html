@@ -878,6 +878,21 @@ function getEmptyPartyDiv() {
   return null;
 }
 
+/*
+* Does not include empty slots
+*/
+function getPartyStrs() {
+  let partyStrs = [];
+  const partyDiv = document.getElementById('party');
+  for (const partyPokeDiv of partyDiv.querySelectorAll('.pokemon-div')) {
+    const partyPokeEle = partyPokeDiv.querySelector('.pokemon');
+    const pokemonStr = partyPokeDiv.innerText.trim();
+    if (pokemonStr !== '')
+      partyStrs.push(pokemonStr);
+  }
+  return partyStrs;
+}
+
 function copyParty() {
   const partyDiv = document.getElementById('party');
   let partyStr = '';
@@ -1009,27 +1024,60 @@ function randomTM() {
   let randy = Math.random();
 
   if ((randy -= .2) < 0) {
-    let move = randomMove();
-    return {
-      name: move.name + ' (Universal TM)',
-      type: 'universalTM',
-      price: 20,
-      desc: 'Teach ANY Pokemon the move ' + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
-            + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
-    };
+    return randomUniversalTM();
   } else if ((randy -= .1) < 0) {
-    let move = randomMove();
+    const move = randomMove();
     return {
       name: move.name + ' (Party TM)',
       type: 'partyTM',
       price: 60,
-      desc: 'Teach EVERY Pokemon the move ' + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
-            + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
+      desc: tmDesc('Teach EVERY Pokemon the move ', move),
     };
   } else {
-    // TODO: Add ordinary TMs
-    return randomElement(items);
+    let possibleMoves = [];
+    const pokemonStrs = getPartyStrs();
+    for (const pokemonStr of pokemonStrs)
+      possibleMoves.push(...getLearnset(getSpeciesIdOfPokemon(pokemonStr)));
+
+    while (possibleMoves.length > 0) {
+      const possibleMovesIndex = randomInt(possibleMoves.length);
+      const moveId = possibleMoves[possibleMovesIndex];
+      const move = moves[moveId];
+      let learnerNames = [];
+      for (const pokemonStr of pokemonStrs) {
+        if (pokemonStr.includes('\n- ' + move.name))
+          continue;
+        const speciesId = getSpeciesIdOfPokemon(pokemonStr);
+        const speciesName = getSpeciesNameOfPokemon(pokemonStr);
+        if (getLearnset(speciesId).includes(moveId) && !learnerNames.includes(speciesName))
+          learnerNames.push(speciesName);
+      }
+      if (learnerNames.length > 0) {
+        return {
+          name: move.name + ' (TM)',
+          type: 'tm',
+          price: 10,
+          desc: tmDesc('Teach ' + enumerateWithOr(learnerNames) + ' the move ', move),
+        };
+      } else {
+        possibleMoves.splice(possibleMovesIndex, 1);
+      }
+    }
+    return randomUniversalTM(); // no valid TMs available, so a Universal TM is returned instead
   }
+}
+function randomUniversalTM() {
+  const move = randomMove();
+  return {
+    name: move.name + ' (Universal TM)',
+    type: 'universalTM',
+    price: 20,
+    desc: tmDesc('Teach ANY Pokemon the move ', move),
+  };
+}
+function tmDesc(strBeforeMoveName, move) {
+  return strBeforeMoveName + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
+          + '\n' + spanWithClass(moveDesc(move, move.type).replace('\n\n', '\n'), 'attr');
 }
 function randomMove() {
   let move = randomProperty(moves);
@@ -1037,6 +1085,18 @@ function randomMove() {
     || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160))
     move = randomProperty(moves);
   return move;
+}
+
+function enumerateWithOr(strArr) {
+  if (strArr.length === 1)
+    return strArr[0];
+  if (strArr.length === 2)
+    return strArr[0] + ' or ' + strArr[1];
+  let out = '';
+  for (let i = 0; i < strArr.length - 1; i++)
+    out += strArr[i] + ', ';
+  out += 'or ' + strArr[strArr.length-1];
+  return out;
 }
 
 function buyItem(itemDiv, item) {
