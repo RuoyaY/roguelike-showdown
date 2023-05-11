@@ -143,8 +143,13 @@ button:focus {
 .misc { color: lightgray }
 .heldItem { color: orange }
 .tm { color: yellow }
+.partyTM { 
+  background: linear-gradient(180deg, white, hotpink);
+  background-clip: text;
+  color: transparent;
+ }
 .universalTM {
-  background: linear-gradient(0deg, orchid, yellow);
+  background: linear-gradient(90deg, orange, yellow, lightgreen, aqua);
   background-clip: text;
   color: transparent;
 }
@@ -1003,22 +1008,35 @@ function itemInHTML(item) {
 function randomTM() {
   let randy = Math.random();
 
-  if ((randy -= 1) < 0) {
-    let move = moves.gmaxdrumsolo;
-    while (move.desc === "Power is equal to the base move's Z-Power." 
-      || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160))
-      move = randomProperty(moves);
+  if ((randy -= .2) < 0) {
+    let move = randomMove();
     return {
       name: move.name + ' (Universal TM)',
       type: 'universalTM',
-      price: 30,
+      price: 20,
       desc: 'Teach ANY Pokemon the move ' + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
+            + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
+    };
+  } else if ((randy -= .1) < 0) {
+    let move = randomMove();
+    return {
+      name: move.name + ' (Party TM)',
+      type: 'partyTM',
+      price: 60,
+      desc: 'Teach EVERY Pokemon the move ' + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
             + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
     };
   } else {
     // TODO: Add ordinary TMs
     return randomElement(items);
   }
+}
+function randomMove() {
+  let move = randomProperty(moves);
+  while (move.desc === "Power is equal to the base move's Z-Power." 
+    || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160))
+    move = randomProperty(moves);
+  return move;
 }
 
 function buyItem(itemDiv, item) {
