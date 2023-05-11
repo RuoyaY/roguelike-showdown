@@ -984,7 +984,7 @@ function randomItem() {
       name: move.name + ' (Universal TM)',
       type: 'universalTm',
       price: 30,
-      desc: 'Teach ANY Pokemon the move ' + move.name + '.'
+      desc: 'Teach ANY Pokemon the move ' + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
             + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
     };
   } else {
