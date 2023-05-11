@@ -572,20 +572,37 @@ function randomOfSpecies(speciesName) {
   pokemonStr += '\nTera Type: ' + teraType;
     
   pokemonStr += '\nEVs: 1 HP';
-
-  // add moveset
-  if (isPokestar(speciesId)) {
-    const moveset = randomElement(learnsets[speciesId].eventData).moves;
-    for (const moveId of moveset)
+  let possibleMoves = getLearnset(speciesId);
+  for (let i = 0; i < 4; i++) {
+    if (possibleMoves.length > 0) {
+      const moveIndex = randomInt(possibleMoves.length);
+      const moveId = possibleMoves[moveIndex];
       pokemonStr += '\n- ' + addHiddenPowerType(moves[moveId].name);
+      possibleMoves.splice(moveIndex, 1);
+    } else {
+      pokemonStr += '\n';
+    }
+  }
+
+  return pokemonStr;
+}
+
+function getLearnset(speciesId) {
+  let learnset;
+  if (isPokestar(speciesId)) {
+    learnset = new Set();
+    for (const eventDatum of learnsets[speciesId].eventData)
+      for (const moveId of eventDatum.moves)
+        learnset.add(moveId);
   } else {
     let learnsetData = learnsets[speciesId];
 
     if (!learnsetData?.learnset)
       learnsetData = learnsets[species.baseSpecies.toLowerCase()];
 
-    let possibleMoves = Object.keys(learnsetData.learnset);
-    if (possibleMoves.length < 4) {
+    learnset = new Set(Object.keys(learnsetData.learnset));
+
+    if (learnset.length < 4) {
       let changesFrom;
       if (species.changesFrom)
         changesFrom = species.changesFrom;
@@ -594,23 +611,20 @@ function randomOfSpecies(speciesName) {
       
       if (changesFrom) {
         let baseSpeciesId = getSpeciesId(changesFrom);
-        possibleMoves.push(...Object.keys(learnsets[baseSpeciesId].learnset));
+        const baseSepeciesLearnset = Object.keys(learnsets[baseSpeciesId].learnset);
+        for (const moveId of baseSepeciesLearnset)
+          learnset.add(moveId)
       }
     }
-    
-    for (let i = 0; i < 4; i++) {
-      if (possibleMoves.length > 0) {
-        const moveIndex = randomInt(possibleMoves.length);
-        const moveId = possibleMoves[moveIndex];
-        pokemonStr += '\n- ' + addHiddenPowerType(moves[moveId].name);
-        possibleMoves.splice(moveIndex, 1);
-      } else {
-        pokemonStr += '\n';
-      }
+
+    const preEvoName = allSpecies[speciesId].prevo;
+    if (preEvoName) {
+      const preEvoLearnset = getLearnset(getSpeciesId(preEvoName));
+      for (const moveId of preEvoLearnset)
+        learnset.add(moveId)
     }
   }
-
-  return pokemonStr;
+  return Array.from(learnset);
 }
 
 function getLevel(species, statTotalGoal) {
