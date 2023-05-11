@@ -737,6 +737,8 @@ function moveDesc(move, type) {
     title += '\nPow: ' + move.basePower;
   if (move.accuracy && move.accuracy !== true)
     title += '\nAcc: ' + move.accuracy;
+  if (move.pp === 1)
+    title += '\nPP: 1';
   title += '\n\n' + move.shortDesc;
   return title;
 }
