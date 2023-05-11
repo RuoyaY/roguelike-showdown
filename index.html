@@ -965,7 +965,7 @@ function itemInHTML(item) {
   let out = '<span class="' + item.type + ' item-title">' + item.name + '</span>';
   if (item.type === 'heldItem') {
     const desc = heldItems[getHeldItemId(item.name)].desc;
-    out += '\nSet a pokemon\'s held item to ' + item.name + '.\n' + spanWithClass(desc, 'attr');
+    out += '\nSet a Pokemon\'s held item to ' + item.name + '.\n' + spanWithClass(desc, 'attr');
   } else {
     out += '\n' + item.desc;
   }
@@ -984,7 +984,7 @@ function randomItem() {
       name: move.name + ' (Universal TM)',
       type: 'universalTm',
       price: 30,
-      desc: 'Teach ANY pokemon the move ' + move.name + '.'
+      desc: 'Teach ANY Pokemon the move ' + move.name + '.'
             + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
     };
   } else {
