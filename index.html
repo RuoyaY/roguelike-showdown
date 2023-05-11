@@ -967,11 +967,15 @@ function buyItem(itemDiv, item) {
   pay(item.price);
   
   const buyButton = itemDiv.querySelector('button');
+  const checkmarkEle = document.createElement('h2');
+  checkmarkEle.classList.add('mb-4px');
+  checkmarkEle.textContent = '✅';
+  buyButton.insertAdjacentElement('afterend', checkmarkEle);
   buyButton.remove();
 
   const checkbox = itemDiv.querySelector('input');
   checkbox.checked = false;
-  checkbox.hidden = true;
+  checkbox.classList.add('invisible');
 
   itemDiv.classList.add('chosen');
 
