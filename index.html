@@ -143,7 +143,7 @@ button:focus {
 .misc { color: lightgray }
 .heldItem { color: orange }
 .tm { color: yellow }
-.universalTm {
+.universalTM {
   background: linear-gradient(0deg, orchid, yellow);
   background-clip: text;
   color: transparent;
@@ -228,7 +228,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Dragon', 'Steel', 'Fairy'];
 
 const STAT_TOTAL_GOAL = 600;
-const NUM_SHOP_OPTIONS = 3;
+const SHOP_OPTIONS = [null, null, 'tm', 'tm', 'pokeball'];
 const INCOME = 50;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
@@ -282,6 +282,7 @@ loadAbilities();
 let heldItems;
 loadHeldItems();
 let items = [];
+let pokeballItems = [];
 loadItems();
 
 fillPartyDivs();
@@ -339,7 +340,8 @@ function loadItems() {
     const responseLines = this.response.split('\n');
     for (let i = 1; i < responseLines.length; i++) {
       const splitByTab = responseLines[i].split('\t');
-      items.push({
+      let itemsArr = splitByTab[1] === 'pokeball' ? pokeballItems : items;
+      itemsArr.push({
         name: splitByTab[0],
         type: splitByTab[1],
         price: splitByTab[2],
@@ -910,7 +912,7 @@ function nextRound() {
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   const frozenItems = [];
-  let numItemsToAdd = NUM_SHOP_OPTIONS;
+  let numItemsToAdd = SHOP_OPTIONS.length;
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
     const itemDiv = shopDiv.childNodes[i];
     if (itemDiv.querySelector('.pokemon-div')) // then it's choices div, not an item div
@@ -939,7 +941,19 @@ function refreshShop(isViaMoney) {
     while (frozenItems[shopDiv.childNodes.length])
       shop.append(frozenItems[shopDiv.childNodes.length]);
 
-    const item = randomItem();
+    let item;
+    const index = shopDiv.childNodes.length;
+    switch (SHOP_OPTIONS[index]) {
+      default:
+        item = randomElement(items);
+        break;
+      case 'tm':
+        item = randomTM();
+        break;
+      case 'pokeball':
+        item = randomElement(pokeballItems);
+        break;
+    }
     shopDiv.append(createItemDiv(item));
   }
   for (let i = shopDiv.childNodes.length; i < frozenItems.length; i++) {
@@ -986,22 +1000,23 @@ function itemInHTML(item) {
   return out;
 }
 
-function randomItem() {
+function randomTM() {
   let randy = Math.random();
 
-  if ((randy -= 0.1) < 0) {
+  if ((randy -= 1) < 0) {
     let move = moves.gmaxdrumsolo;
     while (move.desc === "Power is equal to the base move's Z-Power." 
       || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160))
       move = randomProperty(moves);
     return {
       name: move.name + ' (Universal TM)',
-      type: 'universalTm',
+      type: 'universalTM',
       price: 30,
       desc: 'Teach ANY Pokemon the move ' + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
             + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
     };
   } else {
+    // TODO: Add ordinary TMs
     return randomElement(items);
   }
 }
