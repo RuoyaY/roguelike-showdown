@@ -139,6 +139,12 @@ button:focus {
 .pokeball { color: red }
 .misc { color: lightgray }
 .heldItem { color: orange }
+.tm { color: yellow }
+.universalTm {
+  background: linear-gradient(0deg, orchid, yellow);
+  background-clip: text;
+  color: transparent;
+}
 
 .type-normal { color: #A8A878 }
 .type-fighting { color: #C03028 }
@@ -704,27 +710,7 @@ function pokemonInHTML(pokemonStr) {
 
     } else if (strLine.startsWith('- ')) {
       const moveName = strLine.substring('- '.length);
-
-      let moveId, move, type;
-      if (moveName.startsWith('Hidden Power')) {
-        moveId = 'hiddenpower';
-        move = moves[moveId];
-        type = moveName.substring(moveName.indexOf('[')+1, moveName.indexOf(']'));
-      } else {
-        moveId = getMoveId(moveName);
-        move = moves[moveId];
-        type = move.type;
-      }
-
-      let title = 'Type: ' + type + '\nCat: ' + move.category;
-      if (move.basePower && move.basePower !== 0)
-        title += '\nPow: ' + move.basePower;
-      if (move.accuracy && move.accuracy !== true)
-        title += '\nAcc: ' + move.accuracy;
-      title += '\n\n' + move.shortDesc;
-
-      out += spanWithClass('- ' + spanWithTitle(moveName, title), 'type-' + type.toLowerCase());
-
+      out += moveInHTML(moveName);
     } else {
       out += strLine;
     }
@@ -732,6 +718,27 @@ function pokemonInHTML(pokemonStr) {
   }
 
   return out.slice(0, -1);
+}
+function moveInHTML(moveName) {
+  let move, type;
+  if (moveName.startsWith('Hidden Power')) {
+    move = moves['hiddenpower'];
+    type = moveName.substring(moveName.indexOf('[')+1, moveName.indexOf(']'));
+  } else {
+    move = moves[getMoveId(moveName)];
+    type = move.type;
+  }
+
+  return spanWithClass('- ' + spanWithTitle(moveName, moveDesc(move, type)), 'type-' + type.toLowerCase());
+}
+function moveDesc(move, type) {
+  let title = 'Type: ' + type + '\nCat: ' + move.category;
+  if (move.basePower && move.basePower !== 0)
+    title += '\nPow: ' + move.basePower;
+  if (move.accuracy && move.accuracy !== true)
+    title += '\nAcc: ' + move.accuracy;
+  title += '\n\n' + move.shortDesc;
+  return title;
 }
 
 function canTera(species, heldItem) {
@@ -916,7 +923,7 @@ function refreshShop(isViaMoney) {
     while (frozenItems[shopDiv.childNodes.length])
       shop.append(frozenItems[shopDiv.childNodes.length]);
 
-    const item = randomElement(items);
+    const item = randomItem();
     shopDiv.append(createItemDiv(item));
   }
   for (let i = shopDiv.childNodes.length; i < frozenItems.length; i++) {
@@ -961,6 +968,26 @@ function itemInHTML(item) {
     out += '\n' + item.desc;
   }
   return out;
+}
+
+function randomItem() {
+  let randy = Math.random();
+
+  if ((randy -= 0.1) < 0) {
+    let move = moves.gmaxdrumsolo;
+    while (move.desc === "Power is equal to the base move's Z-Power." 
+      || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160))
+      move = randomProperty(moves);
+    return {
+      name: move.name + ' (Universal TM)',
+      type: 'universalTm',
+      price: 30,
+      desc: 'Teach ANY pokemon the move ' + move.name + '.'
+            + '\n' + spanWithClass(moveDesc(move, move.type), 'attr'),
+    };
+  } else {
+    return randomElement(items);
+  }
 }
 
 function buyItem(itemDiv, item) {
