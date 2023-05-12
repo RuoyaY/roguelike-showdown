@@ -199,11 +199,11 @@ button:focus {
     <button id="nextRound" onclick="nextRound()">next round</button>
     <div id="choices" class="flex-row"></div>
     <div class="flex-col-centered">
-      <button id="skip" hidden onclick="skipPokemonChoice()">skip</button>
+      <button id="skip" onclick="skipPokemonChoice()">skip</button>
     </div>
     <hr class="mt-1">
-    <label for="money">$</label> <input id="money" type="number" value="0">
-    <button onclick="refreshShop(true)" id="refresh">$1 - refresh</button>
+    <label for="money">$</label> <input id="money" type="number">
+    <button onclick="refreshShop(true)" id="refresh">$0 - refresh</button>
     <div id="shop"></div>
     <hr class="mt-1">
     <div class="mb-1">
@@ -310,6 +310,10 @@ document.getElementById('speciesInput').addEventListener('keyup', function(event
     generateOneOfSpecies();
   }
 })
+
+document.getElementById('money').value = 0;
+document.getElementById('skip').hidden = true;
+document.getElementById('refresh').disabled = true;
 
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
@@ -1050,8 +1054,6 @@ function nextRound() {
   
   const isPartyFull = getEmptyPartyDiv() === null;
   document.getElementById('skip').hidden = !isPartyFull;
-
-  // refreshShop(false);
 
   const refreshButton = document.getElementById('refresh');
   refreshButton.textContent = '$0 - refresh';
