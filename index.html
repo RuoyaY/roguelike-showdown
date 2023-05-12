@@ -16,6 +16,8 @@ body {
 .info-box {
   border: 1px solid;
   border-color: inherit;
+  border-radius: 6px;
+  border-top-right-radius: 0;
   padding: 6px;
   margin: 0px;
   white-space: pre-wrap;
@@ -24,12 +26,15 @@ body {
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
-  border-top-left-radius: 6px;
-  width: 30ch;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   white-space: pre;
 }
+.move-choice, .pokemon {
+  width: 30ch;
+}
 .pokemon:not(.editable) {
-  height: 6rem;
+  height: 5rem;
   overflow: hidden;
 }
 .pokemon.editable {
@@ -37,29 +42,32 @@ body {
   height: 10rem;
   overflow: scroll;
 }
+.chosen>.pokemon.editable {
+  /* box-shadow: inset 0 0 10px lightgreen; */
+  box-shadow: none;
+}
 .stats {
   border-top: none;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   margin-bottom: 2px;
   width: 30ch;
   height: 3rem;
 }
 .item {
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   width: 50ch;
 }
 .item-price {
   border-left: none;
-  /* border-top-right-radius: 6px; */
-  border-bottom-right-radius: 6px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   width: 6ch;
 }
 input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-price {
   box-shadow: inset 0 0 20px lightblue;
 }
-
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -73,7 +81,7 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   text-align: center;
 }
 
-.pokemon-div {
+.pokemon-div, .flex-col {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,11 +143,10 @@ button:focus {
   text-decoration: dashed underline; 
 }
 
-.item-title {
+.big-text {
   font-size: large;
   font-weight: 700;
 }
-.pokeball { color: red }
 .misc { color: lightgray }
 .heldItem { color: orange }
 /* .tm { color: yellow }
@@ -189,8 +196,11 @@ button:focus {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
+    <button id="nextRound" onclick="nextRound()">next round</button>
+    <div id="choices" class="flex-row"></div>
+    <hr class="mt-1">
     <label for="money">$</label> <input id="money" type="number" value="0">
-    <button onclick="nextRound()">next round</button> <button onclick="refreshShop(true)" id="refresh">$1 - refresh</button>
+    <button onclick="refreshShop(true)" id="refresh">$1 - refresh</button>
     <div id="shop"></div>
     <hr class="mt-1">
     <div class="mb-1">
@@ -426,18 +436,9 @@ function killAllChildren(div) {
     div.removeChild(div.firstChild);
 }
 
-function throwPokeball(itemDiv, pokeballName) {
-  const choicesRow = document.createElement('div');
-  choicesRow.classList.add('flex-row');
-  itemDiv.insertAdjacentElement('afterend', choicesRow);
-
-  let numPokemon = 2;
-  if (pokeballName === 'Great Ball')
-    numPokemon = 3;
-  else if (pokeballName === 'Ultra Ball')
-    numPokemon = 4;
-  for (let i = 0; i < numPokemon; i++)
-    addRandomPokemon(choicesRow);
+function addChoices(choicesDiv) {
+  addRandomPokemon(choicesDiv);
+  addRandomPokemon(choicesDiv);
 }
 function generateOneOfSpecies() {
   const speciesDiv = document.getElementById('species');
@@ -473,7 +474,7 @@ function isLegal(speciesId, species) {
   return true;
 }
 
-function addRandomPokemon(div, speciesName) {  
+function addRandomPokemon(choicesDiv, speciesName) {  
   let hasChooseButton = speciesName === undefined;
 
   if (hasChooseButton) {
@@ -514,13 +515,13 @@ function addRandomPokemon(div, speciesName) {
   if (hasChooseButton) {
     const buttonEle = document.createElement('button');
     buttonEle.innerText = 'choose';
-    buttonEle.onclick = function() {choosePokemon(buttonEle)};
+    buttonEle.onclick = function() {choosePokemon(choicesDiv, pokemonStr)};
     divEle.append(buttonEle);
   }
 
   updatePokemonDiv(divEle);
 
-  div.prepend(divEle);
+  choicesDiv.prepend(divEle);
 }
 
 function isPokestar(speciesId) {
@@ -537,7 +538,7 @@ function randomOfSpecies(speciesName) {
 
   let displayName = speciesName;
   let gender;
-  let heldItem;
+  let heldItemName;
 
   if (species.gender)
     gender = species.gender;
@@ -550,18 +551,18 @@ function randomOfSpecies(speciesName) {
 
   if (species.baseSpecies === 'Arceus') {
     displayName = species.baseSpecies;
-    heldItem = randomElement(species.requiredItems);
+    heldItemName = randomElement(species.requiredItems);
   }
   else if (species.baseSpecies === 'Silvally' || species.baseSpecies === 'Genesect') {
     displayName = species.baseSpecies;
-    heldItem = species.requiredItem;
+    heldItemName = species.requiredItem;
   }
 
   let pokemonStr = displayName;
   if (gender !== 'N')
     pokemonStr += ' (' + gender + ')';
-  if (heldItem)
-    pokemonStr += ' @ ' + heldItem;
+  if (heldItemName)
+    pokemonStr += ' @ ' + heldItemName;
 
   const abilityName = randomProperty(species.abilities);
   pokemonStr += '\nAbility: ';
@@ -574,16 +575,10 @@ function randomOfSpecies(speciesName) {
   pokemonStr += '\nLevel: ' + level;
   levelStats += level + ', ';
 
-  // let teraType = randomElement(species.types);
-  // if (!TYPES.includes(teraType))
-  //   teraType = 'Normal';
-  // pokemonStr += '\nTera Type: ' + teraType;
-  pokemonStr += '\nTera Type: ' + randomElement(TYPES);
+  if (canTera(species, heldItems[getHeldItemId(heldItemName)]))
+    pokemonStr += '\nTera Type:';
     
   pokemonStr += '\nEVs: 1 HP';
-  // const randomMove = moves[randomElement(getLearnset(speciesId))];
-  // pokemonStr += '\n- ' + addHiddenPowerType(randomMove.name);
-  pokemonStr += '\n- \n- \n- \n- ';
 
   return pokemonStr;
 }
@@ -690,13 +685,13 @@ function pokemonInHTML(pokemonStr) {
       else
         out += spanWithClass('Level: ', 'attr') + level;
       
-    } else if (strLine.startsWith('Tera Type: ')) {
+    } else if (strLine.startsWith('Tera Type:')) {
       const teraType = strLine.substring('Tera Type: '.length);
-      if (canTera(species, heldItem)) {
-        out += spanWithClass('Tera Type: ', 'attr');
-        out += spanWithClass(teraType, 'type-' + teraType.toLowerCase());
-      } else {
+      if (!canTera(species, heldItem)) {
         out += spanWithClass(strLine, 'gray');
+      } else {
+        out += spanWithClass('Tera Type: ', 'attr');
+        out += spanWithType(teraType, teraType);
       }
 
     } else if (strLine.startsWith('EVs: ')) {
@@ -748,7 +743,7 @@ function moveInHTML(moveName) {
     type = move.type;
   }
 
-  return spanWithClass('- ' + spanWithTitle(moveName, moveDesc(move, type)), 'type-' + type.toLowerCase());
+  return spanWithType('- ' + spanWithTitle(moveName, moveDesc(move, type)), type);
 }
 function moveDesc(move, type) {
   let title = 'Type: ' + type + '\nCat: ' + move.category;
@@ -762,6 +757,11 @@ function moveDesc(move, type) {
   return title;
 }
 
+function pokemonCanTera(pokemonStr) {
+  const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
+  const heldItem = heldItems[getHeldItemId(pokemonStr.split('\n')[0].split(' @ ')[1])];
+  return canTera(species, heldItem);
+}
 function canTera(species, heldItem) {
   if (species.forme && 
     (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
@@ -840,6 +840,9 @@ function getStat(species, level, evsStr, nature, stat) {
   }
 }
 
+function spanWithType(str, type) {
+  return spanWithClass(str, 'type-' + type.toLowerCase());
+}
 function spanWithClass(str, class_) {
   return '<span class="' + class_ + '">' + str + '</span>';
 }
@@ -847,22 +850,127 @@ function spanWithTitle(str, title) {
   return '<span class="hasHoverText" title="' + title + '">' + str + '</span>';
 }
 
-function choosePokemon(buttonEle) {
-  const divEle = buttonEle.parentElement;
-  const pokemonEle = divEle.childNodes[0];
-  const pokemonStr = pokemonEle.innerText;
-
-  const partyPokeDiv = getEmptyPartyDiv();
-  if (!partyPokeDiv)
+function choosePokemon(choicesDiv, pokemonStr) {
+  const pokeDiv = getEmptyPartyDiv();
+  if (!pokeDiv) {
     alert('Your party is full! You must delete a Pokemon first.');
-
-  partyPokeDiv.querySelector('.pokemon').innerText = pokemonStr;
-  updatePokemonDiv(partyPokeDiv);
-  for (const divInRow of divEle.parentElement.childNodes) {
-    divInRow.removeChild(divInRow.querySelector('button'));
+    return;
   }
+  
+  togglePokeDiv(pokeDiv, false);
+  
+  pokeDiv.querySelector('.pokemon').innerText = pokemonStr + '\n-\n-\n-\n-\n';
+  updatePokemonDiv(pokeDiv);
+  
+  killAllChildren(choicesDiv);
 
-  divEle.classList.add('chosen');
+  if (pokemonCanTera(pokemonStr)) {
+    const typeChoices = [];
+    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
+    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
+  } else {
+    beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr);
+  }
+}
+function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
+  if (TYPES.every(type => typeChoices.includes(type)))
+    throw new Error('Too many tera choices!');
+  let type = randomElement(TYPES);
+  while (typeChoices.includes(type))
+    type = randomElement(TYPES);
+  typeChoices.push(type);
+
+  const teraChoiceDiv = document.createElement('div');
+  teraChoiceDiv.classList.add('flex-col');
+
+  const teraChoiceEle = document.createElement('h2');
+  teraChoiceEle.classList.add('info-box', 'text-center');
+  teraChoiceEle.innerHTML = spanWithType(type, type);
+  const teraChoiceImg = document.createElement('img');
+  teraChoiceImg.src = 'https://play.pokemonshowdown.com/sprites/types/Tera' + type + '.png';
+  teraChoiceEle.append(teraChoiceImg);
+
+  const teraChoiceButton = document.createElement('button');
+  teraChoiceButton.innerText = 'choose';
+  teraChoiceButton.onclick = function() {chooseTera(choicesDiv, pokeDiv, type)};
+
+  teraChoiceDiv.append(teraChoiceEle, teraChoiceButton);
+  choicesDiv.append(teraChoiceDiv);
+}
+function chooseTera(choicesDiv, pokeDiv, type) {
+  const pokeEle = pokeDiv.querySelector('.pokemon');
+  const pokemonStr = pokeEle.innerText.replace('Tera Type:', 'Tera Type: ' + type);
+  pokeEle.innerHTML = pokemonInHTML(pokemonStr);
+
+  killAllChildren(choicesDiv);
+
+  beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr);
+}
+function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
+  const speciesId = getSpeciesIdOfPokemon(pokemonStr);
+  const moveIds = getLearnset(speciesId);
+  addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
+}
+function addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds) {
+  addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds);
+  addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds);
+}
+function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
+  let move;
+  if (moveIds.length === 0)
+    move = randomMove();
+  else 
+    move = moves[removeRandom(moveIds)];
+
+  const choiceDiv = document.createElement('div');
+  choiceDiv.classList.add('flex-col');
+
+  const choiceEle = document.createElement('p');
+  choiceEle.classList.add('info-box', 'move-choice');
+  choiceEle.innerHTML = spanWithClass(spanWithType(move.name, move.type), 'big-text') + '\n' + moveDesc(move, move.type);
+
+  const choiceButton = document.createElement('button');
+  choiceButton.innerText = 'choose';
+  choiceButton.onclick = function() {chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move)};
+
+  choiceDiv.append(choiceEle, choiceButton);
+  choicesDiv.append(choiceDiv);
+}
+function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
+  const pokeEle = pokeDiv.querySelector('.pokemon');
+  const pokemonStr = pokeEle.innerText.replace('\n-\n', '\n- ' + move.name + '\n');
+  pokeEle.innerHTML = pokemonInHTML(pokemonStr);
+
+  killAllChildren(choicesDiv);
+
+  if (pokemonStr.includes('\n-\n')) {
+    addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
+  } else {
+    togglePokeDiv(pokeDiv, true);
+    toggleNonPokemonChoices(true);
+  }
+}
+
+function togglePokeDiv(pokeDiv, canEdit) {
+  if (canEdit)
+    pokeDiv.classList.remove('chosen');
+  else
+    pokeDiv.classList.add('chosen');
+  pokeDiv.querySelector('.pokemon').setAttribute('contenteditable', canEdit);
+}
+function toggleNonPokemonChoices(turnOn) {
+  const buttons = document.querySelectorAll('button');
+  for (const button of buttons) {
+    if (!(button.innerText === 'choose' || button.innerText === 'generate'))
+      button.disabled = !turnOn;
+  }
+}
+
+function removeRandom(arr) {
+  const index = randomInt(arr.length);
+  const out = arr[index];
+  arr.splice(index, 1);
+  return out;
 }
 
 function getEmptyPartyDiv() {
@@ -921,10 +1029,19 @@ function nextRound() {
   }
   moneyEle.value = money + INCOME;
 
-  refreshShop(false);
+  const choicesDiv = document.getElementById('choices');
+  killAllChildren(choicesDiv);
+  const pokeDiv = getEmptyPartyDiv();
+  if (pokeDiv) {
+    addChoices(choicesDiv);
+    toggleNonPokemonChoices(false);
+  }
+
+
+  // refreshShop(false);
 
   const refreshButton = document.getElementById('refresh');
-  refreshButton.textContent = '$1 - refresh';
+  refreshButton.textContent = '$0 - refresh';
 }
 
 function refreshShop(isViaMoney) {
@@ -998,7 +1115,7 @@ function createItemDiv(item, isExtra) {
   return itemDiv;
 }
 function itemInHTML(item) {
-  let out = '<span class="' + item.type + ' item-title">' + item.name + '</span>';
+  let out = '<span class="' + item.type + ' big-text">' + item.name + '</span>';
   if (item.type === 'heldItem') {
     const desc = heldItems[getHeldItemId(item.name)].desc;
     out += '\nSet a Pokemon\'s held item to ' + item.name + '.\n' + spanWithClass(desc, 'attr');
@@ -1016,7 +1133,7 @@ function randomTM() {
   } else if ((randy -= .1) < 0) {
     const move = randomMove();
     return {
-      name: spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + ' (Party TM)',
+      name: spanWithType(move.name, move.type) + ' (Party TM)',
       type: 'partyTM',
       price: 60,
       desc: tmDesc('Teach EVERY Pokemon the move ', move),
@@ -1042,7 +1159,7 @@ function randomTM() {
       }
       if (learnerNames.length > 0) {
         return {
-          name: spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + ' (TM)',
+          name: spanWithType(move.name, move.type) + ' (TM)',
           type: 'tm',
           price: 10,
           desc: tmDesc('Teach ' + enumerateWithOr(learnerNames) + ' the move ', move),
@@ -1057,14 +1174,14 @@ function randomTM() {
 function randomUniversalTM() {
   const move = randomMove();
   return {
-    name: spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + ' (Universal TM)',
+    name: spanWithType(move.name, move.type) + ' (Universal TM)',
     type: 'universalTM',
     price: 20,
     desc: tmDesc('Teach ANY Pokemon the move ', move),
   };
 }
 function tmDesc(strBeforeMoveName, move) {
-  return strBeforeMoveName + spanWithClass(move.name, 'type-' + move.type.toLowerCase()) + '.'
+  return strBeforeMoveName + spanWithType(move.name, move.type) + '.'
           + '\n' + spanWithClass(moveDesc(move, move.type).replace('\n\n', '\n'), 'attr');
 }
 function randomMove() {
@@ -1102,9 +1219,6 @@ function buyItem(itemDiv, item) {
   checkbox.classList.add('invisible');
 
   itemDiv.classList.add('chosen');
-
-  if (item.type === 'pokeball')
-    throwPokeball(itemDiv, item.name);
 }
 
 function pay(price) {

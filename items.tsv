@@ -1,16 +1,18 @@
-Name	Type	Price	Description		
-Poké Ball	pokeball	10	You may obtain (at most) 1 of 2 random pokemon.		
-Great Ball	pokeball	15	You may obtain (at most) 1 of 3 random pokemon.		
-Ultra Ball	pokeball	18	You may obtain (at most) 1 of 4 random pokemon.		
+name	type	price	desc		
 Rare Candy	misc	12	Increase a Pokemon's level by one.		
 Rare Penta-Candy	misc	60	Increase a Pokemon's level by 5.		
 HP Max	misc	32	Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
 Max Protein	misc	32	Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
-Leftovers	heldItem	30	[held items have automatically generated descriptions]		
-Normal Gem	heldItem	10			
+Max Iron	misc	32	Set a Pokemon's Def EV to 252 (max 508 total EVs).		
+Max Calcium	misc	32	Set a Pokemon's SpA EV to 252 (max 508 total EVs).		
+Max Zinc	misc	32	Set a Pokemon's SpD EV to 252 (max 508 total EVs).		
+Max Carbos	misc	32	Set a Pokemon's Spe EV to 252 (max 508 total EVs).		
+Leftovers	heldItem	25	[held items have automatically generated descriptions]		
 Sitrus Berry	heldItem	30			
-Aguav Berry	heldItem	20			
-Figy Berry	heldItem	20			
-Iapapa Berry	heldItem	20			
-Mago Berry	heldItem	20			
-Wiki Berry	heldItem	20			
+Aguav Berry	heldItem	20	[heal 1/3 at 1/4]		
+Figy Berry	heldItem	20	[heal 1/3 at 1/4]		
+Iapapa Berry	heldItem	20	[heal 1/3 at 1/4]		
+Mago Berry	heldItem	20	[heal 1/3 at 1/4]		
+Wiki Berry	heldItem	20	[heal 1/3 at 1/4]		
+Oran Berry	heldItem	10			
+Normal Gem	heldItem	10			
