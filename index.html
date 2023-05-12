@@ -198,6 +198,9 @@ button:focus {
     <h1>Roguelike Showdown</h1>
     <button id="nextRound" onclick="nextRound()">next round</button>
     <div id="choices" class="flex-row"></div>
+    <div class="flex-col-centered">
+      <button id="skip" hidden onclick="skipPokemonChoice()">skip</button>
+    </div>
     <hr class="mt-1">
     <label for="money">$</label> <input id="money" type="number" value="0">
     <button onclick="refreshShop(true)" id="refresh">$1 - refresh</button>
@@ -850,12 +853,21 @@ function spanWithTitle(str, title) {
   return '<span class="hasHoverText" title="' + title + '">' + str + '</span>';
 }
 
+function skipPokemonChoice() {
+  const choicesDiv = document.getElementById('choices');
+  killAllChildren(choicesDiv);
+  toggleNonPokemonChoices(true);
+  document.getElementById('skip').hidden = true;
+}
+
 function choosePokemon(choicesDiv, pokemonStr) {
   const pokeDiv = getEmptyPartyDiv();
   if (!pokeDiv) {
     alert('Your party is full! You must delete a Pokemon first.');
     return;
   }
+
+  document.getElementById('skip').hidden = true;
   
   togglePokeDiv(pokeDiv, false);
   
@@ -961,9 +973,11 @@ function togglePokeDiv(pokeDiv, canEdit) {
 function toggleNonPokemonChoices(turnOn) {
   const buttons = document.querySelectorAll('button');
   for (const button of buttons) {
-    if (!(button.innerText === 'choose' || button.innerText === 'generate'))
+    if (button.innerText === 'buy')
       button.disabled = !turnOn;
   }
+  document.getElementById('nextRound').disabled = !turnOn;
+  document.getElementById('refresh').disabled = !turnOn;
 }
 
 function removeRandom(arr) {
@@ -1031,12 +1045,11 @@ function nextRound() {
 
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
-  const pokeDiv = getEmptyPartyDiv();
-  if (pokeDiv) {
-    addChoices(choicesDiv);
-    toggleNonPokemonChoices(false);
-  }
-
+  addChoices(choicesDiv);
+  toggleNonPokemonChoices(false);
+  
+  const isPartyFull = getEmptyPartyDiv() === null;
+  document.getElementById('skip').hidden = !isPartyFull;
 
   // refreshShop(false);
 
