@@ -591,6 +591,7 @@ function randomOfSpecies(speciesName) {
 }
 
 function getLearnset(speciesId) {
+  const species = allSpecies[speciesId];
   let learnset;
   if (isPokestar(speciesId)) {
     learnset = new Set();
