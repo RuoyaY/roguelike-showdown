@@ -233,7 +233,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Dragon', 'Steel', 'Fairy'];
 
 const STAT_TOTAL_GOAL = 600;
-const SHOP_OPTIONS = [null, null, 'tm', 'tm', 'pokeball'];
+const NUM_SHOP_OPTIONS = 3;
 const INCOME = 50;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
@@ -287,7 +287,6 @@ loadAbilities();
 let heldItems;
 loadHeldItems();
 let items = [];
-let pokeballItems = [];
 loadItems();
 
 fillPartyDivs();
@@ -345,8 +344,7 @@ function loadItems() {
     const responseLines = this.response.split('\n');
     for (let i = 1; i < responseLines.length; i++) {
       const splitByTab = responseLines[i].split('\t');
-      let itemsArr = splitByTab[1] === 'pokeball' ? pokeballItems : items;
-      itemsArr.push({
+      items.push({
         name: splitByTab[0],
         type: splitByTab[1],
         price: splitByTab[2],
@@ -932,7 +930,7 @@ function nextRound() {
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   const frozenItems = [];
-  let numItemsToAdd = SHOP_OPTIONS.length;
+  let numItemsToAdd = NUM_SHOP_OPTIONS;
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
     const itemDiv = shopDiv.childNodes[i];
     if (itemDiv.querySelector('.pokemon-div')) // then it's choices div, not an item div
@@ -961,19 +959,9 @@ function refreshShop(isViaMoney) {
     while (frozenItems[shopDiv.childNodes.length])
       shop.append(frozenItems[shopDiv.childNodes.length]);
 
-    let item;
-    const index = shopDiv.childNodes.length;
-    switch (SHOP_OPTIONS[index]) {
-      default:
-        item = randomElement(items);
-        break;
-      case 'tm':
-        item = randomTM();
-        break;
-      case 'pokeball':
-        item = randomElement(pokeballItems);
-        break;
-    }
+    let item = randomElement(items);
+    if (Math.random() < 1/3)
+      item = randomTM();
     shopDiv.append(createItemDiv(item));
   }
   for (let i = shopDiv.childNodes.length; i < frozenItems.length; i++) {
