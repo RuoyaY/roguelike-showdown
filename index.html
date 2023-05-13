@@ -149,17 +149,17 @@ button:focus {
 }
 .misc { color: lightgray }
 .heldItem { color: orange }
-/* .tm { color: yellow }
+.tm { color: yellow }
 .partyTM { 
   background: linear-gradient(45deg, hotpink, yellow, hotpink);
   background-clip: text;
   color: transparent;
  }
 .universalTM {
-  background: linear-gradient(45deg, orange, yellow, lightgreen);
+  background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, rgba(255,255,0,1) 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%);
   background-clip: text;
   color: transparent;
-} */
+}
 
 .type-normal { color: #A8A878 }
 .type-fighting { color: #C03028 }
@@ -1148,7 +1148,7 @@ function randomTM() {
   } else if ((randy -= .1) < 0) {
     const move = randomMove();
     return {
-      name: spanWithType(move.name, move.type) + ' (Party TM)',
+      name: 'Party TM #' + move.num,
       type: 'partyTM',
       price: 60,
       desc: tmDesc('Teach EVERY Pokemon the move ', move),
@@ -1174,7 +1174,7 @@ function randomTM() {
       }
       if (learnerNames.length > 0) {
         return {
-          name: spanWithType(move.name, move.type) + ' (TM)',
+          name: 'TM #' + move.num,
           type: 'tm',
           price: 10,
           desc: tmDesc('Teach ' + enumerateWithOr(learnerNames) + ' the move ', move),
@@ -1189,7 +1189,7 @@ function randomTM() {
 function randomUniversalTM() {
   const move = randomMove();
   return {
-    name: spanWithType(move.name, move.type) + ' (Universal TM)',
+    name: 'Universal TM #' + move.num,
     type: 'universalTM',
     price: 20,
     desc: tmDesc('Teach ANY Pokemon the move ', move),
