@@ -1150,8 +1150,8 @@ function randomTM() {
     return {
       name: 'Party TM #' + move.num,
       type: 'partyTM',
-      price: 60,
-      desc: tmDesc('Teach EVERY Pokemon the move ', move),
+      price: 10 + 10 * getPartyStrs().length,
+      desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
   } else {
     let possibleMoves = [];
