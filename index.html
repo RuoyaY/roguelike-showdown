@@ -247,7 +247,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
   'Dragon', 'Steel', 'Fairy'];
 
-const STAT_TOTAL_GOAL = 600;
+const STAT_TOTAL_GOAL = 650;
 const NUM_SHOP_OPTIONS = 3;
 const INCOME = 50;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
@@ -289,7 +289,20 @@ const IDENTICAL_MONS = [
 ];
 
 // for testing/studying purposes
-let levelStats = '';
+let isCalculatingStats = false;
+let levelStats;
+let statStats;
+function printStats() {
+  isCalculatingStats = true;
+  levelStats = '';
+  statStats = [[], [], [], [], [], []];
+  for (const species of Object.values(allSpecies)) {
+    randomOfSpecies(species.name);
+  }
+  console.log(levelStats);
+  console.log(statStats);
+  isCalculatingStats = false;
+}
 
 let allSpecies;
 loadAllSpecies();
@@ -453,12 +466,6 @@ function generateOneOfSpecies() {
   const speciesDiv = document.getElementById('species');
   const speciesName = document.getElementById('speciesInput').value.trim();
   addRandomPokemon(speciesDiv, speciesName);
-  
-  // // get level distribution
-  // for (const species of Object.values(allSpecies)) {
-  //   randomOfSpecies(species.name);
-  // }
-  // console.log(levelStats);
 
   // // list all formes
   // let formes = {};
@@ -590,7 +597,13 @@ function randomOfSpecies(speciesName) {
   if (speciesId === 'pokestarspirit')
     level = 1;
   pokemonStr += '\nLevel: ' + level;
-  levelStats += level + ', ';
+
+  if (isCalculatingStats) {
+    levelStats += level + ', ';
+    for (let i = 0; i < STATS.length; i++) {
+      statStats[i].push(getStat(species, level, 'EVs: 1 HP', null, STATS[i]));
+    }
+  }
 
   if (canTera(species, heldItems[getHeldItemId(heldItemName)]))
     pokemonStr += '\nTera Type:';
