@@ -741,14 +741,8 @@ function pokemonInHTML(pokemonStr) {
   return out.slice(0, -1);
 }
 function moveInHTML(moveName) {
-  let move, type;
-  if (moveName.startsWith('Hidden Power')) {
-    move = moves['hiddenpower'];
-    type = moveName.substring(moveName.indexOf('[')+1, moveName.indexOf(']'));
-  } else {
-    move = moves[getMoveId(moveName)];
-    type = move.type;
-  }
+  const move = moves[getMoveId(moveName)];
+  const type = move.type;
 
   return spanWithType('- ' + spanWithTitle(moveName, moveDesc(move, type)), type);
 }
@@ -760,7 +754,10 @@ function moveDesc(move, type) {
     title += '\nAcc: ' + move.accuracy;
   if (move.pp === 1)
     title += '\nPP: 1';
-  title += '\n\n' + move.shortDesc;
+  let shortDesc = move.shortDesc;
+  if (move.name.startsWith('Hidden Power'))
+    shortDesc = "Can only know ONE Hidden Power at a time."
+  title += '\n\n' + shortDesc;
   return title;
 }
 
@@ -936,7 +933,7 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   if (moveIds.length === 0)
     move = randomMove();
   else 
-    move = moves[removeRandom(moveIds)];
+    move = handleHiddenPower(moves[removeRandom(moveIds)]);
 
   const choiceDiv = document.createElement('div');
   choiceDiv.classList.add('flex-col');
@@ -1026,16 +1023,6 @@ function copyParty() {
       partyStr += pokemonStr + '\n\n';
   }
   navigator.clipboard.writeText(partyStr);
-}
-
-function addHiddenPowerType(moveName) {
-  if (moveName === 'Hidden Power') {
-    let type = randomElement(TYPES);
-    while (type === 'Normal' || type === 'Fairy')
-      type = randomElement(TYPES);
-    moveName += ' [' + type + ']';
-  }
-  return moveName;
 }
 
 function nextRound() {
@@ -1162,7 +1149,7 @@ function randomTM() {
     while (possibleMoves.length > 0) {
       const possibleMovesIndex = randomInt(possibleMoves.length);
       const moveId = possibleMoves[possibleMovesIndex];
-      const move = moves[moveId];
+      const move = handleHiddenPower(moves[moveId]);
       let learnerNames = [];
       for (const pokemonStr of pokemonStrs) {
         if (pokemonStr.includes('\n- ' + move.name))
@@ -1204,7 +1191,18 @@ function randomMove() {
   while (move.desc === "Power is equal to the base move's Z-Power." 
     || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160))
     move = randomProperty(moves);
-  return move;
+  return handleHiddenPower(move);
+}
+
+function handleHiddenPower(move) {
+  if (move.name === 'Hidden Power') {
+    let type = 'Normal';
+    while (type === 'Normal' || type === 'Fairy')
+      type = randomElement(TYPES);
+    return moves['hiddenpower' + type.toLowerCase()];
+  } else {
+    return move;
+  }
 }
 
 function enumerateWithOr(strArr) {
