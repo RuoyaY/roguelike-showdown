@@ -536,7 +536,15 @@ function isPokestar(speciesId) {
 }
 
 function getImageURL(speciesName) {
-  return 'url(https://play.pokemonshowdown.com/sprites/gen5/' + speciesName.toLowerCase().replace(/\s+/g, '') + '.png)';
+  return 'url(https://play.pokemonshowdown.com/sprites/gen5/' + getImageUrlName(speciesName) + '.png)';
+}
+function getImageUrlName(speciesName) {
+  const species = allSpecies[getSpeciesId(speciesName)];
+  if (speciesName.includes('Flabébé'))
+    speciesName = speciesName.replace('Flabébé', 'Flabebe');
+  if (!(species.baseSpecies || species.cosmeticFormes?.includes(speciesName))) // handles Nidoran-M, Ho-Oh, etc
+    speciesName = speciesName.replace('-', '');
+  return speciesName.toLowerCase().replace(/[^a-zA-Z0-9\-]/g, '');
 }
 
 function randomOfSpecies(speciesName) {
