@@ -567,8 +567,8 @@ function getImageUrlName(speciesName) {
   if (speciesName.includes('Flabébé'))
     speciesName = speciesName.replace('Flabébé', 'Flabebe');
   if (!(species.baseSpecies || species.cosmeticFormes?.includes(speciesName))) // handles Nidoran-M, Ho-Oh, etc
-    speciesName = speciesName.replace('-', '');
-  return speciesName.toLowerCase().replace(/[^a-zA-Z0-9\-]/g, '');
+    speciesName = speciesName.replaceAll('-', '');
+  return speciesName.toLowerCase().replaceAll(/[^a-zA-Z0-9\-]/g, '');
 }
 
 function randomOfSpecies(speciesName) {
@@ -892,6 +892,7 @@ function spanWithClass(str, class_) {
   return '<span class="' + class_ + '">' + str + '</span>';
 }
 function spanWithTitle(str, title) {
+  title = title.replaceAll('"', '&quot;')
   return '<span class="hasHoverText" title="' + title + '">' + str + '</span>';
 }
 
@@ -1162,11 +1163,25 @@ function itemInHTML(item) {
   let out = '<span class="' + item.type + ' big-text">' + item.name + '</span>';
   if (item.type === 'heldItem') {
     const desc = heldItems[getHeldItemId(item.name)].desc;
-    out += '\nSet a Pokemon\'s held item to ' + item.name + '.\n' + spanWithClass(desc, 'attr');
+    out += '\n' + addKeywordHoverText('Set a Pokemon\'s held item to ') + item.name + '.'
+    + '\n' + spanWithClass(desc, 'attr');
+  } else if (!item.type.includes('TM')) {
+    out += '\n' + addKeywordHoverText(item.desc);
   } else {
     out += '\n' + item.desc;
   }
   return out;
+}
+const KEYWORD_HOVER_TEXTS = {
+  'held item': 'e.g. "Pikachu (F) @ Leftovers"',
+  'EVs': 'e.g. "EVs: 1 HP / 252 SpA"',
+  'Nature': 'add a new line under EVs\ne.g. "Bold Nature"',
+  'gender': 'e.g. "Pikachu (F)"'
+};
+function addKeywordHoverText(itemDesc) {
+  for (const [keyword, hoverText] of Object.entries(KEYWORD_HOVER_TEXTS))
+    itemDesc = itemDesc.replaceAll(keyword, spanWithTitle(keyword, hoverText));
+  return itemDesc;
 }
 
 function randomTM() {

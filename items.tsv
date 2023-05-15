@@ -1,18 +1,68 @@
 name	type	price	desc		
-Rare Candy	misc	12	Increase a Pokemon's level by one.		
-Rare Penta-Candy	misc	60	Increase a Pokemon's level by 5.		
+Rare Candy	misc	16	Increase a Pokemon's level by one.		
+Rare Duo-Candy	misc	32	Increase a Pokemon's level by two.		
+Rare Tri-Candy	misc	48	Increase a Pokemon's level by three.		
+Rare Party Candy	misc	64	Increase EVERY Pokemon's level by one.		
 HP Max	misc	32	Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
 Max Protein	misc	32	Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
 Max Iron	misc	32	Set a Pokemon's Def EV to 252 (max 508 total EVs).		
 Max Calcium	misc	32	Set a Pokemon's SpA EV to 252 (max 508 total EVs).		
 Max Zinc	misc	32	Set a Pokemon's SpD EV to 252 (max 508 total EVs).		
 Max Carbos	misc	32	Set a Pokemon's Spe EV to 252 (max 508 total EVs).		
-Leftovers	heldItem	25	[held items have automatically generated descriptions]		
-Sitrus Berry	heldItem	30			
+Super Training	misc	64	Set a Pokemon's EVs to any distribution of 504 total (max 252 of each EV).		
+Androgen Pills	misc	0	Set ANY Pokemon's gender to male.		
+Estrogen Pills	misc	0	Set ANY Pokemon's gender to female.		
+Gender Liquidator	misc	1	Remove a Pokemon's gender (it'll get a random gender at the start of each battle, if possible).		
+Lonely Mint	misc	5	Set a Pokemon's Nature to Lonely (+Atk, -Def).		
+Adamant Mint	misc	10	Set a Pokemon's Nature to Adamant (+Atk, -SpA).		
+Naughty Mint	misc	5	Set a Pokemon's Nature to Naughty (+Atk, -SpD).		
+Brave Mint	misc	5	Set a Pokemon's Nature to Brave (+Atk, -Spe).		
+Bold Mint	misc	10	Set a Pokemon's Nature to Bold (+Def, -Atk).		
+Impish Mint	misc	10	Set a Pokemon's Nature to Impish (+Def, -SpA).		
+Lax Mint	misc	5	Set a Pokemon's Nature to Lax (+Def, -SpD).		
+Relaxed Mint	misc	5	Set a Pokemon's Nature to Relaxed (+Def, -Spe).		
+Modest Mint	misc	10	Set a Pokemon's Nature to Modest (+SpA, -Atk).		
+Mild Mint	misc	5	Set a Pokemon's Nature to Mild (+SpA, -Def).		
+Rash Mint	misc	5	Set a Pokemon's Nature to Rash (+SpA, -SpD).		
+Quiet Mint	misc	5	Set a Pokemon's Nature to Quiet (+SpA, -Spe).		
+Calm Mint	misc	10	Set a Pokemon's Nature to Calm (+SpD, -Atk).		
+Gentle Mint	misc	5	Set a Pokemon's Nature to Gentle (+SpD, -Def).		
+Careful Mint	misc	10	Set a Pokemon's Nature to Careful (+SpD, -SpA).		
+Sassy Mint	misc	5	Set a Pokemon's Nature to Sassy (+SpD, -Spe).		
+Timid Mint	misc	10	Set a Pokemon's Nature to Timid (+Spe, -Atk).		
+Hasty Mint	misc	5	Set a Pokemon's Nature to Hasty (+Spe, -Def).		
+Jolly Mint	misc	10	Set a Pokemon's Nature to Jolly (+Spe, -SpA).		
+Naive Mint	misc	5	Set a Pokemon's Nature to Naive (+Spe, -SpD).		
+Leftovers	heldItem	30	[held items have automatically generated descriptions]		
+Oran Berry	heldItem	5			
+Gold Berry	heldItem	25	heal 30 hp at 1/2		
+Sitrus Berry	heldItem	35			
 Aguav Berry	heldItem	20	[heal 1/3 at 1/4]		
 Figy Berry	heldItem	20	[heal 1/3 at 1/4]		
 Iapapa Berry	heldItem	20	[heal 1/3 at 1/4]		
 Mago Berry	heldItem	20	[heal 1/3 at 1/4]		
 Wiki Berry	heldItem	20	[heal 1/3 at 1/4]		
-Oran Berry	heldItem	10			
 Normal Gem	heldItem	10			
+Choice Band	heldItem	40			
+Choice Specs	heldItem	40			
+Choice Scarf	heldItem	40			
+Assault Vest	heldItem	40			
+Eviolite	heldItem	100			
+Bright Powder	heldItem	20			
+Toxic Orb	heldItem	0			
+Flame Orb	heldItem	0			
+Expert Belt	heldItem	20			
+Focus Sash	heldItem	20			
+Heavy-Duty Boots	heldItem	5			
+Rocky Helmet	heldItem	25			
+Life Orb	heldItem	30			
+Mental Herb	heldItem	5			
+Power Herb	heldItem	10			
+Eject Button	heldItem	20			
+Salac Berry	heldItem	20	1/4, +1 stat		
+Liechi Berry	heldItem	20	1/4, +1 stat		
+Ganlon Berry	heldItem	20	1/4, +1 stat		
+Petaya Berry	heldItem	20	1/4, +1 stat		
+Apicot Berry	heldItem	20	1/4, +1 stat		
+Lansat Berry	heldItem	10	1/4, 50% crit rate		
+Starf Berry	heldItem	20	1/4, +2 random stat		
