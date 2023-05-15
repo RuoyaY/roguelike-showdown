@@ -378,6 +378,7 @@ function loadMoves() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     moves = JSON.parse(this.responseText);
+    addHardcodedItems(); // uses moves data
   }
   xhttp.open("GET", "moves.json");
   xhttp.send();
@@ -414,6 +415,21 @@ function loadItems() {
   }
   xhttp.open("GET", "items.tsv");
   xhttp.send();
+}
+
+function addHardcodedItems() {
+  items.push(
+  {
+    name: 'Pledge TMs', type: 'universalTM', price: 80,
+    desc: 'Teach ANY 3 Pokemon ' + moveInHTML('Fire Pledge') + ', ' + moveInHTML('Water Pledge') 
+      + ', and ' + moveInHTML('Grass Pledge') + ' (one of each).',
+  },
+  {
+    name: 'Stockpile TMs', type: 'universalTM', price: 30,
+    desc: 'Teach ANY Pokemon any/all of following: ' + moveInHTML('Stockpile') + ', ' + moveInHTML('Spit Up')
+      + ', ' + moveInHTML('Swallow') + '.',
+  }
+  );
 }
 
 function fillPartyDivs() {
@@ -783,7 +799,7 @@ function pokemonInHTML(pokemonStr) {
       if (moveName === '')
         out += spanWithClass('-', 'gray');
       else
-        out += moveInHTML(moveName);
+        out += moveInHTML(moveName, '- ');
     } else {
       out += strLine;
     }
@@ -792,11 +808,14 @@ function pokemonInHTML(pokemonStr) {
 
   return out.slice(0, -1);
 }
-function moveInHTML(moveName) {
+function moveInHTML(moveName, prefix) {
+  if (prefix === undefined)
+    prefix = '';
+
   const move = moves[getMoveId(moveName)];
   const type = move.type;
 
-  return spanWithType('- ' + spanWithTitle(moveName, moveDesc(move, type)), type);
+  return spanWithType(prefix + spanWithTitle(moveName, moveDesc(move, type)), type);
 }
 function moveDesc(move, type) {
   let title = 'Type: ' + type + '\nCat: ' + move.category;
