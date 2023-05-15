@@ -65,21 +65,24 @@ Petaya Berry	heldItem	20	1/4, +1 SpA
 Apicot Berry	heldItem	5	1/4, +1 SpD		
 Lansat Berry	heldItem	10	1/4, 50% crit rate		
 Starf Berry	heldItem	20	1/4, +2 random stat	resistances + 2*immunities - weakness	
-Normal Tera Shards	misc	15	Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.	1	
+Normal Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.	1	
 Fire Tera Shards	misc	20	Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.	3	
 Water Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-water">Water</span>.	1	
-Grass Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.	-1	
+Grass Tera Shards	misc	0	Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.	-1	
 Electric Tera Shards	misc	15	Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.	2	
-Ice Tera Shards	misc	0	Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.	-3	
+Ice Tera Shards	misc	-10	Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.	-3	
 Fighting Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.	0	
 Poison Tera Shards	misc	20	Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.	3	
 Ground Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.	1	
 Flying Tera Shards	misc	15	Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.	2	
-Psychic Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.	-1	
+Psychic Tera Shards	misc	0	Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.	-1	
 Bug Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.	0	
-Rock Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.	-1	
+Rock Tera Shards	misc	0	Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.	-1	
 Ghost Tera Shards	misc	25	Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.	4	
 Dark Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-dragon">Dark</span>.	1	
 Dragon Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-dark">Dragon</span>.	1	
 Steel Tera Shards	misc	50	Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.	9	
 Fairy Tera Shards	misc	20	Set a Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.	3	
+Move Deleter	misc	-5	A Pokemon forgets a move (leave the hyphen).		
+Move-Deleting Duo	misc	-20	A Pokemon forgets 2 moves (leave the hyphens).		
+Move Deletion Squad	misc	-40	EVERY Pokemon forgets 1 move (leave the hyphens).		

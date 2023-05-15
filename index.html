@@ -138,6 +138,9 @@ button:focus {
 .gray {
   color: #666;
 }
+.green {
+  color: lightgreen;
+}
 
 .hasHoverText {
   text-decoration: dashed underline; 
@@ -1050,7 +1053,7 @@ function togglePokeDiv(pokeDiv, canEdit) {
 function toggleNonPokemonChoices(turnOn) {
   const buttons = document.querySelectorAll('button');
   for (const button of buttons) {
-    if (button.innerText === 'buy')
+    if (button.parentElement.classList.contains('item-price'))
       button.disabled = !turnOn;
   }
   document.getElementById('winRound').disabled = !turnOn;
@@ -1189,6 +1192,11 @@ function createItemDiv(item, isExtra) {
   buyButton.classList.add('mb-4px');
   buyButton.onclick = function() {buyItem(itemDiv, item)};
   buyButton.innerText = 'buy';
+  if (item.price < 0) {
+    priceEle.classList.add('green');
+    priceEle.innerText = '+$' + -1 * item.price;
+    buyButton.innerText = 'earn';
+  }
   itemPriceEle.append(priceEle, buyButton);
 
   itemDiv.append(freezeInput, itemEle, itemPriceEle);
