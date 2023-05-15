@@ -316,7 +316,15 @@ function printMints() {
     mintTsv += '\n' + nature + ' Mint\tmisc\t' + price 
       + "\tSet a Pokemon's Nature to " + nature + ' (+' + raisedStat + ', -' + loweredStat + ').';
   }
-  console.log(mintTsv);
+  console.log(mintTsv.substring(1));
+}
+function printTeraShards() {
+  let teraTsv = '';
+  for (const type of TYPES) {
+    teraTsv += '\n' + type + ' Tera Shards\tmisc\t'
+      + "\tSet a Pokemon's Tera Type to " + type + '.';
+  }
+  console.log(teraTsv.substring(1));
 }
 
 let allSpecies;
