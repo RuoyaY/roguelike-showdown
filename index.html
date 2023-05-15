@@ -523,6 +523,7 @@ function addRandomPokemon(choicesDiv, speciesName) {
 
   if (hasChooseButton) {
     let speciesId = randomKey(allSpecies);
+    // speciesId = 'unown';
     let species = allSpecies[speciesId];
     while (!isLegal(speciesId, species)) {
       speciesId = randomKey(allSpecies);
@@ -986,7 +987,7 @@ function addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds) {
 function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   let move;
   if (moveIds.length === 0)
-    move = randomMove();
+    move = randomMove(false);
   else 
     move = handleHiddenPower(moves[removeRandom(moveIds)]);
 
@@ -1206,11 +1207,11 @@ function randomTM() {
   if ((randy -= .2) < 0) {
     return randomUniversalTM();
   } else if ((randy -= .1) < 0) {
-    const move = randomMove();
+    const move = randomMove(true);
     return {
       name: 'Party TM #' + move.num,
       type: 'partyTM',
-      price: 10 + 10 * getPartyStrs().length,
+      price: 10 + tmPrice(move) * getPartyStrs().length,
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
   } else {
@@ -1236,7 +1237,7 @@ function randomTM() {
         return {
           name: 'TM #' + move.num,
           type: 'TM',
-          price: 10,
+          price: tmPrice(move),
           desc: tmDesc('Teach ' + enumerateWithOr(learnerNames) + ' the move ', move),
         };
       } else {
@@ -1247,22 +1248,31 @@ function randomTM() {
   }
 }
 function randomUniversalTM() {
-  const move = randomMove();
+  const move = randomMove(true);
   return {
     name: 'Universal TM #' + move.num,
     type: 'universalTM',
-    price: 20,
+    price: 10 + tmPrice(move),
     desc: tmDesc('Teach ANY Pokemon the move ', move),
   };
+}
+function tmPrice(move) {
+  if (move.isZ)
+    return 40;
+  else if (move.basePower > 75)
+    return 20;
+  else
+    return 10;
 }
 function tmDesc(strBeforeMoveName, move) {
   return strBeforeMoveName + spanWithType(move.name, move.type) + '.'
           + '\n' + spanWithClass(moveDesc(move, move.type).replace('\n\n', '\n'), 'attr');
 }
-function randomMove() {
+function randomMove(allowZMoves) {
   let move = randomProperty(moves);
   while (move.desc === "Power is equal to the base move's Z-Power." 
-    || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160))
+      || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160)
+      || (move.isZ && !allowZMoves))
     move = randomProperty(moves);
   return handleHiddenPower(move);
 }
