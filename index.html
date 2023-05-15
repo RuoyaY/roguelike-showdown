@@ -149,7 +149,7 @@ button:focus {
 }
 .misc { color: lightgray }
 .heldItem { color: orange }
-.tm { color: yellow }
+.TM { color: yellow }
 .partyTM { 
   background: linear-gradient(45deg, hotpink, yellow, hotpink);
   background-clip: text;
@@ -1176,10 +1176,10 @@ function itemInHTML(item) {
   let out = '<span class="' + item.type + ' big-text">' + item.name + '</span>';
   if (item.type === 'heldItem') {
     const desc = heldItems[getHeldItemId(item.name)].desc;
-    out += '\n' + addKeywordHoverText('Set a Pokemon\'s held item to ') + item.name + '.'
+    out += '\n' + itemDescInHTML('Set a Pokemon\'s held item to ') + item.name + '.'
     + '\n' + spanWithClass(desc, 'attr');
   } else if (!item.type.includes('TM')) {
-    out += '\n' + addKeywordHoverText(item.desc);
+    out += '\n' + itemDescInHTML(item.desc);
   } else {
     out += '\n' + item.desc;
   }
@@ -1191,9 +1191,11 @@ const KEYWORD_HOVER_TEXTS = {
   'Nature': 'add a new line under EVs\ne.g. "Bold Nature"',
   'gender': 'e.g. "Pikachu (F)"'
 };
-function addKeywordHoverText(itemDesc) {
+function itemDescInHTML(itemDesc) {
   for (const [keyword, hoverText] of Object.entries(KEYWORD_HOVER_TEXTS))
     itemDesc = itemDesc.replaceAll(keyword, spanWithTitle(keyword, hoverText));
+  for (const type of TYPES)
+    itemDesc = itemDesc.replaceAll(type, spanWithType(type, type));
   return itemDesc;
 }
 
@@ -1232,7 +1234,7 @@ function randomTM() {
       if (learnerNames.length > 0) {
         return {
           name: 'TM #' + move.num,
-          type: 'tm',
+          type: 'TM',
           price: 10,
           desc: tmDesc('Teach ' + enumerateWithOr(learnerNames) + ' the move ', move),
         };
