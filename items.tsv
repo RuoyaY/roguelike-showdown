@@ -1,7 +1,6 @@
 name	type	price	desc		
 Rare Candy	misc	16	Increase a Pokemon's level by one.		
-Rare Duo-Candy	misc	32	Increase a Pokemon's level by two.		
-Rare Tri-Candy	misc	48	Increase a Pokemon's level by three.		
+Rare Penta-Candy	misc	80	Increase a Pokemon's level by FIVE.		
 Rare Party Candy	misc	64	Increase EVERY Pokemon's level by one.		
 HP Max	misc	32	Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
 Max Protein	misc	32	Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
@@ -59,28 +58,28 @@ Life Orb	heldItem	30
 Mental Herb	heldItem	5			
 Power Herb	heldItem	10			
 Eject Button	heldItem	20			
-Salac Berry	heldItem	20	1/4, +1 stat		
-Liechi Berry	heldItem	20	1/4, +1 stat		
-Ganlon Berry	heldItem	20	1/4, +1 stat		
-Petaya Berry	heldItem	20	1/4, +1 stat		
-Apicot Berry	heldItem	20	1/4, +1 stat		
+Salac Berry	heldItem	20	1/4, +1 Spe		
+Liechi Berry	heldItem	20	1/4, +1 Atk		
+Ganlon Berry	heldItem	5	1/4, +1 Def		
+Petaya Berry	heldItem	20	1/4, +1 SpA		
+Apicot Berry	heldItem	5	1/4, +1 SpD		
 Lansat Berry	heldItem	10	1/4, 50% crit rate		
 Starf Berry	heldItem	20	1/4, +2 random stat	resistances + 2*immunities - weakness	
-Normal Tera Shards	misc	10	Set a Pokemon's Tera Type to Normal.	1	
-Fire Tera Shards	misc	20	Set a Pokemon's Tera Type to Fire.	3	
-Water Tera Shards	misc	10	Set a Pokemon's Tera Type to Water.	1	
-Grass Tera Shards	misc	5	Set a Pokemon's Tera Type to Grass.	-1	
-Electric Tera Shards	misc	15	Set a Pokemon's Tera Type to Electric.	2	
-Ice Tera Shards	misc	0	Set a Pokemon's Tera Type to Ice.	-3	
-Fighting Tera Shards	misc	5	Set a Pokemon's Tera Type to Fighting.	0	
-Poison Tera Shards	misc	20	Set a Pokemon's Tera Type to Poison.	3	
-Ground Tera Shards	misc	10	Set a Pokemon's Tera Type to Ground.	1	
-Flying Tera Shards	misc	15	Set a Pokemon's Tera Type to Flying.	2	
-Psychic Tera Shards	misc	5	Set a Pokemon's Tera Type to Psychic.	-1	
-Bug Tera Shards	misc	5	Set a Pokemon's Tera Type to Bug.	0	
-Rock Tera Shards	misc	5	Set a Pokemon's Tera Type to Rock.	-1	
-Ghost Tera Shards	misc	25	Set a Pokemon's Tera Type to Ghost.	4	
-Dragon Tera Shards	misc	10	Set a Pokemon's Tera Type to Dragon.	1	
-Dark Tera Shards	misc	10	Set a Pokemon's Tera Type to Dark.	1	
-Steel Tera Shards	misc	50	Set a Pokemon's Tera Type to Steel.	9	
-Fairy Tera Shards	misc	20	Set a Pokemon's Tera Type to Fairy.	3	
+Normal Tera Shards	misc	15	Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.	1	
+Fire Tera Shards	misc	20	Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.	3	
+Water Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-water">Water</span>.	1	
+Grass Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.	-1	
+Electric Tera Shards	misc	15	Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.	2	
+Ice Tera Shards	misc	0	Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.	-3	
+Fighting Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.	0	
+Poison Tera Shards	misc	20	Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.	3	
+Ground Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.	1	
+Flying Tera Shards	misc	15	Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.	2	
+Psychic Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.	-1	
+Bug Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.	0	
+Rock Tera Shards	misc	5	Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.	-1	
+Ghost Tera Shards	misc	25	Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.	4	
+Dark Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-dragon">Dark</span>.	1	
+Dragon Tera Shards	misc	10	Set a Pokemon's Tera Type to <span class="type-dark">Dragon</span>.	1	
+Steel Tera Shards	misc	50	Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.	9	
+Fairy Tera Shards	misc	20	Set a Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.	3	
