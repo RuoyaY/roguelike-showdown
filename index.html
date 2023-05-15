@@ -303,6 +303,21 @@ function printStats() {
   console.log(statStats);
   isCalculatingStats = false;
 }
+function printMints() {
+  let mintTsv = '';
+  for (const nature of Object.keys(NATURES)) {
+    const raisedStat = STATS[NATURES[nature][0]];
+    const loweredStat = STATS[NATURES[nature][1]];
+    if (raisedStat === loweredStat)
+      continue; // skip neutral natures
+    let price = 5;
+    if (loweredStat === 'Atk' || loweredStat === 'SpA')
+      price = 10;
+    mintTsv += '\n' + nature + ' Mint\tmisc\t' + price 
+      + "\tSet a Pokemon's Nature to " + nature + ' (+' + raisedStat + ', -' + loweredStat + ').';
+  }
+  console.log(mintTsv);
+}
 
 let allSpecies;
 loadAllSpecies();
