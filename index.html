@@ -206,7 +206,7 @@ button:focus {
     </div>
     <hr class="mt-1">
     <label for="money">$</label> <input id="money" type="number">
-    <button onclick="refreshShop(true)" id="refresh">$0 - refresh</button>
+    <button onclick="refreshShop(true)" id="refresh">refresh</button>
     <div id="shop"></div>
     <hr class="mt-1">
     <div class="mb-1">
@@ -252,7 +252,8 @@ const STAT_TOTAL_GOAL = 650;
 const NUM_SHOP_OPTIONS = 3;
 const WIN_INCOME = 100;
 const LOSE_INCOME = 120;
-const DELTA_REFRESH_COST = 5;
+const BASE_REFRESH_COST = 5;
+const DELTA_REFRESH_COST = 0;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // functionally identical because of their ability, and...
@@ -1119,7 +1120,7 @@ function nextRound() {
   document.getElementById('skip').hidden = !isPartyFull;
 
   const refreshButton = document.getElementById('refresh');
-  refreshButton.textContent = '$0 - refresh';
+  refreshButton.textContent = '$' + BASE_REFRESH_COST + ' - refresh';
 }
 
 function refreshShop(isViaMoney) {
