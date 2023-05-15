@@ -863,7 +863,10 @@ function getStat(species, level, evsStr, nature, stat) {
       multiplier += .1;
     if (stat === loweredStat)
       multiplier -= .1;
-    return Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
+    const statNum = Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
+    if (stat === 'Atk' || stat === 'SpA')
+      return Math.round(statNum * (2*level/5 + 2)/22);
+    return statNum;
   }
 }
 
