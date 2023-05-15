@@ -198,7 +198,8 @@ button:focus {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
-    <button id="nextRound" onclick="nextRound()">next round</button>
+    <button id="winRound" onclick="winRound()">win</button>
+    <button id="loseRound" onclick="loseRound()">lose</button>
     <div id="choices" class="flex-row"></div>
     <div class="flex-col-centered">
       <button id="skip" onclick="skipPokemonChoice()">skip</button>
@@ -249,7 +250,8 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
 
 const STAT_TOTAL_GOAL = 650;
 const NUM_SHOP_OPTIONS = 3;
-const INCOME = 50;
+const WIN_INCOME = 100;
+const LOSE_INCOME = 120;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // functionally identical because of their ability, and...
@@ -352,6 +354,8 @@ document.getElementById('speciesInput').addEventListener('keyup', function(event
 document.getElementById('money').value = 0;
 document.getElementById('skip').hidden = true;
 document.getElementById('refresh').disabled = true;
+document.getElementById('winRound').textContent = 'win ($' + WIN_INCOME + ')';
+document.getElementById('loseRound').textContent = 'lose ($' + LOSE_INCOME + ')';
 
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
@@ -1027,7 +1031,8 @@ function toggleNonPokemonChoices(turnOn) {
     if (button.innerText === 'buy')
       button.disabled = !turnOn;
   }
-  document.getElementById('nextRound').disabled = !turnOn;
+  document.getElementById('winRound').disabled = !turnOn;
+  document.getElementById('loseRound').disabled = !turnOn;
   document.getElementById('refresh').disabled = !turnOn;
 }
 
@@ -1075,15 +1080,15 @@ function copyParty() {
   navigator.clipboard.writeText(partyStr);
 }
 
+function winRound() {
+  if (!pay(-1 * WIN_INCOME)) return;
+  nextRound();
+}
+function loseRound() {
+  if (!pay(-1 * LOSS_INCOME)) return;
+  nextRound();
+}
 function nextRound() {
-  const moneyEle = document.getElementById('money');
-  let money = parseInt(moneyEle.value);
-  if (isNaN(money)) {
-    alert('Invalid money value!');
-    return;
-  }
-  moneyEle.value = money + INCOME;
-
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
   addChoices(choicesDiv);
