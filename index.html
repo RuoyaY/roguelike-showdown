@@ -252,6 +252,7 @@ const STAT_TOTAL_GOAL = 650;
 const NUM_SHOP_OPTIONS = 3;
 const WIN_INCOME = 100;
 const LOSE_INCOME = 120;
+const DELTA_REFRESH_COST = 5;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // functionally identical because of their ability, and...
@@ -1124,7 +1125,7 @@ function refreshShop(isViaMoney) {
     const refreshButton = document.getElementById('refresh');
     const price = parseInt(refreshButton.textContent.substring(1, refreshButton.textContent.indexOf(' ')));
     if(!pay(price)) return;
-    refreshButton.textContent = '$' + (price+1) + ' - refresh';
+    refreshButton.textContent = '$' + (price + DELTA_REFRESH_COST) + ' - refresh';
   }
 
   killAllChildren(shopDiv);
