@@ -484,12 +484,22 @@ function addHardcodedItems() {
   {
     name: 'Pledge TMs', type: 'universalTM', price: 80,
     desc: 'Teach ANY 3 Pokemon ' + moveInHTML('Fire Pledge') + ', ' + moveInHTML('Water Pledge') 
-      + ', and ' + moveInHTML('Grass Pledge') + ' (one of each).',
+      + ', and ' + moveInHTML('Grass Pledge') + ' (one each).',
+  },
+  {
+    name: 'Fusion TMs', type: 'universalTM', price: 100,
+    desc: 'Teach ANY 2 Pokemon ' + moveInHTML('Fusion Flare') + ' and ' + moveInHTML('Fusion Bolt') 
+      + ' (one each).',
   },
   {
     name: 'Stockpile TMs', type: 'universalTM', price: 30,
     desc: 'Teach ANY Pokemon any/all of following: ' + moveInHTML('Stockpile') + ', ' + moveInHTML('Spit Up')
       + ', ' + moveInHTML('Swallow') + '.',
+  },
+  {
+    name: 'Defense Curl TMs', type: 'universalTM', price: 30,
+    desc: 'Teach ANY Pokemon any/all of following: ' + moveInHTML('Defense Curl') + ', ' + moveInHTML('Rollout')
+      + ', ' + moveInHTML('Ice Ball') + '.',
   },
   {
     name: 'Rainbow Hidden Power TM', type: 'universalTM', price: 20,
@@ -1235,7 +1245,7 @@ function refreshShop(isViaMoney) {
       shop.append(frozenItems[shopDiv.childNodes.length]);
 
     let item = randomElement(items);
-    // item = items[2];
+    // item = items[3];
     if (Math.random() < 1/3)
       item = randomTM();
     shopDiv.append(createItemDiv(item));
