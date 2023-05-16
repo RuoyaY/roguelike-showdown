@@ -874,7 +874,10 @@ function statsInHTML(pokemonStr) {
   let out = '';
   for (const stat of STATS) {
     const statNum = getStat(species, level, evsStr, nature, stat);
-    out += spanWithClass((statNum+'').padStart(3) + ' ' + stat, 'stat-' + stat.toLowerCase()) + ' ';
+    let statStr = statNum + ' ' + stat;
+    if (stat === 'Atk' || stat === 'SpA')
+      statStr = spanWithTitle(statStr, 'Unadjusted ' + stat + ': ' + getUnadjustedStat(species, level, evsStr, nature, stat));
+    out += spanWithClass(' '.repeat(3-(statNum+'').length) + statStr, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
       out += '\n' + ' '.repeat('... HP '.length);
   }
@@ -898,6 +901,12 @@ function getStatTotal(species, level, evsStr, nature) {
   return statTotal;
 }
 function getStat(species, level, evsStr, nature, stat) {
+  const actualStat = getUnadjustedStat(species, level, evsStr, nature, stat);
+  if (stat === 'Atk' || stat === 'SpA')
+    return Math.round(actualStat * (2*level/5 + 2)/22);
+  return actualStat;
+}
+function getUnadjustedStat(species, level, evsStr, nature, stat) {
   const baseStat = species.baseStats[stat.toLowerCase()];
 
   let ev = 0;
@@ -919,10 +928,7 @@ function getStat(species, level, evsStr, nature, stat) {
       multiplier += .1;
     if (stat === loweredStat)
       multiplier -= .1;
-    const statNum = Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
-    if (stat === 'Atk' || stat === 'SpA')
-      return Math.round(statNum * (2*level/5 + 2)/22);
-    return statNum;
+    return Math.floor((Math.floor((2*baseStat + 31 + Math.floor(ev/4)) * level/100) + 5) * multiplier);
   }
 }
 
