@@ -1317,6 +1317,25 @@ function randomTM() {
       price: 20 + tmPrice(move) * getPartyStrs().length / 2,
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
+  } else if ((randy -= .1) < 0) {
+    const typeMultiset = [];
+    const pokemonStrs = getPartyStrs();
+    for (const pokemonStr of pokemonStrs) {
+      typeMultiset.push(...allSpecies[getSpeciesIdOfPokemon(pokemonStr)].types);
+    }
+    if (TYPES.forEach(type => !typeMultiset.includes(type)))
+      return randomUniversalTM(); // no valid Type TMs available, so a Universal TM is returned instead
+    let move;
+    do {
+      move = randomMove(true);
+    } while (!typeMultiset.includes(move.type));
+    const type = move.type;
+    return {
+      name: type + ' TM #' + move.num,
+      type: 'type-' + type.toLowerCase(),
+      price: 5 + tmPrice(move),
+      desc: tmDesc('Teach ANY ' + type.toUpperCase() + '-TYPE the move ', move),
+    };
   } else {
     let possibleMoves = [];
     const pokemonStrs = getPartyStrs();
