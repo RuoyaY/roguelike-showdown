@@ -733,7 +733,7 @@ function randomOfSpecies(speciesName) {
 
   if (species.baseSpecies === 'Arceus') {
     displayName = species.baseSpecies;
-    heldItemName = randomElement(species.requiredItems);
+    heldItemName = species.requiredItems[0];
   }
   else if (species.baseSpecies === 'Silvally' || species.baseSpecies === 'Genesect') {
     displayName = species.baseSpecies;
