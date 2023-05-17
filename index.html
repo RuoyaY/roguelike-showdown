@@ -153,14 +153,10 @@ button:focus {
 .misc { color: lightgray }
 .heldItem { color: orange }
 .TM { color: yellow }
-.partyTM { 
-  background: linear-gradient(45deg, hotpink, yellow, hotpink);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
- }
-.universalTM {
-  background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, rgba(255,255,0,1) 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%);
+.partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
+.universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, rgba(255,255,0,1) 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
+.TMAndZCrystal { background: linear-gradient(45deg, yellow, orange); } 
+.partyTM, .universalTM, .TMAndZCrystal {  
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -408,6 +404,30 @@ function printPlatesAndMemories() {
       continue;
     const itemName = allSpecies['silvally' + type.toLowerCase()].requiredItem;
     tsv += itemName + '\theldItem\t\t\t' + speciesIds.join(',') + '\n';
+  }
+  console.log(tsv);
+}
+function printZCrystals() {
+  let tsv = '';
+  for (const heldItem of Object.values(heldItems)) {
+    if (heldItem.desc.startsWith('If holder has a'))
+      tsv += heldItem.name + '\theldItem\n';
+  }
+  for (const heldItem of Object.values(heldItems)) {
+    if (!heldItem.desc.startsWith('If holder has a') && heldItem.name.endsWith(' Z')) {
+      let preZMove;
+      const itCanUseIndex = heldItem.desc.indexOf(', it can use ');
+      if (itCanUseIndex !== -1) {
+        const withIndex = heldItem.desc.indexOf('with ');
+        preZMove = heldItem.desc.substring(withIndex + 'with '.length, itCanUseIndex);
+      } else if (heldItem.name === 'Lunalium Z')
+        preZMove = 'Moongeist Beam'
+      else if (heldItem.name === 'Solganium Z')
+        preZMove = 'Sunsteel Strike'
+      else if (heldItem.name === 'Ultranecrozium Z')
+        preZMove = 'Photon Geyser'
+      tsv += preZMove + ' TM & ' + heldItem.name + '\tTMandZCrystal\n';
+    }
   }
   console.log(tsv);
 }
