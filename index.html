@@ -665,7 +665,7 @@ function addRandomPokemon(choicesDiv, speciesName) {
 
   if (hasChooseButton) {
     let speciesId = randomKey(allSpecies);
-    // speciesId = 'unown';
+    // speciesId = 'houndoommega';
     let species = allSpecies[speciesId];
     while (!isLegal(speciesId, species)) {
       speciesId = randomKey(allSpecies);
@@ -817,7 +817,8 @@ function getLearnset(speciesId) {
 
     learnset = new Set(Object.keys(learnsetData.learnset));
 
-    if (learnset.length < 4) {
+    let baseSpeciesId = speciesId;
+    if (learnset.size < 4) {
       let changesFrom;
       if (species.changesFrom)
         changesFrom = species.changesFrom;
@@ -825,14 +826,14 @@ function getLearnset(speciesId) {
         changesFrom = species.baseSpecies;
       
       if (changesFrom) {
-        let baseSpeciesId = getSpeciesId(changesFrom);
+        baseSpeciesId = getSpeciesId(changesFrom);
         const baseSepeciesLearnset = Object.keys(learnsets[baseSpeciesId].learnset);
         for (const moveId of baseSepeciesLearnset)
-          learnset.add(moveId)
+          learnset.add(moveId);
       }
     }
 
-    const preEvoName = allSpecies[speciesId].prevo;
+    const preEvoName = allSpecies[baseSpeciesId].prevo;
     if (preEvoName) {
       const preEvoLearnset = getLearnset(getSpeciesId(preEvoName));
       for (const moveId of preEvoLearnset)
