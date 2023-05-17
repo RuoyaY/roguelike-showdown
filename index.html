@@ -251,6 +251,8 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
   'Dragon', 'Steel', 'Fairy'];
 
+const ITEMS_FILE_NAME = 'items.tsv';
+
 const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
 const FOUR_POINT_FIVE_ABILITY_VALUE = 700/650;
@@ -467,20 +469,27 @@ function loadItems() {
     const responseLines = this.response.split('\n');
     for (let i = 1; i < responseLines.length; i++) {
       const splitByTab = responseLines[i].split('\t');
-      items.push({
+
+      const item = {
         name: splitByTab[0],
         type: splitByTab[1],
         price: splitByTab[2],
-        weight: splitByTab[3],
-        desc: splitByTab[4],
-      });
+        desc: splitByTab[5],
+      }
+      if (splitByTab[3] !== '')
+        item.weight = splitByTab[3];
+      if (splitByTab[4] !== '')
+        item.requiredSpecies = splitByTab[4].split(',');
+      items.push(item);
     }
   }
-  xhttp.open("GET", "items.tsv");
+  xhttp.open("GET", ITEMS_FILE_NAME);
   xhttp.send();
 }
 
 function addHardcodedItems() {
+  if (ITEMS_FILE_NAME !== 'items.tsv')
+    return;
   items.push(
   {
     name: 'Pledge TMs', type: 'universalTM', price: 80,
@@ -1175,6 +1184,9 @@ function getEmptyPartyDiv() {
   return null;
 }
 
+function getPartySpeciesIds() {
+  return getPartyStrs().map(pokemonStr => getSpeciesIdOfPokemon(pokemonStr));
+}
 /*
 * Does not include empty slots
 */
@@ -1255,9 +1267,10 @@ function refreshShop(isViaMoney) {
       shop.append(frozenItems[shopDiv.childNodes.length]);
 
     let item = randomElement(items);
-    while (item.weight && !(Math.random() < item.weight))
-      item = randomElement(items);
     // item = items[3];
+    while ((item.weight && !(Math.random() < item.weight))
+        || (item.requiredSpecies && !getPartySpeciesIds().some(speciesId => item.requiredSpecies.includes(speciesId))))
+      item = randomElement(items);
     if (Math.random() < 1/3)
       item = randomTM();
     shopDiv.append(createItemDiv(item));
@@ -1341,10 +1354,9 @@ function randomTM() {
     };
   } else if ((randy -= .1) < 0) {
     const typeMultiset = [];
-    const pokemonStrs = getPartyStrs();
-    for (const pokemonStr of pokemonStrs) {
-      typeMultiset.push(...allSpecies[getSpeciesIdOfPokemon(pokemonStr)].types);
-    }
+    const speciesIds = getPartySpeciesIds();
+    for (const speciesId of speciesIds)
+      typeMultiset.push(...allSpecies[speciesId].types);
     if (TYPES.forEach(type => !typeMultiset.includes(type)))
       return randomUniversalTM(); // no valid Type TMs available, so a Universal TM is returned instead
     let move;
