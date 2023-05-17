@@ -837,11 +837,19 @@ function getLevel(species, statTotalGoal) {
 
 function getSpeciesNameOfPokemon(pokemonStr) {
   let firstLine = pokemonStr.split('\n')[0];
-  if (firstLine.includes('@'))
-    firstLine = firstLine.substring(0, firstLine.indexOf(' @'));
-  if (firstLine.includes('('))
-    firstLine = firstLine.substring(0, firstLine.indexOf(' ('));
-  return firstLine;
+  let name = firstLine;
+  if (name.includes(' @'))
+    name = name.substring(0, name.indexOf(' @'));
+  if (name.includes(' ('))
+    name = name.substring(0, name.indexOf(' ('));
+  if (firstLine.includes(' @ ')) {
+    let heldItem = firstLine.split(' @ ')[1];
+    const holdingItemForme = Object.values(allSpecies).find(species => species.baseSpecies === name && 
+                      (species.requiredItem === heldItem || species.requiredItems?.includes(heldItem)));
+    if (holdingItemForme)
+      name = holdingItemForme.name;
+  }
+  return name;
 }
 function getSpeciesIdOfPokemon(pokemonStr) {
   return getSpeciesId(getSpeciesNameOfPokemon(pokemonStr));
