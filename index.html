@@ -670,11 +670,20 @@ function getImageURL(speciesName) {
   return 'url(https://play.pokemonshowdown.com/sprites/gen5/' + getImageUrlName(speciesName) + '.png)';
 }
 function getImageUrlName(speciesName) {
+  if (speciesName === 'Unown-Question')
+    return 'unown-qm';
+  if (speciesName === 'Unown-Exclamation')
+    return 'unown-em';
   const species = allSpecies[getSpeciesId(speciesName)];
+  if (species.baseSpecies || species.cosmeticFormes?.includes(speciesName)) {
+    let baseSpeciesName = species.baseSpecies ?? species.name;
+    let formeName = speciesName.substring(baseSpeciesName.length + 1);
+    speciesName = baseSpeciesName.replaceAll('-', '') + '-' + formeName.replaceAll('-', '');
+  } else {
+    speciesName = speciesName.replaceAll('-', '');
+  }
   if (speciesName.includes('Flabébé'))
     speciesName = speciesName.replace('Flabébé', 'Flabebe');
-  if (!(species.baseSpecies || species.cosmeticFormes?.includes(speciesName))) // handles Nidoran-M, Ho-Oh, etc
-    speciesName = speciesName.replaceAll('-', '');
   return speciesName.toLowerCase().replaceAll(/[^a-zA-Z0-9\-]/g, '');
 }
 
