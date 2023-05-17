@@ -1336,7 +1336,7 @@ function itemInHTML(item) {
   let out = '<span class="' + item.type + ' big-text">' + item.name + '</span>';
   if (item.type === 'heldItem') {
     const desc = heldItems[getHeldItemId(item.name)].desc;
-    out += '\n' + itemDescInHTML('Set a Pokemon\'s held item to ') + item.name + '.'
+    out += '\n' + itemDescInHTML("Set a Pokemon's held item to ") + item.name + '.'
     + '\n' + spanWithClass(desc, 'attr');
   } else if (!item.type.includes('TM')) {
     out += '\n' + itemDescInHTML(item.desc);
