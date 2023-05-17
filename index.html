@@ -866,8 +866,13 @@ function getSpeciesNameOfPokemon(pokemonStr) {
     name = name.substring(0, name.indexOf(' ('));
   if (firstLine.includes(' @ ')) {
     let heldItem = firstLine.split(' @ ')[1];
-    const holdingItemForme = Object.values(allSpecies).find(species => species.baseSpecies === name && 
+    let holdingItemForme = Object.values(allSpecies).find(species => species.baseSpecies === name && 
                       (species.requiredItem === heldItem || species.requiredItems?.includes(heldItem)));
+    if (heldItem === 'Ultranecrozium Z')
+      if (name === 'Necrozma-Dusk-Mane' || name === 'Necrozma-Dawn-Wings')
+        name = 'Necrozma-Ultra';
+      else
+        holdingItemForme = null;
     if (holdingItemForme)
       name = holdingItemForme.name;
   }
