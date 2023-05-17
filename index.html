@@ -1086,14 +1086,8 @@ function choosePokemon(choicesDiv, pokemonStr) {
   updatePokemonDiv(pokeDiv);
   
   killAllChildren(choicesDiv);
-
-  if (pokemonCanTera(pokemonStr)) {
-    const typeChoices = [];
-    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
-    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
-  } else {
-    beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr);
-  }
+  
+  beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr);
 }
 function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
   if (TYPES.every(type => typeChoices.includes(type)))
@@ -1127,7 +1121,7 @@ function chooseTera(choicesDiv, pokeDiv, type) {
 
   killAllChildren(choicesDiv);
 
-  beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr);
+  endPokemonChoosing(pokeDiv);
 }
 function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
   const speciesId = getSpeciesIdOfPokemon(pokemonStr);
@@ -1168,10 +1162,18 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
 
   if (pokemonStr.includes('\n-\n')) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
+  } else if (pokemonCanTera(pokemonStr)) {
+    const typeChoices = [];
+    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
+    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
   } else {
-    togglePokeDiv(pokeDiv, true);
-    toggleNonPokemonChoices(true);
+    endPokemonChoosing(pokeDiv);
   }
+}
+
+function endPokemonChoosing(pokeDiv) {
+  togglePokeDiv(pokeDiv, true);
+  toggleNonPokemonChoices(true);
 }
 
 function togglePokeDiv(pokeDiv, canEdit) {
