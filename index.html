@@ -396,16 +396,18 @@ function printTeraShards() {
 function printPlatesAndMemories() {
   let tsv = '';
   let speciesIds = Object.keys(allSpecies).filter(speciesId => speciesId.startsWith('arceus'));
-  for (const speciesId of speciesIds) {
-    const itemName = allSpecies[speciesId].requiredItems?.[0];
-    if (itemName)
-      tsv += itemName + '\theldItem\t\t\t' + speciesIds.join(',') + '\n';
+  for (const type of TYPES) {
+    if (type === 'Normal')
+      continue;
+    const itemName = allSpecies['arceus' + type.toLowerCase()].requiredItems?.[0];
+    tsv += itemName + '\theldItem\t\t\t' + speciesIds.join(',') + '\n';
   }
   speciesIds = Object.keys(allSpecies).filter(speciesId => speciesId.startsWith('silvally'));
-  for (const speciesId of speciesIds) {
-    const itemName = allSpecies[speciesId].requiredItem;
-    if (itemName)
-      tsv += itemName + '\theldItem\t\t\t' + speciesIds.join(',') + '\n';
+  for (const type of TYPES) {
+    if (type === 'Normal')
+      continue;
+    const itemName = allSpecies['silvally' + type.toLowerCase()].requiredItem;
+    tsv += itemName + '\theldItem\t\t\t' + speciesIds.join(',') + '\n';
   }
   console.log(tsv);
 }
