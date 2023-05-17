@@ -320,14 +320,11 @@ const DELTA_REFRESH_COST = 0;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // functionally identical because of their ability, and...
-  // different stat total -> different level
+  //    misleading type
+  'castformsunny', 'castformrainy', 'castformsnowy',
+  //    diferent stat total -> different level
   'wishiwashi',
   'miniormeteor',
-];
-const ILLEGAL_BASE_SPECIES = [
-  // functionally identical because of their ability, and...
-  // misleading type
-  'Castform', 'Arceus', 'Silvally', 'Genesect',
 ];
 const IDENTICAL_MONS = [
   ['sinistea', 'sinisteaantique'],
@@ -617,8 +614,6 @@ function isLegal(speciesId, species) {
     return false;
   if (ILLEGAL_MONS.includes(speciesId))
     return false;
-  if (species.baseSpecies && ILLEGAL_BASE_SPECIES.includes(species.baseSpecies))
-    return false;
   const identicals = IDENTICAL_MONS.find(arr => arr.includes(speciesId));
   if (identicals && speciesId != randomElement(identicals)) // each forme has a 1/n chance of being legal
     return false;
@@ -718,7 +713,14 @@ function randomOfSpecies(speciesName) {
     gender = Math.random() < probMale ? 'M' : 'F';
   }
 
-  // currently pokemon can't generate w/ held items
+  if (species.baseSpecies === 'Arceus') {
+    displayName = species.baseSpecies;
+    heldItemName = randomElement(species.requiredItems);
+  }
+  else if (species.baseSpecies === 'Silvally' || species.baseSpecies === 'Genesect') {
+    displayName = species.baseSpecies;
+    heldItemName = species.requiredItem;
+  }
 
   let pokemonStr = displayName;
   if (gender !== 'N')
