@@ -478,6 +478,7 @@ document.getElementById('skip').hidden = true;
 document.getElementById('refresh').disabled = true;
 document.getElementById('winRound').textContent = 'win ($' + WIN_INCOME + ')';
 document.getElementById('loseRound').textContent = 'lose ($' + LOSE_INCOME + ')';
+document.getElementById('loseRound').hidden = true;
 
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
@@ -1263,6 +1264,8 @@ function loseRound() {
   nextRound();
 }
 function nextRound() {
+  document.getElementById('loseRound').hidden = false;
+
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
   addChoices(choicesDiv);
