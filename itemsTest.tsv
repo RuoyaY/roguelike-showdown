@@ -1,3 +1,4 @@
 [KEEP THIS LINE]
-Rare Party Candy	misc	15n			Set held item Pokemon's EV by one.	
-Rare Party Candy	misc	15n			Increase EVERY Pokemon's level by one.	
+Volt Tackle TM & Pikanium Z	TMAndZCrystal	100		pikachu	Teach Pikachu *Volt Tackle* and set its held item to *Pikanium Z*.		
+Toxic Orb	heldItem	-20					
+Heavy-Duty Boots	heldItem	5					
