@@ -1305,7 +1305,7 @@ function refreshShop(isViaMoney) {
     if (item.type === 'heldItem') {
       const heldItemName = item.name;
       const desc = heldItems[getHeldItemId(item.name)].desc;
-      if (Math.random() < .01 && !item.requiredSpecies) {
+      if (Math.random() < .05 && !item.requiredSpecies) {
         item.name += ' Party';
         item.type = 'heldItemParty';
         if (item.price === 1)
