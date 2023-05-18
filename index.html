@@ -249,8 +249,6 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
   'Dragon', 'Steel', 'Fairy'];
 
-const ITEMS_FILE_NAME = 'items.tsv';
-
 const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
 const FOUR_POINT_FIVE_ABILITY_VALUE = 700/650;
@@ -524,7 +522,7 @@ function loadItems() {
       items.push(item);
     }
   }
-  xhttp.open("GET", ITEMS_FILE_NAME);
+  xhttp.open("GET", 'items.tsv');
   xhttp.send();
 }
 
@@ -1377,7 +1375,7 @@ const KEYWORD_HOVER_TEXTS = {
 function itemDescInHTML(itemDesc, isTM) {
   if (!isTM)
     for (const [keyword, hoverText] of Object.entries(KEYWORD_HOVER_TEXTS))
-      itemDesc = itemDesc.replaceAll(keyword, spanWithTitle(keyword, hoverText));
+      itemDesc = itemDesc.replaceAll(new RegExp('\\b'+keyword+'\\b', 'g'), spanWithTitle(keyword, hoverText));
   const splitByAsterisk = itemDesc.split('*');
   itemDesc = '';
   for (let i = 0; i < splitByAsterisk.length; i++) {
