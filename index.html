@@ -1306,6 +1306,21 @@ function refreshShop(isViaMoney) {
       shopDiv.append(frozenItems[i]);
   }
 }
+function getItemPrice(item) {
+  let price = item.price;
+  if (typeof price === 'string' && price.includes('n')) {
+    // handle item prices of the form an, an+b, or an-b
+    const splitByN = price.split('n');
+    let a = parseInt(splitByN[0]);
+    if (isNaN(a))
+      a = 1;
+    let b = parseInt(splitByN[1]);
+    if (isNaN(b))
+      b = 0;
+    price = a * getPartyStrs().length + b;
+  }
+  return price;
+}
 function createItemDiv(item, isExtra) {
   const itemDiv = document.createElement('div');
   itemDiv.classList.add('flex-row', 'mt-1');
@@ -1321,14 +1336,16 @@ function createItemDiv(item, isExtra) {
   itemEle.classList.add('info-box', 'item');
   itemEle.innerHTML = itemInHTML(item);
 
+  const itemPrice = getItemPrice(item);
+
   const itemPriceEle = document.createElement('div');
   itemPriceEle.classList.add('info-box', 'item-price', 'flex-col-centered');
   const priceEle = document.createElement('h2');
   priceEle.classList.add('mb-4px');
-  priceEle.innerText = '$' + item.price;
+  priceEle.innerText = '$' + itemPrice;
   const buyButton = document.createElement('button');
   buyButton.classList.add('mb-4px');
-  buyButton.onclick = function() {buyItem(itemDiv, item)};
+  buyButton.onclick = function() {buyItem(itemDiv, itemPrice)};
   buyButton.innerText = 'buy';
   if (item.price < 0) {
     priceEle.classList.add('green');
@@ -1390,7 +1407,7 @@ function randomTM() {
     return {
       name: 'Party TM #' + move.num,
       type: 'partyTM',
-      price: 20 + tmPrice(move) * getPartyStrs().length / 2,
+      price: tmPrice(move)/2 + 'n+20',
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
   } else if ((randy -= .2) < 0) {
@@ -1463,7 +1480,7 @@ function randomUniversalTM() {
     desc: tmDesc('Teach ANY Pokemon the move ', move),
   };
 }
-function tmPrice(move) {
+function tmPrice(move) { // expected to be a multiple of 10, for Party TM prices
   if (move.isZ)
     return 90;
   else if (move.isNonstandard === 'LGPE')
@@ -1509,8 +1526,8 @@ function enumerateWithOr(strArr) {
   return out;
 }
 
-function buyItem(itemDiv, item) {
-  if (!pay(item.price)) return;
+function buyItem(itemDiv, itemPrice) {
+  if (!pay(itemPrice)) return;
   
   const buyButton = itemDiv.querySelector('button');
   const checkmarkEle = document.createElement('h2');
