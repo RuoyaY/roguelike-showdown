@@ -482,7 +482,6 @@ function loadMoves() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     moves = JSON.parse(this.responseText);
-    addHardcodedItems(); // uses moves data
   }
   xhttp.open("GET", "moves.json");
   xhttp.send();
@@ -525,37 +524,6 @@ function loadItems() {
   }
   xhttp.open("GET", ITEMS_FILE_NAME);
   xhttp.send();
-}
-
-function addHardcodedItems() {
-  if (ITEMS_FILE_NAME !== 'items.tsv')
-    return;
-  items.push(
-  {
-    name: 'Pledge TMs', type: 'universalTM', price: 80,
-    desc: 'Teach ANY 3 Pokemon ' + moveInHTML('Fire Pledge') + ', ' + moveInHTML('Water Pledge') 
-      + ', and ' + moveInHTML('Grass Pledge') + ' (one each).',
-  },
-  {
-    name: 'Fusion TMs', type: 'universalTM', price: 100,
-    desc: 'Teach ANY 2 Pokemon ' + moveInHTML('Fusion Flare') + ' and ' + moveInHTML('Fusion Bolt') 
-      + ' (one each).',
-  },
-  {
-    name: 'Stockpile TMs', type: 'universalTM', price: 30,
-    desc: 'Teach ANY Pokemon any/all of following: ' + moveInHTML('Stockpile') + ', ' + moveInHTML('Spit Up')
-      + ', ' + moveInHTML('Swallow') + '.',
-  },
-  {
-    name: 'Defense Curl TMs', type: 'universalTM', price: 30,
-    desc: 'Teach ANY Pokemon any/all of following: ' + moveInHTML('Defense Curl') + ', ' + moveInHTML('Rollout')
-      + ', ' + moveInHTML('Ice Ball') + '.',
-  },
-  {
-    name: 'Rainbow Hidden Power TM', type: 'universalTM', price: 20,
-    desc: 'Teach ANY Pokemon any Hidden Power (other than Normal or Fairy) (e.g. ' + moveInHTML('Hidden Power Ice') + ').',
-  }
-  );
 }
 
 function fillPartyDivs() {
@@ -900,7 +868,7 @@ function pokemonInHTML(pokemonStr) {
       if (strLine.includes(' @ ')) {
         strLineSplit = strLine.split(' @ ');
         heldItem = heldItems[getHeldItemId(strLineSplit[1])];
-        firstLine = strLineSplit[0] + ' @ ' + spanWithTitle(strLineSplit[1], heldItem.desc);
+        firstLine = strLineSplit[0] + ' @ ' + heldItemInHTML(strLineSplit[1]);
       }
       out += firstLine;
     } else if (strLine.startsWith('Ability: ')) {
@@ -1376,10 +1344,8 @@ function itemInHTML(item) {
     const desc = heldItems[getHeldItemId(item.name)].desc;
     out += '\n' + itemDescInHTML("Set a Pokemon's held item to ") + item.name + '.'
     + '\n' + spanWithClass(desc, 'attr');
-  } else if (!item.type.includes('TM')) {
-    out += '\n' + itemDescInHTML(item.desc);
   } else {
-    out += '\n' + item.desc;
+    out += '\n' + itemDescInHTML(item.desc, item.type.includes('TM'));
   }
   return out;
 }
@@ -1389,10 +1355,27 @@ const KEYWORD_HOVER_TEXTS = {
   'Nature': 'add a new line under EVs\ne.g. "Bold Nature"',
   'gender': 'e.g. "Pikachu (F)"'
 };
-function itemDescInHTML(itemDesc) {
-  for (const [keyword, hoverText] of Object.entries(KEYWORD_HOVER_TEXTS))
-    itemDesc = itemDesc.replaceAll(keyword, spanWithTitle(keyword, hoverText));
+function itemDescInHTML(itemDesc, isTM) {
+  if (!isTM)
+    for (const [keyword, hoverText] of Object.entries(KEYWORD_HOVER_TEXTS))
+      itemDesc = itemDesc.replaceAll(keyword, spanWithTitle(keyword, hoverText));
+  const splitByAsterisk = itemDesc.split('*');
+  itemDesc = '';
+  for (let i = 0; i < splitByAsterisk.length; i++) {
+    let str = splitByAsterisk[i];
+    if (i % 2 == 1) {
+      if (getMoveId(str))
+        str = moveInHTML(str);
+      else if (getHeldItemId(str))
+        str = heldItemInHTML(str);
+    }
+    itemDesc += str;
+  }
   return itemDesc;
+}
+
+function heldItemInHTML(heldItemName) {
+  return spanWithTitle(heldItemName, heldItems[getHeldItemId(heldItemName)].desc);
 }
 
 function randomTM() {
