@@ -1396,7 +1396,7 @@ function createItemDiv(item, isExtra) {
   priceEle.innerText = '$' + itemPrice;
   const buyButton = document.createElement('button');
   buyButton.classList.add('mb-4px');
-  buyButton.onclick = function() {buyItem(itemDiv, itemPrice)};
+  buyButton.onclick = function() {buyItem(itemDiv, item, itemPrice)};
   buyButton.innerText = 'buy';
   if (itemPrice < 0) {
     priceEle.classList.add('green');
@@ -1571,9 +1571,12 @@ function enumerateWithOr(strArr) {
   return out;
 }
 
-function buyItem(itemDiv, itemPrice) {
+function buyItem(itemDiv, item, itemPrice) {
   if (!pay(itemPrice)) return;
   
+  if (item.type === 'pokeball')
+    document.getElementById('pokeball').value = item.name;
+
   const buyButton = itemDiv.querySelector('button');
   const checkmarkEle = document.createElement('h2');
   checkmarkEle.classList.add('mb-4px');

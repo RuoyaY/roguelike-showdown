@@ -1,4 +1,3 @@
 [KEEP THIS LINE]
-Volt Tackle TM & Pikanium Z	TMAndZCrystal	100		pikachu	Teach Pikachu *Volt Tackle* and set its held item to *Pikanium Z*.		
-Toxic Orb	heldItem	-20					
-Heavy-Duty Boots	heldItem	5					
+Great Ball	pokeball	15			Next round, Pokemon are 1 level higher than usual.		
+Ultra Ball	pokeball	80			Next round, Pokemon are 5 levels higher than usual.		

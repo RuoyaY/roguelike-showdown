@@ -1,7 +1,9 @@
 name	type	price	weight [0-1]	required species	desc		
 Rare Candy	misc	15			Increase a Pokemon's level by one.		
 Rare Penta-Candy	misc	80			Increase a Pokemon's level by FIVE.		
-Rare Party Candy	misc	15n			Increase every Pokemon's level by one.		
+Rare Candy Party	misc	15n			Increase EVERY Pokemon's level by one.		
+Doom Seed	misc	-15			Decrease a Pokemon's level by one.		
+Doom Seed Party	misc	-15n			Decrease EVERY Pokemon's level by one.		
 HP Max	misc	30			Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
 Max Protein	misc	30			Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
 Max Iron	misc	30			Set a Pokemon's Def EV to 252 (max 508 total EVs).		
@@ -61,7 +63,7 @@ Bright Powder	heldItem	20
 Toxic Orb	heldItem	-20					
 Flame Orb	heldItem	-25					
 Expert Belt	heldItem	20					
-Focus Sash	heldItem	20					
+Focus Sash	heldItem	25					
 Heavy-Duty Boots	heldItem	5					
 Rocky Helmet	heldItem	25					
 Life Orb	heldItem	30					
@@ -71,41 +73,21 @@ Power Herb	heldItem	1
 White Herb	heldItem	30					
 Eject Button	heldItem	20					
 Salac Berry	heldItem	20			1/4, +1 Spe		
-Liechi Berry	heldItem	20			1/4, +1 Atk		
+Liechi Berry	heldItem	15			1/4, +1 Atk		
 Ganlon Berry	heldItem	5			1/4, +1 Def		
-Petaya Berry	heldItem	20			1/4, +1 SpA		
+Petaya Berry	heldItem	15			1/4, +1 SpA		
 Apicot Berry	heldItem	5			1/4, +1 SpD		
 Lansat Berry	heldItem	10			1/4, 50% crit rate		
 Starf Berry	heldItem	20			1/4, +2 random stat		
 Micle Berry	heldItem	1			1/4, next move x1.2 accuracy		
 Custap Berry	heldItem	20			1/4, go first next turn		
-Normal Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
-Fire Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
-Water Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
-Grass Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
-Electric Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
-Ice Tera Shards	misc	-5			Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
-Fighting Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
-Poison Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
-Ground Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
-Flying Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
-Psychic Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
-Bug Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
-Rock Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
-Ghost Tera Shards	misc	15			Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
-Dark Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-dragon">Dark</span>.		
-Dragon Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-dark">Dragon</span>.		
-Steel Tera Shards	misc	20			Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
-Fairy Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
-Perfect Tera Shards	misc	25			Set a Pokemon's Tera Type to any type.		
-Mirror Tera Shards	misc	15			Copy a Pokemon's Tera Type to another Pokemon.		
-Wonder Gummi	misc	15			A Pokemon gains an extra move slot (add a hyphen).		
+Wonder Gummi	misc	10			A Pokemon gains an extra move slot (add a hyphen on a new line).		
+Wonder Gummi Party	misc	10n			EVERY Pokemon gains an extra move slot (add a hyphen on a new line).		
 Move Deleter	misc	0			Delete any moves (leave the hyphens) (each Pokemon must know at least 1 move). Give yourself $1 for each move you delete.		
 Move-Deleting Duo	misc	-10			A Pokemon forgets 2 moves (leave the hyphens).		
 Move-Deleting Trio	misc	-30			A Pokemon forgets 3 moves (leave the hyphens).		
-Move Deletion Party	misc	-10n+10			Every Pokemon forgets 1 move (leave the hyphens).		
+Move Deletion Party	misc	-10n+10			EVERY Pokemon forgets 1 move (leave the hyphens).		
 Deleveler	misc	0	0		Lower any/all Pokemon's level by any amount. Give yourself $1 for each level lowered.		
-Doom Seed	misc	-10			Decrease a Pokemon's level by one.		
 Occa Berry	heldItem	5			[halve super-effective ____-type move]		
 Passho Berry	heldItem	5			[halve super-effective ____-type move]		
 Wacan Berry	heldItem	5			[halve super-effective ____-type move]		
@@ -159,6 +141,7 @@ Mirror Berry	misc	15			Copy a Pokemon's held berry to another Pokemon.
 Perfect Berry	misc	40			Set a Pokemon's held item to any berry.		
 Mirror Item	misc	40			Copy a Pokemon's held item to another Pokemon.		
 Perfect Item	misc	45			Set a Pokemon's held item to anything (cannot pick Eviolite or Pokemon-specific items).		
+Shadow Item	misc	25			Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round.		
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld			
 Flame Plate	heldItem	20					
 Splash Plate	heldItem	20					
@@ -196,8 +179,8 @@ Dragon Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silva
 Steel Memory	heldItem	25		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
 Fairy Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
 Perfect Memory	misc	30		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater	Set a Pokemon's held item to ANY Memory.		
-Cloning Device	misc	120			Replace one of your Pokemon with a clone of one of your other Pokemon.		
-Sneaky Cloning Device	misc	100			Replace one of your Pokemon with a clone of one of your opponent's Pokemon from LAST round.		
+Mirror Pokemon	misc	125			Replace one of your Pokemon with a clone of one of your other Pokemon.		
+Shadow Pokemon	misc	125			Replace one of your Pokemon with a clone of one of your opponent's Pokemon from LAST round.		
 Buginium Z	heldItem	70					
 Darkinium Z	heldItem	70					
 Dragonium Z	heldItem	70					
@@ -220,12 +203,12 @@ Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola	Teach Raichu-Alola
 Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye	Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.		
 Last Resort TM & Eevium Z	TMAndZCrystal	100		eevee	Teach Eevee *Last Resort* and set its held item to *Eevium Z*.		
 Darkest Lariat TM & Incinium Z	TMAndZCrystal	100		incineroar	Teach Incineroar *Darkest Lariat* and set its held item to *Incinium Z*.		
-Clanging Scales TM & Kommonium Z	TMAndZCrystal	150		kommoo	Teach Kommo-o *Clanging Scales* and set its held item to *Kommonium Z*.		
+Clanging Scales TM & Kommonium Z	TMAndZCrystal	150		kommoo,kommoototem	Teach Kommo-o *Clanging Scales* and set its held item to *Kommonium Z*.		
 Moongeist Beam TM & Lunalium Z	TMAndZCrystal	100		lunala,necrozmadawnwings	Teach Lunala or Necrozma-Dawn-Wings *Moongeist Beam* and set its held item to *Lunalium Z*.		
 Stone Edge TM & Lycanium Z	TMAndZCrystal	100		lycanroc,lycanrocmidnight,lycanrocdusk	Teach a Lycanroc *Stone Edge* and set its held item to *Lycanium Z*.		
 Spectral Thief TM & Marshadium Z	TMAndZCrystal	100		marshadow	Teach Marshadow *Spectral Thief* and set its held item to *Marshadium Z*.		
 Psychic TM & Mewnium Z	TMAndZCrystal	120		mew	Teach Mew *Psychic* and set its held item to *Mewnium Z*.		
-Play Rough TM & Mimikium Z	TMAndZCrystal	100		mimikyu	Teach Mimikyu *Play Rough* and set its held item to *Mimikium Z*.		
+Play Rough TM & Mimikium Z	TMAndZCrystal	100		mimikyu,mimikyubusted,mimikyutotem,mimikyubustedtotem	Teach Mimikyu *Play Rough* and set its held item to *Mimikium Z*.		
 Volt Tackle TM & Pikanium Z	TMAndZCrystal	100		pikachu	Teach Pikachu *Volt Tackle* and set its held item to *Pikanium Z*.		
 Thunderbolt TM & Pikashunium Z	TMAndZCrystal	120		pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner	Teach a cap Pikachu (not Pikachu-Starter) *Thunderbolt* and set its held item to *Pikashunium Z*.		
 Sparkling Aria TM & Primarium Z	TMAndZCrystal	100		primarina	Teach Primarina *Sparkling Aria* and set its held item to *Primarium Z*.		
@@ -240,3 +223,47 @@ Stockpile TMs	universalTM	30			Teach ANY Pokemon any/all of the following: *Stoc
 Defense Curl TMs	universalTM	30			Teach ANY Pokemon any/all of the following: *Defense Curl*, *Rollout*, *Ice Ball*.		
 Perfect Hidden Power TM	universalTM	20			Teach ANY Pokemon any Hidden Power (other than Normal or Fairy) (e.g. "*Hidden Power Ice*").		
 Perfect Universal TM	universalTM	60			Teach ANY Pokemon ANY (non-Z) move.		
+Normal Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
+Fire Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
+Water Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
+Grass Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Electric Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
+Ice Tera Shards	misc	-5			Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Fighting Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
+Poison Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
+Ground Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
+Flying Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
+Psychic Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Bug Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
+Rock Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Ghost Tera Shards	misc	15			Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
+Dark Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
+Dragon Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
+Steel Tera Shards	misc	20			Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
+Fairy Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
+Perfect Tera Shards	misc	25			Set a Pokemon's Tera Type to any type.		
+Mirror Tera Shards	misc	15			Copy a Pokemon's Tera Type to another Pokemon.		
+Shadow Tera Shards	misc	10			Set a Pokemon's Tera Type to the type your opponent Terastallized into last round.		
+Origin Tera Shards	misc	10			Set a Pokemon's Tera Type to any type it already has.		
+Move-Based Tera Shards	misc	15			Set a Pokemon's Tera Type to the type of one of its moves.		
+Normal Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
+Fire Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
+Water Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.		
+Grass Tera Party	misc	0n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Electric Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
+Ice Tera Party	misc	-5n-10	0.05		Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Fighting Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
+Poison Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
+Ground Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
+Flying Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
+Psychic Tera Party	misc	0n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Bug Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
+Rock Tera Party	misc	0n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Ghost Tera Party	misc	15n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
+Dark Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
+Dragon Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
+Steel Tera Party	misc	20n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
+Fairy Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
+Mirror Tera Party	misc	15n-15	0.05		Copy a Pokemon's Tera Type to EVERY other Pokemon.		
+Great Ball	pokeball	15			Next round, Pokemon are 1 level higher than usual.		
+Ultra Ball	pokeball	80			Next round, Pokemon are 5 levels higher than usual.		
