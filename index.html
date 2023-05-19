@@ -207,6 +207,7 @@ button:focus {
       <option>Great Ball</option>
       <option>Ultra Ball</option>
       <option>Level Ball</option>
+      <option>Master Ball</option>
     </select>
     <br>
     <button id="winRound" onclick="winRound()" class="mb-4px">win</button>
@@ -627,8 +628,20 @@ function killAllChildren(div) {
 }
 
 function addChoices(choicesDiv) {
-  for (let i = 0; i < numChoices(); i++)
-    addRandomPokemon(choicesDiv, null, true);
+  if (getPokeball() === 'Master Ball') {
+    const speciesName = prompt('Choose a species (case-sensitive).');
+    const speciesId = getSpeciesId(speciesName);
+    if (!speciesId) {
+      alert('Error: species name not recognized.');
+      return false;
+    }
+    for (const ability of Object.values(allSpecies[speciesId].abilities))
+      addRandomPokemon(choicesDiv, true, speciesName, ability);
+  } else {
+    for (let i = 0; i < numChoices(); i++)
+      addRandomPokemon(choicesDiv, true);
+  }
+  return true;
 }
 function numChoices() {
   switch (getPokeball()) {
@@ -645,7 +658,7 @@ function numChoices() {
 function generateOneOfSpecies() {
   const speciesDiv = document.getElementById('species');
   const speciesName = document.getElementById('speciesInput').value.trim();
-  addRandomPokemon(speciesDiv, speciesName, false);
+  addRandomPokemon(speciesDiv, false, speciesName);
 
   // // list all formes
   // let formes = {};
@@ -670,8 +683,8 @@ function isLegal(speciesId, species) {
   return true;
 }
 
-function addRandomPokemon(choicesDiv, speciesName, hasChooseButton) {  
-  if (speciesName === null) {
+function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, ability) {  
+  if (speciesName === undefined) {
     let speciesId = randomKey(allSpecies);
     // speciesId = 'houndoommega';
     let species = allSpecies[speciesId];
@@ -697,7 +710,7 @@ function addRandomPokemon(choicesDiv, speciesName, hasChooseButton) {
     speciesErrorEle.style.display = 'none';
   }
   
-  const pokemonStr = randomOfSpecies(speciesName);
+  const pokemonStr = randomOfSpecies(speciesName, ability);
 
   const divEle = document.createElement('div');
   divEle.classList.add('pokemon-div');
@@ -744,7 +757,7 @@ function getImageUrlName(speciesName) {
   return speciesName.toLowerCase().replaceAll(/[^a-zA-Z0-9\-]/g, '');
 }
 
-function randomOfSpecies(speciesName, pokeball) {
+function randomOfSpecies(speciesName, abilityName) {
   const speciesId = getSpeciesId(speciesName);
   const species = allSpecies[speciesId];
 
@@ -776,7 +789,8 @@ function randomOfSpecies(speciesName, pokeball) {
   if (heldItemName)
     pokemonStr += ' @ ' + heldItemName;
 
-  const abilityName = randomProperty(species.abilities);
+  if (abilityName === undefined)
+    abilityName = randomProperty(species.abilities);
   pokemonStr += '\nAbility: ';
   if (abilityName)
     pokemonStr += abilityName;
@@ -1284,17 +1298,21 @@ function copyParty() {
 }
 
 function winRound() {
-  if (!pay(-1 * WIN_INCOME)) return;
-  nextRound();
+  nextRound(WIN_INCOME);
 }
 function loseRound() {
-  if (!pay(-1 * LOSE_INCOME)) return;
-  nextRound();
+  nextRound(LOSE_INCOME);
 }
-function nextRound() {
+function nextRound(income) {
+  if (!pay(-1 * income)) return;
+
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
-  addChoices(choicesDiv);
+  const addChoicesSuccessful = addChoices(choicesDiv);
+  if (!addChoicesSuccessful) {
+    pay(income);
+    return;
+  }
   toggleNonPokemonChoices(false);
   
   const isPartyFull = getEmptyPartyDiv() === null;
