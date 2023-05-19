@@ -206,6 +206,7 @@ button:focus {
       <option>Poké Ball</option>
       <option>Great Ball</option>
       <option>Ultra Ball</option>
+      <option>Level Ball</option>
     </select>
     <br>
     <button id="winRound" onclick="winRound()" class="mb-4px">win</button>
@@ -626,14 +627,25 @@ function killAllChildren(div) {
 }
 
 function addChoices(choicesDiv) {
-  const pokeball = getPokeball();
-  addRandomPokemon(choicesDiv, null, pokeball);
-  addRandomPokemon(choicesDiv, null, pokeball);
+  for (let i = 0; i < numChoices(); i++)
+    addRandomPokemon(choicesDiv, null, true);
 }
+function numChoices() {
+  switch (getPokeball()) {
+    case 'Great Ball':
+    case 'Level Ball':
+      return 3;
+    case 'Ultra Ball':
+      return 4;
+    default:
+      return 2;
+  }
+}
+
 function generateOneOfSpecies() {
   const speciesDiv = document.getElementById('species');
   const speciesName = document.getElementById('speciesInput').value.trim();
-  addRandomPokemon(speciesDiv, speciesName, null);
+  addRandomPokemon(speciesDiv, speciesName, false);
 
   // // list all formes
   // let formes = {};
@@ -658,7 +670,7 @@ function isLegal(speciesId, species) {
   return true;
 }
 
-function addRandomPokemon(choicesDiv, speciesName, pokeball) {  
+function addRandomPokemon(choicesDiv, speciesName, hasChooseButton) {  
   if (speciesName === null) {
     let speciesId = randomKey(allSpecies);
     // speciesId = 'houndoommega';
@@ -685,7 +697,7 @@ function addRandomPokemon(choicesDiv, speciesName, pokeball) {
     speciesErrorEle.style.display = 'none';
   }
   
-  const pokemonStr = randomOfSpecies(speciesName, pokeball);
+  const pokemonStr = randomOfSpecies(speciesName);
 
   const divEle = document.createElement('div');
   divEle.classList.add('pokemon-div');
@@ -695,7 +707,7 @@ function addRandomPokemon(choicesDiv, speciesName, pokeball) {
   const pokemonEle = divEle.querySelector('.pokemon');
   pokemonEle.innerHTML = pokemonStr;
 
-  if (pokeball !== null) {
+  if (hasChooseButton) {
     const buttonEle = document.createElement('button');
     buttonEle.innerText = 'choose';
     buttonEle.onclick = function() {choosePokemon(choicesDiv, pokemonStr)};
@@ -781,10 +793,8 @@ function randomOfSpecies(speciesName, pokeball) {
   else if (abilityName === 'Power Construct')
     level = (level + getLevel(allSpecies.zygardecomplete, STAT_TOTAL_GOAL)) / 2;
 
-  if (pokeball === 'Great Ball')
-    level += 1;
-  else if (pokeball === 'Ultra Ball')
-    level += 5;
+  if (getPokeball() === 'Level Ball')
+    level -= 1;
 
   pokemonStr += '\nLevel: ' + level;
 
@@ -1159,8 +1169,8 @@ function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
   addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
 }
 function addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds) {
-  addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds);
-  addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds);
+  for (let i = 0; i < numChoices(); i++)
+    addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds);
 }
 function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   let move;
@@ -1194,8 +1204,8 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
   } else if (pokemonCanTera(pokemonStr)) {
     const typeChoices = [];
-    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
-    addTeraChoice(choicesDiv, pokeDiv, typeChoices);
+    for (let i = 0; i < numChoices(); i++)
+      addTeraChoice(choicesDiv, pokeDiv, typeChoices);
   } else {
     endPokemonChoosing(pokeDiv);
   }
