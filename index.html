@@ -435,13 +435,13 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printTeraShards() {
-  let teraTsv = '';
+function printEncounterPowers() {
+  let tsv = '';
   for (const type of TYPES) {
-    teraTsv += type + ' Tera Shards\tmisc\t'
-      + "\tSet a Pokemon's Tera Type to " + spanWithType(type, type) + '.\n';
+    tsv += 'Encounter Power: ' + type + '\tmisc\t\t\t'
+      + "\tNext round, you are guaranteed to get " + spanWithType(type, type) + '-type Pokemon.\n';
   }
-  console.log(teraTsv);
+  console.log(tsv);
 }
 function printPlatesAndMemories() {
   let tsv = '';
@@ -1641,6 +1641,9 @@ function buyItem(itemDiv, item, itemPrice) {
     } else {
       pokeballEle.value = item.name;
     }
+  } else if (item.name.startsWith('Encounter Power: ')) {
+    const type = item.name.split(' ')[2];
+    document.getElementById('type').value = type;
   }
 
   const buyButton = itemDiv.querySelector('button');
