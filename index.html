@@ -830,7 +830,7 @@ function getLearnset(speciesId) {
 }
 
 function getLevel(species, statTotalGoal) {
-  let prevStatTotal = 0;
+  let prevStatTotal = Number.NEGATIVE_INFINITY;
   for (let level = 1; level <= 100; level++) {
     const statTotal = getStatTotal(species, level, 'EVs: 1 HP', null);
     if (statTotal > statTotalGoal) {
