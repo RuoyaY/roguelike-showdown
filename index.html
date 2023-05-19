@@ -1574,8 +1574,14 @@ function enumerateWithOr(strArr) {
 function buyItem(itemDiv, item, itemPrice) {
   if (!pay(itemPrice)) return;
   
-  if (item.type === 'pokeball')
-    document.getElementById('pokeball').value = item.name;
+  if (item.type === 'pokeball') {
+    const pokeballEle = document.getElementById('pokeball');
+    if (item.name === 'Random Ball') {
+      pokeballEle.selectedIndex = randomInt(pokeballEle.options.length-1) + 1;
+    } else {
+      pokeballEle.value = item.name;
+    }
+  }
 
   const buyButton = itemDiv.querySelector('button');
   const checkmarkEle = document.createElement('h2');
