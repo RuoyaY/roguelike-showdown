@@ -210,6 +210,28 @@ button:focus {
       <option>Level Ball</option>
       <option>Master Ball</option>
     </select>
+    <label for="type">Guaranteed type:</label>
+    <select id="type" class="mb-4px">
+      <option></option>
+      <option>Normal</option>
+      <option>Fire</option>
+      <option>Water</option>
+      <option>Grass</option>
+      <option>Electric</option>
+      <option>Ice</option>
+      <option>Fighting</option>
+      <option>Poison</option>
+      <option>Ground</option>
+      <option>Flying</option>
+      <option>Psychic</option>
+      <option>Bug</option>
+      <option>Rock</option>
+      <option>Ghost</option>
+      <option>Dark</option>
+      <option>Dragon</option>
+      <option>Steel</option>
+      <option>Fairy</option>
+    </select>
     <br>
     <button id="winRound" onclick="winRound()" class="mb-4px">win</button>
     <button id="loseRound" onclick="loseRound()">lose</button>
@@ -487,6 +509,7 @@ document.getElementById('speciesInput').addEventListener('keyup', function(event
 })
 
 document.getElementById('pokeball').selectedIndex = 0;
+document.getElementById('type').selectedIndex = 0;
 document.getElementById('winRound').textContent = 'win ($' + WIN_INCOME + ')';
 document.getElementById('loseRound').textContent = 'lose ($' + LOSE_INCOME + ')';
 document.getElementById('loseRound').disabled = true;
@@ -673,13 +696,15 @@ function generateOneOfSpecies() {
   // console.log(formes);
 }
 
-function isLegal(speciesId, species) {
+function isLegal(speciesId, species, requiredType) {
   if (species.forme && ILLEGAL_FORMES.includes(species.forme))
     return false;
   if (ILLEGAL_MONS.includes(speciesId))
     return false;
   const identicals = IDENTICAL_MONS.find(arr => arr.includes(speciesId));
   if (identicals && speciesId != randomElement(identicals)) // each forme has a 1/n chance of being legal
+    return false;
+  if (requiredType && !species.types.includes(requiredType))
     return false;
   return true;
 }
@@ -689,7 +714,10 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, ability) {
     let speciesId = randomKey(allSpecies);
     // speciesId = 'houndoommega';
     let species = allSpecies[speciesId];
-    while (!isLegal(speciesId, species)) {
+    let requiredType = document.getElementById('type').value;
+    if (!TYPES.includes(requiredType))
+      requiredType = null;
+    while (!isLegal(speciesId, species, requiredType)) {
       speciesId = randomKey(allSpecies);
       species = allSpecies[speciesId];
     }
@@ -1122,7 +1150,7 @@ function spanWithTitle(str, title) {
 function skipPokemonChoice() {
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
-  toggleNonPokemonChoices(true);
+  endPokemonChoosing(null);
   document.getElementById('skip').hidden = true;
 }
 
@@ -1228,7 +1256,9 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
 
 function endPokemonChoosing(pokeDiv) {
   document.getElementById('pokeball').selectedIndex = 0;
-  togglePokeDiv(pokeDiv, true);
+  document.getElementById('type').selectedIndex = 0;
+  if (pokeDiv)
+    togglePokeDiv(pokeDiv, true);
   toggleNonPokemonChoices(true);
 }
 
@@ -1248,6 +1278,7 @@ function toggleNonPokemonChoices(turnOn) {
   document.getElementById('winRound').disabled = !turnOn;
   document.getElementById('loseRound').disabled = !turnOn;
   document.getElementById('pokeball').disabled = !turnOn;
+  document.getElementById('type').disabled = !turnOn;
   document.getElementById('refresh').disabled = !turnOn;
 }
 
