@@ -1217,9 +1217,13 @@ function addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds) {
 }
 function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   let move;
-  if (moveIds.length === 0)
-    move = randomMove(false);
-  else 
+  if (moveIds.length === 0) {
+    const pokemonStr = pokeDiv.querySelector('.pokemon').innerText;
+    do {
+      move = randomMove(false);
+    } while (pokemonStr.includes('\n- ' + move.name)
+              || (move.name.startsWith('Hidden Power') && pokemonStr.includes('\n- Hidden Power')));
+  } else 
     move = handleHiddenPower(moves[removeRandom(moveIds)]);
 
   const choiceDiv = document.createElement('div');
