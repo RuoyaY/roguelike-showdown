@@ -32,8 +32,11 @@ body {
   padding-top: .5rem;
   padding-bottom: .5rem;
 }
-.move-choice, .pokemon {
+.tera-choice, .move-choice, .pokemon {
   width: 31ch;
+}
+.tera-choice {
+  height: calc(1.5rem + 60px);
 }
 .pokemon:not(.editable) {
   height: 5rem;
@@ -1183,9 +1186,9 @@ function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
   const teraChoiceDiv = document.createElement('div');
   teraChoiceDiv.classList.add('flex-col');
 
-  const teraChoiceEle = document.createElement('h2');
-  teraChoiceEle.classList.add('info-box', 'text-center');
-  teraChoiceEle.innerHTML = spanWithType(type, type);
+  const teraChoiceEle = document.createElement('p');
+  teraChoiceEle.classList.add('info-box', 'text-center', 'tera-choice');
+  teraChoiceEle.innerHTML = spanWithClass(spanWithType(type, type), 'big-text') + '\n';
   const teraChoiceImg = document.createElement('img');
   teraChoiceImg.src = 'https://play.pokemonshowdown.com/sprites/types/Tera' + type + '.png';
   teraChoiceEle.append(teraChoiceImg);
