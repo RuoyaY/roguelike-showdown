@@ -408,6 +408,8 @@ const IDENTICAL_MONS = [
   // different type OR stats is sufficient for exclusion, even for interchangable formes, 
   // provided forme change is not instantaneous
 ];
+// these items do not transform the base species when given in Showdown
+const FAKE_REQUIRED_ITEMS = ['Adamant Crystal', 'Lustrous Globe', 'Griseous Core', 'Vile Vial'];
 
 // for testing/studying purposes
 let isCalculatingStats = false;
@@ -494,8 +496,8 @@ function printRequiredItems() {
   for (const [speciesId, species] of Object.entries(allSpecies)) {
     const requiredItem = species.requiredItem;
     if (!requiredItem || species.name.startsWith('Silvally') || species.name.startsWith('Genesect')
-          || species.name === 'Necrozma-Ultra' || species.name === 'Venomicon-Epilogue'
-          || species.forme === 'Origin')
+          || species.name === 'Necrozma-Ultra'
+          || FAKE_REQUIRED_ITEMS.includes(requiredItem))
       continue;
 
     const prevSpecies = allSpecies[getSpeciesId(species.baseSpecies)];
@@ -955,6 +957,8 @@ function getSpeciesNameOfPokemon(pokemonStr) {
     name = name.substring(0, name.indexOf(' ('));
   if (firstLine.includes(' @ ')) {
     let heldItem = firstLine.split(' @ ')[1];
+    if (FAKE_REQUIRED_ITEMS.includes(heldItem))
+      return name;
     let holdingItemForme = Object.values(allSpecies).find(species => species.baseSpecies === name && 
                       (species.requiredItem === heldItem || species.requiredItems?.includes(heldItem)));
     if (heldItem === 'Ultranecrozium Z')
@@ -1569,7 +1573,7 @@ function randomTM() {
         name: 'Perfect ' + type + ' TM',
         type: 'type-' + type.toLowerCase(),
         price: 50,
-        desc: 'Teach ANY ' + type.toUpperCase() + '-TYPE Pokemon ANY ' + type.toUpperCase()
+        desc: 'Teach ANY 1 ' + type.toUpperCase() + '-TYPE Pokemon ANY 1 ' + type.toUpperCase()
                 + '-TYPE move (other than Z-Moves).', 
       };
     }
@@ -1582,7 +1586,7 @@ function randomTM() {
       name: type + ' TM #' + move.num,
       type: 'type-' + type.toLowerCase(),
       price: 5 + tmPrice(move),
-      desc: tmDesc('Teach ANY ' + type.toUpperCase() + '-TYPE Pokemon the move ', move),
+      desc: tmDesc('Teach ANY 1 ' + type.toUpperCase() + '-TYPE Pokemon the move ', move),
     };
   } else {
     let possibleMoves = [];
@@ -1620,7 +1624,7 @@ function randomUniversalTM() {
     name: 'Universal TM #' + move.num,
     type: 'universalTM',
     price: 10 + tmPrice(move),
-    desc: tmDesc('Teach ANY Pokemon the move ', move),
+    desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
   };
 }
 function tmPrice(move) { // expected to be a multiple of 10, for Party TM prices
