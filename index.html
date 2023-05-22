@@ -613,7 +613,7 @@ function loadItems() {
         item.requiredAbilities = splitByTab[5].split(',');
       if (splitByTab[6] !== '')
         item.requiredMoves = splitByTab[6].split(',');
-        
+
       items.push(item);
     }
   }
@@ -1005,7 +1005,7 @@ function pokemonInHTML(pokemonStr) {
         firstLine = strLineSplit[0] + ' @ ' + heldItemInHTML(strLineSplit[1]);
       }
       out += firstLine;
-    } else if (strLine.startsWith('Ability: ')) {
+    } else if (strLine.startsWith('Ability:')) {
       out += spanWithClass('Ability: ', 'attr');
       const abilityName = strLine.substring('Ability: '.length);
       const ability = abilities[getAbilityId(abilityName)];
@@ -1056,7 +1056,7 @@ function pokemonInHTML(pokemonStr) {
     } else if (strLine.startsWith('-')) {
       const moveName = strLine.substring('- '.length);
       if (moveName === '')
-        out += spanWithClass('-', 'gray');
+        out += spanWithClass('- ', 'gray');
       else
         out += moveInHTML(moveName, '- ');
     } else {
