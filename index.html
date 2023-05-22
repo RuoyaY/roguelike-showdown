@@ -290,13 +290,13 @@ const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
 const FOUR_POINT_FIVE_ABILITY_VALUE = 700/650;
 const SPECIES_VALUES = {
-  'pokestarspirit': Infinity, // so it generates as Lv 1
-  'cramorantgulping': 650/(650 - 2 * (150/4 + 100/3)), // since it'll be higher Lv, i figure it'll trigger more often
-  'cramorantgorging': 650/(650 - 1.5 * (150/4 + 50 + 50)),
-  'wishiwashischool': (650 - 150/4)/650,
-  'eiscuenoice': 1,
-  'mimikyubusted': 1,
-  'mimikyubustedtotem': 1,
+  'Pokestar Spirit': Infinity, // so it generates as Lv 1
+  'Cramorant-Gulping': 650/(650 - 2 * (150/4 + 100/3)), // since it'll be higher Lv, i figure it'll trigger more often
+  'Cramorant-Gorging': 650/(650 - 1.5 * (150/4 + 50 + 50)),
+  'Wishiwashi-School': (650 - 150/4)/650,
+  'Eiscue-Noice': 1,
+  'Mimikyu-Busted': 1,
+  'Mimikyu-Busted-Totem': 1,
 }
 const ABILITY_VALUES = {
   'Beads of Ruin': 650/625, // SpD drop
@@ -314,7 +314,7 @@ const ABILITY_VALUES = {
   'Hadron Engine': (650 + 25 + 33)/650,
   
   'Intrepid Sword': 690/650,
-  'Dauntless Shield': 690/650,
+  'Dauntless Shield': 680/650,
 
   'Huge Power': 750/650,
   'Pure Power': 750/650,
@@ -486,6 +486,30 @@ function printZCrystals() {
         preZMove = 'Photon Geyser'
       tsv += preZMove + ' TM & ' + heldItem.name + '\tTMAndZCrystal\n';
     }
+  }
+  console.log(tsv);
+}
+function printRequiredItems() {
+  let tsv = '';
+  for (const [speciesId, species] of Object.entries(allSpecies)) {
+    const requiredItem = species.requiredItem;
+    if (!requiredItem || species.name.startsWith('Silvally') || species.name.startsWith('Genesect')
+          || species.name === 'Necrozma-Ultra' || species.name === 'Venomicon-Epilogue'
+          || species.forme === 'Origin')
+      continue;
+
+    const prevSpecies = allSpecies[getSpeciesId(species.baseSpecies)];
+    const prevAbilities = Object.values(prevSpecies.abilities);
+    const levels = prevAbilities.map(ability => getLevelWithAbility(prevSpecies, ability));
+    const statDiffs = levels.map(level => {
+      const newStatTotal = getStatTotal(species, level);
+      const usualStatTotal = getStatTotal(species, getLevelWithAbility(species, species.abilities[0]));
+      return newStatTotal - usualStatTotal;
+    })
+    const price = 5 * Math.round((Math.max(...statDiffs) - AVG_HELD_ITEM_VALUE) / 5);
+
+    tsv += requiredItem + '\theldItem\t' + price + '\t\t' + getSpeciesId(species.baseSpecies);
+    tsv += '\t' + heldItems[getHeldItemId(requiredItem)].desc + '\n';
   }
   console.log(tsv);
 }
@@ -828,18 +852,7 @@ function randomOfSpecies(speciesName, abilityName) {
   if (abilityName)
     pokemonStr += abilityName;
 
-  let statTotalMultiplier = 1;
-  // we want: stat goal * ability value = base stat goal * base ability value
-  if (SPECIES_VALUES[speciesId])
-    statTotalMultiplier = BASE_ABILITY_VALUE / SPECIES_VALUES[speciesId];
-  else if (ABILITY_VALUES[abilityName])
-    statTotalMultiplier = BASE_ABILITY_VALUE / ABILITY_VALUES[abilityName];
-  let level = getLevel(species, STAT_TOTAL_GOAL * statTotalMultiplier); 
-  if (speciesId === 'palafin')
-    level = getLevel(allSpecies.palafinhero, STAT_TOTAL_GOAL * 680/650); 
-  else if (abilityName === 'Power Construct')
-    level = (level + getLevel(allSpecies.zygardecomplete, STAT_TOTAL_GOAL)) / 2;
-
+  let level = getLevelWithAbility(species, abilityName);
   if (getPokeball() === 'Level Ball')
     level -= 1;
 
@@ -848,7 +861,7 @@ function randomOfSpecies(speciesName, abilityName) {
   if (isCalculatingStats) {
     levelStats += level + ', ';
     for (let i = 0; i < STATS.length; i++) {
-      statStats[i].push(getStat(species, level, 'EVs: 1 HP', null, STATS[i]));
+      statStats[i].push(getStat(species, level, null, null, STATS[i]));
     }
   }
 
@@ -902,10 +915,25 @@ function getLearnset(speciesId) {
   return Array.from(learnset);
 }
 
+function getLevelWithAbility(species, abilityName) {
+  let statTotalMultiplier = 1;
+  // we want: stat goal * ability value = base stat goal * base ability value
+  if (SPECIES_VALUES[species.name])
+  statTotalMultiplier = BASE_ABILITY_VALUE / SPECIES_VALUES[species.name];
+  else if (ABILITY_VALUES[abilityName])
+  statTotalMultiplier = BASE_ABILITY_VALUE / ABILITY_VALUES[abilityName];
+  let level = getLevel(species, STAT_TOTAL_GOAL * statTotalMultiplier); 
+  if (species.name === 'Palafin')
+    return getLevel(allSpecies.palafinhero, STAT_TOTAL_GOAL * 680/650); 
+  else if (abilityName === 'Power Construct')
+    return (level + getLevel(allSpecies.zygardecomplete, STAT_TOTAL_GOAL)) / 2;
+  else
+    return level;
+}
 function getLevel(species, statTotalGoal) {
   let prevStatTotal = Number.NEGATIVE_INFINITY;
   for (let level = 1; level <= 100; level++) {
-    const statTotal = getStatTotal(species, level, 'EVs: 1 HP', null);
+    const statTotal = getStatTotal(species, level);
     if (statTotal > statTotalGoal) {
       if (statTotalGoal - prevStatTotal < statTotal - statTotalGoal)
         return level-1;
@@ -1093,7 +1121,7 @@ function statsInHTML(pokemonStr) {
 
   const statTotal = getStatTotal(species, level, evsStr, nature);
   let statTotalStr = '';
-  if (statTotal === getStatTotal(species, getLevel(species, STAT_TOTAL_GOAL), 'EVs: 1 HP', null))
+  if (statTotal === getStatTotal(species, getLevel(species, STAT_TOTAL_GOAL)))
     statTotalStr += spanWithClass('TOTAL: ' + statTotal, 'gray');
   else
     statTotalStr += spanWithClass('TOTAL: ', 'attr') + statTotal;
@@ -1115,6 +1143,9 @@ function getStat(species, level, evsStr, nature, stat) {
   return actualStat;
 }
 function getUnadjustedStat(species, level, evsStr, nature, stat) {
+  if (!evsStr)
+    evsStr = 'EVs: 1 HP';
+
   const baseStat = species.baseStats[stat.toLowerCase()];
 
   let ev = 0;
