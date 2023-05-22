@@ -160,7 +160,7 @@ button:focus {
 .pokeball { background: linear-gradient(0deg, white 50%, lightcoral 50%); }
 .heldItem { color: orange }
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
-.TM { color: yellow }
+.speciesTM { color: yellow }
 .partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
 .universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, rgba(255,255,0,1) 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
 .TMAndZCrystal { background: linear-gradient(45deg, yellow, orange); } 
@@ -1228,7 +1228,7 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
     } while (pokemonStr.includes('\n- ' + move.name)
               || (move.name.startsWith('Hidden Power') && pokemonStr.includes('\n- Hidden Power')));
   } else 
-    move = handleHiddenPower(moves[removeRandom(moveIds)]);
+    move = addHiddenPowerType(moves[removeRandom(moveIds)]);
 
   const choiceDiv = document.createElement('div');
   choiceDiv.classList.add('flex-col');
@@ -1554,35 +1554,32 @@ function randomTM() {
     };
   } else {
     let possibleMoves = [];
+    let speciesNames = [];
     const pokemonStrs = getPartyStrs();
-    for (const pokemonStr of pokemonStrs)
-      possibleMoves.push(...getLearnset(getSpeciesIdOfPokemon(pokemonStr)));
-
-    while (possibleMoves.length > 0) {
-      const possibleMovesIndex = randomInt(possibleMoves.length);
-      const moveId = possibleMoves[possibleMovesIndex];
-      const move = handleHiddenPower(moves[moveId]);
-      let learnerNames = [];
-      for (const pokemonStr of pokemonStrs) {
+    for (const pokemonStr of pokemonStrs) {
+      const speciesName = getSpeciesNameOfPokemon(pokemonStr);
+      const speciesId = getSpeciesId(speciesName);
+      for (const moveId of getLearnset(speciesId)) {
+        const move = addHiddenPowerType(moves[moveId]);
         if (pokemonStr.includes('\n- ' + move.name))
           continue;
-        const speciesId = getSpeciesIdOfPokemon(pokemonStr);
-        const speciesName = getSpeciesNameOfPokemon(pokemonStr);
-        if (getLearnset(speciesId).includes(moveId) && !learnerNames.includes(speciesName))
-          learnerNames.push(speciesName);
-      }
-      if (learnerNames.length > 0) {
-        return {
-          name: 'TM #' + move.num,
-          type: 'TM',
-          price: tmPrice(move),
-          desc: tmDesc('Teach ' + enumerateWithOr(learnerNames) + ' the move ', move),
-        };
-      } else {
-        possibleMoves.splice(possibleMovesIndex, 1);
+        possibleMoves.push(move);
+        speciesNames.push(speciesName);
       }
     }
-    return randomTM(); // no valid TMs available, so re-roll
+
+    if (possibleMoves.length == 0)
+      return randomTM(); // no valid TMs available, so re-roll
+
+    const possibleMovesIndex = randomInt(possibleMoves.length);
+    const move = possibleMoves[possibleMovesIndex];
+    const speciesName = speciesNames[possibleMovesIndex];
+    return {
+      name: speciesName + ' TM #' + move.num,
+      type: 'speciesTM',
+      price: tmPrice(move),
+      desc: tmDesc('Teach ' + speciesName + ' the move ', move),
+    };
   }
 }
 function randomUniversalTM() {
@@ -1614,10 +1611,10 @@ function randomMove(allowZMoves) {
       || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160)
       || (move.isZ && !allowZMoves))
     move = randomProperty(moves);
-  return handleHiddenPower(move);
+  return addHiddenPowerType(move);
 }
 
-function handleHiddenPower(move) {
+function addHiddenPowerType(move) {
   if (move.name === 'Hidden Power') {
     let type = 'Normal';
     while (type === 'Normal' || type === 'Fairy')
