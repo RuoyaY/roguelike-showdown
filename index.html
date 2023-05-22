@@ -600,6 +600,11 @@ function loadItems() {
         price: splitByTab[2],
         desc: splitByTab[7],
       }
+
+      const priceNum = parseInt(splitByTab[2]);
+      if (!isNaN(priceNum))
+        item.price = priceNum;
+      
       if (splitByTab[3] !== '')
         item.weight = splitByTab[3];
       if (splitByTab[4] !== '')
@@ -608,6 +613,7 @@ function loadItems() {
         item.requiredAbilities = splitByTab[5].split(',');
       if (splitByTab[6] !== '')
         item.requiredMoves = splitByTab[6].split(',');
+        
       items.push(item);
     }
   }
