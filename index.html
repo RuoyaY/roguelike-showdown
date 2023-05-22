@@ -1187,7 +1187,7 @@ function spanWithClass(str, class_) {
   return '<span class="' + class_ + '">' + str + '</span>';
 }
 function spanWithTitle(str, title) {
-  title = title.replaceAll('"', '&quot;')
+  title = title.replaceAll('"', '&quot;');
   return '<span class="hasHoverText" title="' + title + '">' + str + '</span>';
 }
 
@@ -1550,9 +1550,15 @@ const KEYWORD_HOVER_TEXTS = {
   'gender': 'e.g. "Pikachu (F)"'
 };
 function itemDescInHTML(itemDesc, isTM) {
-  if (!isTM)
-    for (const [keyword, hoverText] of Object.entries(KEYWORD_HOVER_TEXTS))
-      itemDesc = itemDesc.replaceAll(new RegExp('\\b'+keyword+'\\b', 'g'), spanWithTitle(keyword, hoverText));
+  if (!isTM) {
+    for (const [keyword, hoverText] of Object.entries(KEYWORD_HOVER_TEXTS)) {
+      const regexp = new RegExp('\\b'+keyword+'\\b', '');
+      if (itemDesc.match(regexp)) {
+        itemDesc = itemDesc.replace(regexp, spanWithTitle(keyword, hoverText));
+        break;
+      }
+    }
+  }
 
   const splitByAsterisk = itemDesc.split('*');
   itemDesc = '';
