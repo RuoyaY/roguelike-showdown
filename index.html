@@ -32,6 +32,7 @@ body {
   white-space: pre;
   padding-top: .5rem;
   padding-bottom: .5rem;
+  height: 10rem;
 }
 .tera-choice, .move-choice, .pokemon {
   width: 31ch;
@@ -39,12 +40,11 @@ body {
 .tera-choice {
   height: calc(1.5rem + 60px);
 }
-.pokemon:not(.editable) {
-  height: 5rem;
-}
 .pokemon.editable {
   box-shadow: inset 0 0 10px white;
-  height: 10rem;
+}
+.no-move-height {
+  height: 5rem;
 }
 .chosen>.pokemon.editable {
   /* box-shadow: inset 0 0 10px lightgreen; */
@@ -623,10 +623,10 @@ function loadItems() {
 
 function fillPartyDivs() {
   for (const pokemonDiv of document.getElementById('party').getElementsByClassName('pokemon-div')) {
-    fillPokemonDiv(pokemonDiv, true);
+    fillPokemonDiv(pokemonDiv, true, false);
   }
 }
-function fillPokemonDiv(div, editable) {
+function fillPokemonDiv(div, editable, noMoveHeight) {
   const pokemonEle = document.createElement('p');
   pokemonEle.classList.add('info-box', 'pokemon');
   if (editable) {
@@ -635,6 +635,8 @@ function fillPokemonDiv(div, editable) {
     pokemonEle.classList.add('editable');
     pokemonEle.addEventListener('focusout', function() {updatePokemonDiv(div)}, false);
   }
+  if (noMoveHeight)
+    pokemonEle.classList.add('no-move-height');
   div.append(pokemonEle);
 
   const typesEle = document.createElement('div');
@@ -785,7 +787,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, ability) {
   const divEle = document.createElement('div');
   divEle.classList.add('pokemon-div');
 
-  fillPokemonDiv(divEle, !hasChooseButton);
+  fillPokemonDiv(divEle, !hasChooseButton, true);
 
   const pokemonEle = divEle.querySelector('.pokemon');
   pokemonEle.innerHTML = pokemonStr;
