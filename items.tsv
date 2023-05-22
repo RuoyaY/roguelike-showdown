@@ -1,269 +1,373 @@
-name	type	price	weight [0-1]	required species	desc		
-Rare Candy	misc	15			Increase a Pokemon's level by one.		
-Rare Penta-Candy	misc	80			Increase a Pokemon's level by FIVE.		
-Rare Candy Party	misc	15n			Increase EVERY Pokemon's level by one.		
-Doom Seed	misc	-15			Decrease a Pokemon's level by one.		
-Doom Seed Party	misc	-15n			Decrease EVERY Pokemon's level by one.		
-HP Max	misc	30			Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
-Max Protein	misc	30			Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
-Max Iron	misc	30			Set a Pokemon's Def EV to 252 (max 508 total EVs).		
-Max Calcium	misc	30			Set a Pokemon's SpA EV to 252 (max 508 total EVs).		
-Max Zinc	misc	30			Set a Pokemon's SpD EV to 252 (max 508 total EVs).		
-Max Carbos	misc	30			Set a Pokemon's Spe EV to 252 (max 508 total EVs).		
-Perfect Nutrience	misc	35			Set a Pokemon's EV in any stat to 252 (max 508 total EVs).		
-Health Feathers	misc	10	0		Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Muscle Feathers	misc	10	0		Increase a Pokemon's Atk EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Resist Feathers	misc	10	0		Increase a Pokemon's Def EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Genius Feathers	misc	10	0		Increase a Pokemon's SpA EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Clever Feathers	misc	10	0		Increase a Pokemon's SpD EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Swift Feathers	misc	10	0		Increase a Pokemon's Spe EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Perfect Feathers	misc	15	0		Increase a Pokemon's EV in any stat by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Super Training	misc	60			Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV).		
-Androgen Pills	misc	0	0.5		Set ANY Pokemon's gender to male.		
-Estrogen Pills	misc	0	0.5		Set ANY Pokemon's gender to female.		
-Gender Liquidator	misc	1			Remove a Pokemon's gender (it'll get a random gender at the start of each battle, if possible).		
-Lonely Mint	misc	5			Set a Pokemon's Nature to Lonely (+Atk, -Def).		
-Adamant Mint	misc	10			Set a Pokemon's Nature to Adamant (+Atk, -SpA).		
-Naughty Mint	misc	5			Set a Pokemon's Nature to Naughty (+Atk, -SpD).		
-Brave Mint	misc	5			Set a Pokemon's Nature to Brave (+Atk, -Spe).		
-Bold Mint	misc	10			Set a Pokemon's Nature to Bold (+Def, -Atk).		
-Impish Mint	misc	10			Set a Pokemon's Nature to Impish (+Def, -SpA).		
-Lax Mint	misc	5			Set a Pokemon's Nature to Lax (+Def, -SpD).		
-Relaxed Mint	misc	5			Set a Pokemon's Nature to Relaxed (+Def, -Spe).		
-Modest Mint	misc	10			Set a Pokemon's Nature to Modest (+SpA, -Atk).		
-Mild Mint	misc	5			Set a Pokemon's Nature to Mild (+SpA, -Def).		
-Rash Mint	misc	5			Set a Pokemon's Nature to Rash (+SpA, -SpD).		
-Quiet Mint	misc	5			Set a Pokemon's Nature to Quiet (+SpA, -Spe).		
-Calm Mint	misc	10			Set a Pokemon's Nature to Calm (+SpD, -Atk).		
-Gentle Mint	misc	5			Set a Pokemon's Nature to Gentle (+SpD, -Def).		
-Careful Mint	misc	10			Set a Pokemon's Nature to Careful (+SpD, -SpA).		
-Sassy Mint	misc	5			Set a Pokemon's Nature to Sassy (+SpD, -Spe).		
-Timid Mint	misc	10			Set a Pokemon's Nature to Timid (+Spe, -Atk).		
-Hasty Mint	misc	5			Set a Pokemon's Nature to Hasty (+Spe, -Def).		
-Jolly Mint	misc	10			Set a Pokemon's Nature to Jolly (+Spe, -SpA).		
-Naive Mint	misc	5			Set a Pokemon's Nature to Naive (+Spe, -SpD).		
-Perfect Mint	misc	15			Set a Pokemon's Nature to anything.		
-Leftovers	heldItem	30			[held items have automatically generated descriptions]		
-Oran Berry	heldItem	5					
-Berry Juice	heldItem	15			heal 20 hp at 1/2		
-Gold Berry	heldItem	25			heal 30 hp at 1/2		
-Enigma Berry	heldItem	25					
-Sitrus Berry	heldItem	35					
-Aguav Berry	heldItem	20	0.2		[heal 1/3 at 1/4]		
-Figy Berry	heldItem	20	0.2		[heal 1/3 at 1/4]		
-Iapapa Berry	heldItem	20	0.2		[heal 1/3 at 1/4]		
-Mago Berry	heldItem	20	0.2		[heal 1/3 at 1/4]		
-Wiki Berry	heldItem	20	0.2		[heal 1/3 at 1/4]		
-Choice Band	heldItem	40					
-Choice Specs	heldItem	40					
-Choice Scarf	heldItem	40					
-Assault Vest	heldItem	40					
-Eviolite	heldItem	100					
-Bright Powder	heldItem	20					
-Toxic Orb	heldItem	-20					
-Flame Orb	heldItem	-25					
-Expert Belt	heldItem	20					
-Focus Sash	heldItem	25					
-Heavy-Duty Boots	heldItem	5					
-Rocky Helmet	heldItem	25					
-Life Orb	heldItem	30					
-Mental Herb	heldItem	5					
-Mirror Herb	heldItem	20					
-Power Herb	heldItem	1					
-White Herb	heldItem	30					
-Eject Button	heldItem	20					
-Salac Berry	heldItem	20			1/4, +1 Spe		
-Liechi Berry	heldItem	15			1/4, +1 Atk		
-Ganlon Berry	heldItem	5			1/4, +1 Def		
-Petaya Berry	heldItem	15			1/4, +1 SpA		
-Apicot Berry	heldItem	5			1/4, +1 SpD		
-Lansat Berry	heldItem	10			1/4, 50% crit rate		
-Starf Berry	heldItem	20			1/4, +2 random stat		
-Micle Berry	heldItem	1			1/4, next move x1.2 accuracy		
-Custap Berry	heldItem	20			1/4, go first next turn		
-Wonder Gummi	misc	10			A Pokemon gains an extra move slot (add a hyphen on a new line).		
-Wonder Gummi Party	misc	10n			EVERY Pokemon gains an extra move slot (add a hyphen on a new line).		
-Move Deleter	misc	0			Delete any moves (leave the hyphens) (each Pokemon must know at least 1 move). Give yourself $1 for each move you delete.		
-Move-Deleting Duo	misc	-10			A Pokemon forgets 2 moves (leave the hyphens).		
-Move-Deleting Trio	misc	-30			A Pokemon forgets 3 moves (leave the hyphens).		
-Move Deletion Party	misc	-10n+10			EVERY Pokemon forgets 1 move (leave the hyphens).		
-Deleveler	misc	0	0		Lower any/all Pokemon's level by any amount. Give yourself $1 for each level lowered.		
-Occa Berry	heldItem	5			[halve super-effective ____-type move]		
-Passho Berry	heldItem	5			[halve super-effective ____-type move]		
-Wacan Berry	heldItem	5			[halve super-effective ____-type move]		
-Rindo Berry	heldItem	5			[halve super-effective ____-type move]		
-Yache Berry	heldItem	5			[halve super-effective ____-type move]		
-Chople Berry	heldItem	5			[halve super-effective ____-type move]		
-Kebia Berry	heldItem	5			[halve super-effective ____-type move]		
-Shuca Berry	heldItem	5			[halve super-effective ____-type move]		
-Coba Berry	heldItem	5			[halve super-effective ____-type move]		
-Payapa Berry	heldItem	5			[halve super-effective ____-type move]		
-Tanga Berry	heldItem	5			[halve super-effective ____-type move]		
-Charti Berry	heldItem	5			[halve super-effective ____-type move]		
-Kasib Berry	heldItem	5			[halve super-effective ____-type move]		
-Haban Berry	heldItem	5			[halve super-effective ____-type move]		
-Colbur Berry	heldItem	5			[halve super-effective ____-type move]		
-Babiri Berry	heldItem	5			[halve super-effective ____-type move]		
-Roseli Berry	heldItem	5			[halve super-effective ____-type move]		
-Chilan Berry	heldItem	5			[halve normal-type move]		
-Destiny Knot	heldItem	1					
-Normal Gem	heldItem	15					
-Fire Gem	heldItem	15					
-Water Gem	heldItem	15					
-Grass Gem	heldItem	15					
-Electric Gem	heldItem	15					
-Ice Gem	heldItem	15					
-Fighting Gem	heldItem	15					
-Poison Gem	heldItem	15					
-Ground Gem	heldItem	15					
-Flying Gem	heldItem	15					
-Psychic Gem	heldItem	15					
-Bug Gem	heldItem	15					
-Rock Gem	heldItem	15					
-Ghost Gem	heldItem	15					
-Dark Gem	heldItem	15					
-Dragon Gem	heldItem	15					
-Steel Gem	heldItem	15					
-Fairy Gem	heldItem	15					
-Cheri Berry	heldItem	5					
-Chesto Berry	heldItem	10					
-Pecha Berry	heldItem	5					
-Rawst Berry	heldItem	5					
-Aspear Berry	heldItem	1					
-Persim Berry	heldItem	1					
-Lum Berry	heldItem	10					
-Leppa Berry	heldItem	1					
-Jaboca Berry	heldItem	15					
-Rowap Berry	heldItem	15					
-Kee Berry	heldItem	20					
-Maranga Berry	heldItem	20					
-Mirror Berry	misc	15			Copy a Pokemon's held berry to another Pokemon.		
-Perfect Berry	misc	40			Set a Pokemon's held item to any berry.		
-Mirror Item	misc	40			Copy a Pokemon's held item to another Pokemon.		
-Perfect Item	misc	45			Set a Pokemon's held item to anything (cannot pick Eviolite or Pokemon-specific items).		
-Shadow Item	misc	25			Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round.		
-Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld			
-Flame Plate	heldItem	20					
-Splash Plate	heldItem	20					
-Meadow Plate	heldItem	20					
-Zap Plate	heldItem	20					
-Icicle Plate	heldItem	20					
-Fist Plate	heldItem	20					
-Toxic Plate	heldItem	20					
-Earth Plate	heldItem	20					
-Sky Plate	heldItem	20					
-Mind Plate	heldItem	20					
-Insect Plate	heldItem	20					
-Stone Plate	heldItem	20					
-Spooky Plate	heldItem	20					
-Dread Plate	heldItem	20					
-Draco Plate	heldItem	20					
-Iron Plate	heldItem	20					
-Pixie Plate	heldItem	20					
-Perfect Plate	misc	25			Set a Pokemon's held item to ANY Plate (e.g. "$Zap Plate$").		
-Fire Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Water Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Grass Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Electric Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Ice Memory	heldItem	-10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Fighting Memory	heldItem	0		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Poison Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Ground Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Flying Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Psychic Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Bug Memory	heldItem	0		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Rock Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Ghost Memory	heldItem	20		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Dark Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Dragon Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Steel Memory	heldItem	25		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Fairy Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			
-Perfect Memory	misc	30		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater	Set a Pokemon's held item to ANY Memory.		
-Mirror Pokemon	misc	125			Replace one of your Pokemon with a clone of one of your other Pokemon.		
-Shadow Pokemon	misc	125			Replace one of your Pokemon with a clone of one of your opponent's Pokemon from LAST round.		
-Buginium Z	heldItem	70					
-Darkinium Z	heldItem	70					
-Dragonium Z	heldItem	70					
-Electrium Z	heldItem	70					
-Fairium Z	heldItem	70					
-Fightinium Z	heldItem	70					
-Firium Z	heldItem	70					
-Flyinium Z	heldItem	70					
-Ghostium Z	heldItem	70					
-Grassium Z	heldItem	70					
-Groundium Z	heldItem	70					
-Icium Z	heldItem	70					
-Normalium Z	heldItem	70					
-Poisonium Z	heldItem	70					
-Psychium Z	heldItem	70					
-Rockium Z	heldItem	70					
-Steelium Z	heldItem	70					
-Waterium Z	heldItem	70					
-Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola	Teach Raichu-Alola *Thunderbolt* and set its held item to *Aloraichium Z*.		
-Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye	Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.		
-Last Resort TM & Eevium Z	TMAndZCrystal	100		eevee	Teach Eevee *Last Resort* and set its held item to *Eevium Z*.		
-Darkest Lariat TM & Incinium Z	TMAndZCrystal	100		incineroar	Teach Incineroar *Darkest Lariat* and set its held item to *Incinium Z*.		
-Clanging Scales TM & Kommonium Z	TMAndZCrystal	150		kommoo,kommoototem	Teach Kommo-o *Clanging Scales* and set its held item to *Kommonium Z*.		
-Moongeist Beam TM & Lunalium Z	TMAndZCrystal	100		lunala,necrozmadawnwings	Teach Lunala or Necrozma-Dawn-Wings *Moongeist Beam* and set its held item to *Lunalium Z*.		
-Stone Edge TM & Lycanium Z	TMAndZCrystal	100		lycanroc,lycanrocmidnight,lycanrocdusk	Teach a Lycanroc *Stone Edge* and set its held item to *Lycanium Z*.		
-Spectral Thief TM & Marshadium Z	TMAndZCrystal	100		marshadow	Teach Marshadow *Spectral Thief* and set its held item to *Marshadium Z*.		
-Psychic TM & Mewnium Z	TMAndZCrystal	120		mew	Teach Mew *Psychic* and set its held item to *Mewnium Z*.		
-Play Rough TM & Mimikium Z	TMAndZCrystal	100		mimikyu,mimikyubusted,mimikyutotem,mimikyubustedtotem	Teach Mimikyu *Play Rough* and set its held item to *Mimikium Z*.		
-Volt Tackle TM & Pikanium Z	TMAndZCrystal	100		pikachu	Teach Pikachu *Volt Tackle* and set its held item to *Pikanium Z*.		
-Thunderbolt TM & Pikashunium Z	TMAndZCrystal	120		pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner	Teach a cap Pikachu (not Pikachu-Starter) *Thunderbolt* and set its held item to *Pikashunium Z*.		
-Sparkling Aria TM & Primarium Z	TMAndZCrystal	100		primarina	Teach Primarina *Sparkling Aria* and set its held item to *Primarium Z*.		
-Giga Impact TM & Snorlium Z	TMAndZCrystal	100		snorlax	Teach Snorlax *Giga Impact* and set its held item to *Snorlium Z*.		
-Sunsteel Strike TM & Solganium Z	TMAndZCrystal	100		solgaleo,necrozmaduskmane	Teach Solgaleo or Necrozma-Dusk-Mane *Sunsteel Strike* and set its held item to *Solganium Z*.		
-Nature's Madness TM & Tapunium Z	TMAndZCrystal	75		tapukoko,tapulele,tapubulu,tapufini	Teach a "Tapu" Pokemon *Nature's Madness* and set its held item to *Tapunium Z*.		
-Photon Geyser TM & Ultranecrozium Z	TMAndZCrystal	150		necrozmadawnwings,necrozmaduskmane	Teach Necrozma-Dawn-Wings, Necrozma-Dusk-Mane, or Necrozma-Ultra *Photon Geyser* and set its held item to *Ultranecrozium Z*.		
-Photon Geyser TM & Ultranecrozium Z	TMAndZCrystal	100		necrozmaultra	Teach Necrozma-Dawn-Wings, Necrozma-Dusk-Mane, or Necrozma-Ultra *Photon Geyser* and set its held item to *Ultranecrozium Z*.		
-Pledge TMs	universalTM	80			Teach ANY 3 Pokemon *Fire Pledge*, *Water Pledge*, and *Grass Pledge* (one each).		
-Fusion TMs	universalTM	100			Teach ANY 2 Pokemon *Fusion Flare* and *Fusion Bolt* (one each).		
-Stockpile TMs	universalTM	30			Teach ANY Pokemon any/all of the following: *Stockpile*, *Spit Up*, *Swallow*.		
-Defense Curl TMs	universalTM	30			Teach ANY Pokemon any/all of the following: *Defense Curl*, *Rollout*, *Ice Ball*.		
-Perfect Hidden Power TM	universalTM	20			Teach ANY Pokemon any Hidden Power (other than Normal or Fairy) (e.g. "*Hidden Power Ice*").		
-Perfect Universal TM	universalTM	60			Teach ANY Pokemon ANY (non-Z) move.		
-Normal Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
-Fire Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
-Water Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
-Grass Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
-Electric Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
-Ice Tera Shards	misc	-5			Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
-Fighting Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
-Poison Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
-Ground Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
-Flying Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
-Psychic Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
-Bug Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
-Rock Tera Shards	misc	0			Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
-Ghost Tera Shards	misc	15			Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
-Dark Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
-Dragon Tera Shards	misc	5			Set a Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
-Steel Tera Shards	misc	20			Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
-Fairy Tera Shards	misc	10			Set a Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
-Perfect Tera Shards	misc	25			Set a Pokemon's Tera Type to any type.		
-Mirror Tera Shards	misc	15			Copy a Pokemon's Tera Type to another Pokemon.		
-Shadow Tera Shards	misc	10			Set a Pokemon's Tera Type to the type your opponent Terastallized into last round.		
-Origin Tera Shards	misc	10			Set a Pokemon's Tera Type to any type it already has.		
-Move-Based Tera Shards	misc	15			Set a Pokemon's Tera Type to the type of one of its moves.		
-Normal Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
-Fire Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
-Water Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.		
-Grass Tera Party	misc	0n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
-Electric Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
-Ice Tera Party	misc	-5n-10	0.05		Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
-Fighting Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
-Poison Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
-Ground Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
-Flying Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
-Psychic Tera Party	misc	0n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
-Bug Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
-Rock Tera Party	misc	0n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
-Ghost Tera Party	misc	15n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
-Dark Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
-Dragon Tera Party	misc	5n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
-Steel Tera Party	misc	20n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
-Fairy Tera Party	misc	10n	0.05		Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
-Mirror Tera Party	misc	15n-15	0.05		Copy a Pokemon's Tera Type to EVERY other Pokemon.		
-Great Ball	pokeball	15			Next round, Pokemon are 1 level higher than usual.		
-Ultra Ball	pokeball	80			Next round, Pokemon are 5 levels higher than usual.		
+name	type	price	prob	required species	required abilities	required moves	desc		
+Great Ball	pokeball	20					Next round, +1 option to all non-shop choices.		
+Ultra Ball	pokeball	30					Next round, +2 options to all non-shop choices.		
+Level Ball	pokeball	5					Next round, +1 option to all non-shop choices, but all Pokemon have -1 level.		
+Master Ball	pokeball	20					Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
+Random Ball	pokeball	15					Automatically sets your Poke Ball for the next round to a random one (other than the default).		
+Rare Candy	misc	15					Increase a Pokemon's level by one.		
+Rare Penta-Candy	misc	75					Increase a Pokemon's level by FIVE.		
+Rare Deca-Candy	misc	150					Increase a Pokemon's level by TEN.		
+Rare Candy Party	partyMisc	15n					Increase EVERY Pokemon's level by one.		
+Doom Seed	misc	-15					Decrease a Pokemon's level by one.		
+Doom Seed Party	partyMisc	-15n					Decrease EVERY Pokemon's level by one.		
+HP Max	misc	30					Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
+Max Protein	misc	30					Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
+Max Iron	misc	30					Set a Pokemon's Def EV to 252 (max 508 total EVs).		
+Max Calcium	misc	30					Set a Pokemon's SpA EV to 252 (max 508 total EVs).		
+Max Zinc	misc	30					Set a Pokemon's SpD EV to 252 (max 508 total EVs).		
+Max Carbos	misc	30					Set a Pokemon's Spe EV to 252 (max 508 total EVs).		
+Perfect Nutrience	misc	35					Set a Pokemon's EV in any 1 stat to 252 (max 508 total EVs).		
+Random Nutrience	misc	25					Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).		
+Health Feathers	misc	10	0				Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
+Muscle Feathers	misc	10	0				Increase a Pokemon's Atk EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
+Resist Feathers	misc	10	0				Increase a Pokemon's Def EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
+Genius Feathers	misc	10	0				Increase a Pokemon's SpA EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
+Clever Feathers	misc	10	0				Increase a Pokemon's SpD EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
+Swift Feathers	misc	10	0				Increase a Pokemon's Spe EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
+Perfect Feathers	misc	15	0				Increase a Pokemon's EV in any 1 stat by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
+Super Training	misc	60					Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV).		
+Ultra Training	misc	180					Set a Pokemon's EVs to 252 in every stat (i.e. "EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe").		
+Androgen Pills	misc	0	0.5				Set a Pokemon's gender to male (even if it does not normally have a gender).		
+Estrogen Pills	misc	0	0.5				Set a Pokemon's gender to female (even if it does not normally have a gender).		
+Gender Liquidator	misc	1					Remove a Pokemon's gender (it'll get a random gender at the start of each battle, if possible).		
+Lonely Mint	misc	5					Set a Pokemon's Nature to Lonely (+Atk, -Def).		
+Adamant Mint	misc	10					Set a Pokemon's Nature to Adamant (+Atk, -SpA).		
+Naughty Mint	misc	5					Set a Pokemon's Nature to Naughty (+Atk, -SpD).		
+Brave Mint	misc	5					Set a Pokemon's Nature to Brave (+Atk, -Spe).		
+Bold Mint	misc	10					Set a Pokemon's Nature to Bold (+Def, -Atk).		
+Impish Mint	misc	10					Set a Pokemon's Nature to Impish (+Def, -SpA).		
+Lax Mint	misc	5					Set a Pokemon's Nature to Lax (+Def, -SpD).		
+Relaxed Mint	misc	5					Set a Pokemon's Nature to Relaxed (+Def, -Spe).		
+Modest Mint	misc	10					Set a Pokemon's Nature to Modest (+SpA, -Atk).		
+Mild Mint	misc	5					Set a Pokemon's Nature to Mild (+SpA, -Def).		
+Rash Mint	misc	5					Set a Pokemon's Nature to Rash (+SpA, -SpD).		
+Quiet Mint	misc	5					Set a Pokemon's Nature to Quiet (+SpA, -Spe).		
+Calm Mint	misc	10					Set a Pokemon's Nature to Calm (+SpD, -Atk).		
+Gentle Mint	misc	5					Set a Pokemon's Nature to Gentle (+SpD, -Def).		
+Careful Mint	misc	10					Set a Pokemon's Nature to Careful (+SpD, -SpA).		
+Sassy Mint	misc	5					Set a Pokemon's Nature to Sassy (+SpD, -Spe).		
+Timid Mint	misc	10					Set a Pokemon's Nature to Timid (+Spe, -Atk).		
+Hasty Mint	misc	5					Set a Pokemon's Nature to Hasty (+Spe, -Def).		
+Jolly Mint	misc	10					Set a Pokemon's Nature to Jolly (+Spe, -SpA).		
+Naive Mint	misc	5					Set a Pokemon's Nature to Naive (+Spe, -SpD).		
+Perfect Mint	misc	15					Set a Pokemon's Nature to any Nature.		
+Random Mint	misc	n					Generate a random Nature (excluding neutral natures), then set any 1 Pokemon's Nature to that Nature.		
+Leftovers	heldItem	30					[held items have automatically generated descriptions]		
+Oran Berry	heldItem	5							
+Berry Juice	heldItem	15					heal 20 hp at 1/2		
+Gold Berry	heldItem	25					heal 30 hp at 1/2		
+Enigma Berry	heldItem	25							
+Sitrus Berry	heldItem	35							
+Aguav Berry	heldItem	20	0.2				[heal 1/3 at 1/4]		
+Figy Berry	heldItem	20	0.2				[heal 1/3 at 1/4]		
+Iapapa Berry	heldItem	20	0.2				[heal 1/3 at 1/4]		
+Mago Berry	heldItem	20	0.2				[heal 1/3 at 1/4]		
+Wiki Berry	heldItem	20	0.2				[heal 1/3 at 1/4]		
+Choice Band	heldItem	40							
+Choice Specs	heldItem	40							
+Choice Scarf	heldItem	40							
+Assault Vest	heldItem	40							
+Eviolite	heldItem	100							
+Bright Powder	heldItem	20							
+Toxic Orb	heldItem	-20							
+Flame Orb	heldItem	-25							
+Expert Belt	heldItem	20							
+Focus Sash	heldItem	25							
+Heavy-Duty Boots	heldItem	5							
+Rocky Helmet	heldItem	25							
+Life Orb	heldItem	30							
+Mental Herb	heldItem	5							
+Mirror Herb	heldItem	20							
+Power Herb	heldItem	1							
+White Herb	heldItem	30							
+Eject Button	heldItem	20							
+Salac Berry	heldItem	20					1/4, +1 Spe		
+Liechi Berry	heldItem	15					1/4, +1 Atk		
+Ganlon Berry	heldItem	5					1/4, +1 Def		
+Petaya Berry	heldItem	15					1/4, +1 SpA		
+Apicot Berry	heldItem	5					1/4, +1 SpD		
+Lansat Berry	heldItem	10					1/4, 50% crit rate		
+Starf Berry	heldItem	20					1/4, +2 random stat		
+Micle Berry	heldItem	1					1/4, next move x1.2 accuracy		
+Custap Berry	heldItem	20					1/4, go first next turn		
+Wonder Gummi	misc	10					A Pokemon gains an extra move slot (add a hyphen on a new line).		
+Wonder Gummi Party	partyMisc	10n					EVERY Pokemon gains an extra move slot (add a hyphen on a new line).		
+Move Deleter	misc	0					Delete 1 or more moves (leave the hyphens) (each Pokemon must know at least 1 move). Give yourself $1 for each move you delete.		
+Move-Deleting Duo	misc	-10					A Pokemon forgets 2 moves (leave the hyphens).		
+Move-Deleting Trio	misc	-30					A Pokemon forgets 3 moves (leave the hyphens).		
+Move Deletion Party	partyMisc	-10n+10					EVERY Pokemon forgets 1 move (leave the hyphens).		
+Deleveler	misc	0	0				Lower 1 or more Pokemon's level by any amount. Give yourself $1 for each level lowered.		
+Occa Berry	heldItem	5					[halve super-effective ____-type move]		
+Passho Berry	heldItem	5					[halve super-effective ____-type move]		
+Wacan Berry	heldItem	5					[halve super-effective ____-type move]		
+Rindo Berry	heldItem	5					[halve super-effective ____-type move]		
+Yache Berry	heldItem	5					[halve super-effective ____-type move]		
+Chople Berry	heldItem	5					[halve super-effective ____-type move]		
+Kebia Berry	heldItem	5					[halve super-effective ____-type move]		
+Shuca Berry	heldItem	5					[halve super-effective ____-type move]		
+Coba Berry	heldItem	5					[halve super-effective ____-type move]		
+Payapa Berry	heldItem	5					[halve super-effective ____-type move]		
+Tanga Berry	heldItem	5					[halve super-effective ____-type move]		
+Charti Berry	heldItem	5					[halve super-effective ____-type move]		
+Kasib Berry	heldItem	5					[halve super-effective ____-type move]		
+Haban Berry	heldItem	5					[halve super-effective ____-type move]		
+Colbur Berry	heldItem	5					[halve super-effective ____-type move]		
+Babiri Berry	heldItem	5					[halve super-effective ____-type move]		
+Roseli Berry	heldItem	5					[halve super-effective ____-type move]		
+Chilan Berry	heldItem	5					[halve normal-type move]		
+Destiny Knot	heldItem	1							
+Normal Gem	heldItem	15							
+Fire Gem	heldItem	15							
+Water Gem	heldItem	15							
+Grass Gem	heldItem	15							
+Electric Gem	heldItem	15							
+Ice Gem	heldItem	15							
+Fighting Gem	heldItem	15							
+Poison Gem	heldItem	15							
+Ground Gem	heldItem	15							
+Flying Gem	heldItem	15							
+Psychic Gem	heldItem	15							
+Bug Gem	heldItem	15							
+Rock Gem	heldItem	15							
+Ghost Gem	heldItem	15							
+Dark Gem	heldItem	15							
+Dragon Gem	heldItem	15							
+Steel Gem	heldItem	15							
+Fairy Gem	heldItem	15							
+Perfect Gem	misc	20					Set a Pokemon's held item to any gem (e.g. "*Ice Gem*").		
+Random Gem	misc	5					Generate a random type, then set a Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").		
+Cheri Berry	heldItem	5							
+Chesto Berry	heldItem	20				Rest			
+Pecha Berry	heldItem	5							
+Rawst Berry	heldItem	5							
+Aspear Berry	heldItem	1							
+Persim Berry	heldItem	1							
+Lum Berry	heldItem	10							
+Leppa Berry	heldItem	5							
+Jaboca Berry	heldItem	15							
+Rowap Berry	heldItem	15							
+Kee Berry	heldItem	20							
+Maranga Berry	heldItem	20							
+Mirror Berry	misc	15					Copy a Pokemon's held berry to another Pokemon.		
+Perfect Berry	misc	40					Set a Pokemon's held item to any berry.		
+Mirror Item	misc	40					Copy a Pokemon's held item to another Pokemon.		
+Perfect Item	misc	45					Set a Pokemon's held item to anything (cannot pick Eviolite or Pokemon-specific items).		
+Shadow Item	misc	25					Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round.		
+Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld					
+Flame Plate	heldItem	20							
+Splash Plate	heldItem	20							
+Meadow Plate	heldItem	20							
+Zap Plate	heldItem	20							
+Icicle Plate	heldItem	20							
+Fist Plate	heldItem	20							
+Toxic Plate	heldItem	20							
+Earth Plate	heldItem	20							
+Sky Plate	heldItem	20							
+Mind Plate	heldItem	20							
+Insect Plate	heldItem	20							
+Stone Plate	heldItem	20							
+Spooky Plate	heldItem	20							
+Dread Plate	heldItem	20							
+Draco Plate	heldItem	20							
+Iron Plate	heldItem	20							
+Pixie Plate	heldItem	20							
+Perfect Plate	misc	25					Set a Pokemon's held item to ANY Plate (e.g. "*Zap Plate*").		
+Random Plate	misc	10					Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").		
+Fire Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Water Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Grass Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Electric Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Ice Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Fighting Memory	heldItem	0		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Poison Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Ground Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Flying Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Psychic Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Bug Memory	heldItem	0		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Rock Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Ghost Memory	heldItem	20		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Dark Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Dragon Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Steel Memory	heldItem	25		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Fairy Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Perfect Memory	misc	30		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack	Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
+Mirror Pokemon	misc	120					Replace one of your Pokemon with a clone of one of your other Pokemon.		
+Shadow Pokemon	misc	120					Replace one of your Pokemon with a clone of one of your opponent's Pokemon from LAST round.		
+Buginium Z	heldItem	70							
+Darkinium Z	heldItem	70							
+Dragonium Z	heldItem	70							
+Electrium Z	heldItem	70							
+Fairium Z	heldItem	70							
+Fightinium Z	heldItem	70							
+Firium Z	heldItem	70							
+Flyinium Z	heldItem	70							
+Ghostium Z	heldItem	70							
+Grassium Z	heldItem	70							
+Groundium Z	heldItem	70							
+Icium Z	heldItem	70							
+Normalium Z	heldItem	70							
+Poisonium Z	heldItem	70							
+Psychium Z	heldItem	70							
+Rockium Z	heldItem	70							
+Steelium Z	heldItem	70							
+Waterium Z	heldItem	70							
+Perfect Z-Crystal	misc	100					Set a Pokemon's held item to any Z-Crystal.		
+Random Z-Crystal	misc	50					Generate a random type, then give the corresponding Z-Crystal to any 1 Pokemon.		
+Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola			Teach Raichu-Alola *Thunderbolt* and set its held item to *Aloraichium Z*.		
+Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye			Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.		
+Last Resort TM & Eevium Z	TMAndZCrystal	100		eevee			Teach Eevee *Last Resort* and set its held item to *Eevium Z*.		
+Darkest Lariat TM & Incinium Z	TMAndZCrystal	100		incineroar			Teach Incineroar *Darkest Lariat* and set its held item to *Incinium Z*.		
+Clanging Scales TM & Kommonium Z	TMAndZCrystal	150		kommoo,kommoototem			Teach Kommo-o *Clanging Scales* and set its held item to *Kommonium Z*.		
+Moongeist Beam TM & Lunalium Z	TMAndZCrystal	100		lunala,necrozmadawnwings			Teach Lunala or Necrozma-Dawn-Wings *Moongeist Beam* and set its held item to *Lunalium Z*.		
+Stone Edge TM & Lycanium Z	TMAndZCrystal	100		lycanroc,lycanrocmidnight,lycanrocdusk			Teach a Lycanroc *Stone Edge* and set its held item to *Lycanium Z*.		
+Spectral Thief TM & Marshadium Z	TMAndZCrystal	100		marshadow			Teach Marshadow *Spectral Thief* and set its held item to *Marshadium Z*.		
+Psychic TM & Mewnium Z	TMAndZCrystal	120		mew			Teach Mew *Psychic* and set its held item to *Mewnium Z*.		
+Play Rough TM & Mimikium Z	TMAndZCrystal	100		mimikyu,mimikyubusted,mimikyutotem,mimikyubustedtotem			Teach Mimikyu *Play Rough* and set its held item to *Mimikium Z*.		
+Volt Tackle TM & Pikanium Z	TMAndZCrystal	100		pikachu			Teach Pikachu *Volt Tackle* and set its held item to *Pikanium Z*.		
+Thunderbolt TM & Pikashunium Z	TMAndZCrystal	120		pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner			Teach a cap Pikachu (not Pikachu-Starter) *Thunderbolt* and set its held item to *Pikashunium Z*.		
+Sparkling Aria TM & Primarium Z	TMAndZCrystal	100		primarina			Teach Primarina *Sparkling Aria* and set its held item to *Primarium Z*.		
+Giga Impact TM & Snorlium Z	TMAndZCrystal	100		snorlax			Teach Snorlax *Giga Impact* and set its held item to *Snorlium Z*.		
+Sunsteel Strike TM & Solganium Z	TMAndZCrystal	100		solgaleo,necrozmaduskmane			Teach Solgaleo or Necrozma-Dusk-Mane *Sunsteel Strike* and set its held item to *Solganium Z*.		
+Nature's Madness TM & Tapunium Z	TMAndZCrystal	75		tapukoko,tapulele,tapubulu,tapufini			Teach a "Tapu" Pokemon *Nature's Madness* and set its held item to *Tapunium Z*.		
+Photon Geyser TM & Ultranecrozium Z	TMAndZCrystal	150		necrozmadawnwings,necrozmaduskmane			Teach Necrozma-Dawn-Wings, Necrozma-Dusk-Mane, or Necrozma-Ultra *Photon Geyser* and set its held item to *Ultranecrozium Z*.		
+Photon Geyser TM & Ultranecrozium Z	TMAndZCrystal	100		necrozmaultra			Teach Necrozma-Dawn-Wings, Necrozma-Dusk-Mane, or Necrozma-Ultra *Photon Geyser* and set its held item to *Ultranecrozium Z*.		
+Pledge TMs	universalTM	80					Teach ANY 3 Pokemon *Fire Pledge*, *Water Pledge*, and *Grass Pledge* (one each).		
+Fusion TMs	universalTM	100					Teach ANY 2 Pokemon *Fusion Flare* and *Fusion Bolt* (one each).		
+Stockpile TMs	universalTM	30					Teach ANY 1 Pokemon one or more of the following: *Stockpile*, *Spit Up*, *Swallow*.		
+Defense Curl TMs	universalTM	30					Teach ANY 1 Pokemon one or more of the following: *Defense Curl*, *Rollout*, *Ice Ball*.		
+Perfect Hidden Power TM	universalTM	20					Teach ANY 1 Pokemon any Hidden Power (other than Normal or Fairy) (e.g. "*Hidden Power Ice*").		
+Random Hidden Power TM	universalTM	10					Generate a random type. You must teach ANY 1 Pokemon the Hidden Power of that type (e.g. "*Hidden Power Ice*").		
+Perfect Universal TM	universalTM	60					Teach ANY 1 Pokemon ANY 1 move (excluding Z-Moves).		
+Perfect Party TM	partyTM	40n+20					Teach EVERY Pokemon ANY 1 move (excluding Z-Moves).		
+Mirror TM	universalTM	40					Copy any 1 move onto 1 other Pokemon (excluding Z-Moves).		
+Mirror TM Party	partyTM	20n					Copy any 1 move onto EVERY other Pokemon (excluding Z-Moves).		
+Shadow TM	universalTM	35					Teach ANY 1 Pokemon ANY 1 move your opponent used last round (excluding moves used via Z-Crystals).		
+Shadow TM Party	partyTM	20n-5					Teach EVERY Pokemon ANY 1 move your opponent used last round (excluding moves used via Z-Crystals).		
+Normal Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
+Fire Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
+Water Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
+Grass Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Electric Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
+Ice Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Fighting Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
+Poison Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
+Ground Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
+Flying Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
+Psychic Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Bug Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
+Rock Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Ghost Tera Shards	misc	15					Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
+Dark Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
+Dragon Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
+Steel Tera Shards	misc	20					Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
+Fairy Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
+Perfect Tera Shards	misc	25					Set a Pokemon's Tera Type to any type.		
+Random Tera Shards	misc	5					Generate a random type, then set any 1 Pokemon's Tera Type to that type.		
+Mirror Tera Shards	misc	15					Copy a Pokemon's Tera Type to another Pokemon.		
+Shadow Tera Shards	misc	10					Set a Pokemon's Tera Type to the type your opponent Terastallized into last round.		
+Origin Tera Shards	misc	10					Set a Pokemon's Tera Type to any type it already has.		
+Move-Based Tera Shards	misc	15					Set a Pokemon's Tera Type to the type of one of its moves.		
+Normal Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
+Fire Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
+Water Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.		
+Grass Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Electric Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
+Ice Tera Party	partyMisc	-5n-10	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Fighting Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
+Poison Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
+Ground Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
+Flying Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
+Psychic Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Bug Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
+Rock Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Ghost Tera Party	partyMisc	15n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
+Dark Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
+Dragon Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
+Steel Tera Party	partyMisc	20n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
+Fairy Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
+Mirror Tera Party	partyMisc	15n-15	0.05				Copy a Pokemon's Tera Type to EVERY other Pokemon.		
+Random Tera Party	partyMisc	0	0.05				Generate a random type, then set EVERY Pokemon's Tera Type to that type.		
+Item Swapper	misc	5					Swap two Pokemon's held items (if one Pokemon is not holding an item, the other gives its away).		
+Encounter Power: Normal	misc	-5					Next round, you are guaranteed to get <span class="type-normal">Normal</span>-type Pokemon.		
+Encounter Power: Fire	misc	10					Next round, you are guaranteed to get <span class="type-fire">Fire</span>-type Pokemon.		
+Encounter Power: Water	misc	10					Next round, you are guaranteed to get <span class="type-water">Water</span>-type Pokemon.		
+Encounter Power: Grass	misc	-10					Next round, you are guaranteed to get <span class="type-grass">Grass</span>-type Pokemon.		
+Encounter Power: Electric	misc	0					Next round, you are guaranteed to get <span class="type-electric">Electric</span>-type Pokemon.		
+Encounter Power: Ice	misc	-5					Next round, you are guaranteed to get <span class="type-ice">Ice</span>-type Pokemon.		
+Encounter Power: Fighting	misc	-5					Next round, you are guaranteed to get <span class="type-fighting">Fighting</span>-type Pokemon.		
+Encounter Power: Poison	misc	0					Next round, you are guaranteed to get <span class="type-poison">Poison</span>-type Pokemon.		
+Encounter Power: Ground	misc	10					Next round, you are guaranteed to get <span class="type-ground">Ground</span>-type Pokemon.		
+Encounter Power: Flying	misc	10					Next round, you are guaranteed to get <span class="type-flying">Flying</span>-type Pokemon.		
+Encounter Power: Psychic	misc	-5					Next round, you are guaranteed to get <span class="type-psychic">Psychic</span>-type Pokemon.		
+Encounter Power: Bug	misc	-10					Next round, you are guaranteed to get <span class="type-bug">Bug</span>-type Pokemon.		
+Encounter Power: Rock	misc	5					Next round, you are guaranteed to get <span class="type-rock">Rock</span>-type Pokemon.		
+Encounter Power: Ghost	misc	10					Next round, you are guaranteed to get <span class="type-ghost">Ghost</span>-type Pokemon.		
+Encounter Power: Dark	misc	5					Next round, you are guaranteed to get <span class="type-dark">Dark</span>-type Pokemon.		
+Encounter Power: Dragon	misc	0					Next round, you are guaranteed to get <span class="type-dragon">Dragon</span>-type Pokemon.		
+Encounter Power: Steel	misc	10					Next round, you are guaranteed to get <span class="type-steel">Steel</span>-type Pokemon.		
+Encounter Power: Fairy	misc	10					Next round, you are guaranteed to get <span class="type-fairy">Fairy</span>-type Pokemon.		
+Encounter Power: Perfect	misc	15					Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
+Encounter Power: Mirror	misc	5					Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
+Venusaurite	heldItem	85		venusaur			If held by a Venusaur, this item allows it to Mega Evolve in battle.		
+Charizardite X	heldItem	85		charizard			If held by a Charizard, this item allows it to Mega Evolve in battle.		
+Charizardite Y	heldItem	130		charizard			If held by a Charizard, this item allows it to Mega Evolve in battle.		
+Blastoisinite	heldItem	85		blastoise			If held by a Blastoise, this item allows it to Mega Evolve in battle.		
+Beedrillite	heldItem	110		beedrill			If held by a Beedrill, this item allows it to Mega Evolve in battle.		
+Pidgeotite	heldItem	100		pidgeot			If held by a Pidgeot, this item allows it to Mega Evolve in battle.		
+Alakazite	heldItem	85		alakazam			If held by an Alakazam, this item allows it to Mega Evolve in battle.		
+Slowbronite	heldItem	80		slowbro			If held by a Slowbro, this item allows it to Mega Evolve in battle.		
+Gengarite	heldItem	100		gengar			If held by a Gengar, this item allows it to Mega Evolve in battle.		
+Kangaskhanite	heldItem	115		kangaskhan			If held by a Kangaskhan, this item allows it to Mega Evolve in battle.		
+Pinsirite	heldItem	100		pinsir			If held by a Pinsir, this item allows it to Mega Evolve in battle.		
+Gyaradosite	heldItem	65		gyarados			If held by a Gyarados, this item allows it to Mega Evolve in battle.		
+Aerodactylite	heldItem	85		aerodactyl			If held by an Aerodactyl, this item allows it to Mega Evolve in battle.		
+Mewtwonite X	heldItem	60		mewtwo			If held by a Mewtwo, this item allows it to Mega Evolve in battle.		
+Mewtwonite Y	heldItem	55		mewtwo			If held by a Mewtwo, this item allows it to Mega Evolve in battle.		
+Ampharosite	heldItem	90		ampharos			If held by an Ampharos, this item allows it to Mega Evolve in battle.		
+Steelixite	heldItem	80		steelix			If held by a Steelix, this item allows it to Mega Evolve in battle.		
+Scizorite	heldItem	100		scizor			If held by a Scizor, this item allows it to Mega Evolve in battle.		
+Heracronite	heldItem	105		heracross			If held by a Heracross, this item allows it to Mega Evolve in battle.		
+Houndoominite	heldItem	85		houndoom			If held by a Houndoom, this item allows it to Mega Evolve in battle.		
+Tyranitarite	heldItem	95		tyranitar			If held by a Tyranitar, this item allows it to Mega Evolve in battle.		
+Sceptilite	heldItem	90		sceptile			If held by a Sceptile, this item allows it to Mega Evolve in battle.		
+Blazikenite	heldItem	110		blaziken			If held by a Blaziken, this item allows it to Mega Evolve in battle.		
+Swampertite	heldItem	85		swampert			If held by a Swampert, this item allows it to Mega Evolve in battle.		
+Gardevoirite	heldItem	70		gardevoir			If held by a Gardevoir, this item allows it to Mega Evolve in battle.		
+Sablenite	heldItem	215		sableye			If held by a Sableye, this item allows it to Mega Evolve in battle.		
+Mawilite	heldItem	185		mawile			If held by a Mawile, this item allows it to Mega Evolve in battle.		
+Aggronite	heldItem	85		aggron			If held by an Aggron, this item allows it to Mega Evolve in battle.		
+Medichamite	heldItem	195		medicham			If held by a Medicham, this item allows it to Mega Evolve in battle.		
+Manectite	heldItem	135		manectric			If held by a Manectric, this item allows it to Mega Evolve in battle.		
+Sharpedonite	heldItem	85		sharpedo			If held by a Sharpedo, this item allows it to Mega Evolve in battle.		
+Cameruptite	heldItem	85		camerupt			If held by a Camerupt, this item allows it to Mega Evolve in battle.		
+Altarianite	heldItem	85		altaria			If held by an Altaria, this item allows it to Mega Evolve in battle.		
+Banettite	heldItem	85		banette			If held by a Banette, this item allows it to Mega Evolve in battle.		
+Absolite	heldItem	110		absol			If held by an Absol, this item allows it to Mega Evolve in battle.		
+Glalitite	heldItem	85		glalie			If held by a Glalie, this item allows it to Mega Evolve in battle.		
+Salamencite	heldItem	95		salamence			If held by a Salamence, this item allows it to Mega Evolve in battle.		
+Metagrossite	heldItem	70		metagross			If held by a Metagross, this item allows it to Mega Evolve in battle.		
+Latiasite	heldItem	70		latias			If held by a Latias, this item allows it to Mega Evolve in battle.		
+Latiosite	heldItem	50		latios			If held by a Latios, this item allows it to Mega Evolve in battle.		
+Blue Orb	heldItem	55		kyogre			If held by a Kyogre, this item triggers its Primal Reversion in battle.		
+Red Orb	heldItem	55		groudon			If held by a Groudon, this item triggers its Primal Reversion in battle.		
+Lopunnite	heldItem	100		lopunny			If held by a Lopunny, this item allows it to Mega Evolve in battle.		
+Garchompite	heldItem	55		garchomp			If held by a Garchomp, this item allows it to Mega Evolve in battle.		
+Lucarionite	heldItem	70		lucario			If held by a Lucario, this item allows it to Mega Evolve in battle.		
+Abomasite	heldItem	125		abomasnow			If held by an Abomasnow, this item allows it to Mega Evolve in battle.		
+Galladite	heldItem	65		gallade			If held by a Gallade, this item allows it to Mega Evolve in battle.		
+Audinite	heldItem	90		audino			If held by an Audino, this item allows it to Mega Evolve in battle.		
+Diancite	heldItem	50		diancie			If held by a Diancie, this item allows it to Mega Evolve in battle.		
+Rusted Sword	heldItem	10		zacian			If held by a Zacian, this item changes its forme to Crowned Sword.		
+Rusted Shield	heldItem	30		zamazenta			If held by a Zamazenta, this item changes its forme to Crowned Shield.		
+Crucibellite	heldItem	65		crucibelle			If held by a Crucibelle, this item allows it to Mega Evolve in battle.		
+Adamant Crystal	heldItem	20		dialga,dialgaorigin			If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.		
+Lustrous Globe	heldItem	20		palkia,palkiaorigin			If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.		
+Griseous Core	heldItem	20		giratina,giratinaorigin			If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.		
+Vile Vial	heldItem	20		venomicon,venomiconepilogue			If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.		
+Soul Dew	heldItem	20		latias,latios					
+Metal Powder	heldItem	80		ditto					
+Quick Powder	heldItem	80		ditto					
+Burn Drive	heldItem	0				Techno Blast			
+Chill Drive	heldItem	0				Techno Blast			
+Douse Drive	heldItem	0				Techno Blast			
+Shock Drive	heldItem	0				Techno Blast			

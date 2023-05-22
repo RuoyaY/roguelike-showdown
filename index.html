@@ -598,12 +598,16 @@ function loadItems() {
         name: splitByTab[0],
         type: splitByTab[1],
         price: splitByTab[2],
-        desc: splitByTab[5],
+        desc: splitByTab[7],
       }
       if (splitByTab[3] !== '')
         item.weight = splitByTab[3];
       if (splitByTab[4] !== '')
         item.requiredSpecies = splitByTab[4].split(',');
+      if (splitByTab[5] !== '')
+        item.requiredAbilities = splitByTab[5].split(',');
+      if (splitByTab[6] !== '')
+        item.requiredMoves = splitByTab[6].split(',');
       items.push(item);
     }
   }
@@ -1432,8 +1436,7 @@ function refreshShop(isViaMoney) {
 
     let item = randomElement(items);
     // item = items[3];
-    while ((item.weight && !(Math.random() < item.weight))
-        || (item.requiredSpecies && !getPartySpeciesIds().some(speciesId => item.requiredSpecies.includes(speciesId))))
+    while (!isLegalItem(item))
       item = randomElement(items);
     if (Math.random() < 1/3)
       item = randomTM();
@@ -1442,7 +1445,7 @@ function refreshShop(isViaMoney) {
     if (item.type === 'heldItem') {
       const heldItemName = item.name;
       const desc = heldItems[getHeldItemId(item.name)].desc;
-      if (Math.random() < .05 && !item.requiredSpecies) {
+      if (Math.random() < .05 && !hasRequirement(item)) {
         item.name += ' Party';
         item.type = 'heldItemParty';
         if (item.price === 1)
@@ -1461,6 +1464,29 @@ function refreshShop(isViaMoney) {
       shopDiv.append(frozenItems[i]);
   }
 }
+
+function isLegalItem(item) {
+  if (item.weight && !(Math.random() < item.weight))
+    return false;
+  
+  if (hasRequirement(item)) {
+    for (const pokemonStr of getPartyStrs()) {
+      if (item.requiredSpecies?.includes(getSpeciesIdOfPokemon(pokemonStr)))
+        return true;
+      if (item.requiredAbilities?.some(ability => pokemonStr.includes('Ability: ' + ability)))
+        return true;
+      if (item.requiredMoves?.some(move => pokemonStr.includes('\n- ' + move)))
+        return true;
+    }    
+    return false;
+  }
+
+  return true;
+}
+function hasRequirement(item) {
+  return item.requiredSpecies || item.requiredAbilities || item.requiredMoves;
+}
+
 function getItemPrice(item) {
   let price = item.price;
   if (typeof price === 'string' && price.includes('n')) {

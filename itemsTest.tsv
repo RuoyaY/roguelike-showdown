@@ -1,2 +1,9 @@
 [KEEP THIS LINE]
-Encounter Power: Water	misc				Next round, you are guaranteed to get <span class="type-fairy">Fairy</span>-type Pokemon.
+Great Ball	pokeball	20					Next round, +1 option to all non-shop choices.		
+Fire Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
+Metal Powder	heldItem	80		ditto					
+Quick Powder	heldItem	80		ditto					
+Burn Drive	heldItem	0				Techno Blast			
+Chill Drive	heldItem	0				Techno Blast			
+Douse Drive	heldItem	0				Techno Blast			
+Shock Drive	heldItem	0			RKS System	Techno Blast	
