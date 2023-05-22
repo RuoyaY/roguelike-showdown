@@ -21,6 +21,7 @@ body {
   padding: 6px;
   margin: 0px;
   white-space: pre-wrap;
+  overflow: auto;
 }
 .pokemon {
   background-repeat: no-repeat;
@@ -40,12 +41,10 @@ body {
 }
 .pokemon:not(.editable) {
   height: 5rem;
-  overflow: hidden;
 }
 .pokemon.editable {
   box-shadow: inset 0 0 10px white;
   height: 10rem;
-  overflow: auto;
 }
 .chosen>.pokemon.editable {
   /* box-shadow: inset 0 0 10px lightgreen; */
@@ -611,17 +610,18 @@ function loadItems() {
 
 function fillPartyDivs() {
   for (const pokemonDiv of document.getElementById('party').getElementsByClassName('pokemon-div')) {
-    fillPokemonDiv(pokemonDiv);
-    const pokemonEle = pokemonDiv.querySelector('.pokemon');
+    fillPokemonDiv(pokemonDiv, true);
+  }
+}
+function fillPokemonDiv(div, editable) {
+  const pokemonEle = document.createElement('p');
+  pokemonEle.classList.add('info-box', 'pokemon');
+  if (editable) {
     pokemonEle.setAttribute('contenteditable', true);
     pokemonEle.setAttribute('spellcheck', false);
     pokemonEle.classList.add('editable');
-    pokemonEle.addEventListener('focusout', function() {updatePokemonDiv(pokemonDiv)}, false);
+    pokemonEle.addEventListener('focusout', function() {updatePokemonDiv(div)}, false);
   }
-}
-function fillPokemonDiv(div) {
-  const pokemonEle = document.createElement('p');
-  pokemonEle.classList.add('info-box', 'pokemon');
   div.append(pokemonEle);
 
   const typesEle = document.createElement('div');
@@ -772,7 +772,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, ability) {
   const divEle = document.createElement('div');
   divEle.classList.add('pokemon-div');
 
-  fillPokemonDiv(divEle);
+  fillPokemonDiv(divEle, !hasChooseButton);
 
   const pokemonEle = divEle.querySelector('.pokemon');
   pokemonEle.innerHTML = pokemonStr;
@@ -1113,7 +1113,7 @@ function statsInHTML(pokemonStr) {
     let statStr = statNum + ' ' + stat;
     if (stat === 'Atk' || stat === 'SpA')
       statStr = spanWithTitle(statStr, 'Unadjusted ' + stat + ': ' + getUnadjustedStat(species, level, evsStr, nature, stat));
-    out += spanWithClass(' '.repeat(3-(statNum+'').length) + statStr, 'stat-' + stat.toLowerCase()) + ' ';
+    out += spanWithClass(' '.repeat(Math.max(0, 3-(statNum+'').length)) + statStr, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
       out += '\n' + ' '.repeat('... HP '.length);
   }
