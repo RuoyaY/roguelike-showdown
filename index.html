@@ -567,6 +567,7 @@ function loadMoves() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     moves = JSON.parse(this.responseText);
+    makeNumsUnique(moves);
   }
   xhttp.open("GET", "moves.json");
   xhttp.send();
@@ -575,6 +576,7 @@ function loadAbilities() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     abilities = JSON.parse(this.responseText);
+    makeNumsUnique(abilities);
   }
   xhttp.open("GET", "abilities.json");
   xhttp.send();
@@ -619,6 +621,20 @@ function loadItems() {
   }
   xhttp.open("GET", 'items.tsv');
   xhttp.send();
+}
+
+function makeNumsUnique(objs) {
+  const lastSeenObjOfNum = [];
+  for (const obj of Object.values(objs)) {
+    const numWithoutDecimal = obj.num;
+    const lastSeenObj = lastSeenObjOfNum[obj.num];
+    if (lastSeenObj) {
+      if (typeof lastSeenObj.num === 'number')
+        lastSeenObj.num += '.1';
+      obj.num += '.' + (parseInt(lastSeenObj.num.split('.')[1]) + 1);
+    }
+    lastSeenObjOfNum[numWithoutDecimal] = obj;
+  }
 }
 
 function fillPartyDivs() {
