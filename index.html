@@ -537,7 +537,6 @@ document.getElementById('speciesInput').addEventListener('keyup', function(event
     generateOneOfSpecies();
   }
 })
-
 document.getElementById('pokeball').selectedIndex = 0;
 document.getElementById('type').selectedIndex = 0;
 document.getElementById('winRound').textContent = 'win ($' + WIN_INCOME + ')';
@@ -546,6 +545,8 @@ document.getElementById('loseRound').disabled = true;
 document.getElementById('skip').hidden = true;
 document.getElementById('money').value = 0;
 document.getElementById('refresh').disabled = true;
+
+const prevSeenSpecies = new Set();
 
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
@@ -777,16 +778,19 @@ function isLegal(speciesId, species, requiredType) {
 
 function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, ability) {  
   if (speciesName === undefined) {
-    let speciesId = randomKey(allSpecies);
-    // speciesId = 'houndoommega';
-    let species = allSpecies[speciesId];
     let requiredType = document.getElementById('type').value;
     if (!TYPES.includes(requiredType))
       requiredType = null;
-    while (!isLegal(speciesId, species, requiredType)) {
+
+    let speciesId, species;
+    let failsafe = 1000;
+    do {
       speciesId = randomKey(allSpecies);
       species = allSpecies[speciesId];
-    }
+      if (failsafe-- < 0)
+        prevSeenSpecies.clear();
+    } while (!isLegal(speciesId, species, requiredType) || prevSeenSpecies.has(speciesId));
+    prevSeenSpecies.add(speciesId);
 
     speciesName = species.name;
 
