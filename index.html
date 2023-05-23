@@ -1648,8 +1648,13 @@ function randomTM() {
     let speciesIds = getPartySpeciesIds();
     if (divOfNewMon)
       speciesIds = [getSpeciesIdOfPokemon(divOfNewMon.querySelector('.pokemon').innerText)];
-    for (const speciesId of speciesIds)
-      typeMultiset.push(...allSpecies[speciesId].types);
+    for (const speciesId of speciesIds) {
+      const speciesTypes = allSpecies[speciesId].types;
+      typeMultiset.push(...speciesTypes);
+      if (speciesTypes.length == 1)
+        typeMultiset.push(speciesTypes[0]); // add another copy, for balance
+    }
+    console.log(typeMultiset)
     if (TYPES.forEach(type => !typeMultiset.includes(type)))
       return randomTM(); // no valid Type TMs available, so re-roll
     if (Math.random() < .01) {
