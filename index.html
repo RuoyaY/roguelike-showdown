@@ -47,8 +47,7 @@ body {
   height: 5rem;
 }
 .chosen>.pokemon.editable {
-  /* box-shadow: inset 0 0 10px lightgreen; */
-  box-shadow: none;
+  box-shadow: inset 0 0 10px lightgreen;
 }
 .stats {
   border-top: none;
@@ -548,6 +547,8 @@ document.getElementById('refresh').disabled = true;
 
 const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
+
+let divOfNewMon = null;
 
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
@@ -1230,7 +1231,7 @@ function spanWithTitle(str, title) {
 function skipPokemonChoice() {
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
-  endPokemonChoosing(null);
+  endPokemonChoosing();
   document.getElementById('skip').hidden = true;
 }
 
@@ -1243,7 +1244,8 @@ function choosePokemon(choicesDiv, pokemonStr) {
 
   document.getElementById('skip').hidden = true;
   
-  togglePokeDiv(pokeDiv, false);
+  divOfNewMon = pokeDiv;
+  divOfNewMon.classList.add('chosen');
   
   pokeDiv.querySelector('.pokemon').innerText = pokemonStr + '\n- \n- \n- \n- \n';
   updatePokemonDiv(pokeDiv);
@@ -1284,7 +1286,7 @@ function chooseTera(choicesDiv, pokeDiv, type) {
 
   killAllChildren(choicesDiv);
 
-  endPokemonChoosing(pokeDiv);
+  endPokemonChoosing();
 }
 function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
   const speciesId = getSpeciesIdOfPokemon(pokemonStr);
@@ -1334,25 +1336,16 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
     for (let i = 0; i < numChoices(); i++)
       addTeraChoice(choicesDiv, pokeDiv, typeChoices);
   } else {
-    endPokemonChoosing(pokeDiv);
+    endPokemonChoosing();
   }
 }
 
-function endPokemonChoosing(pokeDiv) {
+function endPokemonChoosing() {
   document.getElementById('pokeball').selectedIndex = 0;
   document.getElementById('type').selectedIndex = 0;
-  if (pokeDiv)
-    togglePokeDiv(pokeDiv, true);
   toggleNonPokemonChoices(true);
 }
 
-function togglePokeDiv(pokeDiv, canEdit) {
-  if (canEdit)
-    pokeDiv.classList.remove('chosen');
-  else
-    pokeDiv.classList.add('chosen');
-  pokeDiv.querySelector('.pokemon').setAttribute('contenteditable', canEdit);
-}
 function toggleNonPokemonChoices(turnOn) {
   const buttons = document.querySelectorAll('button');
   for (const button of buttons) {
@@ -1436,6 +1429,11 @@ function nextRound(income) {
 
   const refreshButton = document.getElementById('refresh');
   refreshButton.textContent = '$' + BASE_REFRESH_COST + ' - refresh';
+
+  if (divOfNewMon) {
+    divOfNewMon.classList.remove('chosen');
+    divOfNewMon = null;
+  }
 }
 
 function refreshShop(isViaMoney) {
@@ -1644,7 +1642,9 @@ function randomTM() {
     };
   } else if ((randy -= .2) < 0) {
     const typeMultiset = [];
-    const speciesIds = getPartySpeciesIds();
+    let speciesIds = getPartySpeciesIds();
+    if (divOfNewMon)
+      speciesIds = [getSpeciesIdOfPokemon(divOfNewMon.querySelector('.pokemon').innerText)];
     for (const speciesId of speciesIds)
       typeMultiset.push(...allSpecies[speciesId].types);
     if (TYPES.forEach(type => !typeMultiset.includes(type)))
@@ -1673,7 +1673,9 @@ function randomTM() {
   } else {
     let possibleMoves = [];
     let speciesNames = [];
-    const pokemonStrs = getPartyStrs();
+    let pokemonStrs = getPartyStrs();
+    if (divOfNewMon)
+      pokemonStrs = [divOfNewMon.querySelector('.pokemon').innerText];
     for (const pokemonStr of pokemonStrs) {
       const speciesName = getSpeciesNameOfPokemon(pokemonStr);
       const speciesId = getSpeciesId(speciesName);
