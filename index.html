@@ -1452,18 +1452,22 @@ function refreshShop(isViaMoney) {
     item = structuredClone(item);
     if (item.type === 'heldItem') {
       const heldItemName = item.name;
-      const desc = heldItems[getHeldItemId(item.name)].desc;
-      if (Math.random() < .05 && !hasRequirement(item)) {
+      const heldItemDesc = heldItems[getHeldItemId(item.name)].desc;
+      if (Math.random() < .05) {
         item.name += ' Party';
         item.type = 'heldItemParty';
         if (item.price === 1)
           item.price = 0;
-        item.price = (item.price - AVG_HELD_ITEM_VALUE) + 'n+' + AVG_HELD_ITEM_VALUE;
+        if ((hasRequirement(item) || TYPES.some(type => heldItemDesc.includes(type)))
+              && item.name !== 'Chilan Berry Party')
+          item.price = (-1 * AVG_HELD_ITEM_VALUE) + 'n+' + (item.price + AVG_HELD_ITEM_VALUE);
+          else
+          item.price = (item.price - AVG_HELD_ITEM_VALUE) + 'n+' + AVG_HELD_ITEM_VALUE;
         item.desc = "Set EVERY Pokemon's held item to ";
       } else {
         item.desc = "Set a Pokemon's held item to ";
       }
-      item.desc += heldItemName + '.\n' + spanWithClass(desc, 'attr');
+      item.desc += heldItemName + '.\n' + spanWithClass(heldItemDesc, 'attr');
     }
     shopDiv.append(createItemDiv(item));
   }
