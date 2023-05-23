@@ -1217,7 +1217,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
   
   togglePokeDiv(pokeDiv, false);
   
-  pokeDiv.querySelector('.pokemon').innerText = pokemonStr + '\n-\n-\n-\n-\n';
+  pokeDiv.querySelector('.pokemon').innerText = pokemonStr + '\n- \n- \n- \n- \n';
   updatePokemonDiv(pokeDiv);
   
   killAllChildren(choicesDiv);
@@ -1294,12 +1294,12 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
 }
 function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
   const pokeEle = pokeDiv.querySelector('.pokemon');
-  const pokemonStr = pokeEle.innerText.replace('\n-\n', '\n- ' + move.name + '\n');
+  const pokemonStr = pokeEle.innerText.replace('\n- \n', '\n- ' + move.name + '\n');
   pokeEle.innerHTML = pokemonInHTML(pokemonStr);
 
   killAllChildren(choicesDiv);
 
-  if (pokemonStr.includes('\n-\n')) {
+  if (pokemonStr.includes('\n- \n')) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
   } else if (pokemonCanTera(pokemonStr)) {
     const typeChoices = [];
