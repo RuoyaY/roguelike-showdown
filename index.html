@@ -1308,6 +1308,8 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   } else 
     move = addHiddenPowerType(moves[removeRandom(moveIds)]);
 
+  prevSeenItems.add(speciesTM(allSpecies[speciesId].name, move).name);
+
   const choiceDiv = document.createElement('div');
   choiceDiv.classList.add('flex-col');
 
@@ -1695,12 +1697,7 @@ function randomTM() {
     const possibleMovesIndex = randomInt(possibleMoves.length);
     const move = possibleMoves[possibleMovesIndex];
     const speciesName = speciesNames[possibleMovesIndex];
-    return {
-      name: speciesName + ' TM #' + move.num,
-      type: 'speciesTM',
-      price: tmPrice(move),
-      desc: tmDesc('Teach ' + speciesName + ' the move ', move),
-    };
+    return speciesTM(speciesName, move);
   }
 }
 function randomUniversalTM() {
@@ -1710,6 +1707,14 @@ function randomUniversalTM() {
     type: 'universalTM',
     price: 10 + tmPrice(move),
     desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
+  };
+}
+function speciesTM(speciesName, move) {
+  return {
+    name: speciesName + ' TM #' + move.num,
+    type: 'speciesTM',
+    price: tmPrice(move),
+    desc: tmDesc('Teach ' + speciesName + ' the move ', move),
   };
 }
 function tmPrice(move) { // expected to be a multiple of 10, for Party TM prices
