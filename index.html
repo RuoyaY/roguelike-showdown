@@ -713,12 +713,19 @@ function killAllChildren(div) {
 function addChoices(choicesDiv) {
   if (getPokeball() === 'Master Ball') {
     const speciesName = prompt('Choose a species (case-sensitive).');
+    if (!speciesName)
+      return false;
     const speciesId = getSpeciesId(speciesName);
     if (!speciesId) {
       alert('Error: species name not recognized.');
       return false;
     }
-    for (const ability of Object.values(allSpecies[speciesId].abilities))
+    const species = allSpecies[speciesId];
+    if (!isLegal(speciesId, species, null)) {
+      alert('Error: species is not legal.');
+      return false;
+    }
+    for (const ability of Object.values(species.abilities))
       addRandomPokemon(choicesDiv, true, speciesName, ability);
   } else {
     for (let i = 0; i < numChoices(); i++)
