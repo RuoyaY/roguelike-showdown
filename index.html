@@ -547,6 +547,7 @@ document.getElementById('money').value = 0;
 document.getElementById('refresh').disabled = true;
 
 const prevSeenSpecies = new Set();
+const prevSeenItems = new Set();
 
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
@@ -1469,12 +1470,7 @@ function refreshShop(isViaMoney) {
     while (frozenItems[shopDiv.childNodes.length])
       shop.append(frozenItems[shopDiv.childNodes.length]);
 
-    let item = randomElement(items);
-    // item = items[3];
-    while (!isLegalItem(item))
-      item = randomElement(items);
-    if (Math.random() < 1/3)
-      item = randomTM();
+    let item = randomItem();
 
     item = structuredClone(item);
     if (item.type === 'heldItem') {
@@ -1502,6 +1498,21 @@ function refreshShop(isViaMoney) {
     if (frozenItems[i])
       shopDiv.append(frozenItems[i]);
   }
+}
+
+function randomItem() {
+  let item;
+  let failsafe = 1000;
+  do {
+    if (Math.random() < 1/3)
+      item = randomTM();
+    else
+      item = randomElement(items);
+    if (failsafe-- < 0)
+      prevSeenItems.clear();
+  } while (!isLegalItem(item) || prevSeenItems.has(item.name));
+  prevSeenItems.add(item.name);
+  return item;
 }
 
 function isLegalItem(item) {
