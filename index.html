@@ -359,6 +359,7 @@ const ABILITY_VALUES = {
 const MODIFIED_ABILITIES = {
   'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
   'Illuminate': "Before battle, your opponent must send you a screenshot of their Pokemon in this slot.",
+  'Honey Gather': 'Get one more choice of species whenever you get a new Pokemon.'
 }
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
@@ -756,7 +757,9 @@ function addChoices(choicesDiv) {
     for (const ability of Object.values(species.abilities))
       addRandomPokemon(choicesDiv, true, speciesName, ability);
   } else {
-    for (let i = 0; i < numChoices(); i++)
+    let numPokeChoices = numChoices();
+    numPokeChoices += getPartyStrs().filter(pokemonStr => pokemonStr.includes('Ability: Honey Gather')).length;
+    for (let i = 0; i < numPokeChoices; i++)
       addRandomPokemon(choicesDiv, true);
   }
   return true;
