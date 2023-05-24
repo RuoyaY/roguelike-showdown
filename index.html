@@ -356,10 +356,12 @@ const ABILITY_VALUES = {
   'Truant': 550/650,
 };
 
+const RUN_AWAY_REFRESH_COST = 2;
 const MODIFIED_ABILITIES = {
   'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
   'Illuminate': "Before battle, your opponent must send you a screenshot of their Pokemon in this slot.",
-  'Honey Gather': 'Get one more choice of species whenever you get a new Pokemon.'
+  'Honey Gather': 'Get one more choice of species whenever you get a new Pokemon.',
+  'Run Away': 'Refreshing the shop only costs $' + RUN_AWAY_REFRESH_COST + '.',
 }
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
@@ -371,7 +373,6 @@ const NUM_SHOP_OPTIONS = 3;
 const WIN_INCOME = 100;
 const LOSE_INCOME = 120;
 const BASE_REFRESH_COST = 3;
-const DELTA_REFRESH_COST = 0;
 
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
@@ -562,6 +563,7 @@ document.getElementById('loseRound').disabled = true;
 document.getElementById('skip').hidden = true;
 document.getElementById('money').value = 0;
 document.getElementById('refresh').disabled = true;
+updateRefreshCost();
 const extraIncomeLabel = document.getElementById('extraIncomeLabel');
 extraIncomeLabel.title = 'Check this box if you '
   + 'successfully used any of the following moves last round: \n'
@@ -693,6 +695,8 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
   div.append(statsEle);
 }
 function updatePokemonDiv(div) {
+  updateRefreshCost();
+
   const pokemonEle = div.querySelector('.pokemon');
   const pokemonStr = pokemonEle.innerText;
 
@@ -758,7 +762,7 @@ function addChoices(choicesDiv) {
       addRandomPokemon(choicesDiv, true, speciesName, ability);
   } else {
     let numPokeChoices = numChoices();
-    numPokeChoices += getPartyStrs().filter(pokemonStr => pokemonStr.includes('Ability: Honey Gather')).length;
+    numPokeChoices += numPokemonWithAbility('Honey Gather');
     for (let i = 0; i < numPokeChoices; i++)
       addRandomPokemon(choicesDiv, true);
   }
@@ -1389,9 +1393,17 @@ function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
   document.getElementById('type').selectedIndex = 0;
   document.getElementById('extraIncome').checked = false;
+}
 
-  const refreshButton = document.getElementById('refresh');
-  refreshButton.textContent = '$' + BASE_REFRESH_COST + ' - refresh';
+function updateRefreshCost() {
+  let refreshCost = BASE_REFRESH_COST;
+  if (numPokemonWithAbility('Run Away') > 0)
+    refreshCost = RUN_AWAY_REFRESH_COST;
+  document.getElementById('refresh').textContent = '$' + refreshCost + ' - refresh';
+}
+
+function numPokemonWithAbility(abilityName) {
+  return getPartyStrs().filter(pokemonStr => pokemonStr.includes('Ability: ' + abilityName)).length;
 }
 
 function toggleNonPokemonChoices(turnOn) {
@@ -1504,7 +1516,6 @@ function refreshShop(isViaMoney) {
     const refreshButton = document.getElementById('refresh');
     const price = parseInt(refreshButton.textContent.substring(1, refreshButton.textContent.indexOf(' ')));
     if(!pay(price)) return;
-    refreshButton.textContent = '$' + (price + DELTA_REFRESH_COST) + ' - refresh';
   }
 
   killAllChildren(shopDiv);
