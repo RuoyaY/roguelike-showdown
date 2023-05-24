@@ -154,6 +154,10 @@ button:focus {
   font-size: large;
   font-weight: 700;
 }
+.italic {
+  font-style: italic;
+}
+
 .misc { color: lightgray }
 .partyMisc { background: linear-gradient(45deg, hotpink, lightgray, hotpink); }
 .pokeball { background: linear-gradient(0deg, white 50%, lightcoral 50%); }
@@ -331,7 +335,7 @@ const ABILITY_VALUES = {
   'Good as Gold': FOUR_POINT_FIVE_ABILITY_VALUE, 
   'Gorilla Tactics': 700/650, // x1.5 Atk; choiced
   'Ice Scales': 730/650, // x.5 damage from special moves
-  // Illusion is weakened by varying levels
+  // Illusion is worse due to differing levels
   'Imposter': 1.3,
   'Intimidate': 650/600,
   'Moody': 690/650,
@@ -351,6 +355,11 @@ const ABILITY_VALUES = {
   'Stall': (650-79)/650,
   'Truant': 550/650,
 };
+
+const MODIFIED_ABILITIES = {
+  'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
+  'Illuminate': "Before battle, your opponent must send you a screenshot of their Pokemon in this slot.",
+}
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
 const MONEY_MOVE_INCOME = 10;
@@ -1663,15 +1672,22 @@ function itemDescInHTML(itemDesc, isTM) {
 }
 
 function abilityInHTML(abilityName) {
+  let html = abilityNameInHTML(abilityName);
   const ability = abilities[getAbilityId(abilityName)];
   if (ability)
-    return spanWithTitle(abilityName, abilityDesc(ability));
-  else
-    return abilityName;
+    html = spanWithTitle(html, abilityDesc(ability));
+  return html;
+}
+function abilityNameInHTML(abilityName) {
+  if (MODIFIED_ABILITIES[abilityName])
+    abilityName = spanWithClass(abilityName, 'italic');
+  return abilityName;
 }
 function abilityDesc(ability) {
   if (ability.name === 'Multitype')
     return 'If this Pokemon is an Arceus, its type changes to match its held Plate or Z-Crystal.';
+  if (MODIFIED_ABILITIES[ability.name])
+    return MODIFIED_ABILITIES[ability.name];
   return ability.shortDesc;
 }
 
@@ -1710,7 +1726,7 @@ function randomAbilitizer() {
   }
 }
 function abilitizerDesc(strBeforeAbilityName, ability) {
-  return strBeforeAbilityName + ability.name + '.\n' + spanWithClass(abilityDesc(ability), 'attr');
+  return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n' + spanWithClass(abilityDesc(ability), 'attr');
 }
 
 function randomTM() {
