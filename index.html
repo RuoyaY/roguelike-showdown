@@ -1665,10 +1665,16 @@ function itemDescInHTML(itemDesc, isTM) {
 function abilityInHTML(abilityName) {
   const ability = abilities[getAbilityId(abilityName)];
   if (ability)
-    return spanWithTitle(abilityName, ability.shortDesc);
+    return spanWithTitle(abilityName, abilityDesc(ability));
   else
     return abilityName;
 }
+function abilityDesc(ability) {
+  if (ability.name === 'Multitype')
+    return 'If this Pokemon is an Arceus, its type changes to match its held Plate or Z-Crystal.';
+  return ability.shortDesc;
+}
+
 function heldItemInHTML(heldItemName) {
   return spanWithTitle(heldItemName, heldItems[getHeldItemId(heldItemName)].desc);
 }
@@ -1704,7 +1710,7 @@ function randomAbilitizer() {
   }
 }
 function abilitizerDesc(strBeforeAbilityName, ability) {
-  return strBeforeAbilityName + ability.name + '.\n' + spanWithClass(ability.shortDesc, 'attr');
+  return strBeforeAbilityName + ability.name + '.\n' + spanWithClass(abilityDesc(ability), 'attr');
 }
 
 function randomTM() {
