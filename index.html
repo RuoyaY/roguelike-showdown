@@ -1659,7 +1659,7 @@ function randomAbilitizer() {
   return {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
-    price: 20 + 5 * Math.round(Math.max(...effectiveStatDiffs) / 5),
+    price: 30 + 5 * Math.round(Math.max(...effectiveStatDiffs) / 5),
     desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
   }
 }
