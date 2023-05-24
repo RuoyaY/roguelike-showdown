@@ -1660,7 +1660,6 @@ function randomAbilitizer() {
     const prevAbilityValue = ABILITY_VALUES[abilityLine.substring('Ability: '.length)] ?? BASE_ABILITY_VALUE;
     effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
   }
-  console.log(effectiveStatDiffs)
 
   return {
     name: 'Abilitizer #' + ability.num,
@@ -1697,7 +1696,6 @@ function randomTM() {
       if (speciesTypes.length == 1)
         typeMultiset.push(speciesTypes[0]); // add another copy, for balance
     }
-    console.log(typeMultiset)
     if (TYPES.forEach(type => !typeMultiset.includes(type)))
       return randomTM(); // no valid Type TMs available, so re-roll
     if (Math.random() < .01) {
