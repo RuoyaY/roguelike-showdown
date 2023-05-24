@@ -350,11 +350,10 @@ const ABILITY_VALUES = {
 const AVG_HELD_ITEM_VALUE = 20 * .5; // take into account prob. each Pokemon has a held item
 
 const NUM_SHOP_OPTIONS = 3;
-const WIN_INCOME = 80;
-const LOSE_INCOME = 100;
-const REFRESH_PREFIX = 'Refresh (';
-const REFRESHES_PER_ROUND = 5;
-const REFRESH_SUFFIX = ' left)';
+const WIN_INCOME = 100;
+const LOSE_INCOME = 120;
+const BASE_REFRESH_COST = 5;
+const DELTA_REFRESH_COST = 0;
 
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
@@ -1439,7 +1438,7 @@ function nextRound(income) {
   document.getElementById('skip').hidden = !isPartyFull;
 
   const refreshButton = document.getElementById('refresh');
-  refreshButton.textContent = REFRESH_PREFIX + REFRESHES_PER_ROUND + REFRESH_SUFFIX;
+  refreshButton.textContent = '$' + BASE_REFRESH_COST + ' - refresh';
 
   if (divOfNewMon) {
     divOfNewMon.classList.remove('chosen');
@@ -1447,7 +1446,7 @@ function nextRound(income) {
   }
 }
 
-function refreshShop(isViaRefreshButton) {
+function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   const frozenItems = [];
   let numItemsToAdd = NUM_SHOP_OPTIONS;
@@ -1462,18 +1461,15 @@ function refreshShop(isViaRefreshButton) {
     }
   }
 
-  if (isViaRefreshButton) {
+  if (isViaMoney) {
     if (numItemsToAdd <= 0) {
       alert('Too many frozen items!');
       return;
     }
     const refreshButton = document.getElementById('refresh');
-    const buttonText = refreshButton.textContent;
-    let usesLeft = parseInt(buttonText.slice(REFRESH_PREFIX.length, -REFRESH_SUFFIX.length));
-    usesLeft--;
-    if (usesLeft === 0)
-      refreshButton.disabled = true;
-    refreshButton.textContent = REFRESH_PREFIX + usesLeft + REFRESH_SUFFIX;
+    const price = parseInt(refreshButton.textContent.substring(1, refreshButton.textContent.indexOf(' ')));
+    if(!pay(price)) return;
+    refreshButton.textContent = '$' + (price + DELTA_REFRESH_COST) + ' - refresh';
   }
 
   killAllChildren(shopDiv);
