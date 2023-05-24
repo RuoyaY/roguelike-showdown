@@ -151,8 +151,8 @@ Maranga Berry	heldItem	20
 Mirror Berry	misc	15					Copy a Pokemon's held berry to another Pokemon.		
 Perfect Berry	misc	40					Set a Pokemon's held item to any berry.		
 Mirror Item	misc	40					Copy a Pokemon's held item to another Pokemon.		
-Perfect Item	misc	45					Set a Pokemon's held item to anything (cannot pick Eviolite or Pokemon-specific items).		
-Shadow Item	misc	25					Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round.		
+Perfect Item	misc	45					Set a Pokemon's held item to anything other than an Eviolite, a Z-Crystal, or a Pokemon-specific item.		
+Shadow Item	misc	25					Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round. Exception: Z-Crystals.		
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld					
 Flame Plate	heldItem	20							
 Splash Plate	heldItem	20							
@@ -238,11 +238,11 @@ Defense Curl TMs	universalTM	30					Teach ANY 1 Pokemon one or more of the follo
 Perfect Hidden Power TM	universalTM	20					Teach ANY 1 Pokemon any Hidden Power (other than Normal or Fairy) (e.g. "*Hidden Power Ice*").		
 Random Hidden Power TM	universalTM	10					Generate a random type. You must teach ANY 1 Pokemon the Hidden Power of that type (e.g. "*Hidden Power Ice*").		
 Perfect Universal TM	universalTM	60					Teach ANY 1 Pokemon ANY 1 move (excluding Z-Moves).		
-Perfect Party TM	partyTM	40n+20					Teach EVERY Pokemon ANY 1 move (excluding Z-Moves).		
+Perfect Party TM	partyTM	40n+20					Choose ANY move (excluding Z-Moves). Teach EVERY Pokemon that move.		
 Mirror TM	universalTM	40					Copy any 1 move onto 1 other Pokemon (excluding Z-Moves).		
 Mirror TM Party	partyTM	20n					Copy any 1 move onto EVERY other Pokemon (excluding Z-Moves).		
-Shadow TM	universalTM	35					Teach ANY 1 Pokemon ANY 1 move your opponent used last round (excluding moves used via Z-Crystals).		
-Shadow TM Party	partyTM	20n-5					Teach EVERY Pokemon ANY 1 move your opponent used last round (excluding moves used via Z-Crystals).		
+Shadow TM	universalTM	35					Teach ANY 1 Pokemon ANY 1 move your opponent used last round (excluding Z-Moves).		
+Shadow TM Party	partyTM	20n-5					Choose ANY move your opponent used last round (excluding Z-Moves). Teach EVERY Pokemon that move.		
 Normal Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
 Fire Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
 Water Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
@@ -371,3 +371,6 @@ Burn Drive	heldItem	0				Techno Blast
 Chill Drive	heldItem	0				Techno Blast			
 Douse Drive	heldItem	0				Techno Blast			
 Shock Drive	heldItem	0				Techno Blast			
+True Mirror	misc	50					The next thing you buy happens twice.		
+Wonder Guard Abilitizer	abilitizer	40					Set ANY Pokemon's ability to *Wonder Guard*. Set its Level to 1.		
+Plus & Minus Abilitizer	abilitizer	120					Set ANY 2 Pokemon's abilities to *Plus* and *Minus*.		

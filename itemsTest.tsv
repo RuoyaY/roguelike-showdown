@@ -1,3 +1,4 @@
 [KEEP THIS LINE]
-Roseli Berry	heldItem	5					[halve super-effective ____-type move]		
-Chilan Berry	heldItem	5					[halve normal-type move]	
+Wonder Guard Abilitizer	abilitizer	40					Set ANY Pokemon's ability to *Wonder Guard*. Set its Level to 1.		
+Plus & Minus Abilitizer	abilitizer	120					Set ANY 2 Pokemon's abilities to *Plus* and *Minus*.		
+Pledge TMs	universalTM	80					Teach ANY 3 Pokemon *Fire Pledge*, *Water Pledge*, and *Grass Pledge* (one each).		

@@ -1039,10 +1039,7 @@ function pokemonInHTML(pokemonStr) {
       out += firstLine;
     } else if (strLine.startsWith('Ability:')) {
       out += spanWithClass('Ability: ', 'attr');
-      const abilityName = strLine.substring('Ability: '.length);
-      const ability = abilities[getAbilityId(abilityName)];
-      if (ability)
-        out += spanWithTitle(abilityName, ability.shortDesc);
+      out += abilityInHTML(strLine.substring('Ability: '.length));
       
     } else if (strLine.startsWith('Level: ')) {
       const level = parseInt(strLine.substring('Level: '.length));
@@ -1628,6 +1625,8 @@ function itemDescInHTML(itemDesc, isTM) {
     if (i % 2 == 1) {
       if (getMoveId(str))
         str = moveInHTML(str);
+      else if (getAbilityId(str))
+        str = abilityInHTML(str);
       else if (getHeldItemId(str))
         str = heldItemInHTML(str);
     }
@@ -1636,6 +1635,13 @@ function itemDescInHTML(itemDesc, isTM) {
   return itemDesc;
 }
 
+function abilityInHTML(abilityName) {
+  const ability = abilities[getAbilityId(abilityName)];
+  if (ability)
+    return spanWithTitle(abilityName, ability.shortDesc);
+  else
+    return abilityName;
+}
 function heldItemInHTML(heldItemName) {
   return spanWithTitle(heldItemName, heldItems[getHeldItemId(heldItemName)].desc);
 }
