@@ -1548,7 +1548,7 @@ function randomItem() {
     let randy = randyStart;
     if ((randy -= 1/3) < 0)
       item = randomTM();
-    else if ((randy -= .05) < 0)
+    else if ((randy -= 1/15) < 0)
       item = randomAbilitizer();
     else
       item = randomElement(items);
@@ -1710,18 +1710,18 @@ function randomAbilitizer() {
     effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
   }
 
-  if (Math.random() < .025 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
+  if (Math.random() < .05 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
     return {
       name: 'Party Abilitizer #' + ability.num,
       type: 'partyAbilitizer',
-      price: 30 + 5 * Math.round(effectiveStatDiffs.reduce((a,b) => a+b, 0) / 5),
+      price: 20 + 5 * Math.round(effectiveStatDiffs.reduce((a,b) => a+b, 0) / 5),
       desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
     }
   }
   return {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
-    price: 30 + 5 * Math.round(Math.max(...effectiveStatDiffs) / 5),
+    price: 20 + 5 * Math.round(Math.max(...effectiveStatDiffs) / 5),
     desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
   }
 }
