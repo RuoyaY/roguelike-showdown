@@ -624,6 +624,7 @@ function loadItems() {
     }
   }
   xhttp.open("GET", 'items.tsv');
+  // xhttp.open("GET", 'itemsTest.tsv');
   xhttp.send();
 }
 
@@ -1506,10 +1507,11 @@ function refreshShop(isViaMoney) {
 }
 
 function randomItem() {
-  let randy = Math.random();
+  const randyStart = Math.random();
   let item;
   let failsafe = 1000;
   do {
+    let randy = randyStart;
     if ((randy -= 1/3) < 0)
       item = randomTM();
     else if ((randy -= .1) < 0)
