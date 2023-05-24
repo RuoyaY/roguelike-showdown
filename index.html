@@ -160,11 +160,12 @@ button:focus {
 .heldItem { color: orange }
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
 .speciesTM { color: yellow }
-.abilitizer { color: lime }
 .partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
 .universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, yellow 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
 .TMAndZCrystal { background: linear-gradient(45deg, yellow, orange); } 
-.partyMisc, .pokeball, .heldItemParty, .partyTM, .universalTM, .TMAndZCrystal {  
+.abilitizer { color: lightgreen }
+.partyAbilitizer { background: linear-gradient(45deg, hotpink, lightgreen, hotpink); }
+.partyMisc, .pokeball, .heldItemParty, .partyTM, .universalTM, .TMAndZCrystal, .partyAbilitizer {  
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -1663,6 +1664,14 @@ function randomAbilitizer() {
     effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
   }
 
+  if (Math.random() < .025 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
+    return {
+      name: 'Party Abilitizer #' + ability.num,
+      type: 'partyAbilitizer',
+      price: 30 + 5 * Math.round(effectiveStatDiffs.reduce((a,b) => a+b, 0) / 5),
+      desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
+    }
+  }
   return {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
