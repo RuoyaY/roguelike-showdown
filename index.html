@@ -1548,7 +1548,7 @@ function randomItem() {
     let randy = randyStart;
     if ((randy -= 1/3) < 0)
       item = randomTM();
-    else if ((randy -= .1) < 0)
+    else if ((randy -= .05) < 0)
       item = randomAbilitizer();
     else
       item = randomElement(items);
