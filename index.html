@@ -154,8 +154,8 @@ button:focus {
   font-size: large;
   font-weight: 700;
 }
-.italic {
-  font-style: italic;
+.modifiedAbility {
+  background-color: rgba(0,255,0,.3);
 }
 
 .misc { color: lightgray }
@@ -1683,7 +1683,7 @@ function abilityInHTML(abilityName) {
 }
 function abilityNameInHTML(abilityName) {
   if (MODIFIED_ABILITIES[abilityName])
-    abilityName = spanWithClass(abilityName, 'italic');
+    abilityName = spanWithClass(abilityName, 'modifiedAbility');
   return abilityName;
 }
 function abilityDesc(ability) {
