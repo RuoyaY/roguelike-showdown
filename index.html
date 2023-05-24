@@ -237,6 +237,9 @@ button:focus {
       <option>Fairy</option>
     </select>
     <br>
+    <input type="checkbox" id="extraIncome">
+    <label for="extraIncome" id="extraIncomeLabel" class="hasHoverText">Used a money-making move</label>
+    <br class="mb-4px">
     <button id="winRound" onclick="winRound()" class="mb-4px">win</button>
     <button id="loseRound" onclick="loseRound()">lose</button>
     <div id="choices" class="flex-row"></div>
@@ -348,6 +351,9 @@ const ABILITY_VALUES = {
   'Stall': (650-79)/650,
   'Truant': 550/650,
 };
+
+const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
+const MONEY_MOVE_INCOME = 10;
 
 const AVG_HELD_ITEM_VALUE = 20 * .5; // take into account prob. each Pokemon has a held item
 
@@ -540,14 +546,19 @@ document.getElementById('speciesInput').addEventListener('keyup', function(event
     generateOneOfSpecies();
   }
 })
-document.getElementById('pokeball').selectedIndex = 0;
-document.getElementById('type').selectedIndex = 0;
 document.getElementById('winRound').textContent = 'win ($' + WIN_INCOME + ')';
 document.getElementById('loseRound').textContent = 'lose ($' + LOSE_INCOME + ')';
 document.getElementById('loseRound').disabled = true;
 document.getElementById('skip').hidden = true;
 document.getElementById('money').value = 0;
 document.getElementById('refresh').disabled = true;
+const extraIncomeLabel = document.getElementById('extraIncomeLabel');
+extraIncomeLabel.title = 'Check this box if you '
+  + 'successfully used any of the following moves last round: \n'
+  + MONEY_MOVES.join(', ') + '.';
+extraIncomeLabel.textContent += ' ($' + MONEY_MOVE_INCOME + ')';
+
+resetRoundBasedInputs();
 
 const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
@@ -1119,11 +1130,15 @@ function moveDesc(move, type) {
     title += '\nAcc: ' + move.accuracy;
   if (move.pp === 1)
     title += '\nPP: 1';
+
   let shortDesc = move.shortDesc;
   if (move.name.startsWith('Hidden Power'))
-    shortDesc = "A Pokemon can only know 1 Hidden Power at a time."
+    shortDesc = "A Pokemon can only know 1 Hidden Power at a time.";
   shortDesc = shortDesc.replace('Base move affects power. ', '');
+  if (MONEY_MOVES.includes(move.name))
+    shortDesc += '\nOnce per round, earn $' + MONEY_MOVE_INCOME + ' if successfully used.';
   title += '\n\n' + shortDesc;
+
   return title;
 }
 
@@ -1355,9 +1370,16 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
 }
 
 function endPokemonChoosing() {
+  resetRoundBasedInputs();
+  toggleNonPokemonChoices(true);
+}
+function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
   document.getElementById('type').selectedIndex = 0;
-  toggleNonPokemonChoices(true);
+  document.getElementById('extraIncome').checked = false;
+
+  const refreshButton = document.getElementById('refresh');
+  refreshButton.textContent = '$' + BASE_REFRESH_COST + ' - refresh';
 }
 
 function toggleNonPokemonChoices(turnOn) {
@@ -1427,6 +1449,8 @@ function loseRound() {
   nextRound(LOSE_INCOME);
 }
 function nextRound(income) {
+  if (document.getElementById('extraIncome').checked)
+    income += MONEY_MOVE_INCOME;
   if (!pay(-1 * income)) return;
 
   const choicesDiv = document.getElementById('choices');
@@ -1440,9 +1464,6 @@ function nextRound(income) {
   
   const isPartyFull = getEmptyPartyDiv() === null;
   document.getElementById('skip').hidden = !isPartyFull;
-
-  const refreshButton = document.getElementById('refresh');
-  refreshButton.textContent = '$' + BASE_REFRESH_COST + ' - refresh';
 
   if (divOfNewMon) {
     divOfNewMon.classList.remove('chosen');
