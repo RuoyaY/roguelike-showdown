@@ -1383,16 +1383,14 @@ function resetRoundBasedInputs() {
 }
 
 function toggleNonPokemonChoices(turnOn) {
-  const buttons = document.querySelectorAll('button');
-  for (const button of buttons) {
-    if (button.parentElement.classList.contains('item-price'))
-      button.disabled = !turnOn;
+  const ELEMENT_IDS = ['pokeball', 'type', 'extraIncome', 'winRound', 'loseRound', 'refresh'];
+  for (const elementId  of ELEMENT_IDS)
+    document.getElementById(elementId).disabled = !turnOn;
+  const shopDivs = document.getElementById('shop').children;
+  for (const shopDiv of shopDivs) {
+    shopDiv.querySelector('input').disabled = !turnOn;
+    shopDiv.querySelector('button').disabled = !turnOn;
   }
-  document.getElementById('winRound').disabled = !turnOn;
-  document.getElementById('loseRound').disabled = !turnOn;
-  document.getElementById('pokeball').disabled = !turnOn;
-  document.getElementById('type').disabled = !turnOn;
-  document.getElementById('refresh').disabled = !turnOn;
 }
 
 function removeRandom(arr) {
