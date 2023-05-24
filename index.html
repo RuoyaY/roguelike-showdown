@@ -1118,6 +1118,7 @@ function moveDesc(move, type) {
   let shortDesc = move.shortDesc;
   if (move.name.startsWith('Hidden Power'))
     shortDesc = "A Pokemon can only know 1 Hidden Power at a time."
+  shortDesc = shortDesc.replace('Base move affects power. ', '');
   title += '\n\n' + shortDesc;
   return title;
 }
