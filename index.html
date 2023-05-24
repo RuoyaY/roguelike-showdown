@@ -160,8 +160,9 @@ button:focus {
 .heldItem { color: orange }
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
 .speciesTM { color: yellow }
+.abilitizer { color: lime }
 .partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
-.universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, rgba(255,255,0,1) 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
+.universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, yellow 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
 .TMAndZCrystal { background: linear-gradient(45deg, yellow, orange); } 
 .partyMisc, .pokeball, .heldItemParty, .partyTM, .universalTM, .TMAndZCrystal {  
   background-clip: text;
@@ -891,7 +892,7 @@ function randomOfSpecies(speciesName, abilityName) {
     pokemonStr += ' @ ' + heldItemName;
 
   if (abilityName === undefined)
-    abilityName = randomProperty(species.abilities);
+    abilityName = randomValue(species.abilities);
   pokemonStr += '\nAbility: ';
   if (abilityName)
     pokemonStr += abilityName;
@@ -1142,30 +1143,22 @@ function canTera(species, heldItem) {
 }
 
 function statsInHTML(pokemonStr) {
-  const speciesId = getSpeciesIdOfPokemon(pokemonStr);
-  const species = allSpecies[speciesId];
-  const strLines = pokemonStr.split('\n');
-
-  const levelStr = strLines.find(line => line.startsWith('Level: '));
-  const level = levelStr ? parseInt(levelStr.substring('Level: '.length)) : 100;
-
-  const evsStr = strLines.find(line => line.startsWith('EVs: '));
-
-  const nature = strLines.find(line => line.trim().endsWith(' Nature'))?.slice(0, -1 * ' Nature'.length);
+  const statRelevantInfo = getStatRelevantInfo(pokemonStr);
+  const species = statRelevantInfo[0];
 
   let out = '';
   for (const stat of STATS) {
-    const statNum = getStat(species, level, evsStr, nature, stat);
+    const statNum = getStat(...statRelevantInfo, stat);
     let statStr = statNum + ' ' + stat;
     if (stat === 'Atk' || stat === 'SpA')
-      statStr = spanWithTitle(statStr, 'Unadjusted ' + stat + ': ' + getUnadjustedStat(species, level, evsStr, nature, stat));
+      statStr = spanWithTitle(statStr, 'Unadjusted ' + stat + ': ' + getUnadjustedStat(...statRelevantInfo, stat));
     out += spanWithClass(' '.repeat(Math.max(0, 3-(statNum+'').length)) + statStr, 'stat-' + stat.toLowerCase()) + ' ';
     if (stat === 'Def')
       out += '\n' + ' '.repeat('... HP '.length);
   }
   out = out.slice(0, -1);
 
-  const statTotal = getStatTotal(species, level, evsStr, nature);
+  const statTotal = getStatTotal(...statRelevantInfo);
   let statTotalStr = '';
   if (statTotal === getStatTotal(species, getLevel(species, STAT_TOTAL_GOAL)))
     statTotalStr += spanWithClass('TOTAL: ' + statTotal, 'gray');
@@ -1174,6 +1167,21 @@ function statsInHTML(pokemonStr) {
   out = statTotalStr + '\n' + out;
 
   return out;
+}
+function getStatRelevantInfo(pokemonStr) {
+  const speciesId = getSpeciesIdOfPokemon(pokemonStr);
+  const species = allSpecies[speciesId];
+  const strLines = pokemonStr.split('\n');
+
+  const levelStr = strLines.find(line => line.startsWith('Level: '));
+  const level = levelStr ? parseInt(levelStr.substring('Level: '.length)) : 100;
+
+  let evsStr = strLines.find(line => line.startsWith('EVs: '));
+  evsStr = evsStr ?? 'EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe';
+
+  const nature = strLines.find(line => line.trim().endsWith(' Nature'))?.slice(0, -1 * ' Nature'.length);
+
+  return [species, level, evsStr, nature];
 }
 
 function getStatTotal(species, level, evsStr, nature) {
@@ -1501,12 +1509,14 @@ function refreshShop(isViaMoney) {
 }
 
 function randomItem() {
-  const randy = Math.random();
+  let randy = Math.random();
   let item;
   let failsafe = 1000;
   do {
-    if (randy < 1/3)
+    if ((randy -= 1/3) < 0)
       item = randomTM();
+    else if ((randy -= .1) < 0)
+      item = randomAbilitizer();
     else
       item = randomElement(items);
     if (failsafe-- < 0)
@@ -1630,6 +1640,33 @@ function heldItemInHTML(heldItemName) {
   return spanWithTitle(heldItemName, heldItems[getHeldItemId(heldItemName)].desc);
 }
 
+function randomAbilitizer() {
+  let ability;
+  do {
+    ability = randomValue(abilities);
+  } while (ability.desc.includes('If this Pokemon is a ') || ability.desc.includes('If this Pokemon is an ')
+            || ability.name === 'Wonder Guard');
+
+  const effectiveStatDiffs = [];
+  const abilityValue = ABILITY_VALUES[ability.name] ?? BASE_ABILITY_VALUE;
+  for (const pokemonStr of getPartyStrs()) {
+    const abilityLine = pokemonStr.split('\n').find(line => line.startsWith('Ability:'));
+    const prevAbilityValue = ABILITY_VALUES[abilityLine.substring('Ability: '.length)] ?? BASE_ABILITY_VALUE;
+    effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
+  }
+  console.log(effectiveStatDiffs)
+
+  return {
+    name: 'Abilitizer #' + ability.num,
+    type: 'abilitizer',
+    price: 20 + 5 * Math.round(Math.max(...effectiveStatDiffs) / 5),
+    desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
+  }
+}
+function abilitizerDesc(strBeforeAbilityName, ability) {
+  return strBeforeAbilityName + ability.name + '.\n' + spanWithClass(ability.shortDesc, 'attr');
+}
+
 function randomTM() {
   let randy = Math.random();
 
@@ -1737,11 +1774,11 @@ function tmDesc(strBeforeMoveName, move) {
           + '\n' + spanWithClass(moveDesc(move, move.type).replace('\n\n', '\n'), 'attr');
 }
 function randomMove(allowZMoves) {
-  let move = randomProperty(moves);
+  let move = randomValue(moves);
   while (move.desc === "Power is equal to the base move's Z-Power." 
       || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160)
       || (move.isZ && !allowZMoves))
-    move = randomProperty(moves);
+    move = randomValue(moves);
   return addHiddenPowerType(move);
 }
 
@@ -1817,7 +1854,7 @@ function getPokeball() {
   return document.getElementById('pokeball').value;
 }
 
-function randomProperty(obj) {
+function randomValue(obj) {
   return obj[randomKey(obj)];
 }
 
