@@ -1677,7 +1677,7 @@ function abilitizerDesc(strBeforeAbilityName, ability) {
 function randomTM() {
   let randy = Math.random();
 
-  if ((randy -= .2) < 0) {
+  if ((randy -= .3) < 0) {
     return randomUniversalTM();
   } else if ((randy -= .1) < 0) {
     const move = randomMove(true);
@@ -1687,7 +1687,7 @@ function randomTM() {
       price: tmPrice(move)/2 + 'n+20',
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
-  } else if ((randy -= .2) < 0) {
+  } else if ((randy -= .3) < 0) {
     const typeMultiset = [];
     let speciesIds = getPartySpeciesIds();
     if (divOfNewMon)
