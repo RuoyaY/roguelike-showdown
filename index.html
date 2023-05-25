@@ -216,6 +216,8 @@ button:focus {
       <option>Great Ball</option>
       <option>Ultra Ball</option>
       <option>Level Ball</option>
+      <option>Dream Ball</option>
+      <option>Friend Ball</option>
       <option>Master Ball</option>
     </select>
     <label for="type">Guaranteed type:</label>
@@ -1291,7 +1293,18 @@ function choosePokemon(choicesDiv, pokemonStr) {
   divOfNewMon = pokeDiv;
   divOfNewMon.classList.add('chosen');
   
-  pokeDiv.querySelector('.pokemon').innerText = pokemonStr + '\n- \n- \n- \n- \n';
+  switch (getPokeball()) {
+    case 'Dream Ball':
+      pokemonStr += '\n- Rest\n- Sleep Talk\n- \n- \n';
+      break;
+    case 'Friend Ball':
+      pokemonStr += '\n- Return\n- \n- \n- \n';
+      break;
+    default:
+      pokemonStr += '\n- \n- \n- \n- \n';
+  }
+  pokeDiv.querySelector('.pokemon').innerText = pokemonStr;
+  
   updatePokemonDiv(pokeDiv);
   
   killAllChildren(choicesDiv);
