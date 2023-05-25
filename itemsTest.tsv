@@ -1,3 +1,7 @@
 [KEEP THIS LINE]
-Dream Ball	pokeball	20					Next round, your new Pokemon starts off knowing *Rest* and *Sleep Talk*.
-Friend Ball	pokeball	30					Next round, your new Pokemon starts off knowing *Return*.
+Power Weight	heldItem	0					
+Power Bracer	heldItem	0					
+Power Belt	heldItem	0					
+Power Lens	heldItem	0					
+Power Band	heldItem	0					
+Power Anklet	heldItem	0					
