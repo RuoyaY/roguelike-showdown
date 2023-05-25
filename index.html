@@ -641,10 +641,9 @@ function loadItems() {
         desc: splitByTab[7],
       }
 
-      const priceNum = parseInt(splitByTab[2]);
-      if (!isNaN(priceNum))
-        item.price = priceNum;
-      
+      if (!item.price.includes('n'))
+        item.price = parseInt(item.price);    
+
       if (splitByTab[3] !== '')
         item.weight = splitByTab[3];
       if (splitByTab[4] !== '')
