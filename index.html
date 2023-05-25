@@ -219,6 +219,7 @@ button:focus {
       <option>Dream Ball</option>
       <option>Friend Ball</option>
       <option>Beast Ball</option>
+      <option>Repeat Ball</option>
       <option>Master Ball</option>
     </select>
     <label for="type">Guaranteed type:</label>
@@ -751,13 +752,21 @@ function killAllChildren(div) {
 }
 
 function addChoices(choicesDiv) {
-  if (getPokeball() === 'Master Ball') {
-    const speciesName = prompt('Choose a species (case-sensitive).');
+  const pokeball = getPokeball();
+  if (pokeball === 'Master Ball' || pokeball === 'Repeat Ball') {
+    const promptText = pokeball === 'Master Ball' ? 'Choose a species (case-sensitive).' 
+                                                  : 'Choose a species you already own (case-sensitive).';
+    const speciesName = prompt(promptText);
     if (!speciesName)
       return false;
     const speciesId = getSpeciesId(speciesName);
     if (!speciesId) {
       alert('Error: species name not recognized.');
+      return false;
+    }
+    if (pokeball === 'Repeat Ball' &&
+        !getPartyStrs().map(pokemonStr => getApparentSpeciesNameOfPokemon(pokemonStr)).includes(speciesName)) {
+      alert('You must choose a species you already own!');
       return false;
     }
     const species = allSpecies[speciesId];
@@ -1041,13 +1050,12 @@ function getLevel(species, statTotalGoal) {
   return 100;
 }
 
+function getSpeciesIdOfPokemon(pokemonStr) {
+  return getSpeciesId(getSpeciesNameOfPokemon(pokemonStr));
+}
 function getSpeciesNameOfPokemon(pokemonStr) {
   let firstLine = pokemonStr.split('\n')[0];
-  let name = firstLine;
-  if (name.includes(' @'))
-    name = name.substring(0, name.indexOf(' @'));
-  if (name.includes(' ('))
-    name = name.substring(0, name.indexOf(' ('));
+  let name = getApparentSpeciesNameOfPokemon(pokemonStr);
   if (firstLine.includes(' @ ')) {
     let heldItem = firstLine.split(' @ ')[1];
     if (FAKE_REQUIRED_ITEMS.includes(heldItem)
@@ -1066,8 +1074,14 @@ function getSpeciesNameOfPokemon(pokemonStr) {
   }
   return name;
 }
-function getSpeciesIdOfPokemon(pokemonStr) {
-  return getSpeciesId(getSpeciesNameOfPokemon(pokemonStr));
+function getApparentSpeciesNameOfPokemon(pokemonStr) {
+  let firstLine = pokemonStr.split('\n')[0];
+  let name = firstLine;
+  if (name.includes(' @'))
+    name = name.substring(0, name.indexOf(' @'));
+  if (name.includes(' ('))
+    name = name.substring(0, name.indexOf(' ('));
+  return name;
 }
 
 function pokemonInHTML(pokemonStr) {
@@ -1471,9 +1485,6 @@ function getEmptyPartyDiv() {
   return null;
 }
 
-function getPartySpeciesIds() {
-  return getPartyStrs().map(pokemonStr => getSpeciesIdOfPokemon(pokemonStr));
-}
 /*
 * Does not include empty slots
 */
@@ -1800,7 +1811,7 @@ function randomTM() {
     };
   } else if ((randy -= .3) < 0) {
     const typeMultiset = [];
-    let speciesIds = getPartySpeciesIds();
+    let speciesIds = getPartyStrs().map(pokemonStr => getSpeciesIdOfPokemon(pokemonStr));
     if (divOfNewMon)
       speciesIds = [getSpeciesIdOfPokemon(divOfNewMon.querySelector('.pokemon').innerText)];
     for (const speciesId of speciesIds) {
