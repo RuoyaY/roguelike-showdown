@@ -1364,7 +1364,8 @@ function chooseTera(choicesDiv, pokeDiv, type) {
 }
 function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
   const speciesId = getSpeciesIdOfPokemon(pokemonStr);
-  const moveIds = getLearnset(speciesId);
+  let moveIds = getLearnset(speciesId);
+  moveIds = moveIds.filter(moveId => !pokemonStr.includes('\n- ' + moves[moveId].name + '\n'));
   addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
 }
 function addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds) {
