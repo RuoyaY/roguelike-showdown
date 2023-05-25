@@ -677,7 +677,7 @@ function makeNumsUnique(objs) {
 }
 
 function fillPartyDivs() {
-  for (const pokemonDiv of document.getElementById('party').getElementsByClassName('pokemon-div')) {
+  for (const pokemonDiv of getPartyPokeDivs()) {
     fillPokemonDiv(pokemonDiv, true, false);
   }
 }
@@ -1475,8 +1475,7 @@ function removeRandom(arr) {
 }
 
 function getEmptyPartyDiv() {
-  const partyDiv = document.getElementById('party');
-  for (const partyPokeDiv of partyDiv.querySelectorAll('.pokemon-div')) {
+  for (const partyPokeDiv of getPartyPokeDivs()) {
     const partyPokeEle = partyPokeDiv.querySelector('.pokemon');
     if (partyPokeEle.innerText.trim() === '') {
       return partyPokeDiv;
@@ -1489,26 +1488,18 @@ function getEmptyPartyDiv() {
 * Does not include empty slots
 */
 function getPartyStrs() {
-  let partyStrs = [];
+  return getPartyPokeEles().map(pokeEle => pokeEle.innerText.trim()).filter(str => str !== '');
+}
+function getPartyPokeEles() {
+  return getPartyPokeDivs().map(pokeDiv => pokeDiv.querySelector('.pokemon'));
+}
+function getPartyPokeDivs() {
   const partyDiv = document.getElementById('party');
-  for (const partyPokeDiv of partyDiv.querySelectorAll('.pokemon-div')) {
-    const partyPokeEle = partyPokeDiv.querySelector('.pokemon');
-    const pokemonStr = partyPokeDiv.innerText.trim();
-    if (pokemonStr !== '')
-      partyStrs.push(pokemonStr);
-  }
-  return partyStrs;
+  return Array.from(partyDiv.querySelectorAll('.pokemon-div'));
 }
 
 function copyParty() {
-  const partyDiv = document.getElementById('party');
-  let partyStr = '';
-  for (const pokemonEle of partyDiv.querySelectorAll('.pokemon')) {
-    const pokemonStr = pokemonEle.innerText.trim();
-    if (pokemonStr !== '')
-      partyStr += pokemonStr + '\n\n';
-  }
-  navigator.clipboard.writeText(partyStr);
+  navigator.clipboard.writeText(getPartyStrs().join('\n\n'));
 }
 
 function winRound() {
