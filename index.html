@@ -631,7 +631,7 @@ function loadHeldItems() {
       const powerItem = heldItems[powerItemName.toLowerCase().replace(' ', '')];
       if (powerItem)
         powerItem.desc = "Holder's Speed is halved.\nEach round, it automatically gains "
-                          + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs (up to the maximum of 252) (total EVs can exceed 508).';
+                          + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs (up to the maximum of 252) (max 508 total EVs).';
     }
   }
   xhttp.open("GET", "heldItems.json");
@@ -1566,13 +1566,17 @@ function nextRound(income) {
         const evsStr = pokemonStr.split('\n').find(line => line.startsWith('EVs: '));
         if (evsStr) {
           const evs = getEvs(evsStr);
-          evs[i] = Math.min(evs[i] + POWER_ITEM_DELTA, 252);
+          evs[i] = Math.max(evs[i], Math.min(evs[i] + POWER_ITEM_DELTA, 252, 508 - (sumArr(evs) - evs[i])));
           pokeEle.innerText = pokemonStr.replace(evsStr, getEvsStr(evs));
           updatePokemonDiv(pokeDiv);
         }
       }
     }
   }
+}
+
+function sumArr(arr) {
+  return arr.reduce((a,b) => a+b, 0);
 }
 
 function refreshShop(isViaMoney) {
@@ -1816,7 +1820,7 @@ function randomAbilitizer() {
     return {
       name: 'Party Abilitizer #' + ability.num,
       type: 'partyAbilitizer',
-      price: 20 + 5 * Math.round(effectiveStatDiffs.reduce((a,b) => a+b, 0) / 5),
+      price: 20 + 5 * Math.round(sumArr(effectiveStatDiffs) / 5),
       desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
     }
   }
