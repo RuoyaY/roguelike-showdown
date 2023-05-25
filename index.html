@@ -105,6 +105,10 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   margin-right: 1px;
 }
 
+/* .win-counter {
+  text-align: center;
+} */
+
 .ml-1 {
   margin-left: 1rem;
 }
@@ -281,6 +285,7 @@ button:focus {
       <div class="pokemon-div"></div>
       <div class="pokemon-div"></div>
     </div>
+    <p id="winCounter" class="win-counter"></p>
   </div>
 </div>
 
@@ -1530,6 +1535,7 @@ function copyParty() {
 }
 
 function winRound() {
+  document.getElementById('winCounter').textContent += '✓ ';
   nextRound(WIN_INCOME);
 }
 function loseRound() {
