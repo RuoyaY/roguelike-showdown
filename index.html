@@ -1063,7 +1063,7 @@ function getSpeciesIdOfPokemon(pokemonStr) {
   return getSpeciesId(getSpeciesNameOfPokemon(pokemonStr));
 }
 function getSpeciesNameOfPokemon(pokemonStr) {
-  let firstLine = pokemonStr.split('\n')[0];
+  let firstLine = pokemonStr.split('\n')[0].trimEnd();
   let name = getApparentSpeciesNameOfPokemon(pokemonStr);
   if (firstLine.includes(' @ ')) {
     let heldItem = firstLine.split(' @ ')[1];
@@ -1084,7 +1084,7 @@ function getSpeciesNameOfPokemon(pokemonStr) {
   return name;
 }
 function getApparentSpeciesNameOfPokemon(pokemonStr) {
-  let firstLine = pokemonStr.split('\n')[0];
+  let firstLine = pokemonStr.split('\n')[0].trimEnd();
   let name = firstLine;
   if (name.includes(' @'))
     name = name.substring(0, name.indexOf(' @'));

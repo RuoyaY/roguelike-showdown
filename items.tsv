@@ -1,12 +1,16 @@
 name	type	price	prob	required species	required abilities	required moves	desc		
 Great Ball	pokeball	20					Next round, +1 option to all non-shop choices.		
 Ultra Ball	pokeball	30					Next round, +2 options to all non-shop choices.		
-Level Ball	pokeball	5					Next round, +1 option to all non-shop choices, but all Pokemon have -1 level.		
+Level Ball	pokeball	5					Next round, +1 option to all non-shop choices, but your new Pokemon is 1 level lower than usual.		
+Dream Ball	pokeball	20					Next round, your new Pokemon starts off knowing *Rest* and *Sleep Talk*.		
+Friend Ball	pokeball	30					Next round, your new Pokemon starts off knowing *Return*.		
+Beast Ball	pokeball	15					Next round, your new Pokemon will have *Beast Boost* instead of its regular ability.		
+Repeat Ball	pokeball	5					Next round, you can choose a Pokemon of any species you already own (you will then be able to choose any ability that species can have).		
+Lure Ball	pokeball	60					Next round, your new Pokemon is a Lv100 Magikarp whose only known move is Splash.		
 Master Ball	pokeball	20					Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
-Random Ball	pokeball	15					Automatically sets your Poke Ball for the next round to a random one (other than the default).		
+Random Ball	pokeball	20					Automatically sets your Poke Ball for the next round to a random one (other than the default).		
 Rare Candy	misc	15					Increase a Pokemon's level by one.		
 Rare Penta-Candy	misc	75					Increase a Pokemon's level by FIVE.		
-Rare Deca-Candy	misc	150					Increase a Pokemon's level by TEN.		
 Rare Candy Party	partyMisc	15n					Increase EVERY Pokemon's level by one.		
 Doom Seed	misc	-15					Decrease a Pokemon's level by one.		
 Doom Seed Party	partyMisc	-15n					Decrease EVERY Pokemon's level by one.		
@@ -25,8 +29,8 @@ Genius Feathers	misc	10	0				Increase a Pokemon's SpA EV by 80. (IGNORE the tota
 Clever Feathers	misc	10	0				Increase a Pokemon's SpD EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
 Swift Feathers	misc	10	0				Increase a Pokemon's Spe EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
 Perfect Feathers	misc	15	0				Increase a Pokemon's EV in any 1 stat by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
-Super Training	misc	60					Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV).		
-Ultra Training	misc	180					Set a Pokemon's EVs to 252 in every stat (i.e. "EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe").		
+Super Training	misc	60					Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV) (ignore preexisting EVs).		
+Ultra Training	misc	180	0				Set a Pokemon's EVs to 252 in every stat (i.e. "EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe").		
 Androgen Pills	misc	0	0.5				Set a Pokemon's gender to male (even if it does not normally have a gender).		
 Estrogen Pills	misc	0	0.5				Set a Pokemon's gender to female (even if it does not normally have a gender).		
 Gender Liquidator	misc	1					Remove a Pokemon's gender (it'll get a random gender at the start of each battle, if possible).		
@@ -191,8 +195,8 @@ Dragon Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silva
 Steel Memory	heldItem	25		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
 Fairy Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack			
 Perfect Memory	misc	30		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater		Multi-Attack	Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
-Mirror Pokemon	misc	120					Replace one of your Pokemon with a clone of one of your other Pokemon.		
-Shadow Pokemon	misc	120					Replace one of your Pokemon with a clone of one of your opponent's Pokemon from LAST round.		
+Mirror Pokemon	misc	100					Replace one of your Pokemon with a clone of one of your other Pokemon.		
+Shadow Pokemon	misc	80					Replace one of your Pokemon with a clone of one of your opponent's Pokemon from LAST round.		
 Buginium Z	heldItem	70							
 Darkinium Z	heldItem	70							
 Dragonium Z	heldItem	70							
@@ -306,8 +310,8 @@ Encounter Power: Dark	misc	5					Next round, you are guaranteed to get <span cla
 Encounter Power: Dragon	misc	0					Next round, you are guaranteed to get <span class="type-dragon">Dragon</span>-type Pokemon.		
 Encounter Power: Steel	misc	10					Next round, you are guaranteed to get <span class="type-steel">Steel</span>-type Pokemon.		
 Encounter Power: Fairy	misc	10					Next round, you are guaranteed to get <span class="type-fairy">Fairy</span>-type Pokemon.		
-Encounter Power: Perfect	misc	15					Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
-Encounter Power: Mirror	misc	5					Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
+Perfect Encounter Power	misc	15					Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
+Mirror Encounter Power	misc	5					Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
 Venusaurite	heldItem	85		venusaur			If held by a Venusaur, this item allows it to Mega Evolve in battle.		
 Charizardite X	heldItem	85		charizard			If held by a Charizard, this item allows it to Mega Evolve in battle.		
 Charizardite Y	heldItem	130		charizard			If held by a Charizard, this item allows it to Mega Evolve in battle.		
@@ -372,5 +376,14 @@ Chill Drive	heldItem	0				Techno Blast
 Douse Drive	heldItem	0				Techno Blast			
 Shock Drive	heldItem	0				Techno Blast			
 True Mirror	misc	50					The next thing you buy happens twice.		
-Wonder Guard Abilitizer	abilitizer	40					Set ANY Pokemon's ability to *Wonder Guard*. Set its Level to 1.		
-Plus & Minus Abilitizer	abilitizer	120					Set ANY 2 Pokemon's abilities to *Plus* and *Minus*.		
+Wonder Guard Abilitizer	abilitizer	40					Set a Pokemon's ability to *Wonder Guard*. Set its Level to 1.		
+Plus & Minus Abilitizer	abilitizer	120					Set 2 Pokemon's abilities to *Plus* and *Minus*.		
+Perfect Abilitizer	abilitizer	100					Set a Pokemon's ability to any ability other than Huge Power, Pure Power, or Wonder Guard.		
+Mirror Abilitizer	abilitizer	30					Copy a Pokemon's ability to any other Pokemon. (Can't copy Wonder Guard, Huge Power, or Pure Power. Can't replace Defeatist, Slow Start, Stall, or Truant.)		
+Power Weight	heldItem	0							
+Power Bracer	heldItem	0							
+Power Belt	heldItem	0							
+Power Lens	heldItem	0							
+Power Band	heldItem	0							
+Power Anklet	heldItem	0							
+Super Rod	misc	150					Replace a Pokemon with the following Pokemon: <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>-		
