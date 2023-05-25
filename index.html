@@ -1422,13 +1422,17 @@ function numPokemonWithAbility(abilityName) {
 
 function toggleNonPokemonChoices(turnOn) {
   const ELEMENT_IDS = ['pokeball', 'type', 'extraIncome', 'winRound', 'loseRound', 'refresh'];
-  for (const elementId  of ELEMENT_IDS)
-    document.getElementById(elementId).disabled = !turnOn;
+  for (const elementId of ELEMENT_IDS)
+    toggleEle(document.getElementById(elementId), turnOn);
   const shopDivs = document.getElementById('shop').children;
   for (const shopDiv of shopDivs) {
-    shopDiv.querySelector('input').disabled = !turnOn;
-    shopDiv.querySelector('button').disabled = !turnOn;
+    toggleEle(shopDiv.querySelector('input'), turnOn);
+    toggleEle(shopDiv.querySelector('button'), turnOn);
   }
+}
+function toggleEle(ele, turnOn) {
+  if (ele)
+    ele.disabled = !turnOn;
 }
 
 function removeRandom(arr) {
