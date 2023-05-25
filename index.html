@@ -1050,7 +1050,9 @@ function getSpeciesNameOfPokemon(pokemonStr) {
     name = name.substring(0, name.indexOf(' ('));
   if (firstLine.includes(' @ ')) {
     let heldItem = firstLine.split(' @ ')[1];
-    if (FAKE_REQUIRED_ITEMS.includes(heldItem))
+    if (FAKE_REQUIRED_ITEMS.includes(heldItem)
+          || (name === 'Arceus' && !pokemonStr.includes('Ability: Multitype'))
+          || (name === 'Silvally' && !pokemonStr.includes('Ability: RKS System')))
       return name;
     let holdingItemForme = Object.values(allSpecies).find(species => species.baseSpecies === name && 
                       (species.requiredItem === heldItem || species.requiredItems?.includes(heldItem)));
