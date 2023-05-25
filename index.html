@@ -630,8 +630,8 @@ function loadHeldItems() {
       const powerItemName = POWER_ITEMS[i];
       const powerItem = heldItems[powerItemName.toLowerCase().replace(' ', '')];
       if (powerItem)
-        powerItem.desc = "Holder's Speed is halved. At the start of each round, it automatically gains "
-                          + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs (up to the maximum of 252).';
+        powerItem.desc = "Holder's Speed is halved.\nEach round, it automatically gains "
+                          + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs (up to the maximum of 252) (total EVs can exceed 510).';
     }
   }
   xhttp.open("GET", "heldItems.json");
