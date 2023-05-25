@@ -1743,7 +1743,7 @@ function randomAbilitizer() {
   let ability;
   do {
     ability = randomValue(abilities);
-  } while (ability.desc.includes('If this Pokemon is a ') || ability.desc.includes('If this Pokemon is an ')
+  } while (ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
             || ability.name === 'Wonder Guard');
 
   const effectiveStatDiffs = [];
