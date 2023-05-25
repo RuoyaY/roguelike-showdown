@@ -259,8 +259,9 @@ button:focus {
     <div id="shop"></div>
     <hr class="mt-1">
     <div class="mb-1">
-      <label for="speciesInput">Generate one of species: </label><input id="speciesInput">
-      <button onclick="generateOneOfSpecies()">generate</button>
+      <label for="speciesInput">Species: </label><input id="speciesInput" class="mb-4px">
+      <br><label for="abilityInput">Ability: </label><input id="abilityInput" class="mb-4px">
+      <br><button onclick="generateSpecificSpecies()">generate</button>
     </div>
     <p id="speciesError" style="display:none">ERROR: species name not recognized</p>
     <div id="species" class=""></div>
@@ -555,12 +556,15 @@ loadItems();
 
 fillPartyDivs();
 
-document.getElementById('speciesInput').addEventListener('keyup', function(event) {
+function generateSpeciesOnEnter(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
-    generateOneOfSpecies();
+    generateSpecificSpecies();
   }
-})
+}
+document.getElementById('speciesInput').addEventListener('keyup', generateSpeciesOnEnter);
+document.getElementById('abilityInput').addEventListener('keyup', generateSpeciesOnEnter);
+
 document.getElementById('winRound').textContent = 'win ($' + WIN_INCOME + ')';
 document.getElementById('loseRound').textContent = 'lose ($' + LOSE_INCOME + ')';
 document.getElementById('loseRound').disabled = true;
@@ -787,10 +791,16 @@ function numChoices() {
   }
 }
 
-function generateOneOfSpecies() {
+function generateSpecificSpecies() {
   const speciesDiv = document.getElementById('species');
   const speciesName = document.getElementById('speciesInput').value.trim();
-  addRandomPokemon(speciesDiv, false, speciesName);
+  let abilityNameInput = document.getElementById('abilityInput').value.trim();
+  if (abilityNameInput === '') {
+    for (const abilityName of Object.values(allSpecies[getSpeciesId(speciesName)].abilities))
+      addRandomPokemon(speciesDiv, false, speciesName, abilityName);
+  } else {
+    addRandomPokemon(speciesDiv, false, speciesName, abilityNameInput);
+  }
 
   // // list all formes
   // let formes = {};
