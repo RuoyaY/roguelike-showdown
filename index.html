@@ -60,7 +60,7 @@ body {
 .item {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  width: 55ch;
+  width: 60ch;
 }
 .item-price {
   border-left: none;
@@ -1717,7 +1717,7 @@ function createItemDiv(item, isExtra) {
   freezeInput.classList.add('checkbox');
   if (isExtra)
     freezeInput.disabled = true;
-  // freezeInput.hidden = true; // effectively removes freezeInput
+  freezeInput.hidden = true; // effectively removes freezeInput
 
   const itemEle = document.createElement('div');
   itemEle.classList.add('info-box', 'item');
