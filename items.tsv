@@ -3,11 +3,12 @@ Great Ball	pokeball	20					Next round, +1 option to all non-shop choices.
 Ultra Ball	pokeball	30					Next round, +2 options to all non-shop choices.		
 Level Ball	pokeball	5					Next round, +1 option to all non-shop choices, but your new Pokemon is 1 level lower than usual.		
 Dream Ball	pokeball	20					Next round, your new Pokemon starts off knowing *Rest* and *Sleep Talk*.		
-Friend Ball	pokeball	30					Next round, your new Pokemon starts off knowing *Return*.		
+Friend Ball	pokeball	20					Next round, your new Pokemon starts off knowing *Return*.		
+Love Ball	pokeball	10					Next round, your new Pokemon starts off knowing *Attract* (you will get 1 male and 1 female option).		
 Beast Ball	pokeball	15					Next round, your new Pokemon has *Beast Boost* instead of its regular ability.		
 Repeat Ball	pokeball	5					Next round, you can choose a Pokemon of any species you already own (you will then be able to choose any ability that species can have).		
 Master Ball	pokeball	20					Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
-Random Ball	pokeball	15					Automatically sets your Poke Ball for the next round to a random one (other than the default).		
+Random Ball	pokeball	10					Automatically sets your Poke Ball for the next round to a random one (other than the default).		
 Rare Candy	misc	15					Increase a Pokemon's level by one.		
 Rare Bi-Candy	misc	30					Increase a Pokemon's level by two.		
 Rare Tri-Candy	misc	45					Increase a Pokemon's level by three.		
@@ -93,6 +94,7 @@ Eject Pack	heldItem	20
 Absorb Bulb	heldItem	10					hit by water, +1 SpA		
 Luminous Moss	heldItem	10					hit by water, +1 SpD		
 Cell Battery	heldItem	10					hit by electric, +1 Atk		
+Snowball	heldItem	10					hit by ice, +1 Atk		
 Salac Berry	heldItem	15					1/4, +1 Spe		
 Liechi Berry	heldItem	10					1/4, +1 Atk		
 Ganlon Berry	heldItem	5					1/4, +1 Def		
@@ -105,9 +107,9 @@ Custap Berry	heldItem	15					1/4, go first next turn
 Wonder Gummi	misc	10					A Pokemon gains an extra move slot (add a hyphen on a new line).		
 Wonder Gummi Party	partyMisc	10n					EVERY Pokemon gains an extra move slot (add a hyphen on a new line).		
 Move Deleter	misc	0					Delete 1 or more moves (leave the hyphens) (each Pokemon must know at least 1 move). Give yourself $1 for each move you delete.		
-Move-Deleting Duo	misc	-10					A Pokemon forgets 2 moves (leave the hyphens).		
-Move-Deleting Trio	misc	-30					A Pokemon forgets 3 moves (leave the hyphens).		
-Move Deletion Party	partyMisc	-10n+10					EVERY Pokemon forgets 1 move (leave the hyphens).		
+Move-Deleting Duo	misc	-20					A Pokemon forgets 2 moves (leave the hyphens).		
+Move-Deleting Trio	misc	-40					A Pokemon forgets 3 moves (leave the hyphens).		
+Move Deletion Party	partyMisc	-10n					EVERY Pokemon forgets 1 move (leave the hyphens).		
 Deleveler	misc	0	0				Lower 1 or more Pokemon's level by any amount. Give yourself $1 for each level lowered.		
 Occa Berry	heldItem	5					[halve super-effective ____-type move]		
 Passho Berry	heldItem	5					[halve super-effective ____-type move]		
@@ -187,7 +189,7 @@ Pixie Plate	heldItem	20
 Perfect Plate	misc	25					Set a Pokemon's held item to ANY Plate (e.g. "*Zap Plate*").		
 Random Plate	misc	10					Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").		
 Mirror Pokemon	misc	100					Replace one of your Pokemon with a clone of one of your other Pokemon.		
-Shadow Pokemon	misc	80					Replace one of your Pokemon with a clone of one of your opponent's Pokemon from LAST round.		
+Shadow Pokemon	misc	80					Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round.		
 Buginium Z	heldItem	70							
 Darkinium Z	heldItem	70							
 Dragonium Z	heldItem	70							
@@ -237,21 +239,21 @@ Perfect Party TM	partyTM	40n+20					Choose ANY move (excluding Z-Moves). Teach E
 Mirror TM	universalTM	40					Copy any 1 move onto 1 other Pokemon (excluding Z-Moves).		
 Mirror TM Party	partyTM	20n					Copy any 1 move onto EVERY other Pokemon (excluding Z-Moves).		
 Shadow TM	universalTM	35					Teach ANY 1 Pokemon ANY 1 move your opponent used last round (excluding Z-Moves).		
-Shadow TM Party	partyTM	20n-5					Choose ANY move your opponent used last round (excluding Z-Moves). Teach EVERY Pokemon that move.		
+Shadow TM Party	partyTM	20n+15					Choose ANY move your opponent used last round (excluding Z-Moves). Teach EVERY Pokemon that move.		
 Normal Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
 Fire Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
-Water Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
-Grass Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
-Electric Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
-Ice Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
-Fighting Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
+Water Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
+Grass Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Electric Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
+Ice Tera Shards	misc	-10					Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Fighting Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
 Poison Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
 Ground Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
-Flying Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
-Psychic Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
-Bug Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
-Rock Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
-Ghost Tera Shards	misc	15					Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
+Flying Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
+Psychic Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Bug Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
+Rock Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Ghost Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
 Dark Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
 Dragon Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
 Steel Tera Shards	misc	20					Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
@@ -264,18 +266,18 @@ Origin Tera Shards	misc	10					Set a Pokemon's Tera Type to any type it already 
 Move-Based Tera Shards	misc	15					Set a Pokemon's Tera Type to the type of one of its moves.		
 Normal Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
 Fire Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
-Water Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.		
-Grass Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
-Electric Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
-Ice Tera Party	partyMisc	-5n-10	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
-Fighting Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
+Water Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.		
+Grass Tera Party	partyMisc	-5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Electric Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
+Ice Tera Party	partyMisc	-10n-10	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Fighting Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
 Poison Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
 Ground Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
-Flying Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
-Psychic Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
-Bug Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
-Rock Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
-Ghost Tera Party	partyMisc	15n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
+Flying Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
+Psychic Tera Party	partyMisc	-5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Bug Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
+Rock Tera Party	partyMisc	-5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Ghost Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
 Dark Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
 Dragon Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
 Steel Tera Party	partyMisc	20n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.		
@@ -385,9 +387,9 @@ Ability Swapper	misc	5					Swap two Pokemon's abilities.
 Debilitizer	misc	-10					Remove a Pokemon's ability. Can't remove Defeatist, Slow Start, Stall, or Truant.		
 Item Swapper	misc	5					Swap two Pokemon's held items (if one Pokemon is not holding an item, the other gives its away).		
 Incinerator	misc	-10					Remove a Pokemon's held item.		
-Toxic Orb	heldItem	-15							
-Flame Orb	heldItem	-15							
-Lagging Tail	heldItem	-15							
+Toxic Orb	heldItem	-20							
+Flame Orb	heldItem	-25							
+Lagging Tail	heldItem	-20							
 Re-roll	misc	120					Delete a Pokemon, then press the "lose" button to immediately get another.		
 Stop Shopping	misc	-20					You may not buy, earn, or refresh until next round.		
 Ability Shield	heldItem	1							
@@ -451,3 +453,9 @@ Fairy Memory	heldItem	10				Multi-Attack
 Perfect Memory	misc	20				Multi-Attack	Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
 Red Card	heldItem	20							
 Room Service	heldItem	30				Trick Room			
+Safety Goggles	heldItem	20							
+Scope Lens	heldItem	5							
+Shed Shell	heldItem	1							
+Shell Bell	heldItem	25							
+Sticky Barb	heldItem	0							
+ 									

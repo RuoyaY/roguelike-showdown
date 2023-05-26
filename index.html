@@ -60,6 +60,8 @@ body {
 .item {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+.item, .pokeball-desc {
   width: 60ch;
 }
 .item-price {
@@ -231,6 +233,8 @@ button:focus {
       <option>Repeat Ball</option>
       <option>Master Ball</option>
     </select>
+    <br>
+    <p id="pokeballDesc" class="pokeball-desc attr mb-4px" hidden></p>
     <label for="type">Guaranteed type:</label>
     <select id="type" class="mb-4px">
       <option></option>
@@ -1491,6 +1495,7 @@ function endPokemonChoosing() {
 }
 function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
+  document.getElementById('pokeballDesc').hidden = true;
   document.getElementById('type').selectedIndex = 0;
   document.getElementById('extraIncome').checked = false;
 }
@@ -2005,11 +2010,16 @@ function buyItem(itemDiv, item, itemPrice) {
   
   if (item.type === 'pokeball') {
     const pokeballEle = document.getElementById('pokeball');
+    let pokeballDesc = item.desc;
     if (item.name === 'Random Ball') {
       pokeballEle.selectedIndex = randomInt(pokeballEle.options.length-1) + 1;
+      pokeballDesc = items.find(item => item.name === pokeballEle.value).desc;
     } else {
       pokeballEle.value = item.name;
     }
+    const pokeballDescEle = document.getElementById('pokeballDesc');
+    pokeballDescEle.textContent = pokeballDesc.replaceAll('*', '');
+    pokeballDescEle.hidden = false;
   } else if (item.name.startsWith('Encounter Power: ')) {
     const type = item.name.split(' ')[2];
     document.getElementById('type').value = type;
