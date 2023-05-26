@@ -1720,6 +1720,13 @@ function randomItem() {
 function isLegalItem(item) {
   if (item.weight && !(Math.random() < item.weight))
     return false;
+
+    if (getPartyStrs().length === 1) {
+      if (item.desc.toLowerCase().includes('last round'))
+        return false;
+      if (item.desc.toLowerCase().includes('other pokemon'))
+        return false;
+    }
   
   if (hasRequirement(item)) {
     for (const pokemonStr of getPartyStrs()) {
@@ -1732,9 +1739,6 @@ function isLegalItem(item) {
     }    
     return false;
   }
-
-  if (item.desc.toLowerCase().includes('last round') && getPartyStrs().length === 1)
-    return false;
 
   return true;
 }
