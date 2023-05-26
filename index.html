@@ -92,7 +92,6 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   justify-content: center;
   position: relative;
   margin: 2px;
-  width: min-content;
 }
 .chosen {
   border-color: lightgreen;
@@ -105,6 +104,11 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 }
 .overlay > img {
   margin-right: 1px;
+}
+
+.generated-species-row {
+  max-width: 70ch;
+  overflow-x: auto;
 }
 
 /* .win-counter {
@@ -826,8 +830,8 @@ function addChoices(choicesDiv) {
     for (const abilityName of Object.values(species.abilities))
       addRandomPokemon(choicesDiv, true, speciesName, abilityName);
   } else if (pokeball === 'Love Ball') {
-    addRandomPokemon(choicesDiv, true, null, null, 'F');
     addRandomPokemon(choicesDiv, true, null, null, 'M');
+    addRandomPokemon(choicesDiv, true, null, null, 'F');
   } else {
     let numPokeChoices = numChoices();
     numPokeChoices += numPokemonWithAbility('Honey Gather');
@@ -864,12 +868,16 @@ function generateSpecificSpecies() {
     speciesErrorEle.hidden = true;
   }
 
+  const speciesRow = document.createElement('div');
+  speciesRow.classList.add('flex-row', 'generated-species-row');
+  speciesDiv.prepend(speciesRow);
+
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
     for (const abilityName of Object.values(allSpecies[species].abilities))
-      addRandomPokemon(speciesDiv, false, speciesName, abilityName);
+      addRandomPokemon(speciesRow, false, speciesName, abilityName);
   } else {
-    addRandomPokemon(speciesDiv, false, speciesName, abilityNameInput);
+    addRandomPokemon(speciesRow, false, speciesName, abilityNameInput);
   }
 
   // // list all formes
@@ -943,7 +951,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
 
   updatePokemonDiv(divEle);
 
-  choicesDiv.prepend(divEle);
+  choicesDiv.append(divEle);
 }
 
 function isPokestar(speciesId) {
