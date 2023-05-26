@@ -474,11 +474,10 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printEncounterPowers() {
+function printEncounterPowersDescs() {
   let tsv = '';
   for (const type of TYPES) {
-    tsv += 'Encounter Power: ' + type + '\tmisc\t\t\t'
-      + "\tNext round, you are guaranteed to get " + spanWithType(type, type) + '-type Pokemon.\n';
+    tsv += "Next round, you are guaranteed to get " + type + '-type Pokemon.\n';
   }
   console.log(tsv);
 }
