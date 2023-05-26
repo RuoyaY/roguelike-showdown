@@ -567,10 +567,11 @@ function printInvalidItems() {
           || (item.requiredSpecies && item.requiredSpecies.some(speciesId => !allSpecies[speciesId]))
           || (item.requiredAbilities && item.requiredAbilities.some(ability => !getAbilityId(ability)))
           || (item.requiredMoves && item.requiredMoves.some(move => !getMoveId(move))))
-      console.log(item);
+      console.error(item);
   }
 }
 
+let numLoading = 6;
 let allSpecies;
 loadAllSpecies();
 let learnsets;
@@ -619,6 +620,7 @@ function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     allSpecies = JSON.parse(this.responseText);
+    doneLoading();
   }
   xhttp.open("GET", "pokedex.json");
   xhttp.send();
@@ -627,6 +629,7 @@ function loadLearnsets() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     learnsets = JSON.parse(this.responseText);
+    doneLoading();
   }
   xhttp.open("GET", "learnsets.json");
   xhttp.send();
@@ -636,6 +639,7 @@ function loadMoves() {
   xhttp.onload = function() {
     moves = JSON.parse(this.responseText);
     makeNumsUnique(moves);
+    doneLoading();
   }
   xhttp.open("GET", "moves.json");
   xhttp.send();
@@ -645,6 +649,7 @@ function loadAbilities() {
   xhttp.onload = function() {
     abilities = JSON.parse(this.responseText);
     makeNumsUnique(abilities);
+    doneLoading();
   }
   xhttp.open("GET", "abilities.json");
   xhttp.send();
@@ -660,6 +665,7 @@ function loadHeldItems() {
         powerItem.desc = "Holder's Speed is halved.\nEach round, it automatically gains "
                           + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs (up to the maximum of 252) (max 508 total EVs).';
     }
+    doneLoading();
   }
   xhttp.open("GET", "heldItems.json");
   xhttp.send();
@@ -692,10 +698,17 @@ function loadItems() {
 
       items.push(item);
     }
+    doneLoading();
   }
   xhttp.open("GET", 'items.tsv');
   // xhttp.open("GET", 'itemsTest.tsv');
   xhttp.send();
+}
+
+function doneLoading() {
+  numLoading--;
+  if (numLoading === 0)
+    printInvalidItems();
 }
 
 function makeNumsUnique(objs) {
