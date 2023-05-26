@@ -553,6 +553,16 @@ function printRequiredItems() {
   console.log(tsv);
 }
 
+function printInvalidItems() {
+  for (const item of items) {
+    if ((item.type === 'heldItem' && !getHeldItemId(item.name))
+          || (item.requiredSpecies && item.requiredSpecies.some(speciesId => !allSpecies[speciesId]))
+          || (item.requiredAbilities && item.requiredAbilities.some(ability => !getAbilityId(ability)))
+          || (item.requiredMoves && item.requiredMoves.some(move => !getMoveId(move))))
+      console.log(item);
+  }
+}
+
 let allSpecies;
 loadAllSpecies();
 let learnsets;

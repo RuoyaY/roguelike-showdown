@@ -1,3 +1,8 @@
 [KEEP THIS LINE]				
-Super Rod	misc	150					Replace a Pokemon with the following Pokemon: <span class="attr"><br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>-</span>		
-True Mirror	misc	50					The next thing you buy, you get twice.
+Perfect Memory	misc	30		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
+Bad Perfect Memory	misc	30		silvally,silvallybug,silvallydark,wrong,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
+Booster Energy	misc	25			Protosynthesis,Quark Drive				
+Bad Booster Energy	misc	25			protosnthesis,Quark Drive				
+Room Service	misc	30				Trick Room			
+Bad Room Service	misc	30				Trick Rom			
+Blear Amulet	heldItem	25							
