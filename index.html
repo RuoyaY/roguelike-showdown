@@ -785,6 +785,19 @@ function updatePokemonDiv(div) {
   statsEle.innerHTML = statsInHTML(pokemonStr);
 }
 
+function getProperSpeciesName(speciesNameInput) {
+  const simplifiedInput = speciesNameInput.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g, '');
+  for (const species of Object.values(allSpecies)) {
+    const names = [species.name];
+    if (species.cosmeticFormes)
+      names.push(...species.cosmeticFormes);
+    for (const name of names) {
+      if (name.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g, '') === simplifiedInput)
+        return name;
+    }
+  }
+}
+
 function getSpeciesId(speciesName) {
   return Object.keys(allSpecies).find(speciesId => allSpecies[speciesId].name === speciesName 
     || allSpecies[speciesId].cosmeticFormes?.includes(speciesName));
@@ -807,9 +820,9 @@ function killAllChildren(div) {
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
   if (pokeball === 'Master Ball' || pokeball === 'Repeat Ball') {
-    const promptText = pokeball === 'Master Ball' ? 'Choose a species (case-sensitive).' 
-                                                  : 'Choose a species you already own (case-sensitive).';
-    const speciesName = prompt(promptText);
+    const promptText = pokeball === 'Master Ball' ? 'Choose a species.' 
+                                                  : 'Choose a species you already own.';
+    const speciesName = getProperSpeciesName(prompt(promptText));
     if (!speciesName)
       return false;
     const speciesId = getSpeciesId(speciesName);
@@ -857,7 +870,7 @@ function numChoices() {
 
 function generateSpecificSpecies() {
   const speciesDiv = document.getElementById('species');
-  const speciesName = document.getElementById('speciesInput').value.trim();
+  const speciesName = getProperSpeciesName(document.getElementById('speciesInput').value.trim());
   const species = getSpeciesId(speciesName);
 
   const speciesErrorEle = document.getElementById('speciesError');
@@ -976,8 +989,6 @@ function getImageUrlName(speciesName) {
   } else {
     speciesName = speciesName.replaceAll('-', '');
   }
-  if (speciesName.includes('Flabébé'))
-    speciesName = speciesName.replace('Flabébé', 'Flabebe');
   return speciesName.toLowerCase().replaceAll(/[^a-zA-Z0-9\-]/g, '');
 }
 
