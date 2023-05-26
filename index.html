@@ -271,12 +271,12 @@ button:focus {
     <div class="flex-col-centered">
       <button id="skip" onclick="skipPokemonChoice()">skip</button>
     </div>
-    <hr class="mt-1">
+    <hr>
     <label for="money">$</label> <input id="money" type="number">
     <button onclick="refreshShop(true)" id="refresh">refresh</button>
     <p id="trueMirror" class="true-mirror big-text" hidden>x2</p>
     <div id="shop"></div>
-    <hr class="mt-1">
+    <hr>
     <div class="mb-1">
       <label for="speciesInput">Species: </label><input id="speciesInput" class="mb-4px">
       <br><label for="abilityInput">Ability: </label><input id="abilityInput" class="mb-4px">
@@ -1782,7 +1782,7 @@ function getItemPrice(item) {
 }
 function createItemDiv(item, isExtra) {
   const itemDiv = document.createElement('div');
-  itemDiv.classList.add('flex-row', 'mt-1');
+  itemDiv.classList.add('flex-row', 'mt-1', 'mb-1');
 
   const freezeInput = document.createElement('input');
   freezeInput.type = 'checkbox';
