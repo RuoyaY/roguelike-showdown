@@ -278,7 +278,7 @@ button:focus {
       <br><label for="abilityInput">Ability: </label><input id="abilityInput" class="mb-4px">
       <br><button onclick="generateSpecificSpecies()">generate</button>
     </div>
-    <p id="speciesError" style="display:none">ERROR: species name not recognized</p>
+    <p id="speciesError" hidden>ERROR: species name not recognized</p>
     <div id="species" class=""></div>
   </div>
   <div id="party" class="ml-1">
@@ -854,9 +854,19 @@ function numChoices() {
 function generateSpecificSpecies() {
   const speciesDiv = document.getElementById('species');
   const speciesName = document.getElementById('speciesInput').value.trim();
+  const species = getSpeciesId(speciesName);
+
+  const speciesErrorEle = document.getElementById('speciesError');
+  if (!species) {
+    speciesErrorEle.hidden = false;
+    return;
+  } else {
+    speciesErrorEle.hidden = true;
+  }
+
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
-    for (const abilityName of Object.values(allSpecies[getSpeciesId(speciesName)].abilities))
+    for (const abilityName of Object.values(allSpecies[species].abilities))
       addRandomPokemon(speciesDiv, false, speciesName, abilityName);
   } else {
     addRandomPokemon(speciesDiv, false, speciesName, abilityNameInput);
@@ -912,13 +922,6 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
     }
   }
   
-  const speciesErrorEle = document.getElementById('speciesError');
-  if (!getSpeciesId(speciesName)) {
-    speciesErrorEle.style.display = 'initial';
-    return;
-  } else {
-    speciesErrorEle.style.display = 'none';
-  }
   // speciesName = 'Pokestar Spirit';
   
   const pokemonStr = randomOfSpecies(speciesName, abilityName, gender);
