@@ -109,6 +109,10 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   text-align: center;
 } */
 
+.true-mirror {
+  font-style: italic;
+}
+
 .ml-1 {
   margin-left: 1rem;
 }
@@ -261,6 +265,7 @@ button:focus {
     <hr class="mt-1">
     <label for="money">$</label> <input id="money" type="number">
     <button onclick="refreshShop(true)" id="refresh">refresh</button>
+    <p id="trueMirror" class="true-mirror big-text" hidden>x2</p>
     <div id="shop"></div>
     <hr class="mt-1">
     <div class="mb-1">
@@ -1990,6 +1995,14 @@ function buyItem(itemDiv, item, itemPrice) {
   } else if (item.name.startsWith('Encounter Power: ')) {
     const type = item.name.split(' ')[2];
     document.getElementById('type').value = type;
+  }
+
+  const trueMirrorEle = document.getElementById('trueMirror');
+  if (item.name === 'True Mirror') {
+    trueMirrorEle.textContent = item.desc;
+    trueMirrorEle.hidden = false;
+  } else {
+    trueMirrorEle.hidden = true;
   }
 
   const buyButton = itemDiv.querySelector('button');
