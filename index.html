@@ -226,6 +226,7 @@ button:focus {
       <option>Level Ball</option>
       <option>Dream Ball</option>
       <option>Friend Ball</option>
+      <option>Love Ball</option>
       <option>Beast Ball</option>
       <option>Repeat Ball</option>
       <option>Master Ball</option>
@@ -804,11 +805,14 @@ function addChoices(choicesDiv) {
     }
     for (const abilityName of Object.values(species.abilities))
       addRandomPokemon(choicesDiv, true, speciesName, abilityName);
+  } else if (pokeball === 'Love Ball') {
+    addRandomPokemon(choicesDiv, true, null, null, 'F');
+    addRandomPokemon(choicesDiv, true, null, null, 'M');
   } else {
     let numPokeChoices = numChoices();
     numPokeChoices += numPokemonWithAbility('Honey Gather');
     let abilityName = null;
-    if (getPokeball() === 'Beast Ball')
+    if (pokeball === 'Beast Ball')
       abilityName = 'Beast Boost';
     for (let i = 0; i < numPokeChoices; i++)
       addRandomPokemon(choicesDiv, true, null, abilityName);
@@ -863,7 +867,7 @@ function isLegal(speciesId, species, requiredType) {
   return true;
 }
 
-function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName) {  
+function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, gender) {  
   if (speciesName == null) {
     let requiredType = document.getElementById('type').value;
     if (!TYPES.includes(requiredType))
@@ -897,7 +901,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName)
   }
   // speciesName = 'Pokestar Spirit';
   
-  const pokemonStr = randomOfSpecies(speciesName, abilityName);
+  const pokemonStr = randomOfSpecies(speciesName, abilityName, gender);
 
   const divEle = document.createElement('div');
   divEle.classList.add('pokemon-div');
@@ -946,21 +950,22 @@ function getImageUrlName(speciesName) {
   return speciesName.toLowerCase().replaceAll(/[^a-zA-Z0-9\-]/g, '');
 }
 
-function randomOfSpecies(speciesName, abilityName) {
+function randomOfSpecies(speciesName, abilityName, gender) {
   const speciesId = getSpeciesId(speciesName);
   const species = allSpecies[speciesId];
 
   let displayName = speciesName;
-  let gender;
   let heldItemName;
 
-  if (species.gender)
-    gender = species.gender;
-  else {
-    let probMale = .5;
-    if (species.genderRatio)
-      probMale = species.genderRatio.M;
-    gender = Math.random() < probMale ? 'M' : 'F';
+  if (gender == null) {
+    if (species.gender)
+      gender = species.gender;
+    else {
+      let probMale = .5;
+      if (species.genderRatio)
+        probMale = species.genderRatio.M;
+      gender = Math.random() < probMale ? 'M' : 'F';
+    }
   }
 
   if (species.baseSpecies === 'Arceus') {
@@ -1376,6 +1381,9 @@ function choosePokemon(choicesDiv, pokemonStr) {
       break;
     case 'Friend Ball':
       pokemonStr += '\n- Return\n- \n- \n- \n';
+      break;
+    case 'Love Ball':
+      pokemonStr += '\n- Attract\n- \n- \n- \n';
       break;
     default:
       pokemonStr += '\n- \n- \n- \n- \n';
