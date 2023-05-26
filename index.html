@@ -1714,6 +1714,9 @@ function isLegalItem(item) {
     return false;
   }
 
+  if (item.desc.toLowerCase().includes('last round') && getPartyStrs().length === 1)
+    return false;
+
   return true;
 }
 function hasRequirement(item) {

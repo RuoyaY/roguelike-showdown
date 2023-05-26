@@ -1,8 +1,3 @@
 [KEEP THIS LINE]				
-Perfect Memory	misc	30		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
-Bad Perfect Memory	misc	30		silvally,silvallybug,silvallydark,wrong,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
-Booster Energy	misc	25			Protosynthesis,Quark Drive				
-Bad Booster Energy	misc	25			protosnthesis,Quark Drive				
-Room Service	misc	30				Trick Room			
-Bad Room Service	misc	30				Trick Rom			
-Blear Amulet	heldItem	25							
+Shadow Item	misc	25					Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round. Exception: Z-Crystals.				
+Clear Amulet	heldItem	25							
