@@ -361,17 +361,17 @@ Lustrous Globe	heldItem	20		palkia,palkiaorigin			If held by a Palkia, its Water
 Griseous Core	heldItem	20		giratina,giratinaorigin			If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.		
 Vile Vial	heldItem	20		venomicon,venomiconepilogue			If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.		
 Soul Dew	heldItem	20		latias,latios					
-Metal Powder	heldItem	80		ditto					
-Quick Powder	heldItem	80		ditto					
+Metal Powder	heldItem	30		ditto					
+Quick Powder	heldItem	30		ditto					
 Burn Drive	heldItem	0				Techno Blast			
 Chill Drive	heldItem	0				Techno Blast			
 Douse Drive	heldItem	0				Techno Blast			
 Shock Drive	heldItem	0				Techno Blast			
 True Mirror	misc	50					The next thing you buy, you get twice.		
 Wonder Guard Abilitizer	abilitizer	40					Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.		
-Plus & Minus Abilitizer	abilitizer	120					Set 2 Pokemon's abilities to *Plus* and *Minus*.		
-Perfect Abilitizer	abilitizer	100					Set a Pokemon's ability to any ability other than Huge Power, Pure Power, or Wonder Guard.		
-Mirror Abilitizer	abilitizer	30					Copy a Pokemon's ability to any other Pokemon. (Can't copy Wonder Guard, Huge Power, or Pure Power. Can't replace Defeatist, Slow Start, Stall, or Truant.)		
+Plus & Minus Abilitizer	abilitizer	120					Set 2 Pokemon's abilities to *Plus* and *Minus*. NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
+Perfect Abilitizer	abilitizer	100					Set a Pokemon's ability to any ability other than Huge Power, Pure Power, or Wonder Guard. NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
+Mirror Abilitizer	abilitizer	30					Copy a Pokemon's ability to any other Pokemon. NOTE: can't copy Wonder Guard, Huge Power, or Pure Power. Can't replace Defeatist, Slow Start, Stall, or Truant.		
 Power Weight	heldItem	0							
 Power Bracer	heldItem	0							
 Power Belt	heldItem	0							
@@ -384,12 +384,13 @@ Twin Rods	misc	0					BOTH players may ADD the following Pokemon to your party: <
 Move Swapper	misc	20					Swap ANY two moves between any two Pokemon.		
 Tera Swapper	misc	5					Swap two Pokemon's Tera Types.		
 Ability Swapper	misc	5					Swap two Pokemon's abilities.		
-Debilitizer	misc	-10					Remove a Pokemon's ability. Can't remove Defeatist, Slow Start, Stall, or Truant.		
+Debilitizer	misc	-10					Remove a Pokemon's ability. NOTE: can't remove Defeatist, Slow Start, Stall, or Truant.		
 Item Swapper	misc	5					Swap two Pokemon's held items (if one Pokemon is not holding an item, the other gives its away).		
 Incinerator	misc	-10					Remove a Pokemon's held item.		
 Toxic Orb	heldItem	-20							
 Flame Orb	heldItem	-25							
 Lagging Tail	heldItem	-20							
+Iron Ball	heldItem	-20							
 Re-roll	misc	120					Delete a Pokemon, then press the "lose" button to immediately get another.		
 Stop Shopping	misc	-20					You may not buy, earn, or refresh until next round.		
 Ability Shield	heldItem	1							
@@ -407,7 +408,9 @@ Electric Seed	heldItem	30			Electric Surge,Hadron Engine	Electric Terrain
 Grassy Seed	heldItem	30			Grassy Surge,Seed Sower	Grassy Terrain			
 Misty Seed	heldItem	30			Misty Surge	Misty Terrain			
 Psychic Seed	heldItem	30			Psychic Surge	Psychic Terrain,Genesis Supernova			
+Terrain Extender	heldItem	10			Electric Surge,Hadron Engine,Grassy Surge,Seed Sower,Misty Surge,Psychic Surge	Electric Terrain,Grassy Terrain,Misty Terrain,Psychic Terrain,Genesis Supernova			
 Grip Claw	heldItem	5				Bind,Clamp,Fire Spin,G-Max Centiferno,G-Max Sandblast,Infestation,Magma Storm,Sand Tomb,Snap Trap,Thunder Cage,Whirlpool,Wrap			
+Binding Band	heldItem	5				Bind,Clamp,Fire Spin,G-Max Centiferno,G-Max Sandblast,Infestation,Magma Storm,Sand Tomb,Snap Trap,Thunder Cage,Whirlpool,Wrap			
 Light Clay	heldItem	20				Light Screen,Reflect,Aurora Veil,Glitzy Glow,Baddy Bad			
 Loaded Dice	heldItem	25				Arm Thrust,Barrage,Bone Rush,Bullet Seed,Comet Punch,Double Slap,Fury Attack,Fury Swipes,Icicle Spear,Pin Missile,Rock Blast,Scale Shot,Spike Cannon,Tail Slap,Water Shuriken,Triple Axel,Triple Kick,Population Bomb			
 Muscle Band	heldItem	10							
@@ -452,10 +455,23 @@ Steel Memory	heldItem	10				Multi-Attack
 Fairy Memory	heldItem	10				Multi-Attack			
 Perfect Memory	misc	20				Multi-Attack	Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
 Red Card	heldItem	20							
-Room Service	heldItem	30				Trick Room			
+Room Service	heldItem	35				Trick Room			
 Safety Goggles	heldItem	20							
 Scope Lens	heldItem	5							
 Shed Shell	heldItem	1							
 Shell Bell	heldItem	25							
 Sticky Barb	heldItem	0							
- 									
+Throat Spray	heldItem	35				Boomburst,Bug Buzz,Chatter,Clanging Scales,Clangorous Soul,Clangorous Soulblaze,Confide,Disarming Voice,Echoed Voice,Eerie Spell,Grass Whistle,Growl,Heal Bell,Howl,Hyper Voice,Metal Sound,Noble Roar,Overdrive,Parting Shot,Perish Song,Relic Song,Roar,Round,Screech,Sing,Snarl,Snore,Sparkling Aria,Supersonic,Torch Song,Uproar			
+Utility Umbrella	heldItem	0							
+Weakness Policy	heldItem	30							
+Wide Lens	heldItem	10							
+Zoom Lens	heldItem	10							
+Deep Sea Scale	heldItem	90		clamperl					
+Deep Sea Tooth	heldItem	130		clamperl					
+Leek	heldItem	55		farfetchd,farfetchdgalar,sirfetchd					
+Lucky Punch	heldItem	20		chansey					
+Thick Club	heldItem	110		cubone,marowak,marowakalola					
+Big Root	heldItem	15				Absorb,Bitter Blade,Bouncy Bubble,Drain Punch,Draining Kiss,Dream Eater,Giga Drain,Horn Leech,Leech Life,Leech Seed,Mega Drain,Oblivion Wing,Parabolic Charge,Strength Sap,Ingrain,Aqua Ring			
+Float Stone	heldItem	1							
+Focus Band	heldItem	5							
+Ring Target	heldItem	0							
