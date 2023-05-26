@@ -17,14 +17,22 @@ Rare Penta-Candy	misc	75					Increase a Pokemon's level by five.
 Rare Candy Party	partyMisc	15n					Increase EVERY Pokemon's level by one.		
 Doom Seed	misc	-15					Decrease a Pokemon's level by one.		
 Doom Seed Party	partyMisc	-15n					Decrease EVERY Pokemon's level by one.		
-HP Max	misc	30					Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
-Max Protein	misc	30					Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
-Max Iron	misc	30					Set a Pokemon's Def EV to 252 (max 508 total EVs).		
-Max Calcium	misc	30					Set a Pokemon's SpA EV to 252 (max 508 total EVs).		
-Max Zinc	misc	30					Set a Pokemon's SpD EV to 252 (max 508 total EVs).		
-Max Carbos	misc	30					Set a Pokemon's Spe EV to 252 (max 508 total EVs).		
-Perfect Nutrience	misc	35					Set a Pokemon's EV in any 1 stat to 252 (max 508 total EVs).		
-Random Nutrience	misc	25					Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).		
+HP Up	misc	10					Set a Pokemon's HP EV to up to 100 (max 508 total EVs).		
+Protein	misc	10					Set a Pokemon's Atk EV to up to 100 (max 508 total EVs).		
+Iron	misc	10					Set a Pokemon's Def EV to up to 100 (max 508 total EVs).		
+Calcium	misc	10					Set a Pokemon's SpA EV to up to 100 (max 508 total EVs).		
+Zinc	misc	10					Set a Pokemon's SpD EV to up to 100 (max 508 total EVs).		
+Carbos	misc	10					Set a Pokemon's Spe EV to up to 100 (max 508 total EVs).		
+Perfect Nutrience	misc	15					Set a Pokemon's EV in any 1 stat to up to 100 (max 508 total EVs).		
+Random Nutrience	misc	8					Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to up to 100 (max 508 total EVs).		
+HP Max	misc	30					Set a Pokemon's HP EV to up to 252 (max 508 total EVs).		 
+Max Protein	misc	30					Set a Pokemon's Atk EV to up to 252 (max 508 total EVs).		
+Max Iron	misc	30					Set a Pokemon's Def EV to up to 252 (max 508 total EVs).		
+Max Calcium	misc	30					Set a Pokemon's SpA EV to up to 252 (max 508 total EVs).		
+Max Zinc	misc	30					Set a Pokemon's SpD EV to up to 252 (max 508 total EVs).		
+Max Carbos	misc	30					Set a Pokemon's Spe EV to up to 252 (max 508 total EVs).		
+Perfect Max Nutrience	misc	35					Set a Pokemon's EV in any 1 stat to up to 252 (max 508 total EVs).		
+Random Max Nutrience	misc	25					Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to up to 252 (max 508 total EVs).		
 Health Feathers	misc	10	0				Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
 Muscle Feathers	misc	10	0				Increase a Pokemon's Atk EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
 Resist Feathers	misc	10	0				Increase a Pokemon's Def EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
@@ -106,6 +114,7 @@ Micle Berry	heldItem	1					1/4, next move x1.2 accuracy
 Custap Berry	heldItem	15					1/4, go first next turn		
 Wonder Gummi	misc	10					A Pokemon gains an extra move slot (add a hyphen on a new line).		
 Wonder Gummi Party	partyMisc	10n					EVERY Pokemon gains an extra move slot (add a hyphen on a new line).		
+Move Reducer	misc	-10					A Pokemon loses a move slot (delete a hyphen).		
 Move Deleter	misc	0					Delete 1 or more moves (leave the hyphens) (each Pokemon must know at least 1 move). Give yourself $1 for each move you delete.		
 Move-Deleting Duo	misc	-20					A Pokemon forgets 2 moves (leave the hyphens).		
 Move-Deleting Trio	misc	-40					A Pokemon forgets 3 moves (leave the hyphens).		
@@ -243,16 +252,16 @@ Shadow TM Party	partyTM	20n+15					Choose ANY move your opponent used last round
 Normal Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
 Fire Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
 Water Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
-Grass Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Grass Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
 Electric Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
-Ice Tera Shards	misc	-10					Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Ice Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
 Fighting Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
 Poison Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
 Ground Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
 Flying Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
-Psychic Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Psychic Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
 Bug Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
-Rock Tera Shards	misc	-5					Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Rock Tera Shards	misc	0					Set a Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
 Ghost Tera Shards	misc	10					Set a Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
 Dark Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
 Dragon Tera Shards	misc	5					Set a Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
@@ -267,16 +276,16 @@ Move-Based Tera Shards	misc	15					Set a Pokemon's Tera Type to the type of one 
 Normal Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
 Fire Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
 Water Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.		
-Grass Tera Party	partyMisc	-5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
+Grass Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.		
 Electric Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.		
-Ice Tera Party	partyMisc	-10n-10	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
+Ice Tera Party	partyMisc	0n-10	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.		
 Fighting Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.		
 Poison Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-poison">Poison</span>.		
 Ground Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ground">Ground</span>.		
 Flying Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.		
-Psychic Tera Party	partyMisc	-5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
+Psychic Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.		
 Bug Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.		
-Rock Tera Party	partyMisc	-5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
+Rock Tera Party	partyMisc	0n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.		
 Ghost Tera Party	partyMisc	10n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.		
 Dark Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-dark">Dark</span>.		
 Dragon Tera Party	partyMisc	5n	0.05				Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.		
@@ -418,24 +427,24 @@ Wise Glasses	heldItem	10
 Protective Pads	heldItem	1							
 Punching Glove	heldItem	10							
 Quick Claw	heldItem	10							
-Fire Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Water Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Grass Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Electric Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Ice Memory	heldItem	-10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Fighting Memory	heldItem	0		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Poison Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Ground Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Flying Memory	heldItem	10		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Psychic Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Bug Memory	heldItem	0		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Rock Memory	heldItem	-5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Ghost Memory	heldItem	20		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Dark Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Dragon Memory	heldItem	5		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Steel Memory	heldItem	25		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Fairy Memory	heldItem	15		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater					
-Perfect Memory	misc	30		silvally,silvallybug,silvallydark,silvallydragon,silvallyelectric,silvallyfairy,silvallyfighting,silvallyfire,silvallyflying,silvallyghost,silvallygrass,silvallyground,silvallyice,silvallypoison,silvallypsychic,silvallyrock,silvallysteel,silvallywater			Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
+Fire Memory	heldItem	15			RKS System				
+Water Memory	heldItem	10			RKS System				
+Grass Memory	heldItem	-5			RKS System				
+Electric Memory	heldItem	10			RKS System				
+Ice Memory	heldItem	-10			RKS System				
+Fighting Memory	heldItem	0			RKS System				
+Poison Memory	heldItem	15			RKS System				
+Ground Memory	heldItem	5			RKS System				
+Flying Memory	heldItem	10			RKS System				
+Psychic Memory	heldItem	-5			RKS System				
+Bug Memory	heldItem	0			RKS System				
+Rock Memory	heldItem	-5			RKS System				
+Ghost Memory	heldItem	20			RKS System				
+Dark Memory	heldItem	5			RKS System				
+Dragon Memory	heldItem	5			RKS System				
+Steel Memory	heldItem	25			RKS System				
+Fairy Memory	heldItem	15			RKS System				
+Perfect Memory	misc	30			RKS System		Set a Pokemon's held item to ANY Memory (e.g. "*Ice Memory*").		
 Fire Memory	heldItem	10				Multi-Attack			
 Water Memory	heldItem	10				Multi-Attack			
 Grass Memory	heldItem	1				Multi-Attack			
