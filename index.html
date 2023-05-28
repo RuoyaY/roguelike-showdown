@@ -224,6 +224,8 @@ button:focus {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
+    <!-- <button id="save">save</button> -->
+    <h2 class="attr">Start Round</h2>
     <label for="pokeball">Poké Ball:</label>
     <select id="pokeball" class="mb-4px">
       <option>Poké Ball</option>
@@ -271,12 +273,12 @@ button:focus {
     <div class="flex-col-centered">
       <button id="skip" onclick="skipPokemonChoice()">skip</button>
     </div>
-    <hr>
+    <h2 class="attr">Shop</h2>
     <label for="money">$</label> <input id="money" type="number">
     <button onclick="refreshShop(true)" id="refresh">refresh</button>
     <p id="trueMirror" class="true-mirror big-text" hidden>x2</p>
     <div id="shop"></div>
-    <hr>
+    <h2 class="attr">Generate a Pokemon</h2>
     <div class="mb-1">
       <label for="speciesInput">Species: </label><input id="speciesInput" class="mb-4px">
       <br><label for="abilityInput">Ability: </label><input id="abilityInput" class="mb-4px">
