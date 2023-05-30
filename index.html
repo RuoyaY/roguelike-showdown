@@ -1692,6 +1692,7 @@ function refreshShop(isViaMoney) {
       item = randomItem();
     else
       item = randomElement(items.filter(item => item.type === 'pokeball'));
+    // item = items.find(item => item.name === 'Super Rod')
 
     shopDiv.append(createItemDiv(item));
   }
