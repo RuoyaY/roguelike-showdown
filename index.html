@@ -224,8 +224,8 @@ button:focus {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
-    <button onclick="save()">save</button>
-    <button onclick="load()">load</button>
+    <button id="save" onclick="save()">save</button>
+    <button id="load" onclick="load()">load</button>
     <h2 class="attr">Start Round</h2>
     <label for="pokeball">Poké Ball:</label>
     <select id="pokeball" class="mb-4px">
@@ -1558,7 +1558,7 @@ function numPokemonWithAbility(abilityName) {
 }
 
 function toggleNonPokemonChoices(turnOn) {
-  const ELEMENT_IDS = ['pokeball', 'type', 'extraIncome', 'won', 'nextRound', 'refresh'];
+  const ELEMENT_IDS = ['save', 'load', 'pokeball', 'type', 'extraIncome', 'won', 'nextRound', 'refresh'];
   for (const elementId of ELEMENT_IDS)
     toggleEle(document.getElementById(elementId), turnOn);
   const shopDivs = document.getElementById('shop').children;
