@@ -830,13 +830,11 @@ function addChoices(choicesDiv) {
     const promptText = pokeball === 'Master Ball' ? 'Choose a species.' 
                                                   : 'Choose a species you already own.';
     const speciesName = getProperSpeciesName(prompt(promptText));
-    if (!speciesName)
-      return false;
-    const speciesId = getSpeciesId(speciesName);
-    if (!speciesId) {
+    if (!speciesName) {
       alert('Error: species name not recognized.');
       return false;
     }
+    const speciesId = getSpeciesId(speciesName);
     if (pokeball === 'Repeat Ball' &&
         !getPartyStrs().map(pokemonStr => getApparentSpeciesNameOfPokemon(pokemonStr)).includes(speciesName)) {
       alert('You must choose a species you already own!');
