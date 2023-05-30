@@ -404,6 +404,8 @@ const WIN_INCOME = 100;
 const LOSE_INCOME = 120;
 const BASE_REFRESH_COST = 3;
 
+const HELD_ITEM_WEIGHT = .5;
+
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // functionally identical because of their ability, and...
@@ -1713,7 +1715,9 @@ function randomItem() {
     else if ((randy -= 1/15) < 0)
       item = randomAbilitizer();
     else {
-      item = randomElement(items);
+      do {
+        item = randomElement(items);
+      } while (!isLegalItem(item));
 
       item = structuredClone(item);
       if (item.type === 'heldItem') {
@@ -1738,7 +1742,7 @@ function randomItem() {
     }
     if (failsafe-- < 0)
       prevSeenItems.clear();
-  } while (!isLegalItem(item) || prevSeenItems.has(item.name));
+  } while (prevSeenItems.has(item.name));
   prevSeenItems.add(item.name);
   return item;
 }
@@ -1746,13 +1750,15 @@ function randomItem() {
 function isLegalItem(item) {
   if (item.weight && !(Math.random() < item.weight))
     return false;
+  if (item.type === 'heldItem' && !(Math.random() < HELD_ITEM_WEIGHT))
+    return false;
 
-    if (getPartyStrs().length === 1) {
-      if (item.desc.toLowerCase().includes('last round'))
-        return false;
-      if (item.desc.toLowerCase().includes('other pokemon'))
-        return false;
-    }
+  if (getPartyStrs().length === 1) {
+    if (item.desc.toLowerCase().includes('last round'))
+      return false;
+    if (item.desc.toLowerCase().includes('other pokemon'))
+      return false;
+  }
   
   if (hasRequirement(item)) {
     for (const pokemonStr of getPartyStrs()) {
