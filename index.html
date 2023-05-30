@@ -1558,7 +1558,7 @@ function numPokemonWithAbility(abilityName) {
 }
 
 function toggleNonPokemonChoices(turnOn) {
-  const ELEMENT_IDS = ['pokeball', 'type', 'extraIncome', 'nextRound', 'refresh'];
+  const ELEMENT_IDS = ['pokeball', 'type', 'extraIncome', 'won', 'nextRound', 'refresh'];
   for (const elementId of ELEMENT_IDS)
     toggleEle(document.getElementById(elementId), turnOn);
   const shopDivs = document.getElementById('shop').children;
