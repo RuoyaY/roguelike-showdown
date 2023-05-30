@@ -1923,9 +1923,11 @@ function abilitizerDesc(strBeforeAbilityName, ability) {
 function randomTM() {
   let randy = Math.random();
 
-  if ((randy -= .3) < 0) {
+  if ((randy -= .45) < 0) {
+    // Universal TM
     return randomUniversalTM();
-  } else if ((randy -= .1) < 0) {
+  } else if ((randy -= .05) < 0) {
+    // Party TM
     const move = randomMove(true);
     return {
       name: 'Party TM #' + move.num,
@@ -1933,7 +1935,8 @@ function randomTM() {
       price: tmPrice(move)/2 + 'n+20',
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
-  } else if ((randy -= .3) < 0) {
+  } else if ((randy -= .25) < 0) {
+    // Type TM
     const typeMultiset = [];
     let speciesIds = getPartyStrs().map(pokemonStr => getSpeciesIdOfPokemon(pokemonStr));
     if (divOfNewMon)
@@ -1946,7 +1949,7 @@ function randomTM() {
     }
     if (TYPES.forEach(type => !typeMultiset.includes(type)))
       return randomTM(); // no valid Type TMs available, so re-roll
-    if (Math.random() < .01) {
+    if (Math.random() < 12/500) { // about as likely as an item from items.tsv
       const type = randomElement(typeMultiset);
       return {
         name: 'Perfect ' + type + ' TM',
@@ -1968,6 +1971,7 @@ function randomTM() {
       desc: tmDesc('Teach ANY 1 ' + type.toUpperCase() + '-TYPE Pokemon the move ', move),
     };
   } else {
+    // Species TM
     let possibleMoves = [];
     let speciesNames = [];
     let pokemonStrs = getPartyStrs();
