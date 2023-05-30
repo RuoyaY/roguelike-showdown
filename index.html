@@ -224,7 +224,8 @@ button:focus {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
-    <!-- <button id="save">save</button> -->
+    <button onclick="save()">save</button>
+    <button onclick="load()">load</button>
     <h2 class="attr">Start Round</h2>
     <label for="pokeball">Poké Ball:</label>
     <select id="pokeball" class="mb-4px">
@@ -266,9 +267,11 @@ button:focus {
     <br>
     <input type="checkbox" id="extraIncome">
     <label for="extraIncome" id="extraIncomeLabel" class="hasHoverText">Used a money-making move</label>
+    <br>
+    <input type="checkbox" id="won">
+    <label for="won" id="wonLabel">Won!</label>
     <br class="mb-4px">
-    <button id="winRound" onclick="winRound()" class="mb-4px">win</button>
-    <button id="loseRound" onclick="loseRound()">lose</button>
+    <button id="nextRound" onclick="nextRound()" class="mb-4px">start round</button>
     <div id="choices" class="flex-row"></div>
     <div class="flex-col-centered">
       <button id="skip" onclick="skipPokemonChoice()">skip</button>
@@ -400,8 +403,8 @@ const MONEY_MOVE_INCOME = 10;
 const AVG_HELD_ITEM_VALUE = 20 * .5; // take into account prob. each Pokemon has a held item
 
 const NUM_SHOP_OPTIONS = 3;
-const WIN_INCOME = 100;
-const LOSE_INCOME = 120;
+const INCOME = 120;
+const WIN_INCOME_DELTA = -20;
 const BASE_REFRESH_COST = 3;
 
 const HELD_ITEM_WEIGHT = .5;
@@ -605,11 +608,9 @@ function generateSpeciesOnEnter(event) {
 document.getElementById('speciesInput').addEventListener('keyup', generateSpeciesOnEnter);
 document.getElementById('abilityInput').addEventListener('keyup', generateSpeciesOnEnter);
 
-document.getElementById('winRound').textContent = 'win ($' + WIN_INCOME + ')';
-document.getElementById('loseRound').textContent = 'lose ($' + LOSE_INCOME + ')';
-document.getElementById('loseRound').disabled = true;
+document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
 document.getElementById('skip').hidden = true;
-document.getElementById('money').value = 0;
+setMoney(0);
 document.getElementById('refresh').disabled = true;
 updateRefreshCost();
 const extraIncomeLabel = document.getElementById('extraIncomeLabel');
@@ -617,6 +618,7 @@ extraIncomeLabel.title = 'Check this box if you '
   + 'successfully used any of the following moves last round: \n'
   + MONEY_MOVES.join(', ') + '.';
 extraIncomeLabel.textContent += ' ($' + MONEY_MOVE_INCOME + ')';
+document.getElementById('wonLabel').textContent += ' (-$' + -WIN_INCOME_DELTA + ')';
 
 resetRoundBasedInputs();
 
@@ -1544,6 +1546,7 @@ function resetRoundBasedInputs() {
   document.getElementById('pokeballDesc').hidden = true;
   document.getElementById('type').selectedIndex = 0;
   document.getElementById('extraIncome').checked = false;
+  document.getElementById('won').checked = false;
 }
 
 function updateRefreshCost() {
@@ -1558,7 +1561,7 @@ function numPokemonWithAbility(abilityName) {
 }
 
 function toggleNonPokemonChoices(turnOn) {
-  const ELEMENT_IDS = ['pokeball', 'type', 'extraIncome', 'winRound', 'loseRound', 'refresh'];
+  const ELEMENT_IDS = ['pokeball', 'type', 'extraIncome', 'nextRound', 'refresh'];
   for (const elementId of ELEMENT_IDS)
     toggleEle(document.getElementById(elementId), turnOn);
   const shopDivs = document.getElementById('shop').children;
@@ -1607,16 +1610,51 @@ function copyParty() {
   navigator.clipboard.writeText(getPartyStrs().join('\n\n'));
 }
 
-function winRound() {
-  document.getElementById('winCounter').textContent += '✓ ';
-  nextRound(WIN_INCOME);
+function save() {
+  const partyStrs = getPartyStrs();
+  if (partyStrs.length === 0) {
+    alert('No party Pokemon to save!');
+    return;
+  }
+  localStorage.setItem('partyStrs', partyStrs.join('\n\n'));
+
+  localStorage.setItem('money', getMoneyStr());
+
+  localStorage.setItem('pokeball', getPokeball());
+  localStorage.setItem('guaranteedType', document.getElementById('type').value);
+  localStorage.setItem('extraIncome', document.getElementById('extraIncome').checked);
+  localStorage.setItem('won', document.getElementById('won').checked);
+
+  localStorage.setItem('winCounter', document.getElementById('winCounter').textContent)
 }
-function loseRound() {
-  nextRound(LOSE_INCOME);
+function load() {
+  if (getPartyStrs().length > 0) {
+    alert('Cannot load over existing party Pokemon.');
+    return;
+  }
+  const partyStrs = localStorage.getItem('partyStrs').split('\n\n');
+  for (const pokeEle of getPartyPokeEles()) {
+    pokeEle.textContent = partyStrs.shift();
+    updatePokemonDiv(pokeEle.parentElement);
+  }
+
+  setMoney(localStorage.getItem('money'));
+
+  setPokeball(localStorage.getItem('pokeball'));
+  document.getElementById('type').value = localStorage.getItem('guaranteedType');
+  document.getElementById('extraIncome').checked = localStorage.getItem('extraIncome') === 'true';
+  document.getElementById('won').checked = localStorage.getItem('won') === 'true';
+
+  document.getElementById('winCounter').textContent = localStorage.getItem('winCounter');
 }
-function nextRound(income) {
+
+function nextRound() {
+  let income = INCOME;
   if (document.getElementById('extraIncome').checked)
     income += MONEY_MOVE_INCOME;
+  const won = document.getElementById('won').checked;
+  if (won)
+    income += WIN_INCOME_DELTA;
   if (!pay(-1 * income)) return;
 
   const choicesDiv = document.getElementById('choices');
@@ -1627,6 +1665,9 @@ function nextRound(income) {
     return;
   }
   toggleNonPokemonChoices(false);
+
+  if (won)
+    document.getElementById('winCounter').textContent += '✓ ';
   
   const isPartyFull = getEmptyPartyDiv() === null;
   document.getElementById('skip').hidden = !isPartyFull;
@@ -2124,8 +2165,7 @@ function buyItem(itemDiv, item, itemPrice) {
 }
 
 function pay(price) {
-  const moneyEle = document.getElementById('money');
-  let money = parseInt(moneyEle.value);
+  let money = parseInt(getMoneyStr());
   if (isNaN(money)) {
     alert('Invalid money value!');
     return false;
@@ -2133,14 +2173,22 @@ function pay(price) {
     alert('Not enough money!');
     return false;
   } else {
-    money -= price;
-    moneyEle.value = money;
+    setMoney(money - price);
     return true;
   }
+}
+function getMoneyStr() {
+  return document.getElementById('money').value;
+}
+function setMoney(money) {
+  document.getElementById('money').value = money;
 }
 
 function getPokeball() {
   return document.getElementById('pokeball').value;
+}
+function setPokeball(pokeball) {
+  document.getElementById('pokeball').value = pokeball;
 }
 
 function randomValue(obj) {
