@@ -1056,6 +1056,9 @@ function randomOfSpecies(speciesName, abilityName, gender) {
 }
 
 function getLearnset(speciesId) {
+  if (speciesId === 'smeargle')
+    return Object.entries(moves).filter(([moveId, move]) => isLegalMove(move, false, false) 
+              && move.name !== 'Chatter' && move.name !== 'Struggle').map(arr => arr[0]);
   const species = allSpecies[speciesId];
   let learnset;
   if (isPokestar(speciesId)) {
@@ -2023,11 +2026,17 @@ function tmDesc(strBeforeMoveName, move) {
 }
 function randomMove(allowZMoves) {
   let move = randomValue(moves);
-  while (move.desc === "Power is equal to the base move's Z-Power." 
-      || move.name.startsWith('Max') || (move.name.startsWith('G-Max') && move.basePower === 160)
-      || (move.isZ && !allowZMoves))
+  while (!isLegalMove(move, allowZMoves, true))
     move = randomValue(moves);
   return addHiddenPowerType(move);
+}
+function isLegalMove(move, allowZMoves, allowGMaxMoves) {
+  return !(
+       move.desc === "Power is equal to the base move's Z-Power." 
+    || move.name.startsWith('Max') 
+    || (move.name.startsWith('G-Max') && (!allowGMaxMoves || move.basePower === 160))
+    || (move.isZ && !allowZMoves)
+  );
 }
 
 function addHiddenPowerType(move) {
