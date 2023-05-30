@@ -559,7 +559,7 @@ function printRequiredItems() {
       const usualStatTotal = getStatTotal(species, getLevelWithAbility(species, species.abilities[0]));
       return newStatTotal - usualStatTotal;
     })
-    const price = 5 * Math.round((Math.max(...statDiffs) - AVG_HELD_ITEM_VALUE) / 5);
+    const price = roundToNearest5((Math.max(...statDiffs) - AVG_HELD_ITEM_VALUE));
 
     tsv += requiredItem + '\theldItem\t' + price + '\t\t' + getSpeciesId(species.baseSpecies);
     tsv += '\t' + heldItems[getHeldItemId(requiredItem)].desc + '\n';
@@ -1142,8 +1142,8 @@ function getSpeciesNameOfPokemon(pokemonStr) {
   if (firstLine.includes(' @ ')) {
     let heldItem = firstLine.split(' @ ')[1];
     if (FAKE_REQUIRED_ITEMS.includes(heldItem)
-          || (name === 'Arceus' && !pokemonStr.includes('Ability: Multitype'))
-          || (name === 'Silvally' && !pokemonStr.includes('Ability: RKS System')))
+          || (name === 'Arceus' && !getAbilityNameOfPokemon(pokemonStr) === 'Multitype')
+          || (name === 'Silvally' && !getAbilityNameOfPokemon(pokemonStr) === 'RKS System'))
       return name;
     let holdingItemForme = Object.values(allSpecies).find(species => species.baseSpecies === name && 
                       (species.requiredItem === heldItem || species.requiredItems?.includes(heldItem)));
@@ -1554,7 +1554,7 @@ function updateRefreshCost() {
 }
 
 function numPokemonWithAbility(abilityName) {
-  return getPartyStrs().filter(pokemonStr => pokemonStr.includes('Ability: ' + abilityName)).length;
+  return getPartyStrs().filter(pokemonStr => getAbilityNameOfPokemon(pokemonStr) === abilityName).length;
 }
 
 function toggleNonPokemonChoices(turnOn) {
@@ -1764,7 +1764,7 @@ function isLegalItem(item) {
     for (const pokemonStr of getPartyStrs()) {
       if (item.requiredSpecies?.includes(getSpeciesIdOfPokemon(pokemonStr)))
         return true;
-      if (item.requiredAbilities?.some(ability => pokemonStr.includes('Ability: ' + ability)))
+      if (item.requiredAbilities?.includes(getAbilityNameOfPokemon(pokemonStr)))
         return true;
       if (item.requiredMoves?.some(move => pokemonStr.includes('\n- ' + move)))
         return true;
@@ -1902,8 +1902,7 @@ function randomAbilitizer() {
   const effectiveStatDiffs = [];
   const abilityValue = ABILITY_VALUES[ability.name] ?? BASE_ABILITY_VALUE;
   for (const pokemonStr of getPartyStrs()) {
-    const abilityLine = pokemonStr.split('\n').find(line => line.startsWith('Ability:'));
-    const prevAbilityValue = ABILITY_VALUES[abilityLine.substring('Ability: '.length)] ?? BASE_ABILITY_VALUE;
+    const prevAbilityValue = ABILITY_VALUES[getAbilityNameOfPokemon(pokemonStr)] ?? BASE_ABILITY_VALUE;
     effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
   }
 
@@ -1911,19 +1910,28 @@ function randomAbilitizer() {
     return {
       name: 'Party Abilitizer #' + ability.num,
       type: 'partyAbilitizer',
-      price: 20 + 5 * Math.round(sumArr(effectiveStatDiffs) / 5),
+      price: 20 + roundToNearest5(sumArr(effectiveStatDiffs)),
       desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
     }
   }
   return {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
-    price: 20 + 5 * Math.round(Math.max(...effectiveStatDiffs) / 5),
+    price: 20 + roundToNearest5(Math.max(...effectiveStatDiffs)),
     desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
   }
 }
 function abilitizerDesc(strBeforeAbilityName, ability) {
   return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n' + spanWithClass(abilityDesc(ability), 'attr');
+}
+
+function roundToNearest5(num) {
+  return 5 * Math.round(num/5);
+}
+
+function getAbilityNameOfPokemon(pokemonStr) {
+  const abilityLine = pokemonStr.split('\n').find(line => line.startsWith('Ability:'));
+  return abilityLine.substring('Ability: '.length);
 }
 
 function randomTM() {
