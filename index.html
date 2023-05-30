@@ -1739,27 +1739,6 @@ function randomItem() {
         }
         item.desc += heldItemName + '.\n' + spanWithClass(heldItemDesc, 'attr');
       }
-
-      if (item.name === 'Mirror Pokemon' || item.name === 'Shadow Pokemon') {
-        const pokemonValues = [];
-        for (const pokemonStr of getPartyStrs()) {
-          const abilityName = getAbilityNameOfPokemon(pokemonStr);
-          if (abilityName === 'Wonder Guard' && getSpeciesNameOfPokemon(pokemonStr) !== 'Shedinja') {
-            // Pokestar Spirit, etc. would be significantly underrated
-            pokemonValues.push(STAT_TOTAL_GOAL * BASE_ABILITY_VALUE);
-            continue;
-          }
-          const abilityValue = ABILITY_VALUES[abilityName] ?? BASE_ABILITY_VALUE;
-          pokemonValues.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * abilityValue);
-        }
-        const prevPokemonValue = Math.min(...pokemonValues);
-        let newPokemonValue;
-        if (item.name === 'Mirror Pokemon')
-          newPokemonValue = Math.max(...pokemonValues);
-        else
-          newPokemonValue = STAT_TOTAL_GOAL * BASE_ABILITY_VALUE;
-        item.price = roundToNearest5(newPokemonValue - prevPokemonValue + .5 * (WIN_INCOME+LOSE_INCOME)/2);
-      }
     }
     if (failsafe-- < 0)
       prevSeenItems.clear();

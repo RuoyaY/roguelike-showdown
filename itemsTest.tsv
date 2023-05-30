@@ -1,4 +1,3 @@
 [KEEP THIS LINE]				
-Mirror Pokemon	misc	100					Replace one of your Pokemon with a clone of one of your other Pokemon.		
-Shadow Pokemon	misc	80					Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round.		
-Toxic Plate	heldItem	20							
+Mirror Herb	heldItem	20							
+Mirror Berry	misc	15					Copy a Pokemon's held berry to another Pokemon.		
