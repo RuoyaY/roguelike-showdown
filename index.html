@@ -44,7 +44,7 @@ body {
   box-shadow: inset 0 0 10px white;
 }
 .no-move-height {
-  height: 5rem;
+  height: auto;
 }
 .chosen>.pokemon.editable {
   box-shadow: inset 0 0 10px lightgreen;
@@ -92,6 +92,7 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   justify-content: center;
   position: relative;
   margin: 2px;
+  height: min-content;
 }
 .chosen {
   border-color: lightgreen;
@@ -963,7 +964,21 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   
   // speciesName = 'Pokestar Spirit';
   
-  const pokemonStr = randomOfSpecies(speciesName, abilityName, gender);
+  let pokemonStr = randomOfSpecies(speciesName, abilityName, gender);
+
+  if (hasChooseButton) {
+    switch (getPokeball()) {
+      case 'Dream Ball':
+        pokemonStr += '\n- Rest\n- Sleep Talk';
+        break;
+      case 'Friend Ball':
+        pokemonStr += '\n- Return';
+        break;
+      case 'Love Ball':
+        pokemonStr += '\n- Attract';
+        break;
+    }
+  }
 
   const divEle = document.createElement('div');
   divEle.classList.add('pokemon-div');
@@ -1438,19 +1453,8 @@ function choosePokemon(choicesDiv, pokemonStr) {
   divOfNewMon = pokeDiv;
   divOfNewMon.classList.add('chosen');
   
-  switch (getPokeball()) {
-    case 'Dream Ball':
-      pokemonStr += '\n- Rest\n- Sleep Talk\n- \n- \n';
-      break;
-    case 'Friend Ball':
-      pokemonStr += '\n- Return\n- \n- \n- \n';
-      break;
-    case 'Love Ball':
-      pokemonStr += '\n- Attract\n- \n- \n- \n';
-      break;
-    default:
-      pokemonStr += '\n- \n- \n- \n- \n';
-  }
+  const numExistingMoves = pokemonStr.split('\n-').length - 1;
+  pokemonStr += '\n- '.repeat(4 - numExistingMoves) + '\n';
   pokeDiv.querySelector('.pokemon').innerText = pokemonStr;
   
   updatePokemonDiv(pokeDiv);
