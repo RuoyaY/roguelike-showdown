@@ -695,7 +695,6 @@ function loadItems() {
         name: splitByTab[0],
         type: splitByTab[1],
         price: splitByTab[2],
-        desc: splitByTab[7],
       }
 
       if (!item.price.includes('n'))
@@ -709,6 +708,10 @@ function loadItems() {
         item.requiredAbilities = splitByTab[5].split(',');
       if (splitByTab[6] !== '')
         item.requiredMoves = splitByTab[6].split(',');
+      if (splitByTab[7] !== '')
+        item.partyNums = [...splitByTab[7]].map(char => parseInt(char));
+
+      item.desc = splitByTab[8];
 
       items.push(item);
     }
@@ -1790,29 +1793,29 @@ function randomItem() {
 }
 
 function isLegalItem(item) {
-  if (item.weight && !(Math.random() < item.weight))
-    return false;
+
   if (item.type === 'heldItem' && !(Math.random() < HELD_ITEM_WEIGHT))
     return false;
-
-  if (getPartyStrs().length === 1) {
-    if (item.desc.toLowerCase().includes('last round'))
-      return false;
-    if (item.desc.toLowerCase().includes('other pokemon'))
-      return false;
-  }
   
-  if (hasRequirement(item)) {
-    for (const pokemonStr of getPartyStrs()) {
-      if (item.requiredSpecies?.includes(getSpeciesIdOfPokemon(pokemonStr)))
-        return true;
-      if (item.requiredAbilities?.includes(getAbilityNameOfPokemon(pokemonStr)))
-        return true;
-      if (item.requiredMoves?.some(move => pokemonStr.includes('\n- ' + move)))
-        return true;
-    }    
+  if (item.weight && !(Math.random() < item.weight))
     return false;
+  
+  if (hasRequirement(item)) { // if there are required conditions...
+    let satisfied = false;
+    for (const pokemonStr of getPartyStrs()) { // only one required condition needs to be fulfilled
+      if (item.requiredSpecies?.includes(getSpeciesIdOfPokemon(pokemonStr)))
+        satisfied = true;
+      if (item.requiredAbilities?.includes(getAbilityNameOfPokemon(pokemonStr)))
+        satisfied = true;
+      if (item.requiredMoves?.some(move => pokemonStr.includes('\n- ' + move)))
+        satisfied = true;
+    }
+    if (!satisfied)
+      return false;
   }
+
+  if (item.partyNums && !item.partyNums.includes(getPartyStrs().length))
+    return false;
 
   return true;
 }
