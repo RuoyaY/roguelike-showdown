@@ -171,8 +171,11 @@ button:focus {
   font-size: large;
   font-weight: 700;
 }
-.modifiedAbility {
+.improvedAbility {
   background-color: rgba(0,255,0,.3);
+}
+.changedAbilityDesc {
+  font-style: italic;
 }
 
 .misc { color: lightgray }
@@ -392,12 +395,15 @@ const ABILITY_VALUES = {
 };
 
 const RUN_AWAY_REFRESH_COST = 2;
-const MODIFIED_ABILITIES = {
-  'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
+const IMPROVED_ABILITIES = {
   'Illuminate': "Before battle, your opponent must send you a screenshot of their Pokemon in this slot.",
   'Honey Gather': 'Get one extra choice of species whenever you get a new Pokemon.',
   'Run Away': 'Refreshing the shop only costs $' + RUN_AWAY_REFRESH_COST + '.',
   'Ball Fetch': 'Next time you refresh the shop, you get an extra Poke Ball choice.'
+}
+const CHANGED_ABILITY_DESC = {
+  'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
+  'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate OR Z-Crystal.',
 }
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
@@ -1922,15 +1928,17 @@ function abilityInHTML(abilityName) {
   return html;
 }
 function abilityNameInHTML(abilityName) {
-  if (MODIFIED_ABILITIES[abilityName])
-    abilityName = spanWithClass(abilityName, 'modifiedAbility');
+  if (CHANGED_ABILITY_DESC[abilityName])
+    abilityName = spanWithClass(abilityName, 'changedAbilityDesc');
+  if (IMPROVED_ABILITIES[abilityName])
+    abilityName = spanWithClass(abilityName, 'improvedAbility');
   return abilityName;
 }
 function abilityDesc(ability) {
-  if (ability.name === 'Multitype')
-    return 'If this Pokemon is an Arceus, its type changes to match its held Plate or Z-Crystal.';
-  if (MODIFIED_ABILITIES[ability.name])
-    return MODIFIED_ABILITIES[ability.name];
+  if (CHANGED_ABILITY_DESC[ability.name])
+    return CHANGED_ABILITY_DESC[ability.name];
+  if (IMPROVED_ABILITIES[ability.name])
+    return IMPROVED_ABILITIES[ability.name];
   return ability.shortDesc;
 }
 
