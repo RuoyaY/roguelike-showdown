@@ -32,7 +32,7 @@ body {
   white-space: pre;
   padding-top: .5rem;
   padding-bottom: .5rem;
-  height: 10rem;
+  min-height: 10rem;
 }
 .tera-choice, .move-choice, .pokemon {
   width: 31ch;
@@ -44,7 +44,7 @@ body {
   box-shadow: inset 0 0 10px white;
 }
 .no-move-height {
-  height: auto;
+  min-height: 5rem;
 }
 .chosen>.pokemon.editable {
   box-shadow: inset 0 0 10px lightgreen;
@@ -1543,12 +1543,15 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
 
   if (pokemonStr.includes('\n- \n')) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
-  } else if (pokemonCanTera(pokemonStr)) {
-    const typeChoices = [];
-    for (let i = 0; i < numChoices(); i++)
-      addTeraChoice(choicesDiv, pokeDiv, typeChoices);
   } else {
-    endPokemonChoosing();
+    pokeEle.innerHTML = pokeEle.innerHTML.slice(0, -1); // remove the extra \n at the end
+    if (pokemonCanTera(pokemonStr)) {
+      const typeChoices = [];
+      for (let i = 0; i < numChoices(); i++)
+        addTeraChoice(choicesDiv, pokeDiv, typeChoices);
+    } else {
+      endPokemonChoosing();
+    }
   }
 }
 
