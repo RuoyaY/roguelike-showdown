@@ -499,10 +499,11 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printEncounterPowersDescs() {
+function printTypeCandies() {
   let tsv = '';
   for (const type of TYPES) {
-    tsv += "Next round, you are guaranteed to get " + type + '-type Pokemon.\n';
+    tsv += 'Rare ' + type + ' Candy\tmisc\t15\t\t\t\t'
+            + 'Increase a ' + type + "-type Pokemon's level by one.\n";
   }
   console.log(tsv);
 }
