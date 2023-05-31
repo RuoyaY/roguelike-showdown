@@ -158,6 +158,9 @@ button:focus {
 .green {
   color: lightgreen;
 }
+.win-color {
+  color: yellow;
+}
 
 .hasHoverText {
   text-decoration-line: underline;
@@ -269,7 +272,7 @@ button:focus {
     <label for="extraIncome" id="extraIncomeLabel" class="hasHoverText">Used a money-making move</label>
     <br>
     <input type="checkbox" id="won">
-    <label for="won" id="wonLabel">Won!</label>
+    <label for="won" id="wonLabel" class="win-color">Won!</label>
     <br class="mb-4px">
     <button id="nextRound" onclick="nextRound()" class="mb-4px">start round</button>
     <div id="choices" class="flex-row"></div>
@@ -304,7 +307,7 @@ button:focus {
       <div class="pokemon-div"></div>
       <div class="pokemon-div"></div>
     </div>
-    <p id="winCounter" class="win-counter"></p>
+    <p id="winCounter" class="win-counter win-color"></p>
   </div>
 </div>
 
