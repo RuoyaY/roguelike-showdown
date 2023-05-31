@@ -1,4 +1,4 @@
 [KEEP THIS LINE]				
-Shadow Pokemon	misc	80					23456	Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round.		
-Old Rod	misc	-10n+60	0.5				12345	ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Power Lens	heldItem	0								
+Weather Chaos Abilitizers	abilitizer	50					456	Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning*.		
+Terrain Chaos Abilitizers	abilitizer	25					456	Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge*.		
+Power Weight	heldItem	0								

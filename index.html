@@ -717,8 +717,9 @@ function loadItems() {
     }
     doneLoading();
   }
-  xhttp.open("GET", 'items.tsv');
-  // xhttp.open("GET", 'itemsTest.tsv');
+  let filename = 'items.tsv';
+  // filename = 'itemsTest.tsv';
+  xhttp.open("GET", filename);
   xhttp.send();
 }
 
