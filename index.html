@@ -577,7 +577,7 @@ function printRequiredItems() {
     const price = roundToNearest5((Math.max(...statDiffs) - AVG_HELD_ITEM_VALUE));
 
     tsv += requiredItem + '\theldItem\t' + price + '\t\t' + getSpeciesId(species.baseSpecies);
-    tsv += '\t' + heldItems[getHeldItemId(requiredItem)].desc + '\n';
+    tsv += '\t' + heldItemDesc(requiredItem) + '\n';
   }
   console.log(tsv);
 }
@@ -1782,13 +1782,12 @@ function randomItem() {
       item = structuredClone(item);
       if (item.type === 'heldItem') {
         const heldItemName = item.name;
-        const heldItemDesc = heldItems[getHeldItemId(item.name)].desc;
         if (Math.random() < .05) {
           item.name += ' Party';
           item.type = 'heldItemParty';
           if (item.price === 1)
             item.price = 0;
-          if ((hasRequirement(item) || TYPES.some(type => heldItemDesc.includes(type)))
+          if ((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
                 && item.name !== 'Chilan Berry Party')
             item.price = (-1 * AVG_HELD_ITEM_VALUE) + 'n+' + (item.price + AVG_HELD_ITEM_VALUE);
             else
@@ -1797,7 +1796,7 @@ function randomItem() {
         } else {
           item.desc = "Set a Pokemon's held item to ";
         }
-        item.desc += heldItemName + '.\n' + spanWithClass(heldItemDesc, 'attr');
+        item.desc += heldItemName + '.\n' + spanWithClass(heldItemDesc(heldItemName), 'attr');
       }
     }
     if (failsafe-- < 0)
@@ -1951,7 +1950,13 @@ function abilityDesc(ability) {
 }
 
 function heldItemInHTML(heldItemName) {
-  return spanWithTitle(heldItemName, heldItems[getHeldItemId(heldItemName)].desc);
+  return spanWithTitle(heldItemName, heldItemDesc(heldItemName));
+}
+function heldItemDesc(heldItemName) {
+  const heldItem = heldItems[getHeldItemId(heldItemName)];
+  if (heldItemName === 'Utility Umbrella')
+    return heldItem.desc;
+  return heldItem.shortDesc ?? heldItem.desc;
 }
 
 function randomAbilitizer() {
