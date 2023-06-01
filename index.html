@@ -172,7 +172,7 @@ button:focus {
   font-size: large;
   font-weight: 700;
 }
-.improvedAbility {
+.improvedAbility, .improvedItem {
   background-color: rgba(0,255,0,.3);
 }
 .changedAbilityDesc {
@@ -333,7 +333,7 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Ice', 'Fighting', 'Poison', 'Ground', 'Flying',
   'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
   'Dragon', 'Steel', 'Fairy'];
-
+  
 const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
 const FOUR_POINT_FIVE_ABILITY_VALUE = 700/650;
@@ -404,10 +404,18 @@ const IMPROVED_ABILITIES = {
   'Honey Gather': 'Get one extra choice of species whenever you get a new Pokemon.',
   'Run Away': 'Refreshing the shop only costs $' + RUN_AWAY_REFRESH_COST + '.',
   'Ball Fetch': 'When you refresh the shop, you get an extra Poke Ball choice.'
-}
+};
 const CHANGED_ABILITY_DESC = {
   'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate OR Z-Crystal.',
+};
+
+const IMPROVED_ITEMS = {
+  'Oval Stone': 'Each round, raises the level of the holder by one.',
+};
+for (let i = 0; i < POWER_ITEMS.length; i++) {
+  IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
+          + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs (up to the maximum of 252) (max 508 total EVs).';
 }
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
@@ -682,13 +690,6 @@ function loadHeldItems() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     heldItems = JSON.parse(this.responseText);
-    for (let i = 0; i < POWER_ITEMS.length; i++) {
-      const powerItemName = POWER_ITEMS[i];
-      const powerItem = heldItems[powerItemName.toLowerCase().replace(' ', '')];
-      if (powerItem)
-        powerItem.desc = "Holder's Speed is halved.\nEach round, it automatically gains "
-                          + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs (up to the maximum of 252) (max 508 total EVs).';
-    }
     doneLoading();
   }
   xhttp.open("GET", "heldItems.json");
@@ -1724,7 +1725,7 @@ function nextRound() {
     divOfNewMon = null;
   }
 
-  // handle Power items (Power Anklet, etc)
+  // handle Power items (Power Anklet, etc) and Oval Stone
   for (const pokeDiv of getPartyPokeDivs()) {
     const pokeEle = pokeDiv.querySelector('.pokemon');
     const pokemonStr = pokeEle.innerText.trim();
@@ -1737,6 +1738,11 @@ function nextRound() {
           pokeEle.innerText = pokemonStr.replace(evsStr, getEvsStr(evs));
           updatePokemonDiv(pokeDiv);
         }
+      } else if (pokemonStr.includes(' @ Oval Stone')) {
+        const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
+        const lv = parseInt(lvStr.substring('Level: '.length));
+        pokeEle.innerText = pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
+        updatePokemonDiv(pokeDiv);
       }
     }
   }
@@ -1824,7 +1830,8 @@ function randomItem() {
         } else {
           item.desc = "Set a Pokemon's held item to ";
         }
-        item.desc += heldItemName + '.\n' + spanWithClass(heldItemDesc(heldItemName), 'attr');
+        item.desc += heldItemNameInHTML(heldItemName) + '.\n'
+                      + spanWithClass(heldItemDesc(heldItemName), 'attr');
       }
     }
     if (failsafe-- < 0)
@@ -1978,9 +1985,16 @@ function abilityDesc(ability) {
 }
 
 function heldItemInHTML(heldItemName) {
-  return spanWithTitle(heldItemName, heldItemDesc(heldItemName));
+  return spanWithTitle(heldItemNameInHTML(heldItemName), heldItemDesc(heldItemName));
+}
+function heldItemNameInHTML(heldItemName) {
+  if (IMPROVED_ITEMS[heldItemName])
+    heldItemName = spanWithClass(heldItemName, 'improvedItem');
+  return heldItemName;
 }
 function heldItemDesc(heldItemName) {
+  if (IMPROVED_ITEMS[heldItemName])
+    return IMPROVED_ITEMS[heldItemName];
   const heldItem = heldItems[getHeldItemId(heldItemName)];
   if (heldItemName === 'Utility Umbrella')
     return heldItem.desc;
