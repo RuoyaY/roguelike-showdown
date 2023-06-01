@@ -295,7 +295,7 @@ button:focus {
       <br><label for="abilityInput">Ability: </label><input id="abilityInput" class="mb-4px">
       <br><button onclick="generateSpecificSpecies()">generate</button>
     </div>
-    <p id="speciesError" hidden>ERROR: species name not recognized</p>
+    <p id="speciesError"></p>
     <div id="species" class=""></div>
   </div>
   <div id="party" class="ml-1">
@@ -821,6 +821,15 @@ function getProperSpeciesName(speciesNameInput) {
   }
 }
 
+function getProperAbilityName(abilityNameInput) {
+  const simplifiedInput = abilityNameInput.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g, '');
+  console.log(simplifiedInput)
+  for (const ability of Object.values(abilities)) {
+    if (ability.name.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g, '') === simplifiedInput)
+      return ability.name;
+  }
+}
+
 function getSpeciesId(speciesName) {
   return Object.keys(allSpecies).find(speciesId => allSpecies[speciesId].name === speciesName 
     || allSpecies[speciesId].cosmeticFormes?.includes(speciesName));
@@ -896,10 +905,8 @@ function generateSpecificSpecies() {
 
   const speciesErrorEle = document.getElementById('speciesError');
   if (!species) {
-    speciesErrorEle.hidden = false;
+    speciesErrorEle.textContent = 'ERROR: species name not recognized';
     return;
-  } else {
-    speciesErrorEle.hidden = true;
   }
 
   const speciesRow = document.createElement('div');
@@ -911,8 +918,15 @@ function generateSpecificSpecies() {
     for (const abilityName of Object.values(allSpecies[species].abilities))
       addRandomPokemon(speciesRow, false, speciesName, abilityName);
   } else {
-    addRandomPokemon(speciesRow, false, speciesName, abilityNameInput);
+    const abilityName = getProperAbilityName(abilityNameInput);
+    if (abilityName == null) {
+      speciesErrorEle.textContent = 'ERROR: ability name not recognized';
+      return;
+    }
+    addRandomPokemon(speciesRow, false, speciesName, abilityName);
   }
+  
+  speciesErrorEle.textContent = '';
 
   // // list all formes
   // let formes = {};
