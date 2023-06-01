@@ -246,6 +246,7 @@ button:focus {
       <option>Love Ball</option>
       <option>Beast Ball</option>
       <option>Repeat Ball</option>
+      <option>Shadow Ball</option>
       <option>Master Ball</option>
     </select>
     <br>
@@ -849,12 +850,15 @@ function killAllChildren(div) {
     div.removeChild(div.firstChild);
 }
 
+const PROMPTS = {
+  'Repeat Ball': 'Choose a species you already own.',
+  'Shadow Ball': 'Choose a species your opponent owns.',
+  'Master Ball': 'Choose a species.',
+};
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
-  if (pokeball === 'Master Ball' || pokeball === 'Repeat Ball') {
-    const promptText = pokeball === 'Master Ball' ? 'Choose a species.' 
-                                                  : 'Choose a species you already own.';
-    const speciesName = getProperSpeciesName(prompt(promptText));
+  if (pokeball === 'Master Ball' || pokeball === 'Shadow Ball' || pokeball === 'Repeat Ball') {
+    const speciesName = getProperSpeciesName(prompt(PROMPTS[pokeball]));
     if (!speciesName) {
       alert('Error: species name not recognized.');
       return false;
@@ -925,7 +929,7 @@ function generateSpecificSpecies() {
     }
     addRandomPokemon(speciesRow, false, speciesName, abilityName);
   }
-  
+
   speciesErrorEle.textContent = '';
 
   // // list all formes
