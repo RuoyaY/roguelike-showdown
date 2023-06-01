@@ -240,6 +240,7 @@ button:focus {
       <option>Great Ball</option>
       <option>Ultra Ball</option>
       <option>Level Ball</option>
+      <option>Moon Ball</option>
       <option>Dream Ball</option>
       <option>Friend Ball</option>
       <option>Love Ball</option>
@@ -969,6 +970,9 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
 
   if (hasChooseButton) {
     switch (getPokeball()) {
+      case 'Moon Ball':
+        pokemonStr += '\n- Moonlight';
+        break;
       case 'Dream Ball':
         pokemonStr += '\n- Rest\n- Sleep Talk';
         break;
