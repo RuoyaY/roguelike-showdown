@@ -949,12 +949,16 @@ function isLegal(speciesId, species, requiredType) {
     return false;
   if (ILLEGAL_MONS.includes(speciesId))
     return false;
-  const identicals = IDENTICAL_MONS.find(arr => arr.includes(speciesId));
-  if (identicals && speciesId != randomElement(identicals)) // each forme has a 1/n chance of being legal
-    return false;
   if (requiredType && !species.types.includes(requiredType))
     return false;
   return true;
+}
+function passesIdenticalSpeciesBias(speciesId) {
+  const identicals = IDENTICAL_MONS.find(arr => arr.includes(speciesId));
+  if (identicals)
+    return speciesId === randomElement(identicals);
+  else
+    return true;
 }
 
 function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, gender) {  
@@ -970,7 +974,9 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
       species = allSpecies[speciesId];
       if (failsafe-- < 0)
         prevSeenSpecies.clear();
-    } while (!isLegal(speciesId, species, requiredType) || prevSeenSpecies.has(speciesId));
+    } while (!isLegal(speciesId, species, requiredType) 
+                || !passesIdenticalSpeciesBias(speciesId)
+                || prevSeenSpecies.has(speciesId));
     prevSeenSpecies.add(speciesId);
 
     speciesName = species.name;
