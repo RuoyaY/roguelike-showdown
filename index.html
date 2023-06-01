@@ -643,6 +643,7 @@ document.getElementById('wonLabel').textContent += ' (-$' + -WIN_INCOME_DELTA + 
 
 resetRoundBasedInputs();
 
+let roundCounter = 0;
 const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
 
@@ -721,8 +722,9 @@ function loadItems() {
         item.requiredMoves = splitByTab[6].split(',');
       if (splitByTab[7] !== '')
         item.partyNums = [...splitByTab[7]].map(char => parseInt(char));
+      item.bannedFirstRound = splitByTab[8] !== '';
 
-      item.desc = splitByTab[8];
+      item.desc = splitByTab[9];
 
       items.push(item);
     }
@@ -1673,7 +1675,9 @@ function save() {
   localStorage.setItem('extraIncome', document.getElementById('extraIncome').checked);
   localStorage.setItem('won', document.getElementById('won').checked);
 
-  localStorage.setItem('winCounter', document.getElementById('winCounter').textContent)
+  localStorage.setItem('winCounter', document.getElementById('winCounter').textContent);
+
+  localStorage.setItem('roundCounter', roundCounter);
 }
 function load() {
   if (getPartyStrs().length > 0) {
@@ -1694,6 +1698,8 @@ function load() {
   document.getElementById('won').checked = localStorage.getItem('won') === 'true';
 
   document.getElementById('winCounter').textContent = localStorage.getItem('winCounter');
+
+  roundCounter = parseInt(localStorage.getItem('roundCounter'));
 }
 
 function nextRound() {
@@ -1746,6 +1752,8 @@ function nextRound() {
       }
     }
   }
+
+  roundCounter++;
 }
 
 function sumArr(arr) {
@@ -1865,6 +1873,9 @@ function isLegalItem(item) {
   }
 
   if (item.partyNums && !item.partyNums.includes(getPartyStrs().length))
+    return false;
+  
+  if (item.bannedFirstRound && roundCounter <= 1)
     return false;
 
   return true;
