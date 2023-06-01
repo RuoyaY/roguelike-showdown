@@ -1819,12 +1819,13 @@ function randomItem() {
         if (Math.random() < .05) {
           item.name += ' Party';
           item.type = 'heldItemParty';
+          item.price = getItemPrice(item);
           if (item.price === 1)
             item.price = 0;
           if ((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
                 && item.name !== 'Chilan Berry Party')
             item.price = (-1 * AVG_HELD_ITEM_VALUE) + 'n+' + (item.price + AVG_HELD_ITEM_VALUE);
-            else
+          else
             item.price = (item.price - AVG_HELD_ITEM_VALUE) + 'n+' + AVG_HELD_ITEM_VALUE;
           item.desc = "Set EVERY Pokemon's held item to ";
         } else {
