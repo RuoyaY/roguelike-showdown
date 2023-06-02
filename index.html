@@ -866,7 +866,10 @@ const PROMPTS = {
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
   if (pokeball === 'Master Ball' || pokeball === 'Shadow Ball' || pokeball === 'Repeat Ball') {
-    const speciesName = getProperSpeciesName(prompt(PROMPTS[pokeball]));
+    const speciesNameInput = prompt(PROMPTS[pokeball]);
+    if (speciesNameInput == null)
+      return false;
+    const speciesName = getProperSpeciesName(speciesNameInput);
     if (!speciesName) {
       alert('Error: species name not recognized.');
       return false;
