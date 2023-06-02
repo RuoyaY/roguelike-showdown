@@ -1,14 +1,4 @@
 [KEEP THIS LINE]				
-Great Ball	pokeball	20							Next round, +1 option to all non-shop choices.		
-Ultra Ball	pokeball	30							Next round, +2 options to all non-shop choices.		
-Level Ball	pokeball	5							Next round, +1 option to all non-shop choices, but your new Pokemon is 1 level lower than usual.		
-Moon Ball	pokeball	20							Next round, your new Pokemon starts off knowing *Moonlight*.		
-Dream Ball	pokeball	20							Next round, your new Pokemon starts off knowing *Rest* and *Sleep Talk*.		
-Friend Ball	pokeball	20							Next round, your new Pokemon starts off knowing *Return*.		
-Love Ball	pokeball	10							Next round, your new Pokemon starts off knowing *Attract*. You will get 1 male and 1 female option.		
-Beast Ball	pokeball	15							Next round, your new Pokemon has *Beast Boost* instead of its regular ability.		
-Repeat Ball	pokeball	10							Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).		
-Snag Ball	pokeball	10						x	Next round, you can choose a Pokemon of any species YOUR OPPONENT owned LAST ROUND (you will then be able to choose any ability that species can have).		
-Master Ball	pokeball	20							Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
-Random Ball	pokeball	10							Automatically sets your Poke Ball for the next round to a random one (other than the default).		
-Encounter Power: Normal	misc	-5							Next round, you are guaranteed to get Normal-type Pokemon.		
+Encounter Power: Fairy	misc	10							Next round, you are guaranteed to get Fairy-type Pokemon.
+Encounter Power: Pefect	misc	15							Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).
+Encounter Power: Mirror	misc	10							Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).

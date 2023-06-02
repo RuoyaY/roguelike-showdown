@@ -2260,7 +2260,8 @@ function buyItem(itemDiv, item, itemPrice) {
       setPokeball(item.name);
     document.getElementById('pokeballDiv').hidden = false;
   } else if (item.name.startsWith('Encounter Power: ')) {
-    setGuaranteedType(item.name.split(' ')[2]);
+    const type = item.name.split(' ')[2];
+    setGuaranteedType(TYPES.includes(type) ? type : '');
     document.getElementById('typeDiv').hidden = false;
   }
 
