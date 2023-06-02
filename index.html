@@ -650,8 +650,6 @@ let roundCounter = 0;
 const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
 
-let divOfNewMon = null;
-
 function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
@@ -1476,7 +1474,7 @@ function spanWithTitle(str, title) {
 function skipPokemonChoice() {
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
-  endPokemonChoosing();
+  endPokemonChoosing(null);
   document.getElementById('skip').hidden = true;
 }
 
@@ -1489,8 +1487,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
 
   document.getElementById('skip').hidden = true;
   
-  divOfNewMon = pokeDiv;
-  divOfNewMon.classList.add('chosen');
+  pokeDiv.classList.add('chosen');
   
   const numExistingMoves = pokemonStr.split('\n-').length - 1;
   pokemonStr += '\n- '.repeat(4 - numExistingMoves) + '\n';
@@ -1534,7 +1531,7 @@ function chooseTera(choicesDiv, pokeDiv, type) {
 
   killAllChildren(choicesDiv);
 
-  endPokemonChoosing();
+  endPokemonChoosing(pokeDiv);
 }
 function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
   const speciesId = getSpeciesIdOfPokemon(pokemonStr);
@@ -1589,12 +1586,14 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
       for (let i = 0; i < numChoices(); i++)
         addTeraChoice(choicesDiv, pokeDiv, typeChoices);
     } else {
-      endPokemonChoosing();
+      endPokemonChoosing(pokeDiv);
     }
   }
 }
 
-function endPokemonChoosing() {
+function endPokemonChoosing(pokeDiv) {
+  if (pokeDiv != null)
+    pokeDiv.classList.remove('chosen');
   resetRoundBasedInputs();
   setTMSeekerToLast();
   toggleNonPokemonChoices(true);
@@ -1753,11 +1752,6 @@ function nextRound() {
   
   const isPartyFull = getEmptyPartyDiv() === null;
   document.getElementById('skip').hidden = !isPartyFull;
-
-  if (divOfNewMon) {
-    divOfNewMon.classList.remove('chosen');
-    divOfNewMon = null;
-  }
 
   // handle Power items (Power Anklet, etc) and Oval Stone
   for (const pokeDiv of getPartyPokeDivs()) {
