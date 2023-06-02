@@ -286,6 +286,9 @@ button:focus {
       <button id="skip" onclick="skipPokemonChoice()">skip</button>
     </div>
     <h2 class="attr">Shop</h2>
+    <label for="tmSeeker">Find TMs for Pokemon</label>
+    <select id="tmSeeker" class="mb-4px"></select>
+    <br>
     <label for="money">$</label> <input id="money" type="number">
     <button onclick="refreshShop(true)" id="refresh">refresh</button>
     <p id="trueMirror" class="true-mirror big-text" hidden>x2</p>
@@ -768,7 +771,7 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
     pokemonEle.setAttribute('contenteditable', true);
     pokemonEle.setAttribute('spellcheck', false);
     pokemonEle.classList.add('editable');
-    pokemonEle.addEventListener('focusout', function() {updatePokemonDiv(div)}, false);
+    pokemonEle.addEventListener('focusout', function() {updatePartyPokemonDiv(div)}, false);
   }
   if (noMoveHeight)
     pokemonEle.classList.add('no-move-height');
@@ -782,9 +785,13 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
   statsEle.classList.add('info-box', 'stats');
   div.append(statsEle);
 }
-function updatePokemonDiv(div) {
+function updatePartyPokemonDiv(div) {
   updateRefreshCost();
+  updateTMSeekerOptions();
+  updatePokemonDiv(div);
+}
 
+function updatePokemonDiv(div) {
   const pokemonEle = div.querySelector('.pokemon');
   const pokemonStr = pokemonEle.innerText;
 
@@ -1489,7 +1496,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
   pokemonStr += '\n- '.repeat(4 - numExistingMoves) + '\n';
   pokeDiv.querySelector('.pokemon').innerText = pokemonStr;
   
-  updatePokemonDiv(pokeDiv);
+  updatePartyPokemonDiv(pokeDiv);
   
   killAllChildren(choicesDiv);
   
@@ -1589,6 +1596,7 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
 
 function endPokemonChoosing() {
   resetRoundBasedInputs();
+  setTMSeekerToLast();
   toggleNonPokemonChoices(true);
 }
 function resetRoundBasedInputs() {
@@ -1598,6 +1606,10 @@ function resetRoundBasedInputs() {
   document.getElementById('extraIncome').checked = false;
   document.getElementById('won').checked = false;
 }
+function setTMSeekerToLast() {
+  const tmSeekerEle = document.getElementById('tmSeeker');
+  tmSeekerEle.selectedIndex = tmSeekerEle.options.length - 1;
+}
 
 function updateRefreshCost() {
   let refreshCost = BASE_REFRESH_COST;
@@ -1605,13 +1617,25 @@ function updateRefreshCost() {
     refreshCost = RUN_AWAY_REFRESH_COST;
   document.getElementById('refresh').textContent = '$' + refreshCost + ' - refresh';
 }
+function updateTMSeekerOptions() {
+  const tmSeekerEle = document.getElementById('tmSeeker');
+  const index = tmSeekerEle.selectedIndex;
+  killAllChildren(tmSeekerEle);
+  const speciesNames = getPartyStrs().map(pokemonStr => getSpeciesNameOfPokemon(pokemonStr));
+  for (let i = 0; i < speciesNames.length; i++) {
+    const option = document.createElement('option');
+    option.innerText = '#' + (i+1) + ' (' + speciesNames[i] + ')';
+    tmSeekerEle.append(option);
+  }
+  tmSeekerEle.selectedIndex = index;
+}
 
 function numPokemonWithAbility(abilityName) {
   return getPartyStrs().filter(pokemonStr => getAbilityNameOfPokemon(pokemonStr) === abilityName).length;
 }
 
 function toggleNonPokemonChoices(turnOn) {
-  const ELEMENT_IDS = ['save', 'load', 'pokeball', 'type', 'extraIncome', 'won', 'nextRound', 'refresh'];
+  const ELEMENT_IDS = ['save', 'load', 'pokeball', 'type', 'extraIncome', 'won', 'nextRound', 'tmSeeker', 'refresh'];
   for (const elementId of ELEMENT_IDS)
     toggleEle(document.getElementById(elementId), turnOn);
   const shopDivs = document.getElementById('shop').children;
@@ -1678,6 +1702,8 @@ function save() {
   localStorage.setItem('winCounter', document.getElementById('winCounter').textContent);
 
   localStorage.setItem('roundCounter', roundCounter);
+
+  localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
 }
 function load() {
   if (getPartyStrs().length > 0) {
@@ -1687,7 +1713,7 @@ function load() {
   const partyStrs = localStorage.getItem('partyStrs').split('\n\n');
   for (const pokeEle of getPartyPokeEles()) {
     pokeEle.textContent = partyStrs.shift();
-    updatePokemonDiv(pokeEle.parentElement);
+    updatePartyPokemonDiv(pokeEle.parentElement);
   }
 
   setMoney(localStorage.getItem('money'));
@@ -1696,10 +1722,12 @@ function load() {
   document.getElementById('type').value = localStorage.getItem('guaranteedType');
   document.getElementById('extraIncome').checked = localStorage.getItem('extraIncome') === 'true';
   document.getElementById('won').checked = localStorage.getItem('won') === 'true';
-
+  
   document.getElementById('winCounter').textContent = localStorage.getItem('winCounter');
-
+  
   roundCounter = parseInt(localStorage.getItem('roundCounter'));
+  
+  document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
 }
 
 function nextRound() {
@@ -1742,13 +1770,13 @@ function nextRound() {
           const evs = getEvs(evsStr);
           evs[i] = Math.max(evs[i], Math.min(evs[i] + POWER_ITEM_DELTA, 252, 508 - (sumArr(evs) - evs[i])));
           pokeEle.innerText = pokemonStr.replace(evsStr, getEvsStr(evs));
-          updatePokemonDiv(pokeDiv);
+          updatePartyPokemonDiv(pokeDiv);
         }
       } else if (pokemonStr.includes(' @ Oval Stone')) {
         const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
         const lv = parseInt(lvStr.substring('Level: '.length));
         pokeEle.innerText = pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
-        updatePokemonDiv(pokeDiv);
+        updatePartyPokemonDiv(pokeDiv);
       }
     }
   }
@@ -2073,9 +2101,8 @@ function randomTM() {
   } else if ((randy -= .25) < 0) {
     // Type TM
     const typeMultiset = [];
-    let speciesIds = getPartyStrs().map(pokemonStr => getSpeciesIdOfPokemon(pokemonStr));
-    if (divOfNewMon)
-      speciesIds = [getSpeciesIdOfPokemon(divOfNewMon.querySelector('.pokemon').innerText)];
+    const tmSeekingMon = getPartyStrs()[document.getElementById('tmSeeker').selectedIndex];
+    let speciesIds = [getSpeciesIdOfPokemon(tmSeekingMon)];
     for (const speciesId of speciesIds) {
       const speciesTypes = allSpecies[speciesId].types;
       typeMultiset.push(...speciesTypes);
@@ -2109,9 +2136,7 @@ function randomTM() {
     // Species TM
     let possibleMoves = [];
     let speciesNames = [];
-    let pokemonStrs = getPartyStrs();
-    if (divOfNewMon)
-      pokemonStrs = [divOfNewMon.querySelector('.pokemon').innerText];
+    let pokemonStrs = [getPartyStrs()[document.getElementById('tmSeeker').selectedIndex]];
     for (const pokemonStr of pokemonStrs) {
       const speciesName = getSpeciesNameOfPokemon(pokemonStr);
       const speciesId = getSpeciesId(speciesName);
