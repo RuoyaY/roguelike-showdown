@@ -247,7 +247,7 @@ button:focus {
         <option>Love Ball</option>
         <option>Beast Ball</option>
         <option>Repeat Ball</option>
-        <option>Shadow Ball</option>
+        <option>Snag Ball</option>
         <option>Master Ball</option>
       </select>
       <br>
@@ -867,12 +867,12 @@ function killAllChildren(div) {
 
 const PROMPTS = {
   'Repeat Ball': 'Choose a species you already own.',
-  'Shadow Ball': 'Choose a species your opponent owns.',
+  'Snag Ball': 'Choose a species your opponent owns.',
   'Master Ball': 'Choose a species.',
 };
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
-  if (pokeball === 'Master Ball' || pokeball === 'Shadow Ball' || pokeball === 'Repeat Ball') {
+  if (pokeball === 'Master Ball' || pokeball === 'Snag Ball' || pokeball === 'Repeat Ball') {
     const speciesNameInput = prompt(PROMPTS[pokeball]);
     if (speciesNameInput == null)
       return false;

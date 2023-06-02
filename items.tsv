@@ -8,7 +8,7 @@ Friend Ball	pokeball	20							Next round, your new Pokemon starts off knowing *R
 Love Ball	pokeball	10							Next round, your new Pokemon starts off knowing *Attract*. You will get 1 male and 1 female option.		
 Beast Ball	pokeball	15							Next round, your new Pokemon has *Beast Boost* instead of its regular ability.		
 Repeat Ball	pokeball	10							Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).		
-Shadow Ball	pokeball	10						x	Next round, you can choose a Pokemon of any species YOUR OPPONENT owned LAST ROUND (you will then be able to choose any ability that species can have).		
+Snag Ball	pokeball	10						x	Next round, you can choose a Pokemon of any species YOUR OPPONENT owned LAST ROUND (you will then be able to choose any ability that species can have).		
 Master Ball	pokeball	20							Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
 Random Ball	pokeball	10							Automatically sets your Poke Ball for the next round to a random one (other than the default).		
 Rare Candy	misc	20							Increase a Pokemon's level by one.		
