@@ -1555,7 +1555,10 @@ function chooseTera(choicesDiv, pokeDiv, type) {
 function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
   const speciesId = getSpeciesIdOfPokemon(pokemonStr);
   let moveIds = getLearnset(speciesId);
-  moveIds = moveIds.filter(moveId => !pokemonStr.includes('\n- ' + moves[moveId].name + '\n'));
+  moveIds = moveIds.filter(moveId => {
+    const move = moves[moveId];
+    return !(pokemonStr.includes('\n- ' + move.name + '\n') || move.isNonstandard === 'LGPE');
+  });
   addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
 }
 function addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds) {
