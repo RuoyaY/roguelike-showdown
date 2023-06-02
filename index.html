@@ -2212,7 +2212,9 @@ function speciesTM(speciesName, move, isImpossibleTM) {
   };
 }
 function tmPrice(move) { // expected to be a multiple of 10, for Party TM prices
-  if (move.isZ)
+  if (move.name === 'Clangorous Soulblaze')
+    return 170;
+  else if (move.isZ)
     return 90;
   else if (move.isNonstandard === 'LGPE')
     return 30;
