@@ -1506,8 +1506,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
   
   pokeDiv.classList.add('chosen');
   
-  const numExistingMoves = pokemonStr.split('\n-').length - 1;
-  pokemonStr += '\n- '.repeat(4 - numExistingMoves) + '\n';
+  pokemonStr += '\n- '.repeat(4) + '\n';
   pokeDiv.querySelector('.pokemon').innerText = pokemonStr;
   
   updatePartyPokemonDiv(pokeDiv);
