@@ -2,39 +2,39 @@ name	type	price	prob	required species	required abilities	required moves	party nu
 Great Ball	pokeball	20							Next round, +1 option to all non-shop choices.		
 Ultra Ball	pokeball	30							Next round, +2 options to all non-shop choices.		
 Level Ball	pokeball	5							Next round, +1 option to all non-shop choices, but your new Pokemon is 1 level lower than usual.		
-Moon Ball	pokeball	20							Next round, your new Pokemon starts off knowing *Moonlight*.		
-Dream Ball	pokeball	20							Next round, your new Pokemon starts off knowing *Rest* and *Sleep Talk*.		
-Friend Ball	pokeball	20							Next round, your new Pokemon starts off knowing *Return*.		
-Love Ball	pokeball	10							Next round, your new Pokemon starts off knowing *Attract*. You will get 1 male and 1 female option.		
+Moon Ball	pokeball	30							Next round, your new Pokemon knows the move *Moonlight* in an extra move slot.		
+Dream Ball	pokeball	40							Next round, your new Pokemon knows the moves *Rest* and *Sleep Talk* in extra move slots.		
+Friend Ball	pokeball	30							Next round, your new Pokemon knows the move *Return* in an extra move slot.		
+Love Ball	pokeball	30							Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will get 1 male and 1 female option.		
 Beast Ball	pokeball	15							Next round, your new Pokemon has *Beast Boost* instead of its regular ability.		
 Repeat Ball	pokeball	10							Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).		
-Snag Ball	pokeball	10						x	Next round, you can choose a Pokemon of any species YOUR OPPONENT owned LAST ROUND (you will then be able to choose any ability that species can have).		
+Snag Ball	pokeball	10							Next round, you can choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).		
 Master Ball	pokeball	20							Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
-Random Ball	pokeball	10							Automatically sets your Poke Ball for the next round to a random one (other than the default).		
+Random Ball	pokeball	15							Automatically sets your Poke Ball for the next round to a random one (other than the default).		
 Rare Candy	misc	20							Increase a Pokemon's level by one.		
-Rare Bi-Candy	misc	35							Increase a Pokemon's level by two.		
-Rare Tri-Candy	misc	50							Increase a Pokemon's level by three.		
-Rare Quad-Candy	misc	65							Increase a Pokemon's level by four.		
-Rare Penta-Candy	misc	80							Increase a Pokemon's level by five.		
+Rare Bi-Candy	misc	40							Increase a Pokemon's level by two.		
+Rare Tri-Candy	misc	60							Increase a Pokemon's level by three.		
+Rare Quad-Candy	misc	80							Increase a Pokemon's level by four.		
+Rare Penta-Candy	misc	100							Increase a Pokemon's level by five.		
 Rare Candy Party	partyMisc	15n+5							Increase EVERY Pokemon's level by one.		
 Doom Seed	misc	-15							Decrease a Pokemon's level by one.		
 Doom Seed Party	partyMisc	-15n							Decrease EVERY Pokemon's level by one.		
-HP Up	misc	15							Set a Pokemon's HP EV to up to 100 (max 508 total EVs).		
-Protein	misc	15							Set a Pokemon's Atk EV to up to 100 (max 508 total EVs).		
-Iron	misc	15							Set a Pokemon's Def EV to up to 100 (max 508 total EVs).		
-Calcium	misc	15							Set a Pokemon's SpA EV to up to 100 (max 508 total EVs).		
-Zinc	misc	15							Set a Pokemon's SpD EV to up to 100 (max 508 total EVs).		
-Carbos	misc	15							Set a Pokemon's Spe EV to up to 100 (max 508 total EVs).		
-Perfect Nutrience	misc	20							Set a Pokemon's EV in any 1 stat to up to 100 (max 508 total EVs).		
-Random Nutrience	misc	10							Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to up to 100 (max 508 total EVs).		
-HP Max	misc	35							Set a Pokemon's HP EV to up to 252 (max 508 total EVs).		 
-Max Protein	misc	35							Set a Pokemon's Atk EV to up to 252 (max 508 total EVs).		
-Max Iron	misc	35							Set a Pokemon's Def EV to up to 252 (max 508 total EVs).		
-Max Calcium	misc	35							Set a Pokemon's SpA EV to up to 252 (max 508 total EVs).		
-Max Zinc	misc	35							Set a Pokemon's SpD EV to up to 252 (max 508 total EVs).		
-Max Carbos	misc	35							Set a Pokemon's Spe EV to up to 252 (max 508 total EVs).		
-Perfect Max Nutrience	misc	40							Set a Pokemon's EV in any 1 stat to up to 252 (max 508 total EVs).		
-Random Max Nutrience	misc	30							Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to up to 252 (max 508 total EVs).		
+HP Up	misc	15							Set a Pokemon's HP EV to 100 (max 508 total EVs).		
+Protein	misc	15							Set a Pokemon's Atk EV to 100 (max 508 total EVs).		
+Iron	misc	15							Set a Pokemon's Def EV to 100 (max 508 total EVs).		
+Calcium	misc	15							Set a Pokemon's SpA EV to 100 (max 508 total EVs).		
+Zinc	misc	15							Set a Pokemon's SpD EV to 100 (max 508 total EVs).		
+Carbos	misc	15							Set a Pokemon's Spe EV to 100 (max 508 total EVs).		
+Perfect Nutrience	misc	20							Set a Pokemon's EV in any 1 stat to 100 (max 508 total EVs).		
+Random Nutrience	misc	10							Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).		
+HP Max	misc	35							Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
+Max Protein	misc	35							Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
+Max Iron	misc	35							Set a Pokemon's Def EV to 252 (max 508 total EVs).		
+Max Calcium	misc	35							Set a Pokemon's SpA EV to 252 (max 508 total EVs).		
+Max Zinc	misc	35							Set a Pokemon's SpD EV to 252 (max 508 total EVs).		
+Max Carbos	misc	35							Set a Pokemon's Spe EV to 252 (max 508 total EVs).		
+Perfect Max Nutrience	misc	40							Set a Pokemon's EV in any 1 stat to 252 (max 508 total EVs).		
+Random Max Nutrience	misc	30							Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).		
 Super Training	misc	75							Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV) (ignore preexisting EVs).		
 Health Feathers	misc	10	0						Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
 Muscle Feathers	misc	10	0						Increase a Pokemon's Atk EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)		
@@ -121,6 +121,7 @@ Move-Deleting Duo	misc	-20							A Pokemon forgets 2 moves (leave the hyphens).
 Move-Deleting Trio	misc	-40							A Pokemon forgets 3 moves (leave the hyphens).		
 Move Deletion Party	partyMisc	-10n+5							EVERY Pokemon forgets 1 move (leave the hyphens).		
 Same-Type Move Deleter	misc	5n-35							A Pokemon forgets ALL moves of its own type, if any (leave the hyphens) (can't be used if it would have 0 moves left).		
+Random Move Deleter	misc	-30							Pick a Pokemon. It forgets a random move (leave the hyphen).		
 Deleveler	misc	0	0						Lower 1 or more Pokemon's level by any amount. Give yourself $1 for each level lowered.		
 Occa Berry	heldItem	5							[halve super-effective ____-type move]		
 Passho Berry	heldItem	5							[halve super-effective ____-type move]		
@@ -272,7 +273,7 @@ Fairy Tera Shards	misc	10							Set a Pokemon's Tera Type to <span class="type-f
 Perfect Tera Shards	misc	25							Set a Pokemon's Tera Type to any type.		
 Random Tera Shards	misc	5							Generate a random type, then set any 1 Pokemon's Tera Type to that type.		
 Mirror Tera Shards	misc	15					23456		Copy a Pokemon's Tera Type to another Pokemon.		
-Shadow Tera Shards	misc	10						x	Set a Pokemon's Tera Type to the type your opponent Terastallized into last round.		
+Shadow Tera Shards	misc	10	0					x	Set a Pokemon's Tera Type to the type your opponent Terastallized into last round.	stupid idea. functionally, it's exactly the same as one of the normal Tera Shards items (save for if the player chooses to keep this between rounds), but it's the wrong price sometimes	
 Origin Tera Shards	misc	10							Set a Pokemon's Tera Type to any type it already has.		
 Move-Based Tera Shards	misc	15							Set a Pokemon's Tera Type to the type of one of its moves.		
 Normal Tera Party	partyMisc	5n	0.05						Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
@@ -313,8 +314,9 @@ Encounter Power: Dark	misc	5							Next round, you are guaranteed to get Dark-ty
 Encounter Power: Dragon	misc	0							Next round, you are guaranteed to get Dragon-type Pokemon.		
 Encounter Power: Steel	misc	10							Next round, you are guaranteed to get Steel-type Pokemon.		
 Encounter Power: Fairy	misc	10							Next round, you are guaranteed to get Fairy-type Pokemon.		
-Perfect Encounter Power	misc	15							Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
-Mirror Encounter Power	misc	5							Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
+Encounter Power: Perfect	misc	15							Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
+Encounter Power: Mirror	misc	5							Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
+Encounter Power: Shadow	misc	10	0					x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last round (next round, you are guaranteed to get Pokemon of that type).		
 Venusaurite	heldItem	85		venusaur					If held by a Venusaur, this item allows it to Mega Evolve in battle.		
 Charizardite X	heldItem	85		charizard					If held by a Charizard, this item allows it to Mega Evolve in battle.		
 Charizardite Y	heldItem	130		charizard					If held by a Charizard, this item allows it to Mega Evolve in battle.		
@@ -380,24 +382,26 @@ Douse Drive	heldItem	0				Techno Blast
 Shock Drive	heldItem	0				Techno Blast					
 True Mirror	misc	50	0						The next thing you buy, you get twice.		
 Wonder Guard Abilitizer	abilitizer	40							Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.		
-Plus & Minus Abilitizers	abilitizer	100					23456		Set 2 Pokemon's abilities to *Plus* and *Minus*. NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
-(Almost) Perfect Abilitizer	abilitizer	90							Set a Pokemon's ability to any ability other than Fur Coat, Huge Power/Pure Power, Ice Scales, Imposter, or Wonder Guard. NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
-Mirror Abilitizer	abilitizer	30					23456		Copy a Pokemon's ability to any other Pokemon. NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
-Weather Chaos Abilitizers	abilitizer	50					456		Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
-Terrain Chaos Abilitizers	abilitizer	30					456		Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
+Plus & Minus Abilitizers	abilitizer	100					23456		Set 2 Pokemon's abilities to *Plus* and *Minus*. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
+(Almost) Perfect Abilitizer	abilitizer	70							Set a Pokemon's ability to any ability. CAN'T CHOOSE Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
+Mirror Abilitizer	abilitizer	30					23456		Copy a Pokemon's ability to any other Pokemon. CAN'T COPY Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
+Shadow Abilitizer	abilitizer	25						x	Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last round. CAN'T COPY Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
+Weather Chaos Abilitizers	abilitizer	50					456		Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
+Terrain Chaos Abilitizers	abilitizer	30					456		Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
 Power Weight	heldItem	0									
 Power Bracer	heldItem	0									
 Power Belt	heldItem	0									
 Power Lens	heldItem	0									
 Power Band	heldItem	0									
 Power Anklet	heldItem	0									
-Super Rod	misc	120	0.5						REPLACE the Pokemon you got AT THE START OF THIS ROUND (or any Pokemon, if you skipped) with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Super Rod	misc	120	0.5						REPLACE the Pokemon you got AT THE START OF THIS ROUND (or any Pokemon, if you skipped) with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Super Rod	misc	120	0.5						REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Super Rod	misc	120	0.5						REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Old Rod	misc	-10n+60	0.5				12345		ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Old Rod	misc	-10n+60	0.5				12345		ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Twin Rods	misc	0	0.5				12345		BOTH players may ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Twin Rods	misc	0	0.5				12345		BOTH players may ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Move Swapper	misc	20					23456		Swap ANY two moves between any two Pokemon.		
+Moveset Swapper	misc	0					23456		Swap two Pokemon's entire movesets.		
 Tera Swapper	misc	5					23456		Swap two Pokemon's Tera Types.		
 Ability Swapper	misc	5					23456		Swap two Pokemon's abilities.		
 Debilitizer	misc	-10							Set a Pokemon's ability to "No Ability". NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
@@ -414,8 +418,8 @@ Adrenaline Orb	heldItem	1
 Air Balloon	heldItem	15									
 Blunder Policy	heldItem	10									
 Booster Energy	heldItem	25			Protosynthesis,Quark Drive						
-Clear Amulet	heldItem	25									
-Covert Cloak	heldItem	10									
+Clear Amulet	heldItem	20									
+Covert Cloak	heldItem	15									
 Damp Rock	heldItem	20			Drizzle	Rain Dance					
 Heat Rock	heldItem	20			Drought,Orichalcum Pulse	Sunny Day					
 Icy Rock	heldItem	10			Snow Warning	Hail,Snowscape,Chilly Reception					
