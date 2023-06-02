@@ -657,6 +657,7 @@ extraIncomeLabel.textContent += ' ($' + MONEY_MOVE_INCOME + ')';
 document.getElementById('wonLabel').textContent += ' (-$' + -WIN_INCOME_DELTA + ')';
 
 resetRoundBasedInputs();
+toggleAfterFirstRoundChoices(false);
 
 let roundCounter = 0;
 const prevSeenSpecies = new Set();
@@ -1660,6 +1661,11 @@ function toggleNonPokemonChoices(turnOn) {
     toggleEle(shopDiv.querySelector('button'), turnOn);
   }
 }
+function toggleAfterFirstRoundChoices(turnOn) {
+  const ELEMENT_IDS = ['extraIncome', 'won', 'tmSeeker', 'refresh'];
+  for (const elementId of ELEMENT_IDS)
+    toggleEle(document.getElementById(elementId), turnOn);
+}
 function toggleEle(ele, turnOn) {
   if (ele)
     ele.disabled = !turnOn;
@@ -1750,6 +1756,8 @@ function load() {
   roundCounter = parseInt(localStorage.getItem('roundCounter'));
   
   document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
+
+  toggleAfterFirstRoundChoices(true);
 }
 
 function nextRound() {
