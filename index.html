@@ -286,7 +286,7 @@ button:focus {
       <button id="skip" onclick="skipPokemonChoice()">skip</button>
     </div>
     <h2 class="attr">Shop</h2>
-    <label for="tmSeeker">Find TMs for Pokemon</label>
+    <label for="tmSeeker">Find TMs for: </label>
     <select id="tmSeeker" class="mb-4px"></select>
     <br>
     <label for="money">$</label> <input id="money" type="number">
@@ -1623,7 +1623,7 @@ function updateTMSeekerOptions() {
   const speciesNames = getPartyStrs().map(pokemonStr => getSpeciesNameOfPokemon(pokemonStr));
   for (let i = 0; i < speciesNames.length; i++) {
     const option = document.createElement('option');
-    option.innerText = '#' + (i+1) + ' (' + speciesNames[i] + ')';
+    option.innerText = speciesNames[i];
     tmSeekerEle.append(option);
   }
   tmSeekerEle.selectedIndex = index;
