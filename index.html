@@ -1316,7 +1316,7 @@ function pokemonInHTML(pokemonStr) {
     } else if (strLine.startsWith('-')) {
       const moveName = strLine.substring('- '.length);
       if (moveName === '')
-        out += spanWithClass('- ', 'gray');
+        out += spanWithClass('- ', 'attr');
       else
         out += moveInHTML(moveName, '- ');
     } else {
