@@ -2128,40 +2128,40 @@ function randomTM() {
       price: tmPrice(move)/2 + 'n+20',
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
-  } else if ((randy -= .25) < 0) {
-    // Type TM
-    const typeMultiset = [];
-    const tmSeekingMon = getPartyStrs()[document.getElementById('tmSeeker').selectedIndex];
-    let speciesIds = [getSpeciesIdOfPokemon(tmSeekingMon)];
-    for (const speciesId of speciesIds) {
-      const speciesTypes = allSpecies[speciesId].types;
-      typeMultiset.push(...speciesTypes);
-      if (speciesTypes.length == 1)
-        typeMultiset.push(speciesTypes[0]); // add another copy, for balance
-    }
-    if (TYPES.forEach(type => !typeMultiset.includes(type)))
-      return randomTM(); // no valid Type TMs available, so re-roll
-    if (Math.random() < 12/500) { // about as likely as an item from items.tsv
-      const type = randomElement(typeMultiset);
-      return {
-        name: 'Perfect ' + type + ' TM',
-        type: 'type-' + type.toLowerCase(),
-        price: 50,
-        desc: 'Teach ANY 1 ' + type.toUpperCase() + '-TYPE Pokemon ANY 1 ' + type.toUpperCase()
-                + '-TYPE move (other than Z-Moves).', 
-      };
-    }
-    let move;
-    do {
-      move = randomMove(true);
-    } while (!typeMultiset.includes(move.type));
-    const type = move.type;
-    return {
-      name: type + ' TM #' + move.num,
-      type: 'type-' + type.toLowerCase(),
-      price: 5 + tmPrice(move),
-      desc: tmDesc('Teach ANY 1 ' + type.toUpperCase() + '-TYPE Pokemon the move ', move),
-    };
+  // } else if ((randy -= .25) < 0) {
+  //   // Type TM
+  //   const typeMultiset = [];
+  //   const tmSeekingMon = getPartyStrs()[document.getElementById('tmSeeker').selectedIndex];
+  //   let speciesIds = [getSpeciesIdOfPokemon(tmSeekingMon)];
+  //   for (const speciesId of speciesIds) {
+  //     const speciesTypes = allSpecies[speciesId].types;
+  //     typeMultiset.push(...speciesTypes);
+  //     if (speciesTypes.length == 1)
+  //       typeMultiset.push(speciesTypes[0]); // add another copy, for balance
+  //   }
+  //   if (TYPES.forEach(type => !typeMultiset.includes(type)))
+  //     return randomTM(); // no valid Type TMs available, so re-roll
+  //   if (Math.random() < 12/500) { // about as likely as an item from items.tsv
+  //     const type = randomElement(typeMultiset);
+  //     return {
+  //       name: 'Perfect ' + type + ' TM',
+  //       type: 'type-' + type.toLowerCase(),
+  //       price: 50,
+  //       desc: 'Teach ANY 1 ' + type.toUpperCase() + '-TYPE Pokemon ANY 1 ' + type.toUpperCase()
+  //               + '-TYPE move (other than Z-Moves).', 
+  //     };
+  //   }
+  //   let move;
+  //   do {
+  //     move = randomMove(true);
+  //   } while (!typeMultiset.includes(move.type));
+  //   const type = move.type;
+  //   return {
+  //     name: type + ' TM #' + move.num,
+  //     type: 'type-' + type.toLowerCase(),
+  //     price: 5 + tmPrice(move),
+  //     desc: tmDesc('Teach ANY 1 ' + type.toUpperCase() + '-TYPE Pokemon the move ', move),
+  //   };
   } else {
     // Species TM
     let possibleMoves = [];
