@@ -234,46 +234,50 @@ button:focus {
     <button id="save" onclick="save()">save</button>
     <button id="load" onclick="load()">load</button>
     <h2 class="attr">Start Round</h2>
-    <label for="pokeball">Poké Ball:</label>
-    <select id="pokeball" class="mb-4px">
-      <option>Poké Ball</option>
-      <option>Great Ball</option>
-      <option>Ultra Ball</option>
-      <option>Level Ball</option>
-      <option>Moon Ball</option>
-      <option>Dream Ball</option>
-      <option>Friend Ball</option>
-      <option>Love Ball</option>
-      <option>Beast Ball</option>
-      <option>Repeat Ball</option>
-      <option>Shadow Ball</option>
-      <option>Master Ball</option>
-    </select>
-    <br>
-    <p id="pokeballDesc" class="pokeball-desc attr mb-4px" hidden></p>
-    <label for="type">Guaranteed type:</label>
-    <select id="type" class="mb-4px">
-      <option></option>
-      <option>Normal</option>
-      <option>Fire</option>
-      <option>Water</option>
-      <option>Grass</option>
-      <option>Electric</option>
-      <option>Ice</option>
-      <option>Fighting</option>
-      <option>Poison</option>
-      <option>Ground</option>
-      <option>Flying</option>
-      <option>Psychic</option>
-      <option>Bug</option>
-      <option>Rock</option>
-      <option>Ghost</option>
-      <option>Dark</option>
-      <option>Dragon</option>
-      <option>Steel</option>
-      <option>Fairy</option>
-    </select>
-    <br>
+    <div id="pokeballDiv" hidden>
+      <label for="pokeball">Poké Ball:</label>
+      <select id="pokeball" class="mb-4px">
+        <option>Poké Ball</option>
+        <option>Great Ball</option>
+        <option>Ultra Ball</option>
+        <option>Level Ball</option>
+        <option>Moon Ball</option>
+        <option>Dream Ball</option>
+        <option>Friend Ball</option>
+        <option>Love Ball</option>
+        <option>Beast Ball</option>
+        <option>Repeat Ball</option>
+        <option>Shadow Ball</option>
+        <option>Master Ball</option>
+      </select>
+      <br>
+      <p id="pokeballDesc" class="pokeball-desc attr mb-4px"></p>
+    </div>
+    <div id="typeDiv" hidden>
+      <label for="type">Guaranteed type:</label>
+      <select id="type" class="mb-4px">
+        <option></option>
+        <option>Normal</option>
+        <option>Fire</option>
+        <option>Water</option>
+        <option>Grass</option>
+        <option>Electric</option>
+        <option>Ice</option>
+        <option>Fighting</option>
+        <option>Poison</option>
+        <option>Ground</option>
+        <option>Flying</option>
+        <option>Psychic</option>
+        <option>Bug</option>
+        <option>Rock</option>
+        <option>Ghost</option>
+        <option>Dark</option>
+        <option>Dragon</option>
+        <option>Steel</option>
+        <option>Fairy</option>
+      </select>
+      <br>
+    </div>
     <input type="checkbox" id="extraIncome">
     <label for="extraIncome" id="extraIncomeLabel" class="hasHoverText">Used a money-making move</label>
     <br>
@@ -596,16 +600,19 @@ function printRequiredItems() {
 }
 
 function printInvalidItems() {
-  const pokeballEle = document.getElementById('pokeball');
-  const pokeballs = Array.from(pokeballEle.options).map(option => option.value);
+  const pokeballNames = getAllPokeballNames();
   for (const item of items) {
     if ((item.type === 'heldItem' && !getHeldItemId(item.name))
-          || (item.type === 'pokeball' && !(item.name === 'Random Ball' || pokeballs.includes(item.name)))
+          || (item.type === 'pokeball' && !(item.name === 'Random Ball' || pokeballNames.includes(item.name)))
           || (item.requiredSpecies && item.requiredSpecies.some(speciesId => !allSpecies[speciesId]))
           || (item.requiredAbilities && item.requiredAbilities.some(ability => !getAbilityId(ability)))
           || (item.requiredMoves && item.requiredMoves.some(move => !getMoveId(move))))
       console.error(item);
   }
+}
+function getAllPokeballNames() {
+  const pokeballEle = document.getElementById('pokeball');
+  return Array.from(pokeballEle.options).map(option => option.value);
 }
 
 let numLoading = 6;
@@ -974,7 +981,7 @@ function passesIdenticalSpeciesBias(speciesId) {
 
 function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, gender) {  
   if (speciesName == null) {
-    let requiredType = document.getElementById('type').value;
+    let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
       requiredType = null;
 
@@ -1603,8 +1610,9 @@ function endPokemonChoosing(pokeDiv) {
 }
 function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
-  document.getElementById('pokeballDesc').hidden = true;
+  document.getElementById('pokeballDiv').hidden = true;
   document.getElementById('type').selectedIndex = 0;
+  document.getElementById('typeDiv').hidden = true;
   document.getElementById('extraIncome').checked = false;
   document.getElementById('won').checked = false;
 }
@@ -1697,7 +1705,10 @@ function save() {
   localStorage.setItem('money', getMoneyStr());
 
   localStorage.setItem('pokeball', getPokeball());
-  localStorage.setItem('guaranteedType', document.getElementById('type').value);
+  localStorage.setItem('pokeballHidden', document.getElementById('pokeballDiv').hidden);
+  localStorage.setItem('type', getGuaranteedType());
+  localStorage.setItem('typeHidden', document.getElementById('pokeballDiv').hidden);
+
   localStorage.setItem('extraIncome', document.getElementById('extraIncome').checked);
   localStorage.setItem('won', document.getElementById('won').checked);
 
@@ -1721,7 +1732,10 @@ function load() {
   setMoney(localStorage.getItem('money'));
 
   setPokeball(localStorage.getItem('pokeball'));
-  document.getElementById('type').value = localStorage.getItem('guaranteedType');
+  document.getElementById('pokeballDiv').hidden = localStorage.getItem('pokeballHidden') === 'true';
+  setGuaranteedType(localStorage.getItem('type'));
+  document.getElementById('typeDiv').hidden = localStorage.getItem('typeHidden') === 'true';
+
   document.getElementById('extraIncome').checked = localStorage.getItem('extraIncome') === 'true';
   document.getElementById('won').checked = localStorage.getItem('won') === 'true';
   
@@ -2234,20 +2248,14 @@ function buyItem(itemDiv, item, itemPrice) {
   if (!pay(itemPrice)) return;
   
   if (item.type === 'pokeball') {
-    const pokeballEle = document.getElementById('pokeball');
-    let pokeballDesc = item.desc;
-    if (item.name === 'Random Ball') {
-      pokeballEle.selectedIndex = randomInt(pokeballEle.options.length-1) + 1;
-      pokeballDesc = items.find(item => item.name === pokeballEle.value).desc;
-    } else {
-      pokeballEle.value = item.name;
-    }
-    const pokeballDescEle = document.getElementById('pokeballDesc');
-    pokeballDescEle.textContent = pokeballDesc.replaceAll('*', '');
-    pokeballDescEle.hidden = false;
+    if (item.name === 'Random Ball')
+      setPokeball(randomElement(getAllPokeballNames()));
+    else
+      setPokeball(item.name);
+    document.getElementById('pokeballDiv').hidden = false;
   } else if (item.name.startsWith('Encounter Power: ')) {
-    const type = item.name.split(' ')[2];
-    document.getElementById('type').value = type;
+    setGuaranteedType(item.name.split(' ')[2]);
+    document.getElementById('typeDiv').hidden = false;
   }
 
   const trueMirrorEle = document.getElementById('trueMirror');
@@ -2297,6 +2305,20 @@ function getPokeball() {
 }
 function setPokeball(pokeball) {
   document.getElementById('pokeball').value = pokeball;
+  updatePokeballDesc(pokeball);
+}
+function updatePokeballDesc(pokeball) {
+  const pokeballDescEle = document.getElementById('pokeballDesc');
+  const pokeballItem = items.find(item => item.name === pokeball);
+  const pokeballDesc = pokeballItem ? pokeballItem.desc : 'No special effect.';
+  pokeballDescEle.textContent = pokeballDesc.replaceAll('*', '');
+}
+
+function getGuaranteedType() {
+  return document.getElementById('type').value;
+}
+function setGuaranteedType(type) {
+  document.getElementById('type').value = type;
 }
 
 function randomValue(obj) {
