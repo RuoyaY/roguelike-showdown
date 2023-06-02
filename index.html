@@ -2132,24 +2132,30 @@ function randomTM() {
     let speciesNames = [];
     let pokemonStrs = [getPartyStrs()[document.getElementById('tmSeeker').selectedIndex]];
     for (const pokemonStr of pokemonStrs) {
-      const speciesName = getSpeciesNameOfPokemon(pokemonStr);
+      const speciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
       const speciesId = getSpeciesId(speciesName);
       for (const moveId of getLearnset(speciesId)) {
         const move = addHiddenPowerType(moves[moveId]);
-        if (pokemonStr.includes('\n- ' + move.name))
+        if (prevSeenItems.has(speciesTM(speciesName, move, false).name))
           continue;
         possibleMoves.push(move);
         speciesNames.push(speciesName);
       }
     }
 
-    if (possibleMoves.length == 0)
-      return randomTM(); // no valid TMs available, so re-roll
+    let speciesName, move;
+    let isImpossibleTM = false;
+    if (possibleMoves.length == 0) {
+      isImpossibleTM = true;
+      speciesName = getApparentSpeciesNameOfPokemon(randomElement(pokemonStrs));
+      move = randomMove(true);
+    } else {
+      const possibleMovesIndex = randomInt(possibleMoves.length);
+      speciesName = speciesNames[possibleMovesIndex];
+      move = possibleMoves[possibleMovesIndex];
+    }
 
-    const possibleMovesIndex = randomInt(possibleMoves.length);
-    const move = possibleMoves[possibleMovesIndex];
-    const speciesName = speciesNames[possibleMovesIndex];
-    return speciesTM(speciesName, move);
+    return speciesTM(speciesName, move, isImpossibleTM);
   }
 }
 function randomUniversalTM() {
@@ -2161,11 +2167,11 @@ function randomUniversalTM() {
     desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
   };
 }
-function speciesTM(speciesName, move) {
+function speciesTM(speciesName, move, isImpossibleTM) {
   return {
-    name: speciesName + ' TM #' + move.num,
+    name: (isImpossibleTM ? 'Impossible ' : '') + speciesName + ' TM #' + move.num,
     type: 'speciesTM',
-    price: tmPrice(move),
+    price: tmPrice(move) + (isImpossibleTM ? 5 : 0),
     desc: tmDesc('Teach ' + speciesName + ' the move ', move),
   };
 }
