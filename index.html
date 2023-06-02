@@ -640,6 +640,11 @@ function generateSpeciesOnEnter(event) {
 document.getElementById('speciesInput').addEventListener('keyup', generateSpeciesOnEnter);
 document.getElementById('abilityInput').addEventListener('keyup', generateSpeciesOnEnter);
 
+const pokeballEle = document.getElementById('pokeball');
+pokeballEle.addEventListener('change', event => {
+  updatePokeballDesc(pokeballEle.value);
+});
+
 document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
 document.getElementById('skip').hidden = true;
 setMoney(0);
