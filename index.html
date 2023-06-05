@@ -2359,6 +2359,40 @@ function randomInt(max) {
   return Math.floor(Math.random() * max); 
 }
 
+function chainAttack() {
+  let successes = 0;
+  const TRIALS = 1000000;
+  for (let i = 0; i < TRIALS; i++) {
+    const party = [true, true, true, true, true, true];
+    let has0 = false;
+    let has1 = false;
+    for (let j = 0; j < 3; j++) {
+      const options = [];
+      for (let k = 0; k < 3; k++) {
+        let option;
+        do {
+          option = randomInt(party.length);
+        } while (!party[option] || options.includes(option));
+        options.push(option);
+      }
+      let choice;
+      if (options.includes(0)) {
+        choice = 0;
+        has0 = true;
+      } else if (options.includes(1)) {
+        choice = 1;
+        has1 = true;
+      } else {
+        choice = options[0];
+      }
+      party[choice] = false;
+    }
+    if (has0 && has1)
+      successes++;
+  }
+  console.log(successes / TRIALS);
+}
+
 </script>
 
 </body>
