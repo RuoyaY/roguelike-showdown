@@ -127,7 +127,7 @@ Choice Specs	heldItem	40
 Choice Scarf	heldItem	40									
 Metronome	heldItem	15									
 Assault Vest	heldItem	40									
-Eviolite	heldItem	90									
+Eviolite	heldItem	95									
 Bright Powder	heldItem	20									
 King's Rock	heldItem	15									
 Expert Belt	heldItem	20									
@@ -412,7 +412,7 @@ Toxic Orb	heldItem	-20
 Flame Orb	heldItem	-20									
 Lagging Tail	heldItem	-20									
 Iron Ball	heldItem	-20									
-Re-roll	misc	100							Delete a Pokemon, then press the "start round" button (with no checkboxes checked) to immediately get another.		
+Re-roll	misc	120							Delete a Pokemon, then press the "start round" button (with no checkboxes checked) to immediately get another.		
 Stop Shopping	misc	-20							You may not buy, earn, or refresh until next round.		
 Ability Shield	heldItem	1									
 Adrenaline Orb	heldItem	1									
@@ -484,7 +484,7 @@ Shed Shell	heldItem	1
 Shell Bell	heldItem	25									
 Sticky Barb	heldItem	0									
 Throat Spray	heldItem	35				Boomburst,Bug Buzz,Chatter,Clanging Scales,Clangorous Soul,Clangorous Soulblaze,Confide,Disarming Voice,Echoed Voice,Eerie Spell,Grass Whistle,Growl,Heal Bell,Howl,Hyper Voice,Metal Sound,Noble Roar,Overdrive,Parting Shot,Perish Song,Relic Song,Roar,Round,Screech,Sing,Snarl,Snore,Sparkling Aria,Supersonic,Torch Song,Uproar					
-Utility Umbrella	heldItem	0									
+Utility Umbrella	heldItem	1									
 Weakness Policy	heldItem	30									
 Wide Lens	heldItem	10									
 Zoom Lens	heldItem	10									
