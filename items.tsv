@@ -11,6 +11,57 @@ Repeat Ball	pokeball	10							Next round, you can choose a Pokemon of any specie
 Snag Ball	pokeball	10							Next round, you can choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).		
 Master Ball	pokeball	20							Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
 Random Ball	pokeball	15							Automatically sets your Poke Ball for the next round to a random one (other than the default).		
+Berry Juice	heldItem	15							heal 20 hp at 1/2		
+Sitrus Berry	heldItem	35									
+Oran Berry	heldItem	5							heal 10 hp at 1/2		
+Gold Berry	heldItem	25							heal 30 hp at 1/2		
+Enigma Berry	heldItem	20							heal 1/4 if hit by super-effective		
+Aguav Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
+Figy Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
+Iapapa Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
+Mago Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
+Wiki Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
+Salac Berry	heldItem	15							1/4, +1 Spe		
+Liechi Berry	heldItem	10							1/4, +1 Atk		
+Ganlon Berry	heldItem	5							1/4, +1 Def		
+Petaya Berry	heldItem	10							1/4, +1 SpA		
+Apicot Berry	heldItem	5							1/4, +1 SpD		
+Lansat Berry	heldItem	5							1/4, 50% crit rate		
+Starf Berry	heldItem	15							1/4, +2 random stat		
+Micle Berry	heldItem	1							1/4, next move x1.2 accuracy		
+Custap Berry	heldItem	15							1/4, go first next turn		
+Occa Berry	heldItem	5							[halve super-effective ____-type move]		
+Passho Berry	heldItem	5							[halve super-effective ____-type move]		
+Wacan Berry	heldItem	5							[halve super-effective ____-type move]		
+Rindo Berry	heldItem	5							[halve super-effective ____-type move]		
+Yache Berry	heldItem	5							[halve super-effective ____-type move]		
+Chople Berry	heldItem	5							[halve super-effective ____-type move]		
+Kebia Berry	heldItem	5							[halve super-effective ____-type move]		
+Shuca Berry	heldItem	5							[halve super-effective ____-type move]		
+Coba Berry	heldItem	5							[halve super-effective ____-type move]		
+Payapa Berry	heldItem	5							[halve super-effective ____-type move]		
+Tanga Berry	heldItem	5							[halve super-effective ____-type move]		
+Charti Berry	heldItem	5							[halve super-effective ____-type move]		
+Kasib Berry	heldItem	5							[halve super-effective ____-type move]		
+Haban Berry	heldItem	5							[halve super-effective ____-type move]		
+Colbur Berry	heldItem	5							[halve super-effective ____-type move]		
+Babiri Berry	heldItem	5							[halve super-effective ____-type move]		
+Roseli Berry	heldItem	5							[halve super-effective ____-type move]		
+Chilan Berry	heldItem	5							[halve normal-type move]		
+Cheri Berry	heldItem	5									
+Chesto Berry	heldItem	20				Rest					
+Pecha Berry	heldItem	5									
+Rawst Berry	heldItem	5									
+Aspear Berry	heldItem	1									
+Persim Berry	heldItem	1									
+Lum Berry	heldItem	10									
+Leppa Berry	heldItem	5									
+Jaboca Berry	heldItem	15							physical attacker loses 1/8 max HP		
+Rowap Berry	heldItem	15							special attacker loses 1/8 max HP		
+Kee Berry	heldItem	20							hit by physical, +1 Def		
+Maranga Berry	heldItem	20							hit by special, +1 SpD		
+Mirror Berry	misc	10					23456		Copy a Pokemon's held berry to another Pokemon.		
+Perfect Berry	misc	25							Set a Pokemon's held item to any berry other than Sitrus Berry.		
 Rare Candy	misc	20							Increase a Pokemon's level by one.		
 Rare Bi-Candy	misc	40							Increase a Pokemon's level by two.		
 Rare Tri-Candy	misc	60							Increase a Pokemon's level by three.		
@@ -71,16 +122,6 @@ Perfect Mint	misc	15							Set a Pokemon's Nature to any Nature.
 Random Mint	misc	n-1							Generate a random Nature (excluding neutral natures), then set any 1 Pokemon's Nature to that Nature.		
 Leftovers	heldItem	30							[held items have automatically generated descriptions]		
 Black Sludge	heldItem	20									
-Oran Berry	heldItem	5									
-Berry Juice	heldItem	15							heal 20 hp at 1/2		
-Gold Berry	heldItem	25							heal 30 hp at 1/2		
-Enigma Berry	heldItem	25									
-Sitrus Berry	heldItem	35									
-Aguav Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
-Figy Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
-Iapapa Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
-Mago Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
-Wiki Berry	heldItem	20	0.2						[heal 1/3 at 1/4]		
 Choice Band	heldItem	40									
 Choice Specs	heldItem	40									
 Choice Scarf	heldItem	40									
@@ -104,15 +145,6 @@ Absorb Bulb	heldItem	10							hit by water, +1 SpA
 Luminous Moss	heldItem	10							hit by water, +1 SpD		
 Cell Battery	heldItem	10							hit by electric, +1 Atk		
 Snowball	heldItem	10							hit by ice, +1 Atk		
-Salac Berry	heldItem	15							1/4, +1 Spe		
-Liechi Berry	heldItem	10							1/4, +1 Atk		
-Ganlon Berry	heldItem	5							1/4, +1 Def		
-Petaya Berry	heldItem	10							1/4, +1 SpA		
-Apicot Berry	heldItem	5							1/4, +1 SpD		
-Lansat Berry	heldItem	5							1/4, 50% crit rate		
-Starf Berry	heldItem	15							1/4, +2 random stat		
-Micle Berry	heldItem	1							1/4, next move x1.2 accuracy		
-Custap Berry	heldItem	15							1/4, go first next turn		
 Wonder Gummi	misc	10							A Pokemon gains an extra move slot (add a hyphen on a new line).		
 Wonder Gummi Party	partyMisc	10n							EVERY Pokemon gains an extra move slot (add a hyphen on a new line).		
 Move Reducer	misc	-10							A Pokemon loses a move slot (delete a hyphen).		
@@ -123,24 +155,6 @@ Move Deletion Party	partyMisc	-10n+5							EVERY Pokemon forgets 1 move (leave t
 Same-Type Move Deleter	misc	5n-35							A Pokemon forgets ALL moves of its own type, if any (leave the hyphens) (can't be used if it would have 0 moves left).		
 Random Move Deleter	misc	-30							Pick a Pokemon. It forgets a random move (leave the hyphen).		
 Deleveler	misc	0	0						Lower 1 or more Pokemon's level by any amount. Give yourself $1 for each level lowered.		
-Occa Berry	heldItem	5							[halve super-effective ____-type move]		
-Passho Berry	heldItem	5							[halve super-effective ____-type move]		
-Wacan Berry	heldItem	5							[halve super-effective ____-type move]		
-Rindo Berry	heldItem	5							[halve super-effective ____-type move]		
-Yache Berry	heldItem	5							[halve super-effective ____-type move]		
-Chople Berry	heldItem	5							[halve super-effective ____-type move]		
-Kebia Berry	heldItem	5							[halve super-effective ____-type move]		
-Shuca Berry	heldItem	5							[halve super-effective ____-type move]		
-Coba Berry	heldItem	5							[halve super-effective ____-type move]		
-Payapa Berry	heldItem	5							[halve super-effective ____-type move]		
-Tanga Berry	heldItem	5							[halve super-effective ____-type move]		
-Charti Berry	heldItem	5							[halve super-effective ____-type move]		
-Kasib Berry	heldItem	5							[halve super-effective ____-type move]		
-Haban Berry	heldItem	5							[halve super-effective ____-type move]		
-Colbur Berry	heldItem	5							[halve super-effective ____-type move]		
-Babiri Berry	heldItem	5							[halve super-effective ____-type move]		
-Roseli Berry	heldItem	5							[halve super-effective ____-type move]		
-Chilan Berry	heldItem	5							[halve normal-type move]		
 Destiny Knot	heldItem	1									
 Normal Gem	heldItem	15									
 Fire Gem	heldItem	15									
@@ -162,20 +176,6 @@ Steel Gem	heldItem	15
 Fairy Gem	heldItem	15									
 Perfect Gem	misc	20							Set a Pokemon's held item to any gem (e.g. "*Ice Gem*").		
 Random Gem	misc	5							Generate a random type, then set a Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").		
-Cheri Berry	heldItem	5									
-Chesto Berry	heldItem	20				Rest					
-Pecha Berry	heldItem	5									
-Rawst Berry	heldItem	5									
-Aspear Berry	heldItem	1									
-Persim Berry	heldItem	1									
-Lum Berry	heldItem	10									
-Leppa Berry	heldItem	5									
-Jaboca Berry	heldItem	15									
-Rowap Berry	heldItem	15									
-Kee Berry	heldItem	20									
-Maranga Berry	heldItem	20									
-Mirror Berry	misc	15					23456		Copy a Pokemon's held berry to another Pokemon.		
-Perfect Berry	misc	40							Set a Pokemon's held item to any berry.		
 Mirror Item	misc	40					23456		Copy a Pokemon's held item to another Pokemon.		
 Perfect Item	misc	45							Set a Pokemon's held item to anything other than an Eviolite, a Z-Crystal, or a Pokemon-specific item.		
 Shadow Item	misc	25						x	Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round. Exception: Z-Crystals.		
@@ -401,7 +401,8 @@ Old Rod	misc	-10n+60	0.5				12345		ADD the following Pokemon to your party: <spa
 Twin Rods	misc	0	0.5				12345		BOTH players may ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Twin Rods	misc	0	0.5				12345		BOTH players may ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Move Swapper	misc	20					23456		Swap ANY two moves between any two Pokemon.		
-Moveset Swapper	misc	0					23456		Swap two Pokemon's entire movesets.		
+Moveset Swapper	misc	5					23456		Swap two Pokemon's ENTIRE movesets.		
+EVs Swapper	misc	5					23456		Swap two Pokemon's EVs.		
 Tera Swapper	misc	5					23456		Swap two Pokemon's Tera Types.		
 Ability Swapper	misc	5					23456		Swap two Pokemon's abilities.		
 Debilitizer	misc	-10							Set a Pokemon's ability to "No Ability". NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
