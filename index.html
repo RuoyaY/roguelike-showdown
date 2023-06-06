@@ -524,11 +524,15 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printTypeCandies() {
+function printPerfectTypeTMs() {
   let tsv = '';
   for (const type of TYPES) {
-    tsv += 'Rare ' + type + ' Candy\tmisc\t15\t\t\t\t'
-            + 'Increase a ' + type + "-type Pokemon's level by one.\n";
+    tsv += 'Perfect ' + type + ' TM\tuniversalTM\t50\t\t\t\t\t\t\t'
+        + 'Teach ANY 1 Pokemon ANY 1 ' + type.toUpperCase() + '-TYPE move (other than Z-Moves).\n';
+  }
+  for (const type of TYPES) {
+    tsv += 'Perfect ' + type + ' Party TM\tpartyTM\t25n+25\t.05\t\t\t\t\t\t'
+        + 'Choose ANY ' + type.toUpperCase() + '-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.\n';
   }
   console.log(tsv);
 }
