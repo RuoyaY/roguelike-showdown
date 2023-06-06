@@ -1513,6 +1513,9 @@ function choosePokemon(choicesDiv, pokemonStr) {
   pokeDiv.querySelector('.pokemon').innerText = pokemonStr;
   
   updatePartyPokemonDiv(pokeDiv);
+
+  const tmSeekerEle = document.getElementById('tmSeeker');
+  tmSeekerEle.selectedIndex = getPartyPokeDivs().indexOf(pokeDiv);
   
   killAllChildren(choicesDiv);
   
@@ -1617,7 +1620,6 @@ function endPokemonChoosing(pokeDiv) {
   if (pokeDiv != null)
     pokeDiv.classList.remove('chosen');
   resetRoundBasedInputs();
-  setTMSeekerToLast();
   toggleNonPokemonChoices(true);
 }
 function resetRoundBasedInputs() {
@@ -1627,10 +1629,6 @@ function resetRoundBasedInputs() {
   document.getElementById('typeDiv').hidden = true;
   document.getElementById('extraIncome').checked = false;
   document.getElementById('won').checked = false;
-}
-function setTMSeekerToLast() {
-  const tmSeekerEle = document.getElementById('tmSeeker');
-  tmSeekerEle.selectedIndex = tmSeekerEle.options.length - 1;
 }
 
 function updateRefreshCost() {
@@ -1643,7 +1641,7 @@ function updateTMSeekerOptions() {
   const tmSeekerEle = document.getElementById('tmSeeker');
   const index = tmSeekerEle.selectedIndex;
   killAllChildren(tmSeekerEle);
-  const speciesNames = getPartyStrs().map(pokemonStr => getSpeciesNameOfPokemon(pokemonStr));
+  const speciesNames = getPartyStrs().map(pokemonStr => getApparentSpeciesNameOfPokemon(pokemonStr));
   for (let i = 0; i < speciesNames.length; i++) {
     const option = document.createElement('option');
     option.innerText = speciesNames[i];
