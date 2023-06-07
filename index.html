@@ -440,8 +440,6 @@ const HELD_ITEM_WEIGHT = .5;
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // functionally identical because of their ability, and...
-  //    misleading type
-  'castformsunny', 'castformrainy', 'castformsnowy',
   //    diferent stat total -> different level
   'wishiwashi',
   'miniormeteor',
@@ -478,6 +476,8 @@ const IDENTICAL_MONS = [
   ['toxtricity', 'toxtricitylowkey'],
   // identical but for the starting type of 1 move
   ['morpeko', 'morpekohangry'],
+  // identical except for TMs offered and if its ability is changed
+  ['castform', 'castformsunny', 'castformrainy', 'castformsnowy'],
   // identical except for weight and ability possibilities
   ['raticatealola', 'raticatealolatotem'],
   ['marowakalola', 'marowakalolatotem'],
