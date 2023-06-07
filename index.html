@@ -319,6 +319,7 @@ button:focus {
       </div>
     </div>
     <button onclick="addPartySlot()">+</button>
+    <button onclick="losePartySlot()">-</button>
     <p id="winCounter" class="win-counter win-color"></p>
   </div>
 </div>
@@ -786,6 +787,24 @@ function addPartySlot() {
   const pokeDiv = document.createElement('div');
   fillPokemonDiv(pokeDiv, true, false);
   lastFlexRow.append(pokeDiv);
+}
+
+function losePartySlot() {
+  const partyDiv = document.getElementById('party');
+
+  const lastFlexRow = partyDiv.children[partyDiv.children.length-1];
+  if (lastFlexRow == null)
+    return;
+
+  const lastPokeDiv = lastFlexRow.children[lastFlexRow.children.length-1];
+  if (lastPokeDiv.querySelector('.pokemon').innerText.trim() !== '') {
+    alert('You must delete your last Pokemon before deleting its slot.');
+    return;
+  }
+  lastPokeDiv.remove();
+
+  if (lastFlexRow.children.length == 0)
+    lastFlexRow.remove();
 }
 
 function fillPartyDiv() {
