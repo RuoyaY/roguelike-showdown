@@ -306,20 +306,19 @@ button:focus {
     <p id="speciesError"></p>
     <div id="species" class=""></div>
   </div>
-  <div id="party" class="ml-1">
-    <h2 class="attr text-center">Party <button onclick="copyParty()" class="clipboard-button" title="Copy party to clipboard">📋</button></h2>
-    <div class="flex-row">
-      <div class="pokemon-div"></div>
-      <div class="pokemon-div"></div>
+  <div class="ml-1">
+    <h2 class="attr text-center">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
+    <div id="party">
+      <div class="flex-row">
+        <div class="pokemon-div"></div>
+        <div class="pokemon-div"></div>
+      </div>
+      <div class="flex-row">
+        <div class="pokemon-div"></div>
+        <div class="pokemon-div"></div>
+      </div>
     </div>
-    <div class="flex-row">
-      <div class="pokemon-div"></div>
-      <div class="pokemon-div"></div>
-    </div>
-    <div class="flex-row">
-      <div class="pokemon-div"></div>
-      <div class="pokemon-div"></div>
-    </div>
+    <button onclick="addPartySlot()">+</button>
     <p id="winCounter" class="win-counter win-color"></p>
   </div>
 </div>
@@ -633,7 +632,7 @@ loadHeldItems();
 let items = [];
 loadItems();
 
-fillPartyDivs();
+fillPartyDiv();
 
 function generateSpeciesOnEnter(event) {
   if (event.key === 'Enter') {
@@ -774,12 +773,29 @@ function makeNumsUnique(objs) {
   }
 }
 
-function fillPartyDivs() {
+function addPartySlot() {
+  const partyDiv = document.getElementById('party');
+
+  let lastFlexRow = partyDiv.children[partyDiv.children.length-1];
+  if (lastFlexRow == null || lastFlexRow.children.length >= 2) {
+    lastFlexRow = document.createElement('div');
+    lastFlexRow.classList.add('flex-row');
+    partyDiv.append(lastFlexRow);
+  }
+
+  const pokeDiv = document.createElement('div');
+  fillPokemonDiv(pokeDiv, true, false);
+  lastFlexRow.append(pokeDiv);
+}
+
+function fillPartyDiv() {
   for (const pokemonDiv of getPartyPokeDivs()) {
     fillPokemonDiv(pokemonDiv, true, false);
   }
 }
 function fillPokemonDiv(div, editable, noMoveHeight) {
+  div.classList.add('pokemon-div');
+
   const pokemonEle = document.createElement('p');
   pokemonEle.classList.add('info-box', 'pokemon');
   if (editable) {
@@ -1039,8 +1055,6 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   }
 
   const divEle = document.createElement('div');
-  divEle.classList.add('pokemon-div');
-
   fillPokemonDiv(divEle, !hasChooseButton, true);
 
   const pokemonEle = divEle.querySelector('.pokemon');
@@ -1701,6 +1715,7 @@ function getEmptyPartyDiv() {
 function getPartyStrs() {
   return getPartyPokeEles().map(pokeEle => pokeEle.innerText.trim()).filter(str => str !== '');
 }
+
 function getPartyPokeEles() {
   return getPartyPokeDivs().map(pokeDiv => pokeDiv.querySelector('.pokemon'));
 }
