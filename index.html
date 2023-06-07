@@ -633,7 +633,7 @@ loadHeldItems();
 let items = [];
 loadItems();
 
-fillPartyDiv();
+setPartySize(4);
 
 function generateSpeciesOnEnter(event) {
   if (event.key === 'Enter') {
@@ -807,10 +807,11 @@ function losePartySlot() {
     lastFlexRow.remove();
 }
 
-function fillPartyDiv() {
-  for (const pokemonDiv of getPartyPokeDivs()) {
-    fillPokemonDiv(pokemonDiv, true, false);
-  }
+function setPartySize(partySize) {
+  const partyDiv = document.getElementById('party');
+  killAllChildren(partyDiv);
+  for (let i = 0; i < partySize; i++)
+    addPartySlot();
 }
 function fillPokemonDiv(div, editable, noMoveHeight) {
   div.classList.add('pokemon-div');
@@ -1728,11 +1729,11 @@ function getEmptyPartyDiv() {
   return null;
 }
 
-/*
-* Does not include empty slots
-*/
-function getPartyStrs() {
-  return getPartyPokeEles().map(pokeEle => pokeEle.innerText.trim()).filter(str => str !== '');
+function getPartyStrs(includeEmptyStrs) {
+  let partyStrs = getPartyPokeEles().map(pokeEle => pokeEle.innerText.trim());
+  if (!includeEmptyStrs)
+    partyStrs = partyStrs.filter(str => str !== '');
+  return partyStrs;
 }
 
 function getPartyPokeEles() {
@@ -1748,11 +1749,14 @@ function copyParty() {
 }
 
 function save() {
-  const partyStrs = getPartyStrs();
+  const partyStrs = getPartyStrs(true);
   if (partyStrs.length === 0) {
     alert('No party Pokemon to save!');
     return;
   }
+
+  localStorage.setItem('partySize', getPartyPokeDivs().length);
+
   localStorage.setItem('partyStrs', partyStrs.join('\n\n'));
 
   localStorage.setItem('money', getMoneyStr());
@@ -1776,6 +1780,10 @@ function load() {
     alert('Cannot load over existing party Pokemon.');
     return;
   }
+
+  const partySize = parseInt(localStorage.getItem('partySize'));
+  setPartySize(partySize);
+
   const partyStrs = localStorage.getItem('partyStrs').split('\n\n');
   for (const pokeEle of getPartyPokeEles()) {
     pokeEle.textContent = partyStrs.shift();
