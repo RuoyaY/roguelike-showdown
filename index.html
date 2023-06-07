@@ -742,10 +742,11 @@ function loadItems() {
       if (splitByTab[6] !== '')
         item.requiredMoves = splitByTab[6].split(',');
       if (splitByTab[7] !== '')
-        item.partyNums = [...splitByTab[7]].map(char => parseInt(char));
-      item.bannedFirstRound = splitByTab[8] !== '';
+        item.minPartySize = parseInt(splitByTab[7]);
+      item.bannedIfPartyFull = splitByTab[8] !== '';
+      item.bannedFirstRound = splitByTab[9] !== '';
 
-      item.desc = splitByTab[9];
+      item.desc = splitByTab[10];
 
       items.push(item);
     }
@@ -1977,9 +1978,12 @@ function isLegalItem(item) {
       return false;
   }
 
-  if (item.partyNums && !item.partyNums.includes(getPartyStrs().length))
+  const partySize = getPartyStrs().length;
+  if (item.minPartySize && partySize < item.minPartySize)
     return false;
-  
+  if (item.bannedIfPartyFull && partySize === getPartyPokeDivs().length)
+    return false;
+
   if (item.bannedFirstRound && roundCounter <= 1)
     return false;
 

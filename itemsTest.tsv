@@ -1,4 +1,4 @@
 [KEEP THIS LINE]				
-Encounter Power: Fairy	misc	10							Next round, you are guaranteed to get Fairy-type Pokemon.
-Encounter Power: Pefect	misc	15							Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).
-Encounter Power: Mirror	misc	10							Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).
+Mirror Berry	misc	10					2			Copy a Pokemon's held berry to another Pokemon.		
+Old Rod	misc	-10n+40	0.5					x		ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Shadow Abilitizer	abilitizer	25							x	Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last round. CAN'T COPY Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
