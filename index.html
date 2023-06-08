@@ -2318,8 +2318,11 @@ function buyItem(itemDiv, item, itemPrice) {
   if (!pay(itemPrice)) return;
   
   if (item.type === 'pokeball') {
-    if (item.name === 'Random Ball')
-      setPokeball(randomElement(getAllPokeballNames()));
+    if (item.name === 'Random Ball') {
+      const pokeballs = getAllPokeballNames();
+      pokeballs.shift();
+      setPokeball(randomElement(pokeballs));
+    }
     else
       setPokeball(item.name);
     document.getElementById('pokeballDiv').hidden = false;

@@ -1,4 +1,2 @@
 [KEEP THIS LINE]				
-Mirror Berry	misc	10					2			Copy a Pokemon's held berry to another Pokemon.		
-Old Rod	misc	-10n+40	0.5					x		ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Shadow Abilitizer	abilitizer	25							x	Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last round. CAN'T COPY Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
+Random Ball	pokeball	15								Automatically sets your Poke Ball for the next round to a random one (other than the default).		
