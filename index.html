@@ -1557,7 +1557,8 @@ function skipPokemonChoice() {
 function choosePokemon(choicesDiv, pokemonStr) {
   const pokeDiv = getEmptyPartyDiv();
   if (!pokeDiv) {
-    alert('Your party is full! Delete a Pokemon, or skip getting a new one.');
+    alert('Your party is full! Delete a Pokemon, or skip getting a new one.\n'
+            + 'NOTE: you may NOT replace a Pokemon you got at Lv1.');
     return;
   }
 
