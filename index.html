@@ -414,6 +414,7 @@ const ABILITY_VALUES = {
   'Stall': (650-79)/650,
   'Truant': 550/650,
 };
+const IRREPLACEABLE_ABILITIES = ['Defeatist', 'Slow Start', 'Stall', 'Truant'];
 
 const RUN_AWAY_REFRESH_COST = 2;
 const IMPROVED_ABILITIES = {
@@ -2168,14 +2169,21 @@ function randomAbilitizer() {
     ability = randomValue(abilities);
   } while (ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
             || ability.name === 'Wonder Guard');
+  // ability = abilities.defeatist;
 
   const effectiveStatDiffs = [];
   for (const pokemonStr of getPartyStrs()) {
     const speciesName = getSpeciesNameOfPokemon(pokemonStr);
-    const prevAbilityValue = getAbilityValue(speciesName, getAbilityNameOfPokemon(pokemonStr));
+    const prevAbilityName = getAbilityNameOfPokemon(pokemonStr);
+    if (IRREPLACEABLE_ABILITIES.includes(prevAbilityName))
+      continue;
+
+    const prevAbilityValue = getAbilityValue(speciesName, prevAbilityName);
     const abilityValue = getAbilityValue(speciesName, ability.name);
     effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
   }
+  if (effectiveStatDiffs.length === 0)
+    effectiveStatDiffs.push(STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE));
 
   if (Math.random() < .05 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
     return {
@@ -2193,7 +2201,9 @@ function randomAbilitizer() {
   }
 }
 function abilitizerDesc(strBeforeAbilityName, ability) {
-  return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n' + spanWithClass(abilityDesc(ability), 'attr');
+  return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n'
+          + spanWithClass(abilityDesc(ability), 'attr') + '\n'
+          + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning');
 }
 
 function roundToNearest5(num) {
