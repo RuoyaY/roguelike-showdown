@@ -1195,7 +1195,7 @@ function randomOfSpecies(speciesName, abilityName, gender, pokeball, level, tera
       if (TYPES.includes(teraType))
         pokemonStr += teraType;
       else
-        pokemonStr += randomElement(Object.values(species.types).filter(type => TYPES.includes(type)));
+        pokemonStr += randomElement(TYPES);
     }
   }
     
