@@ -996,14 +996,14 @@ function generateSpecificSpecies() {
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
     for (const abilityName of Object.values(allSpecies[species].abilities))
-      addRandomPokemon(speciesRow, false, speciesName, abilityName);
+      addRandomPokemon(speciesRow, false, speciesName, abilityName, null, 'random');
   } else {
     const abilityName = getProperAbilityName(abilityNameInput);
     if (abilityName == null) {
       speciesErrorEle.textContent = 'ERROR: ability name not recognized';
       return;
     }
-    addRandomPokemon(speciesRow, false, speciesName, abilityName);
+    addRandomPokemon(speciesRow, false, speciesName, abilityName, null, 'random');
   }
 
   speciesErrorEle.textContent = '';
@@ -1038,7 +1038,7 @@ function passesIdenticalSpeciesBias(speciesId) {
     return true;
 }
 
-function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, gender) {  
+function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, gender, teraType) {  
   if (speciesName == null) {
     let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
@@ -1050,7 +1050,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   // speciesName = 'Pokestar Spirit';
   
   const pokeball = getPokeball();
-  let pokemonStr = randomOfSpecies(speciesName, abilityName, gender, pokeball, null, null);
+  let pokemonStr = randomOfSpecies(speciesName, abilityName, gender, pokeball, null, teraType);
 
   if (hasChooseButton) {
     switch (pokeball) {
