@@ -1944,7 +1944,7 @@ function randomItem() {
       item = randomTM();
     else if ((randy -= 1/15) < 0)
       item = randomAbilitizer();
-    else if ((randy -= 0.005) < 0)
+    else if ((randy -= 0.01) < 0)
       item = randomEgg();
     else {
       do {
