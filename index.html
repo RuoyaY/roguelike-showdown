@@ -190,6 +190,7 @@ button:focus {
 .TMAndZCrystal { background: linear-gradient(45deg, yellow, orange); } 
 .abilitizer { color: lightgreen }
 .partyAbilitizer { background: linear-gradient(45deg, hotpink, lightgreen, hotpink); }
+.egg { color: wheat }
 .partyMisc, .pokeball, .heldItemParty, .partyTM, .universalTM, .TMAndZCrystal, .partyAbilitizer {  
   background-clip: text;
   -webkit-background-clip: text;
@@ -939,7 +940,7 @@ function addChoices(choicesDiv) {
       return false;
     }
     const species = allSpecies[speciesId];
-    if (!isLegal(speciesId, species, null)) {
+    if (!isLegal(speciesId, null)) {
       alert('Error: species is not legal.');
       return false;
     }
@@ -1013,7 +1014,8 @@ function generateSpecificSpecies() {
   // console.log(formes);
 }
 
-function isLegal(speciesId, species, requiredType) {
+function isLegal(speciesId, requiredType) {
+  const species = allSpecies[speciesId];
   if (species.forme && ILLEGAL_FORMES.includes(species.forme))
     return false;
   if (ILLEGAL_MONS.includes(speciesId))
@@ -1035,34 +1037,17 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
     let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
       requiredType = null;
-
-    let speciesId, species;
-    let failsafe = 1000;
-    do {
-      speciesId = randomKey(allSpecies);
-      species = allSpecies[speciesId];
-      if (failsafe-- < 0)
-        prevSeenSpecies.clear();
-    } while (!isLegal(speciesId, species, requiredType) 
-                || !passesIdenticalSpeciesBias(speciesId)
-                || prevSeenSpecies.has(speciesId));
-    prevSeenSpecies.add(speciesId);
-
-    speciesName = species.name;
-
-    if (species.cosmeticFormes && !isPokestar(speciesId)) {
-      const randy = randomInt(species.cosmeticFormes.length + 1);
-      if (randy < species.cosmeticFormes.length)
-        speciesName = species.cosmeticFormes[randy];
-    }
+    
+    speciesName = randomSpeciesName(requiredType, null);
   }
   
   // speciesName = 'Pokestar Spirit';
   
-  let pokemonStr = randomOfSpecies(speciesName, abilityName, gender);
+  const pokeball = getPokeball();
+  let pokemonStr = randomOfSpecies(speciesName, abilityName, gender, pokeball, null, null);
 
   if (hasChooseButton) {
-    switch (getPokeball()) {
+    switch (pokeball) {
       case 'Moon Ball':
         pokemonStr += '\n- Moonlight';
         break;
@@ -1096,6 +1081,30 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   choicesDiv.append(divEle);
 }
 
+function randomSpeciesName(requiredType, illegalSpeciesIds) {
+  let speciesId;
+  let failsafe = 1000;
+  do {
+    speciesId = randomKey(allSpecies);
+    if (failsafe-- < 0)
+      prevSeenSpecies.clear();
+  } while (!isLegal(speciesId, requiredType) 
+              || !passesIdenticalSpeciesBias(speciesId)
+              || (illegalSpeciesIds && illegalSpeciesIds.includes(speciesId))
+              || prevSeenSpecies.has(speciesId));
+  prevSeenSpecies.add(speciesId);
+
+  const species = allSpecies[speciesId];
+  let speciesName = species.name;
+  
+  if (species.cosmeticFormes && !isPokestar(speciesId)) {
+    const randy = randomInt(species.cosmeticFormes.length + 1);
+    if (randy < species.cosmeticFormes.length)
+      speciesName = species.cosmeticFormes[randy];
+  }
+  return speciesName;
+}
+
 function isPokestar(speciesId) {
   return speciesId.startsWith('pokestar');
 }
@@ -1121,7 +1130,7 @@ function getImageUrlName(speciesName) {
   return speciesName.toLowerCase().replaceAll(/[^a-zA-Z0-9\-]/g, '');
 }
 
-function randomOfSpecies(speciesName, abilityName, gender) {
+function randomOfSpecies(speciesName, abilityName, gender, pokeball, level, teraType) {
   const speciesId = getSpeciesId(speciesName);
   const species = allSpecies[speciesId];
 
@@ -1160,8 +1169,9 @@ function randomOfSpecies(speciesName, abilityName, gender) {
   if (abilityName)
     pokemonStr += abilityName;
 
-  let level = getLevelWithAbility(species, abilityName);
-  if (getPokeball() === 'Level Ball')
+  if (level == null)
+    level = getLevelWithAbility(species, abilityName);
+  if (pokeball === 'Level Ball')
     level -= 1;
 
   pokemonStr += '\nLevel: ' + level;
@@ -1173,8 +1183,15 @@ function randomOfSpecies(speciesName, abilityName, gender) {
     }
   }
 
-  if (canTera(species, heldItems[getHeldItemId(heldItemName)]))
-    pokemonStr += '\nTera Type:';
+  if (canTera(species, heldItems[getHeldItemId(heldItemName)])) {
+    pokemonStr += '\nTera Type: ';
+    if (teraType) {
+      if (TYPES.includes(teraType))
+        pokemonStr += teraType;
+      else
+        pokemonStr += randomElement(Object.values(species.types).filter(type => TYPES.includes(type)));
+    }
+  }
     
   pokemonStr += '\nEVs: 1 HP';
 
@@ -1922,6 +1939,8 @@ function randomItem() {
       item = randomTM();
     else if ((randy -= 1/15) < 0)
       item = randomAbilitizer();
+    else if ((randy -= 0.005) < 0)
+      item = randomEgg();
     else {
       do {
         item = randomElement(items);
@@ -2120,6 +2139,19 @@ function heldItemDesc(heldItemName) {
   if (heldItemName === 'Utility Umbrella')
     return heldItem.desc;
   return heldItem.shortDesc ?? heldItem.desc;
+}
+
+function randomEgg() {
+  const speciesName = randomSpeciesName(null, ['pokestarspirit']);
+  let pokemonStr = randomOfSpecies(speciesName, null, null, null, 1, 'random')
+                    + '\n- Tackle\n- \n- \n- ';
+  return {
+    name: speciesName + ' Egg',
+    type: 'egg',
+    price: 40,
+    desc: 'ADD the following Pokemon in an EXTRA SLOT:\n' 
+            + spanWithClass(pokemonInHTML(pokemonStr), 'attr'),
+  };
 }
 
 function randomAbilitizer() {
