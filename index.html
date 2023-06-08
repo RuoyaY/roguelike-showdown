@@ -345,15 +345,21 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
 const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
 const FOUR_POINT_FIVE_ABILITY_VALUE = 700/650;
-const SPECIES_VALUES = {
-  'Pokestar Spirit': Infinity, // so it generates as Lv 1
-  'Cramorant-Gulping': 650/(650 - 2 * (150/4 + 100/3)), // since it'll be higher Lv, i figure it'll trigger more often
-  'Cramorant-Gorging': 650/(650 - 1.5 * (150/4 + 50 + 50)),
-  'Wishiwashi-School': (650 - 150/4)/650,
-  'Eiscue-Noice': 1,
-  'Mimikyu-Busted': 1,
-  'Mimikyu-Busted-Totem': 1,
-  'Palafin-Hero': 1,
+const SPECIES_WITH_ABILITY_VALUES = {
+  'Cramorant-Gulping w/ Gulp Missile': 650/(650 - 2 * (150/4 + 100/3)), // since it'll be higher Lv, i figure it'll trigger more often
+  'Cramorant-Gorging w/ Gulp Missile': 650/(650 - 1.5 * (150/4 + 50 + 50)),
+  'Wishiwashi-School w/ Schooling': (650 - 150/4)/650,
+  'Palafin w/ Zero to Hero': 660/530,
+
+  // calculated to average w/ Zygarde-Complete at ~660 stat total
+  'Zygarde w/ Power Construct': 660/611,
+  'Zygarde-10% w/ Power Construct': 660/566,
+
+  'Eiscue-Noice w/ Ice Face': 1,
+  'Mimikyu-Busted w/ Disguise': 1,
+  'Mimikyu-Busted-Totem w/ Disguise': 1,
+  'Palafin-Hero w/ Zero to Hero': 1,
+  'Zygarde-Complete w/ Power Construct': 1,
 }
 const ABILITY_VALUES = {
   'Beads of Ruin': 650/625, // SpD drop
@@ -1244,20 +1250,18 @@ function getLearnset(speciesId) {
 }
 
 function getLevelWithAbility(species, abilityName) {
-  const hasUsualAbility = species.abilities[0] === abilityName;
-  let statTotalMultiplier = 1;
+  if (species.name === 'Pokestar Spirit' && abilityName === 'Wonder Guard')
+    return 1; 
   // we want: stat goal * ability value = base stat goal * base ability value
-  if (SPECIES_VALUES[species.name] && hasUsualAbility)
-    statTotalMultiplier = BASE_ABILITY_VALUE / SPECIES_VALUES[species.name];
+  return getLevel(species, STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species.name, abilityName));
+}
+function getAbilityValue(speciesName, abilityName) {
+  if (     SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName])
+    return SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName];
   else if (ABILITY_VALUES[abilityName])
-    statTotalMultiplier = BASE_ABILITY_VALUE / ABILITY_VALUES[abilityName];
-  let level = getLevel(species, STAT_TOTAL_GOAL * statTotalMultiplier); 
-  if (species.name === 'Palafin' && hasUsualAbility)
-    return getLevel(allSpecies.palafinhero, STAT_TOTAL_GOAL * 680/650); 
-  else if (abilityName === 'Power Construct')
-    return (level + getLevel(allSpecies.zygardecomplete, STAT_TOTAL_GOAL)) / 2;
+    return ABILITY_VALUES[abilityName];
   else
-    return level;
+    return BASE_ABILITY_VALUE;
 }
 function getLevel(species, statTotalGoal) {
   let prevStatTotal = Number.NEGATIVE_INFINITY;
@@ -2163,9 +2167,10 @@ function randomAbilitizer() {
             || ability.name === 'Wonder Guard');
 
   const effectiveStatDiffs = [];
-  const abilityValue = ABILITY_VALUES[ability.name] ?? BASE_ABILITY_VALUE;
   for (const pokemonStr of getPartyStrs()) {
-    const prevAbilityValue = ABILITY_VALUES[getAbilityNameOfPokemon(pokemonStr)] ?? BASE_ABILITY_VALUE;
+    const speciesName = getSpeciesNameOfPokemon(pokemonStr);
+    const prevAbilityValue = getAbilityValue(speciesName, getAbilityNameOfPokemon(pokemonStr));
+    const abilityValue = getAbilityValue(speciesName, ability.name);
     effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
   }
 
