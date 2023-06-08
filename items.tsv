@@ -152,7 +152,7 @@ Move Deleter	misc	0								Delete 1 or more moves (leave the hyphens) (each Poke
 Move-Deleting Duo	misc	-20								A Pokemon forgets 2 moves (leave the hyphens).		
 Move-Deleting Trio	misc	-40								A Pokemon forgets 3 moves (leave the hyphens).		
 Move Deletion Party	partyMisc	-10n+5								EVERY Pokemon forgets 1 move (leave the hyphens).		
-Same-Type Move Deleter	misc	5n-35								A Pokemon forgets ALL moves of its own type, if any (leave the hyphens) (can't be used if it would have 0 moves left).		
+Same-Type Move Deleter	misc	5n-35								A Pokemon forgets ALL moves of its own type, if any (leave the hyphens) (Cannot be used if it would have 0 moves left).		
 Random Move Deleter	misc	-30								Pick a Pokemon. It forgets a random move (leave the hyphen).		
 Deleveler	misc	0	0							Lower 1 or more Pokemon's level by any amount. Give yourself $1 for each level lowered.		
 Destiny Knot	heldItem	1										
@@ -200,8 +200,6 @@ Iron Plate	heldItem	20
 Pixie Plate	heldItem	20										
 Perfect Plate	misc	25								Set a Pokemon's held item to ANY Plate (e.g. "*Zap Plate*").		
 Random Plate	misc	10								Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").		
-Mirror Pokemon	misc	100					2			Replace one of your Pokemon with a clone of one of your other Pokemon (CAN'T replace Pokemon you got at Lv1).		
-Shadow Pokemon	misc	80							x	Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round (CAN'T replace Pokemon you got at Lv1).		
 Buginium Z	heldItem	70										
 Darkinium Z	heldItem	70										
 Dragonium Z	heldItem	70										
@@ -382,21 +380,24 @@ Chill Drive	heldItem	0				Techno Blast
 Douse Drive	heldItem	0				Techno Blast						
 Shock Drive	heldItem	0				Techno Blast						
 True Mirror	misc	50	0							The next thing you buy, you get twice.		
-Wonder Guard Abilitizer	abilitizer	40								Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.		
-Plus & Minus Abilitizers	abilitizer	100					2			Set 2 Pokemon's abilities to *Plus* and *Minus*. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
-(Almost) Perfect Abilitizer	abilitizer	70								Set a Pokemon's ability to any ability. CAN'T CHOOSE Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
-Mirror Abilitizer	abilitizer	30					2			Copy a Pokemon's ability to any other Pokemon. CAN'T COPY Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
-Shadow Abilitizer	abilitizer	25							x	Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last round. CAN'T COPY Wonder Guard. CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
-Weather Chaos Abilitizers	abilitizer	50					4			Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
-Terrain Chaos Abilitizers	abilitizer	30					4			Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). CAN'T REPLACE Defeatist, Slow Start, Stall, or Truant.		
+Wonder Guard-ifier	abilitizer	40								Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.		
+Plus & Minus Abilitizers	abilitizer	100					2			Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+(Almost) Perfect Abilitizer	abilitizer	70								Set a Pokemon's ability to any ability other than Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Mirror Abilitizer	abilitizer	30					2			Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Shadow Abilitizer	abilitizer	25							x	Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last round.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Weather Chaos Abilitizers	abilitizer	50					4			Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Terrain Chaos Abilitizers	abilitizer	30					4			Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Debilitizer	misc	-10								Set a Pokemon's ability to "No Ability". <span class="warning"> <br>Cannot remove Defeatist, Slow Start, Stall, or Truant. </span>		
 Power Weight	heldItem	0										
 Power Bracer	heldItem	0										
 Power Belt	heldItem	0										
 Power Lens	heldItem	0										
 Power Band	heldItem	0										
 Power Anklet	heldItem	0										
-Super Rod	misc	150	0.5							REPLACE any Pokemon with the following (CAN'T replace Pokemon you got at Lv1): <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Super Rod	misc	150	0.5							REPLACE any Pokemon with the following (CAN'T replace Pokemon you got at Lv1): <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Mirror Pokemon	misc	100					2			Replace one of your Pokemon with a clone of one of your other Pokemon. <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Shadow Pokemon	misc	80							x	Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round. <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Super Rod	misc	150	0.5							REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Super Rod	misc	150	0.5							REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
 Old Rod	misc	40	0							ADD the following Pokemon in an EXISTING SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Old Rod	misc	40	0							ADD the following Pokemon in an EXISTING SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Twin Rods	misc	0	0.5							BOTH players may ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
@@ -406,7 +407,6 @@ Moveset Swapper	misc	5					2			Swap two Pokemon's ENTIRE movesets.
 EVs Swapper	misc	5					2			Swap two Pokemon's EVs.		
 Tera Swapper	misc	5					2			Swap two Pokemon's Tera Types.		
 Ability Swapper	misc	5					2			Swap two Pokemon's abilities.		
-Debilitizer	misc	-10								Set a Pokemon's ability to "No Ability". NOTE: can't replace Defeatist, Slow Start, Stall, or Truant.		
 Item Swapper	misc	5					2			Swap two Pokemon's held items (if one Pokemon is not holding an item, the other gives its away).		
 Incinerator	misc	-15								Remove a Pokemon's held item.		
 Toxic Orb	heldItem	-20										
@@ -554,3 +554,6 @@ Perfect Dark Party TM	partyTM	25n+25	0.05							Choose ANY DARK-TYPE move (other
 Perfect Dragon Party TM	partyTM	25n+25	0.05							Choose ANY DRAGON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.		
 Perfect Steel Party TM	partyTM	25n+25	0.05							Choose ANY STEEL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.		
 Perfect Fairy Party TM	partyTM	25n+25	0.05							Choose ANY FAIRY-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.		
+Perfect Egg	egg	90								Use "Generate a Pokemon" to get a Pokemon of ANY species (and any ability that Pokemon can have). Set its Level to 1, and give it *Tackle* and three empty move slots. Add to your party in an EXTRA SLOT. <span class="warning"> <br>Cannot choose Pokestar Spirit. </span>		
+Mirror Egg	egg	70								Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.		
+Shadow Egg	egg	70								Copy of one of your opponent's Pokemon as it was last round into an EXTRA SLOT. Set the copy's level to 1.		
