@@ -200,8 +200,8 @@ Iron Plate	heldItem	20
 Pixie Plate	heldItem	20										
 Perfect Plate	misc	25								Set a Pokemon's held item to ANY Plate (e.g. "*Zap Plate*").		
 Random Plate	misc	10								Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").		
-Mirror Pokemon	misc	100					2			Replace one of your Pokemon with a clone of one of your other Pokemon.		
-Shadow Pokemon	misc	80							x	Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round.		
+Mirror Pokemon	misc	100					2			Replace one of your Pokemon with a clone of one of your other Pokemon (CAN'T replace Pokemon you got at Lv1).		
+Shadow Pokemon	misc	80							x	Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round (CAN'T replace Pokemon you got at Lv1).		
 Buginium Z	heldItem	70										
 Darkinium Z	heldItem	70										
 Dragonium Z	heldItem	70										
@@ -395,12 +395,12 @@ Power Belt	heldItem	0
 Power Lens	heldItem	0										
 Power Band	heldItem	0										
 Power Anklet	heldItem	0										
-Super Rod	misc	120	0.5							REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Super Rod	misc	120	0.5							REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Old Rod	misc	-10n+40	0.5					x		ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Old Rod	misc	-10n+40	0.5					x		ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Twin Rods	misc	0	0.5					x		BOTH players may ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
-Twin Rods	misc	0	0.5					x		BOTH players may ADD the following Pokemon to your party: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Super Rod	misc	150	0.5							REPLACE any Pokemon with the following (CAN'T replace Pokemon you got at Lv1): <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Super Rod	misc	150	0.5							REPLACE any Pokemon with the following (CAN'T replace Pokemon you got at Lv1): <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Old Rod	misc	40	0							ADD the following Pokemon in an EXISTING SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Old Rod	misc	40	0							ADD the following Pokemon in an EXISTING SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Twin Rods	misc	0	0.5							BOTH players may ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
+Twin Rods	misc	0	0.5							BOTH players may ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Move Swapper	misc	20					2			Swap ANY two moves between any two Pokemon.		
 Moveset Swapper	misc	5					2			Swap two Pokemon's ENTIRE movesets.		
 EVs Swapper	misc	5					2			Swap two Pokemon's EVs.		
