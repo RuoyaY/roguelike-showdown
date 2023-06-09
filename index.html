@@ -2194,7 +2194,10 @@ function randomTransformer(failsafe) {
   const speciesName = randomSpeciesName(null, null, true);
   const species = allSpecies[getSpeciesId(speciesName)];
 
-  const pokemonStr = randomElement(getPartyStrs());
+  const partyStrs = getPartyStrs();
+  const partyIndex = randomInt(partyStrs.length);
+  const pokemonStr = partyStrs[partyIndex];
+
   const statInfo = getStatRelevantInfo(pokemonStr);
   const abilityName = getAbilityNameOfPokemon(pokemonStr);
   if (statInfo[0] === species) // same species
@@ -2214,18 +2217,11 @@ function randomTransformer(failsafe) {
     name: apparentPrevSpeciesName + ' → ' + speciesName,
     type: 'transformer',
     price: price,
-    desc: 'Change a ' + apparentPrevSpeciesName + ' into ' + aOrAn(speciesName) + '. '
+    desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
             + species.types.map(type => '<img src="' + getTypeImageURL(type) + '"">').join('') + '\n'
             + spanWithClass(statsInHTML(statInfo, false), 'attr'),
   }
-}
-
-function aOrAn(str) {
-  const firstChar = str.charAt(0).toLowerCase();
-  if (['a', 'e', 'i', 'o', 'u'].includes(firstChar))
-    return 'an ' + str;
-  return 'a ' + str;
 }
 
 function randomAbilitizer(failsafe) {
@@ -2425,6 +2421,23 @@ function addHiddenPowerType(move) {
     return move;
   }
 }
+
+function ordinal(n) {
+  switch (n) {
+    case 1: return '1st';
+    case 2: return '2nd';
+    case 3: return '3rd';
+    default: return n + 'th';
+  }
+}
+
+function aOrAn(str) {
+  const firstChar = str.charAt(0).toLowerCase();
+  if (['a', 'e', 'i', 'o', 'u'].includes(firstChar))
+    return 'an ' + str;
+  return 'a ' + str;
+}
+
 
 function enumerateWithOr(strArr) {
   if (strArr.length === 1)
