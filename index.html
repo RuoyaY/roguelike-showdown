@@ -2111,12 +2111,13 @@ function itemInHTML(item) {
             + '\n' + itemDescInHTML(item.desc, item.type.includes('TM'));
 }
 const KEYWORD_HOVER_TEXTS = {
+  // ORDER MATTERS! Keywords can accidentally be found within other keywords' hover text.
   'held item': 'e.g. "Pikachu (F) @ Leftovers"',
-  'EV': 'e.g. "EVs: 1 HP / 252 SpA"',
   'EVs': 'e.g. "EVs: 1 HP / 252 SpA"',
+  'EV': 'e.g. "EVs: 1 HP / 252 SpA"',
   'Nature': 'add a new line under EVs\ne.g. "Bold Nature"',
   'gender': 'e.g. "Pikachu (F)"',
-  'Next battle only': 'Revealed after both players are ready for battle.'
+  'Next battle only': 'Revealed after both players are ready for battle.',
 };
 function itemDescInHTML(itemDesc, isTM) {
   if (!isTM) {
@@ -2124,7 +2125,6 @@ function itemDescInHTML(itemDesc, isTM) {
       const regexp = new RegExp('\\b'+keyword+'\\b', '');
       if (itemDesc.match(regexp)) {
         itemDesc = itemDesc.replace(regexp, spanWithTitle(keyword, hoverText));
-        break;
       }
     }
   }
