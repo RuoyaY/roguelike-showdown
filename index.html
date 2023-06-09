@@ -2214,7 +2214,7 @@ function randomTransformer(failsafe) {
     name: apparentPrevSpeciesName + ' → ' + speciesName,
     type: 'transformer',
     price: price,
-    desc: 'Change your ' + apparentPrevSpeciesName + ' into a ' + speciesName + '. '
+    desc: 'Change a ' + apparentPrevSpeciesName + ' into a ' + speciesName + '. '
             + 'Its gender, ability, etc. stays the same.\n'
             + species.types.map(type => '<img src="' + getTypeImageURL(type) + '"">').join('') + '\n'
             + spanWithClass(statsInHTML(statInfo, false), 'attr'),
