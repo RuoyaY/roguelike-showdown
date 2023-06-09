@@ -358,6 +358,10 @@ const SPECIES_WITH_ABILITY_VALUES = {
   'Zygarde w/ Power Construct': 660/611,
   'Zygarde-10% w/ Power Construct': 660/566,
 
+  // calculated to equal its balanced, otherwise-identical forme
+  'Wishiwashi w/ Schooling': 660/310,
+  'Minior w/ Shields Down': 660/711,
+
   'Eiscue-Noice w/ Ice Face': 1,
   'Mimikyu-Busted w/ Disguise': 1,
   'Mimikyu-Busted-Totem w/ Disguise': 1,
@@ -450,10 +454,9 @@ const HELD_ITEM_WEIGHT = 1;
 
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
-  // functionally identical because of their ability, and...
-  //    diferent stat total -> different level
+  // functionally identical because of its ability, but stats are less helpful.
+  // also, while it's alone, the Abilitizer price is stupid (-325).
   'wishiwashi',
-  'miniormeteor',
   // misleadingly, a cap Pikachu that can't use Pikashunium Z. can't use Pikanium Z or cosplay moves, either.
   'pikachuworld',
 ];
@@ -467,6 +470,8 @@ const IDENTICAL_MONS = [
   ['zarude', 'zarudedada'],
   ['keldeo', 'keldeoresolute'],
   ['cherrim', 'cherrimsunshine'],
+  // required SPECIES_WITH_ABILITY_VALUES to have identical level
+  ['minior', 'miniormeteor'],
   // identical except for hidden ability
   ['squawkabilly', 'squawkabillyblue', 'squawkabillyyellow', 'squawkabillywhite'],
   // identical but for 1 move
