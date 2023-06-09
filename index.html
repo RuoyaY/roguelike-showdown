@@ -1827,6 +1827,8 @@ function save() {
   localStorage.setItem('roundCounter', roundCounter);
 
   localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
+
+  localStorage.setItem('nextBattle', document.getElementById('nextBattle').innerHTML);
 }
 function load() {
   if (getPartyStrs().length > 0) {
@@ -1858,6 +1860,10 @@ function load() {
   roundCounter = parseInt(localStorage.getItem('roundCounter'));
   
   document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
+
+  const nextBattleHTML = localStorage.getItem('nextBattle');
+  document.getElementById('nextBattleDiv').hidden = nextBattleHTML === '';
+  document.getElementById('nextBattle').innerHTML = nextBattleHTML;
 
   toggleAfterFirstRoundChoices(true);
 }
