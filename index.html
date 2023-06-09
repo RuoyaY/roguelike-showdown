@@ -2214,11 +2214,18 @@ function randomTransformer(failsafe) {
     name: apparentPrevSpeciesName + ' → ' + speciesName,
     type: 'transformer',
     price: price,
-    desc: 'Change a ' + apparentPrevSpeciesName + ' into a ' + speciesName + '. '
+    desc: 'Change a ' + apparentPrevSpeciesName + ' into ' + aOrAn(speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
             + species.types.map(type => '<img src="' + getTypeImageURL(type) + '"">').join('') + '\n'
             + spanWithClass(statsInHTML(statInfo, false), 'attr'),
   }
+}
+
+function aOrAn(str) {
+  const firstChar = str.charAt(0).toLowerCase();
+  if (['a', 'e', 'i', 'o', 'u'].includes(firstChar))
+    return 'an ' + str;
+  return 'a ' + str;
 }
 
 function randomAbilitizer(failsafe) {
