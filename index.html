@@ -185,6 +185,7 @@ button:focus {
 .misc { color: lightgray }
 .partyMisc { background: linear-gradient(45deg, hotpink, lightgray, hotpink); }
 .pokeball { background: linear-gradient(0deg, white 50%, lightcoral 50%); }
+.nextBattle { color: tomato }
 .heldItem { color: orange }
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
 .speciesTM { color: yellow }
@@ -312,6 +313,10 @@ button:focus {
     <div id="species" class=""></div>
   </div>
   <div class="ml-1">
+    <div id="nextBattleDiv" hidden>
+      <h2 class="attr text-center">Next Battle</h2>
+      <p id="nextBattle"></p>
+    </div>
     <h2 class="attr text-center">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
     <div id="party">
       <div class="flex-row">
@@ -1875,6 +1880,9 @@ function nextRound() {
   }
   toggleNonPokemonChoices(false);
 
+  document.getElementById('nextBattleDiv').hidden = true;
+  document.getElementById('nextBattle').innerHTML = '';
+
   if (won)
     document.getElementById('winCounter').textContent += '✓ ';
   
@@ -2463,10 +2471,15 @@ function buyItem(itemDiv, item, itemPrice) {
     else
       setPokeball(item.name);
     document.getElementById('pokeballDiv').hidden = false;
+
   } else if (item.name.startsWith('Encounter Power: ')) {
     const type = item.name.split(' ')[2];
     setGuaranteedType(TYPES.includes(type) ? type : '');
     document.getElementById('typeDiv').hidden = false;
+
+  } else if (item.desc.startsWith('Next battle only: ')) {
+    document.getElementById('nextBattleDiv').hidden = false;
+    document.getElementById('nextBattle').innerHTML += item.desc.substring('Next battle only: '.length) + '<br>';
   }
 
   const trueMirrorEle = document.getElementById('trueMirror');
