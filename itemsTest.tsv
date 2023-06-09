@@ -2,3 +2,4 @@
 1v1 Battle	nextBattle	10					2			Next battle only: Both players choose only 1 Pokemon to put in their team.		
 Iron Ball Trick	nextHeldItem	15								Next battle only: Your opponent's [nth] Pokemon must hold an *Iron Ball*.
 HP Up	misc	15								Set a Pokemon's HP EV to 100 (max 508 total EVs).		
+Set Leads	nextBattle	-5					3			Next battle only: You must lead with your [nth] and [mth] Pokemon.

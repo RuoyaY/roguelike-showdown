@@ -2120,6 +2120,7 @@ const KEYWORD_HOVER_TEXTS = {
   'gender': 'e.g. "Pikachu (F)"',
   'Next battle only': 'Revealed after both players are ready for battle.',
   'nth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
+  'mth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
 };
 function itemDescInHTML(itemDesc, isTM) {
   if (!isTM) {
@@ -2497,6 +2498,7 @@ function buyItem(itemDiv, item, itemPrice) {
     }
     nthSelectHTML += '</select>';
     nextBattleEventHTML = nextBattleEventHTML.replaceAll('[nth]', nthSelectHTML);
+    nextBattleEventHTML = nextBattleEventHTML.replaceAll('[mth]', nthSelectHTML);
     nextBattleEventHTML = itemDescInHTML(nextBattleEventHTML, false);
 
     nextBattleEventEle.innerHTML = nextBattleEventHTML;
