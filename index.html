@@ -194,6 +194,7 @@ button:focus {
 .abilitizer { color: lightgreen }
 .partyAbilitizer { background: linear-gradient(45deg, hotpink, lightgreen, hotpink); }
 .egg { color: wheat }
+.transformer { color: violet }
 .partyMisc, .pokeball, .heldItemParty, .partyTM, .universalTM, .TMAndZCrystal, .partyAbilitizer {  
   background-clip: text;
   -webkit-background-clip: text;
@@ -882,12 +883,15 @@ function updatePokemonDiv(div) {
   killAllChildren(typesEle);
   for (const type of allSpecies[getSpeciesId(speciesName)].types) {
     const typeImage = document.createElement('img');
-    typeImage.src = 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
+    typeImage.src = getTypeImageURL(type);
     typesEle.append(typeImage);
   }
 
   const statsEle = div.querySelector('.stats');
-  statsEle.innerHTML = statsInHTML(pokemonStr);
+  statsEle.innerHTML = statsInHTML(getStatRelevantInfo(pokemonStr), true);
+}
+function getTypeImageURL(type) {
+  return 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
 }
 
 function getProperSpeciesName(speciesNameInput) {
@@ -1053,7 +1057,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
     if (!TYPES.includes(requiredType))
       requiredType = null;
     
-    speciesName = randomSpeciesName(requiredType, null);
+    speciesName = randomSpeciesName(requiredType, null, false);
   }
   
   // speciesName = 'Pokestar Spirit';
@@ -1096,18 +1100,19 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   choicesDiv.append(divEle);
 }
 
-function randomSpeciesName(requiredType, illegalSpeciesIds) {
+function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen) {
   let speciesId;
   let failsafe = 1000;
   do {
     speciesId = randomKey(allSpecies);
-    if (failsafe-- < 0)
+    if (!canBePrevSeen && failsafe-- < 0)
       prevSeenSpecies.clear();
   } while (!isLegal(speciesId, requiredType) 
               || !passesIdenticalSpeciesBias(speciesId)
               || (illegalSpeciesIds && illegalSpeciesIds.includes(speciesId))
-              || prevSeenSpecies.has(speciesId));
-  prevSeenSpecies.add(speciesId);
+              || (!canBePrevSeen && prevSeenSpecies.has(speciesId)));
+  if (!canBePrevSeen)
+    prevSeenSpecies.add(speciesId);
 
   const species = allSpecies[speciesId];
   let speciesName = species.name;
@@ -1265,6 +1270,7 @@ function getLevelWithAbility(species, abilityName) {
   return getLevel(species, STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species.name, abilityName));
 }
 function getAbilityValue(speciesName, abilityName) {
+  speciesName = allSpecies[getSpeciesId(speciesName)].name; // remove cosmetic forme
   if (     SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName])
     return SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName];
   else if (ABILITY_VALUES[abilityName])
@@ -1448,8 +1454,7 @@ function canTera(species, heldItem) {
   return true;
 }
 
-function statsInHTML(pokemonStr) {
-  const statRelevantInfo = getStatRelevantInfo(pokemonStr);
+function statsInHTML(statRelevantInfo, hasColor) {
   const species = statRelevantInfo[0];
 
   let out = '';
@@ -1458,7 +1463,7 @@ function statsInHTML(pokemonStr) {
     let statStr = statNum + ' ' + stat;
     if (stat === 'Atk' || stat === 'SpA')
       statStr = spanWithTitle(statStr, 'Unadjusted ' + stat + ': ' + getUnadjustedStat(...statRelevantInfo, stat));
-    out += spanWithClass(' '.repeat(Math.max(0, 3-(statNum+'').length)) + statStr, 'stat-' + stat.toLowerCase()) + ' ';
+    out += spanWithClass(' '.repeat(Math.max(0, 3-(statNum+'').length)) + statStr, hasColor ? 'stat-' + stat.toLowerCase() : '') + ' ';
     if (stat === 'Def')
       out += '\n' + ' '.repeat('... HP '.length);
   }
@@ -1466,7 +1471,9 @@ function statsInHTML(pokemonStr) {
 
   const statTotal = getStatTotal(...statRelevantInfo);
   let statTotalStr = '';
-  if (statTotal === getStatTotal(species, getLevel(species, STAT_TOTAL_GOAL)))
+  if (!hasColor)
+    statTotalStr += 'TOTAL: ' + statTotal;
+  else if (statTotal === getStatTotal(species, getLevel(species, STAT_TOTAL_GOAL)))
     statTotalStr += spanWithClass('TOTAL: ' + statTotal, 'gray');
   else
     statTotalStr += spanWithClass('TOTAL: ', 'attr') + statTotal;
@@ -1515,6 +1522,12 @@ function getStatRelevantInfo(pokemonStr) {
   return [species, level, evs, nature];
 }
 
+function getEffectiveStatTotal(species, level, evs, nature, abilityName) {
+  if (species.name === 'Pokestar Spirit' && abilityName === 'Wonder Guard')
+    return STAT_TOTAL_GOAL;
+  const abilityValue = getAbilityValue(species.name, abilityName);
+  return getStatTotal(species, level, evs, nature) * abilityValue;
+}
 function getStatTotal(species, level, evs, nature) {
   let statTotal = 0;
   for (const stat of STATS)
@@ -1952,8 +1965,10 @@ function randomItem() {
     if ((randy -= 1/3) < 0)
       item = randomTM();
     else if ((randy -= 1/15) < 0)
-      item = randomAbilitizer();
-    else if ((randy -= 0.01) < 0)
+      item = randomAbilitizer(100);
+    else if ((randy -= 1/15) < 0)
+      item = randomTransformer(100);
+    else if ((randy -= 1/100) < 0)
       item = randomEgg();
     else {
       do {
@@ -2156,7 +2171,7 @@ function heldItemDesc(heldItemName) {
 }
 
 function randomEgg() {
-  const speciesName = randomSpeciesName(null, ['pokestarspirit']);
+  const speciesName = randomSpeciesName(null, ['pokestarspirit'], true);
   let pokemonStr = randomOfSpecies(speciesName, null, null, null, 1, 'random')
                     + '\n- Splash\n- \n- \n- ';
   return {
@@ -2168,7 +2183,50 @@ function randomEgg() {
   };
 }
 
-function randomAbilitizer() {
+const MIN_PRICE = -100;
+const MAX_PRICE = 200;
+function randomTransformer(failsafe) {
+  if (failsafe-- < 0) {
+    console.error("Couldn't find a valid transformer!");
+    return randomTM();
+  }
+
+  const speciesName = randomSpeciesName(null, null, true);
+  const species = allSpecies[getSpeciesId(speciesName)];
+
+  const pokemonStr = randomElement(getPartyStrs());
+  const statInfo = getStatRelevantInfo(pokemonStr);
+  const abilityName = getAbilityNameOfPokemon(pokemonStr);
+  if (statInfo[0] === species) // same species
+    return randomTransformer(failsafe); // re-roll
+
+  const prevEffectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
+  statInfo[0] = species;
+  const effectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
+  const effectiveStatDiff = effectiveStatTotal - prevEffectiveStatTotal;
+
+  const price = roundToNearest5(effectiveStatDiff);
+  if (price < MIN_PRICE || MAX_PRICE < price)
+    return randomTransformer(failsafe); // re-roll
+
+  const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
+  return {
+    name: apparentPrevSpeciesName + ' → ' + speciesName,
+    type: 'transformer',
+    price: price,
+    desc: 'Change your ' + apparentPrevSpeciesName + ' into a ' + speciesName + '. '
+            + 'Its gender, ability, etc. stays the same.\n'
+            + species.types.map(type => '<img src="' + getTypeImageURL(type) + '"">').join('') + '\n'
+            + spanWithClass(statsInHTML(statInfo, false), 'attr'),
+  }
+}
+
+function randomAbilitizer(failsafe) {
+  if (failsafe-- < 0) {
+    console.error("Couldn't find a valid abilitizer!");
+    return randomTM();
+  }
+
   let ability;
   do {
     ability = randomValue(abilities);
@@ -2178,33 +2236,35 @@ function randomAbilitizer() {
 
   const effectiveStatDiffs = [];
   for (const pokemonStr of getPartyStrs()) {
-    // can't use getSpeciesNameOfPokemon due to cosmetic formes, e.g. Minior-Blue
-    const speciesName = allSpecies[getSpeciesIdOfPokemon(pokemonStr)].name;
+    const speciesName = getSpeciesNameOfPokemon(pokemonStr);
     const prevAbilityName = getAbilityNameOfPokemon(pokemonStr);
     if (IRREPLACEABLE_ABILITIES.includes(prevAbilityName))
       continue;
 
-    const prevAbilityValue = getAbilityValue(speciesName, prevAbilityName);
-    const abilityValue = getAbilityValue(speciesName, ability.name);
-    effectiveStatDiffs.push(getStatTotal(...getStatRelevantInfo(pokemonStr)) * (abilityValue - prevAbilityValue));
+    const statInfo = getStatRelevantInfo(pokemonStr);
+    effectiveStatDiffs.push(getEffectiveStatTotal(...statInfo, ability.name) - getEffectiveStatTotal(...statInfo, prevAbilityName));
   }
   if (effectiveStatDiffs.length === 0)
     effectiveStatDiffs.push(STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE));
 
-  if (Math.random() < .05 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
-    return {
-      name: 'Party Abilitizer #' + ability.num,
-      type: 'partyAbilitizer',
-      price: 20 + roundToNearest5(sumArr(effectiveStatDiffs)),
-      desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
-    }
-  }
-  return {
+  let abilitizer = {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
     price: 20 + roundToNearest5(Math.max(...effectiveStatDiffs)),
     desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
-  }
+  };
+  if (Math.random() < .05 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
+    abilitizer = {
+      name: 'Party Abilitizer #' + ability.num,
+      type: 'partyAbilitizer',
+      price: 20 + roundToNearest5(sumArr(effectiveStatDiffs)),
+      desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
+    };
+  } 
+  
+  if (abilitizer.price < MIN_PRICE || MAX_PRICE < abilitizer.price)
+    return randomAbilitizer(failsafe); // re-roll
+  return abilitizer;
 }
 function abilitizerDesc(strBeforeAbilityName, ability) {
   return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n'
