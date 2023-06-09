@@ -316,7 +316,7 @@ button:focus {
   <div class="ml-1">
     <div id="nextBattleDiv" hidden>
       <h2 class="attr text-center">Next Battle</h2>
-      <p id="nextBattle"></p>
+      <div id="nextBattle"></div>
     </div>
     <h2 class="attr text-center">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
     <div id="party">
@@ -2488,6 +2488,8 @@ function buyItem(itemDiv, item, itemPrice) {
 
   } else if (item.desc.startsWith('Next battle only: ')) {
     document.getElementById('nextBattleDiv').hidden = false;
+    const nextBattleEventEle = document.createElement('p');
+
     let nextBattleEventHTML = item.desc.substring('Next battle only: '.length);
     let nthSelectHTML = '<select>';
     for (let i = 1; i <= 6; i++) {
@@ -2496,7 +2498,9 @@ function buyItem(itemDiv, item, itemPrice) {
     nthSelectHTML += '</select>';
     nextBattleEventHTML = nextBattleEventHTML.replaceAll('[nth]', nthSelectHTML);
     nextBattleEventHTML = itemDescInHTML(nextBattleEventHTML, false);
-    document.getElementById('nextBattle').innerHTML += nextBattleEventHTML + '<br>';
+
+    nextBattleEventEle.innerHTML = nextBattleEventHTML;
+    document.getElementById('nextBattle').append(nextBattleEventEle);
   }
 
   const trueMirrorEle = document.getElementById('trueMirror');
