@@ -188,6 +188,7 @@ button:focus {
 .nextBattle { color: tomato }
 .heldItem { color: orange }
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
+.nextHeldItem { background: linear-gradient(45deg, tomato, orange, tomato); }
 .speciesTM { color: yellow }
 .partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
 .universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, yellow 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
@@ -196,7 +197,7 @@ button:focus {
 .partyAbilitizer { background: linear-gradient(45deg, hotpink, lightgreen, hotpink); }
 .egg { color: wheat }
 .transformer { color: violet }
-.partyMisc, .pokeball, .heldItemParty, .partyTM, .universalTM, .TMAndZCrystal, .partyAbilitizer {  
+.partyMisc, .pokeball, .heldItemParty, .nextHeldItem, .partyTM, .universalTM, .TMAndZCrystal, .partyAbilitizer {  
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -2118,6 +2119,7 @@ const KEYWORD_HOVER_TEXTS = {
   'Nature': 'add a new line under EVs\ne.g. "Bold Nature"',
   'gender': 'e.g. "Pikachu (F)"',
   'Next battle only': 'Revealed after both players are ready for battle.',
+  'nth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
 };
 function itemDescInHTML(itemDesc, isTM) {
   if (!isTM) {
@@ -2486,7 +2488,15 @@ function buyItem(itemDiv, item, itemPrice) {
 
   } else if (item.desc.startsWith('Next battle only: ')) {
     document.getElementById('nextBattleDiv').hidden = false;
-    document.getElementById('nextBattle').innerHTML += item.desc.substring('Next battle only: '.length) + '<br>';
+    let nextBattleEventHTML = item.desc.substring('Next battle only: '.length);
+    let nthSelectHTML = '<select>';
+    for (let i = 1; i <= 6; i++) {
+      nthSelectHTML += '<option>' + ordinal(i) + '</option>';
+    }
+    nthSelectHTML += '</select>';
+    nextBattleEventHTML = nextBattleEventHTML.replaceAll('[nth]', nthSelectHTML);
+    nextBattleEventHTML = itemDescInHTML(nextBattleEventHTML, false);
+    document.getElementById('nextBattle').innerHTML += nextBattleEventHTML + '<br>';
   }
 
   const trueMirrorEle = document.getElementById('trueMirror');
