@@ -2178,7 +2178,8 @@ function randomAbilitizer() {
 
   const effectiveStatDiffs = [];
   for (const pokemonStr of getPartyStrs()) {
-    const speciesName = getSpeciesNameOfPokemon(pokemonStr);
+    // can't use getSpeciesNameOfPokemon due to cosmetic formes, e.g. Minior-Blue
+    const speciesName = allSpecies[getSpeciesIdOfPokemon(pokemonStr)].name;
     const prevAbilityName = getAbilityNameOfPokemon(pokemonStr);
     if (IRREPLACEABLE_ABILITIES.includes(prevAbilityName))
       continue;
