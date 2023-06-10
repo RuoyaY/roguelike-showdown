@@ -61,7 +61,7 @@ body {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.item, .pokeball-desc {
+.item, .pokeball-desc, .next-battle {
   width: 60ch;
 }
 .item-price {
@@ -317,7 +317,7 @@ button:focus {
   <div class="ml-1">
     <div id="nextBattleDiv" hidden>
       <h2 class="attr text-center">Next Battle</h2>
-      <div id="nextBattle"></div>
+      <div id="nextBattle" class="next-battle"></div>
     </div>
     <h2 class="attr text-center">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
     <div id="party">
