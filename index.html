@@ -2225,7 +2225,7 @@ function randomTransformer(failsafe) {
   const effectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
   const effectiveStatDiff = effectiveStatTotal - prevEffectiveStatTotal;
 
-  const price = roundToNearest5(effectiveStatDiff);
+  const price = 5 + roundToNearest5(effectiveStatDiff);
   if (price < MIN_PRICE || MAX_PRICE < price)
     return randomTransformer(failsafe); // re-roll
 
