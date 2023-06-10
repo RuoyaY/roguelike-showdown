@@ -1,3 +1,60 @@
 [KEEP THIS LINE]				
-Defeatist Trick	nextAbilitizer	15								Next battle only: Set your opponent's [nth] Pokemon's ability to *Defeatist*.
+1v1 Battle	nextBattle	10					2			Next battle only: BOTH players choose only 1 Pokemon to put in their team.		
+Singles Battle	nextBattle	10					2			Next battle only: Do a singles battle instead of a doubles battle.		
+Court Change	nextBattle	20								Next battle only: BOTH players use their opponent's team instead of their own.		
 Scouting	nextBattle	30								Next battle only: Your opponent must send you a screenshot of their team before the battle begins.		
+Mirror Battle	nextBattle	40								Next battle only: You use your opponent's team instead of your own.		
+Lv1 Battle	nextBattle	1								Next battle only: BOTH players' Pokemon are ALL set to level 1.		
+Lv50 Battle	nextBattle	40								Next battle only: BOTH players' Pokemon are ALL set to level 50.		
+Lv50 Team	nextBattle	50	0							Next battle only: Your Pokemon are ALL set to level 50.		
+Vs Lv50 Team	nextBattle	50	0							Next battle only: Your opponent's Pokemon are ALL set to level 50.		
+Vs Random Leads	nextBattle	5					3			Next battle only: Your opponent's leading Pokemon must be randomly selected.		
+Random Leads	nextBattle	-5					3			Next battle only: Your leading Pokemon must be randomly selected.		
+Vs Set Leads	nextBattle	10					3			Next battle only: Your opponent must lead with their [nth] and [mth] Pokemon.		
+Set Leads	nextBattle	-5					3			Next battle only: You must lead with your [nth] and [mth] Pokemon.		
+Lead Aversion	nextBattle	5					3			Next battle only: Your opponent CANNOT lead with their [nth] Pokemon.		
+Antichess	nextBattle	10								Next battle only: Whoever loses, wins! Keep in mind your Pokemon can attack each other.		
+No Items Battle	nextBattle	15								Next battle only: Remove ALL held items from BOTH players' Pokemon.		
+No Abilities Battle	nextBattle	10								Next battle only: Set EVERY ability of BOTH players' Pokemon to "No Ability".		
+Level Surge	nextBattle	25								Next battle only: Increase your [nth] Pokemon's level by 5.		
+Level Plunge	nextBattle	-15								Next battle only: Decrease your [nth] Pokemon's level by 5 (can't choose a Pokemon at level 5 or below).		
+Doom Seed Launcher	nextBattle	25								Next battle only: Decrease your opponent's [nth] Pokemon's level by 5 (can't go below 1).		
+Vs Level Surge	nextBattle	-15								Next battle only: Increase your opponent's [nth] Pokemon's level by 5.		
+Instant Lv50	nextBattle	30								Next battle only: Set your [nth] Pokemon's level to 50.		
+Instant Lv1	nextBattle	-50								Next battle only: Set your [nth] Pokemon's level to 1.		
+Vs Instant Lv50	nextBattle	30								Next battle only: Set your opponent's [nth] Pokemon's level to 50.		
+Vs Instant Lv1	nextBattle	40								Next battle only: Set your opponent's [nth] Pokemon's level to 1.		
+Knock Out	nextBattle	50					2			Next battle only: Remove your opponent's [nth] Pokemon.		
+Twin K.O.	nextBattle	10					2			Next battle only: Remove BOTH your and your opponent's [nth] Pokemon.		
+HP Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's HP EV to 252  (max 508 total EVs).		
+Attack Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's Atk EV to 252  (max 508 total EVs).		
+Defense Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's Def EV to 252  (max 508 total EVs).		
+Special Attack Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's SpA EV to 252  (max 508 total EVs).		
+Special Defense Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's SpD EV to 252  (max 508 total EVs).		
+Speed Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's Spe EV to 252  (max 508 total EVs).		
+EV Reset	nextBattle	5								Next battle only: Reset your opponent's [nth] Pokemon's EVs. 		
+Forced Deletion Duo	nextBattle	5								Next battle only: Your opponent must choose TWO moves to delete from their [nth] Pokemon.		
+Forced Deletion Party	nextBattle	5								Next battle only: For each of their Pokemon, your opponent must choose a move to delete.		
+Knock Off	nextBattle	10								Next battle only: Your opponent's [nth] Pokemon cannot hold any items.		
+Forced Iron Ball	nextHeldItem	20								Next battle only: Your opponent's [nth] Pokemon must hold an *Iron Ball*.		
+Forced Flame Orb	nextHeldItem	25								Next battle only: Your opponent's [nth] Pokemon must hold an *Flame Orb*.		
+Forced Toxic Orb	nextHeldItem	20								Next battle only: Your opponent's [nth] Pokemon must hold an *Toxic Orb*.		
+Forced Sticky Barb	nextHeldItem	20								Next battle only: Your opponent's [nth] Pokemon must hold an *Sticky Barb*.		
+Forced Black Sludge	nextHeldItem	20								Next battle only: Your opponent's [nth] Pokemon must hold an *Black Sludge*.		
+Forced Lagging Tail	nextHeldItem	30								Next battle only: Your opponent's [nth] Pokemon must hold an *Lagging Tail*.		
+Forced Choice Band	nextHeldItem	15								Next battle only: Your opponent's [nth] Pokemon must hold an *Choice Band*.		
+Forced Choice Specs	nextHeldItem	15								Next battle only: Your opponent's [nth] Pokemon must hold an *Choice Specs*.		
+Forced Choice Scarf	nextHeldItem	10								Next battle only: Your opponent's [nth] Pokemon must hold an *Choice Scarf*.		
+Forced Assault Vest	nextHeldItem	20								Next battle only: Your opponent's [nth] Pokemon must hold an *Assault Vest*.		
+Forced Debilitizer	nextBattle	5								Next battle only: Set your opponent's [nth] Pokemon's ability to *No Ability*.		
+Forced Defeatist	nextAbilitizer	15								Next battle only: Set your opponent's [nth] Pokemon's ability to *Defeatist*.		
+Forced Klutz	nextAbilitizer	15								Next battle only: Set your opponent's [nth] Pokemon's ability to *Klutz*.		
+Forced Slow Start	nextAbilitizer	30								Next battle only: Set your opponent's [nth] Pokemon's ability to *Slow Start*.		
+Forced Stall	nextAbilitizer	25								Next battle only: Set your opponent's [nth] Pokemon's ability to *Stall*.		
+Forced Truant	nextAbilitizer	30								Next battle only: Set your opponent's [nth] Pokemon's ability to *Truant*.		
+Forced Heavy Metal	nextAbilitizer	5				Low Kick,Grass Knot				Next battle only: Set your opponent's [nth] Pokemon's ability to *Heavy Metal*.		
+Forced Light Metal	nextAbilitizer	5				Heat Crash,Heavy Slam				Next battle only: Set your opponent's [nth] Pokemon's ability to *Light Metal*.		
+Forced Mimicry	nextAbilitizer	10			Electric Surge,Hadron Engine,Grassy Surge,Seed Sower,Misty Surge,Psychic Surge	Electric Terrain,Grassy Terrain,Misty Terrain,Psychic Terrain,Genesis Supernova				Next battle only: Set your opponent's [nth] Pokemon's ability to *Mimicry*.		
+Forced Normalize	nextAbilitizer	20								Next battle only: Set your opponent's [nth] Pokemon's ability to *Normalize*.		
+Forced Rivalry	nextAbilitizer	10								Next battle only: Set your opponent's [nth] Pokemon's ability to *Rivalry*.		
+Forced Contrary	nextAbilitizer	10								Next battle only: Set your opponent's [nth] Pokemon's ability to *Contrary*.		
