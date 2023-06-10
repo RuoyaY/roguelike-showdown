@@ -1210,14 +1210,12 @@ function randomOfSpecies(speciesName, abilityName, gender, pokeball, level, tera
     }
   }
 
-  if (canTera(species, heldItems[getHeldItemId(heldItemName)])) {
-    pokemonStr += '\nTera Type: ';
-    if (teraType) {
-      if (TYPES.includes(teraType))
-        pokemonStr += teraType;
-      else
-        pokemonStr += randomElement(TYPES);
-    }
+  pokemonStr += '\nTera Type: ';
+  if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)])) {
+    if (TYPES.includes(teraType))
+      pokemonStr += teraType;
+    else
+      pokemonStr += randomElement(TYPES);
   }
     
   pokemonStr += '\nEVs: 1 HP';
