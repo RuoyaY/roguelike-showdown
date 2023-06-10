@@ -315,7 +315,7 @@ Encounter Power: Steel	misc	10								Next round, you are guaranteed to get Stee
 Encounter Power: Fairy	misc	10								Next round, you are guaranteed to get Fairy-type Pokemon.		
 Encounter Power: Perfect	misc	15								Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
 Encounter Power: Mirror	misc	5								Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
-Encounter Power: Shadow	misc	10	0						x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last round (next round, you are guaranteed to get Pokemon of that type).		
+Encounter Power: Shadow	misc	10							x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last round (next round, you are guaranteed to get Pokemon of that type).		
 Venusaurite	heldItem	85		venusaur						If held by a Venusaur, this item allows it to Mega Evolve in battle.		
 Charizardite X	heldItem	85		charizard						If held by a Charizard, this item allows it to Mega Evolve in battle.		
 Charizardite Y	heldItem	130		charizard						If held by a Charizard, this item allows it to Mega Evolve in battle.		
@@ -395,7 +395,8 @@ Power Lens	heldItem	0
 Power Band	heldItem	0										
 Power Anklet	heldItem	0										
 Mirror Pokemon	misc	100					2			Replace one of your Pokemon with a clone of one of your other Pokemon. <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
-Shadow Pokemon	misc	80							x	Replace one of your Pokemon with a clone of one of your opponent's Pokemon as it was last round. <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Shadow Pokemon	misc	80							x	Replace one of your Pokemon with a clone of one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Trade	misc	160							x	Swap one of your Pokemon with one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning> <br>Cannot swap away Pokemon you got at Lv 1. </span>		
 Super Rod	misc	150	0.5							REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
 Super Rod	misc	150	0.5							REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
 Old Rod	misc	40	0							ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
@@ -561,7 +562,10 @@ Shadow Egg	egg	70								Copy of one of your opponent's Pokemon as it was last r
 Singles Battle	nextBattle	10					2			Next battle only: Do a singles battle instead of a doubles battle.		
 Court Change	nextBattle	20								Next battle only: BOTH players use their opponent's team instead of their own.		
 Scouting	nextBattle	30								Next battle only: Your opponent must send you a screenshot of their team before the battle begins.		
-Mirror Battle	nextBattle	40								Next battle only: You use your opponent's team instead of your own.		
+Reflect Team	nextBattle	40								Next battle only: You use your opponent's team instead of your own.		
+Reflect Pokemon	nextBattle	15								Next battle only: Replace your [nth] Pokemon with your opponent's Pokemon in that slot.		
+Temporary Trade	nextBattle	10								Next battle only: Swap your and your opponent's [nth] Pokemon.		
+Vs Reflected Pokemon	nextBattle	5								Next battle only: Replace your opponent's [nth] Pokemon with your Pokemon in that slot.		
 Lv1 Battle	nextBattle	1								Next battle only: BOTH players' Pokemon are ALL set to level 1.		
 Lv50 Battle	nextBattle	40								Next battle only: BOTH players' Pokemon are ALL set to level 50.		
 Lv50 Team	nextBattle	50	0							Next battle only: Your Pokemon are ALL set to level 50.		
