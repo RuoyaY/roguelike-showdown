@@ -440,12 +440,23 @@ const CHANGED_ABILITY_DESC = {
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate OR Z-Crystal.',
 };
 
+const TYPE_STONES = {
+  'Fire Stone': 'Fire',
+  'Ice Stone': 'Ice',
+  'Leaf Stone': 'Grass',
+  'Thunder Stone': 'Electric',
+  'Water Stone': 'Water',
+}
+
 const IMPROVED_ITEMS = {
   'Oval Stone': 'Each round, automatically raises the level of the holder by one.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++) {
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
           + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs, up to the maximum of 252 (max 508 total EVs).';
+}
+for (const [key, value] of Object.entries(TYPE_STONES)) {
+  IMPROVED_ITEMS[key] = "Each round, automatically replaces the holder's first move with a random " + value + '-type (non-Z) move.';
 }
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
@@ -1895,29 +1906,48 @@ function nextRound() {
   const isPartyFull = getEmptyPartyDiv() === null;
   document.getElementById('skip').hidden = !isPartyFull;
 
-  // handle Power items (Power Anklet, etc) and Oval Stone
+  // handle Power items (Power Anklet, etc), Oval Stone, and type stones
   for (const pokeDiv of getPartyPokeDivs()) {
     const pokeEle = pokeDiv.querySelector('.pokemon');
     const pokemonStr = pokeEle.innerText.trim();
-    for (let i = 0; i < POWER_ITEMS.length; i++) {
-      if (pokemonStr.includes(' @ ' + POWER_ITEMS[i])) {
-        const evsStr = pokemonStr.split('\n').find(line => line.startsWith('EVs: '));
-        if (evsStr) {
-          const evs = getEvs(evsStr);
-          evs[i] = Math.max(evs[i], Math.min(evs[i] + POWER_ITEM_DELTA, 252, 508 - (sumArr(evs) - evs[i])));
-          pokeEle.innerText = pokemonStr.replace(evsStr, getEvsStr(evs));
-          updatePartyPokemonDiv(pokeDiv);
-        }
-      } else if (pokemonStr.includes(' @ Oval Stone')) {
-        const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
-        const lv = parseInt(lvStr.substring('Level: '.length));
-        pokeEle.innerText = pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
-        updatePartyPokemonDiv(pokeDiv);
-      }
+    let updatedPokemonStr = updateForRoundlyHeldItem(pokemonStr);
+    if (updatedPokemonStr != null) {
+      pokeEle.innerText = updatedPokemonStr;
+      updatePartyPokemonDiv(pokeDiv);
     }
   }
 
   roundCounter++;
+}
+function updateForRoundlyHeldItem(pokemonStr) {
+  // Power items
+  for (let i = 0; i < POWER_ITEMS.length; i++) {
+    if (pokemonStr.includes(' @ ' + POWER_ITEMS[i])) {
+      const evsStr = pokemonStr.split('\n').find(line => line.startsWith('EVs: '));
+      if (evsStr) {
+        const evs = getEvs(evsStr);
+        evs[i] = Math.max(evs[i], Math.min(evs[i] + POWER_ITEM_DELTA, 252, 508 - (sumArr(evs) - evs[i]))); 
+        return pokemonStr.replace(evsStr, getEvsStr(evs));
+      }
+    }
+  }
+  // Oval Stone
+  if (pokemonStr.includes(' @ Oval Stone')) {
+    const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
+    const lv = parseInt(lvStr.substring('Level: '.length));
+    return pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
+  }
+  // Type Stones
+  for (const [stoneName, type] of Object.entries(TYPE_STONES)) {
+    if (pokemonStr.includes(' @ ' + stoneName)) {
+      const firstMoveLine = pokemonStr.split('\n').find(line => line.startsWith('- '));
+      let move;
+      do {
+        move = randomMove(false);
+      } while (move.type !== type)
+      return pokemonStr.replace(firstMoveLine, '- ' + move.name);
+    }
+  }
 }
 
 function sumArr(arr) {
