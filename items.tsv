@@ -518,7 +518,6 @@ Rare Dragon Candy	misc	15	0.11							Increase a Dragon-type Pokemon's level by o
 Rare Steel Candy	misc	15	0.11							Increase a Steel-type Pokemon's level by one.		
 Rare Fairy Candy	misc	15	0.11							Increase a Fairy-type Pokemon's level by one.		
 Rare Single-Type Candy	misc	15								Increase a Pokemon with only one type's level by one.		
-Oval Stone	heldItem	30								Lv +1 every round		
 Perfect Normal TM	universalTM	50								Teach ANY 1 Pokemon ANY 1 NORMAL-TYPE move (other than Z-Moves).		
 Perfect Fire TM	universalTM	50								Teach ANY 1 Pokemon ANY 1 FIRE-TYPE move (other than Z-Moves).		
 Perfect Water TM	universalTM	50								Teach ANY 1 Pokemon ANY 1 WATER-TYPE move (other than Z-Moves).		
@@ -620,8 +619,9 @@ Forced Mimicry	nextAbilitizer	10			Electric Surge,Hadron Engine,Grassy Surge,See
 Forced Normalize	nextAbilitizer	20								Next battle only: Set your opponent's [nth] Pokemon's ability to *Normalize*.		
 Forced Rivalry	nextAbilitizer	10								Next battle only: Set your opponent's [nth] Pokemon's ability to *Rivalry*.		
 Forced Contrary	nextAbilitizer	10								Next battle only: Set your opponent's [nth] Pokemon's ability to *Contrary*.		
-Fire Stone	heldItem	5										
-Ice Stone	heldItem	5										
-Leaf Stone	heldItem	5										
-Thunder Stone	heldItem	5										
-Water Stone	heldItem	5										
+Oval Stone	heldItem	30								Lv +1 every round		
+Fire Stone	heldItem	25										
+Ice Stone	heldItem	25										
+Leaf Stone	heldItem	25										
+Thunder Stone	heldItem	25										
+Water Stone	heldItem	25										

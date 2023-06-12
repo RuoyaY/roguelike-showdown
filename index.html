@@ -456,7 +456,7 @@ for (let i = 0; i < POWER_ITEMS.length; i++) {
           + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs, up to the maximum of 252 (max 508 total EVs).';
 }
 for (const [key, value] of Object.entries(TYPE_STONES)) {
-  IMPROVED_ITEMS[key] = "Each round, automatically replaces the holder's first move with a random " + value + '-type (non-Z) move.';
+  IMPROVED_ITEMS[key] = "Each round, holder automatically gets a random " + value + '-type move in a NEW move slot.';
 }
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
@@ -1940,12 +1940,11 @@ function updateForRoundlyHeldItem(pokemonStr) {
   // Type Stones
   for (const [stoneName, type] of Object.entries(TYPE_STONES)) {
     if (pokemonStr.includes(' @ ' + stoneName)) {
-      const firstMoveLine = pokemonStr.split('\n').find(line => line.startsWith('- '));
       let move;
       do {
         move = randomMove(false);
       } while (move.type !== type)
-      return pokemonStr.replace(firstMoveLine, '- ' + move.name);
+      return pokemonStr + '\n- ' + move.name;
     }
   }
 }
