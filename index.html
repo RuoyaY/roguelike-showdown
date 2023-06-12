@@ -1749,7 +1749,11 @@ function updateTMSeekerOptions() {
     option.innerText = speciesNames[i];
     tmSeekerEle.append(option);
   }
-  tmSeekerEle.selectedIndex = index;
+  const numOptions = tmSeekerEle.length;
+  if (index < numOptions)
+    tmSeekerEle.selectedIndex = index;
+  else
+    tmSeekerEle.selectedIndex = numOptions-1;
 }
 
 function numPokemonWithAbility(abilityName) {
