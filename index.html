@@ -352,6 +352,27 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Ice', 'Fighting', 'Poison', 'Ground', 'Flying',
   'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
   'Dragon', 'Steel', 'Fairy'];
+// x: attacker index, y: defender index
+const TYPE_MATCHUPS = [
+[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,.5, 0, 1, 1,.5, 1,],
+[ 1,.5,.5, 2, 1, 2, 1, 1, 1, 1, 1, 2,.5, 1, 1,.5, 2, 1,],
+[ 1, 2,.5,.5, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1,.5, 1, 1,],
+[ 1,.5, 2,.5, 1, 1, 1,.5, 2,.5, 1,.5, 2, 1, 1,.5,.5, 1,],
+[ 1, 1, 2,.5,.5, 1, 1, 1, 0, 2, 1, 1, 1, 1, 1,.5, 1, 1,],
+[ 1,.5,.5, 2, 1,.5, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2,.5, 1,],
+[ 2, 1, 1, 1, 1, 2, 1,.5, 1,.5,.5,.5, 2, 0, 2, 1, 2,.5,],
+[ 1, 1, 1, 2, 1, 1, 1,.5,.5, 1, 1, 1,.5,.5, 1, 1, 0, 2,],
+[ 1, 2, 1,.5, 2, 1, 1, 2, 1, 0, 1,.5, 2, 1, 1, 1, 2, 1,],
+[ 1, 1, 1, 2,.5, 1, 2, 1, 1, 1, 1, 2,.5, 1, 1, 1,.5, 1,],
+[ 1, 1, 1, 1, 1, 1, 2, 2, 1, 1,.5, 1, 1, 1, 0, 1,.5, 1,],
+[ 1,.5, 1, 2, 1, 1,.5,.5, 1,.5, 2, 1, 1,.5, 2, 1,.5,.5,],
+[ 1, 2, 1, 1, 1, 2,.5, 1,.5, 2, 1, 2, 1, 1, 1, 1,.5, 1,],
+[ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2,.5, 1, 1, 1,],
+[ 1, 1, 1, 1, 1, 1,.5, 1, 1, 1, 2, 1, 1, 2,.5, 1, 1,.5,],
+[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,.5, 0,],
+[ 1,.5,.5, 1,.5, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1,.5, 2,],
+[ 1,.5, 1, 1, 1, 1, 2,.5, 1, 1, 1, 1, 1, 1, 2, 2,.5, 1,],
+];
   
 const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
@@ -656,6 +677,31 @@ function printInvalidItems() {
 function getAllPokeballNames() {
   const pokeballEle = document.getElementById('pokeball');
   return Array.from(pokeballEle.options).map(option => option.value);
+}
+
+function printTypeMatchupGrid(arr) {
+  // starting point: https://github.com/filipekiss/pokemon-type-chart/blob/master/types.json
+  const grid = [];
+  for (let matchup of arr) {
+    const attackIndex = TYPES.indexOf(matchup.name);
+    grid[attackIndex] = Array(TYPES.length).fill('1');
+    for (let defenseType of matchup.immunes)
+      grid[attackIndex][TYPES.indexOf(defenseType)] = '0';
+    for (let defenseType of matchup.weaknesses)
+      grid[attackIndex][TYPES.indexOf(defenseType)] = '.5';
+    for (let defenseType of matchup.strengths)
+      grid[attackIndex][TYPES.indexOf(defenseType)] = '2';
+  }
+  
+  let out = '[\n';
+  for (const row of grid) {
+    out += '[';
+    for (const cell of row)
+      out += (cell + ',').padStart(3);
+    out += '],\n';
+  }
+  out += ']';
+  console.log(out);
 }
 
 let numLoading = 6;
