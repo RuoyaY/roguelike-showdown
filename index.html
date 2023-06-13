@@ -450,6 +450,7 @@ const TYPE_STONES = {
 
 const IMPROVED_ITEMS = {
   'Oval Stone': 'Each round, automatically raises the level of the holder by one.',
+  'Dusk Stone': 'This Pokemon can no longer be edited or replaced.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++) {
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
@@ -861,7 +862,14 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
     pokemonEle.setAttribute('contenteditable', true);
     pokemonEle.setAttribute('spellcheck', false);
     pokemonEle.classList.add('editable');
-    pokemonEle.addEventListener('focusout', function() {updatePartyPokemonDiv(div)}, false);
+    pokemonEle.addEventListener('focusout', function() {
+      if (pokemonEle.innerText.includes(' @ Dusk Stone'))
+        if (confirm('WARNING: this slot will no longer be editable.'))
+          removeEditable(pokemonEle);
+        else
+          pokemonEle.innerText = pokemonEle.innerText.replace(' @ Dusk Stone', '');
+      updatePartyPokemonDiv(div);
+    }, false);
   }
   if (noMoveHeight)
     pokemonEle.classList.add('no-move-height');
@@ -879,6 +887,11 @@ function updatePartyPokemonDiv(div) {
   updateRefreshCost();
   updateTMSeekerOptions();
   updatePokemonDiv(div);
+}
+
+function removeEditable(pokemonEle) {
+  pokemonEle.setAttribute('contenteditable', false);
+  pokemonEle.classList.remove('editable');
 }
 
 function updatePokemonDiv(div) {
@@ -1856,7 +1869,10 @@ function load() {
 
   const partyStrs = localStorage.getItem('partyStrs').split('\n\n');
   for (const pokeEle of getPartyPokeEles()) {
-    pokeEle.textContent = partyStrs.shift();
+    const pokemonStr = partyStrs.shift();
+    pokeEle.textContent = pokemonStr;
+    if (pokemonStr.includes(' @ Dusk Stone'))
+      removeEditable(pokeEle);
     updatePartyPokemonDiv(pokeEle.parentElement);
   }
 
