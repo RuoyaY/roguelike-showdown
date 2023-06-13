@@ -786,6 +786,7 @@ function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     allSpecies = JSON.parse(this.responseText);
+    allSpecies.missingno.types = allSpecies.missingno.types.filter(type => TYPES.includes(type));
     doneLoading();
   }
   xhttp.open("GET", "pokedex.json");
