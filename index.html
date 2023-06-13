@@ -106,6 +106,9 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   right: 0;
 }
 
+.types {
+  width: max-content; /* only relevant to randomTransformer */
+}
 .types > img {
   margin-right: 1px;
 }
@@ -120,10 +123,15 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   /* opacity: 0;
   transition: opacity .3s; */
 }
+.position-left {
+  left: 0;
+  margin-left: 8px;
+}
 .types:hover .matchups {
   visibility: visible;
   /* opacity: 1; */
 }
+
 
 .text-aligned-img {
   vertical-align: middle;
@@ -981,27 +989,31 @@ function updatePokemonDiv(div) {
   const typesEle = div.querySelector('.types');
   killAllChildren(typesEle);
   const types = allSpecies[getSpeciesId(speciesName)].types;
-  for (const type of types)
-    typesEle.innerHTML += getTypeImageHTML(type, false);
-
-  const matchupsEle = document.createElement('div');
-  matchupsEle.classList.add('info-box', 'matchups');
-  let innerHTML = '';
-  for (const [matchupNum, attackTypes] of getTypeMatchups(types)) {
-    if (attackTypes.length > 0) {
-      innerHTML += matchupNumToStr(matchupNum) + ': ';
-      for (const attackType of attackTypes)
-        innerHTML += getTypeImageHTML(attackType, true);
-      innerHTML += '\n';
-    }
-    if (matchupNum === 2)
-      innerHTML += '<hr>';
-  }
-  matchupsEle.innerHTML += innerHTML;
-  typesEle.append(matchupsEle);
-
+  typesEle.innerHTML = getTypesHTML(types, false);
+  
   const statsEle = div.querySelector('.stats');
   statsEle.innerHTML = statsInHTML(getStatRelevantInfo(pokemonStr), true);
+}
+function getTypesHTML(types, positionLeft) {
+  let typesHTML = '';
+  for (const type of types)
+    typesHTML += getTypeImageHTML(type, false);
+
+  let matchupInnerHTML = '';
+  for (const [matchupNum, attackTypes] of getTypeMatchups(types)) {
+    if (attackTypes.length > 0) {
+      matchupInnerHTML += matchupNumToStr(matchupNum) + ': ';
+      for (const attackType of attackTypes)
+        matchupInnerHTML += getTypeImageHTML(attackType, true);
+      matchupInnerHTML += '\n';
+    }
+    if (matchupNum === 2)
+      matchupInnerHTML += '<hr>';
+  }
+  typesHTML += '<div class="info-box matchups' + (positionLeft ? ' position-left' : '') + '">' 
+            + matchupInnerHTML + '</div>';
+
+  return typesHTML;
 }
 
 function getTypeImageHTML(type, textAligned) {
@@ -2399,7 +2411,7 @@ function randomTransformer(failsafe) {
     price: price,
     desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
-            + species.types.map(type => getTypeImageHTML(type, true)).join('') + '\n'
+            + '<div class="types">' + getTypesHTML(species.types, true) + '</div>'
             + spanWithClass(statsInHTML(statInfo, false), 'attr'),
   }
 }
