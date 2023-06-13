@@ -2601,6 +2601,7 @@ function isLegalMove(move, allowZMoves, allowGMaxMoves) {
     || move.name.startsWith('Max') 
     || (move.name.startsWith('G-Max') && (!allowGMaxMoves || move.basePower === 160))
     || (move.isZ && !allowZMoves)
+    || move.desc?.includes('cannot be used successfully')
   );
 }
 
