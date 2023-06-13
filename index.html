@@ -70,9 +70,11 @@ body {
   border-bottom-left-radius: 0;
   width: 7ch;
 }
+
 input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-price {
   background: linear-gradient(lightblue -20%,black,black,lightblue 120%);
 }
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -103,8 +105,28 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   top: 0;
   right: 0;
 }
-.overlay > img {
+
+.types > img {
   margin-right: 1px;
+}
+
+.matchups {
+  background-color: rgba(0,0,0,.8);
+  position: absolute;
+  right: 0;
+  width: max-content;
+
+  visibility: hidden;
+  /* opacity: 0;
+  transition: opacity .3s; */
+}
+.types:hover .matchups {
+  visibility: visible;
+  /* opacity: 1; */
+}
+
+.text-aligned-img {
+  vertical-align: middle;
 }
 
 .generated-species-row {
@@ -922,7 +944,7 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
   div.append(pokemonEle);
 
   const typesEle = document.createElement('div');
-  typesEle.classList.add('overlay');
+  typesEle.classList.add('overlay', 'types');
   div.append(typesEle);
 
   const statsEle = document.createElement('p');
@@ -946,7 +968,7 @@ function updatePokemonDiv(div) {
 
   if (pokemonStr.trim() === '') {
     pokemonEle.style.backgroundImage = '';
-    killAllChildren(div.querySelector('.overlay'));
+    killAllChildren(div.querySelector('.types'));
     div.querySelector('.stats').innerHTML = '';
     return;
   }
@@ -956,19 +978,65 @@ function updatePokemonDiv(div) {
   const speciesName = getSpeciesNameOfPokemon(pokemonStr);
   pokemonEle.style.backgroundImage = getImageURL(speciesName);
 
-  const typesEle = div.querySelector('.overlay');
+  const typesEle = div.querySelector('.types');
   killAllChildren(typesEle);
-  for (const type of allSpecies[getSpeciesId(speciesName)].types) {
-    const typeImage = document.createElement('img');
-    typeImage.src = getTypeImageURL(type);
-    typesEle.append(typeImage);
+  const types = allSpecies[getSpeciesId(speciesName)].types;
+  for (const type of types)
+    typesEle.innerHTML += getTypeImageHTML(type, false);
+
+  const matchupsEle = document.createElement('div');
+  matchupsEle.classList.add('info-box', 'matchups');
+  let innerHTML = '';
+  for (const [matchupNum, attackTypes] of getTypeMatchups(types)) {
+    if (attackTypes.length > 0) {
+      innerHTML += matchupNumToStr(matchupNum) + ': ';
+      for (const attackType of attackTypes)
+        innerHTML += getTypeImageHTML(attackType, true);
+      innerHTML += '\n';
+    }
+    if (matchupNum === 2)
+      innerHTML += '<hr>';
   }
+  matchupsEle.innerHTML += innerHTML;
+  typesEle.append(matchupsEle);
 
   const statsEle = div.querySelector('.stats');
   statsEle.innerHTML = statsInHTML(getStatRelevantInfo(pokemonStr), true);
 }
+
+function getTypeImageHTML(type, textAligned) {
+  return '<img ' + (textAligned ? 'class="text-aligned-img"' : '') 
+                 + ' src="' + getTypeImageURL(type) + '">';
+}
 function getTypeImageURL(type) {
   return 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
+}
+
+function matchupNumToStr(matchupNum) {
+  switch (matchupNum) {
+    case   0: return '  0';
+    case .25: return '1/4';
+    case  .5: return '1/2';
+    case   2: return '  2';
+    case   4: return '  4';
+    default: throw new Error('Invalid matchupNum: ' + matchupNum);
+  }
+}
+
+function getTypeMatchups(defendTypes) {
+  let matchups = [[4,[]], [2,[]], [.5,[]], [.25,[]], [0,[]]];
+  for (const attackType of TYPES) {
+    const attackTypes = matchups.find(arr => arr[0] === getTypeMatchup(attackType, defendTypes));
+    if (attackTypes)
+      attackTypes[1].push(attackType);
+  }
+  return matchups;
+}
+function getTypeMatchup(attackType, defendTypes) {
+  let matchup = 1;
+  for (const defendType of defendTypes)
+    matchup *= TYPE_MATCHUPS[TYPES.indexOf(attackType)][TYPES.indexOf(defendType)];
+  return matchup;
 }
 
 function getProperSpeciesName(speciesNameInput) {
@@ -2331,7 +2399,7 @@ function randomTransformer(failsafe) {
     price: price,
     desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
-            + species.types.map(type => '<img src="' + getTypeImageURL(type) + '"">').join('') + '\n'
+            + species.types.map(type => getTypeImageHTML(type, true)).join('') + '\n'
             + spanWithClass(statsInHTML(statInfo, false), 'attr'),
   }
 }
