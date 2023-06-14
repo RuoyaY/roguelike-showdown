@@ -867,7 +867,7 @@ function loadItems() {
         item.price = parseInt(item.price);    
 
       if (splitByTab[3] !== '')
-        item.weight = splitByTab[3];
+        item.weight = parseFloat(splitByTab[3]);
       if (splitByTab[4] !== '')
         item.requiredSpecies = splitByTab[4].split(',');
       if (splitByTab[5] !== '')
