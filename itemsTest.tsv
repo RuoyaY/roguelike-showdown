@@ -1,9 +1,6 @@
 [KEEP THIS LINE]				
-TR94	heldItem	25	0.2							adds the move High Horsepower
-TR95	heldItem	25	0.2							adds the move Throat Chop
-TR96	heldItem	25	0.2							adds the move Pollen Puff
-TR97	heldItem	25	0.2							adds the move Psychic Fangs
-TR98	heldItem	25	0.2							adds the move Liquidation
-TR99	heldItem	25	0.2							adds the move Body Press
-Perfect TR	misc	30								Set a Pokemon's held item to any TR (e.g. *TR00*).
+Power Anklet	heldItem	0										
+Old Rod	misc	40	0							ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Random TR	misc	10								Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.
+Move Swapper	misc	20					2			Swap ANY two moves between any two Pokemon.		
+Terrain Extender	heldItem	10			Electric Surge,Hadron Engine,Grassy Surge,Seed Sower,Misty Surge,Psychic Surge	Electric Terrain,Grassy Terrain,Misty Terrain,Psychic Terrain,Genesis Supernova						

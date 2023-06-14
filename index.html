@@ -2249,7 +2249,7 @@ function randomHeldItem() {
 }
 
 function isLegalItem(item) {
-  if (item.weight && !(Math.random() < item.weight))
+  if (item.weight != null && !(Math.random() < item.weight))
     return false;
   
   if (hasRequirement(item)) { // if there are required conditions...
@@ -2267,7 +2267,7 @@ function isLegalItem(item) {
   }
 
   const partySize = getPartyStrs().length;
-  if (item.minPartySize && partySize < item.minPartySize)
+  if (item.minPartySize != null && partySize < item.minPartySize)
     return false;
   if (item.bannedIfPartyFull && partySize === getPartyPokeDivs().length)
     return false;
@@ -2278,7 +2278,7 @@ function isLegalItem(item) {
   return true;
 }
 function hasRequirement(item) {
-  return item.requiredSpecies || item.requiredAbilities || item.requiredMoves;
+  return item.requiredSpecies != null || item.requiredAbilities != null || item.requiredMoves != null;
 }
 
 function getItemPrice(item) {
