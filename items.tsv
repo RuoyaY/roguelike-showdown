@@ -119,7 +119,7 @@ Hasty Mint	misc	5								Set a Pokemon's Nature to Hasty (+Spe, -Def).
 Jolly Mint	misc	10								Set a Pokemon's Nature to Jolly (+Spe, -SpA).		
 Naive Mint	misc	5								Set a Pokemon's Nature to Naive (+Spe, -SpD).		
 Perfect Mint	misc	15								Set a Pokemon's Nature to any Nature.		
-Random Mint	misc	n-1								Generate a random Nature (excluding neutral natures), then set any 1 Pokemon's Nature to that Nature.		
+Random Mint	misc	1	0							Generate a random Nature (excluding neutral natures), then set any 1 Pokemon's Nature to that Nature.		
 Leftovers	heldItem	30								[held items have automatically generated descriptions]		
 Black Sludge	heldItem	20										
 Choice Band	heldItem	40										
@@ -148,7 +148,7 @@ Snowball	heldItem	10								hit by ice, +1 Atk
 Wonder Gummi	misc	10								A Pokemon gains an extra move slot (add a hyphen on a new line).		
 Wonder Gummi Party	partyMisc	10n								EVERY Pokemon gains an extra move slot (add a hyphen on a new line).		
 Move Reducer	misc	-10								A Pokemon loses a move slot (delete a hyphen).		
-Move Deleter	misc	0								Delete 1 or more moves (leave the hyphens) (each Pokemon must know at least 1 move). Give yourself $1 for each move you delete.		
+Move Deleter	misc	1								Delete 1 or more moves (leave the hyphens) (each Pokemon must know at least 1 move). Give yourself $1 for each move you delete.		
 Move-Deleting Duo	misc	-20								A Pokemon forgets 2 moves (leave the hyphens).		
 Move-Deleting Trio	misc	-40								A Pokemon forgets 3 moves (leave the hyphens).		
 Move Deletion Party	partyMisc	-10n+5								EVERY Pokemon forgets 1 move (leave the hyphens).		
@@ -380,13 +380,13 @@ Chill Drive	heldItem	0				Techno Blast
 Douse Drive	heldItem	0				Techno Blast						
 Shock Drive	heldItem	0				Techno Blast						
 True Mirror	misc	50	0							The next thing you buy, you get twice.		
-Wonder Guard-ifier	abilitizer	25								Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.		
+Wonder Guard-ifier	abilitizer	15								Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.		
 Plus & Minus Abilitizers	abilitizer	100					2			Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 (Almost) Perfect Abilitizer	abilitizer	70								Set a Pokemon's ability to any ability other than Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 Mirror Abilitizer	abilitizer	30					2			Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 Shadow Abilitizer	abilitizer	25							x	Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last round.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
-Weather Chaos Abilitizers	abilitizer	50					4			Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
-Terrain Chaos Abilitizers	abilitizer	30					4			Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Weather Chaos Abilitizers	abilitizer	30					4			Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Terrain Chaos Abilitizers	abilitizer	5					4			Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 Debilitizer	misc	-10								Set a Pokemon's ability to "No Ability". <span class="warning"> <br>Cannot remove Defeatist, Slow Start, Stall, or Truant. </span>		
 Power Weight	heldItem	0										
 Power Bracer	heldItem	0										
@@ -499,6 +499,7 @@ Big Root	heldItem	15				Absorb,Bitter Blade,Bouncy Bubble,Drain Punch,Draining K
 Float Stone	heldItem	1										
 Focus Band	heldItem	5										
 Ring Target	heldItem	0										
+Rare Bone	heldItem	5				Fling						
 Rare Normal Candy	misc	15	0.11							Increase a Normal-type Pokemon's level by one.		
 Rare Fire Candy	misc	15	0.11							Increase a Fire-type Pokemon's level by one.		
 Rare Water Candy	misc	15	0.11							Increase a Water-type Pokemon's level by one.		
@@ -554,7 +555,7 @@ Perfect Dark Party TM	partyTM	25n+25	0.05							Choose ANY DARK-TYPE move (other
 Perfect Dragon Party TM	partyTM	25n+25	0.05							Choose ANY DRAGON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.		
 Perfect Steel Party TM	partyTM	25n+25	0.05							Choose ANY STEEL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.		
 Perfect Fairy Party TM	partyTM	25n+25	0.05							Choose ANY FAIRY-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.		
-Perfect Egg	egg	90								In an EXTRA SLOT, add a Pokemon of ANY species, with any ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. </span>		
+Perfect Egg	egg	90								In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. </span>		
 Mirror Egg	egg	70								Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.		
 Shadow Egg	egg	70								Copy of one of your opponent's Pokemon as it was last round into an EXTRA SLOT. Set the copy's level to 1.		
 1v1 Battle	nextBattle	10					2			Next battle only: BOTH players choose only 1 Pokemon to put in their team.		
@@ -578,14 +579,14 @@ Antichess	nextBattle	10								Next battle only: Whoever loses, wins! Keep in mi
 No Items Battle	nextBattle	15								Next battle only: Remove ALL held items from BOTH players' Pokemon.		
 No Abilities Battle	nextBattle	10								Next battle only: Set EVERY ability of BOTH players' Pokemon to "No Ability".		
 Level Surge	nextBattle	25								Next battle only: Increase your [nth] Pokemon's level by 5.		
-Level Plunge	nextBattle	-15								Next battle only: Decrease your [nth] Pokemon's level by 5 (can't choose a Pokemon at level 5 or below).		
-Doom Seed Launcher	nextBattle	25								Next battle only: Decrease your opponent's [nth] Pokemon's level by 5 (can't go below 1).		
 Vs Level Surge	nextBattle	-15								Next battle only: Increase your opponent's [nth] Pokemon's level by 5.		
-Instant Lv50	nextBattle	30								Next battle only: Set your [nth] Pokemon's level to 50.		
-Instant Lv1	nextBattle	-50								Next battle only: Set your [nth] Pokemon's level to 1.		
+Level Plunge	nextBattle	-15								Next battle only: Decrease your [nth] Pokemon's level by 5 (can't choose a Pokemon at level 5 or below).		
+Vs Level Plunge	nextBattle	25								Next battle only: Decrease your opponent's [nth] Pokemon's level by 5 (can't go below 1).		
+Instant Lv50	nextBattle	30								Next battle only: Set your [nth] Pokemon's level to 50. Cannot choose Pokemon you got at level 1.		
+Instant Lv1	nextBattle	-40								Next battle only: Set your [nth] Pokemon's level to 1. Cannot choose Pokemon you got at level 1.		
 Vs Instant Lv50	nextBattle	30								Next battle only: Set your opponent's [nth] Pokemon's level to 50.		
-Vs Instant Lv1	nextBattle	40								Next battle only: Set your opponent's [nth] Pokemon's level to 1.		
-Knock Out	nextBattle	50					2			Next battle only: Remove your opponent's [nth] Pokemon.		
+Vs Instant Lv1	nextBattle	40	0							Next battle only: Set your opponent's [nth] Pokemon's level to 1.		
+Knock Out	nextBattle	50	0				2			Next battle only: Remove your opponent's [nth] Pokemon.		
 Twin K.O.	nextBattle	10					2			Next battle only: Remove BOTH your and your opponent's [nth] Pokemon.		
 HP Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's HP EV to 252  (max 508 total EVs).		
 Attack Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's Atk EV to 252  (max 508 total EVs).		
@@ -595,7 +596,7 @@ Special Defense Surge	nextBattle	10								Next battle only: Set your [nth] Poke
 Speed Surge	nextBattle	10								Next battle only: Set your [nth] Pokemon's Spe EV to 252  (max 508 total EVs).		
 EV Reset	nextBattle	5								Next battle only: Reset your opponent's [nth] Pokemon's EVs. 		
 Forced Deletion Duo	nextBattle	5								Next battle only: Your opponent must choose TWO moves to delete from their [nth] Pokemon.		
-Forced Deletion Party	nextBattle	5								Next battle only: For each of their Pokemon, your opponent must choose a move to delete.		
+Forced Deletion Party	nextBattle	5								Next battle only: For EACH of their Pokemon, your opponent must choose one move to delete.		
 Knock Off	nextBattle	10								Next battle only: Your opponent's [nth] Pokemon cannot hold any items.		
 Forced Iron Ball	nextHeldItem	20								Next battle only: Your opponent's [nth] Pokemon must hold an *Iron Ball*.		
 Forced Flame Orb	nextHeldItem	25								Next battle only: Your opponent's [nth] Pokemon must hold an *Flame Orb*.		
@@ -620,8 +621,109 @@ Forced Normalize	nextAbilitizer	20								Next battle only: Set your opponent's 
 Forced Rivalry	nextAbilitizer	10								Next battle only: Set your opponent's [nth] Pokemon's ability to *Rivalry*.		
 Forced Contrary	nextAbilitizer	10								Next battle only: Set your opponent's [nth] Pokemon's ability to *Contrary*.		
 Oval Stone	heldItem	30								Lv +1 every round		
-Fire Stone	heldItem	25										
-Ice Stone	heldItem	25										
-Leaf Stone	heldItem	25										
-Thunder Stone	heldItem	25										
-Water Stone	heldItem	25										
+Fire Stone	heldItem	25								Add a random ___-type move in a new slot		
+Ice Stone	heldItem	25								Add a random ___-type move in a new slot		
+Leaf Stone	heldItem	25								Add a random ___-type move in a new slot		
+Thunder Stone	heldItem	25								Add a random ___-type move in a new slot		
+Water Stone	heldItem	25								Add a random ___-type move in a new slot		
+Dusk Stone	heldItem	20n-90								can't be changed/replaced		
+TR00	heldItem	25	0.2							adds the move Swords Dance		
+TR01	heldItem	25	0.2							adds the move Body Slam		
+TR02	heldItem	25	0.2							adds the move Flamethrower		
+TR03	heldItem	25	0.2							adds the move Hydro Pump		
+TR04	heldItem	25	0.2							adds the move Surf		
+TR05	heldItem	25	0.2							adds the move Ice Beam		
+TR06	heldItem	25	0.2							adds the move Blizzard		
+TR07	heldItem	25	0.2							adds the move Low Kick		
+TR08	heldItem	25	0.2							adds the move Thunderbolt		
+TR09	heldItem	25	0.2							adds the move Thunder		
+TR10	heldItem	25	0.2							adds the move Earthquake		
+TR11	heldItem	25	0.2							adds the move Psychic		
+TR12	heldItem	25	0.2							adds the move Agility		
+TR13	heldItem	15	0.2							adds the move Focus Energy		
+TR14	heldItem	15	0.2							adds the move Metronome		
+TR15	heldItem	25	0.2							adds the move Fire Blast		
+TR16	heldItem	25	0.2							adds the move Waterfall		
+TR17	heldItem	25	0.2							adds the move Amnesia		
+TR18	heldItem	25	0.2							adds the move Leech Life		
+TR19	heldItem	25	0.2							adds the move Tri Attack		
+TR20	heldItem	25	0.2							adds the move Substitute		
+TR21	heldItem	25	0.2							adds the move Reversal		
+TR22	heldItem	25	0.2							adds the move Sludge Bomb		
+TR23	heldItem	15	0.2							adds the move Spikes		
+TR24	heldItem	25	0.2							adds the move Outrage		
+TR25	heldItem	25	0.2							adds the move Psyshock		
+TR26	heldItem	15	0.2							adds the move Endure		
+TR27	heldItem	25	0.2							adds the move Sleep Talk		
+TR28	heldItem	25	0.2							adds the move Megahorn		
+TR29	heldItem	25	0.2							adds the move Baton Pass		
+TR30	heldItem	25	0.2							adds the move Encore		
+TR31	heldItem	25	0.2							adds the move Iron Tail		
+TR32	heldItem	25	0.2							adds the move Crunch		
+TR33	heldItem	25	0.2							adds the move Shadow Ball		
+TR34	heldItem	25	0.2							adds the move Future Sight		
+TR35	heldItem	25	0.2							adds the move Uproar		
+TR36	heldItem	25	0.2							adds the move Heat Wave		
+TR37	heldItem	25	0.2							adds the move Taunt		
+TR38	heldItem	15	0.2							adds the move Trick		
+TR39	heldItem	25	0.2							adds the move Superpower		
+TR40	heldItem	15	0.2							adds the move Skill Swap		
+TR41	heldItem	25	0.2							adds the move Blaze Kick		
+TR42	heldItem	25	0.2							adds the move Hyper Voice		
+TR43	heldItem	25	0.2							adds the move Overheat		
+TR44	heldItem	25	0.2							adds the move Cosmic Power		
+TR45	heldItem	25	0.2							adds the move Muddy Water		
+TR46	heldItem	25	0.2							adds the move Iron Defense		
+TR47	heldItem	25	0.2							adds the move Dragon Claw		
+TR48	heldItem	25	0.2							adds the move Bulk Up		
+TR49	heldItem	25	0.2							adds the move Calm Mind		
+TR50	heldItem	25	0.2							adds the move Leaf Blade		
+TR51	heldItem	25	0.2							adds the move Dragon Dance		
+TR52	heldItem	25	0.2							adds the move Gyro Ball		
+TR53	heldItem	25	0.2							adds the move Close Combat		
+TR54	heldItem	15	0.2							adds the move Toxic Spikes		
+TR55	heldItem	25	0.2							adds the move Flare Blitz		
+TR56	heldItem	25	0.2							adds the move Aura Sphere		
+TR57	heldItem	25	0.2							adds the move Poison Jab		
+TR58	heldItem	25	0.2							adds the move Dark Pulse		
+TR59	heldItem	25	0.2							adds the move Seed Bomb		
+TR60	heldItem	25	0.2							adds the move X-Scissor		
+TR61	heldItem	25	0.2							adds the move Bug Buzz		
+TR62	heldItem	25	0.2							adds the move Dragon Pulse		
+TR63	heldItem	25	0.2							adds the move Power Gem		
+TR64	heldItem	25	0.2							adds the move Focus Blast		
+TR65	heldItem	25	0.2							adds the move Energy Ball		
+TR66	heldItem	25	0.2							adds the move Brave Bird		
+TR67	heldItem	25	0.2							adds the move Earth Power		
+TR68	heldItem	25	0.2							adds the move Nasty Plot		
+TR69	heldItem	25	0.2							adds the move Zen Headbutt		
+TR70	heldItem	25	0.2							adds the move Flash Cannon		
+TR71	heldItem	25	0.2							adds the move Leaf Storm		
+TR72	heldItem	25	0.2							adds the move Power Whip		
+TR73	heldItem	25	0.2							adds the move Gunk Shot		
+TR74	heldItem	25	0.2							adds the move Iron Head		
+TR75	heldItem	25	0.2							adds the move Stone Edge		
+TR76	heldItem	15	0.2							adds the move Stealth Rock		
+TR77	heldItem	25	0.2							adds the move Grass Knot		
+TR78	heldItem	25	0.2							adds the move Sludge Wave		
+TR79	heldItem	25	0.2							adds the move Heavy Slam		
+TR80	heldItem	25	0.2							adds the move Electro Ball		
+TR81	heldItem	25	0.2							adds the move Foul Play		
+TR82	heldItem	25	0.2							adds the move Stored Power		
+TR83	heldItem	25	0.2							adds the move Ally Switch		
+TR84	heldItem	25	0.2							adds the move Scald		
+TR85	heldItem	25	0.2							adds the move Work Up		
+TR86	heldItem	25	0.2							adds the move Wild Charge		
+TR87	heldItem	25	0.2							adds the move Drill Run		
+TR88	heldItem	25	0.2							adds the move Heat Crash		
+TR89	heldItem	25	0.2							adds the move Hurricane		
+TR90	heldItem	25	0.2							adds the move Play Rough		
+TR91	heldItem	25	0.2							adds the move Venom Drench		
+TR92	heldItem	25	0.2							adds the move Dazzling Gleam		
+TR93	heldItem	25	0.2							adds the move Darkest Lariat		
+TR94	heldItem	25	0.2							adds the move High Horsepower		
+TR95	heldItem	25	0.2							adds the move Throat Chop		
+TR96	heldItem	25	0.2							adds the move Pollen Puff		
+TR97	heldItem	25	0.2							adds the move Psychic Fangs		
+TR98	heldItem	25	0.2							adds the move Liquidation		
+TR99	heldItem	25	0.2							adds the move Body Press		
