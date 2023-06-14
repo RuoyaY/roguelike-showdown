@@ -709,6 +709,20 @@ function getAllPokeballNames() {
   return Array.from(pokeballEle.options).map(option => option.value);
 }
 
+function printTRs() {
+  let tsv = '';
+  for (const tr of getTRs())
+    tsv += tr.name + '\theldItem\t25\t0.1\t\t\t\t\t\t\tadds the move ' + tr.moveName + '\n';
+  console.log(tsv);
+}
+function getTRs() {
+  return Object.values(heldItems).filter(heldItem => /^TR[0-9]{2}$/.test(heldItem.name))
+    .map(heldItem => ({
+      name: heldItem.name,
+      moveName: heldItem.desc.slice('Teaches certain Pokemon the move '.length, -1 * '. One use.'.length),
+    }));
+}
+
 function printTypeMatchupGrid(arr) {
   // starting point: https://github.com/filipekiss/pokemon-type-chart/blob/master/types.json
   const grid = [];
