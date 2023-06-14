@@ -519,8 +519,6 @@ const INCOME = 120;
 const WIN_INCOME_DELTA = -20;
 const BASE_REFRESH_COST = 3;
 
-const HELD_ITEM_WEIGHT = 1;
-
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
 const ILLEGAL_MONS = [
   // functionally identical because of its ability, but stats are less helpful.
@@ -2203,33 +2201,10 @@ function randomItem() {
       item = randomTransformer(100);
     else if ((randy -= 1/100) < 0)
       item = randomEgg();
-    else {
-      do {
-        item = randomElement(items);
-      } while (!isLegalItem(item));
-
-      item = structuredClone(item);
-      if (item.type === 'heldItem') {
-        const heldItemName = item.name;
-        if (Math.random() < .05) {
-          item.name += ' Party';
-          item.type = 'heldItemParty';
-          item.price = getItemPrice(item);
-          if (item.price === 1)
-            item.price = 0;
-          if ((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
-                && item.name !== 'Chilan Berry Party')
-            item.price = (-1 * AVG_HELD_ITEM_VALUE) + 'n+' + (item.price + AVG_HELD_ITEM_VALUE);
-          else
-            item.price = (item.price - AVG_HELD_ITEM_VALUE) + 'n+' + AVG_HELD_ITEM_VALUE;
-          item.desc = "Set EVERY Pokemon's held item to ";
-        } else {
-          item.desc = "Set a Pokemon's held item to ";
-        }
-        item.desc += heldItemNameInHTML(heldItemName) + '.\n'
-                      + spanWithClass(heldItemDesc(heldItemName), 'attr');
-      }
-    }
+    else if ((randy -= 1/15) < 0)
+      item = randomHeldItem();
+    else
+      item = randomNonheldItem();
     if (failsafe-- < 0)
       prevSeenItems.clear();
   } while (prevSeenItems.has(item.name));
@@ -2237,11 +2212,43 @@ function randomItem() {
   return item;
 }
 
-function isLegalItem(item) {
+function randomNonheldItem() {
+  let item;
+  do {
+    item = randomElement(items);
+  } while (!(isLegalItem(item) && item.type !== 'heldItem'));
+  return item;
+}
+function randomHeldItem() {
+  let item;
+  do {
+    item = randomElement(items);
+  } while (!(isLegalItem(item) && item.type === 'heldItem'));
 
-  if (item.type === 'heldItem' && !(Math.random() < HELD_ITEM_WEIGHT))
-    return false;
-  
+  item = structuredClone(item);
+  const heldItemName = item.name;
+  if (Math.random() < .05) {
+    item.name += ' Party';
+    item.type = 'heldItemParty';
+    item.price = getItemPrice(item);
+    if (item.price === 1)
+      item.price = 0;
+    if ((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
+          && item.name !== 'Chilan Berry Party')
+      item.price = (-1 * AVG_HELD_ITEM_VALUE) + 'n+' + (item.price + AVG_HELD_ITEM_VALUE);
+    else
+      item.price = (item.price - AVG_HELD_ITEM_VALUE) + 'n+' + AVG_HELD_ITEM_VALUE;
+    item.desc = "Set EVERY Pokemon's held item to ";
+  } else {
+    item.desc = "Set a Pokemon's held item to ";
+  }
+  item.desc += heldItemNameInHTML(heldItemName) + '.\n'
+                + spanWithClass(heldItemDesc(heldItemName), 'attr');
+
+  return item;
+}
+
+function isLegalItem(item) {
   if (item.weight && !(Math.random() < item.weight))
     return false;
   
