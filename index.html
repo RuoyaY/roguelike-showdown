@@ -754,6 +754,12 @@ function printTypeMatchupGrid(arr) {
   console.log(out);
 }
 
+function getTotalItemWeight(predicate) {
+  if (predicate == null)
+    predicate = item => true;
+  return Object.values(items).filter(item => !hasRequirement(item) && predicate(item)).map(item => item.weight ?? 1).reduce((a,b) => a+b);
+}
+
 let numLoading = 6;
 let allSpecies;
 loadAllSpecies();
