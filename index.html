@@ -880,8 +880,9 @@ function loadItems() {
         item.minPartySize = parseInt(splitByTab[7]);
       item.bannedIfPartyFull = splitByTab[8] !== '';
       item.bannedFirstRound = splitByTab[9] !== '';
+      item.bannedLastRound = splitByTab[10] !== '';
 
-      item.desc = splitByTab[10];
+      item.desc = splitByTab[11];
 
       items.push(item);
     }
@@ -2278,6 +2279,8 @@ function isLegalItem(item) {
     return false;
 
   if (item.bannedFirstRound && roundCounter <= 1)
+    return false;
+  if (item.bannedLastRound && roundCounter >= parseInt(document.getElementById('numRounds').value))
     return false;
 
   return true;
