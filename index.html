@@ -272,6 +272,8 @@ button:focus {
     <button id="save" onclick="save()">save</button>
     <button id="load" onclick="load()">load</button>
     <h2 class="attr">Start Round</h2>
+    Round <span id="roundCounter">0</span> of <input id="numRounds" type="number" size="1" class="mb-4px">
+    <br>
     <div id="pokeballDiv" hidden>
       <label for="pokeball">Poké Ball:</label>
       <select id="pokeball" class="mb-4px">
@@ -783,6 +785,7 @@ pokeballEle.addEventListener('change', event => {
   updatePokeballDesc(pokeballEle.value);
 });
 
+document.getElementById('numRounds').value = 7;
 document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
 document.getElementById('skip').hidden = true;
 setMoney(0);
@@ -2016,6 +2019,7 @@ function save() {
   localStorage.setItem('winCounter', document.getElementById('winCounter').textContent);
 
   localStorage.setItem('roundCounter', roundCounter);
+  localStorage.setItem('numRounds', document.getElementById('numRounds').value);
 
   localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
 
@@ -2051,7 +2055,8 @@ function load() {
   
   document.getElementById('winCounter').textContent = localStorage.getItem('winCounter');
   
-  roundCounter = parseInt(localStorage.getItem('roundCounter'));
+  setRoundCounter(parseInt(localStorage.getItem('roundCounter')));
+  document.getElementById('numRounds').value = localStorage.getItem('numRounds');
   
   document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
 
@@ -2100,7 +2105,7 @@ function nextRound() {
     }
   }
 
-  roundCounter++;
+  setRoundCounter(roundCounter+1);
 }
 function updateForRoundlyHeldItem(pokemonStr) {
   // Power items
@@ -2130,6 +2135,11 @@ function updateForRoundlyHeldItem(pokemonStr) {
       return pokemonStr + '\n- ' + move.name;
     }
   }
+}
+
+function setRoundCounter(num) {
+  roundCounter = num;
+  document.getElementById('roundCounter').textContent = num;
 }
 
 function sumArr(arr) {
