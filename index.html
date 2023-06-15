@@ -85,7 +85,6 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .pokemon-div, .flex-col {
@@ -132,7 +131,6 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   /* opacity: 1; */
 }
 
-
 .text-aligned-img {
   vertical-align: middle;
 }
@@ -140,6 +138,10 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 .generated-species-row {
   max-width: 70ch;
   overflow-x: auto;
+}
+
+.w-min-content {
+  width: min-content;
 }
 
 /* .win-counter {
@@ -325,9 +327,11 @@ button:focus {
     <label for="won" id="wonLabel" class="win-color">Won!</label>
     <br class="mb-4px">
     <button id="nextRound" onclick="nextRound()" class="mb-4px">start round</button>
-    <div id="choices" class="flex-row"></div>
-    <div class="flex-col-centered">
-      <button id="skip" onclick="skipPokemonChoice()">skip</button>
+    <div class="w-min-content">
+      <div id="choices" class="flex-row"></div>
+      <div class="flex-col-centered">
+        <button id="skip" onclick="skipPokemonChoice()">skip</button>
+      </div>
     </div>
     <h2 class="attr">Shop</h2>
     <label for="tmSeeker">Find TMs for: </label>
