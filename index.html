@@ -875,11 +875,12 @@ function loadItems() {
         item.requiredMoves = splitByTab[6].split(',');
       if (splitByTab[7] !== '')
         item.minPartySize = parseInt(splitByTab[7]);
-      item.bannedIfPartyFull = splitByTab[8] !== '';
-      item.bannedFirstRound = splitByTab[9] !== '';
-      item.bannedLastRound = splitByTab[10] !== '';
+      item.bannedIfPartyNotFull = splitByTab[8] !== '';
+      item.bannedIfPartyFull = splitByTab[9] !== '';
+      item.bannedFirstRound = splitByTab[10] !== '';
+      item.bannedLastRound = splitByTab[11] !== '';
 
-      item.desc = splitByTab[11];
+      item.desc = splitByTab[12];
 
       items.push(item);
     }
@@ -2278,6 +2279,8 @@ function isLegalItem(item) {
 
   const partySize = getPartyStrs().length;
   if (item.minPartySize != null && partySize < item.minPartySize)
+    return false;
+  if (item.bannedIfPartyNotFull && partySize < getPartyPokeDivs().length)
     return false;
   if (item.bannedIfPartyFull && partySize === getPartyPokeDivs().length)
     return false;
