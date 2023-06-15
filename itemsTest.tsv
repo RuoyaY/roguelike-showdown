@@ -1,6 +1,5 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0										
 Random TR	misc	10									Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.		
-Water Stone	heldItem	25								x	Add a random ___-type move in a new slot		
-Dusk Stone	heldItem	20n-90									can't be changed/replaced		
-Forced Contrary	nextAbilitizer	10								x	Next battle only: Set your opponent's [nth] Pokemon's ability to *Contrary*.		
+Forced Contrary	nextAbilitizer	40/b								x	Next battle only: Set your opponent's [nth] Pokemon's ability to *Contrary*.		
+Oval Stone	heldItem	10r								x	Lv +1 every round

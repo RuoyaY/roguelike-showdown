@@ -785,7 +785,7 @@ pokeballEle.addEventListener('change', event => {
   updatePokeballDesc(pokeballEle.value);
 });
 
-document.getElementById('numRounds').value = 7;
+setNumRounds(7);
 document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
 document.getElementById('skip').hidden = true;
 setMoney(0);
@@ -863,10 +863,7 @@ function loadItems() {
         name: splitByTab[0],
         type: splitByTab[1],
         price: splitByTab[2],
-      }
-
-      if (!item.price.includes('n'))
-        item.price = parseInt(item.price);    
+      }   
 
       if (splitByTab[3] !== '')
         item.weight = parseFloat(splitByTab[3]);
@@ -2020,7 +2017,7 @@ function save() {
   localStorage.setItem('winCounter', document.getElementById('winCounter').textContent);
 
   localStorage.setItem('roundCounter', roundCounter);
-  localStorage.setItem('numRounds', document.getElementById('numRounds').value);
+  localStorage.setItem('numRounds', getNumRounds());
 
   localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
 
@@ -2057,7 +2054,7 @@ function load() {
   document.getElementById('winCounter').textContent = localStorage.getItem('winCounter');
   
   setRoundCounter(parseInt(localStorage.getItem('roundCounter')));
-  document.getElementById('numRounds').value = localStorage.getItem('numRounds');
+  setNumRounds(localStorage.getItem('numRounds'));
   
   document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
 
@@ -2141,6 +2138,13 @@ function updateForRoundlyHeldItem(pokemonStr) {
 function setRoundCounter(num) {
   roundCounter = num;
   document.getElementById('roundCounter').textContent = num;
+}
+
+function setNumRounds(num) {
+  document.getElementById('numRounds').value = num;
+}
+function getNumRounds() {
+  return parseInt(document.getElementById('numRounds').value);
 }
 
 function sumArr(arr) {
@@ -2280,7 +2284,7 @@ function isLegalItem(item) {
 
   if (item.bannedFirstRound && roundCounter <= 1)
     return false;
-  if (item.bannedLastRound && roundCounter >= parseInt(document.getElementById('numRounds').value))
+  if (item.bannedLastRound && roundCounter >= getNumRounds())
     return false;
 
   return true;
@@ -2291,19 +2295,29 @@ function hasRequirement(item) {
 
 function getItemPrice(item) {
   let price = item.price;
-  if (typeof price === 'string' && price.includes('n')) {
-    // handle item prices of the form an, an+b, or an-b
-    const splitByN = price.split('n');
-    let a = parseInt(splitByN[0]);
-    if (isNaN(a))
-      a = 1;
-    let b = parseInt(splitByN[1]);
-    if (isNaN(b))
-      b = 0;
-    price = a * getPartyStrs().length + b;
-  }
-  return price;
+  if (typeof price !== 'string')
+    return price;
+  if (price.includes('n')) // number of party members
+    return resolveANplusB(price, 'n', getPartyStrs().length);
+  else if (price.includes('r')) // number of rounds left
+    return resolveANplusB(price, 'r', getNumRounds() - roundCounter);
+  else if (price.includes('/b')) // 1 / (number of battles left)
+    return roundToNearest5(resolveANplusB(price, '/b', 1 / (getNumRounds() - roundCounter + 1)));
+  else
+    return parseInt(price);
 }
+// for handling item prices of the form an, an+b, or an-b
+function resolveANplusB(str, nStr, nNum) {
+  const splitByN = str.split(nStr);
+  let a = parseInt(splitByN[0]);
+  if (isNaN(a))
+    a = 1;
+  let b = parseInt(splitByN[1]);
+  if (isNaN(b))
+    b = 0;
+  return a * nNum + b;
+}
+
 function createItemDiv(item, isExtra) {
   const itemDiv = document.createElement('div');
   itemDiv.classList.add('flex-row', 'mt-1', 'mb-1');
