@@ -2459,7 +2459,7 @@ function randomTransformer(failsafe) {
   const effectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
   const effectiveStatDiff = effectiveStatTotal - prevEffectiveStatTotal;
 
-  const price = 5 + roundToNearest5(effectiveStatDiff);
+  const price = 10 + roundToNearest5(effectiveStatDiff);
   if (price < MIN_TRANSFORMER_PRICE || MAX_TRANSFORMER_PRICE < price)
     return randomTransformer(failsafe); // re-roll
 
