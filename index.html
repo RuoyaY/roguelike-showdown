@@ -2431,8 +2431,8 @@ function randomEgg() {
   };
 }
 
-const MIN_PRICE = -100;
-const MAX_PRICE = 200;
+const MIN_TRANSFORMER_PRICE = -50;
+const MAX_TRANSFORMER_PRICE = 150;
 function randomTransformer(failsafe) {
   if (failsafe-- < 0) {
     console.error("Couldn't find a valid transformer!");
@@ -2457,7 +2457,7 @@ function randomTransformer(failsafe) {
   const effectiveStatDiff = effectiveStatTotal - prevEffectiveStatTotal;
 
   const price = 5 + roundToNearest5(effectiveStatDiff);
-  if (price < MIN_PRICE || MAX_PRICE < price)
+  if (price < MIN_TRANSFORMER_PRICE || MAX_TRANSFORMER_PRICE < price)
     return randomTransformer(failsafe); // re-roll
 
   const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
@@ -2472,6 +2472,8 @@ function randomTransformer(failsafe) {
   }
 }
 
+const MIN_ABILITIZER_PRICE = -100;
+const MAX_ABILITIZER_PRICE = Infinity;
 function randomAbilitizer(failsafe) {
   if (failsafe-- < 0) {
     console.error("Couldn't find a valid abilitizer!");
@@ -2513,7 +2515,7 @@ function randomAbilitizer(failsafe) {
     };
   } 
   
-  if (abilitizer.price < MIN_PRICE || MAX_PRICE < abilitizer.price)
+  if (abilitizer.price < MIN_ABILITIZER_PRICE || MAX_ABILITIZER_PRICE < abilitizer.price)
     return randomAbilitizer(failsafe); // re-roll
   return abilitizer;
 }
