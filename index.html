@@ -506,10 +506,14 @@ const TYPE_STONES = {
   'Water Stone': 'Water',
 }
 
+const DAWN_STONE_MIN_DIFF = 1;
+const DAWN_STONE_MAX_DIFF = 50;
 const IMPROVED_ITEMS = {
   'Oval Stone': 'Each round, automatically raises the level of the holder by one.',
   'Dusk Stone': 'This Pokemon can no longer be edited or replaced.',
   'Ability Shield': "Holder's Ability cannot be changed by any effect, INCLUDING by you or your opponent outside of battle.",
+  'Dawn Stone': 'Each round, automatically tries to transform into a random species with a ' 
+                  + DAWN_STONE_MIN_DIFF + '-' + DAWN_STONE_MAX_DIFF + ' higher stat total.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++)
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
@@ -2130,6 +2134,13 @@ function updateForRoundlyHeldItem(pokemonStr) {
     const lv = parseInt(lvStr.substring('Level: '.length));
     return pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
   }
+  if (pokemonStr.includes(' @ Dawn Stone')) {
+    const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
+    const newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, DAWN_STONE_MIN_DIFF, DAWN_STONE_MAX_DIFF);
+    if (newSpeciesInfo === null)
+      return null;
+    return pokemonStr.replace(apparentPrevSpeciesName, newSpeciesInfo.speciesName);
+  }
   // Type Stones
   for (const [stoneName, type] of Object.entries(TYPE_STONES)) {
     if (pokemonStr.includes(' @ ' + stoneName)) {
@@ -2215,7 +2226,7 @@ function randomItem() {
     else if ((randy -= 1/12) < 0)
       item = randomAbilitizer(100);
     else if ((randy -= 1/12) < 0)
-      item = randomTransformer(100);
+      item = randomTransformer();
     else if ((randy -= 1/100) < 0)
       item = randomEgg();
     else if ((randy -= 1/6) < 0)
@@ -2458,45 +2469,60 @@ function randomEgg() {
   };
 }
 
-const MIN_TRANSFORMER_PRICE = -50;
-const MAX_TRANSFORMER_PRICE = 150;
-function randomTransformer(failsafe) {
-  if (failsafe-- < 0) {
-    console.error("Couldn't find a valid transformer!");
-    return randomTM();
-  }
-
-  const speciesName = randomSpeciesName(null, null, true);
-  const species = allSpecies[getSpeciesId(speciesName)];
-
+const MIN_TRANSFORMER_STAT_DIFF = -50;
+const MAX_TRANSFORMER_STAT_DIFF = 150;
+function randomTransformer() {
   const partyStrs = getPartyStrs();
   const partyIndex = randomInt(partyStrs.length);
   const pokemonStr = partyStrs[partyIndex];
+  const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
+  
+  newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, MIN_TRANSFORMER_STAT_DIFF, MAX_TRANSFORMER_STAT_DIFF);
+  if (newSpeciesInfo === null) {
+    console.error("Couldn't find a valid transformer for " + apparentPrevSpeciesName);
+    return randomTM();
+  }
 
-  const statInfo = getStatRelevantInfo(pokemonStr);
+  return {
+    name: apparentPrevSpeciesName + ' → ' + newSpeciesInfo.speciesName,
+    type: 'transformer',
+    price: 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff),
+    desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(newSpeciesInfo.speciesName) + '. '
+            + 'Its gender, ability, etc. stays the same.\n'
+            + '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true) + '</div>'
+            + spanWithClass(statsInHTML(newSpeciesInfo.statInfo, false), 'attr'),
+  }
+}
+function randomTransformedSpeciesForPokemon(pokemonStr, minStatDiff, maxStatDiff) {
+  const prevStatInfo = getStatRelevantInfo(pokemonStr);
   const abilityName = getAbilityNameOfPokemon(pokemonStr);
-  if (statInfo[0] === species) // same species
-    return randomTransformer(failsafe); // re-roll
+  const prevEffectiveStatTotal = getEffectiveStatTotal(...prevStatInfo, abilityName);
+  
+  return randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, 1000);
+}
+function randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, failsafe) {
+  if (failsafe-- < 0)
+    return null;
 
-  const prevEffectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
+  const speciesName = randomSpeciesName(null, null, true);
+  const species = allSpecies[getSpeciesId(speciesName)];
+  if (prevStatInfo[0] === species) // same species
+  return randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, failsafe); // re-roll
+  
+  const statInfo = [...prevStatInfo];
   statInfo[0] = species;
   const effectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
   const effectiveStatDiff = effectiveStatTotal - prevEffectiveStatTotal;
 
-  const price = 10 + roundToNearest5(effectiveStatDiff);
-  if (price < MIN_TRANSFORMER_PRICE || MAX_TRANSFORMER_PRICE < price)
-    return randomTransformer(failsafe); // re-roll
+  if (effectiveStatDiff < minStatDiff || maxStatDiff < effectiveStatDiff)
+    return randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, failsafe); // re-roll
 
-  const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
   return {
-    name: apparentPrevSpeciesName + ' → ' + speciesName,
-    type: 'transformer',
-    price: price,
-    desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(speciesName) + '. '
-            + 'Its gender, ability, etc. stays the same.\n'
-            + '<div class="types">' + getTypesHTML(species.types, true) + '</div>'
-            + spanWithClass(statsInHTML(statInfo, false), 'attr'),
-  }
+    speciesName: speciesName,
+    species: species,
+    effectiveStatDiff: effectiveStatDiff,
+    statInfo: statInfo,
+  };
 }
 
 const MIN_ABILITIZER_PRICE = -100;
