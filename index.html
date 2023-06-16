@@ -618,11 +618,11 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printForcedTypeDeletion() {
+function printForcedTeras() {
   let tsv = '';
   for (const type of TYPES)
-    tsv += 'Forced ' + type + ' Deletion\tnextBattle\t25/b\t\t\t\t\t\t\t\t\t\t'
-        + 'Next battle only: You opponent must delete all ' + type + "-type moves from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).\n";
+    tsv += 'Forced ' + type + ' Tera Party\tnextBattle\t\t\t\t\t\t\t\t\t\t\t'
+        + "Next battle only: All of your opponent's Pokemon have their Tera Type set to " + type + ".\n";
   console.log(tsv);
 }
 function printPlatesAndMemories() {
