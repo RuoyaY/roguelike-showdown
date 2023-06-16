@@ -680,7 +680,7 @@ Leaf Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a
 Thunder Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
 Water Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
 Dusk Stone	heldItem	-20r-10										can't be changed/replaced		
-Dawn Stone	heldItem	25r-25									x	Every round, changes to a random species w/ ~25 higher stats		
+Dawn Stone	heldItem	15r-25									x	Every round, changes to a random species w/ higher stats		
 TR00	heldItem	25	0.2									adds the move Swords Dance		
 TR01	heldItem	25	0.2									adds the move Body Slam		
 TR02	heldItem	25	0.2									adds the move Flamethrower		
