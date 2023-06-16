@@ -2377,6 +2377,7 @@ const KEYWORD_HOVER_TEXTS = {
   'Next battle only': 'Revealed after both players are ready for battle.\nCannot be used on the final battle.',
   'nth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
   'mth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
+  '_____': 'Until you are ready for battle, you may choose what goes in this blank.',
 };
 function itemDescInHTML(itemDesc, isTM) {
   if (!isTM) {
@@ -2775,6 +2776,7 @@ function buyItem(itemDiv, item, itemPrice) {
     nthSelectHTML += '</select>';
     nextBattleEventHTML = nextBattleEventHTML.replaceAll('[nth]', nthSelectHTML);
     nextBattleEventHTML = nextBattleEventHTML.replaceAll('[mth]', nthSelectHTML);
+    nextBattleEventHTML = nextBattleEventHTML.replaceAll('[_____]', '<input size="7">');
     nextBattleEventHTML = itemDescInHTML(nextBattleEventHTML, false);
 
     nextBattleEventEle.innerHTML = nextBattleEventHTML;
