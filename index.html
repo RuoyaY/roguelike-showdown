@@ -351,9 +351,10 @@ button:focus {
     <div id="species" class=""></div>
   </div>
   <div class="ml-1">
-    <div id="nextBattleDiv" hidden>
-      <h2 class="attr text-center hasHoverText" title="Revealed after both players are ready for battle.">Next Battle Only</h2>
-      <div id="nextBattle" class="next-battle"></div>
+    <div id="nextBattleDiv" class="next-battle" hidden>
+      <h2 class="attr text-center mb-4px">Next Battle Only</h2>
+      <p class="gray text-center m-0">Revealed after both players are ready for battle.</p>
+      <div id="nextBattle"></div>
     </div>
     <h2 class="attr text-center">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
     <div id="party">
@@ -790,7 +791,7 @@ pokeballEle.addEventListener('change', event => {
   updatePokeballDesc(pokeballEle.value);
 });
 
-setNumRounds(6);
+setNumRounds(7);
 document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
 document.getElementById('skip').hidden = true;
 setMoney(0);
@@ -2292,7 +2293,7 @@ function isLegalItem(item) {
 
   if (item.bannedFirstRound && roundCounter <= 1)
     return false;
-  if (item.bannedLastRound && roundCounter >= getNumRounds())
+  if ((item.bannedLastRound || isNextBattleItem(item)) && roundCounter >= getNumRounds())
     return false;
 
   return true;
@@ -2373,7 +2374,7 @@ const KEYWORD_HOVER_TEXTS = {
   'EV': 'e.g. "EVs: 1 HP / 252 SpA"',
   'Nature': 'add a new line under EVs\ne.g. "Bold Nature"',
   'gender': 'e.g. "Pikachu (F)"',
-  'Next battle only': 'Revealed after both players are ready for battle.',
+  'Next battle only': 'Revealed after both players are ready for battle.\nCannot be used on the final battle.',
   'nth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
   'mth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
 };
@@ -2740,6 +2741,11 @@ function enumerateWithOr(strArr) {
 }
 
 function buyItem(itemDiv, item, itemPrice) {
+  if (isNextBattleItem(item) && roundCounter >= getNumRounds()) {
+    alert('Sorry! "Next battle only" items cannot be used on the final battle.');
+    return;
+  }
+
   if (!pay(itemPrice)) return;
   
   if (item.type === 'pokeball') {
@@ -2757,7 +2763,7 @@ function buyItem(itemDiv, item, itemPrice) {
     setGuaranteedType(TYPES.includes(type) ? type : '');
     document.getElementById('typeDiv').hidden = false;
 
-  } else if (item.desc.startsWith('Next battle only: ')) {
+  } else if (isNextBattleItem(item)) {
     document.getElementById('nextBattleDiv').hidden = false;
     const nextBattleEventEle = document.createElement('p');
 
@@ -2795,6 +2801,10 @@ function buyItem(itemDiv, item, itemPrice) {
   checkbox.classList.add('invisible');
 
   itemDiv.classList.add('chosen');
+}
+
+function isNextBattleItem(item) {
+  return item.desc.startsWith('Next battle only: ');
 }
 
 function pay(price) {
