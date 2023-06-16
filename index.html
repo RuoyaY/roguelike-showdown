@@ -618,11 +618,11 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printTypeCandyParties() {
+function printForcedTypeDeletion() {
   let tsv = '';
   for (const type of TYPES)
-    tsv += type + ' Candy Party\tmisc\t20\t\t\t\t\t\t\t\t\t'
-        + 'Increase ALL ' + type + "-type Pokemon's level by one.\n";
+    tsv += 'Forced ' + type + ' Deletion\tnextBattle\t25/b\t\t\t\t\t\t\t\t\t\t'
+        + 'Next battle only: You opponent must delete all ' + type + "-type moves from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).\n";
   console.log(tsv);
 }
 function printPlatesAndMemories() {
