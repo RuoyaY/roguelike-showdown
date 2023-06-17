@@ -11,7 +11,6 @@ Repeat Ball	pokeball	10									x	Next round, you can choose a Pokemon of any sp
 Snag Ball	pokeball	10									x	Next round, you can choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).		
 Master Ball	pokeball	20									x	Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
 Random Ball	pokeball	15									x	Automatically sets your Poke Ball for the next round to a random one (other than the default).		
-														
 Berry Juice	heldItem	15										heal 20 hp at 1/2		
 Sitrus Berry	heldItem	35												
 Oran Berry	heldItem	5										heal 10 hp at 1/2		
