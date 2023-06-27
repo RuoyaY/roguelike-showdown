@@ -1474,7 +1474,8 @@ function getLevelWithAbility(species, abilityName) {
   return getLevel(species, STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species.name, abilityName));
 }
 function getAbilityValue(speciesName, abilityName) {
-  speciesName = allSpecies[getSpeciesId(speciesName)].name; // remove cosmetic forme
+  if (speciesName != null)
+    speciesName = allSpecies[getSpeciesId(speciesName)].name; // remove cosmetic forme
   if (     SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName])
     return SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName];
   else if (ABILITY_VALUES[abilityName])
