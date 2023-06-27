@@ -1261,7 +1261,9 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   
   // speciesName = 'Pokestar Spirit';
   
-  const pokeball = getPokeball();
+  let pokeball = null;
+  if (hasChooseButton)
+    pokeball = getPokeball();
   let pokemonStr = randomOfSpecies(speciesName, abilityName, gender, pokeball, null, teraType);
 
   if (hasChooseButton) {
