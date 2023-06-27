@@ -7,6 +7,7 @@ Dream Ball	pokeball	40									x	Next round, your new Pokemon knows the moves *R
 Friend Ball	pokeball	25									x	Next round, your new Pokemon knows the move *Return* in an extra move slot.		
 Love Ball	pokeball	25									x	Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will get 1 male and 1 female option.		
 Beast Ball	pokeball	15									x	Next round, your new Pokemon has *Beast Boost* instead of its regular ability. Keep in mind you can hover over Atk and SpA to see unadjusted values.		
+Strange Ball	pokeball	10									x	Next round, your new Pokemon will get moves it cannot normally learn.		
 Repeat Ball	pokeball	10									x	Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).		
 Snag Ball	pokeball	10									x	Next round, you can choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).		
 Master Ball	pokeball	20									x	Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
@@ -585,11 +586,11 @@ Vs Level Surge	nextBattle	-80/b										Next battle only: Increase your opponen
 Level Plunge	nextBattle	-80/b										Next battle only: Decrease your [nth] Pokemon's level by 5 (can't choose a Pokemon at level 5 or below).		
 Vs Level Plunge	nextBattle	100/b										Next battle only: Decrease your opponent's [nth] Pokemon's level by 5 (can't go below 1).		
 Instant Lv50	nextBattle	50/b										Next battle only: Set your [nth] Pokemon's level to 50.		
-Instant Lv1	nextBattle	-200/b										Next battle only: Set your [nth] Pokemon's level to 1.		
+Instant Lv1	nextBattle	-200/b					3					Next battle only: Set your [nth] Pokemon's level to 1.		
 Vs Instant Lv50	nextBattle	130/b										Next battle only: Set your opponent's [nth] Pokemon's level to 50.		
-Vs Instant Lv1	nextBattle	200/b										Next battle only: Set your opponent's [nth] Pokemon's level to 1.		
-Knock Out	nextBattle	240/b					2					Next battle only: Remove your opponent's [nth] Pokemon.		
-Self K.O.	nextBattle	-240/b+5					2					Next battle only: Remove your [nth] Pokemon.		
+Vs Instant Lv1	nextBattle	200/b					3					Next battle only: Set your opponent's [nth] Pokemon's level to 1.		
+Knock Out	nextBattle	240/b					3					Next battle only: Remove your opponent's [nth] Pokemon.		
+Self K.O.	nextBattle	-240/b+5					3					Next battle only: Remove your [nth] Pokemon.		
 Sacrifice	misc	-240/b-50						x			x	Delete a Pokemon. <span class="warning> <br>Cannot delete Pokemon you got at Lv 1. </span>		
 Twin K.O.	nextBattle	25/b					2					Next battle only: Remove BOTH you and your opponent's [nth] Pokemon.		
 HP Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's HP EV to 252 (max 508 total EVs).		

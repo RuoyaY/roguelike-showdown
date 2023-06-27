@@ -288,6 +288,7 @@ button:focus {
         <option>Friend Ball</option>
         <option>Love Ball</option>
         <option>Beast Ball</option>
+        <option>Strange Ball</option>
         <option>Repeat Ball</option>
         <option>Snag Ball</option>
         <option>Master Ball</option>
@@ -1414,10 +1415,14 @@ function randomOfSpecies(speciesName, abilityName, gender, pokeball, level, tera
   return pokemonStr;
 }
 
+function allMoveIdsSuchThat(predicate) {
+  return Object.entries(moves).filter(([moveId, move]) => predicate(move)).map(arr => arr[0]);
+}
+
 function getLearnset(speciesId) {
   if (speciesId === 'smeargle')
-    return Object.entries(moves).filter(([moveId, move]) => isLegalMove(move, false, false) 
-              && move.name !== 'Chatter' && move.name !== 'Struggle').map(arr => arr[0]);
+    return allMoveIdsSuchThat(move => isLegalMove(move, false, false)
+              && move.name !== 'Chatter' && move.name !== 'Struggle');
   const species = allSpecies[speciesId];
   let learnset;
   if (isPokestar(speciesId)) {
@@ -1841,10 +1846,14 @@ function chooseTera(choicesDiv, pokeDiv, type) {
 }
 function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
   const speciesId = getSpeciesIdOfPokemon(pokemonStr);
-  let moveIds = getLearnset(speciesId);
+  let moveIds;
+  if (getPokeball() === 'Strange Ball')
+    moveIds = allMoveIdsSuchThat(move => isLegalMove(move, false, false));
+  else
+    moveIds = getLearnset(speciesId);
   moveIds = moveIds.filter(moveId => {
     const move = moves[moveId];
-    return !(pokemonStr.includes('\n- ' + move.name + '\n') || move.isNonstandard === 'LGPE');
+    return !(pokemonStr.includes('\n- ' + move.name + '\n') || isLGPE(move));
   });
   addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
 }
@@ -1858,8 +1867,9 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
     const pokemonStr = pokeDiv.querySelector('.pokemon').innerText;
     do {
       move = randomMove(false);
-    } while (pokemonStr.includes('\n- ' + move.name)
-              || (move.name.startsWith('Hidden Power') && pokemonStr.includes('\n- Hidden Power')));
+    } while (pokemonStr.includes('\n- ' + move.name + '\n')
+              || (move.name.startsWith('Hidden Power') && pokemonStr.includes('\n- Hidden Power'))
+              || isLGPE(move));
   } else 
     move = addHiddenPowerType(moves[removeRandom(moveIds)]);
 
@@ -2700,12 +2710,15 @@ function tmPrice(move) { // expected to be a multiple of 10, for Party TM prices
     return 170;
   else if (move.isZ)
     return 90;
-  else if (move.isNonstandard === 'LGPE')
+  else if (isLGPE(move))
     return 30;
   else if (move.basePower > 75)
     return 20;
   else
     return 10;
+}
+function isLGPE(move) {
+  return move.isNonstandard === 'LGPE';
 }
 function tmDesc(strBeforeMoveName, move) {
   return strBeforeMoveName + spanWithType(move.name, move.type) + '.'
