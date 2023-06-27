@@ -512,9 +512,9 @@ const DAWN_STONE_MIN_DIFF = 1;
 const DAWN_STONE_MAX_DIFF = 30;
 const IMPROVED_ITEMS = {
   'Oval Stone': 'Each round, automatically raises the level of the holder by one.',
-  'Dusk Stone': 'This Pokemon can no longer be edited or replaced.',
+  'Dubious Disc': 'This Pokemon can no longer be edited or replaced.',
   'Ability Shield': "Holder's Ability cannot be changed by any effect, INCLUDING by you or your opponent outside of battle.",
-  'Dawn Stone': 'Each round, automatically tries to transform into a random species with a ' 
+  'Up-Grade': 'Each round, automatically tries to transform into a random species with a ' 
                   + DAWN_STONE_MIN_DIFF + '-' + DAWN_STONE_MAX_DIFF + ' higher stat total.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++)
@@ -982,11 +982,11 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
     pokemonEle.setAttribute('spellcheck', false);
     pokemonEle.classList.add('editable');
     pokemonEle.addEventListener('focusout', function() {
-      if (pokemonEle.innerText.includes(' @ Dusk Stone'))
+      if (pokemonEle.innerText.includes(' @ Dubious Disc'))
         if (confirm('WARNING: this slot will no longer be editable.'))
           removeEditable(pokemonEle);
         else
-          pokemonEle.innerText = pokemonEle.innerText.replace(' @ Dusk Stone', '');
+          pokemonEle.innerText = pokemonEle.innerText.replace(' @ Dubious Disc', '');
       updatePartyPokemonDiv(div);
     }, false);
   }
@@ -2061,7 +2061,7 @@ function load() {
   for (const pokeEle of getPartyPokeEles()) {
     const pokemonStr = partyStrs.shift();
     pokeEle.textContent = pokemonStr;
-    if (pokemonStr.includes(' @ Dusk Stone'))
+    if (pokemonStr.includes(' @ Dubious Disc'))
       removeEditable(pokeEle);
     updatePartyPokemonDiv(pokeEle.parentElement);
   }
@@ -2148,7 +2148,7 @@ function updateForRoundlyHeldItem(pokemonStr) {
     const lv = parseInt(lvStr.substring('Level: '.length));
     return pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
   }
-  if (pokemonStr.includes(' @ Dawn Stone')) {
+  if (pokemonStr.includes(' @ Up-Grade')) {
     const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
     const newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, DAWN_STONE_MIN_DIFF, DAWN_STONE_MAX_DIFF);
     if (newSpeciesInfo === null)
