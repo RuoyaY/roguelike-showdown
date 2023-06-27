@@ -396,11 +396,11 @@ Power Belt	heldItem	0									x	1/2 speed. every round, +100 [stat EV]
 Power Lens	heldItem	0									x	1/2 speed. every round, +100 [stat EV]		
 Power Band	heldItem	0									x	1/2 speed. every round, +100 [stat EV]		
 Power Anklet	heldItem	0									x	1/2 speed. every round, +100 [stat EV]		
-Mirror Pokemon	misc	100					2					Replace one of your Pokemon with a clone of one of your other Pokemon. <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
-Shadow Pokemon	misc	80								x		Replace one of your Pokemon with a clone of one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
-Trade	misc	160								x		Swap one of your Pokemon with one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning> <br>Cannot swap away Pokemon you got at Lv 1. </span>		
-Super Rod	misc	150	0.5									REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
-Super Rod	misc	150	0.5									REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Mirror Pokemon	misc	100					2					Replace one of your Pokemon with a clone of one of your other Pokemon. <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Shadow Pokemon	misc	80								x		Replace one of your Pokemon with a clone of one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Trade	misc	160								x		Swap one of your Pokemon with one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning"> <br>Cannot swap away Pokemon you got at Lv 1. </span>		
+Super Rod	misc	150	0.5									REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Super Rod	misc	150	0.5									REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
 Old Rod	misc	40	0									ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Old Rod	misc	40	0									ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
 Twin Rods	misc	0	0.5									ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
@@ -591,7 +591,7 @@ Vs Instant Lv50	nextBattle	130/b										Next battle only: Set your opponent's 
 Vs Instant Lv1	nextBattle	200/b					3					Next battle only: Set your opponent's [nth] Pokemon's level to 1.		
 Knock Out	nextBattle	240/b					3					Next battle only: Remove your opponent's [nth] Pokemon.		
 Self K.O.	nextBattle	-240/b+5					3					Next battle only: Remove your [nth] Pokemon.		
-Sacrifice	misc	-240/b-50						x			x	Delete a Pokemon. <span class="warning> <br>Cannot delete Pokemon you got at Lv 1. </span>		
+Sacrifice	misc	-240/b-50						x			x	Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv 1. </span>		
 Twin K.O.	nextBattle	25/b					2					Next battle only: Remove BOTH you and your opponent's [nth] Pokemon.		
 HP Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's HP EV to 252 (max 508 total EVs).		
 Attack Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Atk EV to 252 (max 508 total EVs).		
