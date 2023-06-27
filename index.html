@@ -508,14 +508,14 @@ const TYPE_STONES = {
   'Water Stone': 'Water',
 }
 
-const DAWN_STONE_MIN_DIFF = 1;
-const DAWN_STONE_MAX_DIFF = 30;
+const UP_GRADE_MIN_DIFF = 1;
+const UP_GRADE_MAX_DIFF = 30;
 const IMPROVED_ITEMS = {
   'Oval Stone': 'Each round, automatically raises the level of the holder by one.',
   'Dubious Disc': 'This Pokemon can no longer be edited or replaced.',
   'Ability Shield': "Holder's Ability cannot be changed by any effect, INCLUDING by you or your opponent outside of battle.",
   'Up-Grade': 'Each round, automatically tries to transform into a random species with a ' 
-                  + DAWN_STONE_MIN_DIFF + '-' + DAWN_STONE_MAX_DIFF + ' higher stat total.',
+                  + UP_GRADE_MIN_DIFF + '-' + UP_GRADE_MAX_DIFF + ' higher stat total.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++)
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
@@ -2150,7 +2150,7 @@ function updateForRoundlyHeldItem(pokemonStr) {
   }
   if (pokemonStr.includes(' @ Up-Grade')) {
     const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
-    const newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, DAWN_STONE_MIN_DIFF, DAWN_STONE_MAX_DIFF);
+    const newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, UP_GRADE_MIN_DIFF, UP_GRADE_MAX_DIFF);
     if (newSpeciesInfo === null)
       return null;
     return pokemonStr.replace(apparentPrevSpeciesName, newSpeciesInfo.speciesName);
