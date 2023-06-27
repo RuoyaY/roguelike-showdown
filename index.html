@@ -2499,7 +2499,7 @@ function randomTransformer() {
   return {
     name: apparentPrevSpeciesName + ' → ' + newSpeciesInfo.speciesName,
     type: 'transformer',
-    price: 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff),
+    price: 5 + roundToNearest5(newSpeciesInfo.effectiveStatDiff),
     desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(newSpeciesInfo.speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
             + '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true) + '</div>'
