@@ -516,12 +516,14 @@ const IMPROVED_ITEMS = {
   'Ability Shield': "Holder's Ability cannot be changed by any effect, INCLUDING by you or your opponent outside of battle.",
   'Up-Grade': 'Each round, automatically tries to transform into a random species with a ' 
                   + UP_GRADE_MIN_DIFF + '-' + UP_GRADE_MAX_DIFF + ' higher stat total.',
+  'Sun Stone': 'Each round, automatically gets a random stat-raising move in a NEW move slot.',
+  'Moon Stone': 'Each round, automatically gets a random stat-lowering move in a NEW move slot.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++)
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
           + POWER_ITEM_DELTA + ' ' + STATS[i] + ' EVs, up to the maximum of 252 (max 508 total EVs).';
 for (const [key, value] of Object.entries(TYPE_STONES))
-  IMPROVED_ITEMS[key] = "Each round, holder automatically gets a random " + value + '-type move in a NEW move slot.';
+  IMPROVED_ITEMS[key] = "Each round, automatically gets a random " + value + '-type move in a NEW move slot.';
 
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
 const MONEY_MOVE_INCOME = 10;
@@ -2157,14 +2159,33 @@ function updateForRoundlyHeldItem(pokemonStr) {
   }
   // Type Stones
   for (const [stoneName, type] of Object.entries(TYPE_STONES)) {
-    if (pokemonStr.includes(' @ ' + stoneName)) {
-      let move;
-      do {
-        move = randomMove(false);
-      } while (move.type !== type)
-      return pokemonStr + '\n- ' + move.name;
-    }
+    if (pokemonStr.includes(' @ ' + stoneName))
+      return addRandomMoveSuchThat(pokemonStr, move => move.type === type);
   }
+
+  if (pokemonStr.includes(' @ Sun Stone'))
+    return addRandomMoveSuchThat(pokemonStr, move => isStatRaising(move));
+
+  if (pokemonStr.includes(' @ Moon Stone'))
+    return addRandomMoveSuchThat(pokemonStr, move => isStatLowering(move));
+}
+
+function addRandomMoveSuchThat(pokemonStr, movePredicate) {
+  let move;
+  do {
+    move = randomMove(false);
+  } while (!movePredicate(move));
+  return pokemonStr + '\n- ' + move.name;
+}
+
+function isStatRaising(move) {
+  return Object.values(getStatBoosts(move)).some(boost => boost > 0);
+}
+function isStatLowering(move) {
+  return Object.values(getStatBoosts(move)).some(boost => boost < 0);
+}
+function getStatBoosts(move) {
+  return move.boosts ?? move.secondary?.boosts ?? move.self?.boosts ?? move.secondary?.self?.boosts ?? {};
 }
 
 function setRoundCounter(num) {
