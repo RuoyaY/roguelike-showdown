@@ -679,6 +679,9 @@ Ice Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a 
 Leaf Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
 Thunder Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
 Water Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
+Sun Stone	heldItem	5r+10									x	Every round, add a random stat-raising move in a new slot		
+Moon Stone	heldItem	5r+10									x	Every round, add a random stat-lowering move in a new slot		
+Dawn Stone	heldItem	0									x	Every round, automatically sets EVERY move slot to a random move.		
 Dubious Disc	heldItem	-20r-10										permanently can't be changed/replaced		
 Up-Grade	heldItem	15r-25									x	Every round, changes to a random species w/ higher stats		
 TR00	heldItem	25	0.2									adds the move Swords Dance		
