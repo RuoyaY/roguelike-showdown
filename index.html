@@ -772,6 +772,7 @@ function getTotalItemWeight(predicate) {
 
 let numLoading = 6;
 let allSpecies;
+let allSpeciesIds = {};
 loadAllSpecies();
 let learnsets;
 loadLearnsets();
@@ -823,6 +824,13 @@ function loadAllSpecies() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     allSpecies = JSON.parse(this.responseText);
+    for ([speciesId, species] of Object.entries(allSpecies)) {
+      allSpeciesIds[species.name] = speciesId;
+      if (species.cosmeticFormes) {
+        for (const cosmeticForme of species.cosmeticFormes)
+          allSpeciesIds[cosmeticForme] = speciesId;
+      }
+    }
     allSpecies.missingno.types = allSpecies.missingno.types.filter(type => TYPES.includes(type));
     doneLoading();
   }
@@ -1120,8 +1128,7 @@ function getProperAbilityName(abilityNameInput) {
 }
 
 function getSpeciesId(speciesName) {
-  return Object.keys(allSpecies).find(speciesId => allSpecies[speciesId].name === speciesName 
-    || allSpecies[speciesId].cosmeticFormes?.includes(speciesName));
+  return allSpeciesIds[speciesName];
 }
 function getMoveId(moveName) {
   return Object.keys(moves).find(moveId => moves[moveId].name === moveName);
@@ -1320,9 +1327,12 @@ function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen) {
     prevSeenSpecies.add(speciesId);
 
   const species = allSpecies[speciesId];
+  return randomCosmeticName(species);
+}
+function randomCosmeticName(species) {
   let speciesName = species.name;
-  
-  if (species.cosmeticFormes && !isPokestar(speciesId)) {
+
+  if (species.cosmeticFormes && !isPokestar(species.name)) {
     const randy = randomInt(species.cosmeticFormes.length + 1);
     if (randy < species.cosmeticFormes.length)
       speciesName = species.cosmeticFormes[randy];
@@ -1330,8 +1340,8 @@ function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen) {
   return speciesName;
 }
 
-function isPokestar(speciesId) {
-  return speciesId.startsWith('pokestar');
+function isPokestar(speciesName) {
+  return speciesName.startsWith('Pokestar');
 }
 
 function getImageURL(speciesName) {
@@ -1431,7 +1441,7 @@ function getLearnset(speciesId) {
               && move.name !== 'Chatter' && move.name !== 'Struggle');
   const species = allSpecies[speciesId];
   let learnset;
-  if (isPokestar(speciesId)) {
+  if (isPokestar(species.name)) {
     learnset = new Set();
     for (const eventDatum of learnsets[speciesId].eventData)
       for (const moveId of eventDatum.moves)
@@ -2547,31 +2557,35 @@ function randomTransformedSpeciesForPokemon(pokemonStr, minStatDiff, maxStatDiff
   const abilityName = getAbilityNameOfPokemon(pokemonStr);
   const prevEffectiveStatTotal = getEffectiveStatTotal(...prevStatInfo, abilityName);
   
-  return randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, 1000);
+  return randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff);
 }
-function randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, failsafe) {
-  if (failsafe-- < 0)
-    return null;
-
-  const speciesName = randomSpeciesName(null, null, true);
-  const species = allSpecies[getSpeciesId(speciesName)];
-  if (prevStatInfo[0] === species) // same species
-  return randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, failsafe); // re-roll
+function randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff) {
+  const outputOptions = [];
+  for (const [speciesId, species] of Object.entries(allSpecies)) {
+    if (!isLegal(speciesId))
+      continue;
+    if (prevStatInfo[0] === species) // same species
+      continue;
+    
+    const statInfo = [...prevStatInfo];
+    statInfo[0] = species;
+    const effectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
+    const effectiveStatDiff = effectiveStatTotal - prevEffectiveStatTotal;
   
-  const statInfo = [...prevStatInfo];
-  statInfo[0] = species;
-  const effectiveStatTotal = getEffectiveStatTotal(...statInfo, abilityName);
-  const effectiveStatDiff = effectiveStatTotal - prevEffectiveStatTotal;
+    if (effectiveStatDiff < minStatDiff || maxStatDiff < effectiveStatDiff)
+      continue;
+  
+    outputOptions.push({
+      speciesName: randomCosmeticName(species),
+      species: species,
+      effectiveStatDiff: effectiveStatDiff,
+      statInfo: statInfo,
+    });
+  }
 
-  if (effectiveStatDiff < minStatDiff || maxStatDiff < effectiveStatDiff)
-    return randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff, failsafe); // re-roll
-
-  return {
-    speciesName: speciesName,
-    species: species,
-    effectiveStatDiff: effectiveStatDiff,
-    statInfo: statInfo,
-  };
+  if (outputOptions.length === 0)
+    return null;
+  return randomElement(outputOptions);
 }
 
 const MIN_ABILITIZER_PRICE = -100;
