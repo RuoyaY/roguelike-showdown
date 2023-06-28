@@ -1396,7 +1396,7 @@ function randomOfSpecies(speciesName, abilityName, gender, pokeball, level, tera
 
   if (level == null)
     level = getLevelWithAbility(species, abilityName);
-  if (pokeball === 'Level Ball')
+  if (pokeball === 'Level Ball' && level > 1)
     level -= 1;
 
   pokemonStr += '\nLevel: ' + level;
