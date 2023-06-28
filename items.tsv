@@ -2,13 +2,14 @@ name	type	price	prob	required species	required abilities	required moves	min part
 Great Ball	pokeball	20									x	Next round, +1 option to all choices for your new Pokemon.		
 Ultra Ball	pokeball	30									x	Next round, +2 options to all choices for your new Pokemon.		
 Level Ball	pokeball	5									x	Next round, +1 option to all choices for your new Pokemon, but your new Pokemon is 1 level lower than usual.		
+Quick Ball	pokeball	15									x	Next round, -1 option to all choices for your new Pokemon, but your new Pokemon is 3 levels higher than usual.		
 Moon Ball	pokeball	30									x	Next round, your new Pokemon knows the move *Moonlight* in an extra move slot.		
 Dream Ball	pokeball	40									x	Next round, your new Pokemon knows the moves *Rest* and *Sleep Talk* in extra move slots.		
 Friend Ball	pokeball	25									x	Next round, your new Pokemon knows the move *Return* in an extra move slot.		
 Love Ball	pokeball	25									x	Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will get 1 male and 1 female option.		
 Beast Ball	pokeball	15									x	Next round, your new Pokemon has *Beast Boost* instead of its regular ability. Keep in mind you can hover over Atk and SpA to see unadjusted values.		
 Strange Ball	pokeball	10									x	Next round, your new Pokemon will get moves it cannot normally learn.		
-Repeat Ball	pokeball	10									x	Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).		
+Repeat Ball	pokeball	5									x	Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).		
 Snag Ball	pokeball	10									x	Next round, you can choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).		
 Master Ball	pokeball	20									x	Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).		
 Random Ball	pokeball	15									x	Automatically sets your Poke Ball for the next round to a random one (other than the default).		
