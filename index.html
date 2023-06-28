@@ -2416,7 +2416,7 @@ function getItemPrice(item) {
   else if (price.includes('r')) // number of rounds left
     return resolveANplusB(price, 'r', getNumRounds() - roundCounter);
   else if (price.includes('/b')) // 1 / (number of battles left)
-    return roundToNearest5(resolveANplusB(price, '/b', 1 / (getNumRounds() - roundCounter + 1)));
+    return roundToNearest5(resolveANplusB(price, '/b', 1 / (getNumRounds() - roundCounter + 1)), true);
   else
     return parseInt(price);
 }
@@ -2675,7 +2675,9 @@ function abilitizerDesc(strBeforeAbilityName, ability) {
           + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning');
 }
 
-function roundToNearest5(num) {
+function roundToNearest5(num, canRoundToOne) {
+  if (canRoundToOne && (0+1)/2 < num && num < (0+5)/2)
+    return 1;
   return 5 * Math.round(num/5);
 }
 

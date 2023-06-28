@@ -601,7 +601,7 @@ Special Attack Surge	nextBattle	35/b										Next battle only: Set your [nth] P
 Special Defense Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's SpD EV to 252 (max 508 total EVs).		
 Speed Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Spe EV to 252 (max 508 total EVs).		
 Vs Speed Surge	nextBattle	24.5/b				Trick Room						Next battle only: Set your opponent's [nth] Pokemon's Spe EV to 252 (max 508 total EVs).		
-EV Reset	nextBattle	17.5/b										Next battle only: Reset your opponent's [nth] Pokemon's EVs. 		
+EV Reset	nextBattle	15/b										Next battle only: Reset your opponent's [nth] Pokemon's EVs. 		
 Knock Off	nextBattle	30/b										Next battle only: Your opponent's [nth] Pokemon cannot hold any items.		
 Calculated Knock Off	nextBattle	15/b										Next battle only: You opponent must remove the item [_____] from their [nth] Pokemon, if present.		
 Item Swap	nextBattle	40/b										Next battle only: Swap your [nth] Pokemon's held item with your opponent's [mth] Pokemon's held item.		
