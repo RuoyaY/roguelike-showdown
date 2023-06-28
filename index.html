@@ -511,14 +511,15 @@ const TYPE_STONES = {
 const UP_GRADE_MIN_DIFF = 1;
 const UP_GRADE_MAX_DIFF = 30;
 const IMPROVED_ITEMS = {
-  'Oval Stone': 'Each round, automatically raises the level of the holder by one.',
+  'Oval Stone': 'Each round, automatically levels up.',
   'Dubious Disc': 'This Pokemon can no longer be edited or replaced.',
   'Ability Shield': "Holder's Ability cannot be changed by any effect, INCLUDING by you or your opponent outside of battle.",
   'Up-Grade': 'Each round, automatically tries to transform into a random species with a ' 
                   + UP_GRADE_MIN_DIFF + '-' + UP_GRADE_MAX_DIFF + ' higher stat total.',
   'Sun Stone': 'Each round, automatically gets a random stat-raising move in a NEW move slot.',
   'Moon Stone': 'Each round, automatically gets a random stat-lowering move in a NEW move slot.',
-  'Dawn Stone': 'Every round, automatically sets EVERY move slot to a random move.',
+  'Dawn Stone': 'Each round, automatically sets EVERY move slot to a random move.',
+  'Dusk Stone': 'Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++)
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
@@ -2154,11 +2155,9 @@ function updateForRoundlyHeldItem(pokemonStr) {
     }
   }
   // Oval Stone
-  if (pokemonStr.includes(' @ Oval Stone')) {
-    const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
-    const lv = parseInt(lvStr.substring('Level: '.length));
-    return pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
-  }
+  if (pokemonStr.includes(' @ Oval Stone'))
+    return leveledUp(pokemonStr);
+  // Up-Grade
   if (pokemonStr.includes(' @ Up-Grade')) {
     const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
     const newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, UP_GRADE_MIN_DIFF, UP_GRADE_MAX_DIFF);
@@ -2185,6 +2184,36 @@ function updateForRoundlyHeldItem(pokemonStr) {
       newPokemonStr = addRandomMove(newPokemonStr);
     return newPokemonStr;
   }
+  // Dusk Stone
+  if (pokemonStr.includes(' @ Dusk Stone')) {
+    pokemonStr = leveledUp(pokemonStr);
+
+    const pokeStrSplit = pokemonStr.split('\n-');
+    const moveIndices = [];
+    for (let i = 1; i < pokeStrSplit.length; i++) {
+      if (pokeStrSplit[i].trim() !== '')
+        moveIndices.push(i);
+    }
+    if (moveIndices.length === 0)
+      return pokemonStr.replace('\n-', '\n- Struggle');
+
+    const skippedIndex = randomElement(moveIndices);
+    let newPokemonStr = pokeStrSplit[0];
+    for (let i = 1; i < pokeStrSplit.length; i++) {
+      newPokemonStr += '\n-';
+      if (i !== skippedIndex)
+        newPokemonStr += pokeStrSplit[i];
+    }
+    if (moveIndices.length === 1)
+      newPokemonStr = newPokemonStr.replace('\n-', '\n- Struggle');
+    return newPokemonStr;
+  }
+}
+
+function leveledUp(pokemonStr) {
+  const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
+  const lv = parseInt(lvStr.substring('Level: '.length));
+  return pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
 }
 
 function pokemonHasMove(pokemonStr, moveName) {

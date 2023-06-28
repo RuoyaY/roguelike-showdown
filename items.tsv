@@ -375,8 +375,8 @@ Lustrous Globe	heldItem	20		palkia,palkiaorigin								If held by a Palkia, its 
 Griseous Core	heldItem	20		giratina,giratinaorigin								If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.		
 Vile Vial	heldItem	20		venomicon,venomiconepilogue								If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.		
 Soul Dew	heldItem	20		latias,latios										
-Metal Powder	heldItem	30		ditto										
-Quick Powder	heldItem	30		ditto										
+Metal Powder	heldItem	80		ditto										
+Quick Powder	heldItem	80		ditto										
 Burn Drive	heldItem	0				Techno Blast								
 Chill Drive	heldItem	0				Techno Blast								
 Douse Drive	heldItem	0				Techno Blast								
@@ -682,6 +682,7 @@ Water Stone	heldItem	5r+10									x	Every round, add a random ___-type move in 
 Sun Stone	heldItem	5r+10									x	Every round, add a random stat-raising move in a new slot		
 Moon Stone	heldItem	5r+10									x	Every round, add a random stat-lowering move in a new slot		
 Dawn Stone	heldItem	0									x	Every round, automatically sets EVERY move slot to a random move.		
+Dusk Stone	heldItem	5									x	Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).		
 Dubious Disc	heldItem	-20r-10										permanently can't be changed/replaced		
 Up-Grade	heldItem	15r-25									x	Every round, changes to a random species w/ higher stats		
 TR00	heldItem	25	0.2									adds the move Swords Dance		
@@ -846,3 +847,7 @@ Forced Dark Tera Party	nextBattle	20/b										Next battle only: All of your op
 Forced Dragon Tera Party	nextBattle	20/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Dragon.		
 Forced Steel Tera Party	nextBattle	-15/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Steel.		
 Forced Fairy Tera Party	nextBattle	0/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Fairy.		
+Held Item Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name its held item (or lack thereof), earn $30.		
+Ability Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name its ability, earn $30.		
+Tera Type Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name its Tera Type, earn $30.		
+Moveset Quiz	misc	5								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name ALL of its moves, earn $30.		
