@@ -518,6 +518,7 @@ const IMPROVED_ITEMS = {
                   + UP_GRADE_MIN_DIFF + '-' + UP_GRADE_MAX_DIFF + ' higher stat total.',
   'Sun Stone': 'Each round, automatically gets a random stat-raising move in a NEW move slot.',
   'Moon Stone': 'Each round, automatically gets a random stat-lowering move in a NEW move slot.',
+  'Dawn Stone': 'Every round, automatically sets EVERY move slot to a random move.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++)
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
@@ -2162,12 +2163,20 @@ function updateForRoundlyHeldItem(pokemonStr) {
     if (pokemonStr.includes(' @ ' + stoneName))
       return addRandomMoveSuchThat(pokemonStr, move => move.type === type);
   }
-
+  // Sun/Moon Stone
   if (pokemonStr.includes(' @ Sun Stone'))
     return addRandomMoveSuchThat(pokemonStr, move => isStatRaising(move));
-
   if (pokemonStr.includes(' @ Moon Stone'))
     return addRandomMoveSuchThat(pokemonStr, move => isStatLowering(move));
+  // Dawn Stone
+  if (pokemonStr.includes(' @ Dawn Stone')) {
+    const pokeStrSplit = pokemonStr.split('\n-');
+    const numMoves = pokeStrSplit.length - 1;
+    let newPokemonStr = pokeStrSplit[0];
+    for (let i = 0; i < numMoves; i++)
+      newPokemonStr += '\n- ' + randomMove(false).name;
+    return newPokemonStr;
+  }
 }
 
 function addRandomMoveSuchThat(pokemonStr, movePredicate) {
