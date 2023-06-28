@@ -1,4 +1,6 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0										
 Random TR	misc	10										Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.		
-Burn Drive	heldItem	0				Techno Blast								
+Perfect Egg	egg	90										In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. </span>		
+Mirror Egg	egg	70										Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.		
+Shadow Egg	egg	70										Copy of one of your opponent's Pokemon as it was last round into an EXTRA SLOT. Set the copy's level to 1.		
