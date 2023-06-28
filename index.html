@@ -1860,7 +1860,7 @@ function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
     moveIds = getLearnset(speciesId);
   moveIds = moveIds.filter(moveId => {
     const move = moves[moveId];
-    return !(pokemonStr.includes('\n- ' + move.name + '\n') || isLGPE(move));
+    return !(pokemonHasMove(pokemonStr, move.name) || isLGPE(move));
   });
   addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
 }
@@ -1874,9 +1874,7 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
     const pokemonStr = pokeDiv.querySelector('.pokemon').innerText;
     do {
       move = randomMove(false);
-    } while (pokemonStr.includes('\n- ' + move.name + '\n')
-              || (move.name.startsWith('Hidden Power') && pokemonStr.includes('\n- Hidden Power'))
-              || isLGPE(move));
+    } while (pokemonHasMove(pokemonStr, move.name) || isLGPE(move));
   } else 
     move = addHiddenPowerType(moves[removeRandom(moveIds)]);
 
@@ -2174,16 +2172,24 @@ function updateForRoundlyHeldItem(pokemonStr) {
     const numMoves = pokeStrSplit.length - 1;
     let newPokemonStr = pokeStrSplit[0];
     for (let i = 0; i < numMoves; i++)
-      newPokemonStr += '\n- ' + randomMove(false).name;
+      newPokemonStr = addRandomMove(newPokemonStr);
     return newPokemonStr;
   }
 }
 
+function pokemonHasMove(pokemonStr, moveName) {
+  return pokemonStr.includes('\n- ' + moveName + '\n')
+              || (moveName.startsWith('Hidden Power') && pokemonStr.includes('\n- Hidden Power'));
+}
+
+function addRandomMove(pokemonStr) {
+  return addRandomMoveSuchThat(pokemonStr, move => true);
+}
 function addRandomMoveSuchThat(pokemonStr, movePredicate) {
   let move;
   do {
     move = randomMove(false);
-  } while (!movePredicate(move));
+  } while (!movePredicate(move) || pokemonHasMove(pokemonStr, move.name));
   return pokemonStr + '\n- ' + move.name;
 }
 
@@ -2331,7 +2337,7 @@ function isLegalItem(item) {
         satisfied = true;
       if (item.requiredAbilities?.includes(getAbilityNameOfPokemon(pokemonStr)))
         satisfied = true;
-      if (item.requiredMoves?.some(move => pokemonStr.includes('\n- ' + move)))
+      if (item.requiredMoves?.some(moveName => pokemonHasMove(pokemonStr, moveName)))
         satisfied = true;
     }
     if (!satisfied)

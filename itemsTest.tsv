@@ -1,4 +1,4 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0										
 Random TR	misc	10										Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.		
-Perfect Forced Item	nextBattle	125/b										Next battle only: Your opponent's [nth] Pokemon must hold a [_____].
+Burn Drive	heldItem	0				Techno Blast								
