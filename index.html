@@ -336,7 +336,7 @@ button:focus {
       </div>
     </div>
     <h2 class="attr">Shop</h2>
-    <label for="tmSeeker">Find TMs for: </label>
+    <label for="tmSeeker">Find TMs and species changes for: </label>
     <select id="tmSeeker" class="mb-4px"></select>
     <br>
     <label for="money">$</label> <input id="money" type="number">
@@ -2522,9 +2522,8 @@ function randomEgg() {
 const MIN_TRANSFORMER_STAT_DIFF = -50;
 const MAX_TRANSFORMER_STAT_DIFF = 150;
 function randomTransformer() {
-  const partyStrs = getPartyStrs();
-  const partyIndex = randomInt(partyStrs.length);
-  const pokemonStr = partyStrs[partyIndex];
+  const partyIndex = getTmSeekerIndex();
+  const pokemonStr = getPartyStrs()[partyIndex];
   const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
   
   newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, MIN_TRANSFORMER_STAT_DIFF, MAX_TRANSFORMER_STAT_DIFF);
@@ -2668,7 +2667,7 @@ function randomTM() {
     // Type-based Species TM
     const typeMultiset = [];
     const correspondingPkmnStrs = [];
-    const tmSeekingMon = getPartyStrs()[document.getElementById('tmSeeker').selectedIndex];
+    const tmSeekingMon = getPartyStrs()[getTmSeekerIndex()];
     const pokemonStrs = [tmSeekingMon];
     for (const pokemonStr of pokemonStrs) {
       const speciesTypes = allSpecies[getSpeciesIdOfPokemon(pokemonStr)].types;
@@ -2700,7 +2699,7 @@ function randomTM() {
     // Species TM
     let possibleMoves = [];
     let speciesNames = [];
-    let pokemonStrs = [getPartyStrs()[document.getElementById('tmSeeker').selectedIndex]];
+    let pokemonStrs = [getPartyStrs()[getTmSeekerIndex()]];
     for (const pokemonStr of pokemonStrs) {
       const speciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
       const speciesId = getSpeciesId(speciesName);
@@ -2778,6 +2777,10 @@ function isLegalMove(move, allowZMoves, allowGMaxMoves) {
     || (move.isZ && !allowZMoves)
     || move.desc?.includes('cannot be used successfully')
   );
+}
+
+function getTmSeekerIndex() {
+  return document.getElementById('tmSeeker').selectedIndex;
 }
 
 function addHiddenPowerType(move) {
