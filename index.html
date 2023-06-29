@@ -272,6 +272,8 @@ button:focus {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
+    <button onclick="copyBingoJSON()">copy bingo JSON to clipboard</button>
+    <br class="mb-1">
     <button id="save" onclick="save()">save</button>
     <button id="load" onclick="load()">load</button>
     <h2 class="attr">Start Round</h2>
@@ -914,6 +916,20 @@ function loadItems() {
   let filename = 'items.tsv';
   // filename = 'itemsTest.tsv';
   xhttp.open("GET", filename);
+  xhttp.send();
+}
+
+function copyBingoJSON() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const responseLines = this.response.split('\r\n');
+    let goals = [];
+    for (const responseLine of responseLines) {
+      goals.push({"name": responseLine});
+    }
+    copyStr(JSON.stringify(goals));
+  }
+  xhttp.open("GET", "bingo.tsv");
   xhttp.send();
 }
 
@@ -2026,7 +2042,10 @@ function getPartyPokeDivs() {
 }
 
 function copyParty() {
-  navigator.clipboard.writeText(getPartyStrs().map(pokemonStr => editOnCopy(pokemonStr)).join('\n\n'));
+  copyStr(getPartyStrs().map(pokemonStr => editOnCopy(pokemonStr)).join('\n\n'));
+}
+function copyStr(str) {
+  navigator.clipboard.writeText(str);
 }
 function editOnCopy(pokemonStr) {
   const heldItem = getHeldItemOfPokemon(pokemonStr);
