@@ -1,151 +1,170 @@
-Magikarp
-your typing changed in-battle (not Tera)
-foe's typing changed in-battle (not Tera)
-monotype moveset (not Lv1)
-land 4+ hits with one attack
-infatuate an ally
-2 Normal Pokemon
-2 Fire Pokemon
-2 Water Pokemon
-2 Grass Pokemon
-2 Electric Pokemon
-2 Ice Pokemon
-2 Fighting Pokemon
-2 Poison Pokemon
-2 Ground Pokemon
-2 Flying Pokemon
-2 Psychic Pokemon
-2 Bug Pokemon
-2 Rock Pokemon
-2 Ghost Pokemon
-2 Dark Pokemon
-2 Dragon Pokemon
-2 Steel Pokemon
-2 Fairy Pokemon
-4 fully evolved Pokemon
-4 NFE Pokemon
-Lv1 Pokemon
-use Struggle
-Tera on turn 1
-Tera on turn 9
-land a critical hit
-heal back to full
-win w/ 1 Pokemon left
-lead w/ 2 Pokemon sharing a type
-win w/o Tera
-switch both Pokemon out turn 1
-heal a status effect (not by switching)
-run out of PP on a move
-a Pokemon uses all its moves in 1 battle (not Lv1)
-2 Pokemon w/ same level
-inflict flinch
-get flinched
-miss a move
-be immune to a move via type
-be immune to a move via ability
-be immune to foe's move
-eat a berry
-use a gem
-take recoil/crash damage
-KO with a not-very-effective move
-use a 4x super-effective move
-be at 1 HP
-land an OHKO move
-have $0 at some point
-have $200 or more
-inflict Burn
-inflict Poison/Badly Poison
-inflict Paralysis
-inflict Sleep/Yawn
-inflict Freeze
-inflict confusion
-get Burned
-get Poisoned/Badly Poisoned
-get Paralyzed
-fall asleep
-get Frozen
-get confused
-set an entry hazard
-a field effect on your side (Reflect, entry hazards, etc)
-make it Sunny/Desolate Land
-make it Rain/Primordial Sea
-make a Sandstorm
-make it Snow/Hail
-make Grassy Terrain
-make Electric Terrain
-make Psychic Terrain
-make Misty Terrain
-remove/nullify weather
-remove terrain
-Pokemon w/ only status moves
-Pokemon w/ only physical moves
-Pokemon w/ only special moves
-have a stat at +3 or more
-have a stat at -3 or less
-have Atk at +2 or more
-have SpA at +2 or more
-have Def at +2 or more
-have SpD at +2 or more
-have Spe at +2 or more
-have Accuracy at +1 or more
-have Evasion at +1 or more
->170 HP
-<130 HP (not Lv1)
->130 Atk (effective)
-<70 Atk (effective) (not Lv1)
->130 SpA (effective)
-<70 SpA (effective) (not Lv1)
->130 Def
-<70 Def (not Lv1)
->130 SpD
-<70 SpD (not Lv1)
->130 Spe
-<70 Spe (not Lv1)
-successfully use Sleep Talk
-use Splash
-use the move Metronome
-block status move w/ Substitute
-KO an ally
-your ability changed in-battle
-foe's ability changed in-battle
-your forme changed in-battle
-foe's forme changed in-battle
-KO a foe via Perish count
-have >4 moves
-have <4 moves (not Lv1)
-successfully use a move w/ 10-40 BP
-successfully use a move w/ >100 BP
-foe has a stat at +3 or more
-foe has a stat at -3 or less
-foe Atk at -2 or less
-foe SpA at -2 or less 
-foe Def at -2 or less 
-foe SpD at -2 or less 
-foe Spe at -2 or less 
-foe Accuracy at -1 or less 
-foe Evasion at -1 or less 
-successfully use a move that costs HP
-lose your held item in-battle
-have 6+ Pokemon
-Tera into Grass
-Tera into Ice
-Tera into Fighting
-Tera into Psychic
-Tera into Bug
-Tera into Rock
-use a Z-move
-activate Quark Drive/Protosynthesis
-win w/ 1+ Pokemon at full HP (not Lv1)
-3+ Next Battle Only items at once
-block 2 moves w/ 1 move
-full power Reversal
-force switch-out (eg Whirlwind)
-a foe misses
-3+ Pokemon sharing a type
-use Hidden Power
-use a Pledge or Fusion combo
-use Defense Curl
-successfully use Spit Up/Swallow
-cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
-3+ single-type Pokemon
-4 same gender Pokemon (M/F/-)
+	Magikarp
+x	your typing changed (not Tera)
+x	foe's typing changed (not Tera)
+x	land 4+ hits with one attack
+x	infatuate an ally
+	2+ Normal Pokemon
+	2+ Fire Pokemon
+	2+ Water Pokemon
+	2+ Grass Pokemon
+	2+ Electric Pokemon
+	2+ Ice Pokemon
+	2+ Fighting Pokemon
+	2+ Poison Pokemon
+	2+ Ground Pokemon
+	2+ Flying Pokemon
+	2+ Psychic Pokemon
+	2+ Bug Pokemon
+	2+ Rock Pokemon
+	2+ Ghost Pokemon
+	2+ Dark Pokemon
+	2+ Dragon Pokemon
+	2+ Steel Pokemon
+	2+ Fairy Pokemon
+	4+ fully evolved Pokemon
+	4+ NFE Pokemon
+	Lv1 Pokemon
+x	use Struggle
+x	Tera on turn 1
+x	Tera on turn 9
+x	land a critical hit
+x	heal back to full
+x	win w/ 1 Pokemon left
+x	lead w/ 2 Pokemon sharing a type
+x	win without Tera
+x	switch both Pokemon out turn 1
+x	heal a status effect (not by switching)
+x	run out of PP on a move
+x	a Pokemon uses all its moves in 1 battle (not Lv1)
+	2 Pokemon w/ same level
+x	inflict flinch
+x	get flinched
+x	miss a move
+x	be immune to a move via type
+x	be immune to a move via ability
+x	be immune to foe's move
+x	eat a berry
+x	use a gem
+x	take recoil/crash damage
+x	KO with a not-very-effective move
+x	use a 4x super-effective move
+x	be at 1 HP
+x	land an OHKO move
+	$0 at some point
+	$69 at some point
+	$200 or more at some point
+x	inflict burn
+x	inflict poison/badly poison
+x	inflict paralysis
+x	inflict sleep/yawn
+x	inflict freeze
+x	inflict confusion
+x	get burned
+x	get poisoned/badly poisoned
+x	get paralyzed
+x	fall asleep
+x	get frozen
+x	get confused
+x	set an entry hazard
+x	a field effect on your side (Reflect, entry hazards, etc)
+x	make it sunny/Desolate Land
+x	make rain/Primordial Sea
+x	make a sandstorm
+x	make snow/hail
+x	make Grassy Terrain
+x	make Electric Terrain
+x	make Psychic Terrain
+x	make Misty Terrain
+x	remove/nullify weather
+x	remove terrain
+	Pokemon w/ only status moves
+	Pokemon w/ only physical moves
+	Pokemon w/ only special moves
+x	have a stat at +3 or more
+x	have a stat at -3 or less
+x	have Atk at +2 or more
+x	have SpA at +2 or more
+x	have Def at +2 or more
+x	have SpD at +2 or more
+x	have Spe at +2 or more
+x	have Accuracy at +1 or more
+x	have Evasion at +1 or more
+	>170 HP
+	<130 HP (not Lv1)
+	>130 Atk
+	<70 Atk (not Lv1)
+	>130 SpA
+	<70 SpA (not Lv1)
+	>130 Def
+	<70 Def (not Lv1)
+	>130 SpD
+	<70 SpD (not Lv1)
+	>130 Spe
+	<70 Spe (not Lv1)
+x	successfully use Sleep Talk
+x	use Splash
+x	use the move Metronome
+x	block status move w/ Substitute
+x	KO an ally
+x	your ability changed
+x	foe's ability changed
+x	your forme changed
+x	foe's forme changed
+x	KO a foe via Perish count
+	have >4 moves
+	have <4 moves (not Lv1)
+x	successfully use a move w/ 10-40 BP
+x	successfully use a move w/ >100 BP
+x	foe has a stat at +3 or more
+x	foe has a stat at -3 or less
+x	foe Atk at -2 or less
+x	foe SpA at -2 or less 
+x	foe Def at -2 or less 
+x	foe SpD at -2 or less 
+x	foe Spe at -2 or less 
+x	foe Accuracy at -1 or less 
+x	foe Evasion at -1 or less 
+x	successfully use a move that costs 50% max HP
+x	lose your held item
+	have 6+ Pokemon
+x	Tera into Grass
+x	Tera into Ice
+x	Tera into Fighting
+x	Tera into Psychic
+x	Tera into Bug
+x	Tera into Rock
+x	use a Z-move
+x	activate Quark Drive or Protosynthesis
+x	win w/ 1+ Pokemon at full HP (not Lv1)
+x	3+ Next Battle Only items at once
+x	block 2 moves w/ 1 move
+x	force switch-out (eg Whirlwind)
+x	a foe misses
+	3+ Pokemon sharing a type
+x	use Hidden Power
+x	use a Pledge or Fusion combo
+x	use Defense Curl
+x	successfully use Spit Up/Swallow
+x	cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
+	3+ single-type Pokemon
+	4+ same gender Pokemon (M/F/-)
+	all Normal moveset
+	all Fire moveset
+	all Water moveset
+	all Grass moveset
+	all Electric moveset
+	all Ice moveset
+	all Fighting moveset
+	all Poison moveset
+	all Ground moveset
+	all Flying moveset
+	all Psychic moveset
+	all Bug moveset
+	all Rock moveset
+	all Ghost moveset
+	all Dark moveset
+	all Dragon moveset
+	all Steel moveset
+	all Fairy moveset
+	4+ Pokemon w/ NO held items
+	4+ Pokemon w/ held items

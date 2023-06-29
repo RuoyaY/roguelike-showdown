@@ -928,8 +928,12 @@ function copyBingoJSON() {
       for (let y = 0; y < 5; y++) {
         if (x === 4-y)
           goals.push({"name": '👑'});
-        else
-          goals.push({"name": removeRandom(responseLines)});
+        else {
+          const splitByTab = removeRandom(responseLines).split('\t');
+          let goal = splitByTab[0].trim() === '' ? '📝' : '⚔️'; 
+          goal += ' ' + splitByTab[1];
+          goals.push({"name": goal});
+        }
       }
     }
     copyStr(JSON.stringify(goals) + '\n'.repeat(10));
