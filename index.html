@@ -942,6 +942,25 @@ function copyBingoJSON() {
   xhttp.send();
 }
 
+function printAlphabetGoals() {
+  const TOO_LOW = 0.05;
+  const TOO_HIGH = .2;
+  const numSpecies = Object.values(allSpecies).length;
+  let out = '';
+  for (let i = 0; i < 26; i++) {
+    const char = String.fromCharCode(63 + i);
+    let prob = Object.entries(allSpecies).filter(([speciesId, species]) => 
+      isLegal(speciesId) && species.name.toUpperCase().includes(char)).length/numSpecies;
+    if (TOO_LOW < prob && prob < TOO_HIGH)
+      out += "Pokemon name includes '" + char.toLowerCase() + "'\n";
+    prob = Object.entries(allSpecies).filter(([speciesId, species]) => 
+      isLegal(speciesId) && species.name.startsWith(char)).length/numSpecies;
+    if (TOO_LOW < prob && prob < TOO_HIGH)
+      out += "Pokemon name starts w/ '" + char + "'\n";
+  }
+  console.log(out);
+}
+
 function doneLoading() {
   numLoading--;
   if (numLoading === 0) {

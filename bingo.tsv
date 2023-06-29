@@ -32,7 +32,7 @@ x	heal back to full
 x	win w/ 1 Pokemon left
 x	lead w/ 2 Pokemon sharing a type
 x	win without Tera
-x	switch both Pokemon out turn 1
+x	switch 2 Pokemon out turn 1
 x	heal a status effect (not by switching)
 x	run out of PP on a move
 x	a Pokemon uses all its moves in 1 battle (not Lv1)
@@ -168,3 +168,17 @@ x	cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
 	all Fairy moveset
 	4+ Pokemon w/ NO held items
 	4+ Pokemon w/ held items
+	Pokemon name starts w/ 'A'
+	Pokemon name includes 'b'
+	Pokemon name starts w/ 'C'
+	Pokemon name starts w/ 'D'
+	Pokemon name includes 'f'
+	Pokemon name starts w/ 'G'
+	Pokemon name includes 'k'
+	Pokemon name starts w/ 'M'
+	Pokemon name includes 'p'
+	Pokemon name starts w/ 'P'
+	Pokemon name starts w/ 'S'
+	Pokemon name starts w/ 'T'
+	Pokemon name includes 'v'
+	Pokemon name includes 'w'
