@@ -29,10 +29,9 @@ use Struggle
 Tera on turn 1
 Tera on turn 9
 land a critical hit
-heal
+heal back to full
 win w/ 1 Pokemon left
 lead w/ 2 Pokemon sharing a type
-monotype team
 win w/o Tera
 switch both Pokemon out turn 1
 heal a status effect (not by switching)
@@ -116,8 +115,8 @@ have >4 moves
 have <4 moves (not Lv1)
 successfully use a move w/ 10-40 BP
 successfully use a move w/ >100 BP
-foe has stat at +3 or more
-foe has stat at -3 or less
+foe has a stat at +3 or more
+foe has a stat at -3 or less
 foe Atk at -2 or less
 foe SpA at -2 or less 
 foe Def at -2 or less 
@@ -149,3 +148,4 @@ use Defense Curl
 successfully use Spit Up/Swallow
 cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
 3+ single-type Pokemon
+4 same gender Pokemon (M/F/-)
