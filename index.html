@@ -927,23 +927,33 @@ function loadItems() {
 function copyBingoJSON() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    const responseLines = this.response.split('\r\n');
+    const responseLines = this.response.replaceAll('\r','').split('\n');
+    responseLines.shift();
+    let linesCopy = [];
     let goals = [];
     for (let x = 0; x < 5; x++) {
       for (let y = 0; y < 5; y++) {
         if (x === 4-y)
           goals.push({"name": '👑'});
         else {
-          const splitByTab = removeRandom(responseLines).split('\t');
+          let splitByTab, prob;
+          do {
+            if (linesCopy.length === 0)
+              linesCopy = [...responseLines];
+            splitByTab = removeRandom(linesCopy).split('\t');
+            prob = parseFloat(splitByTab[1]);
+          } while (!isNaN(prob) && Math.random() > prob);
           let goal = splitByTab[0].trim() === '' ? '📝' : '⚔️'; 
-          goal += ' ' + splitByTab[1];
+          goal += ' ' + splitByTab[2];
           goals.push({"name": goal});
         }
       }
     }
     copyStr(JSON.stringify(goals) + '\n'.repeat(10));
   }
-  xhttp.open("GET", "bingo.tsv");
+  let filename = 'bingo.tsv';
+  // filename = 'bingoTest.tsv';
+  xhttp.open("GET", filename);
   xhttp.send();
 }
 

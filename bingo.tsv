@@ -1,238 +1,239 @@
-	Magikarp
-x	your typing changed (not Tera)
-x	foe's typing changed (not Tera)
-x	land 4+ hits with one attack
-x	infatuate an ally
-	2+ Normal Pokemon
-	2+ Fire Pokemon
-	2+ Water Pokemon
-	2+ Grass Pokemon
-	2+ Electric Pokemon
-	2+ Ice Pokemon
-	2+ Fighting Pokemon
-	2+ Poison Pokemon
-	2+ Ground Pokemon
-	2+ Flying Pokemon
-	2+ Psychic Pokemon
-	2+ Bug Pokemon
-	2+ Rock Pokemon
-	2+ Ghost Pokemon
-	2+ Dark Pokemon
-	2+ Dragon Pokemon
-	2+ Steel Pokemon
-	2+ Fairy Pokemon
-	everyone is fully evolved
-	everyone is not-fully evolved
-	Lv1 Pokemon
-x	use Struggle
-x	Tera on turn 1
-x	Tera on turn 9
-x	land a critical hit
-x	heal back to full
-x	win w/ 1 Pokemon left
-x	lead w/ 2 Pokemon sharing a type
-x	win without Tera
-x	switch 2 Pokemon out turn 1
-x	heal a status effect (not by switching)
-x	run out of PP on a move
-x	a Pokemon uses all its moves in 1 battle (not Lv1)
-	2 Pokemon w/ same level
-x	foe flinched
-x	get flinched
-x	miss a move
-x	be immune to a move via type
-x	be immune to a move via ability
-x	be immune to foe's move
-x	eat a berry
-x	use a gem
-x	take recoil/crash damage
-x	KO with a not-very-effective move
-x	use a 4x super-effective move
-x	be at 1 HP
-x	land an OHKO move
-	$0 at some point
-	$69 at some point
-	$200 or more at some point
-x	burned foe
-x	poisoned/badly poisoned foe
-x	paralyzed foe
-x	sleeping foe
-x	frozen foe
-x	confused foe
-x	get burned
-x	get poisoned/badly poisoned
-x	get paralyzed
-x	fall asleep
-x	get frozen
-x	get confused
-x	set an entry hazard
-x	a field effect on your side (Reflect, entry hazards, etc)
-x	make it sunny/Desolate Land
-x	make rain/Primordial Sea
-x	make a sandstorm
-x	make snow/hail
-x	make Grassy Terrain
-x	make Electric Terrain
-x	make Psychic Terrain
-x	make Misty Terrain
-x	remove/nullify weather
-x	remove terrain
-	Pokemon w/ only status moves
-	Pokemon w/ only physical moves
-	Pokemon w/ only special moves
-x	a stat at +3 or more
-x	a stat at -3 or less
-x	total stat stages +4 or more
-x	total stat stages -4 or less
-x	Atk at +2 or more
-x	SpA at +2 or more
-x	Def at +2 or more
-x	SpD at +2 or more
-x	Spe at +2 or more
-x	Accuracy at +1 or more
-x	Evasion at +1 or more
-x	foe has a stat at +3 or more
-x	foe has a stat at -3 or less
-x	foe's total stat stages +4 or more
-x	foe's total stat stages -4 or less
-x	foe Atk at -2 or less
-x	foe SpA at -2 or less 
-x	foe Def at -2 or less 
-x	foe SpD at -2 or less 
-x	foe Spe at -2 or less 
-x	foe Accuracy at -1 or less 
-x	foe Evasion at -1 or less 
-	>170 HP
-	<130 HP (not Lv1)
-	>130 Atk
-	<70 Atk (not Lv1)
-	>130 SpA
-	<70 SpA (not Lv1)
-	>130 Def
-	<70 Def (not Lv1)
-	>130 SpD
-	<70 SpD (not Lv1)
-	>130 Spe
-	<70 Spe (not Lv1)
-x	successfully use Sleep Talk
-x	use Splash
-x	use the move Metronome
-x	block status move w/ Substitute
-x	KO an ally
-x	your ability changed
-x	foe's ability changed
-x	your forme changed
-x	foe's forme changed
-x	KO foe via status effect
-	have >4 moves
-	have <4 moves (not Lv1)
-x	successfully use a move w/ 10-40 BP
-x	successfully use a move w/ >100 BP
-x	successfully use a move that costs 50% max HP
-x	lose your held item
-	have 6+ Pokemon
-x	Tera into Grass
-x	Tera into Ice
-x	Tera into Fighting
-x	Tera into Psychic
-x	Tera into Bug
-x	Tera into Rock
-x	use a Z-move
-x	activate Quark Drive or Protosynthesis
-x	win w/ 1+ Pokemon at full HP (not Lv1)
-x	3+ Next Battle Only items at once
-x	block 2 moves w/ 1 move
-x	force switch-out (eg Whirlwind)
-x	a foe misses
-	3+ Pokemon sharing a type
-x	use Hidden Power
-x	use a Pledge or Fusion combo
-x	use Defense Curl
-x	successfully use Spit Up/Swallow
-x	cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
-	3+ single-type Pokemon
-	everyone's same gender (M/F/-)
-	all Normal moveset
-	all Fire moveset
-	all Water moveset
-	all Grass moveset
-	all Electric moveset
-	all Ice moveset
-	all Fighting moveset
-	all Poison moveset
-	all Ground moveset
-	all Flying moveset
-	all Psychic moveset
-	all Bug moveset
-	all Rock moveset
-	all Ghost moveset
-	all Dark moveset
-	all Dragon moveset
-	all Steel moveset
-	all Fairy moveset
-	everyone has NO held items
-	everyone has a held item
-	Pokemon name starts w/ A
-	Pokemon name includes B
-	Pokemon name starts w/ C
-	Pokemon name starts w/ D
-	Pokemon name includes F
-	Pokemon name starts w/ G
-	Pokemon name includes K
-	Pokemon name starts w/ M
-	Pokemon name starts w/ P
-	Pokemon name starts w/ S
-	Pokemon name starts w/ T
-	Pokemon name includes V
-	Pokemon name includes W
-	Pokemon name includes Y
-	Pokemon name includes Z
-	move name starts w/ A
-	move name starts w/ B
-	move name starts w/ C
-	move name starts w/ D
-	move name starts w/ E
-	move name starts w/ F
-	move name starts w/ G
-	move name starts w/ H
-	move name starts w/ I
-	move name starts w/ L
-	move name starts w/ M
-	move name starts w/ P
-	move name starts w/ R
-	move name starts w/ T
-	move name includes V
-	move name starts w/ W
-	move name includes X
-	move name includes Z
-	ability name includes B
-	ability name starts w/ C
-	ability name includes F
-	ability name includes K
-	ability name starts w/ M
-	ability name starts w/ P
-	ability name starts w/ S
-	ability name starts w/ T
-	ability name includes V
-	ability name includes W
-	ability name includes Y
-	everyone has a Normal move
-	everyone has a Fire move
-	everyone has a Water move
-	everyone has a Grass move
-	everyone has a Electric move
-	everyone has a Ice move
-	everyone has a Fighting move
-	everyone has a Poison move
-	everyone has a Ground move
-	everyone has a Flying move
-	everyone has a Psychic move
-	everyone has a Bug move
-	everyone has a Rock move
-	everyone has a Ghost move
-	everyone has a Dark move
-	everyone has a Dragon move
-	everyone has a Steel move
-	everyone has a Fairy move
-x	do <1% damage
-x	KO 4+ foes w/ 1 Pokemon
+⚔️	prob	goal
+		Magikarp
+x		your typing changed (not Tera)
+x		foe's typing changed (not Tera)
+x		land 4+ hits with one attack
+x		infatuate an ally
+		2+ Normal Pokemon
+		2+ Fire Pokemon
+		2+ Water Pokemon
+		2+ Grass Pokemon
+		2+ Electric Pokemon
+		2+ Ice Pokemon
+		2+ Fighting Pokemon
+		2+ Poison Pokemon
+		2+ Ground Pokemon
+		2+ Flying Pokemon
+		2+ Psychic Pokemon
+		2+ Bug Pokemon
+		2+ Rock Pokemon
+		2+ Ghost Pokemon
+		2+ Dark Pokemon
+		2+ Dragon Pokemon
+		2+ Steel Pokemon
+		2+ Fairy Pokemon
+		everyone is fully evolved
+		everyone is not-fully evolved
+		Lv1 Pokemon
+x		use Struggle
+x		Tera on turn 1
+x		Tera on turn 9
+x		land a critical hit
+x		heal back to full
+x		win w/ 1 Pokemon left
+x		lead w/ 2 Pokemon sharing a type
+x		win without Tera
+x		switch 2 Pokemon out turn 1
+x		heal a status effect (not by switching)
+x		run out of PP on a move
+x		a Pokemon uses all its moves in 1 battle (not Lv1)
+		2 Pokemon w/ same level
+x		foe flinched
+x		get flinched
+x		miss a move
+x		be immune to a move via type
+x		be immune to a move via ability
+x		be immune to foe's move
+x		eat a berry
+x		use a gem
+x		take recoil/crash damage
+x		KO with a not-very-effective move
+x		use a 4x super-effective move
+x		be at 1 HP
+x		land an OHKO move
+		$0 at some point
+		$69 at some point
+		$150 or more at some point
+x		burned foe
+x		poisoned/badly poisoned foe
+x		paralyzed foe
+x		sleeping foe
+x		frozen foe
+x		confused foe
+x		get burned
+x		get poisoned/badly poisoned
+x		get paralyzed
+x		fall asleep
+x		get frozen
+x		get confused
+x		set an entry hazard
+x		a field effect on your side (Reflect, entry hazards, etc)
+x		make it sunny/Desolate Land
+x		make rain/Primordial Sea
+x		make a sandstorm
+x		make snow/hail
+x		make Grassy Terrain
+x		make Electric Terrain
+x		make Psychic Terrain
+x		make Misty Terrain
+x	0	remove/nullify weather
+x	0	remove terrain
+		Pokemon w/ only status moves
+		Pokemon w/ only physical moves
+		Pokemon w/ only special moves
+x		a stat at +3 or more
+x		a stat at -3 or less
+x		total stat stages +4 or more
+x		total stat stages -4 or less
+x		Atk at +2 or more
+x		SpA at +2 or more
+x		Def at +2 or more
+x		SpD at +2 or more
+x		Spe at +2 or more
+x		Accuracy at +1 or more
+x		Evasion at +1 or more
+x		foe has a stat at +3 or more
+x		foe has a stat at -3 or less
+x		foe's total stat stages +4 or more
+x		foe's total stat stages -4 or less
+x		foe Atk at -2 or less
+x		foe SpA at -2 or less 
+x		foe Def at -2 or less 
+x		foe SpD at -2 or less 
+x		foe Spe at -2 or less 
+x		foe Accuracy at -1 or less 
+x		foe Evasion at -1 or less 
+		>170 HP
+		<130 HP (not Lv1)
+		>130 Atk
+		<70 Atk (not Lv1)
+		>130 SpA
+		<70 SpA (not Lv1)
+		>130 Def
+		<70 Def (not Lv1)
+		>130 SpD
+		<70 SpD (not Lv1)
+		>130 Spe
+		<70 Spe (not Lv1)
+x		successfully use Sleep Talk
+x		use Splash
+x		use the move Metronome
+x		block status move w/ Substitute
+x		KO an ally
+x		your ability changed
+x		foe's ability changed
+x		your forme changed
+x		foe's forme changed
+x		KO foe via status effect
+		have >4 moves
+		have <4 moves (not Lv1)
+x		successfully use a move w/ 10-40 BP
+x		successfully use a move w/ >100 BP
+x		successfully use a move that costs 50% max HP
+x		lose your held item
+		have 6+ Pokemon
+x		Tera into Grass
+x		Tera into Ice
+x		Tera into Fighting
+x		Tera into Psychic
+x		Tera into Bug
+x		Tera into Rock
+x		use a Z-move
+x		activate Quark Drive or Protosynthesis
+x		win w/ 1+ Pokemon at full HP (not Lv1)
+x		3+ Next Battle Only items at once
+x		block 2 moves w/ 1 move
+x		force switch-out (eg Whirlwind)
+x		a foe misses
+		3+ Pokemon sharing a type
+x		use Hidden Power
+x		use a Pledge or Fusion combo
+x		use Defense Curl
+x		successfully use Spit Up/Swallow
+x		cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
+		3+ single-type Pokemon
+		everyone's same gender (M/F/-)
+		all Normal moveset
+		all Fire moveset
+		all Water moveset
+		all Grass moveset
+		all Electric moveset
+		all Ice moveset
+		all Fighting moveset
+		all Poison moveset
+		all Ground moveset
+		all Flying moveset
+		all Psychic moveset
+		all Bug moveset
+		all Rock moveset
+		all Ghost moveset
+		all Dark moveset
+		all Dragon moveset
+		all Steel moveset
+		all Fairy moveset
+		everyone has NO held items
+		everyone has a held item
+		Pokemon name starts w/ A
+		Pokemon name starts w/ C
+		Pokemon name starts w/ D
+		Pokemon name starts w/ G
+		Pokemon name starts w/ M
+		Pokemon name starts w/ P
+		Pokemon name starts w/ S
+		Pokemon name starts w/ T
+	0	Pokemon name includes B
+	0	Pokemon name includes F
+	0	Pokemon name includes K
+	0	Pokemon name includes V
+	0	Pokemon name includes W
+	0	Pokemon name includes Y
+	0	Pokemon name includes Z
+		move name starts w/ A
+		move name starts w/ B
+		move name starts w/ C
+		move name starts w/ D
+		move name starts w/ E
+		move name starts w/ F
+		move name starts w/ G
+		move name starts w/ H
+		move name starts w/ I
+		move name starts w/ L
+		move name starts w/ M
+		move name starts w/ P
+		move name starts w/ R
+		move name starts w/ T
+		move name starts w/ W
+	0	move name includes V
+	0	move name includes X
+	0	move name includes Z
+		ability name starts w/ C
+		ability name starts w/ M
+		ability name starts w/ P
+		ability name starts w/ S
+		ability name starts w/ T
+	0	ability name includes B
+	0	ability name includes F
+	0	ability name includes K
+	0	ability name includes V
+	0	ability name includes W
+	0	ability name includes Y
+		everyone has a Normal move
+		everyone has a Fire move
+		everyone has a Water move
+		everyone has a Grass move
+		everyone has a Electric move
+		everyone has a Ice move
+		everyone has a Fighting move
+		everyone has a Poison move
+		everyone has a Ground move
+		everyone has a Flying move
+		everyone has a Psychic move
+		everyone has a Bug move
+		everyone has a Rock move
+		everyone has a Ghost move
+		everyone has a Dark move
+		everyone has a Dragon move
+		everyone has a Steel move
+		everyone has a Fairy move
+x		do <1% damage
+x		KO 4+ foes w/ 1 Pokemon
