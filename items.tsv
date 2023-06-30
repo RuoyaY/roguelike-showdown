@@ -181,7 +181,7 @@ Perfect Gem	misc	20										Set a Pokemon's held item to any gem (e.g. "*Ice Ge
 Random Gem	misc	5										Generate a random type, then set a Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").		
 Mirror Item	misc	40					2					Copy a Pokemon's held item to another Pokemon.		
 Perfect Item	misc	45										Set a Pokemon's held item to anything other than an Eviolite, a Z-Crystal, or a Pokemon-specific item.		
-Shadow Item	misc	20								x		Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last round. Exception: Z-Crystals.		
+Shadow Item	misc	20								x		Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last battle. Exception: Z-Crystals.		
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld										
 Black Belt	heldItem	20												
 Flame Plate	heldItem	20												
@@ -252,8 +252,8 @@ Perfect Party TM	partyTM	30n+30										Choose ANY move (excluding Z-Moves). Te
 Mirror TM	universalTM	40					2					Teach ANY 1 Pokemon ANY 1 move another Pokemon knows (excluding Z-Moves).		
 Mirror Moveset	misc	20					2					Replace a Pokemon's ENTIRE moveset with a copy of another Pokemon's moveset.		
 Mirror TM Party	partyTM	20n					2					Teach EVERY Pokemon ANY 1 move one of your Pokemon know (excluding Z-Moves).		
-Shadow TM	universalTM	35								x		Teach ANY 1 Pokemon ANY 1 move your opponent used last round (excluding Z-Moves).		
-Shadow TM Party	partyTM	15n+20								x		Choose ANY move your opponent used last round (excluding Z-Moves). Teach EVERY Pokemon that move.		
+Shadow TM	universalTM	35								x		Teach ANY 1 Pokemon ANY 1 move your opponent used last battle (excluding Z-Moves).		
+Shadow TM Party	partyTM	15n+20								x		Choose ANY move your opponent used last battle (excluding Z-Moves). Teach EVERY Pokemon that move.		
 Normal Tera Shards	misc	5										Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
 Fire Tera Shards	misc	10										Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.		
 Water Tera Shards	misc	5										Set a Pokemon's Tera Type to <span class="type-water">Water</span>.		
@@ -275,7 +275,7 @@ Fairy Tera Shards	misc	10										Set a Pokemon's Tera Type to <span class="typ
 Perfect Tera Shards	misc	20										Set a Pokemon's Tera Type to any type.		
 Random Tera Shards	misc	5										Generate a random type, then set any 1 Pokemon's Tera Type to that type.		
 Mirror Tera Shards	misc	15					2					Copy a Pokemon's Tera Type to another Pokemon.		
-Shadow Tera Shards	misc	10	0							x		Set a Pokemon's Tera Type to the type your opponent Terastallized into last round.	stupid idea. functionally, it's exactly the same as one of the normal Tera Shards items (save for if the player chooses to keep this between rounds), but it's the wrong price sometimes	
+Shadow Tera Shards	misc	10								x		Set a Pokemon's Tera Type to the type your opponent Terastallized into last battle.	stupid idea. functionally, it's exactly the same as one of the normal Tera Shards items (save for if the player chooses to keep this between rounds), but it's the wrong price sometimes	
 Origin Tera Shards	misc	10										Set a Pokemon's Tera Type to any type it already has.		
 Move-Based Tera Shards	misc	15										Set a Pokemon's Tera Type to the type of one of its moves.		
 Normal Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.		
@@ -318,7 +318,7 @@ Encounter Power: Steel	misc	10									x	Next round, you are guaranteed to get S
 Encounter Power: Fairy	misc	10									x	Next round, you are guaranteed to get Fairy-type Pokemon.		
 Encounter Power: Perfect	misc	15									x	Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
 Encounter Power: Mirror	misc	5									x	Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
-Encounter Power: Shadow	misc	10								x	x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last round (next round, you are guaranteed to get Pokemon of that type).		
+Encounter Power: Shadow	misc	10								x	x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last battle (next round, you are guaranteed to get Pokemon of that type).		
 Venusaurite	heldItem	85		venusaur								If held by a Venusaur, this item allows it to Mega Evolve in battle.		
 Charizardite X	heldItem	85		charizard								If held by a Charizard, this item allows it to Mega Evolve in battle.		
 Charizardite Y	heldItem	130		charizard								If held by a Charizard, this item allows it to Mega Evolve in battle.		
@@ -387,7 +387,7 @@ Wonder Guard-ifier	abilitizer	15										Set a Pokemon's ability to *Wonder Gua
 Plus & Minus Abilitizers	abilitizer	100					2					Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 (Almost) Perfect Abilitizer	abilitizer	70										Set a Pokemon's ability to any ability other than Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 Mirror Abilitizer	abilitizer	30					2					Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
-Shadow Abilitizer	abilitizer	25								x		Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last round.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
+Shadow Abilitizer	abilitizer	25								x		Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last battle.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 Weather Chaos Abilitizers	abilitizer	30					4					Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 Terrain Chaos Abilitizers	abilitizer	5					4					Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>		
 Debilitizer	misc	-10										Set a Pokemon's ability to "No Ability". <span class="warning"> <br>Cannot remove Defeatist, Slow Start, Stall, or Truant. </span>		
@@ -398,8 +398,8 @@ Power Lens	heldItem	0									x	1/2 speed. every round, +100 [stat EV]
 Power Band	heldItem	0									x	1/2 speed. every round, +100 [stat EV]		
 Power Anklet	heldItem	0									x	1/2 speed. every round, +100 [stat EV]		
 Mirror Pokemon	misc	100					2					Replace one of your Pokemon with a clone of one of your other Pokemon. <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
-Shadow Pokemon	misc	80								x		Replace one of your Pokemon with a clone of one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
-Trade	misc	160								x		Swap one of your Pokemon with one of your opponent's Pokemon AS IT WAS LAST ROUND. <span class="warning"> <br>Cannot swap away Pokemon you got at Lv 1. </span>		
+Shadow Pokemon	misc	80								x		Replace one of your Pokemon with a clone of one of your opponent's Pokemon AS IT WAS LAST BATTLE. <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
+Trade	misc	160								x		Swap one of your Pokemon with one of your opponent's Pokemon AS IT WAS LAST BATTLE. <span class="warning"> <br>Cannot swap away Pokemon you got at Lv 1. </span>		
 Super Rod	misc	150	0.5									REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
 Super Rod	misc	150	0.5									REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning"> <br>Cannot replace Pokemon you got at Lv 1. </span>		
 Old Rod	misc	40	0									ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>		
@@ -560,7 +560,7 @@ Perfect Steel Party TM	partyTM	25n+25	0.05									Choose ANY STEEL-TYPE move (o
 Perfect Fairy Party TM	partyTM	25n+25	0.05									Choose ANY FAIRY-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.		
 Perfect Egg	egg	90										In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. </span>		
 Mirror Egg	egg	70										Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.		
-Shadow Egg	egg	70										Copy of one of your opponent's Pokemon as it was last round into an EXTRA SLOT. Set the copy's level to 1.		
+Shadow Egg	egg	70										Copy one of your opponent's Pokemon AS IT WAS LAST BATTLE into an EXTRA SLOT. Set the copy's level to 1.		
 1v1 Battle	nextBattle	50/b					2					Next battle only: BOTH players choose only 1 Pokemon to put in their team.		
 Singles Battle	nextBattle	40/b					2					Next battle only: Do a singles battle instead of a doubles battle.		
 Scouting	nextBattle	5										Next battle only: Your opponent must send you a screenshot of their [nth] Pokemon before the battle begins.		
@@ -685,7 +685,7 @@ Moon Stone	heldItem	5r+10									x	Every round, add a random stat-lowering move
 Dawn Stone	heldItem	0									x	Every round, automatically sets EVERY move slot to a random move.		
 Dusk Stone	heldItem	5									x	Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).		
 Dubious Disc	heldItem	-20r-10										permanently can't be changed/replaced		
-Up-Grade	heldItem	15r-25									x	Every round, changes to a random species w/ higher stats		
+Up-Grade	heldItem	5r									x	Every round, changes to a random species w/ higher stats		
 TR00	heldItem	25	0.2									adds the move Swords Dance		
 TR01	heldItem	25	0.2									adds the move Body Slam		
 TR02	heldItem	25	0.2									adds the move Flamethrower		
@@ -848,7 +848,7 @@ Forced Dark Tera Party	nextBattle	20/b										Next battle only: All of your op
 Forced Dragon Tera Party	nextBattle	20/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Dragon.		
 Forced Steel Tera Party	nextBattle	-15/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Steel.		
 Forced Fairy Tera Party	nextBattle	0/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Fairy.		
-Held Item Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name its held item (or lack thereof), earn $30.		
-Ability Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name its ability, earn $30.		
-Tera Type Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name its Tera Type, earn $30.		
-Moveset Quiz	misc	5								x		Randomly pick a opposing Pokemon from LAST ROUND. If you correctly name ALL of its moves, earn $30.		
+Held Item Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST BATTLE. If you correctly name its held item (or lack thereof), earn $30.		
+Ability Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST BATTLE. If you correctly name its ability, earn $30.		
+Tera Type Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST BATTLE. If you correctly name its Tera Type, earn $30.		
+Moveset Quiz	misc	5								x		Randomly pick a opposing Pokemon from LAST BATTLE. If you correctly name ALL of its moves, earn $30.		
