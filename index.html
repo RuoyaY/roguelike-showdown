@@ -830,8 +830,7 @@ const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
 
 function loadAllSpecies() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
+  loadFile('pokedex.json', function() {
     allSpecies = JSON.parse(this.responseText);
     for ([speciesId, species] of Object.entries(allSpecies)) {
       allSpeciesIds[species.name] = speciesId;
@@ -842,51 +841,38 @@ function loadAllSpecies() {
     }
     allSpecies.missingno.types = allSpecies.missingno.types.filter(type => TYPES.includes(type));
     doneLoading();
-  }
-  xhttp.open("GET", "pokedex.json");
-  xhttp.send();
+  });
 }
 function loadLearnsets() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
+  loadFile('learnsets.json', function() {
     learnsets = JSON.parse(this.responseText);
     doneLoading();
-  }
-  xhttp.open("GET", "learnsets.json");
-  xhttp.send();
+  });
 }
 function loadMoves() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
+  loadFile('moves.json', function() {
     moves = JSON.parse(this.responseText);
     makeNumsUnique(moves);
     doneLoading();
-  }
-  xhttp.open("GET", "moves.json");
-  xhttp.send();
+  });
 }
 function loadAbilities() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
+  loadFile('abilities.json', function() {
     abilities = JSON.parse(this.responseText);
     makeNumsUnique(abilities);
     doneLoading();
-  }
-  xhttp.open("GET", "abilities.json");
-  xhttp.send();
+  });
 }
 function loadHeldItems() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
+  loadFile('heldItems.json', function() {
     heldItems = JSON.parse(this.responseText);
     doneLoading();
-  }
-  xhttp.open("GET", "heldItems.json");
-  xhttp.send();
+  });
 }
 function loadItems() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
+  let filename = 'items.tsv';
+  // filename = 'itemsTest.tsv';
+  loadFile(filename, function() {
     const responseLines = this.response.split('\n');
     for (let i = 1; i < responseLines.length; i++) {
       const splitByTab = responseLines[i].split('\t');
@@ -917,16 +903,13 @@ function loadItems() {
       items.push(item);
     }
     doneLoading();
-  }
-  let filename = 'items.tsv';
-  // filename = 'itemsTest.tsv';
-  xhttp.open("GET", filename);
-  xhttp.send();
+  });
 }
 
 function copyBingoJSON() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
+  let filename = 'bingo.tsv';
+  // filename = 'bingoTest.tsv';
+  loadFile(filename, function() {
     const responseLines = this.response.replaceAll('\r','').split('\n');
     responseLines.shift();
     let linesCopy = [];
@@ -950,9 +933,12 @@ function copyBingoJSON() {
       }
     }
     copyStr(JSON.stringify(goals) + '\n'.repeat(10));
-  }
-  let filename = 'bingo.tsv';
-  // filename = 'bingoTest.tsv';
+  });
+}
+
+function loadFile(filename, onLoadFunc) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = onLoadFunc;
   xhttp.open("GET", filename);
   xhttp.send();
 }
