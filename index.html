@@ -344,7 +344,7 @@ button:focus {
     <br>
     <label for="money">$</label> <input id="money" type="number">
     <button onclick="refreshShop(true)" id="refresh" class="mb-4px">refresh</button>
-    <div class="attr">
+    <div id="taxDiv" class="attr">
       Next round, pay $<span id="tax">0</span> in wealth tax.
     </div>
     <p id="trueMirror" class="true-mirror big-text" hidden>x2</p>
@@ -808,7 +808,7 @@ pokeballEle.addEventListener('change', event => {
   updatePokeballDesc(pokeballEle.value);
 });
 
-document.getElementById('money').addEventListener('change', event => {updateTaxEle()});
+document.getElementById('money').addEventListener('change', event => {updateTax()});
 
 setNumRounds(7);
 document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
@@ -3064,18 +3064,23 @@ function getMoneyStr() {
 }
 function setMoney(money) {
   document.getElementById('money').value = money;
-  updateTaxEle();
+  updateTax();
 }
 
 function getTax(money) {
   return Math.floor(money / 10);
 }
 
-function updateTaxEle() {
+function updateTax() {
   const money = getMoney();
   if (money == null)
     return;
-  document.getElementById('tax').textContent = getTax(money);
+  const tax = getTax(money);
+  document.getElementById('tax').textContent = tax;
+  if (tax === 0)
+    document.getElementById('taxDiv').classList.replace('attr', 'gray');
+  else
+    document.getElementById('taxDiv').classList.replace('gray', 'attr'); 
 }
 
 function getPokeball() {
