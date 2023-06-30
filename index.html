@@ -343,7 +343,10 @@ button:focus {
     <select id="tmSeeker" class="mb-4px"></select>
     <br>
     <label for="money">$</label> <input id="money" type="number">
-    <button onclick="refreshShop(true)" id="refresh">refresh</button>
+    <button onclick="refreshShop(true)" id="refresh" class="mb-4px">refresh</button>
+    <div class="attr">
+      Next round, pay $<span id="tax">0</span> in wealth tax.
+    </div>
     <p id="trueMirror" class="true-mirror big-text" hidden>x2</p>
     <div id="shop"></div>
     <h2 class="attr">Generate a Pokemon</h2>
@@ -804,6 +807,8 @@ const pokeballEle = document.getElementById('pokeball');
 pokeballEle.addEventListener('change', event => {
   updatePokeballDesc(pokeballEle.value);
 });
+
+document.getElementById('money').addEventListener('change', event => {updateTaxEle()});
 
 setNumRounds(7);
 document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
@@ -2197,19 +2202,23 @@ function load() {
 }
 
 function nextRound() {
+  const money = getMoney();
+  if (money == null)
+    return;
   let income = INCOME;
   if (document.getElementById('extraIncome').checked)
     income += MONEY_MOVE_INCOME;
   const won = document.getElementById('won').checked;
   if (won)
     income += WIN_INCOME_DELTA;
-  if (!pay(-1 * income)) return;
+  income -= getTax(money);
+  setMoney(money + income);
 
   const choicesDiv = document.getElementById('choices');
   killAllChildren(choicesDiv);
   const addChoicesSuccessful = addChoices(choicesDiv);
   if (!addChoicesSuccessful) {
-    pay(income);
+    setMoney(money);
     return;
   }
   toggleNonPokemonChoices(false);
@@ -3031,9 +3040,8 @@ function isNextBattleItem(item) {
 }
 
 function pay(price) {
-  let money = parseInt(getMoneyStr());
-  if (isNaN(money)) {
-    alert('Invalid money value!');
+  let money = getMoney();
+  if (money == null) {
     return false;
   } else if (money < price) {
     alert('Not enough money!');
@@ -3043,11 +3051,31 @@ function pay(price) {
     return true;
   }
 }
+function getMoney() {
+  let money = parseInt(getMoneyStr());
+  if (isNaN(money)) {
+    alert('Invalid money value!');
+    return null;
+  }
+  return money;
+}
 function getMoneyStr() {
   return document.getElementById('money').value;
 }
 function setMoney(money) {
   document.getElementById('money').value = money;
+  updateTaxEle();
+}
+
+function getTax(money) {
+  return Math.floor(money / 10);
+}
+
+function updateTaxEle() {
+  const money = getMoney();
+  if (money == null)
+    return;
+  document.getElementById('tax').textContent = getTax(money);
 }
 
 function getPokeball() {
