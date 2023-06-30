@@ -945,18 +945,60 @@ function copyBingoJSON() {
 function printAlphabetGoals() {
   const TOO_LOW = 0.05;
   const TOO_HIGH = .2;
-  const numSpecies = Object.values(allSpecies).length;
+  const numSpecies = Object.entries(allSpecies).filter(([speciesId, species]) => isLegal(speciesId)).length;
   let out = '';
   for (let i = 0; i < 26; i++) {
-    const char = String.fromCharCode(63 + i);
+    const char = String.fromCharCode(65 + i);
+
     let prob = Object.entries(allSpecies).filter(([speciesId, species]) => 
       isLegal(speciesId) && species.name.toUpperCase().includes(char)).length/numSpecies;
     if (TOO_LOW < prob && prob < TOO_HIGH)
-      out += "Pokemon name includes '" + char.toLowerCase() + "'\n";
+      out += "Pokemon name includes " + char + "\n";
+
     prob = Object.entries(allSpecies).filter(([speciesId, species]) => 
-      isLegal(speciesId) && species.name.startsWith(char)).length/numSpecies;
+      isLegal(speciesId) && species.name.toUpperCase().startsWith(char)).length/numSpecies;
     if (TOO_LOW < prob && prob < TOO_HIGH)
-      out += "Pokemon name starts w/ '" + char + "'\n";
+      out += "Pokemon name starts w/ " + char + "\n";
+  }
+  console.log(out);
+}
+function printAlphabetMoveGoals() {
+  const TOO_LOW = 0.02;
+  const TOO_HIGH = .1;
+  const numMoves = Object.values(moves).filter(move => isLegalMove(move, true, true)).length;
+  let out = '';
+  for (let i = 0; i < 26; i++) {
+    const char = String.fromCharCode(65 + i);
+
+    let prob = Object.values(moves).filter(move => 
+      isLegalMove(move, true, true) && move.name.toUpperCase().includes(char)).length/numMoves;
+    if (TOO_LOW < prob && prob < TOO_HIGH)
+      out += "move name includes " + char + "\n";
+
+    prob = Object.values(moves).filter(move => 
+      isLegalMove(move, true, true) && move.name.toUpperCase().startsWith(char)).length/numMoves;
+    if (TOO_LOW < prob && prob < TOO_HIGH)
+      out += "move name starts w/ " + char + "\n";
+  }
+  console.log(out);
+}
+function printAlphabetAbilityGoals() {
+  const TOO_LOW = 0.05;
+  const TOO_HIGH = .2;
+  const numAbilities = Object.values(abilities).length;
+  let out = '';
+  for (let i = 0; i < 26; i++) {
+    const char = String.fromCharCode(65 + i);
+
+    let prob = Object.values(abilities).filter(ability => 
+      ability.name.toUpperCase().includes(char)).length/numAbilities;
+    if (TOO_LOW < prob && prob < TOO_HIGH)
+      out += "ability name includes " + char + "\n";
+
+    prob = Object.values(abilities).filter(ability => 
+      ability.name.toUpperCase().startsWith(char)).length/numAbilities;
+    if (TOO_LOW < prob && prob < TOO_HIGH)
+      out += "ability name starts w/ " + char + "\n";
   }
   console.log(out);
 }
