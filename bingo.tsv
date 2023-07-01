@@ -78,6 +78,8 @@ x		make Psychic Terrain
 x		make Misty Terrain
 x	0	remove/nullify weather
 x	0	remove terrain
+x		change or remove/nullify the active weather
+x		change or remove the active terrain
 		Pokemon w/ only status moves
 		Pokemon w/ only physical moves
 		Pokemon w/ only special moves
@@ -115,6 +117,8 @@ x		foe Evasion at -1 or less
 		<70 SpD (not Lv1)
 		>130 Spe
 		<70 Spe (not Lv1)
+		>750 stat total
+		<625 stat total (not Lv1)
 x		successfully use Sleep Talk
 x		use Splash
 x		use the move Metronome
@@ -127,6 +131,7 @@ x		foe's forme changed
 x		KO foe via status effect
 		have >4 moves
 		have <4 moves (not Lv1)
+x		a Pokemon uses >4 unique moves in 1 battle
 x		successfully use a move w/ 10-40 BP
 x		successfully use a move w/ >100 BP
 x		successfully use a move that costs 50% max HP
@@ -141,8 +146,8 @@ x		Tera into Rock
 x		use a Z-move
 x		activate Quark Drive or Protosynthesis
 x		win w/ 1+ Pokemon at full HP (not Lv1)
-x		3+ Next Battle Only items at once
-x		block 2 moves w/ 1 move
+x		4+ Next Battle Only items at once
+x		block/avoid 2 moves w/ 1 Pokemon
 x		force switch-out (eg Whirlwind)
 x		a foe misses
 		3+ Pokemon sharing a type
@@ -150,7 +155,7 @@ x		use Hidden Power
 x		use a Pledge or Fusion combo
 x		use Defense Curl
 x		successfully use Spit Up/Swallow
-x		cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
+x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 		3+ single-type Pokemon
 		everyone's same gender (M/F/-)
 		all Normal moveset
@@ -237,3 +242,24 @@ x		cancel a move w/ Disable/Torment/Taunt/Embargo/Heal Block
 		everyone has a Fairy move
 x		do <1% damage
 x		KO 4+ foes w/ 1 Pokemon
+		everyone's Atk > SpA
+		everyone's SpA > Atk
+x		unselectable move
+x		block a move w/ Quick Guard, Wide Guard, or Crafty Shield
+x		lose 4+ PP of Substitute
+x		lose 5+ PP of a move
+		all same held item
+		nobody has EVs
+		all share a move
+x		use a binding move
+x		use a low priority move
+x		use an HP-draining move
+x		you're trapped (can't switch)
+x		foe's trapped (can't switch)
+x		use a move after it charged for a turn
+x		successfully use a counterattacking move
+x		use 3+ moves in 1 turn
+x		your ability raised a stat stage
+x		your ability lowered a stat stage
+x		your ability activates due to contact
+x		your Lightning Rod or Storm Drain activates

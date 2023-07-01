@@ -683,7 +683,7 @@ Water Stone	heldItem	5r+10									x	Every round, add a random ___-type move in 
 Sun Stone	heldItem	5r+10									x	Every round, add a random stat-raising move in a new slot		
 Moon Stone	heldItem	5r+10									x	Every round, add a random stat-lowering move in a new slot		
 Dawn Stone	heldItem	0									x	Every round, automatically sets EVERY move slot to a random move.		
-Dusk Stone	heldItem	5									x	Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).		
+Dusk Stone	heldItem	0									x	Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).		
 Dubious Disc	heldItem	-20r-10										permanently can't be changed/replaced		
 Up-Grade	heldItem	5r									x	Every round, changes to a random species w/ higher stats		
 TR00	heldItem	25	0.2									adds the move Swords Dance		
