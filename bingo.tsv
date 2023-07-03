@@ -34,16 +34,17 @@ x		win w/ 1 Pokemon left
 x		lead w/ 2 Pokemon sharing a type
 x		win without Tera
 x		switch 2 Pokemon out turn 1
-x		heal a status effect (not by switching)
+x		heal a status effect (not just by switching)
 x		run out of PP on a move
 x		a Pokemon uses all its moves in 1 battle (not Lv1)
 		2 Pokemon w/ same level
 x		foe flinched
 x		get flinched
 x		miss a move
-x		be immune to a move via type
-x		be immune to a move via ability
+x		use a type's immunity
+x		use an ability immunity
 x		be immune to foe's move
+x		use a Subtitute's immunity
 x		eat a berry
 x		use a gem
 x		take recoil/crash damage
@@ -96,8 +97,8 @@ x		Accuracy at +1 or more
 x		Evasion at +1 or more
 x		foe has a stat at +3 or more
 x		foe has a stat at -3 or less
-x		foe's total stat stages +4 or more
-x		foe's total stat stages -4 or less
+x		foe w/ total stat stages +4 or more
+x		foe w/ total stat stages -4 or less
 x		foe Atk at -2 or less
 x		foe SpA at -2 or less 
 x		foe Def at -2 or less 
@@ -122,7 +123,6 @@ x		foe Evasion at -1 or less
 x		successfully use Sleep Talk
 x		use Splash
 x		use the move Metronome
-x		block status move w/ Substitute
 x		KO an ally
 x		your ability changed
 x		foe's ability changed
@@ -147,7 +147,7 @@ x		use a Z-move
 x		activate Quark Drive or Protosynthesis
 x		win w/ 1+ Pokemon at full HP (not Lv1)
 x		4+ Next Battle Only items at once
-x		block/avoid 2 moves w/ 1 Pokemon
+x		block/avoid 2 moves w/ 1 Pokemon's turn
 x		force switch-out (eg Whirlwind)
 x		a foe misses
 		3+ Pokemon sharing a type
@@ -246,9 +246,9 @@ x		KO 4+ foes w/ 1 Pokemon
 		everyone's SpA > Atk
 x		unselectable move
 x		block a move w/ Quick Guard, Wide Guard, or Crafty Shield
-x		lose 4+ PP of Substitute
-x		lose 5+ PP of a move
-		all same held item
+x		lose 4+ PP of a Pokemon's Substitute
+x		lose 5+ PP of a Pokemon's move
+		all same held item (not empty)
 		nobody has EVs
 		all share a move
 x		use a binding move
@@ -263,3 +263,4 @@ x		your ability raised a stat stage
 x		your ability lowered a stat stage
 x		your ability activates due to contact
 x		your Lightning Rod or Storm Drain activates
+		3+ Pokemon w/ same Tera
