@@ -1489,8 +1489,12 @@ function randomOfSpecies(speciesName, abilityName, gender, pokeball, level, tera
   if (heldItemName)
     pokemonStr += ' @ ' + heldItemName;
 
-  if (abilityName == null)
-    abilityName = randomValue(species.abilities);
+  if (abilityName == null) {
+    if (pokeball === 'Strange Ball')
+      abilityName = randomAbilitizerAbility().name;
+    else
+      abilityName = randomValue(species.abilities);
+  }
   pokemonStr += '\nAbility: ';
   if (abilityName)
     pokemonStr += abilityName;
@@ -2724,11 +2728,7 @@ function randomAbilitizer(failsafe) {
     return randomTM();
   }
 
-  let ability;
-  do {
-    ability = randomValue(abilities);
-  } while (ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
-            || ability.name === 'Wonder Guard');
+  const ability = randomAbilitizerAbility();
   // ability = abilities.defeatist;
 
   const effectiveStatDiffs = [];
@@ -2762,6 +2762,14 @@ function randomAbilitizer(failsafe) {
   if (abilitizer.price < MIN_ABILITIZER_PRICE || MAX_ABILITIZER_PRICE < abilitizer.price)
     return randomAbilitizer(failsafe); // re-roll
   return abilitizer;
+}
+function randomAbilitizerAbility() {
+  let ability;
+  do {
+    ability = randomValue(abilities);
+  } while (ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
+            || ability.name === 'Wonder Guard');
+  return ability;
 }
 function abilitizerDesc(strBeforeAbilityName, ability) {
   return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n'
