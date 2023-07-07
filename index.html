@@ -276,9 +276,11 @@ button:focus {
     <br class="mb-1">
     <button id="save" onclick="save()">save</button>
     <button id="load" onclick="load()">load</button>
-    <h2 class="attr">Start Round</h2>
-    Round <span id="roundCounter">0</span> of <input id="numRounds" type="number" size="1" class="mb-4px">
     <br>
+    <br>
+    Round <span id="roundCounter">0</span> of <input id="numRounds" type="number" size="1" class="mb-4px">
+    <input type="checkbox" id="endless"> <label for="endless">Endless</label>
+    <h2 class="attr">Start Round</h2>
     <div id="pokeballDiv" hidden>
       <label for="pokeball">Poké Ball:</label>
       <select id="pokeball" class="mb-4px">
@@ -792,42 +794,49 @@ loadHeldItems();
 let items = [];
 loadItems();
 
-setPartySize(4);
-
-function generateSpeciesOnEnter(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    generateSpecificSpecies();
-  }
-}
-document.getElementById('speciesInput').addEventListener('keyup', generateSpeciesOnEnter);
-document.getElementById('abilityInput').addEventListener('keyup', generateSpeciesOnEnter);
-
-const pokeballEle = document.getElementById('pokeball');
-pokeballEle.addEventListener('change', event => {
-  updatePokeballDesc(pokeballEle.value);
-});
-
-document.getElementById('money').addEventListener('change', event => {updateTax()});
-
-setNumRounds(7);
-document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
-document.getElementById('skip').hidden = true;
-setMoney(0);
-updateRefreshCost();
-const extraIncomeLabel = document.getElementById('extraIncomeLabel');
-extraIncomeLabel.title = 'Check this box if you '
-  + 'successfully used any of the following moves last round: \n'
-  + MONEY_MOVES.join(', ') + '.';
-extraIncomeLabel.textContent += ' ($' + MONEY_MOVE_INCOME + ')';
-document.getElementById('wonLabel').textContent += ' (-$' + -WIN_INCOME_DELTA + ')';
-
-resetRoundBasedInputs();
-toggleAfterFirstRoundChoices(false);
-
 let roundCounter = 0;
 const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
+
+onLoad();
+
+function onLoad() {
+  setPartySize(4);
+  
+  function generateSpeciesOnEnter(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      generateSpecificSpecies();
+    }
+  }
+  document.getElementById('speciesInput').addEventListener('keyup', generateSpeciesOnEnter);
+  document.getElementById('abilityInput').addEventListener('keyup', generateSpeciesOnEnter);
+  
+  const pokeballEle = document.getElementById('pokeball');
+  pokeballEle.addEventListener('change', event => {
+    updatePokeballDesc(pokeballEle.value);
+  });
+  
+  document.getElementById('money').addEventListener('change', event => {updateTax()});
+  
+  setNumRounds(7);
+  document.getElementById('endless').checked = false;
+
+  document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
+  document.getElementById('skip').hidden = true;
+  setMoney(0);
+  updateRefreshCost();
+  const extraIncomeLabel = document.getElementById('extraIncomeLabel');
+  extraIncomeLabel.title = 'Check this box if you '
+    + 'successfully used any of the following moves last round: \n'
+    + MONEY_MOVES.join(', ') + '.';
+  extraIncomeLabel.textContent += ' ($' + MONEY_MOVE_INCOME + ')';
+  document.getElementById('wonLabel').textContent += ' (-$' + -WIN_INCOME_DELTA + ')';
+  
+  resetRoundBasedInputs();
+  toggleAfterFirstRoundChoices(false);
+}
+
 
 function loadAllSpecies() {
   loadFile('pokedex.json', function() {
@@ -2154,6 +2163,7 @@ function save() {
 
   localStorage.setItem('roundCounter', roundCounter);
   localStorage.setItem('numRounds', getNumRounds());
+  localStorage.setItem('endless', document.getElementById('endless').checked);
 
   localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
 
@@ -2191,6 +2201,7 @@ function load() {
   
   setRoundCounter(parseInt(localStorage.getItem('roundCounter')));
   setNumRounds(localStorage.getItem('numRounds'));
+  document.getElementById('endless').checked = localStorage.getItem('endless') === 'true';
   
   document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
 
@@ -2244,6 +2255,11 @@ function nextRound() {
   }
 
   setRoundCounter(roundCounter+1);
+  if (document.getElementById('endless').checked) {
+    const numRounds = getNumRounds();
+    if (roundCounter >= numRounds)
+      setNumRounds(roundCounter + 1);
+  }
 }
 function updateForRoundlyHeldItem(pokemonStr) {
   // Power items
