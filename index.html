@@ -2608,6 +2608,8 @@ const KEYWORD_HOVER_TEXTS = {
   'Before battle': 'Revealed after both players are ready for battle.',
   'nth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
   'mth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
+  'pth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
+  'qth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
   '_____': 'Until you are ready for battle, you may choose what goes in this blank.',
 };
 function itemDescInHTML(itemDesc, handleKeywords) {
@@ -3080,6 +3082,8 @@ NTH_SELECT_HTML += '</select>';
 function replaceWithHTMLInputs(itemHTML) {
   return itemHTML.replaceAll('[nth]', NTH_SELECT_HTML)
                  .replaceAll('[mth]', NTH_SELECT_HTML)
+                 .replaceAll('[pth]', NTH_SELECT_HTML)
+                 .replaceAll('[qth]', NTH_SELECT_HTML)
                  .replaceAll('[_____]', '<input size="7">');
 }
 
