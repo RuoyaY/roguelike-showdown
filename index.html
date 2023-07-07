@@ -61,7 +61,7 @@ body {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.item, .pokeball-desc, .next-battle {
+.item, .pokeball-desc, .item-width {
   width: 60ch;
 }
 .item-price {
@@ -218,6 +218,7 @@ button:focus {
 .misc { color: lightgray }
 .partyMisc { background: linear-gradient(45deg, hotpink, lightgray, hotpink); }
 .pokeball { background: linear-gradient(0deg, white 50%, lightcoral 50%); }
+.beforeBattle { color:pink }
 .nextBattle { color: tomato }
 .heldItem { color: orange }
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
@@ -362,9 +363,12 @@ button:focus {
     <div id="species" class=""></div>
   </div>
   <div class="ml-1">
-    <div id="nextBattleDiv" class="next-battle" hidden>
-      <h2 class="attr mb-4px">Next Battle Only</h2>
-      <p class="gray m-0">Revealed after both players are ready for battle.</p>
+    <div id="beforeBattleDiv" class="item-width" hidden>
+      <h2 class="beforeBattle hasHoverText" title="Revealed after both players are ready for battle.">Before Battle</h2>
+      <div id="beforeBattle"></div>
+    </div>
+    <div id="nextBattleDiv" class="item-width" hidden>
+      <h2 class="nextBattle hasHoverText" title="Revealed after both players are ready for battle. Cannot be used on the final battle.">Next Battle Only</h2>
       <div id="nextBattle"></div>
     </div>
     <h2 class="attr">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
@@ -2168,6 +2172,7 @@ function save() {
 
   localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
 
+  localStorage.setItem('beforeBattle', document.getElementById('beforeBattle').innerHTML);
   localStorage.setItem('nextBattle', document.getElementById('nextBattle').innerHTML);
 }
 function load() {
@@ -2206,6 +2211,9 @@ function load() {
   
   document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
 
+  const beforeBattleHTML = localStorage.getItem('beforeBattle');
+  document.getElementById('beforeBattleDiv').hidden = beforeBattleHTML === '';
+  document.getElementById('beforeBattle').innerHTML = beforeBattleHTML;
   const nextBattleHTML = localStorage.getItem('nextBattle');
   document.getElementById('nextBattleDiv').hidden = nextBattleHTML === '';
   document.getElementById('nextBattle').innerHTML = nextBattleHTML;
@@ -2235,6 +2243,8 @@ function nextRound() {
   }
   toggleNonPokemonChoices(false);
 
+  document.getElementById('beforeBattleDiv').hidden = true;
+  document.getElementById('beforeBattle').innerHTML = '';
   document.getElementById('nextBattleDiv').hidden = true;
   document.getElementById('nextBattle').innerHTML = '';
 
@@ -2595,6 +2605,7 @@ const KEYWORD_HOVER_TEXTS = {
   'Nature': 'add a new line under EVs\ne.g. "Bold Nature"',
   'gender': 'e.g. "Pikachu (F)"',
   'Next battle only': 'Revealed after both players are ready for battle.\nCannot be used on the final battle.',
+  'Before battle': 'Revealed after both players are ready for battle.',
   'nth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
   'mth': 'Until you are ready for battle, you may choose between 1st, 2nd, 3rd, etc.',
   '_____': 'Until you are ready for battle, you may choose what goes in this blank.',
@@ -3015,19 +3026,23 @@ function buyItem(itemDiv, item, itemPrice) {
     setGuaranteedType(TYPES.includes(type) ? type : '');
     document.getElementById('typeDiv').hidden = false;
 
+  } else if (isBeforeBattleItem(item)) {
+    document.getElementById('beforeBattleDiv').hidden = false;
+    const beforeBattleEle = document.createElement('p');
+
+    let beforeBattleEventHTML = item.desc.substring('Before battle: '.length);
+    beforeBattleEventHTML = replaceWithHTMLInputs(beforeBattleEventHTML);
+    beforeBattleEventHTML = itemDescInHTML(beforeBattleEventHTML, true);
+
+    beforeBattleEle.innerHTML = beforeBattleEventHTML;
+    document.getElementById('beforeBattle').append(beforeBattleEle);
+  
   } else if (isNextBattleItem(item)) {
     document.getElementById('nextBattleDiv').hidden = false;
     const nextBattleEventEle = document.createElement('p');
 
     let nextBattleEventHTML = item.desc.substring('Next battle only: '.length);
-    let nthSelectHTML = '<select>';
-    for (let i = 1; i <= 10; i++) {
-      nthSelectHTML += '<option>' + ordinal(i) + '</option>';
-    }
-    nthSelectHTML += '</select>';
-    nextBattleEventHTML = nextBattleEventHTML.replaceAll('[nth]', nthSelectHTML);
-    nextBattleEventHTML = nextBattleEventHTML.replaceAll('[mth]', nthSelectHTML);
-    nextBattleEventHTML = nextBattleEventHTML.replaceAll('[_____]', '<input size="7">');
+    nextBattleEventHTML = replaceWithHTMLInputs(nextBattleEventHTML);
     nextBattleEventHTML = itemDescInHTML(nextBattleEventHTML, true);
 
     nextBattleEventEle.innerHTML = nextBattleEventHTML;
@@ -3056,6 +3071,22 @@ function buyItem(itemDiv, item, itemPrice) {
   itemDiv.classList.add('chosen');
 }
 
+let NTH_SELECT_HTML;
+NTH_SELECT_HTML = '<select>';
+for (let i = 1; i <= 10; i++) {
+  NTH_SELECT_HTML += '<option>' + ordinal(i) + '</option>';
+}
+NTH_SELECT_HTML += '</select>';
+function replaceWithHTMLInputs(itemHTML) {
+  return itemHTML.replaceAll('[nth]', NTH_SELECT_HTML)
+                 .replaceAll('[mth]', NTH_SELECT_HTML)
+                 .replaceAll('[_____]', '<input size="7">');
+}
+
+
+function isBeforeBattleItem(item) {
+  return item.desc.startsWith('Before battle: ');
+}
 function isNextBattleItem(item) {
   return item.desc.startsWith('Next battle only: ');
 }

@@ -1,4 +1,5 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0										
 Random TR	misc	10										Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.		
-EV Reset	nextBattle	15/b										Next battle only: Reset your opponent's [nth] Pokemon's EVs. 		
+Twin Rods	beforeBattle	0										Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT:<span class="attr"><br>Magikarp<br>Ability: Swift Swim<br>Level: 1<br>Tera Type: Water<br>EVs: 1 HP<br>- Splash<br>-<br>-<br>-</span>
+Test	beforeBattle	0										Before battle: this is a test for [nth], [mth], and [_____].
