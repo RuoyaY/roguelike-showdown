@@ -2898,9 +2898,9 @@ function speciesTM(speciesName, move, isImpossibleTM) {
 }
 function tmPrice(move) { // expected to be a multiple of 10, for Party TM prices
   if (move.name === 'Clangorous Soulblaze')
-    return 170;
+    return 150;
   else if (move.isZ)
-    return 90;
+    return 80;
   else if (isLGPE(move))
     return 30;
   else if (move.basePower > 75)
