@@ -722,6 +722,7 @@ function printInvalidItems() {
           || (item.type === 'pokeball' && !(item.name === 'Random Ball' || pokeballNames.includes(item.name)))
           || (item.requiredSpecies && item.requiredSpecies.some(speciesId => !allSpecies[speciesId]))
           || (item.requiredAbilities && item.requiredAbilities.some(ability => !getAbilityId(ability)))
+          || ((item.type === 'beforeBattle') != isBeforeBattleItem(item))
           || (item.requiredMoves && item.requiredMoves.some(move => !getMoveId(move))))
       console.error(item);
   }
