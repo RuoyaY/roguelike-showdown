@@ -597,7 +597,7 @@ Vs Instant Lv1	nextBattle	200/b					3					Next battle only: Set your opponent's 
 Knock Out	nextBattle	240/b					3					Next battle only: Remove your opponent's [nth] Pokemon.		
 Self K.O.	nextBattle	-240/b+5					3					Next battle only: Remove your [nth] Pokemon.		
 Sacrifice	misc	-240/b-50						x			x	Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv 1. </span>		
-Twin K.O.	nextBattle	25/b					2					Next battle only: Remove BOTH you and your opponent's [nth] Pokemon.		
+Face-to-face K.O.	nextBattle	25/b					2					Next battle only: Remove BOTH you and your opponent's [nth] Pokemon.		
 HP Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's HP EV to 252 (max 508 total EVs).		
 Attack Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Atk EV to 252 (max 508 total EVs).		
 Defense Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Def EV to 252 (max 508 total EVs).		
@@ -615,9 +615,9 @@ Forced Toxic Orb	nextHeldItem	40/b										Next battle only: Your opponent's [n
 Forced Sticky Barb	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Sticky Barb*.		
 Forced Black Sludge	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Black Sludge*.		
 Forced Lagging Tail	nextHeldItem	120/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Lagging Tail*.		
-Forced Choice Band	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Band*.		
-Forced Choice Specs	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Specs*.		
-Forced Choice Scarf	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Scarf*.		
+Forced Choice Band	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Band*.		
+Forced Choice Specs	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Specs*.		
+Forced Choice Scarf	nextHeldItem	20/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Scarf*.		
 Forced Assault Vest	nextHeldItem	80/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Assault Vest*.		
 Forced Red Card	nextHeldItem	30/b					3					Next battle only: Your opponent's [nth] Pokemon must hold a *Red Card*.		
 Forced Eject Button	nextHeldItem	30/b					3					Next battle only: Your opponent's [nth] Pokemon must hold an *Eject Button*.		
@@ -626,6 +626,7 @@ Forced Berserk Gene	nextHeldItem	60/b										Next battle only: Your opponent's
 Forced Ring Target	nextHeldItem	80/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Ring Target*.		
 Forced Utility Umbrella	nextHeldItem	30/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Utility Umbrella*.		
 Perfect Forced Item	nextBattle	125/b										Next battle only: Your opponent's [nth] Pokemon must hold a [_____].		
+Perfect Temporary Twin Item	nextBattle	100/b										Next battle only: Both your [mth] Pokemon and your opponent's [nth] Pokemon must hold a [_____].		
 Forced Debilitizer	nextBattle	15/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *No Ability*.		
 Temporary Ability Swap	nextBattle	25/b										Next battle only: Swap your [mth] Pokemon's ability with your opponent's [nth] Pokemon's ability.		
 Forced Defeatist	nextAbilitizer	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Defeatist*.		
@@ -677,7 +678,8 @@ Forced Electric Surge	nextAbilitizer	20/b										Next battle only: Set your op
 Forced Hadron Engine	nextAbilitizer	0										Next battle only: Set your opponent's [nth] Pokemon's ability to *Hadron Engine*.		
 Forced Psychic Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Pyschic Surge*.		
 Forced Misty Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Misty Surge*.		
-(Almost) Perfect Forced Ability 	nextAbilitizer	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to [_____]. Cannot choose Defeatist, Normalize, Slow Start, Stall, or Truant.		
+(Almost) Perfect Forced Ability 	nextBattle	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to [_____]. Cannot choose Defeatist, Normalize, Slow Start, Stall, or Truant.		
+Perfect Temporary Twin Abilitizer	nextBattle	60/b										Next battle only: Set both your [mth] Pokemon and your opponent's [nth] Pokemon's ability to [_____].		
 Next Battle Only Flipper	nextBattle	15/b										Next battle only: ALL "next battle only" effects, from both you and your opponent, are flipped: ones that would affect you affect your opponent instead, and vice versa.		
 Oval Stone	heldItem	10r									x	Lv +1 every round		
 Fire Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		

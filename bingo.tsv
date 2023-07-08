@@ -22,18 +22,18 @@ x		infatuate an ally
 		2+ Dragon Pokemon
 		2+ Steel Pokemon
 		2+ Fairy Pokemon
-		everyone is fully evolved
-		everyone is not-fully evolved
+		every slot is fully evolved
+		every slot is not-fully evolved
 		Lv1 Pokemon
 x		use Struggle
-x		Tera on turn 1
+x		Tera on turn 1, and win
 x		Tera on turn 9
 x		land a critical hit
 x		heal back to full
 x		win w/ 1 Pokemon left
 x		lead w/ 2 Pokemon sharing a type
 x		win without Tera
-x		switch 2 Pokemon out turn 1
+x		switch 2 Pokemon out turn 1, and win
 x		heal a status effect (not just by switching)
 x		run out of PP on a move
 x		a Pokemon uses all its moves in 1 battle (not Lv1)
@@ -51,6 +51,7 @@ x		take recoil/crash damage
 x		KO with a not-very-effective move
 x		use a 4x super-effective move
 x		be at 1 HP
+x		foe at <10% HP
 x		land an OHKO move
 		$0 at some point
 		$69 at some point
@@ -157,7 +158,7 @@ x		use Defense Curl
 x		successfully use Spit Up/Swallow
 x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 		3+ single-type Pokemon
-		everyone's same gender (M/F/-)
+		every slot's same gender (M/F/-)
 		all Normal moveset
 		all Fire moveset
 		all Water moveset
@@ -176,8 +177,8 @@ x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 		all Dragon moveset
 		all Steel moveset
 		all Fairy moveset
-		everyone has NO held items
-		everyone has a held item
+		every slot has Pokemon w/ NO held items
+		every slot has a held item
 		Pokemon name starts w/ A
 		Pokemon name starts w/ C
 		Pokemon name starts w/ D
@@ -193,64 +194,67 @@ x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 	0	Pokemon name includes W
 	0	Pokemon name includes Y
 	0	Pokemon name includes Z
-		move name starts w/ A
-		move name starts w/ B
-		move name starts w/ C
-		move name starts w/ D
-		move name starts w/ E
-		move name starts w/ F
-		move name starts w/ G
-		move name starts w/ H
-		move name starts w/ I
-		move name starts w/ L
-		move name starts w/ M
-		move name starts w/ P
-		move name starts w/ R
-		move name starts w/ T
-		move name starts w/ W
+	0	move name starts w/ A
+	0	move name starts w/ B
+	0	move name starts w/ C
+	0	move name starts w/ D
+	0	move name starts w/ E
+	0	move name starts w/ F
+	0	move name starts w/ G
+	0	move name starts w/ H
+	0	move name starts w/ I
+	0	move name starts w/ L
+	0	move name starts w/ M
+	0	move name starts w/ P
+	0	move name starts w/ R
+	0	move name starts w/ T
+	0	move name starts w/ W
 	0	move name includes V
 	0	move name includes X
 	0	move name includes Z
-		ability name starts w/ C
-		ability name starts w/ M
-		ability name starts w/ P
-		ability name starts w/ S
-		ability name starts w/ T
+	0	ability name starts w/ C
+	0	ability name starts w/ M
+	0	ability name starts w/ P
+	0	ability name starts w/ S
+	0	ability name starts w/ T
 	0	ability name includes B
 	0	ability name includes F
 	0	ability name includes K
 	0	ability name includes V
 	0	ability name includes W
 	0	ability name includes Y
-		everyone has a Normal move
-		everyone has a Fire move
-		everyone has a Water move
-		everyone has a Grass move
-		everyone has a Electric move
-		everyone has a Ice move
-		everyone has a Fighting move
-		everyone has a Poison move
-		everyone has a Ground move
-		everyone has a Flying move
-		everyone has a Psychic move
-		everyone has a Bug move
-		everyone has a Rock move
-		everyone has a Ghost move
-		everyone has a Dark move
-		everyone has a Dragon move
-		everyone has a Steel move
-		everyone has a Fairy move
+		every slot has a Normal move
+		every slot has a Fire move
+		every slot has a Water move
+		every slot has a Grass move
+		every slot has a Electric move
+		every slot has a Ice move
+		every slot has a Fighting move
+		every slot has a Poison move
+		every slot has a Ground move
+		every slot has a Flying move
+		every slot has a Psychic move
+		every slot has a Bug move
+		every slot has a Rock move
+		every slot has a Ghost move
+		every slot has a Dark move
+		every slot has a Dragon move
+		every slot has a Steel move
+		every slot has a Fairy move
 x		do <1% damage
-x		KO 4+ foes w/ 1 Pokemon
-		everyone's Atk > SpA
-		everyone's SpA > Atk
+x		1 Pokemon KOs 4+ others in 1 battle
+x		1 Pokemon KOs 3+ foes in 1 battle
+x		1 Pokemon KOs 2+ allies in 1 battle
+		every slot's Atk ≥ SpA
+		every slot's SpA ≥ Atk
 x		unselectable move
 x		block a move w/ Quick Guard, Wide Guard, or Crafty Shield
 x		lose 4+ PP of a Pokemon's Substitute
 x		lose 5+ PP of a Pokemon's move
-		all same held item (not empty)
-		nobody has EVs
-		all share a move
+		every slot has same held item (not empty)
+		every slot has Pokemon w/ no EVs
+		every slot shares a move
+		2+ Pokemon w/ same ability
 x		use a binding move
 x		use a low priority move
 x		use an HP-draining move
@@ -264,3 +268,19 @@ x		your ability lowered a stat stage
 x		your ability activates due to contact
 x		your Lightning Rod or Storm Drain activates
 		3+ Pokemon w/ same Tera
+		2+ Pokemon that can't Tera
+x		forfeit w/ 1 foe left
+x		win without using status moves
+x		win without ever having raised stat stages
+x		successfully use a move that switches self out
+		replace a slot
+		2+ Pokemon with 1 weakness (ignore ability, etc)
+		2+ Pokemon with 5+ weaknesses (ignore ability, etc)
+		2+ Pokemon with 1 resistance/immunity (ignore ability, etc)
+		Pokemon w/ 300+ total EVs
+x		an ally KOs a foe that currently shares a type
+x		have a protection move fail
+x		bypass/destroy a protection, screen, or Substitute
+		Def > SpD + 30
+		SpD > Def + 30
+		Mega Pokemon (or w/ Mega Stone)
