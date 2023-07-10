@@ -779,6 +779,25 @@ function printTypeMatchupGrid(arr) {
   console.log(out);
 }
 
+function print1TimeTwinItems() {
+  let tsv = '';
+  for (const item of items.filter(item => item.type === 'nextHeldItem')) {
+    let itemCopy = structuredClone(item);
+    itemCopy.name = item.name.replace('Forced', '1-Time Twin') + 's';
+    itemCopy.price = '';
+    itemCopy.desc = item.desc.replace('Your', 'Both you and your');
+    tsv += itemToTsv(itemCopy) + '\n';
+  }
+  for (const item of items.filter(item => item.type === 'nextAbilitizer')) {
+    let itemCopy = structuredClone(item);
+    itemCopy.name = item.name.replace('Forced', '1-Time Twin') + 's';
+    itemCopy.price = '';
+    itemCopy.desc = item.desc.replace('your', 'both you and your');
+    tsv += itemToTsv(itemCopy) + '\n';
+  }
+  console.log(tsv);
+}
+
 function getTotalItemWeight(predicate) {
   if (predicate == null)
     predicate = item => true;
@@ -914,11 +933,30 @@ function loadItems() {
       item.bannedLastRound = splitByTab[11] !== '';
 
       item.desc = splitByTab[12];
+      
+      // for testing purposes: check itemToTsv is working
+      // if (!responseLines[i].startsWith(itemToTsv(item)))
+      //  console.error(item);
 
       items.push(item);
     }
     doneLoading();
   });
+}
+function itemToTsv(item) {
+  return item.name
+      + '\t' + item.type
+      + '\t' + item.price
+      + '\t' + (item.weight ?? '')
+      + '\t' + (item.requiredSpecies?.join(',') ?? '')
+      + '\t' + (item.requiredAbilities?.join(',') ?? '')
+      + '\t' + (item.requiredMoves?.join(',') ?? '')
+      + '\t' + (item.minPartySize ?? '')
+      + '\t' + (item.bannedIfPartyNotFull ? 'x' : '')
+      + '\t' + (item.bannedIfPartyFull ? 'x' : '')
+      + '\t' + (item.bannedFirstRound ? 'x' : '')
+      + '\t' + (item.bannedLastRound ? 'x' : '')
+      + '\t' + item.desc;
 }
 
 function copyBingoJSON() {

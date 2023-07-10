@@ -156,7 +156,7 @@ Move-Deleting Duo	misc	-20										A Pokemon forgets 2 moves (leave the hyphens
 Move-Deleting Trio	misc	-40										A Pokemon forgets 3 moves (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
 Move Deletion Party	partyMisc	-10n+5										EVERY Pokemon forgets 1 move (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
 Same-Type Move Deleter	misc	5n-35										A Pokemon forgets ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
-Random Move Deleter	misc	-30										Pick a Pokemon. It forgets a random move (leave the hyphen) (a Pokemon with no moves learns *Struggle*).		
+Random Move Deleter	misc	-25										Pick a Pokemon. It forgets a random move (leave the hyphen) (a Pokemon with no moves learns *Struggle*).		
 Deleveler	misc	0	0									Lower 1 or more Pokemon's level by any amount. Give yourself $1 for each level lowered.		
 Destiny Knot	heldItem	1												
 Normal Gem	heldItem	15												
@@ -508,25 +508,25 @@ Float Stone	heldItem	1
 Focus Band	heldItem	5												
 Ring Target	heldItem	0												
 Rare Bone	heldItem	5				Fling								
-Rare Normal Candy	misc	15	0.00									Increase a Normal-type Pokemon's level by one.		
-Rare Fire Candy	misc	15	0.00									Increase a Fire-type Pokemon's level by one.		
-Rare Water Candy	misc	15	0.00									Increase a Water-type Pokemon's level by one.		
-Rare Grass Candy	misc	15	0.00									Increase a Grass-type Pokemon's level by one.		
-Rare Electric Candy	misc	15	0.00									Increase a Electric-type Pokemon's level by one.		
-Rare Ice Candy	misc	15	0.00									Increase a Ice-type Pokemon's level by one.		
-Rare Fighting Candy	misc	15	0.00									Increase a Fighting-type Pokemon's level by one.		
-Rare Poison Candy	misc	15	0.00									Increase a Poison-type Pokemon's level by one.		
-Rare Ground Candy	misc	15	0.00									Increase a Ground-type Pokemon's level by one.		
-Rare Flying Candy	misc	15	0.00									Increase a Flying-type Pokemon's level by one.		
-Rare Psychic Candy	misc	15	0.00									Increase a Psychic-type Pokemon's level by one.		
-Rare Bug Candy	misc	15	0.00									Increase a Bug-type Pokemon's level by one.		
-Rare Rock Candy	misc	15	0.00									Increase a Rock-type Pokemon's level by one.		
-Rare Ghost Candy	misc	15	0.00									Increase a Ghost-type Pokemon's level by one.		
-Rare Dark Candy	misc	15	0.00									Increase a Dark-type Pokemon's level by one.		
-Rare Dragon Candy	misc	15	0.00									Increase a Dragon-type Pokemon's level by one.		
-Rare Steel Candy	misc	15	0.00									Increase a Steel-type Pokemon's level by one.		
-Rare Fairy Candy	misc	15	0.00									Increase a Fairy-type Pokemon's level by one.		
-Rare Single-Type Candy	misc	15	0.00									Increase a Pokemon with only one type's level by one.		
+Rare Normal Candy	misc	15	0									Increase a Normal-type Pokemon's level by one.		
+Rare Fire Candy	misc	15	0									Increase a Fire-type Pokemon's level by one.		
+Rare Water Candy	misc	15	0									Increase a Water-type Pokemon's level by one.		
+Rare Grass Candy	misc	15	0									Increase a Grass-type Pokemon's level by one.		
+Rare Electric Candy	misc	15	0									Increase a Electric-type Pokemon's level by one.		
+Rare Ice Candy	misc	15	0									Increase a Ice-type Pokemon's level by one.		
+Rare Fighting Candy	misc	15	0									Increase a Fighting-type Pokemon's level by one.		
+Rare Poison Candy	misc	15	0									Increase a Poison-type Pokemon's level by one.		
+Rare Ground Candy	misc	15	0									Increase a Ground-type Pokemon's level by one.		
+Rare Flying Candy	misc	15	0									Increase a Flying-type Pokemon's level by one.		
+Rare Psychic Candy	misc	15	0									Increase a Psychic-type Pokemon's level by one.		
+Rare Bug Candy	misc	15	0									Increase a Bug-type Pokemon's level by one.		
+Rare Rock Candy	misc	15	0									Increase a Rock-type Pokemon's level by one.		
+Rare Ghost Candy	misc	15	0									Increase a Ghost-type Pokemon's level by one.		
+Rare Dark Candy	misc	15	0									Increase a Dark-type Pokemon's level by one.		
+Rare Dragon Candy	misc	15	0									Increase a Dragon-type Pokemon's level by one.		
+Rare Steel Candy	misc	15	0									Increase a Steel-type Pokemon's level by one.		
+Rare Fairy Candy	misc	15	0									Increase a Fairy-type Pokemon's level by one.		
+Rare Single-Type Candy	misc	15	0									Increase a Pokemon with only one type's level by one.		
 Perfect Normal TM	universalTM	50										Teach ANY 1 Pokemon ANY 1 NORMAL-TYPE move (other than Z-Moves).		
 Perfect Fire TM	universalTM	50										Teach ANY 1 Pokemon ANY 1 FIRE-TYPE move (other than Z-Moves).		
 Perfect Water TM	universalTM	50										Teach ANY 1 Pokemon ANY 1 WATER-TYPE move (other than Z-Moves).		
@@ -570,10 +570,10 @@ Shadow Egg	egg	50										In an EXTRA SLOT, add a Pokemon of ANY species your o
 1v1 Battle	nextBattle	50/b					2					Next battle only: BOTH players choose only 1 Pokemon to put in their team.		
 Singles Battle	nextBattle	40/b					2					Next battle only: Do a singles battle instead of a doubles battle.		
 Court Change	nextBattle	100/b										Next battle only: BOTH players use their opponent's team instead of their own.		
-Temporary Trade	nextBattle	50/b										Next battle only: Swap your and your opponent's [nth] Pokemon.		
-Temporarily Reflect Team	nextBattle	50/b+15										Next battle only: You use your opponent's team instead of your own.		
-Temporarily Reflect Pokemon	nextBattle	25/b+5										Next battle only: Replace your [nth] Pokemon with your opponent's Pokemon in that slot.		
-Vs Temporarily Reflected Pokemon	nextBattle	25/b-5										Next battle only: Replace your opponent's [nth] Pokemon with your Pokemon in that slot.		
+1-Time Trade	nextBattle	50/b										Next battle only: Swap your and your opponent's [nth] Pokemon.		
+1-Time Reflect Team	nextBattle	50/b+15										Next battle only: You use your opponent's team instead of your own.		
+1-Time Reflect Pokemon	nextBattle	25/b+5										Next battle only: Replace your [nth] Pokemon with your opponent's Pokemon in that slot.		
+Vs 1-Time Reflected Pokemon	nextBattle	25/b-5										Next battle only: Replace your opponent's [nth] Pokemon with your Pokemon in that slot.		
 Lv1 Battle	nextBattle	80/b										Next battle only: BOTH players' Pokemon are ALL set to level 1.		
 Lv50 Battle	nextBattle	160/b										Next battle only: BOTH players' Pokemon are ALL set to level 50.		
 Lv50 Team	nextBattle	0										Next battle only: Your Pokemon are ALL set to level 50.		
@@ -591,13 +591,13 @@ Vs Level Surge	nextBattle	-80/b										Next battle only: Increase your opponen
 Level Plunge	nextBattle	-80/b										Next battle only: Decrease your [nth] Pokemon's level by 5 (can't choose a Pokemon at level 5 or below).		
 Vs Level Plunge	nextBattle	100/b										Next battle only: Decrease your opponent's [nth] Pokemon's level by 5 (can't go below 1).		
 Instant Lv50	nextBattle	50/b										Next battle only: Set your [nth] Pokemon's level to 50.		
-Instant Lv1	nextBattle	-200/b					3					Next battle only: Set your [nth] Pokemon's level to 1.		
+Instant Lv1	nextBattle	-200/b					3					Next battle only: Set your [nth] Pokemon's level to 1. <span class="warning"> <br>Cannot choose Pokemon you got at Lv 1. </span>		
 Vs Instant Lv50	nextBattle	130/b										Next battle only: Set your opponent's [nth] Pokemon's level to 50.		
 Vs Instant Lv1	nextBattle	200/b					3					Next battle only: Set your opponent's [nth] Pokemon's level to 1.		
 Knock Out	nextBattle	240/b					3					Next battle only: Remove your opponent's [nth] Pokemon.		
-Self K.O.	nextBattle	-240/b+5					3					Next battle only: Remove your [nth] Pokemon.		
+Self K.O.	nextBattle	-240/b+5					3					Next battle only: Remove your [nth] Pokemon. <span class="warning"> <br>Cannot choose Pokemon you got at Lv 1. </span>		
 Sacrifice	misc	-240/b-50						x			x	Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv 1. </span>		
-Face-to-face K.O.	nextBattle	25/b					2					Next battle only: Remove BOTH you and your opponent's [nth] Pokemon.		
+Twin K.O.	nextBattle	25/b					2					Next battle only: Remove both you and your opponent's [nth] Pokemon.		
 HP Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's HP EV to 252 (max 508 total EVs).		
 Attack Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Atk EV to 252 (max 508 total EVs).		
 Defense Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Def EV to 252 (max 508 total EVs).		
@@ -626,9 +626,9 @@ Forced Berserk Gene	nextHeldItem	60/b										Next battle only: Your opponent's
 Forced Ring Target	nextHeldItem	80/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Ring Target*.		
 Forced Utility Umbrella	nextHeldItem	30/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Utility Umbrella*.		
 Perfect Forced Item	nextBattle	125/b										Next battle only: Your opponent's [nth] Pokemon must hold a [_____].		
-Perfect Temporary Twin Item	nextBattle	100/b										Next battle only: Both your [mth] Pokemon and your opponent's [nth] Pokemon must hold a [_____].		
+Perfect 1-Time Twin Item	nextBattle	100/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a [_____].		
 Forced Debilitizer	nextBattle	15/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *No Ability*.		
-Temporary Ability Swap	nextBattle	25/b										Next battle only: Swap your [mth] Pokemon's ability with your opponent's [nth] Pokemon's ability.		
+1-Time Ability Swap	nextBattle	25/b										Next battle only: Swap your [mth] Pokemon's ability with your opponent's [nth] Pokemon's ability.		
 Forced Defeatist	nextAbilitizer	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Defeatist*.		
 Forced Klutz	nextAbilitizer	50/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Klutz*.		
 Forced Slow Start	nextAbilitizer	115/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Slow Start*.		
@@ -679,7 +679,7 @@ Forced Hadron Engine	nextAbilitizer	0										Next battle only: Set your oppone
 Forced Psychic Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Pyschic Surge*.		
 Forced Misty Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Misty Surge*.		
 (Almost) Perfect Forced Ability 	nextBattle	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to [_____]. Cannot choose Defeatist, Normalize, Slow Start, Stall, or Truant.		
-Perfect Temporary Twin Abilitizer	nextBattle	60/b										Next battle only: Set both your [mth] Pokemon and your opponent's [nth] Pokemon's ability to [_____].		
+Perfect 1-Time Twin Abilitizer	nextBattle	60/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to [_____].		
 Next Battle Only Flipper	nextBattle	15/b										Next battle only: ALL "next battle only" effects, from both you and your opponent, are flipped: ones that would affect you affect your opponent instead, and vice versa.		
 Oval Stone	heldItem	10r									x	Lv +1 every round		
 Fire Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
@@ -834,7 +834,11 @@ Forced Steel Deletion	nextBattle	25/b										Next battle only: Your opponent m
 Forced Fairy Deletion	nextBattle	25/b										Next battle only: Your opponent must delete all Fairy-type moves from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
 Forced Deletion Duo	nextBattle	20/b	0									Next battle only: Your opponent must choose TWO moves to delete from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
 Forced Deletion Party	nextBattle	30/b	0									Next battle only: For EACH of their Pokemon, your opponent must choose one move to delete (a Pokemon with no moves learns *Struggle*).		
-Forced Drunk Deletion	nextBattle	30/b										Next battle only: Your opponent must delete a random move from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
+Forced Drunk Deletion	nextBattle	25/b	0									Next battle only: Your opponent must delete a random move from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
+Forced Same-Type Move Deletion	nextBattle	50/b										Next battle only: Your opponent's [nth] Pokemon loses ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
+Forced Move Deletion	nextBattle	30/b										Next battle only: Your opponent must delete the [mth] move of their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
+1-Time Move Swap	nextBattle	40/b										Next battle only: Switch your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move.		
+1-Time Moveset Swap	nextBattle	30/b										Next battle only: Switch you and your opponent's [nth] Pokemon's ENTIRE movesets.		
 Perfect Forced Deletion	nextBattle	40/b										Next battle only: Your opponent must delete the move [_____] from their [nth] Pokemon, if present (a Pokemon with no moves learns *Struggle*).		
 Perfect Forced Tera	nextBattle	30/b										Next battle only: Set your opponent's [nth] Pokemon's Tera Type to [_____].		
 Forced Normal Tera Party	nextBattle	20/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Normal.		
@@ -859,7 +863,7 @@ Held Item Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST BATT
 Ability Quiz	misc	15								x		Randomly pick a opposing Pokemon from LAST BATTLE. If you correctly name its ability, earn $30.		
 Tera Type Quiz	misc	10								x		Randomly pick a opposing Pokemon from LAST BATTLE. If you correctly name its Tera Type, earn $30.		
 Moveset Quiz	misc	5								x		Randomly pick a opposing Pokemon from LAST BATTLE. If you correctly name ALL of its moves, earn $30.		
-Scouting	beforeBattle	5										Before battle: Your opponent must send you a screenshot of their [nth] Pokemon.		
-Party Scouting	beforeBattle	5n										Before battle: Your opponent must send you a screenshot of their team.		
-Reveal Pokemon	beforeBattle	-5										Before battle: Send your opponent a screenshot of your [nth] Pokemon.		
-Reveal Party	beforeBattle	-5n										Before battle: Send your opponent a screenshot of your team.		
+Scouting	beforeBattle	5										Before battle: Your opponent must reveal their [nth] Pokemon.		
+Party Scouting	beforeBattle	5n										Before battle: Your opponent must reveal their team.		
+Reveal Pokemon	beforeBattle	-5										Before battle: You must reveal your [nth] Pokemon.		
+Reveal Party	beforeBattle	-5n										Before battle: You must reveal your team.		
