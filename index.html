@@ -2879,7 +2879,7 @@ function getHeldItemNameOfPokemon(pokemonStr) {
 function randomTM() {
   let randy = Math.random();
 
-  if ((randy -= .30) < 0) {
+  if ((randy -= .35) < 0) {
     // Universal TM
     return randomUniversalTM();
   } else if ((randy -= .05) < 0) {
@@ -2891,13 +2891,13 @@ function randomTM() {
       price: tmPrice(move)/2 + 'n+20',
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
-  } else if ((randy -= .15) < 0) {
-    // Twin Move Getter
+  } else if ((randy -= .10) < 0) {
+    // Twin Move Adder
     const move = randomMove(true);
     return {
-      name: 'Twin Move Getter #' + move.num,
+      name: 'Twin Move Adder #' + move.num,
       type: 'beforeTM',
-      price: tmPrice(move)/2 + 5,
+      price: tmPrice(move)/2,
       desc: "Before battle: Both you and your opponent's [nth] Pokemon gets *" + move.name 
                 + '* in a NEW move slot.',
     };
