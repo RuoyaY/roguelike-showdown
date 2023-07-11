@@ -305,7 +305,7 @@ button:focus {
       <br>
       <p id="pokeballDesc" class="pokeball-desc attr mb-4px"></p>
     </div>
-    <div id="typeDiv" hidden>
+    <div id="typeDiv">
       <label for="type">Guaranteed type:</label>
       <select id="type" class="mb-4px">
         <option></option>
@@ -2092,7 +2092,6 @@ function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
   document.getElementById('pokeballDiv').hidden = true;
   document.getElementById('type').selectedIndex = 0;
-  document.getElementById('typeDiv').hidden = true;
   document.getElementById('extraIncome').checked = false;
   document.getElementById('won').checked = false;
 }
@@ -2244,7 +2243,6 @@ function load() {
   setPokeball(localStorage.getItem('pokeball'));
   document.getElementById('pokeballDiv').hidden = localStorage.getItem('pokeballHidden') === 'true';
   setGuaranteedType(localStorage.getItem('type'));
-  document.getElementById('typeDiv').hidden = localStorage.getItem('typeHidden') === 'true';
 
   document.getElementById('extraIncome').checked = localStorage.getItem('extraIncome') === 'true';
   document.getElementById('won').checked = localStorage.getItem('won') === 'true';
@@ -3082,7 +3080,6 @@ function buyItem(itemDiv, item, itemPrice) {
   } else if (item.name.startsWith('Encounter Power: ')) {
     const type = item.name.split(' ')[2];
     setGuaranteedType(TYPES.includes(type) ? type : '');
-    document.getElementById('typeDiv').hidden = false;
 
   } else if (isBeforeBattleItem(item)) {
     document.getElementById('beforeBattleDiv').hidden = false;
