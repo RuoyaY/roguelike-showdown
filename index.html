@@ -226,13 +226,14 @@ button:focus {
 .speciesTM { color: yellow }
 .partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
 .universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, yellow 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
+.beforeTM { background: linear-gradient(45deg, pink, yellow, pink); }
 .TMAndZCrystal { background: linear-gradient(45deg, yellow, orange); } 
 .abilitizer { color: lightgreen }
 .partyAbilitizer { background: linear-gradient(45deg, hotpink, lightgreen, hotpink); }
 .nextAbilitizer { background: linear-gradient(45deg, tomato, lightgreen, tomato); }
 .egg { color: wheat }
 .transformer { color: violet }
-.partyMisc, .pokeball, .heldItemParty, .nextHeldItem, .partyTM, .universalTM, .TMAndZCrystal, .partyAbilitizer, .nextAbilitizer {  
+.partyMisc, .pokeball, .heldItemParty, .nextHeldItem, .partyTM, .universalTM, .beforeTM, .TMAndZCrystal, .partyAbilitizer, .nextAbilitizer {  
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -2634,7 +2635,7 @@ function createItemDiv(item, isExtra) {
 }
 function itemInHTML(item) {
   return '<span class="' + item.type + ' big-text">' + item.name + '</span>'
-            + '\n' + itemDescInHTML(item.desc, !(item.type.includes('TM') || item.type === 'egg'));
+            + '\n' + itemDescInHTML(item.desc, !((item.type.includes('TM') && item.type !== 'beforeTM') || item.type === 'egg'));
 }
 const KEYWORD_HOVER_TEXTS = {
   // ORDER MATTERS! Keywords can accidentally be found within other keywords' hover text.
@@ -2872,7 +2873,7 @@ function getHeldItemNameOfPokemon(pokemonStr) {
 function randomTM() {
   let randy = Math.random();
 
-  if ((randy -= .45) < 0) {
+  if ((randy -= .30) < 0) {
     // Universal TM
     return randomUniversalTM();
   } else if ((randy -= .05) < 0) {
@@ -2883,6 +2884,16 @@ function randomTM() {
       type: 'partyTM',
       price: tmPrice(move)/2 + 'n+20',
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
+    };
+  } else if ((randy -= .15) < 0) {
+    // Twin Move Getter
+    const move = randomMove(true);
+    return {
+      name: 'Twin Move Getter #' + move.num,
+      type: 'beforeTM',
+      price: tmPrice(move)/2 + 5,
+      desc: "Before battle: Both you and your opponent's [nth] Pokemon gets *" + move.name 
+                + '* in a NEW move slot.',
     };
   } else if ((randy -= .25) < 0) {
     // Type-based Species TM
