@@ -6,7 +6,7 @@ Quick Ball	pokeball	15									x	Next round, -1 option to all choices for your n
 Moon Ball	pokeball	30									x	Next round, your new Pokemon knows the move *Moonlight* in an extra move slot.		
 Dream Ball	pokeball	40									x	Next round, your new Pokemon knows the moves *Rest* and *Sleep Talk* in extra move slots.		
 Friend Ball	pokeball	25									x	Next round, your new Pokemon knows the move *Return* in an extra move slot.		
-Love Ball	pokeball	25									x	Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will get 1 male and 1 female option.		
+Love Ball	pokeball	25									x	Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will be able to choose its gender.		
 Beast Ball	pokeball	15									x	Next round, your new Pokemon has *Beast Boost* instead of its regular ability. Keep in mind you can hover over Atk and SpA to see unadjusted values.		
 Strange Ball	pokeball	15									x	Next round, your new Pokemon can get an ability it doesn't normally have, and moves it can't normally learn.		
 Repeat Ball	pokeball	5									x	Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).		
@@ -302,27 +302,6 @@ Steel Tera Party	partyMisc	15n	0.05									Set EVERY Pokemon's Tera Type to <sp
 Fairy Tera Party	partyMisc	10n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.		
 Mirror Tera Party	partyMisc	15n-15	0.05				2					Copy a Pokemon's Tera Type to EVERY other Pokemon.		
 Random Tera Party	partyMisc	0	0.05									Generate a random type, then set EVERY Pokemon's Tera Type to that type.		
-Encounter Power: Normal	misc	-5									x	Next round, you are guaranteed to get Normal-type Pokemon.		
-Encounter Power: Fire	misc	10									x	Next round, you are guaranteed to get Fire-type Pokemon.		
-Encounter Power: Water	misc	10									x	Next round, you are guaranteed to get Water-type Pokemon.		
-Encounter Power: Grass	misc	-10									x	Next round, you are guaranteed to get Grass-type Pokemon.		
-Encounter Power: Electric	misc	0									x	Next round, you are guaranteed to get Electric-type Pokemon.		
-Encounter Power: Ice	misc	-5									x	Next round, you are guaranteed to get Ice-type Pokemon.		
-Encounter Power: Fighting	misc	-5									x	Next round, you are guaranteed to get Fighting-type Pokemon.		
-Encounter Power: Poison	misc	0									x	Next round, you are guaranteed to get Poison-type Pokemon.		
-Encounter Power: Ground	misc	10									x	Next round, you are guaranteed to get Ground-type Pokemon.		
-Encounter Power: Flying	misc	10									x	Next round, you are guaranteed to get Flying-type Pokemon.		
-Encounter Power: Psychic	misc	-5									x	Next round, you are guaranteed to get Psychic-type Pokemon.		
-Encounter Power: Bug	misc	-10									x	Next round, you are guaranteed to get Bug-type Pokemon.		
-Encounter Power: Rock	misc	5									x	Next round, you are guaranteed to get Rock-type Pokemon.		
-Encounter Power: Ghost	misc	10									x	Next round, you are guaranteed to get Ghost-type Pokemon.		
-Encounter Power: Dark	misc	5									x	Next round, you are guaranteed to get Dark-type Pokemon.		
-Encounter Power: Dragon	misc	0									x	Next round, you are guaranteed to get Dragon-type Pokemon.		
-Encounter Power: Steel	misc	10									x	Next round, you are guaranteed to get Steel-type Pokemon.		
-Encounter Power: Fairy	misc	10									x	Next round, you are guaranteed to get Fairy-type Pokemon.		
-Encounter Power: Perfect	misc	15									x	Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
-Encounter Power: Mirror	misc	5									x	Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
-Encounter Power: Shadow	misc	10								x	x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last battle (next round, you are guaranteed to get Pokemon of that type).		
 Venusaurite	heldItem	85		venusaur								If held by a Venusaur, this item allows it to Mega Evolve in battle.		
 Charizardite X	heldItem	85		charizard								If held by a Charizard, this item allows it to Mega Evolve in battle.		
 Charizardite Y	heldItem	130		charizard								If held by a Charizard, this item allows it to Mega Evolve in battle.		
@@ -576,8 +555,8 @@ Court Change	nextBattle	100/b										Next battle only: BOTH players use their 
 Vs 1-Time Reflected Pokemon	nextBattle	25/b-5										Next battle only: Replace your opponent's [nth] Pokemon with your Pokemon in that slot.		
 Lv1 Battle	nextBattle	80/b										Next battle only: BOTH players' Pokemon are ALL set to level 1.		
 Lv50 Battle	nextBattle	160/b										Next battle only: BOTH players' Pokemon are ALL set to level 50.		
-Lv50 Team	nextBattle	0										Next battle only: Your Pokemon are ALL set to level 50.		
-Vs Lv50 Team	nextBattle	80/b										Next battle only: Your opponent's Pokemon are ALL set to level 50.		
+1-Time Lv50 Team	nextBattle	0										Next battle only: Your Pokemon are ALL set to level 50.		
+Vs 1-Time Lv50 Team	nextBattle	80/b										Next battle only: Your opponent's Pokemon are ALL set to level 50.		
 Vs Random Leads	nextBattle	20/b					3					Next battle only: Your opponent's leading Pokemon must be randomly selected (in private).		
 Random Leads	nextBattle	-20/b					3					Next battle only: Your leading Pokemon must be randomly selected (in private).		
 Vs Set Leads	nextBattle	30/b					3					Next battle only: Your opponent must lead with their [mth] and [nth] Pokemon.		
@@ -605,10 +584,12 @@ Special Attack Surge	nextBattle	35/b										Next battle only: Set your [nth] P
 Special Defense Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's SpD EV to 252 (max 508 total EVs).		
 Speed Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Spe EV to 252 (max 508 total EVs).		
 Vs Speed Surge	nextBattle	24.5/b				Trick Room						Next battle only: Set your opponent's [nth] Pokemon's Spe EV to 252 (max 508 total EVs).		
+Perfect Stat Surge	nextBattle	35/b+5										Next battle only: Set your [nth] Pokemon's [_____] EV to 252 (max 508 total EVs).		
 EV Reset	nextBattle	15/b										Next battle only: Reset your opponent's [nth] Pokemon's EVs. 		
 Knock Off	nextBattle	30/b										Next battle only: Your opponent's [nth] Pokemon cannot hold any items.		
-Calculated Knock Off	nextBattle	15/b										Next battle only: You opponent must remove the item [_____] from their [nth] Pokemon, if present.		
-Item Swap	nextBattle	40/b										Next battle only: Swap your [mth] Pokemon's held item with your opponent's [nth] Pokemon's held item.		
+Calculated Knock Off	nextBattle	15/b	0									Next battle only: You opponent must remove the item [_____] from their [nth] Pokemon, if present.		
+1-Time Item Swap	nextBattle	40/b										Next battle only: Swap your [mth] Pokemon's held item with your opponent's [nth] Pokemon's held item.		
+1-Time Item Gift	nextBattle	20/b-1										Next battle only: Your opponent's [mth] Pokemon must hold a copy of your [nth] Pokemon's held item. Does nothing if you have no held item.		
 Forced Iron Ball	nextHeldItem	80/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Iron Ball*.		
 Forced Flame Orb	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Flame Orb*.		
 Forced Toxic Orb	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Toxic Orb*.		
@@ -618,17 +599,18 @@ Forced Lagging Tail	nextHeldItem	120/b										Next battle only: Your opponent'
 Forced Choice Band	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Band*.		
 Forced Choice Specs	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Specs*.		
 Forced Choice Scarf	nextHeldItem	20/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Choice Scarf*.		
-Forced Assault Vest	nextHeldItem	80/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Assault Vest*.		
+Forced Assault Vest	nextHeldItem	40/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Assault Vest*.		
 Forced Red Card	nextHeldItem	30/b					3					Next battle only: Your opponent's [nth] Pokemon must hold a *Red Card*.		
 Forced Eject Button	nextHeldItem	30/b					3					Next battle only: Your opponent's [nth] Pokemon must hold an *Eject Button*.		
 Forced Eject Pack	nextHeldItem	30/b					3					Next battle only: Your opponent's [nth] Pokemon must hold an *Eject Pack*.		
-Forced Berserk Gene	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Berserk Gene*.		
-Forced Ring Target	nextHeldItem	80/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Ring Target*.		
+Forced Berserk Gene	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Berserk Gene*.		
+Forced Ring Target	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Ring Target*.		
 Forced Utility Umbrella	nextHeldItem	30/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Utility Umbrella*.		
-Perfect Forced Item	nextBattle	125/b										Next battle only: Your opponent's [nth] Pokemon must hold a [_____].		
-Perfect 1-Time Twin Item	nextBattle	100/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a [_____].		
+(Almost) Perfect Forced Item	nextBattle	80/b+5										Next battle only: Your opponent's [nth] Pokemon must hold a [_____]. Can't choose Lagging Tail.		
+Perfect Forced Twin Items	nextBattle	100/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a [_____].		
 Forced Debilitizer	nextBattle	15/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *No Ability*.		
 1-Time Ability Swap	nextBattle	25/b										Next battle only: Swap your [mth] Pokemon's ability with your opponent's [nth] Pokemon's ability.		
+1-Time Ability Gift	nextBattle	0										Next battle only: Set your opponent's [mth] Pokemon's ability to a copy of your [nth] Pokemon's ability.		
 Forced Defeatist	nextAbilitizer	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Defeatist*.		
 Forced Klutz	nextAbilitizer	50/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Klutz*.		
 Forced Slow Start	nextAbilitizer	115/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Slow Start*.		
@@ -679,7 +661,7 @@ Forced Hadron Engine	nextAbilitizer	0										Next battle only: Set your oppone
 Forced Psychic Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Pyschic Surge*.		
 Forced Misty Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Misty Surge*.		
 (Almost) Perfect Forced Ability 	nextBattle	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to [_____]. Cannot choose Defeatist, Normalize, Slow Start, Stall, or Truant.		
-Perfect 1-Time Twin Abilitizer	nextBattle	60/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to [_____].		
+Perfect Forced Twin Abilitizers	nextBattle	100/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to [_____].		
 Next Battle Only Flipper	nextBattle	15/b										Next battle only: ALL "next battle only" effects, from both you and your opponent, are flipped: ones that would affect you affect your opponent instead, and vice versa.		
 Oval Stone	heldItem	10r									x	Lv +1 every round		
 Fire Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
@@ -838,7 +820,7 @@ Forced Drunk Deletion	nextBattle	25/b	0									Next battle only: Your opponent 
 Forced Same-Type Move Deletion	nextBattle	50/b										Next battle only: Your opponent's [nth] Pokemon loses ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
 Forced Move Deletion	nextBattle	30/b										Next battle only: Your opponent must delete the [mth] move of their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
 1-Time Move Swap	nextBattle	40/b										Next battle only: Switch your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move.		
-1-Time Moveset Swap	nextBattle	30/b										Next battle only: Switch you and your opponent's [nth] Pokemon's ENTIRE movesets.		
+1-Time Moveset Swap	nextBattle	60/b										Next battle only: Switch you and your opponent's [nth] Pokemon's ENTIRE movesets.		
 Perfect Forced Deletion	nextBattle	40/b										Next battle only: Your opponent must delete the move [_____] from their [nth] Pokemon, if present (a Pokemon with no moves learns *Struggle*).		
 Perfect Forced Tera	nextBattle	30/b										Next battle only: Set your opponent's [nth] Pokemon's Tera Type to [_____].		
 Forced Normal Tera Party	nextBattle	20/b										Next battle only: All of your opponent's Pokemon have their Tera Type set to Normal.		
@@ -867,3 +849,70 @@ Scouting	beforeBattle	5										Before battle: Your opponent must reveal their 
 Party Scouting	beforeBattle	5n										Before battle: Your opponent must reveal their team.		
 Reveal Pokemon	beforeBattle	-5										Before battle: You must reveal your [nth] Pokemon.		
 Reveal Party	beforeBattle	-5n										Before battle: You must reveal your team.		
+Twin Knock Off	nextBattle	20/b										Next battle only: Both you and your opponent's [nth] Pokemon cannot hold any items.		
+Forced Twin Iron Balls	nextHeldItem	30/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Iron Ball*.		
+Forced Twin Flame Orbs	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Flame Orb*.		
+Forced Twin Toxic Orbs	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Toxic Orb*.		
+Forced Twin Sticky Barbs	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Sticky Barb*.		
+Forced Twin Black Sludges	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Black Sludge*.		
+Forced Twin Lagging Tails	nextHeldItem	40/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Lagging Tail*.		
+Forced Twin Choice Bands	nextHeldItem	50/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Choice Band*.		
+Forced Twin Choice Specs	nextHeldItem	50/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Choice Specs*.		
+Forced Twin Choice Scarfs	nextHeldItem	25/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Choice Scarf*.		
+Forced Twin Assault Vests	nextHeldItem	70/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Assault Vest*.		
+Forced Twin Red Cards	nextHeldItem	25/b					3					Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Red Card*.		
+Forced Twin Eject Buttons	nextHeldItem	25/b					3					Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Eject Button*.		
+Forced Twin Eject Packs	nextHeldItem	25/b					3					Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Eject Pack*.		
+Forced Twin Berserk Genes	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Berserk Gene*.		
+Forced Twin Ring Targets	nextHeldItem	50/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Ring Target*.		
+Forced Twin Utility Umbrellas	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Utility Umbrella*.		
+Forced Twin Debilitizers	nextBattle	10/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *No Ability*.		
+Forced Twin Defeatists	nextAbilitizer	10/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Defeatist*.		
+Forced Twin Klutzes	nextAbilitizer	20/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Klutz*.		
+Forced Twin Slow Starts	nextAbilitizer	20/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Slow Start*.		
+Forced Twin Stalls	nextAbilitizer	40/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Stall*.		
+Forced Twin Truants	nextAbilitizer	50/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Truant*.		
+Perfect Forced Nature	nextBattle	15/b										Next battle only: Set your opponent's [nth] Pokemon's nature to [_____].		
+Perfect Forced Twin Natures	nextBattle	25/b										Next battle only: Set both you and your opponent's [nth] Pokemon's nature to [_____].		
+Encounter Power: Normal	misc	-5									x	Next round, you are guaranteed to get Normal-type Pokemon.		
+Encounter Power: Fire	misc	10									x	Next round, you are guaranteed to get Fire-type Pokemon.		
+Encounter Power: Water	misc	10									x	Next round, you are guaranteed to get Water-type Pokemon.		
+Encounter Power: Grass	misc	-10									x	Next round, you are guaranteed to get Grass-type Pokemon.		
+Encounter Power: Electric	misc	0									x	Next round, you are guaranteed to get Electric-type Pokemon.		
+Encounter Power: Ice	misc	-5									x	Next round, you are guaranteed to get Ice-type Pokemon.		
+Encounter Power: Fighting	misc	-5									x	Next round, you are guaranteed to get Fighting-type Pokemon.		
+Encounter Power: Poison	misc	0									x	Next round, you are guaranteed to get Poison-type Pokemon.		
+Encounter Power: Ground	misc	10									x	Next round, you are guaranteed to get Ground-type Pokemon.		
+Encounter Power: Flying	misc	10									x	Next round, you are guaranteed to get Flying-type Pokemon.		
+Encounter Power: Psychic	misc	-5									x	Next round, you are guaranteed to get Psychic-type Pokemon.		
+Encounter Power: Bug	misc	-10									x	Next round, you are guaranteed to get Bug-type Pokemon.		
+Encounter Power: Rock	misc	5									x	Next round, you are guaranteed to get Rock-type Pokemon.		
+Encounter Power: Ghost	misc	10									x	Next round, you are guaranteed to get Ghost-type Pokemon.		
+Encounter Power: Dark	misc	5									x	Next round, you are guaranteed to get Dark-type Pokemon.		
+Encounter Power: Dragon	misc	0									x	Next round, you are guaranteed to get Dragon-type Pokemon.		
+Encounter Power: Steel	misc	10									x	Next round, you are guaranteed to get Steel-type Pokemon.		
+Encounter Power: Fairy	misc	10									x	Next round, you are guaranteed to get Fairy-type Pokemon.		
+Perfect Encounter Power	misc	15									x	Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
+Mirror Encounter Power	misc	0									x	Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
+Shadow Encounter Power 	misc	10								x	x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last battle (next round, you are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Normal	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Normal (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Fire	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Fire (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Water	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Water (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Grass	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Grass (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Electric	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Electric (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Ice	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Ice (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Fighting	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Fighting (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Poison	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Poison (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Ground	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Ground (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Flying	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Flying (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Psychic	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Psychic (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Bug	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Bug (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Rock	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Rock (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Ghost	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Ghost (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Dark	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Dark (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Dragon	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Dragon (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Steel	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Steel (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Fairy	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Fairy (next round, they are guaranteed to get Pokemon of that type).		
+Perfect Vs Encounter Power	beforeBattle	20									x	Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).		
+Mirrored Vs Encounter Power	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).		
+Shadowed Vs Encounter Power 	beforeBattle	15								x	x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).		
