@@ -2898,10 +2898,10 @@ function randomTM() {
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
   } else if ((randy -= .10) < 0) {
-    // Twin Move Adder
+    // Twin Move Add-ons
     const move = randomMove(true);
     return {
-      name: 'Twin Move Adder #' + move.num,
+      name: 'Twin Move Add-ons #' + move.num,
       type: 'beforeTM',
       price: tmPrice(move)/2,
       desc: "Before battle: Both you and your opponent's [nth] Pokemon gets *" + move.name 
