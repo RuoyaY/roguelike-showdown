@@ -1,4 +1,4 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0										
 Random TR	misc	10										Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.		
-Reflecting TM	beforeBattle	10										Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it's a Z-Move.
+1v1 Battle	nextBattle	40/b					2					Next battle only: Both players can only use 1 Pokemon, chosen during team preview. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>
