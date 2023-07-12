@@ -1324,15 +1324,10 @@ function addChoices(choicesDiv) {
     }
     for (const abilityName of Object.values(species.abilities))
       addRandomPokemon(choicesDiv, true, speciesName, abilityName);
-  } else if (pokeball === 'Love Ball') {
-    addRandomPokemon(choicesDiv, true, null, null, 'M');
-    addRandomPokemon(choicesDiv, true, null, null, 'F');
   } else {
     let numPokeChoices = numChoices();
     numPokeChoices += numPokemonWithAbility('Honey Gather');
-    let abilityName = null;
-    if (pokeball === 'Beast Ball')
-      abilityName = 'Beast Boost';
+    const abilityName = pokeball === 'Beast Ball' ? 'Beast Boost' : null;
     for (let i = 0; i < numPokeChoices; i++)
       addRandomPokemon(choicesDiv, true, null, abilityName);
   }
@@ -1370,14 +1365,14 @@ function generateSpecificSpecies() {
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
     for (const abilityName of Object.values(allSpecies[species].abilities))
-      addRandomPokemon(speciesRow, false, speciesName, abilityName, null, 'random');
+      addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random');
   } else {
     const abilityName = getProperAbilityName(abilityNameInput);
     if (abilityName == null) {
       speciesErrorEle.textContent = 'ERROR: ability name not recognized';
       return;
     }
-    addRandomPokemon(speciesRow, false, speciesName, abilityName, null, 'random');
+    addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random');
   }
 
   speciesErrorEle.textContent = '';
@@ -1412,7 +1407,7 @@ function passesIdenticalSpeciesBias(speciesId) {
     return true;
 }
 
-function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, gender, teraType) {  
+function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, teraType) {  
   if (speciesName == null) {
     let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
@@ -1426,7 +1421,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   let pokeball = null;
   if (hasChooseButton)
     pokeball = getPokeball();
-  let pokemonStr = randomOfSpecies(speciesName, abilityName, gender, pokeball, null, teraType);
+  let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType);
 
   if (hasChooseButton) {
     switch (pokeball) {
@@ -1444,22 +1439,30 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
         break;
     }
   }
-
+  
+  if (pokeball === 'Love Ball') {
+    addPokemon(choicesDiv, hasChooseButton, pokemonStr.replace(GENDER_PLACEHOLDER, 'M'));
+    addPokemon(choicesDiv, hasChooseButton, pokemonStr.replace(GENDER_PLACEHOLDER, 'F'));
+  } else {
+    addPokemon(choicesDiv, hasChooseButton, pokemonStr);
+  }
+}
+function addPokemon(choicesDiv, hasChooseButton, pokemonStr) {
   const divEle = document.createElement('div');
   fillPokemonDiv(divEle, !hasChooseButton, true);
-
+  
   const pokemonEle = divEle.querySelector('.pokemon');
   pokemonEle.innerHTML = pokemonStr;
-
+  
   if (hasChooseButton) {
     const buttonEle = document.createElement('button');
     buttonEle.innerText = 'choose';
     buttonEle.onclick = function() {choosePokemon(choicesDiv, pokemonStr)};
     divEle.append(buttonEle);
   }
-
+  
   updatePokemonDiv(divEle);
-
+  
   choicesDiv.append(divEle);
 }
 
@@ -1516,14 +1519,19 @@ function getImageUrlName(speciesName) {
   return speciesName.toLowerCase().replaceAll(/[^a-zA-Z0-9\-]/g, '');
 }
 
-function randomOfSpecies(speciesName, abilityName, gender, pokeball, level, teraType) {
+const GENDER_PLACEHOLDER = '[GENDER]';
+
+function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType) {
   const speciesId = getSpeciesId(speciesName);
   const species = allSpecies[speciesId];
 
   let displayName = speciesName;
   let heldItemName;
 
-  if (gender == null) {
+  let gender;
+  if (pokeball === 'Love Ball')
+    gender = GENDER_PLACEHOLDER;
+  else {
     if (species.gender)
       gender = species.gender;
     else {
@@ -2724,7 +2732,7 @@ function heldItemDesc(heldItemName) {
 
 function randomEgg() {
   const speciesName = randomSpeciesName(null, ['pokestarspirit'], true);
-  let pokemonStr = randomOfSpecies(speciesName, null, null, null, 1, 'random')
+  let pokemonStr = randomOfSpecies(speciesName, null, null, 1, 'random')
                     + '\n- Splash\n- \n- \n- ';
   return {
     name: speciesName + ' Egg',
