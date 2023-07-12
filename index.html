@@ -1187,7 +1187,7 @@ function updatePokemonDiv(div) {
   pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
 
   const speciesName = getSpeciesNameOfPokemon(pokemonStr);
-  pokemonEle.style.backgroundImage = getImageURL(speciesName);
+  pokemonEle.style.backgroundImage = getImageURL(speciesName, pokemonStr.includes('Shiny: Yes'));
 
   const typesEle = div.querySelector('.types');
   killAllChildren(typesEle);
@@ -1498,8 +1498,9 @@ function isPokestar(speciesName) {
   return speciesName.startsWith('Pokestar');
 }
 
-function getImageURL(speciesName) {
-  return 'url(https://play.pokemonshowdown.com/sprites/gen5/' + getImageUrlName(speciesName) + '.png)';
+function getImageURL(speciesName, isShiny) {
+  return 'url(https://play.pokemonshowdown.com/sprites/gen5' + (isShiny ? '-shiny' : '') + '/' 
+              + getImageUrlName(speciesName) + '.png)';
 }
 function getImageUrlName(speciesName) {
   if (speciesName === 'Unown-Question')
@@ -1582,6 +1583,9 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType) {
       statStats[i].push(getStat(species, level, null, null, STATS[i]));
     }
   }
+
+  if (Math.random() < 1/4096)
+    pokemonStr += '\nShiny: Yes';
 
   pokemonStr += '\nTera Type: ';
   if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)])) {
@@ -1741,6 +1745,9 @@ function pokemonInHTML(pokemonStr) {
       else
         out += spanWithClass('Level: ', 'attr') + level;
       
+    } else if (strLine.startsWith('Shiny:')) {
+      out += spanWithClass(strLine, 'gray');
+
     } else if (strLine.startsWith('Tera Type:')) {
       const teraType = strLine.substring('Tera Type: '.length);
       if (!canTera(species, heldItem)) {
