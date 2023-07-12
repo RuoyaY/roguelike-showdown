@@ -1421,7 +1421,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   let pokeball = null;
   if (hasChooseButton)
     pokeball = getPokeball();
-  let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType);
+  let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType, hasChooseButton);
 
   if (hasChooseButton) {
     switch (pokeball) {
@@ -1522,7 +1522,7 @@ function getImageUrlName(speciesName) {
 
 const GENDER_PLACEHOLDER = '[GENDER]';
 
-function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType) {
+function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, canBeShiny) {
   const speciesId = getSpeciesId(speciesName);
   const species = allSpecies[speciesId];
 
@@ -1584,7 +1584,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType) {
     }
   }
 
-  if (Math.random() < 1/4096)
+  if (canBeShiny && Math.random() < 1/4096)
     pokemonStr += '\nShiny: Yes';
 
   pokemonStr += '\nTera Type: ';
@@ -2739,7 +2739,7 @@ function heldItemDesc(heldItemName) {
 
 function randomEgg() {
   const speciesName = randomSpeciesName(null, ['pokestarspirit'], true);
-  let pokemonStr = randomOfSpecies(speciesName, null, null, 1, 'random')
+  let pokemonStr = randomOfSpecies(speciesName, null, null, 1, 'random', true)
                     + '\n- Splash\n- \n- \n- ';
   return {
     name: speciesName + ' Egg',
