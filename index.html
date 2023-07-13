@@ -178,6 +178,10 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   text-align: center;
 }
 
+.keep-newlines {
+  white-space: pre-wrap;
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -372,14 +376,14 @@ button:focus {
         <span class="beforeBattle hasHoverText" title="Revealed after both players are ready for battle.">Before Battle</span>
         📝
       </h2>
-      <div id="beforeBattle"></div>
+      <div id="beforeBattle" class="keep-newlines"></div>
     </div>
     <div id="nextBattleDiv" class="item-width" hidden>
       <h2>
         <span class="nextBattle hasHoverText" title="Revealed after both players are ready for battle. Cannot be used on the final battle.">Next Battle Only</span>
         ⚔️ 
       </h2>
-      <div id="nextBattle"></div>
+      <div id="nextBattle" class="keep-newlines"></div>
     </div>
     <h2 class="attr">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
     <div id="party">
@@ -2901,7 +2905,13 @@ function randomTM() {
 
   if ((randy -= .35) < 0) {
     // Universal TM
-    return randomUniversalTM();
+    const move = randomMove(true);
+    return {
+      name: 'Universal TM #' + move.num,
+      type: 'universalTM',
+      price: 10 + tmPrice(move),
+      desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
+    };
   } else if ((randy -= .05) < 0) {
     // Party TM
     const move = randomMove(true);
@@ -2912,14 +2922,13 @@ function randomTM() {
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
   } else if ((randy -= .10) < 0) {
-    // Twin Move Add-ons
+    // Twin TMs
     const move = randomMove(true);
     return {
-      name: 'Twin Move Add-ons #' + move.num,
+      name: 'Twin TMs #' + move.num,
       type: 'beforeTM',
       price: tmPrice(move)/2,
-      desc: "Before battle: Both you and your opponent's [nth] Pokemon gets *" + move.name 
-                + '* in a NEW move slot.',
+      desc: tmDesc("Before battle: Both players may teach their [nth] Pokemon the move ", move),
     };
   } else if ((randy -= .25) < 0) {
     // Type-based Species TM
@@ -2984,15 +2993,6 @@ function randomTM() {
 
     return speciesTM(speciesName, move, isImpossibleTM);
   }
-}
-function randomUniversalTM() {
-  const move = randomMove(true);
-  return {
-    name: 'Universal TM #' + move.num,
-    type: 'universalTM',
-    price: 10 + tmPrice(move),
-    desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
-  };
 }
 function speciesTM(speciesName, move, isImpossibleTM) {
   return {
