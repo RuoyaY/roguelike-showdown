@@ -546,15 +546,17 @@ Perfect Egg	egg	90										In an EXTRA SLOT, add a Pokemon of ANY species, with
 Mirror Egg	egg	70										Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.		
 Reflecting Egg	beforeBattle	70										Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.		
 Shadow Egg	egg	50										In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>		
-1v1 Battle	nextBattle	50/b					2					Next battle only: BOTH players choose only 1 Pokemon to put in their team.		
+1v1 Battle	nextBattle	50/b	0				2					Next battle only: Both players can only use 1 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>		
+2v2 Battle	nextBattle	50/b					3					Next battle only: Both players can only use 2 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9doublescustomgame @@@ Picked Team Size = 2</span>		
+1v1 Warm-up	beforeBattle	5					2				x	Before battle: Do an extra battle where both players can only use 1 Pokemon (chosen during team preview). Winner gets $30. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>		
 Singles Battle	nextBattle	40/b					2					Next battle only: Do a singles battle instead of a doubles battle.		
 Court Change	nextBattle	100/b										Next battle only: BOTH players use their opponent's team instead of their own.		
 1-Time Trade	nextBattle	50/b										Next battle only: Swap your and your opponent's [nth] Pokemon.		
 1-Time Reflect Team	nextBattle	50/b+15										Next battle only: You use your opponent's team instead of your own.		
 1-Time Reflect Pokemon	nextBattle	25/b+5										Next battle only: Replace your [nth] Pokemon with your opponent's Pokemon in that slot.		
 Vs 1-Time Reflected Pokemon	nextBattle	25/b-5										Next battle only: Replace your opponent's [nth] Pokemon with your Pokemon in that slot.		
-Lv1 Battle	nextBattle	80/b										Next battle only: BOTH players' Pokemon are ALL set to level 1.		
-Lv50 Battle	nextBattle	160/b										Next battle only: BOTH players' Pokemon are ALL set to level 50.		
+Lv1 Battle	nextBattle	80/b										Next battle only: BOTH players' Pokemon are ALL set to level 1. <br><span class="command">/challenge gen9doublescustomgame @@@ Adjust Level = 1</span>		
+Lv50 Battle	nextBattle	160/b										Next battle only: BOTH players' Pokemon are ALL set to level 50. <br><span class="command">/challenge gen9doublescustomgame @@@ Adjust Level = 50</span>		
 1-Time Lv50 Team	nextBattle	0										Next battle only: Your Pokemon are ALL set to level 50.		
 Vs 1-Time Lv50 Team	nextBattle	80/b										Next battle only: Your opponent's Pokemon are ALL set to level 50.		
 Vs Random Leads	nextBattle	20/b					3					Next battle only: Your opponent's leading Pokemon must be randomly selected (in private).		
@@ -576,7 +578,7 @@ Vs Instant Lv1	nextBattle	200/b					3					Next battle only: Set your opponent's 
 Knock Out	nextBattle	240/b					3					Next battle only: Remove your opponent's [nth] Pokemon.		
 Self K.O.	nextBattle	-240/b+5					3					Next battle only: Remove your [nth] Pokemon. <span class="warning"> <br>Cannot choose Pokemon you got at Lv 1. </span>		
 Sacrifice	misc	-240/b-50						x			x	Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv 1. </span>		
-Twin K.O.	nextBattle	25/b					2					Next battle only: Remove both you and your opponent's [nth] Pokemon.		
+Twin K.O.	nextBattle	25/b					2					Next battle only: Remove both players' [nth] Pokemon.		
 HP Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's HP EV to 252 (max 508 total EVs).		
 Attack Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Atk EV to 252 (max 508 total EVs).		
 Defense Surge	nextBattle	35/b										Next battle only: Set your [nth] Pokemon's Def EV to 252 (max 508 total EVs).		
@@ -607,10 +609,10 @@ Forced Berserk Gene	nextHeldItem	60/b										Next battle only: Your opponent's
 Forced Ring Target	nextHeldItem	60/b										Next battle only: Your opponent's [nth] Pokemon must hold a *Ring Target*.		
 Forced Utility Umbrella	nextHeldItem	30/b										Next battle only: Your opponent's [nth] Pokemon must hold an *Utility Umbrella*.		
 (Almost) Perfect Forced Item	nextBattle	80/b+5										Next battle only: Your opponent's [nth] Pokemon must hold a [_____]. Can't choose Lagging Tail.		
-Perfect Forced Twin Items	nextBattle	100/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a [_____].		
+Perfect Forced Twin Items	nextBattle	100/b										Next battle only: Both players' [nth] Pokemon must hold a [_____].		
 Forced Debilitizer	nextBattle	15/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *No Ability*.		
-1-Time Ability Swap	nextBattle	25/b										Next battle only: Swap your [mth] Pokemon's ability with your opponent's [nth] Pokemon's ability.		
-1-Time Ability Gift	nextBattle	0										Next battle only: Set your opponent's [mth] Pokemon's ability to a copy of your [nth] Pokemon's ability.		
+1-Time Ability Swap	nextBattle	20/b										Next battle only: Swap your [mth] Pokemon's ability with your opponent's [nth] Pokemon's ability.		
+1-Time Ability Gift	nextBattle	10/b										Next battle only: Set your opponent's [mth] Pokemon's ability to a copy of your [nth] Pokemon's ability.		
 Forced Defeatist	nextAbilitizer	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Defeatist*.		
 Forced Klutz	nextAbilitizer	50/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Klutz*.		
 Forced Slow Start	nextAbilitizer	115/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Slow Start*.		
@@ -661,8 +663,8 @@ Forced Hadron Engine	nextAbilitizer	0										Next battle only: Set your oppone
 Forced Psychic Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Pyschic Surge*.		
 Forced Misty Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Misty Surge*.		
 (Almost) Perfect Forced Ability 	nextBattle	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to [_____]. Cannot choose Defeatist, Normalize, Slow Start, Stall, or Truant.		
-Perfect Forced Twin Abilitizers	nextBattle	100/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to [_____].		
-Next Battle Only Flipper	nextBattle	15/b										Next battle only: ALL "next battle only" effects, from both you and your opponent, are flipped: ones that would affect you affect your opponent instead, and vice versa.		
+Perfect Forced Twin Abilitizers	nextBattle	100/b										Next battle only: Set both players' [nth] Pokemon's ability to [_____].		
+Next Battle Only Flipper	nextBattle	15/b										Next battle only: ALL "next battle only" effects (from both players) are flipped: ones that would affect you affect your opponent instead, and vice versa.		
 Oval Stone	heldItem	10r									x	Lv +1 every round		
 Fire Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
 Ice Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
@@ -818,7 +820,8 @@ Forced Deletion Duo	nextBattle	20/b	0									Next battle only: Your opponent mu
 Forced Deletion Party	nextBattle	30/b	0									Next battle only: For EACH of their Pokemon, your opponent must choose one move to delete (a Pokemon with no moves learns *Struggle*).		
 Forced Drunk Deletion	nextBattle	25/b	0									Next battle only: Your opponent must delete a random move from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
 Forced Same-Type Move Deletion	nextBattle	50/b										Next battle only: Your opponent's [nth] Pokemon loses ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
-Forced Move Deletion	nextBattle	30/b										Next battle only: Your opponent must delete the [mth] move of their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
+Forced Move Deletion	nextBattle	25/b										Next battle only: Your opponent must delete the [mth] move of their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
+Forced Twin Move Masters	nextBattle	80/b										Next battle only: Both players' [mth] Pokemon forgets every move EXCEPT its [nth] move (a Pokemon with no nth move learns *Struggle*).		
 1-Time Move Swap	nextBattle	40/b										Next battle only: Switch your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move.		
 1-Time Moveset Swap	nextBattle	60/b										Next battle only: Switch you and your opponent's [nth] Pokemon's ENTIRE movesets.		
 Perfect Forced Deletion	nextBattle	40/b										Next battle only: Your opponent must delete the move [_____] from their [nth] Pokemon, if present (a Pokemon with no moves learns *Struggle*).		
@@ -849,31 +852,31 @@ Scouting	beforeBattle	5										Before battle: Your opponent must reveal their 
 Party Scouting	beforeBattle	5n										Before battle: Your opponent must reveal their team.		
 Reveal Pokemon	beforeBattle	-5										Before battle: You must reveal your [nth] Pokemon.		
 Reveal Party	beforeBattle	-5n										Before battle: You must reveal your team.		
-Twin Knock Off	nextBattle	20/b										Next battle only: Both you and your opponent's [nth] Pokemon cannot hold any items.		
-Forced Twin Iron Balls	nextHeldItem	30/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Iron Ball*.		
-Forced Twin Flame Orbs	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Flame Orb*.		
-Forced Twin Toxic Orbs	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Toxic Orb*.		
-Forced Twin Sticky Barbs	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Sticky Barb*.		
-Forced Twin Black Sludges	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Black Sludge*.		
-Forced Twin Lagging Tails	nextHeldItem	40/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Lagging Tail*.		
-Forced Twin Choice Bands	nextHeldItem	50/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Choice Band*.		
-Forced Twin Choice Specs	nextHeldItem	50/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Choice Specs*.		
-Forced Twin Choice Scarfs	nextHeldItem	25/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Choice Scarf*.		
-Forced Twin Assault Vests	nextHeldItem	70/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Assault Vest*.		
-Forced Twin Red Cards	nextHeldItem	25/b					3					Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Red Card*.		
-Forced Twin Eject Buttons	nextHeldItem	25/b					3					Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Eject Button*.		
-Forced Twin Eject Packs	nextHeldItem	25/b					3					Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Eject Pack*.		
-Forced Twin Berserk Genes	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Berserk Gene*.		
-Forced Twin Ring Targets	nextHeldItem	50/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold a *Ring Target*.		
-Forced Twin Utility Umbrellas	nextHeldItem	20/b										Next battle only: Both you and your opponent's [nth] Pokemon must hold an *Utility Umbrella*.		
-Forced Twin Debilitizers	nextBattle	10/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *No Ability*.		
-Forced Twin Defeatists	nextAbilitizer	10/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Defeatist*.		
-Forced Twin Klutzes	nextAbilitizer	20/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Klutz*.		
-Forced Twin Slow Starts	nextAbilitizer	20/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Slow Start*.		
-Forced Twin Stalls	nextAbilitizer	40/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Stall*.		
-Forced Twin Truants	nextAbilitizer	50/b										Next battle only: Set both you and your opponent's [nth] Pokemon's ability to *Truant*.		
+Twin Knock Off	nextBattle	20/b										Next battle only: Both players' [nth] Pokemon cannot hold any items.		
+Forced Twin Iron Balls	nextHeldItem	30/b										Next battle only: Both players' [nth] Pokemon must hold an *Iron Ball*.		
+Forced Twin Flame Orbs	nextHeldItem	20/b										Next battle only: Both players' [nth] Pokemon must hold a *Flame Orb*.		
+Forced Twin Toxic Orbs	nextHeldItem	20/b										Next battle only: Both players' [nth] Pokemon must hold a *Toxic Orb*.		
+Forced Twin Sticky Barbs	nextHeldItem	0										Next battle only: Both players' [nth] Pokemon must hold a *Sticky Barb*.		
+Forced Twin Black Sludges	nextHeldItem	20/b										Next battle only: Both players' [nth] Pokemon must hold a *Black Sludge*.		
+Forced Twin Lagging Tails	nextHeldItem	40/b										Next battle only: Both players' [nth] Pokemon must hold a *Lagging Tail*.		
+Forced Twin Choice Bands	nextHeldItem	50/b										Next battle only: Both players' [nth] Pokemon must hold a *Choice Band*.		
+Forced Twin Choice Specs	nextHeldItem	50/b										Next battle only: Both players' [nth] Pokemon must hold a *Choice Specs*.		
+Forced Twin Choice Scarfs	nextHeldItem	25/b										Next battle only: Both players' [nth] Pokemon must hold a *Choice Scarf*.		
+Forced Twin Assault Vests	nextHeldItem	70/b										Next battle only: Both players' [nth] Pokemon must hold an *Assault Vest*.		
+Forced Twin Red Cards	nextHeldItem	25/b					3					Next battle only: Both players' [nth] Pokemon must hold a *Red Card*.		
+Forced Twin Eject Buttons	nextHeldItem	25/b					3					Next battle only: Both players' [nth] Pokemon must hold an *Eject Button*.		
+Forced Twin Eject Packs	nextHeldItem	25/b					3					Next battle only: Both players' [nth] Pokemon must hold an *Eject Pack*.		
+Forced Twin Berserk Genes	nextHeldItem	20/b										Next battle only: Both players' [nth] Pokemon must hold a *Berserk Gene*.		
+Forced Twin Ring Targets	nextHeldItem	50/b										Next battle only: Both players' [nth] Pokemon must hold a *Ring Target*.		
+Forced Twin Utility Umbrellas	nextHeldItem	20/b										Next battle only: Both players' [nth] Pokemon must hold an *Utility Umbrella*.		
+Forced Twin Debilitizers	nextBattle	10/b										Next battle only: Set both players' [nth] Pokemon's ability to *No Ability*.		
+Forced Twin Defeatists	nextAbilitizer	10/b										Next battle only: Set both players' [nth] Pokemon's ability to *Defeatist*.		
+Forced Twin Klutzes	nextAbilitizer	20/b										Next battle only: Set both players' [nth] Pokemon's ability to *Klutz*.		
+Forced Twin Slow Starts	nextAbilitizer	20/b										Next battle only: Set both players' [nth] Pokemon's ability to *Slow Start*.		
+Forced Twin Stalls	nextAbilitizer	40/b										Next battle only: Set both players' [nth] Pokemon's ability to *Stall*.		
+Forced Twin Truants	nextAbilitizer	50/b										Next battle only: Set both players' [nth] Pokemon's ability to *Truant*.		
 Perfect Forced Nature	nextBattle	15/b										Next battle only: Set your opponent's [nth] Pokemon's nature to [_____].		
-Perfect Forced Twin Natures	nextBattle	25/b										Next battle only: Set both you and your opponent's [nth] Pokemon's nature to [_____].		
+Perfect Forced Twin Natures	nextBattle	25/b										Next battle only: Set both players' [nth] Pokemon's nature to [_____].		
 Encounter Power: Normal	misc	-5									x	Next round, you are guaranteed to get Normal-type Pokemon.		
 Encounter Power: Fire	misc	10									x	Next round, you are guaranteed to get Fire-type Pokemon.		
 Encounter Power: Water	misc	10									x	Next round, you are guaranteed to get Water-type Pokemon.		
@@ -916,3 +919,15 @@ Vs Encounter Power: Fairy	beforeBattle	-5									x	Before battle: Set your oppo
 Perfect Vs Encounter Power	beforeBattle	20									x	Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).		
 Mirrored Vs Encounter Power	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).		
 Shadowed Vs Encounter Power 	beforeBattle	15								x	x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).		
+Dynamax Battle	nextBattle	0										Next battle only: Both players' Pokemon can Dynamax, but cannot Terastallize. <br><span class="command">/challenge gen8doublescustomgame</span>		
+No Team Preview	nextBattle	0										Next battle only: No team preview. Players may choose their leads by changing the order of their Pokemon in Teambuilder. <br><span class="command">/challenge gen9doublescustomgame @@@ ! Team Preview</span>		
+Blitz Battle	nextBattle	0										Next battle only: Both players get 10 sec per turn. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>		
+Inverse Battle	nextBattle	40/b										Next battle only: Type matchups are inverted (weaknesses become resistances, and immunities & resistances become weaknesses). <br><span class="command">/challenge gen9doublescustomgame @@@ Inverse Mod</span>		
+Camomon Battle	nextBattle	40/b										Next battle only: Both players' Pokemon become the typing of their first 2 moves. <br><span class="command">/challenge gen9doublescustomgame @@@ Camomons Mod</span>		
+Tera Type Preview	nextBattle	0										Next battle only: Both players' Tera Types are revealed during team preview. <br><span class="command">/challenge gen9doublescustomgame @@@ Tera Type Preview</span>		
+No Switching Battle	nextBattle	20/b										Next battle only: Both players cannot switch out. <br><span class="command">/challenge gen9doublescustomgame @@@ No Switching</span>		
+Crazyhouse	nextBattle	5					2					Next battle only: Singles battle. When a Pokemon is directly KO'd, they are given to their foe (-25% max HP after every swap). <br><span class="command">/challenge gen9customgame @@@ Crazyhouse Rule, !! Max Team Size = 12</span>		
+First Blood Warm-up	beforeBattle	10									x	Before battle: Do an extra battle where the first person to get one KO, wins. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ First Blood Rule</span>		
+Revelationmons Battle	nextBattle	20/b										Next battle only: For both players' Pokemon, their 1st move becomes their 1st type, and their 2nd move becomes their 2nd type, if any. <br><span class="command">/challenge gen9doublescustomgame @@@ Revelationmons Mod</span>		
+Catergory Swapped Battle	nextBattle	60/b										Next battle only: Both teams' physical moves become special moves, and vice versa. <br><span class="command">/challenge gen9doublescustomgame @@@ Category Swap Mod</span>		
+VoltTurn Mayhem Battle	nextBattle	20/b										Next battle only: If either player's Pokemon successfully uses a move that affects foe(s), it switches out. <br><span class="command">/challenge gen9doublescustomgame @@@ VoltTurn Mayhem Mod</span>		
