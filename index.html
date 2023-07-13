@@ -1101,6 +1101,10 @@ function addPartySlot() {
 
   let lastFlexRow = partyDiv.children[partyDiv.children.length-1];
   if (lastFlexRow == null || lastFlexRow.children.length >= 2) {
+    if (partyDiv.children.length >= 12) {
+      alert("Pokemon Showdown can't handle more than 24 Pokemon in a team.");
+      return;
+    }
     lastFlexRow = document.createElement('div');
     lastFlexRow.classList.add('flex-row');
     partyDiv.append(lastFlexRow);
