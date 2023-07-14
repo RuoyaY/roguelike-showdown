@@ -238,10 +238,11 @@ button:focus {
 .TMAndZCrystal { background: linear-gradient(45deg, yellow, orange); } 
 .abilitizer { color: lightgreen }
 .partyAbilitizer { background: linear-gradient(45deg, hotpink, lightgreen, hotpink); }
+.beforeAbilitizer { background: linear-gradient(45deg, pink, lightgreen, pink); }
 .nextAbilitizer { background: linear-gradient(45deg, tomato, lightgreen, tomato); }
 .egg { color: wheat }
 .transformer { color: violet }
-.partyMisc, .pokeball, .heldItemParty, .beforeHeldItem, .nextHeldItem, .partyTM, .universalTM, .beforeTM, .TMAndZCrystal, .partyAbilitizer, .nextAbilitizer {  
+.partyMisc, .pokeball, .heldItemParty, .beforeHeldItem, .nextHeldItem, .partyTM, .universalTM, .beforeTM, .TMAndZCrystal, .partyAbilitizer, .beforeAbilitizer, .nextAbilitizer {  
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -2868,14 +2869,24 @@ function randomAbilitizer(failsafe) {
     price: 20 + roundToNearest5(typicalEffectiveStatDiff),
     desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
   };
-  if (Math.random() < .05 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
+
+  let randy = Math.random();
+  const twinAbilitizerPrice = 10 + roundToNearest5(typicalEffectiveStatDiff); // used in if-conditional
+  if ((randy -= .05) < 0 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
     abilitizer = {
       name: 'Party Abilitizer #' + ability.num,
       type: 'partyAbilitizer',
       price: 20 + roundToNearest5(sumArr(effectiveStatDiffs)),
       desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
     };
-  } 
+  } else if ((randy -= .1) < 0 && twinAbilitizerPrice >= 0) {
+    abilitizer = {
+      name: 'Twin Abilitizers #' + ability.num,
+      type: 'beforeAbilitizer',
+      price: twinAbilitizerPrice,
+      desc: abilitizerDesc("Before battle: Both players MAY set their [nth] Pokemon's ability to ", ability),
+    }
+  }
   
   if (abilitizer.price < MIN_ABILITIZER_PRICE || MAX_ABILITIZER_PRICE < abilitizer.price)
     return randomAbilitizer(failsafe); // re-roll
