@@ -2570,7 +2570,7 @@ function randomHeldItem() {
     else
       item.price = 0;
     item.desc = 'Before battle: Both players MAY give their [nth] Pokemon ' 
-                    + aOrAn(heldItemName).slice(0, -1 * heldItemName.length) + ' ';
+                    + aOrAn(heldItemName).slice(0, -1 * heldItemName.length);
   } else {
     // held item
     item.desc = "Set a Pokemon's held item to ";
