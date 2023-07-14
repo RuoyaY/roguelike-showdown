@@ -222,7 +222,7 @@ Psychium Z	heldItem	70
 Rockium Z	heldItem	70												
 Steelium Z	heldItem	70												
 Waterium Z	heldItem	70												
-Perfect Z-Crystal	misc	100										Set a Pokemon's held item to any Z-Crystal.		
+Perfect Z-Crystal	misc	80										Set a Pokemon's held item to any Z-Crystal.		
 Random Z-Crystal	misc	50										Generate a random type, then give the corresponding Z-Crystal to any 1 Pokemon.		
 Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola								Teach Raichu-Alola *Thunderbolt* and set its held item to *Aloraichium Z*.		
 Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye								Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.		
@@ -426,7 +426,7 @@ Loaded Dice	heldItem	25				Arm Thrust,Barrage,Bone Rush,Bullet Seed,Comet Punch,
 Muscle Band	heldItem	10												
 Wise Glasses	heldItem	10												
 Protective Pads	heldItem	1												
-Punching Glove	heldItem	10												
+Punching Glove	heldItem	10				Bullet Punch,Comet Punch,Dizzy Punch,Double Iron Bash,Drain Punch,Dynamic Punch,Fire Punch,Focus Punch,Hammer Arm,Headlong Rush,Ice Hammer,Ice Punch,Jet Punch,Mach Punch,Mega Punch,Meteor Mash,Plasma Fists,Power-Up Punch,Rage Fist,Shadow Punch,Sky Uppercut,Surging Strikes,Thunder Punch,Wicked Blow								
 Quick Claw	heldItem	10												
 Fire Memory	heldItem	15			RKS System									
 Water Memory	heldItem	10			RKS System									
@@ -545,7 +545,7 @@ Perfect Fairy Party TM	partyTM	25n+25	0.05									Choose ANY FAIRY-TYPE move (o
 Perfect Egg	egg	90										In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. </span>		
 Mirror Egg	egg	70										Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.		
 Reflecting Egg	beforeBattle	70										Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.		
-Shadow Egg	egg	50										In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>		
+Shadow Egg	egg	50								x		In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>		
 1v1 Battle	nextBattle	50/b	0				2					Next battle only: Both players can only use 1 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>		
 2v2 Battle	nextBattle	50/b					3					Next battle only: Both players can only use 2 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9doublescustomgame @@@ Picked Team Size = 2</span>		
 1v1 Warm-up	beforeBattle	5					2				x	Before battle: Do an extra battle where both players can only use 1 Pokemon (chosen during team preview). Winner gets $30. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>		
@@ -557,7 +557,7 @@ Court Change	nextBattle	100/b										Next battle only: BOTH players use their 
 Vs 1-Time Reflected Pokemon	nextBattle	25/b-5										Next battle only: Replace your opponent's [nth] Pokemon with your Pokemon in that slot.		
 Lv1 Battle	nextBattle	80/b										Next battle only: BOTH players' Pokemon are ALL set to level 1. <br><span class="command">/challenge gen9doublescustomgame @@@ Adjust Level = 1</span>		
 Lv50 Battle	nextBattle	160/b										Next battle only: BOTH players' Pokemon are ALL set to level 50. <br><span class="command">/challenge gen9doublescustomgame @@@ Adjust Level = 50</span>		
-1-Time Lv50 Team	nextBattle	0										Next battle only: Your Pokemon are ALL set to level 50.		
+1-Time Lv50 Team	nextBattle	60/b										Next battle only: Your Pokemon are ALL set to level 50.		
 Vs 1-Time Lv50 Team	nextBattle	80/b										Next battle only: Your opponent's Pokemon are ALL set to level 50.		
 Vs Random Leads	nextBattle	20/b					3					Next battle only: Your opponent's leading Pokemon must be randomly selected (in private).		
 Random Leads	nextBattle	-20/b					3					Next battle only: Your leading Pokemon must be randomly selected (in private).		
@@ -664,7 +664,7 @@ Forced Psychic Surge	nextAbilitizer	20/b										Next battle only: Set your opp
 Forced Misty Surge	nextAbilitizer	20/b										Next battle only: Set your opponent's [nth] Pokemon's ability to *Misty Surge*.		
 (Almost) Perfect Forced Ability 	nextBattle	55/b										Next battle only: Set your opponent's [nth] Pokemon's ability to [_____]. Cannot choose Defeatist, Normalize, Slow Start, Stall, or Truant.		
 Perfect Forced Twin Abilitizers	nextBattle	100/b										Next battle only: Set both players' [nth] Pokemon's ability to [_____].		
-Next Battle Only Flipper	nextBattle	15/b										Next battle only: ALL "next battle only" effects (from both players) are flipped: ones that would affect you affect your opponent instead, and vice versa.		
+Next-Battle-Only Flipper	nextBattle	15/b										Next battle only: ALL "next battle only" effects (from both players) are flipped: ones that would affect you affect your opponent instead, and vice versa.		
 Oval Stone	heldItem	10r									x	Lv +1 every round		
 Fire Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
 Ice Stone	heldItem	5r+10									x	Every round, add a random ___-type move in a new slot		
@@ -819,7 +819,7 @@ Forced Fairy Deletion	nextBattle	25/b										Next battle only: Your opponent m
 Forced Deletion Duo	nextBattle	20/b	0									Next battle only: Your opponent must choose TWO moves to delete from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
 Forced Deletion Party	nextBattle	30/b	0									Next battle only: For EACH of their Pokemon, your opponent must choose one move to delete (a Pokemon with no moves learns *Struggle*).		
 Forced Drunk Deletion	nextBattle	25/b	0									Next battle only: Your opponent must delete a random move from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
-Forced Same-Type Move Deletion	nextBattle	50/b										Next battle only: Your opponent's [nth] Pokemon loses ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
+Forced Same-Type Move Deletion	nextBattle	130/b										Next battle only: Your opponent's [nth] Pokemon loses ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).		
 Forced Move Deletion	nextBattle	25/b										Next battle only: Your opponent must delete the [mth] move of their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).		
 Forced Twin Move Masters	nextBattle	80/b										Next battle only: Both players' [mth] Pokemon forgets every move EXCEPT its [nth] move (a Pokemon with no nth move learns *Struggle*).		
 1-Time Move Swap	nextBattle	40/b										Next battle only: Switch your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move.		
@@ -898,36 +898,36 @@ Encounter Power: Fairy	misc	10									x	Next round, you are guaranteed to get F
 Perfect Encounter Power	misc	15									x	Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).		
 Mirror Encounter Power	misc	0									x	Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).		
 Shadow Encounter Power 	misc	10								x	x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last battle (next round, you are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Normal	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Normal (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Fire	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Fire (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Water	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Water (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Grass	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Grass (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Electric	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Electric (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Ice	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Ice (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Fighting	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Fighting (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Poison	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Poison (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Ground	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Ground (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Flying	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Flying (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Psychic	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Psychic (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Bug	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Bug (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Rock	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Rock (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Ghost	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Ghost (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Dark	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Dark (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Dragon	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Dragon (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Steel	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Steel (next round, they are guaranteed to get Pokemon of that type).		
-Vs Encounter Power: Fairy	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Fairy (next round, they are guaranteed to get Pokemon of that type).		
-Perfect Vs Encounter Power	beforeBattle	20									x	Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).		
-Mirrored Vs Encounter Power	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).		
-Shadowed Vs Encounter Power 	beforeBattle	15								x	x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Normal	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Normal (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Fire	beforeBattle	-10									x	Before battle: Set your opponent's "guaranteed type" to Fire (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Water	beforeBattle	-10									x	Before battle: Set your opponent's "guaranteed type" to Water (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Grass	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Grass (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Electric	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Electric (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Ice	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Ice (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Fighting	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Fighting (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Poison	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Poison (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Ground	beforeBattle	-10									x	Before battle: Set your opponent's "guaranteed type" to Ground (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Flying	beforeBattle	-10									x	Before battle: Set your opponent's "guaranteed type" to Flying (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Psychic	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Psychic (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Bug	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Bug (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Rock	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Rock (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Ghost	beforeBattle	-10									x	Before battle: Set your opponent's "guaranteed type" to Ghost (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Dark	beforeBattle	-5									x	Before battle: Set your opponent's "guaranteed type" to Dark (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Dragon	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Dragon (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Steel	beforeBattle	-10									x	Before battle: Set your opponent's "guaranteed type" to Steel (next round, they are guaranteed to get Pokemon of that type).		
+Vs Encounter Power: Fairy	beforeBattle	-10									x	Before battle: Set your opponent's "guaranteed type" to Fairy (next round, they are guaranteed to get Pokemon of that type).		
+Perfect Vs Encounter Power	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).		
+Mirrored Vs Encounter Power	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).		
+Shadowed Vs Encounter Power 	beforeBattle	10								x	x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).		
 Dynamax Battle	nextBattle	0										Next battle only: Both players' Pokemon can Dynamax, but cannot Terastallize. <br><span class="command">/challenge gen8doublescustomgame</span>		
 No Team Preview	nextBattle	0										Next battle only: No team preview. Players may choose their leads by changing the order of their Pokemon in Teambuilder. <br><span class="command">/challenge gen9doublescustomgame @@@ ! Team Preview</span>		
 Blitz Battle	nextBattle	0										Next battle only: Both players get 10 sec per turn. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>		
 Inverse Battle	nextBattle	40/b										Next battle only: Type matchups are inverted (weaknesses become resistances, and immunities & resistances become weaknesses). <br><span class="command">/challenge gen9doublescustomgame @@@ Inverse Mod</span>		
 Camomon Battle	nextBattle	40/b										Next battle only: Both players' Pokemon become the typing of their first 2 moves. <br><span class="command">/challenge gen9doublescustomgame @@@ Camomons Mod</span>		
 Tera Type Preview	nextBattle	0										Next battle only: Both players' Tera Types are revealed during team preview. <br><span class="command">/challenge gen9doublescustomgame @@@ Tera Type Preview</span>		
-No Switching Battle	nextBattle	20/b										Next battle only: Both players cannot switch out. <br><span class="command">/challenge gen9doublescustomgame @@@ No Switching</span>		
+No Switching Battle	nextBattle	20/b					3					Next battle only: Both players cannot switch out. <br><span class="command">/challenge gen9doublescustomgame @@@ No Switching</span>		
 Crazyhouse	nextBattle	5					2					Next battle only: Singles battle. When a Pokemon is directly KO'd, they are given to their foe (-25% max HP after every swap). <br><span class="command">/challenge gen9customgame @@@ Crazyhouse Rule, !! Max Team Size = 12</span>		
 First Blood Warm-up	beforeBattle	10									x	Before battle: Do an extra battle where the first person to get one KO, wins. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ First Blood Rule</span>		
 Revelationmons Battle	nextBattle	20/b										Next battle only: For both players' Pokemon, their 1st move becomes their 1st type, and their 2nd move becomes their 2nd type, if any. <br><span class="command">/challenge gen9doublescustomgame @@@ Revelationmons Mod</span>		
 Catergory Swapped Battle	nextBattle	60/b										Next battle only: Both teams' physical moves become special moves, and vice versa. <br><span class="command">/challenge gen9doublescustomgame @@@ Category Swap Mod</span>		
-VoltTurn Mayhem Battle	nextBattle	20/b										Next battle only: If either player's Pokemon successfully uses a move that affects foe(s), it switches out. <br><span class="command">/challenge gen9doublescustomgame @@@ VoltTurn Mayhem Mod</span>		
+VoltTurn Mayhem Battle	nextBattle	20/b					3					Next battle only: If either player's Pokemon successfully uses a move that affects foe(s), it switches out. <br><span class="command">/challenge gen9doublescustomgame @@@ VoltTurn Mayhem Mod</span>		

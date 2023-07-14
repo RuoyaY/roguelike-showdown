@@ -107,6 +107,7 @@ x		foe SpD at -2 or less
 x		foe Spe at -2 or less 
 x		foe Accuracy at -1 or less 
 x		foe Evasion at -1 or less 
+x		have stat stages in Atk, Def, SpA, SpD, and Spe
 		>170 HP
 		<130 HP (not Lv1)
 		>130 Atk
@@ -136,7 +137,8 @@ x		a Pokemon uses >4 unique moves in 1 battle
 x		successfully use a move w/ 10-40 BP
 x		successfully use a move w/ >100 BP
 x		successfully use a move that costs 50% max HP
-x		lose your held item
+x		lose your held item (not berry/gem)
+x		foe loses held item (not berry/gem)
 		have 6+ Pokemon
 x		Tera into Grass
 x		Tera into Ice
@@ -280,7 +282,11 @@ x		successfully use a move that switches self out
 		Pokemon w/ 300+ total EVs
 x		an ally KOs a foe that currently shares a type
 x		have a protection move fail
-x		bypass/destroy a protection, screen, or Substitute
+x		get past or destroy a protection, screen, or Substitute
 		Def > SpD + 30
 		SpD > Def + 30
 		Mega Pokemon (or w/ Mega Stone)
+		3+ Pokemon w/ impossible abilities
+x		use a G-Max move
+x		foe has option to Struggle
+x		use a Ground move on a Flying type
