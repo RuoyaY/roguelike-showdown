@@ -2847,6 +2847,8 @@ function randomAbilitizer(failsafe) {
   const ability = randomAbilitizerAbility();
   // ability = abilities.defeatist;
 
+  const typicalEffectiveStatDiff = STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE);
+
   const effectiveStatDiffs = [];
   for (const pokemonStr of getPartyStrs()) {
     const speciesName = getSpeciesNameOfPokemon(pokemonStr);
@@ -2858,12 +2860,12 @@ function randomAbilitizer(failsafe) {
     effectiveStatDiffs.push(getEffectiveStatTotal(...statInfo, ability.name) - getEffectiveStatTotal(...statInfo, prevAbilityName));
   }
   if (effectiveStatDiffs.length === 0)
-    effectiveStatDiffs.push(STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE));
+    effectiveStatDiffs.push(typicalEffectiveStatDiff);
 
   let abilitizer = {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
-    price: 20 + roundToNearest5(Math.max(...effectiveStatDiffs)),
+    price: 20 + roundToNearest5(typicalEffectiveStatDiff),
     desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
   };
   if (Math.random() < .05 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
