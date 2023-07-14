@@ -229,6 +229,7 @@ button:focus {
 .nextBattle { color: tomato }
 .heldItem { color: orange }
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
+.beforeHeldItem { background: linear-gradient(45deg, pink, orange, pink); }
 .nextHeldItem { background: linear-gradient(45deg, tomato, orange, tomato); }
 .speciesTM { color: yellow }
 .partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
@@ -240,7 +241,7 @@ button:focus {
 .nextAbilitizer { background: linear-gradient(45deg, tomato, lightgreen, tomato); }
 .egg { color: wheat }
 .transformer { color: violet }
-.partyMisc, .pokeball, .heldItemParty, .nextHeldItem, .partyTM, .universalTM, .beforeTM, .TMAndZCrystal, .partyAbilitizer, .nextAbilitizer {  
+.partyMisc, .pokeball, .heldItemParty, .beforeHeldItem, .nextHeldItem, .partyTM, .universalTM, .beforeTM, .TMAndZCrystal, .partyAbilitizer, .nextAbilitizer {  
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -2544,19 +2545,34 @@ function randomHeldItem() {
 
   item = structuredClone(item);
   const heldItemName = item.name;
-  if (Math.random() < .05) {
+  let randy = Math.random();
+  if ((randy -= .05) < 0) {
+    // held item party
     item.name += ' Party';
     item.type = 'heldItemParty';
     item.price = getItemPrice(item);
     if (item.price === 1)
       item.price = 0;
     if ((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
-          && item.name !== 'Chilan Berry Party')
+          && heldItemName !== 'Chilan Berry')
       item.price = (-1 * AVG_HELD_ITEM_VALUE) + 'n+' + (item.price + AVG_HELD_ITEM_VALUE);
     else
       item.price = (item.price - AVG_HELD_ITEM_VALUE) + 'n+' + AVG_HELD_ITEM_VALUE;
     item.desc = "Set EVERY Pokemon's held item to ";
+  } else if ((randy -= .1) < 0 && getItemPrice(item) >= 0) {
+    // twin held items
+    item.name = 'Twin ' + item.name + '(s)';
+    item.type = 'beforeHeldItem';
+    item.price = getItemPrice(item);
+    if (((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
+          && heldItemName !== 'Chilan Berry') || heldItemName === 'Eviolite')
+      item.price = Math.max(0, Math.min(roundToNearest5(item.price * .8, true), item.price - 5));
+    else
+      item.price = 0;
+    item.desc = 'Before battle: Both players MAY give their [nth] Pokemon ' 
+                    + aOrAn(heldItemName).slice(0, -1 * heldItemName.length) + ' ';
   } else {
+    // held item
     item.desc = "Set a Pokemon's held item to ";
   }
   item.desc += heldItemNameInHTML(heldItemName) + '.\n'
@@ -2928,7 +2944,7 @@ function randomTM() {
       name: 'Twin TMs #' + move.num,
       type: 'beforeTM',
       price: tmPrice(move)/2,
-      desc: tmDesc("Before battle: Both players may teach their [nth] Pokemon the move ", move),
+      desc: tmDesc("Before battle: Both players MAY teach their [nth] Pokemon the move ", move),
     };
   } else if ((randy -= .25) < 0) {
     // Type-based Species TM
