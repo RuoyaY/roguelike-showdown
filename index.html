@@ -40,13 +40,18 @@ body {
 .tera-choice {
   height: calc(1.5rem + 60px);
 }
-.pokemon.editable {
+.key-items {
+  white-space: pre;
+  width: 25ch;
+  min-height: 1rem;
+}
+.editable {
   box-shadow: inset 0 0 10px white;
 }
 .no-move-height {
   min-height: 5rem;
 }
-.chosen>.pokemon.editable {
+.chosen>.editable {
   box-shadow: inset 0 0 10px lightgreen;
 }
 .stats {
@@ -231,6 +236,7 @@ button:focus {
 .heldItemParty { background: linear-gradient(45deg, hotpink, orange, hotpink); }
 .beforeHeldItem { background: linear-gradient(45deg, pink, orange, pink); }
 .nextHeldItem { background: linear-gradient(45deg, tomato, orange, tomato); }
+.keyItem { color: gold }
 .speciesTM { color: yellow }
 .partyTM { background: linear-gradient(45deg, hotpink, yellow, hotpink); }
 .universalTM { background: linear-gradient(45deg, rgba(255,116,0,1) 0%, rgba(255,200,0,1) 20%, yellow 50%, rgba(210,255,0,1) 80%, rgba(99,253,245,1) 100%); }
@@ -387,6 +393,7 @@ button:focus {
       </h2>
       <div id="nextBattle" class="keep-newlines"></div>
     </div>
+
     <h2 class="attr">Party <button onclick="copyParty()" title="Copy party to clipboard">📋</button></h2>
     <div id="party">
       <div class="flex-row">
@@ -400,6 +407,11 @@ button:focus {
     </div>
     <button onclick="addPartySlot()" title="Add a slot">+</button>
     <button onclick="losePartySlot()" title="Remove a slot">-</button>
+
+    <div id="keyItemsDiv" class="item-width" hidden>
+      <h2>Key Items</h2>
+      <p id="keyItems" class="info-box key-items editable" contenteditable="true"></p>
+    </div>
     <p id="winCounter" class="win-counter win-color"></p>
   </div>
 </div>
@@ -528,6 +540,10 @@ const CHANGED_ABILITY_DESC = {
   'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate OR Z-Crystal.',
 };
+
+const KEY_ITEMS = {
+  RUNNING_SHOES: 'Running Shoes',
+}
 
 const TYPE_STONES = {
   'Fire Stone': 'Fire',
@@ -739,6 +755,7 @@ function printInvalidItems() {
           || (item.requiredSpecies && item.requiredSpecies.some(speciesId => !allSpecies[speciesId]))
           || (item.requiredAbilities && item.requiredAbilities.some(ability => !getAbilityId(ability)))
           || ((item.type === 'beforeBattle') != isBeforeBattleItem(item))
+          || ((item.type === 'keyItem') && !Object.values(KEY_ITEMS).includes(item.name))
           || (item.requiredMoves && item.requiredMoves.some(move => !getMoveId(move))))
       console.error(item);
   }
@@ -859,6 +876,10 @@ function onLoad() {
   });
   
   document.getElementById('money').addEventListener('change', event => {updateTax()});
+
+  document.getElementById('keyItems').addEventListener('focusout', function() {
+    updateKeyItemsEle();
+  }, false);
   
   setNumRounds(7);
   document.getElementById('endless').checked = false;
@@ -1184,6 +1205,33 @@ function updatePartyPokemonDiv(div) {
 function removeEditable(pokemonEle) {
   pokemonEle.setAttribute('contenteditable', false);
   pokemonEle.classList.remove('editable');
+}
+
+function getNumOfKeyItem(keyItemName) {
+  let num = 0;
+  for (const ownedKeyItem of getKeyItems()) {
+    if (keyItemName === ownedKeyItem)
+      num++;
+  }
+  return num;
+}
+
+function updateKeyItemsEle() {
+  const ele = document.getElementById('keyItems');
+  let html = '';
+  for (const keyItemName of getKeyItems()) {
+    const keyItem = Object.values(items).find(item => item.name === keyItemName);
+    if (keyItem == null)
+      html += keyItemName;
+    else
+      html += spanWithTitle(keyItemName, keyItem.desc);
+    html += '\n';
+  }
+  ele.innerHTML = html.slice(0, -1);
+}
+
+function getKeyItems() {
+  return document.getElementById('keyItems').innerText.split('\n').map(line => line.trim());
 }
 
 function updatePokemonDiv(div) {
@@ -2247,6 +2295,8 @@ function save() {
 
   localStorage.setItem('beforeBattle', document.getElementById('beforeBattle').innerHTML);
   localStorage.setItem('nextBattle', document.getElementById('nextBattle').innerHTML);
+
+  localStorage.setItem('keyItems', document.getElementById('keyItems').innerHTML);
 }
 function load() {
   if (getPartyStrs().length > 0) {
@@ -2289,6 +2339,13 @@ function load() {
   const nextBattleHTML = localStorage.getItem('nextBattle');
   document.getElementById('nextBattleDiv').hidden = nextBattleHTML === '';
   document.getElementById('nextBattle').innerHTML = nextBattleHTML;
+
+  const keyItemsHTML = localStorage.getItem('keyItems');
+  if (keyItemsHTML != null) {
+    document.getElementById('keyItemsDiv').hidden = keyItemsHTML === '';
+    document.getElementById('keyItems').innerHTML = keyItemsHTML;
+    updateKeyItemsEle();
+  }
 
   toggleAfterFirstRoundChoices(true);
 }
@@ -3133,26 +3190,15 @@ function buyItem(itemDiv, item, itemPrice) {
     setGuaranteedType(TYPES.includes(type) ? type : '');
 
   } else if (isBeforeBattleItem(item)) {
-    document.getElementById('beforeBattleDiv').hidden = false;
-    const beforeBattleEle = document.createElement('p');
-
-    let beforeBattleEventHTML = item.desc.substring('Before battle: '.length);
-    beforeBattleEventHTML = replaceWithHTMLInputs(beforeBattleEventHTML);
-    beforeBattleEventHTML = itemDescInHTML(beforeBattleEventHTML, true);
-
-    beforeBattleEle.innerHTML = beforeBattleEventHTML;
-    document.getElementById('beforeBattle').append(beforeBattleEle);
+    addItemDescToEle(item.desc, 'beforeBattle');
   
   } else if (isNextBattleItem(item)) {
-    document.getElementById('nextBattleDiv').hidden = false;
-    const nextBattleEventEle = document.createElement('p');
+    addItemDescToEle(item.desc, 'nextBattle');
 
-    let nextBattleEventHTML = item.desc.substring('Next battle only: '.length);
-    nextBattleEventHTML = replaceWithHTMLInputs(nextBattleEventHTML);
-    nextBattleEventHTML = itemDescInHTML(nextBattleEventHTML, true);
-
-    nextBattleEventEle.innerHTML = nextBattleEventHTML;
-    document.getElementById('nextBattle').append(nextBattleEventEle);
+  } else if (item.type === 'keyItem') {
+    document.getElementById('keyItemsDiv').hidden = false;
+    document.getElementById('keyItems').innerText += item.name + '\n';
+    updateKeyItemsEle();
   }
 
   const trueMirrorEle = document.getElementById('trueMirror');
@@ -3175,6 +3221,18 @@ function buyItem(itemDiv, item, itemPrice) {
   checkbox.classList.add('invisible');
 
   itemDiv.classList.add('chosen');
+}
+
+function addItemDescToEle(itemDesc, elementId) {
+  document.getElementById(elementId + 'Div').hidden = false;
+
+  let pHTML = itemDesc.substring(itemDesc.indexOf(': ') + ': '.length);
+  pHTML = replaceWithHTMLInputs(pHTML);
+  pHTML = itemDescInHTML(pHTML, true);
+  
+  const p = document.createElement('p');
+  p.innerHTML = pHTML;
+  document.getElementById(elementId).append(p);
 }
 
 let NTH_SELECT_HTML;

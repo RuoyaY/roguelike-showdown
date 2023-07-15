@@ -1,4 +1,5 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0										
-Random TR	misc	10										Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.		
-1v1 Battle	nextBattle	40/b					2					Next battle only: Both players can only use 1 Pokemon, chosen during team preview. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>
+1-Time Lv50 Team	nextBattle	60/b										Next battle only: Your Pokemon are ALL set to level 50.
+Party Scouting	beforeBattle	5n										Before battle: Your opponent must reveal their team.
+Running Shoes	keyItem	5r+5										Refreshing the shop only costs $2.
