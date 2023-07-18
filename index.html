@@ -2700,7 +2700,10 @@ function getItemPrice(item) {
   {
     const numEmptySlots = getPartyPokeDivs().length  - getPartyStrs().length;
     const numRoundsLeft = getNumRounds() - roundCounter;
-    return roundToNearest5(resolveANplusB(price, 'm', Math.min(numEmptySlots, numRoundsLeft)), true);
+    let expectedNumAddedPoke = Math.min(numEmptySlots, numRoundsLeft);
+    if (numEmptySlots === 0 && numRoundsLeft > 0)
+      expectedNumAddedPoke = 0.5;
+    return roundToNearest5(resolveANplusB(price, 'm', expectedNumAddedPoke), true);
   } 
   else if (price.includes('r')) // number of rounds left
     return roundToNearest5(resolveANplusB(price, 'r', getNumRounds() - roundCounter), true);
