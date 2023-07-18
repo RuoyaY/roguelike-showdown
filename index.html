@@ -2696,6 +2696,12 @@ function getItemPrice(item) {
     return price;
   if (price.includes('n')) // number of party members
     return roundToNearest5(resolveANplusB(price, 'n', getPartyStrs().length), true);
+  else if (price.includes('m')) // how many more Pokemon will be added
+  {
+    const numEmptySlots = getPartyPokeDivs().length  - getPartyStrs().length;
+    const numRoundsLeft = getNumRounds() - roundCounter;
+    return roundToNearest5(resolveANplusB(price, 'm', Math.min(numEmptySlots, numRoundsLeft)), true);
+  } 
   else if (price.includes('r')) // number of rounds left
     return roundToNearest5(resolveANplusB(price, 'r', getNumRounds() - roundCounter), true);
   else if (price.includes('/b')) // 1 / (number of battles left)
