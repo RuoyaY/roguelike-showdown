@@ -1215,7 +1215,7 @@ function removeEditable(pokemonEle) {
   pokemonEle.classList.remove('editable');
 }
 
-function getNumOfKeyItem(keyItemName) {
+function numOfKeyItem(keyItemName) {
   let num = 0;
   for (const ownedKeyItem of getKeyItems()) {
     if (keyItemName === ownedKeyItem)
@@ -1236,6 +1236,8 @@ function updateKeyItemsEle() {
     html += '\n';
   }
   ele.innerHTML = html.slice(0, -1);
+
+  updateRefreshCost();
 }
 
 function getKeyItems() {
@@ -2184,6 +2186,8 @@ function updateRefreshCost() {
   let refreshCost = BASE_REFRESH_COST;
   if (numPokemonWithAbility('Run Away') > 0)
     refreshCost = RUN_AWAY_REFRESH_COST;
+  if (numOfKeyItem(KEY_ITEMS.RUNNING_SHOES) > 0)
+    refreshCost = 2;
   document.getElementById('refresh').textContent = '$' + refreshCost + ' - refresh';
 }
 function updateTMSeekerOptions() {
