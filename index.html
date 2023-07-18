@@ -375,7 +375,6 @@ button:focus {
     <div id="taxDiv" class="attr">
       Next round, you'll lose $<span id="tax">0</span> in wealth tax.
     </div>
-    <p id="trueMirror" class="true-mirror big-text" hidden>x2</p>
     <div id="shop"></div>
     <h2 class="attr">Generate a Pokemon</h2>
     <div class="mb-1">
@@ -3187,7 +3186,23 @@ function buyItem(itemDiv, item, itemPrice) {
   }
 
   if (!pay(itemPrice)) return;
-  
+
+  if (!(numOfKeyItem(KEY_ITEMS.RE_BUY) > 0 && itemPrice >= 0)) {
+    // replace buy button with checkmark
+    const buyButton = itemDiv.querySelector('button');
+    const checkmarkEle = document.createElement('h2');
+    checkmarkEle.classList.add('mb-4px');
+    checkmarkEle.textContent = '✅';
+    buyButton.insertAdjacentElement('afterend', checkmarkEle);
+    buyButton.remove();
+    // hide freeze checkbox
+    const checkbox = itemDiv.querySelector('input');
+    checkbox.checked = false;
+    checkbox.classList.add('invisible');
+  }
+
+  itemDiv.classList.add('chosen');
+
   if (item.type === 'pokeball') {
     if (item.name === 'Random Ball') {
       const pokeballs = getAllPokeballNames();
@@ -3213,30 +3228,6 @@ function buyItem(itemDiv, item, itemPrice) {
     document.getElementById('keyItems').innerText += item.name + '\n';
     updateKeyItemsEle();
   }
-
-  const trueMirrorEle = document.getElementById('trueMirror');
-  if (item.name === 'True Mirror') {
-    trueMirrorEle.textContent = item.desc;
-    trueMirrorEle.hidden = false;
-  } else {
-    trueMirrorEle.hidden = true;
-  }
-
-  if (!(numOfKeyItem(KEY_ITEMS.RE_BUY) > 0 && itemPrice >= 0)) {
-    // replace buy button with checkmark
-    const buyButton = itemDiv.querySelector('button');
-    const checkmarkEle = document.createElement('h2');
-    checkmarkEle.classList.add('mb-4px');
-    checkmarkEle.textContent = '✅';
-    buyButton.insertAdjacentElement('afterend', checkmarkEle);
-    buyButton.remove();
-    // hide freeze checkbox
-    const checkbox = itemDiv.querySelector('input');
-    checkbox.checked = false;
-    checkbox.classList.add('invisible');
-  }
-
-  itemDiv.classList.add('chosen');
 }
 
 function addItemDescToEle(itemDesc, elementId) {
