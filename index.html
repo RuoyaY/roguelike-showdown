@@ -12,6 +12,10 @@ body {
   color: white;
   font-family: monospace;
 }
+p {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
 
 .info-box {
   border: 1px solid;
@@ -66,7 +70,7 @@ body {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.item, .pokeball-desc, .item-width {
+.item, .pokeball-desc {
   width: 60ch;
 }
 .item-price {
@@ -75,6 +79,10 @@ body {
   border-bottom-left-radius: 0;
   width: 7ch;
   overflow: visible;
+}
+
+.party-width {
+  width: 66ch;
 }
 
 input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-price {
@@ -379,14 +387,14 @@ button:focus {
     <div id="species" class=""></div>
   </div>
   <div class="ml-1">
-    <div id="beforeBattleDiv" class="item-width" hidden>
+    <div id="beforeBattleDiv" class="party-width" hidden>
       <h2>
         <span class="beforeBattle hasHoverText" title="Revealed after both players are ready for battle.">Before Battle</span>
         📝
       </h2>
       <div id="beforeBattle" class="keep-newlines"></div>
     </div>
-    <div id="nextBattleDiv" class="item-width" hidden>
+    <div id="nextBattleDiv" class="party-width" hidden>
       <h2>
         <span class="nextBattle hasHoverText" title="Revealed after both players are ready for battle. Cannot be used on the final battle.">Next Battle Only</span>
         ⚔️ 
@@ -408,7 +416,7 @@ button:focus {
     <button onclick="addPartySlot()" title="Add a slot">+</button>
     <button onclick="losePartySlot()" title="Remove a slot">-</button>
 
-    <div id="keyItemsDiv" class="item-width" hidden>
+    <div id="keyItemsDiv" class="party-width" hidden>
       <h2>Key Items</h2>
       <p id="keyItems" class="info-box key-items editable" contenteditable="true"></p>
     </div>
