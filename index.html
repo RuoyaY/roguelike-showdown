@@ -551,6 +551,7 @@ const CHANGED_ABILITY_DESC = {
 const KEY_ITEMS = {
   CHEAP_REFRESH: 'Running Shoes',
   RE_BUY: 'Shopping Cart',
+  MORE_POKE_CHOICE: 'White Flute',
 }
 
 const TYPE_STONES = {
@@ -1398,6 +1399,7 @@ function addChoices(choicesDiv) {
   } else {
     let numPokeChoices = numChoices();
     numPokeChoices += numPokemonWithAbility('Honey Gather');
+    numPokeChoices += numOfKeyItem(KEY_ITEMS.MORE_POKE_CHOICE);
     const abilityName = pokeball === 'Beast Ball' ? 'Beast Boost' : null;
     for (let i = 0; i < numPokeChoices; i++)
       addRandomPokemon(choicesDiv, true, null, abilityName);
