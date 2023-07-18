@@ -552,6 +552,7 @@ const KEY_ITEMS = {
   CHEAP_REFRESH: 'Running Shoes',
   RE_BUY: 'Shopping Cart',
   MORE_POKE_CHOICE: 'White Flute',
+  HIGHER_LEVEL: 'Black Flute',
 }
 
 const TYPE_STONES = {
@@ -1494,7 +1495,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   let pokeball = null;
   if (hasChooseButton)
     pokeball = getPokeball();
-  let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType, hasChooseButton);
+  let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType, hasChooseButton, hasChooseButton);
 
   if (hasChooseButton) {
     switch (pokeball) {
@@ -1595,7 +1596,7 @@ function getImageUrlName(speciesName) {
 
 const GENDER_PLACEHOLDER = '[GENDER]';
 
-function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, canBeShiny) {
+function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, canBeShiny, hasChooseButton) {
   const speciesId = getSpeciesId(speciesName);
   const species = allSpecies[speciesId];
 
@@ -1647,6 +1648,8 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     level -= 1;
   if (pokeball === 'Quick Ball')
     level += 3;
+  if (hasChooseButton)
+    level += numOfKeyItem(KEY_ITEMS.HIGHER_LEVEL);
 
   pokemonStr += '\nLevel: ' + level;
 
@@ -2847,7 +2850,7 @@ function heldItemDesc(heldItemName) {
 
 function randomEgg() {
   const speciesName = randomSpeciesName(null, ['pokestarspirit'], true);
-  let pokemonStr = randomOfSpecies(speciesName, null, null, 1, 'random', true)
+  let pokemonStr = randomOfSpecies(speciesName, null, null, 1, 'random', true, false)
                     + '\n- Splash\n- \n- \n- ';
   return {
     name: speciesName + ' Egg',
