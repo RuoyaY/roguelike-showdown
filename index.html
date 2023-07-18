@@ -550,7 +550,8 @@ const CHANGED_ABILITY_DESC = {
 };
 
 const KEY_ITEMS = {
-  RUNNING_SHOES: 'Running Shoes',
+  CHEAP_REFRESH: 'Running Shoes',
+  RE_BUY: 'Shopping Cart',
 }
 
 const TYPE_STONES = {
@@ -2186,7 +2187,7 @@ function updateRefreshCost() {
   let refreshCost = BASE_REFRESH_COST;
   if (numPokemonWithAbility('Run Away') > 0)
     refreshCost = RUN_AWAY_REFRESH_COST;
-  if (numOfKeyItem(KEY_ITEMS.RUNNING_SHOES) > 0)
+  if (numOfKeyItem(KEY_ITEMS.CHEAP_REFRESH) > 0)
     refreshCost = 2;
   document.getElementById('refresh').textContent = '$' + refreshCost + ' - refresh';
 }
@@ -3221,16 +3222,19 @@ function buyItem(itemDiv, item, itemPrice) {
     trueMirrorEle.hidden = true;
   }
 
-  const buyButton = itemDiv.querySelector('button');
-  const checkmarkEle = document.createElement('h2');
-  checkmarkEle.classList.add('mb-4px');
-  checkmarkEle.textContent = '✅';
-  buyButton.insertAdjacentElement('afterend', checkmarkEle);
-  buyButton.remove();
-
-  const checkbox = itemDiv.querySelector('input');
-  checkbox.checked = false;
-  checkbox.classList.add('invisible');
+  if (!(numOfKeyItem(KEY_ITEMS.RE_BUY) > 0 && itemPrice >= 0)) {
+    // replace buy button with checkmark
+    const buyButton = itemDiv.querySelector('button');
+    const checkmarkEle = document.createElement('h2');
+    checkmarkEle.classList.add('mb-4px');
+    checkmarkEle.textContent = '✅';
+    buyButton.insertAdjacentElement('afterend', checkmarkEle);
+    buyButton.remove();
+    // hide freeze checkbox
+    const checkbox = itemDiv.querySelector('input');
+    checkbox.checked = false;
+    checkbox.classList.add('invisible');
+  }
 
   itemDiv.classList.add('chosen');
 }
