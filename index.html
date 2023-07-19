@@ -2601,7 +2601,7 @@ function randomItem() {
       item = randomAbilitizer(100);
     else if ((randy -= 1/12) < 0)
       item = randomTransformer();
-    else if ((randy -= 1/100) < 0)
+    else if ((randy -= 1/24) < 0)
       item = randomEgg();
     else if ((randy -= 1/6) < 0)
       item = randomHeldItem();
@@ -2864,7 +2864,7 @@ function randomEgg() {
   return {
     name: speciesName + ' Egg',
     type: 'egg',
-    price: 40,
+    price: 60,
     desc: 'ADD the following Pokemon in an EXTRA SLOT:\n' 
             + spanWithClass(pokemonInHTML(pokemonStr), 'attr'),
   };
