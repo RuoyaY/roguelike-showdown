@@ -553,6 +553,7 @@ const KEY_ITEMS = {
   RE_BUY: 'Shopping Cart',
   MORE_POKE_CHOICE: 'White Flute',
   HIGHER_LEVEL: 'Black Flute',
+  MORE_SHOP_SLOT: 'Dowsing Machine',
 }
 
 const TYPE_STONES = {
@@ -2534,24 +2535,30 @@ function sumArr(arr) {
   return arr.reduce((a,b) => a+b, 0);
 }
 
+const SLOT_TYPES = Object.freeze({
+  ANY: Symbol(),
+  POKEBALL: Symbol(),
+});
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
+  let shopSlots = [];
+  shopSlots.push(...Array(NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT)).fill(SLOT_TYPES.ANY));
+  shopSlots.push(...Array(numPokemonWithAbility('Ball Fetch')).fill(SLOT_TYPES.POKEBALL));
+  let numItemsToAdd = shopSlots.length;
   const frozenItems = [];
-  let numItemsToAdd = NUM_SHOP_OPTIONS + numPokemonWithAbility('Ball Fetch');
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
     const itemDiv = shopDiv.childNodes[i];
-    if (itemDiv.querySelector('.pokemon-div')) // then it's choices div, not an item div
-      continue;
     shopIndex++;
     if (itemDiv.querySelector('input').checked) {
       frozenItems[i] = itemDiv;
-      numItemsToAdd--;
+      if (i < shopSlots.length)
+        numItemsToAdd--;
     }
   }
 
   if (isViaMoney) {
     if (numItemsToAdd <= 0) {
-      alert('Too many frozen items!');
+      alert('All slots that would be replaced are frozen!');
       return;
     }
     const refreshButton = document.getElementById('refresh');
@@ -2561,22 +2568,22 @@ function refreshShop(isViaMoney) {
 
   killAllChildren(shopDiv);
 
-  for (let i = 0; i < numItemsToAdd; i++) {
-    while (frozenItems[shopDiv.childNodes.length])
-      shop.append(frozenItems[shopDiv.childNodes.length]);
-
-    let item;
-    if (shopDiv.childNodes.length < NUM_SHOP_OPTIONS)
-      item = randomItem();
-    else
-      item = randomElement(items.filter(item => item.type === 'pokeball'));
-    // item = items.find(item => item.name === 'Super Rod')
-
-    shopDiv.append(createItemDiv(item));
-  }
-  for (let i = shopDiv.childNodes.length; i < frozenItems.length; i++) {
+  for (let i = 0; i < shopSlots.length; i++) {
     if (frozenItems[i])
       shopDiv.append(frozenItems[i]);
+    else
+      shopDiv.append(createItemDiv(randomItemForSlot(shopSlots[i])));
+  }
+  for (let i = shopSlots.length; i < frozenItems.length; i++) {
+    if (frozenItems[i])
+      shopDiv.append(frozenItems[i]);
+  }
+}
+function randomItemForSlot(slotType) {
+  switch (slotType) {
+    case SLOT_TYPES.ANY: return randomItem();
+    case SLOT_TYPES.POKEBALL: return randomElement(items.filter(item => item.type === 'pokeball'));
+    default: throw new Error('Invalid slotType: ' + slotType);
   }
 }
 
