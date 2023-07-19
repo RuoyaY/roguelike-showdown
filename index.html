@@ -556,6 +556,7 @@ const KEY_ITEMS = {
   HIGHER_LEVEL: 'Black Flute',
   LOWER_LEVEL: 'White Flute',
   MORE_SHOP_SLOT: 'Dowsing Machine',
+  LESS_SHOP_SLOT: 'Losing Machine',
 }
 
 const TYPE_STONES = {
@@ -2551,7 +2552,8 @@ const SLOT_TYPES = Object.freeze({
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   let shopSlots = [];
-  shopSlots.push(...Array(NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT)).fill(SLOT_TYPES.ANY));
+  const numAnySlots = Math.max(1, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
+  shopSlots.push(...Array(numAnySlots).fill(SLOT_TYPES.ANY));
   shopSlots.push(...Array(numPokemonWithAbility('Ball Fetch')).fill(SLOT_TYPES.POKEBALL));
   let numItemsToAdd = shopSlots.length;
   const frozenItems = [];
