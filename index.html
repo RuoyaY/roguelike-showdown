@@ -2545,24 +2545,22 @@ function sumArr(arr) {
   return arr.reduce((a,b) => a+b, 0);
 }
 
-const SLOT_TYPES = Object.freeze({
-  ANY: Symbol(),
-  POKEBALL: Symbol(),
-});
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
-  let shopSlots = [];
+  let shopSlotFuncs = [];
   const numAnySlots = Math.max(1, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
-  shopSlots.push(...Array(numAnySlots).fill(SLOT_TYPES.ANY));
-  shopSlots.push(...Array(numPokemonWithAbility('Ball Fetch')).fill(SLOT_TYPES.POKEBALL));
-  let numItemsToAdd = shopSlots.length;
+  shopSlotFuncs.push(...Array(numAnySlots).fill(randomItem));
+  shopSlotFuncs.push(...Array(numPokemonWithAbility('Ball Fetch')).fill(function() {
+    return randomElement(items.filter(item => item.type === 'pokeball'));
+  }));
+  let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
     const itemDiv = shopDiv.childNodes[i];
     shopIndex++;
     if (itemDiv.querySelector('input').checked) {
       frozenItems[i] = itemDiv;
-      if (i < shopSlots.length)
+      if (i < shopSlotFuncs.length)
         numItemsToAdd--;
     }
   }
@@ -2579,22 +2577,15 @@ function refreshShop(isViaMoney) {
 
   killAllChildren(shopDiv);
 
-  for (let i = 0; i < shopSlots.length; i++) {
+  for (let i = 0; i < shopSlotFuncs.length; i++) {
     if (frozenItems[i])
       shopDiv.append(frozenItems[i]);
     else
-      shopDiv.append(createItemDiv(randomItemForSlot(shopSlots[i])));
+      shopDiv.append(createItemDiv(shopSlotFuncs[i]()));
   }
-  for (let i = shopSlots.length; i < frozenItems.length; i++) {
+  for (let i = shopSlotFuncs.length; i < frozenItems.length; i++) {
     if (frozenItems[i])
       shopDiv.append(frozenItems[i]);
-  }
-}
-function randomItemForSlot(slotType) {
-  switch (slotType) {
-    case SLOT_TYPES.ANY: return randomItem();
-    case SLOT_TYPES.POKEBALL: return randomElement(items.filter(item => item.type === 'pokeball'));
-    default: throw new Error('Invalid slotType: ' + slotType);
   }
 }
 
