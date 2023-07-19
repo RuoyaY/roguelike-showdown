@@ -2504,7 +2504,7 @@ function leveledUp(pokemonStr) {
 }
 
 function pokemonHasMove(pokemonStr, moveName) {
-  return pokemonStr.includes('\n- ' + moveName + '\n')
+  return (pokemonStr.includes('\n- ' + moveName + '\n') || pokemonStr.endsWith('\n- ' + moveName))
               || (moveName.startsWith('Hidden Power') && pokemonStr.includes('\n- Hidden Power'));
 }
 
@@ -3085,7 +3085,7 @@ function randomTM() {
     let move;
     do {
       move = randomMove(true);
-    } while (move.type !== type);
+    } while (!(move.type === type && !pokemonHasMove(correspondingPkmnStrs[index], move.name)));
     return {
       name: type + ' ' + speciesName + ' TM #' + move.num,
       type: 'speciesTM',
@@ -3104,6 +3104,8 @@ function randomTM() {
         const move = addHiddenPowerType(moves[moveId]);
         if (prevSeenItems.has(speciesTM(speciesName, move, false).name))
           continue;
+        if (pokemonHasMove(pokemonStr, move.name))
+          continue;
         possibleMoves.push(move);
         speciesNames.push(speciesName);
       }
@@ -3113,8 +3115,11 @@ function randomTM() {
     let isImpossibleTM = false;
     if (possibleMoves.length == 0) {
       isImpossibleTM = true;
-      speciesName = getApparentSpeciesNameOfPokemon(randomElement(pokemonStrs));
-      move = randomMove(true);
+      const pokemonStr = randomElement(pokemonStrs);
+      speciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
+      do {
+        move = randomMove(true);
+      } while (pokemonHasMove(pokemonStr, move.name));
     } else {
       const possibleMovesIndex = randomInt(possibleMoves.length);
       speciesName = speciesNames[possibleMovesIndex];
