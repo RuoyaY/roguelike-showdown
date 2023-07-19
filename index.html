@@ -554,6 +554,7 @@ const KEY_ITEMS = {
   MORE_POKE_CHOICE: 'Combee Hive',
   LESS_POKE_CHOICE: 'Trubbish Bin',
   HIGHER_LEVEL: 'Black Flute',
+  LOWER_LEVEL: 'White Flute',
   MORE_SHOP_SLOT: 'Dowsing Machine',
 }
 
@@ -1649,12 +1650,16 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
 
   if (level == null)
     level = getLevelWithAbility(species, abilityName);
-  if (pokeball === 'Level Ball' && level > 1)
+  if (pokeball === 'Level Ball')
     level -= 1;
   if (pokeball === 'Quick Ball')
     level += 3;
-  if (hasChooseButton)
+  if (hasChooseButton) {
     level += numOfKeyItem(KEY_ITEMS.HIGHER_LEVEL);
+    level -= numOfKeyItem(KEY_ITEMS.LOWER_LEVEL);
+  }
+  if (level < 1)
+    level = 1;
 
   pokemonStr += '\nLevel: ' + level;
 
