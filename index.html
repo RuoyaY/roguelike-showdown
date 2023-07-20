@@ -550,18 +550,19 @@ const CHANGED_ABILITY_DESC = {
 
 const KEY_ITEMS = Object.freeze({
   CHEAP_REFRESH: 'Running Shoes',
+  MORE_SHOP_SLOT: 'Dowsing Machine',
+  LESS_SHOP_SLOT: 'Losing Machine',
   RE_BUY: 'Shopping Cart',
   MORE_POKE_CHOICE: 'Combee Hive',
   LESS_POKE_CHOICE: 'Trubbish Bin',
   HIGHER_LEVEL: 'Black Flute',
   LOWER_LEVEL: 'White Flute',
-  MORE_SHOP_SLOT: 'Dowsing Machine',
-  LESS_SHOP_SLOT: 'Losing Machine',
   TM_SLOT: 'TM Charm',
   ABILITIZER_SLOT: 'Abilitizer Charm',
   TRANSFORMER_SLOT: 'Double Helix Charm',
   EGG_SLOT: 'Oval Charm',
-  HELD_ITEM_SLOT: "Handheld Charm",
+  HELD_ITEM_SLOT: 'Handheld Charm',
+  NEXT_BATTLE_SLOT: 'Battle Charm',
 });
 
 const TYPE_STONES = {
@@ -2556,13 +2557,16 @@ function refreshShop(isViaMoney) {
   const numAnySlots = Math.max(0, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
   pushNTimes(shopSlotFuncs, numAnySlots, funcWithoutRepeat(randomItem));
   pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch'), function() {
-    return randomElement(items.filter(item => item.type === 'pokeball'));
+    return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
   });
   pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TM_SLOT), funcWithoutRepeat(randomTM));
   pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.ABILITIZER_SLOT), funcWithoutRepeat(randomAbilitizer));
   pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TRANSFORMER_SLOT), funcWithoutRepeat(randomTransformer));
   pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.EGG_SLOT), funcWithoutRepeat(randomEgg));
   pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.HELD_ITEM_SLOT), funcWithoutRepeat(randomHeldItem));
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.NEXT_BATTLE_SLOT), funcWithoutRepeat(function() {
+    return randomElement(items.filter(item => isNextBattleItem(item) && isLegalItem(item, true)));
+  }));
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
@@ -2686,7 +2690,7 @@ function randomHeldItem() {
   return item;
 }
 
-function isLegalItem(item) {
+function isLegalItem(item, ignoreLastRoundReq) {
   if (item.weight != null && !(Math.random() < item.weight))
     return false;
   
@@ -2714,7 +2718,7 @@ function isLegalItem(item) {
 
   if (item.bannedFirstRound && roundCounter <= 1)
     return false;
-  if ((item.bannedLastRound || isNextBattleItem(item)) && roundCounter >= getNumRounds())
+  if (!ignoreLastRoundReq && (item.bannedLastRound || isNextBattleItem(item)) && roundCounter >= getNumRounds())
     return false;
 
   return true;

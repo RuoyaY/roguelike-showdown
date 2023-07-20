@@ -1,4 +1,5 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0										
 1-Time Lv50 Team	nextBattle	60/b										Next battle only: Your Pokemon are ALL set to level 50.
-Running Shoes	keyItem	5r+5										Refreshing the shop now only costs $2.		
+Battle Charm	keyItem	7r-3.5									x	Every time the shop refreshes, you get +1 Next Battle Only choice (Next Battle Only items are unavailable on the final round).
+Singles Battle	nextBattle	40/b					2					Next battle only: Do a singles battle instead of a doubles battle.
