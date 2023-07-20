@@ -566,6 +566,7 @@ const KEY_ITEMS = Object.freeze({
   NEXT_BATTLE_SLOT: 'Battle Charm',
   POKEBALL_SLOT: 'Pokeball Charm',
   TERA_SLOT: 'Tera Charm',
+  FREE_GUARANTEED_TYPE_SLOT: 'Unlimited Encounter Power',
 });
 
 const TYPE_STONES = {
@@ -2584,6 +2585,12 @@ function refreshShop(isViaMoney) {
     let type = randomElement(TYPES);
     return items.find(item => item.name === type + ' Tera Shards');
   });
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.FREE_GUARANTEED_TYPE_SLOT), funcWithoutRepeat(function() {
+    let type = randomElement(TYPES);
+    let itemCopy = structuredClone(items.find(item => item.name === 'Encounter Power: ' + type));
+    itemCopy.price = 0;
+    return itemCopy;
+  }));
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
