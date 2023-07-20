@@ -563,6 +563,7 @@ const KEY_ITEMS = Object.freeze({
   EGG_SLOT: 'Oval Charm',
   HELD_ITEM_SLOT: 'Handheld Charm',
   NEXT_BATTLE_SLOT: 'Battle Charm',
+  TERA_SLOT: 'Tera Charm',
 });
 
 const TYPE_STONES = {
@@ -2567,6 +2568,10 @@ function refreshShop(isViaMoney) {
   pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.NEXT_BATTLE_SLOT), funcWithoutRepeat(function() {
     return randomElement(items.filter(item => isNextBattleItem(item) && isLegalItem(item, true)));
   }));
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TERA_SLOT), function() {
+    let type = randomElement(TYPES);
+    return items.find(item => item.name === type + ' Tera Shards');
+  });
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
