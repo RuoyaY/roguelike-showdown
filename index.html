@@ -548,7 +548,7 @@ const CHANGED_ABILITY_DESC = {
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate OR Z-Crystal.',
 };
 
-const KEY_ITEMS = {
+const KEY_ITEMS = Object.freeze({
   CHEAP_REFRESH: 'Running Shoes',
   RE_BUY: 'Shopping Cart',
   MORE_POKE_CHOICE: 'Combee Hive',
@@ -557,7 +557,12 @@ const KEY_ITEMS = {
   LOWER_LEVEL: 'White Flute',
   MORE_SHOP_SLOT: 'Dowsing Machine',
   LESS_SHOP_SLOT: 'Losing Machine',
-}
+  TM_SLOT: 'TM Charm',
+  ABILITIZER_SLOT: 'Abilitizer Charm',
+  TRANSFORMER_SLOT: 'Double Helix Charm',
+  EGG_SLOT: 'Oval Charm',
+  HELD_ITEM_SLOT: "Handheld's Charm",
+});
 
 const TYPE_STONES = {
   'Fire Stone': 'Fire',
@@ -2549,10 +2554,15 @@ function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   let shopSlotFuncs = [];
   const numAnySlots = Math.max(1, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
-  shopSlotFuncs.push(...Array(numAnySlots).fill(randomItem));
-  shopSlotFuncs.push(...Array(numPokemonWithAbility('Ball Fetch')).fill(function() {
+  pushNTimes(shopSlotFuncs, numAnySlots, randomItem);
+  pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch'), function() {
     return randomElement(items.filter(item => item.type === 'pokeball'));
-  }));
+  });
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TM_SLOT), randomTM);
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.ABILITIZER_SLOT), randomAbilitizer);
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TRANSFORMER_SLOT), randomTransformer);
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.EGG_SLOT), randomEgg);
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.HELD_ITEM_SLOT), randomHeldItem);
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
@@ -2587,6 +2597,9 @@ function refreshShop(isViaMoney) {
     if (frozenItems[i])
       shopDiv.append(frozenItems[i]);
   }
+}
+function pushNTimes(arr, n, element) {
+  arr.push(...Array(n).fill(element));
 }
 
 function randomItem() {
