@@ -780,6 +780,16 @@ function printInvalidItems() {
           || (item.requiredMoves && item.requiredMoves.some(move => !getMoveId(move))))
       console.error(item);
   }
+  // make sure all tera shards exist, and cost $0 or more, for the sake of Tera Charm
+  for (const type of TYPES) {
+    let item = items.find(item => item.name === type + ' Tera Shards');
+    if (item == null) {
+      console.error('"' + type + ' Tera Shards" not found');
+      break;
+    } else if (item.price < 0) {
+      console.error(item);
+    }
+  }
 }
 function getAllPokeballNames() {
   const pokeballEle = document.getElementById('pokeball');
