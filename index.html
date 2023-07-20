@@ -563,6 +563,7 @@ const KEY_ITEMS = Object.freeze({
   EGG_SLOT: 'Oval Charm',
   HELD_ITEM_SLOT: 'Handheld Charm',
   NEXT_BATTLE_SLOT: 'Battle Charm',
+  POKEBALL_SLOT: 'Pokeball Charm',
   TERA_SLOT: 'Tera Charm',
 });
 
@@ -2567,7 +2568,7 @@ function refreshShop(isViaMoney) {
   let shopSlotFuncs = [];
   const numAnySlots = Math.max(0, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
   pushNTimes(shopSlotFuncs, numAnySlots, funcWithoutRepeat(randomItem));
-  pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch'), function() {
+  pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch') + numOfKeyItem(KEY_ITEMS.POKEBALL_SLOT), function() {
     return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
   });
   pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TM_SLOT), funcWithoutRepeat(randomTM));
