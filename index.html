@@ -2553,7 +2553,7 @@ function sumArr(arr) {
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   let shopSlotFuncs = [];
-  const numAnySlots = Math.max(1, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
+  const numAnySlots = Math.max(0, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
   pushNTimes(shopSlotFuncs, numAnySlots, randomItem);
   pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch'), function() {
     return randomElement(items.filter(item => item.type === 'pokeball'));
