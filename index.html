@@ -567,6 +567,7 @@ const KEY_ITEMS = Object.freeze({
   POKEBALL_SLOT: 'Pokeball Charm',
   TERA_SLOT: 'Tera Charm',
   FREE_GUARANTEED_TYPE_SLOT: 'Unlimited Encounter Power',
+  MAX_NUTRIENCE_SLOT: 'EVs Charm',
 });
 
 const TYPE_STONES = {
@@ -2591,6 +2592,10 @@ function refreshShop(isViaMoney) {
     itemCopy.price = 0;
     return itemCopy;
   }));
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.MAX_NUTRIENCE_SLOT), function() {
+    let stat = randomElement(STATS);
+    return randomElement(items.filter(item => item.desc.startsWith("Set a Pokemon's " + stat + ' EV to 252')));
+  });
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
