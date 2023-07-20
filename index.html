@@ -2554,15 +2554,15 @@ function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
   let shopSlotFuncs = [];
   const numAnySlots = Math.max(0, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
-  pushNTimes(shopSlotFuncs, numAnySlots, randomItem);
+  pushNTimes(shopSlotFuncs, numAnySlots, funcWithoutRepeat(randomItem));
   pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch'), function() {
     return randomElement(items.filter(item => item.type === 'pokeball'));
   });
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TM_SLOT), randomTM);
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.ABILITIZER_SLOT), randomAbilitizer);
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TRANSFORMER_SLOT), randomTransformer);
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.EGG_SLOT), randomEgg);
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.HELD_ITEM_SLOT), randomHeldItem);
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TM_SLOT), funcWithoutRepeat(randomTM));
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.ABILITIZER_SLOT), funcWithoutRepeat(randomAbilitizer));
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TRANSFORMER_SLOT), funcWithoutRepeat(randomTransformer));
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.EGG_SLOT), funcWithoutRepeat(randomEgg));
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.HELD_ITEM_SLOT), funcWithoutRepeat(randomHeldItem));
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
@@ -2602,29 +2602,37 @@ function pushNTimes(arr, n, element) {
   arr.push(...Array(n).fill(element));
 }
 
-function randomItem() {
-  const randyStart = Math.random();
-  let item;
-  let failsafe = 1000;
-  do {
-    let randy = randyStart;
-    if ((randy -= 1/3) < 0)
-      item = randomTM();
-    else if ((randy -= 1/12) < 0)
-      item = randomAbilitizer(100);
-    else if ((randy -= 1/12) < 0)
-      item = randomTransformer();
-    else if ((randy -= 1/24) < 0)
-      item = randomEgg();
-    else if ((randy -= 1/6) < 0)
-      item = randomHeldItem();
-    else
-      item = randomNonheldItem();
-    if (failsafe-- < 0)
-      prevSeenItems.clear();
-  } while (prevSeenItems.has(item.name));
-  prevSeenItems.add(item.name);
-  return item;
+function funcWithoutRepeat(itemFunc) {
+  return function() {
+    const categoryRandy = Math.random();
+    let item;
+    let failsafe = 1000;
+    do {
+      item = itemFunc(categoryRandy);
+      if (failsafe-- < 0)
+        prevSeenItems.clear();
+    } while (prevSeenItems.has(item.name));
+    prevSeenItems.add(item.name);
+    return item;
+  }
+}
+
+// categoryRandy is set outside the do-while loop so categories that are likely to give a prevSeenItem
+// (such as randomTM when tmSeeker has a small learnset) don't become less likely overall
+function randomItem(categoryRandy) {
+  let randy = categoryRandy;
+  if ((randy -= 1/3) < 0)
+    return randomTM();
+  else if ((randy -= 1/12) < 0)
+    return randomAbilitizer(100);
+  else if ((randy -= 1/12) < 0)
+    return randomTransformer();
+  else if ((randy -= 1/24) < 0)
+    return randomEgg();
+  else if ((randy -= 1/6) < 0)
+    return randomHeldItem();
+  else
+    return randomNonheldItem();
 }
 
 function randomNonheldItem() {
