@@ -2689,7 +2689,7 @@ function pushNTimes(arr, n, element) {
 
 function funcWithoutRepeat(itemFunc) {
   return function() {
-    const categoryRandy = Math.random();
+    const categoryRandy = itemFunc === randomItem ? Math.random() : null;
     let item;
     let failsafe = 1000;
     do {
