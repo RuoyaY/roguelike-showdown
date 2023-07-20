@@ -558,6 +558,7 @@ const KEY_ITEMS = Object.freeze({
   LESS_POKE_CHOICE: 'Trubbish Bin',
   HIGHER_LEVEL: 'Black Flute',
   LOWER_LEVEL: 'White Flute',
+  // adds an extra slot. KEYS CAN'T BE CHANGED w/o changing code
   TM_SLOT: 'TM Charm',
   ABILITIZER_SLOT: 'Abilitizer Charm',
   TRANSFORMER_SLOT: 'Double Helix Charm',
@@ -569,7 +570,31 @@ const KEY_ITEMS = Object.freeze({
   FREE_GUARANTEED_TYPE_SLOT: 'Unlimited Encounter Power',
   MAX_NUTRIENCE_SLOT: 'EVs Charm',
   BERRY_SLOT: 'Berry Charm',
+  // sets all slots. KEYS CAN'T BE CHANGED w/o changing code
+  TM_ALL: 'Oops! All TMs',
+  ABILITIZER_ALL: 'Oops! All Abilitizers',
+  TRANSFORMER_ALL: 'Oops! All Species Changers',
+  EGG_ALL: 'Oops! All Eggs',
+  HELD_ITEM_ALL: 'Oops! All Held Items',
+  NEXT_BATTLE_ALL: 'Oops! All Next Battle Only',
+  POKEBALL_ALL: 'Oops! All Pokeballs',
+  TERA_ALL: 'Oops! All Tera Shards',
+  MAX_NUTRIENCE_ALL: 'Oops! All Max Nutrience',
+  BERRY_ALL: 'Oops! All Berries',
+  //
 });
+const ALL_SLOTS_KEY_ITEMS = [
+  KEY_ITEMS.TM_ALL,
+  KEY_ITEMS.ABILITIZER_ALL,
+  KEY_ITEMS.TRANSFORMER_ALL,
+  KEY_ITEMS.EGG_ALL,
+  KEY_ITEMS.HELD_ITEM_ALL,
+  KEY_ITEMS.NEXT_BATTLE_ALL,
+  KEY_ITEMS.POKEBALL_ALL,
+  KEY_ITEMS.TERA_ALL,
+  KEY_ITEMS.MAX_NUTRIENCE_ALL,
+  KEY_ITEMS.BERRY_ALL,
+];
 
 const TYPE_STONES = {
   'Fire Stone': 'Fire',
@@ -2567,39 +2592,56 @@ function sumArr(arr) {
   return arr.reduce((a,b) => a+b, 0);
 }
 
-function refreshShop(isViaMoney) {
-  const shopDiv = document.getElementById('shop');
-  let shopSlotFuncs = [];
-  const numAnySlots = Math.max(0, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
-  pushNTimes(shopSlotFuncs, numAnySlots, funcWithoutRepeat(randomItem));
-  pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch') + numOfKeyItem(KEY_ITEMS.POKEBALL_SLOT), function() {
-    return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
-  });
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TM_SLOT), funcWithoutRepeat(randomTM));
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.ABILITIZER_SLOT), funcWithoutRepeat(randomAbilitizer));
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TRANSFORMER_SLOT), funcWithoutRepeat(randomTransformer));
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.EGG_SLOT), funcWithoutRepeat(randomEgg));
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.HELD_ITEM_SLOT), funcWithoutRepeat(randomHeldItem));
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.NEXT_BATTLE_SLOT), funcWithoutRepeat(function() {
+const KEY_ITEM_SHOP_FUNCS = Object.freeze({
+  TM: funcWithoutRepeat(randomTM),
+  ABILITIZER: funcWithoutRepeat(randomAbilitizer),
+  TRANSFORMER: funcWithoutRepeat(randomTransformer),
+  EGG: funcWithoutRepeat(randomEgg),
+  HELD_ITEM: funcWithoutRepeat(randomHeldItem),
+  NEXT_BATTLE: funcWithoutRepeat(function() {
     return randomElement(items.filter(item => isNextBattleItem(item) && isLegalItem(item, true)));
-  }));
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.TERA_SLOT), function() {
+  }),
+  POKEBALL: function() {
+    return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
+  },
+  TERA: function() {
     let type = randomElement(TYPES);
     return items.find(item => item.name === type + ' Tera Shards');
-  });
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.FREE_GUARANTEED_TYPE_SLOT), funcWithoutRepeat(function() {
+  },
+  FREE_GUARANTEED_TYPE: funcWithoutRepeat(function() {
     let type = randomElement(TYPES);
     let itemCopy = structuredClone(items.find(item => item.name === 'Encounter Power: ' + type));
     itemCopy.price = 0;
     return itemCopy;
-  }));
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.MAX_NUTRIENCE_SLOT), function() {
+  }),
+  MAX_NUTRIENCE: function() {
     let stat = randomElement(STATS);
     return randomElement(items.filter(item => item.desc.startsWith("Set a Pokemon's " + stat + ' EV to 252')));
-  });
-  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.BERRY_SLOT), function() {
+  },
+  BERRY: function() {
     return randomHeldItem(true);
+  },
+});
+function refreshShop(isViaMoney) {
+  const shopDiv = document.getElementById('shop');
+
+  let shopSlotFuncs = [];
+  const numAnySlots = Math.max(0, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
+  pushNTimes(shopSlotFuncs, numAnySlots, funcWithoutRepeat(randomItem));
+  pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch'), function() {
+    return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
   });
+  for ([key, func] of Object.entries(KEY_ITEM_SHOP_FUNCS))
+    pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS[key + '_SLOT']), func);  
+  let AllSlotsKeyItem = getKeyItems().find(keyItem => ALL_SLOTS_KEY_ITEMS.includes(keyItem));
+  if (AllSlotsKeyItem != null) {
+    const keyItemKey = Object.keys(KEY_ITEMS).find(key => KEY_ITEMS[key] === AllSlotsKeyItem);
+    const keyItemShopFuncsKey = keyItemKey.slice(0, -1 * '_ALL'.length);
+    const n = shopSlotFuncs.length;
+    shopSlotFuncs = [];
+    pushNTimes(shopSlotFuncs, n, KEY_ITEM_SHOP_FUNCS[keyItemShopFuncsKey]);
+  }
+
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
