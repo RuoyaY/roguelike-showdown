@@ -568,6 +568,7 @@ const KEY_ITEMS = Object.freeze({
   TERA_SLOT: 'Tera Charm',
   FREE_GUARANTEED_TYPE_SLOT: 'Unlimited Encounter Power',
   MAX_NUTRIENCE_SLOT: 'EVs Charm',
+  BERRY_SLOT: 'Berry Charm',
 });
 
 const TYPE_STONES = {
@@ -2596,6 +2597,9 @@ function refreshShop(isViaMoney) {
     let stat = randomElement(STATS);
     return randomElement(items.filter(item => item.desc.startsWith("Set a Pokemon's " + stat + ' EV to 252')));
   });
+  pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS.BERRY_SLOT), function() {
+    return randomHeldItem(true);
+  });
   let numItemsToAdd = shopSlotFuncs.length;
   const frozenItems = [];
   for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
@@ -2675,15 +2679,18 @@ function randomNonheldItem() {
   } while (!(isLegalItem(item) && item.type !== 'heldItem'));
   return item;
 }
-function randomHeldItem() {
+function randomHeldItem(mustBeBerry) {
   let item;
   do {
     item = randomElement(items);
-  } while (!(isLegalItem(item) && item.type === 'heldItem'));
+  } while (!(isLegalItem(item) && item.type === 'heldItem') 
+              || (mustBeBerry && !item.name.endsWith(' Berry')));
 
   item = structuredClone(item);
   const heldItemName = item.name;
   let randy = Math.random();
+  if (mustBeBerry)
+    randy = 1; // must be a regular held item
   if ((randy -= .05) < 0) {
     // held item party
     item.name += ' Party';
