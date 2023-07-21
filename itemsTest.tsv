@@ -2,9 +2,5 @@
 Power Anklet	heldItem	0										
 Name Trivia	misc	20										Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.
 EVs Charm	keyItem	6r+3										+1 Max Nutrience slot (for items that set a given EV to 252) in the shop.
-HP Max	misc	35										Set a Pokemon's HP EV to 252 (max 508 total EVs).		 
-Max Protein	misc	35										Set a Pokemon's Atk EV to 252 (max 508 total EVs).		
-Max Iron	misc	35										Set a Pokemon's Def EV to 252 (max 508 total EVs).		
-Max Calcium	misc	35										Set a Pokemon's SpA EV to 252 (max 508 total EVs).		
-Max Zinc	misc	35										Set a Pokemon's SpD EV to 252 (max 508 total EVs).		
-Max Carbos	misc	35										Set a Pokemon's Spe EV to 252 (max 508 total EVs).		
+Normal Magnet	keyItem	-5m-5									x	Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)
+Fire Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Fire-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)

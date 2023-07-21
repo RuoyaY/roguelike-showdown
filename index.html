@@ -549,7 +549,7 @@ const CHANGED_ABILITY_DESC = {
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate OR Z-Crystal.',
 };
 
-const KEY_ITEMS = Object.freeze({
+const KEY_ITEMS = {
   CHEAP_REFRESH: 'Running Shoes',
   MORE_SHOP_SLOT: 'Dowsing Machine',
   LESS_SHOP_SLOT: 'Losing Machine',
@@ -592,7 +592,11 @@ const KEY_ITEMS = Object.freeze({
   ROUNDLY_MAGIKARP: 'Auto Rod',
   LOAN: 'Loan',
   INVESTMENT: 'Investment',
-});
+};
+// magnets. KEYS CAN'T BE CHANGED w/o changing code
+for (const type of TYPES)
+  KEY_ITEMS[type.toUpperCase() + '_MAGNET'] = type + ' Magnet';
+  
 const ALL_SLOTS_KEY_ITEMS = [
   KEY_ITEMS.TM_ALL,
   KEY_ITEMS.ABILITIZER_ALL,
@@ -2255,7 +2259,13 @@ function endPokemonChoosing(pokeDiv) {
 function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
   document.getElementById('pokeballDiv').hidden = true;
-  document.getElementById('type').selectedIndex = 0;
+
+  const lastMagnetType = getKeyItems().map(item => getMagnetType(item)).findLast(type => type != null);
+  if (lastMagnetType == null)
+    document.getElementById('type').selectedIndex = 0;
+  else
+    setGuaranteedType(lastMagnetType);
+
   document.getElementById('extraIncome').checked = false;
   document.getElementById('won').checked = false;
 }
@@ -3415,7 +3425,20 @@ function buyItem(itemDiv, item, itemPrice) {
     document.getElementById('keyItemsDiv').hidden = false;
     document.getElementById('keyItems').innerText += item.name + '\n';
     updateKeyItemsEle();
+
+    // if it's a magnet, Guaranteed Type is also set on-buy
+    const type = getMagnetType(item.name);
+    if (type)
+      setGuaranteedType(type);
   }
+}
+
+function getMagnetType(itemName) {
+  for (const type of TYPES) {
+    if (KEY_ITEMS[type.toUpperCase() + '_MAGNET'] === itemName)
+      return type;
+  }
+  return null;
 }
 
 function addItemDescToEle(itemDesc, elementId) {
