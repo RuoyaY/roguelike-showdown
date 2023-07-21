@@ -571,6 +571,7 @@ const KEY_ITEMS = Object.freeze({
   MAX_NUTRIENCE_SLOT: 'EVs Charm',
   BERRY_SLOT: 'Berry Charm',
   CANDY_PARTY_SLOT: 'Candy Party Charm',
+  SCOUTING_SLOT: 'Reveal Glass',
   // sets all slots. KEYS CAN'T BE CHANGED w/o changing code
   // DON'T FORGET to add it to ALL_SLOTS_KEY_ITEMS
   TM_ALL: 'Oops! All TMs',
@@ -2635,6 +2636,9 @@ const KEY_ITEM_SHOP_FUNCS = Object.freeze({
     let type = randomElement(TYPES);
     return items.find(item => item.name === type + ' Candy Party');
   },
+  SCOUTING: function() {
+    return items.find(item => item.name === 'Scouting');
+  }
 });
 function refreshShop(isViaMoney) {
   const shopDiv = document.getElementById('shop');
