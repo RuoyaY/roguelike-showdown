@@ -736,11 +736,11 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printForcedTeras() {
+function printTypeMagnets() {
   let tsv = '';
   for (const type of TYPES)
-    tsv += 'Forced ' + type + ' Tera Party\tnextBattle\t\t\t\t\t\t\t\t\t\t\t'
-        + "Next battle only: All of your opponent's Pokemon have their Tera Type set to " + type + ".\n";
+    tsv += type + ' Magnet\tkeyItem\t\t\t\t\t\t\t\t\t\t\t'
+        + 'Each round, you are guaranteed to get ' + type + '-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)\n';
   console.log(tsv);
 }
 function printPlatesAndMemories() {
