@@ -2476,7 +2476,7 @@ function nextRound() {
   // remove single-round key items
   const keyItemsEle = document.getElementById('keyItems');
   for (const allSlotKeyItem of ALL_SLOTS_KEY_ITEMS)
-    keyItemsEle.innerText = keyItemsEle.innerText.replaceAll(allSlotKeyItem, '');
+    keyItemsEle.innerText = keyItemsEle.innerText.replaceAll(allSlotKeyItem, allSlotKeyItem + ' (Used)');
   updateKeyItemsEle();
 
   setRoundCounter(roundCounter+1);
