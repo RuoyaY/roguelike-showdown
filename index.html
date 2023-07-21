@@ -413,7 +413,7 @@ button:focus {
         <div class="pokemon-div"></div>
       </div>
     </div>
-    <button onclick="addPartySlot()" title="Add a slot">+</button>
+    <button onclick="addPartySlot(true)" title="Add a slot">+</button>
     <button onclick="losePartySlot()" title="Remove a slot">-</button>
 
     <div id="keyItemsDiv" class="party-width" hidden>
@@ -589,6 +589,7 @@ const KEY_ITEMS = Object.freeze({
   MINT_ALL: 'Oops! All Mints',
   // misc., continued
   MAGIKARP: 'Fish Bowl',
+  ROUNDLY_MAGIKARP: 'Auto Rod',
 });
 const ALL_SLOTS_KEY_ITEMS = [
   KEY_ITEMS.TM_ALL,
@@ -1193,14 +1194,15 @@ function addTRsToImprovedItems() {
             + moveDesc(moves[getMoveId(tr.moveName)], true);
 }
 
-function addPartySlot() {
+function addPartySlot(fromUserInput) {
   const partyDiv = document.getElementById('party');
 
   let lastFlexRow = partyDiv.children[partyDiv.children.length-1];
   if (lastFlexRow == null || lastFlexRow.children.length >= 2) {
     if (partyDiv.children.length >= 12) {
-      alert("Pokemon Showdown can't handle more than 24 Pokemon in a team.");
-      return;
+      if (fromUserInput)
+        alert("Pokemon Showdown can't handle more than 24 Pokemon in a team.");
+      return false;
     }
     lastFlexRow = document.createElement('div');
     lastFlexRow.classList.add('flex-row');
@@ -1210,6 +1212,8 @@ function addPartySlot() {
   const pokeDiv = document.createElement('div');
   fillPokemonDiv(pokeDiv, true, false);
   lastFlexRow.append(pokeDiv);
+
+  return true;
 }
 
 function losePartySlot() {
@@ -2337,11 +2341,12 @@ function getPartyPokeDivs() {
 
 function copyParty() {
   let str = getPartyStrs().map(pokemonStr => editOnCopy(pokemonStr)).join('\n\n');
+
+  // handle MAGIKARP key item
   for (let i = 0; i < numOfKeyItem(KEY_ITEMS.MAGIKARP); i++) {
-    str += '\n\n'
-        + randomOfSpecies('Magikarp', null, null, 1, 'random', true, false)
-        +  '\n- Splash\n- \n- \n-';
+    str += '\n\n' + randomLv1Magikarp();
   }
+
   copyStr(str);
 }
 function copyStr(str) {
@@ -2352,6 +2357,11 @@ function editOnCopy(pokemonStr) {
   if (isTR(heldItem))
     pokemonStr += '\n- ' + getTRMoveName(heldItem);
   return pokemonStr;
+}
+
+function randomLv1Magikarp() {
+  return randomOfSpecies('Magikarp', null, null, 1, 'random', true, false)
+        +  '\n- Splash\n- \n- \n-';
 }
 
 function save() {
@@ -2489,6 +2499,15 @@ function nextRound() {
   for (const allSlotKeyItem of ALL_SLOTS_KEY_ITEMS)
     keyItemsEle.innerText = keyItemsEle.innerText.replaceAll(allSlotKeyItem, allSlotKeyItem + ' (Used)');
   updateKeyItemsEle();
+
+  // handle ROUNDLY_MAGIKARP
+  for (let i = 0; i < numOfKeyItem(KEY_ITEMS.ROUNDLY_MAGIKARP); i++) {
+    if (addPartySlot()) {
+      const pokeDiv = getPartyPokeDivs().pop();
+      pokeDiv.querySelector('.pokemon').innerText = randomLv1Magikarp();
+      updatePartyPokemonDiv(pokeDiv);
+    }
+  }
 
   setRoundCounter(roundCounter+1);
   if (document.getElementById('endless').checked) {
