@@ -587,6 +587,8 @@ const KEY_ITEMS = Object.freeze({
   BERRY_ALL: 'Oops! All Berries',
   CANDY_PARTY_ALL: 'Oops! All Candy Parties',
   MINT_ALL: 'Oops! All Mints',
+  // misc., continued
+  MAGIKARP: 'Fish Bowl',
 });
 const ALL_SLOTS_KEY_ITEMS = [
   KEY_ITEMS.TM_ALL,
@@ -2334,7 +2336,13 @@ function getPartyPokeDivs() {
 }
 
 function copyParty() {
-  copyStr(getPartyStrs().map(pokemonStr => editOnCopy(pokemonStr)).join('\n\n'));
+  let str = getPartyStrs().map(pokemonStr => editOnCopy(pokemonStr)).join('\n\n');
+  for (let i = 0; i < numOfKeyItem(KEY_ITEMS.MAGIKARP); i++) {
+    str += '\n\n'
+        + randomOfSpecies('Magikarp', null, null, 1, 'random', true, false)
+        +  '\n- Splash\n- \n- \n-';
+  }
+  copyStr(str);
 }
 function copyStr(str) {
   navigator.clipboard.writeText(str);
