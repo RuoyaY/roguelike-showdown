@@ -570,7 +570,9 @@ const KEY_ITEMS = Object.freeze({
   FREE_GUARANTEED_TYPE_SLOT: 'Unlimited Encounter Power',
   MAX_NUTRIENCE_SLOT: 'EVs Charm',
   BERRY_SLOT: 'Berry Charm',
+  CANDY_PARTY_SLOT: 'Candy Party Charm',
   // sets all slots. KEYS CAN'T BE CHANGED w/o changing code
+  // DON'T FORGET to add it to ALL_SLOTS_KEY_ITEMS
   TM_ALL: 'Oops! All TMs',
   ABILITIZER_ALL: 'Oops! All Abilitizers',
   TRANSFORMER_ALL: 'Oops! All Species Changers',
@@ -581,6 +583,7 @@ const KEY_ITEMS = Object.freeze({
   TERA_ALL: 'Oops! All Tera Shards',
   MAX_NUTRIENCE_ALL: 'Oops! All Max Nutrience',
   BERRY_ALL: 'Oops! All Berries',
+  CANDY_PARTY_ALL: 'Oops! All Candy Parties',
   //
 });
 const ALL_SLOTS_KEY_ITEMS = [
@@ -594,6 +597,7 @@ const ALL_SLOTS_KEY_ITEMS = [
   KEY_ITEMS.TERA_ALL,
   KEY_ITEMS.MAX_NUTRIENCE_ALL,
   KEY_ITEMS.BERRY_ALL,
+  KEY_ITEMS.CANDY_PARTY_ALL,
 ];
 
 const TYPE_STONES = {
@@ -2626,6 +2630,10 @@ const KEY_ITEM_SHOP_FUNCS = Object.freeze({
   },
   BERRY: function() {
     return randomHeldItem(true);
+  },
+  CANDY_PARTY: function() {
+    let type = randomElement(TYPES);
+    return items.find(item => item.name === type + ' Candy Party');
   },
 });
 function refreshShop(isViaMoney) {
