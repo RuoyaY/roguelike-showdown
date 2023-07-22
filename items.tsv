@@ -578,7 +578,7 @@ Instant Lv50	nextBattle	50/b										Next battle only: Set your [nth] Pokemon's
 Instant Lv1	nextBattle	-200/b					3					Next battle only: Set your [nth] Pokemon's level to 1. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Vs Instant Lv50	nextBattle	130/b										Next battle only: Set your opponent's [nth] Pokemon's level to 50.			
 Vs Instant Lv1	nextBattle	200/b					3					Next battle only: Set your opponent's [nth] Pokemon's level to 1.			
-Magikarpifier	nextBattle	180/b					3					Next battle only: Your opponent's [nth] Pokemon becomes a Magikarp (its gender, ability, etc. stays the same).			
+Magikarpifier	nextBattle	150/b					3					Next battle only: Your opponent's [nth] Pokemon becomes a Magikarp (its gender, ability, etc. stays the same).			
 Knock Out	nextBattle	240/b					3					Next battle only: Remove your opponent's [nth] Pokemon.			
 Self K.O.	nextBattle	-240/b+5					3					Next battle only: Remove your [nth] Pokemon. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Sacrifice	misc	-240/b-50						x			x	Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv1. </span>			
@@ -877,48 +877,6 @@ Forced Twin Stalls	nextAbilitizer	40/b										Next battle only: Set both playe
 Forced Twin Truants	nextAbilitizer	50/b										Next battle only: Set both players' [nth] Pokemon's ability to *Truant*.			
 Perfect Forced Nature	nextBattle	15/b										Next battle only: Set your opponent's [nth] Pokemon's nature to [_____].			
 Perfect Forced Twin Natures	nextBattle	25/b										Next battle only: Set both players' [nth] Pokemon's nature to [_____].			
-Encounter Power: Normal	misc	-5									x	Next round, you are guaranteed to get Normal-type Pokemon.			
-Encounter Power: Fire	misc	10									x	Next round, you are guaranteed to get Fire-type Pokemon.			
-Encounter Power: Water	misc	10									x	Next round, you are guaranteed to get Water-type Pokemon.			
-Encounter Power: Grass	misc	-10									x	Next round, you are guaranteed to get Grass-type Pokemon.			
-Encounter Power: Electric	misc	0									x	Next round, you are guaranteed to get Electric-type Pokemon.			
-Encounter Power: Ice	misc	-5									x	Next round, you are guaranteed to get Ice-type Pokemon.			
-Encounter Power: Fighting	misc	-5									x	Next round, you are guaranteed to get Fighting-type Pokemon.			
-Encounter Power: Poison	misc	0									x	Next round, you are guaranteed to get Poison-type Pokemon.			
-Encounter Power: Ground	misc	10									x	Next round, you are guaranteed to get Ground-type Pokemon.			
-Encounter Power: Flying	misc	10									x	Next round, you are guaranteed to get Flying-type Pokemon.			
-Encounter Power: Psychic	misc	-5									x	Next round, you are guaranteed to get Psychic-type Pokemon.			
-Encounter Power: Bug	misc	-10									x	Next round, you are guaranteed to get Bug-type Pokemon.			
-Encounter Power: Rock	misc	5									x	Next round, you are guaranteed to get Rock-type Pokemon.			
-Encounter Power: Ghost	misc	10									x	Next round, you are guaranteed to get Ghost-type Pokemon.			
-Encounter Power: Dark	misc	5									x	Next round, you are guaranteed to get Dark-type Pokemon.			
-Encounter Power: Dragon	misc	0									x	Next round, you are guaranteed to get Dragon-type Pokemon.			
-Encounter Power: Steel	misc	10									x	Next round, you are guaranteed to get Steel-type Pokemon.			
-Encounter Power: Fairy	misc	10									x	Next round, you are guaranteed to get Fairy-type Pokemon.			
-Perfect Encounter Power	misc	15									x	Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).			
-Mirror Encounter Power	misc	0									x	Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).			
-Shadow Encounter Power 	misc	10								x	x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last battle (next round, you are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Normal	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Normal (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Fire	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Fire (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Water	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Water (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Grass	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Grass (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Electric	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Electric (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Ice	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Ice (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Fighting	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Fighting (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Poison	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Poison (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Ground	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Ground (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Flying	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Flying (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Psychic	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Psychic (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Bug	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Bug (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Rock	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Rock (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Ghost	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Ghost (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Dark	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Dark (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Dragon	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Dragon (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Steel	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Steel (next round, they are guaranteed to get Pokemon of that type).			
-Vs Encounter Power: Fairy	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Fairy (next round, they are guaranteed to get Pokemon of that type).			
-Perfect Vs Encounter Power	beforeBattle	20									x	Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).			
-Mirrored Vs Encounter Power	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).			
-Shadowed Vs Encounter Power 	beforeBattle	10								x	x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).			
 Dynamax Battle	nextBattle	0										Next battle only: Both players' Pokemon can Dynamax, but cannot Terastallize. <br><span class="command">/challenge gen8doublescustomgame</span>			
 No Team Preview	nextBattle	0										Next battle only: No team preview. Players may choose their leads by changing the order of their Pokemon in Teambuilder. <br><span class="command">/challenge gen9doublescustomgame @@@ ! Team Preview</span>			
 Blitz Battle	nextBattle	0										Next battle only: Both players get 10 sec per turn. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>			
@@ -963,24 +921,90 @@ White Flute	keyItem	-15m									x	The new Pokemon you get every round is 1 leve
 TM Charm	keyItem	3.5r+3.5										+1 TM slot in the shop.			
 Abilitizer Charm	keyItem	3r+3										+1 Abilitizer slot in the shop.			
 Double Helix Charm	keyItem	4r+4										+1 Species Changer slot in the shop.			
-Oval Charm	keyItem	4r+4										+1 Egg slot in the shop.			
+Oval Charm	keyItem	4r+4										+1 Egg (Lv1 Pokemon) slot in the shop.			
 Handheld Charm	keyItem	3r+3										+1 Held Item slot in the shop.			
 Battle Charm	keyItem	3.5r-3.5									x	+1 Next Battle Only slot in the shop.			
 Pokeball Charm	keyItem	3m									x	+1 Pokeball slot in the shop.			
 Tera Charm	keyItem	2r+2										+1 Tera Shards slot in the shop.			
 Unlimited Encounter Power	keyItem	7.5m									x	+1 free Encounter Power slot in the shop.			
-EVs Charm	keyItem	3r+3										+1 Max Nutrience slot (stuff that set a given EV to 252) in the shop.			
+EVs Charm	keyItem	3r+3										+1 Max Nutrience (set a given EV to 252) slot in the shop.			
 Berry Charm	keyItem	3r+3										+1 free Berry slot in the shop.			
 Candy Party Charm	keyItem	3r+3										+1 free Type Candy Party (level up every Pokemon of a given type) slot in the shop.			
-Reveal Glass	keyItem	2r+2										Every time the shop refreshes, you are offered Scouting for $5 in an extra slot (Before battle: Your opponent must reveal their [nth] Pokemon).			
+Reveal Glass	keyItem	r+1										Whenever the shop refreshes, you may buy Scouting for $5 in an extra slot (Before battle: Your opponent must reveal their [nth] Pokemon).			
+Mint Charm	keyItem	2r+2										+1 free Mint (for setting Nature) slot in the shop.			
 Oops! All TMs	keyItem	0										For the rest of the round, ALL slots in the shop only offer TMs.			
 Oops! All Abilitizers	keyItem	-5										For the rest of the round, ALL slots in the shop only offer Abilitizers.			
 Oops! All Species Changers	keyItem	5										For the rest of the round, ALL slots in the shop only offer Species Changers.			
-Oops! All Eggs	keyItem	5										For the rest of the round, ALL slots in the shop only offer Eggs.			
+Oops! All Eggs	keyItem	5										For the rest of the round, ALL slots in the shop only offer Eggs (Lv1 Pokemon).			
 Oops! All Held Items	keyItem	-5										For the rest of the round, ALL slots in the shop only offer Held Items.			
 Oops! All Next Battle Only	keyItem	0									x	For the rest of the round, ALL slots in the shop only offer Next Battle Only slots.			
 Oops! All Pokeballs	keyItem	-10									x	For the rest of the round, ALL slots in the shop only offer Pokeballs.			
 Oops! All Tera Shards	keyItem	-10										For the rest of the round, ALL slots in the shop only offer Tera Shards.			
-Oops! All Max Nutrience	keyItem	0									x	For the rest of the round, ALL slots in the shop only offer Max Nutrience (stuff that set a given EV to 252).			
+Oops! All Max Nutrience	keyItem	0										For the rest of the round, ALL slots in the shop only offer Max Nutrience (set a given EV to 252).			
 Oops! All Berries	keyItem	0										For the rest of the round, ALL slots in the shop only offer Berries.			
 Oops! All Candy Parties	keyItem	0										For the rest of the round, ALL slots in the shop only offer Type Candy Parties (level up every Pokemon of a given type).			
+Oops! All Mints	keyItem	-10										For the rest of the round, ALL slots in the shop only offer Mints (for setting nature).			
+Fish Bowl	keyItem	35										During battle, you get a random Lv1 Magikarp that only knows Splash in an extra slot.	value of putting trash on egg	value of 1 meat shield	value of added meat shields
+Auto Rod	keyItem	15r+20									x	At the start of each round, gain a random Lv1 Magikarp in an extra slot.	5r-5	35	10(r-1)
+Loan	keyItem	-15r									x	Each round, lose $30.			
+Investment	keyItem	15r									x	Each round, earn $30.			
+Encounter Power: Normal	misc	-5									x	Next round, you are guaranteed to get Normal-type Pokemon.			
+Encounter Power: Fire	misc	10									x	Next round, you are guaranteed to get Fire-type Pokemon.			
+Encounter Power: Water	misc	10									x	Next round, you are guaranteed to get Water-type Pokemon.			
+Encounter Power: Grass	misc	-10									x	Next round, you are guaranteed to get Grass-type Pokemon.			
+Encounter Power: Electric	misc	0									x	Next round, you are guaranteed to get Electric-type Pokemon.			
+Encounter Power: Ice	misc	-5									x	Next round, you are guaranteed to get Ice-type Pokemon.			
+Encounter Power: Fighting	misc	-5									x	Next round, you are guaranteed to get Fighting-type Pokemon.			
+Encounter Power: Poison	misc	0									x	Next round, you are guaranteed to get Poison-type Pokemon.			
+Encounter Power: Ground	misc	10									x	Next round, you are guaranteed to get Ground-type Pokemon.			
+Encounter Power: Flying	misc	10									x	Next round, you are guaranteed to get Flying-type Pokemon.			
+Encounter Power: Psychic	misc	-5									x	Next round, you are guaranteed to get Psychic-type Pokemon.			
+Encounter Power: Bug	misc	-10									x	Next round, you are guaranteed to get Bug-type Pokemon.			
+Encounter Power: Rock	misc	5									x	Next round, you are guaranteed to get Rock-type Pokemon.			
+Encounter Power: Ghost	misc	10									x	Next round, you are guaranteed to get Ghost-type Pokemon.			
+Encounter Power: Dark	misc	5									x	Next round, you are guaranteed to get Dark-type Pokemon.			
+Encounter Power: Dragon	misc	0									x	Next round, you are guaranteed to get Dragon-type Pokemon.			
+Encounter Power: Steel	misc	10									x	Next round, you are guaranteed to get Steel-type Pokemon.			
+Encounter Power: Fairy	misc	10									x	Next round, you are guaranteed to get Fairy-type Pokemon.			
+Perfect Encounter Power	misc	15									x	Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).			
+Mirror Encounter Power	misc	0									x	Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).			
+Shadow Encounter Power 	misc	10								x	x	Choose a "guaranteed type" that is a Pokemon type your opponent owned last battle (next round, you are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Normal	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Normal (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Fire	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Fire (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Water	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Water (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Grass	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Grass (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Electric	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Electric (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Ice	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Ice (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Fighting	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Fighting (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Poison	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Poison (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Ground	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Ground (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Flying	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Flying (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Psychic	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to Psychic (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Bug	beforeBattle	15									x	Before battle: Set your opponent's "guaranteed type" to Bug (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Rock	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Rock (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Ghost	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Ghost (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Dark	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Dark (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Dragon	beforeBattle	5									x	Before battle: Set your opponent's "guaranteed type" to Dragon (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Steel	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Steel (next round, they are guaranteed to get Pokemon of that type).			
+Vs Encounter Power: Fairy	beforeBattle	0									x	Before battle: Set your opponent's "guaranteed type" to Fairy (next round, they are guaranteed to get Pokemon of that type).			
+Perfect Vs Encounter Power	beforeBattle	20									x	Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).			
+Mirrored Vs Encounter Power	beforeBattle	10									x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).			
+Shadowed Vs Encounter Power 	beforeBattle	10								x	x	Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).			
+Normal Magnet	keyItem	-5m-5									x	Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fire Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Fire-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Water Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Water-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Grass Magnet	keyItem	-10m-5									x	Each round, you are guaranteed to get Grass-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Electric Magnet	keyItem	0m-5									x	Each round, you are guaranteed to get Electric-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ice Magnet	keyItem	-5m-5									x	Each round, you are guaranteed to get Ice-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fighting Magnet	keyItem	-5m-5									x	Each round, you are guaranteed to get Fighting-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Poison Magnet	keyItem	0m-5									x	Each round, you are guaranteed to get Poison-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ground Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Ground-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Flying Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Flying-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Psychic Magnet	keyItem	-5m-5									x	Each round, you are guaranteed to get Psychic-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Bug Magnet	keyItem	-10m-5									x	Each round, you are guaranteed to get Bug-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Rock Magnet	keyItem	5m-5									x	Each round, you are guaranteed to get Rock-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ghost Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Ghost-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Dark Magnet	keyItem	5m-5									x	Each round, you are guaranteed to get Dark-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Dragon Magnet	keyItem	0m-5									x	Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Steel Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fairy Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			

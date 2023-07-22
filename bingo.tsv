@@ -1,8 +1,9 @@
 ⚔️	prob	goal
-		Magikarp
+x		have a Magikarp (transform counts)
 x		your typing changed (not Tera)
 x		foe's typing changed (not Tera)
-x		land 4+ hits with one attack
+x		land 4+ hits w/ one attack
+x		land exactly 2 hits w/ 1 attack
 x		infatuate an ally
 		2+ Normal Pokemon
 		2+ Fire Pokemon
@@ -34,7 +35,7 @@ x		win w/ 1 Pokemon left
 x		lead w/ 2 Pokemon sharing a type
 x		win without Tera
 x		switch 2 Pokemon out turn 1, and win
-x		heal a status effect (not just by switching)
+x		heal a non-volatile status effect (not by turn count)
 x		run out of PP on a move
 x		a Pokemon uses all its moves in 1 battle (not Lv1)
 		2 Pokemon w/ same level
@@ -129,7 +130,7 @@ x		KO an ally
 x		your ability changed
 x		foe's ability changed
 x		your forme changed
-x		foe's forme changed
+x	0	foe's forme changed
 x		KO foe via status effect
 		have >4 moves
 		have <4 moves (not Lv1)
@@ -254,11 +255,12 @@ x		block a move w/ Quick Guard, Wide Guard, or Crafty Shield
 x		lose 4+ PP of a Pokemon's Substitute
 x		lose 5+ PP of a Pokemon's move
 		every slot has same held item (not empty)
+		every slot has different held item (not empty)
 		every slot has Pokemon w/ no EVs
 		every slot shares a move
 		2+ Pokemon w/ same ability
 x		use a binding move
-x		use a low priority move
+x		successfully use a low priority move
 x		use an HP-draining move
 x		you're trapped (can't switch)
 x		foe's trapped (can't switch)
@@ -285,8 +287,59 @@ x		have a protection move fail
 x		get past or destroy a protection, screen, or Substitute
 		Def > SpD + 30
 		SpD > Def + 30
-		Mega Pokemon (or w/ Mega Stone)
+		a Pokemon w/ Atk=SpA, Def=SpD
+		Mega Pokemon (or use a Mega Stone)
 		3+ Pokemon w/ impossible abilities
 x		use a G-Max move
 x		foe has option to Struggle
 x		use a Ground move on a Flying type
+x		win without getting KO'd
+		a Pokemon uses a Physical, Special, and Status move in 1 battle
+x		be weak to a Fire move
+x		be weak to a Water move
+x		be weak to a Grass move
+x		be weak to an Electric move
+x		be weak to an Ice move
+x		be weak to a Fighting move
+x		be weak to a Poison move
+x		be weak to a Ground move
+x		be weak to a Flying move
+x		be weak to a Psychic move
+x		be weak to a Bug move
+x		be weak to a Rock move
+x		be weak to a Ghost move
+x		be weak to a Dark move
+x		be weak to a Dragon move
+x		be weak to a Steel move
+x		be weak to a Fairy move
+x		resist a Normal move
+x		resist a Fire move
+x		resist a Water move
+x		resist a Grass move
+x		resist an Electric move
+x		resist an Ice move
+x		resist a Fighting move
+x		resist a Poison move
+x		resist a Ground move
+x		resist a Flying move
+x		resist a Psychic move
+x		resist a Bug move
+x		resist a Rock move
+x		resist a Ghost move
+x		resist a Dark move
+x		resist a Dragon move
+x		resist a Steel move
+x		resist a Fairy move
+		have a Nature
+x		use a consecutively executing move (e.g. Rollout, Thrash) 3+ times
+x		have 1 selectable move (not Struggle) (not Lv1)
+x		have an unselectable move
+		earn $$$ from "quiz" or "trivia"
+		successfully delete a foe's move (for Next Battle Only)
+x		proc a "10%" chance
+x		proc a "20%" chance
+x		proc a "30%" chance
+x		lose your held item on entry (before move selection)
+x		trigger an effect due to foe contacting you
+x		use a move that causes the user to feint
+x		gain status effect from held item (confusion counts)
