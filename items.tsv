@@ -73,8 +73,8 @@ Rare Penta-Candy	misc	100										Raise a Pokemon's level by 5.
 Rare Candy Party	partyMisc	15n+5										Raise EVERY Pokemon's level by 1.			
 Doom Seed	misc	-15										Lower a Pokemon's level by 1 (can't choose a Lv1 Pokemon).			
 Doom Seed Party	partyMisc	-15n										Lower EVERY Pokemon's level by 1 (can't go below Lv1).			
-Twin Rare Candies	misc	0										Before battle: Raise both you and your opponent's [nth] Pokemon's level by 1.			
-Twin Doom Seeds	misc	0										Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
+Twin Rare Candies	beforeBattle	0										Before battle: Raise both you and your opponent's [nth] Pokemon's level by 1.			
+Twin Doom Seeds	beforeBattle	0										Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
 HP Up	misc	15										Set a Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein	misc	15										Set a Pokemon's Atk EV to 100 (max 508 total EVs).			
 Iron	misc	15										Set a Pokemon's Def EV to 100 (max 508 total EVs).			
@@ -291,26 +291,26 @@ Shadow Tera Shards	misc	10								x		Set a Pokemon's Tera Type to one you KNOW F
 Reflecting Tera Shards	beforeBattle	15										Before battle: Set your [mth] Pokemon's Tera Type to your opponent's [nth] Pokemon's Tera Type.			
 Origin Tera Shards	misc	10										Set a Pokemon's Tera Type to any type it already has.			
 Move-Based Tera Shards	misc	15										Set a Pokemon's Tera Type to the type of one of its moves.			
-Normal Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.			
-Fire Tera Party	partyMisc	10n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-fire">Fire</span>.			
-Water Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.			
-Grass Tera Party	partyMisc	-5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.			
-Electric Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.			
-Ice Tera Party	partyMisc	-10n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.			
-Fighting Tera Party	partyMisc	0n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.			
-Poison Tera Party	partyMisc	10n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-poison">Poison</span>.			
-Ground Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-ground">Ground</span>.			
-Flying Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.			
-Psychic Tera Party	partyMisc	-5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.			
-Bug Tera Party	partyMisc	0n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.			
-Rock Tera Party	partyMisc	-5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.			
-Ghost Tera Party	partyMisc	10n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.			
-Dark Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-dark">Dark</span>.			
-Dragon Tera Party	partyMisc	5n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.			
-Steel Tera Party	partyMisc	15n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.			
-Fairy Tera Party	partyMisc	10n	0.05									Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.			
-Mirror Tera Party	partyMisc	15n-15	0.05				2					Copy a Pokemon's Tera Type to EVERY other Pokemon.			
-Random Tera Party	partyMisc	0	0.05									Generate a random type, then set EVERY Pokemon's Tera Type to that type.			
+Normal Tera Party	partyMisc	5n										Set EVERY Pokemon's Tera Type to <span class="type-normal">Normal</span>.			
+Fire Tera Party	partyMisc	10n										Set EVERY Pokemon's Tera Type to <span class="type-fire">Fire</span>.			
+Water Tera Party	partyMisc	5n										Set EVERY Pokemon's Tera Type to <span class="type-water">Water</span>.			
+Grass Tera Party	partyMisc	-5n										Set EVERY Pokemon's Tera Type to <span class="type-grass">Grass</span>.			
+Electric Tera Party	partyMisc	5n										Set EVERY Pokemon's Tera Type to <span class="type-electric">Electric</span>.			
+Ice Tera Party	partyMisc	-10n										Set EVERY Pokemon's Tera Type to <span class="type-ice">Ice</span>.			
+Fighting Tera Party	partyMisc	0n										Set EVERY Pokemon's Tera Type to <span class="type-fighting">Fighting</span>.			
+Poison Tera Party	partyMisc	10n										Set EVERY Pokemon's Tera Type to <span class="type-poison">Poison</span>.			
+Ground Tera Party	partyMisc	5n										Set EVERY Pokemon's Tera Type to <span class="type-ground">Ground</span>.			
+Flying Tera Party	partyMisc	5n										Set EVERY Pokemon's Tera Type to <span class="type-flying">Flying</span>.			
+Psychic Tera Party	partyMisc	-5n										Set EVERY Pokemon's Tera Type to <span class="type-psychic">Psychic</span>.			
+Bug Tera Party	partyMisc	0n										Set EVERY Pokemon's Tera Type to <span class="type-bug">Bug</span>.			
+Rock Tera Party	partyMisc	-5n										Set EVERY Pokemon's Tera Type to <span class="type-rock">Rock</span>.			
+Ghost Tera Party	partyMisc	10n										Set EVERY Pokemon's Tera Type to <span class="type-ghost">Ghost</span>.			
+Dark Tera Party	partyMisc	5n										Set EVERY Pokemon's Tera Type to <span class="type-dark">Dark</span>.			
+Dragon Tera Party	partyMisc	5n										Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.			
+Steel Tera Party	partyMisc	15n										Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.			
+Fairy Tera Party	partyMisc	10n										Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.			
+Mirror Tera Party	partyMisc	15n-15					2					Copy a Pokemon's Tera Type to EVERY other Pokemon.			
+Random Tera Party	partyMisc	0										Generate a random type, then set EVERY Pokemon's Tera Type to that type.			
 Venusaurite	heldItem	85		venusaur								If held by a Venusaur, this item allows it to Mega Evolve in battle.			
 Charizardite X	heldItem	85		charizard								If held by a Charizard, this item allows it to Mega Evolve in battle.			
 Charizardite Y	heldItem	130		charizard								If held by a Charizard, this item allows it to Mega Evolve in battle.			
@@ -378,7 +378,7 @@ True Mirror	misc	50	0									The next thing you buy, you get twice.
 Wonder Guard-ifier	misc	15										Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.			
 Plus & Minus Abilitizers	abilitizer	100					2					Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 (Almost) Perfect Abilitizer	abilitizer	70										Set a Pokemon's ability to any ability other than Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Perfect Twin Abilitizers	abilitizer	50										Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Perfect Twin Abilitizers	beforeAbilitizer	50										Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Mirror Abilitizer	abilitizer	30					2					Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Shadow Abilitizer	abilitizer	25								x		Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last battle.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Reflecting Abilitizer	beforeBattle	30										Before battle: Set your [mth] Pokemon's ability to your opponent's [nth] Pokemon's ability.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
@@ -534,24 +534,24 @@ Perfect Dark TM	universalTM	50										Teach ANY 1 Pokemon ANY 1 DARK-TYPE move
 Perfect Dragon TM	universalTM	50										Teach ANY 1 Pokemon ANY 1 DRAGON-TYPE move (other than Z-Moves).			
 Perfect Steel TM	universalTM	50										Teach ANY 1 Pokemon ANY 1 STEEL-TYPE move (other than Z-Moves).			
 Perfect Fairy TM	universalTM	50										Teach ANY 1 Pokemon ANY 1 FAIRY-TYPE move (other than Z-Moves).			
-Perfect Normal Party TM	partyTM	25n+25	0.05									Choose ANY NORMAL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Fire Party TM	partyTM	25n+25	0.05									Choose ANY FIRE-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Water Party TM	partyTM	25n+25	0.05									Choose ANY WATER-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Grass Party TM	partyTM	25n+25	0.05									Choose ANY GRASS-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Electric Party TM	partyTM	25n+25	0.05									Choose ANY ELECTRIC-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Ice Party TM	partyTM	25n+25	0.05									Choose ANY ICE-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Fighting Party TM	partyTM	25n+25	0.05									Choose ANY FIGHTING-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Poison Party TM	partyTM	25n+25	0.05									Choose ANY POISON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Ground Party TM	partyTM	25n+25	0.05									Choose ANY GROUND-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Flying Party TM	partyTM	25n+25	0.05									Choose ANY FLYING-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Psychic Party TM	partyTM	25n+25	0.05									Choose ANY PSYCHIC-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Bug Party TM	partyTM	25n+25	0.05									Choose ANY BUG-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Rock Party TM	partyTM	25n+25	0.05									Choose ANY ROCK-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Ghost Party TM	partyTM	25n+25	0.05									Choose ANY GHOST-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Dark Party TM	partyTM	25n+25	0.05									Choose ANY DARK-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Dragon Party TM	partyTM	25n+25	0.05									Choose ANY DRAGON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Steel Party TM	partyTM	25n+25	0.05									Choose ANY STEEL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Fairy Party TM	partyTM	25n+25	0.05									Choose ANY FAIRY-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Normal Party TM	partyTM	25n+25										Choose ANY NORMAL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Fire Party TM	partyTM	25n+25										Choose ANY FIRE-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Water Party TM	partyTM	25n+25										Choose ANY WATER-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Grass Party TM	partyTM	25n+25										Choose ANY GRASS-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Electric Party TM	partyTM	25n+25										Choose ANY ELECTRIC-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Ice Party TM	partyTM	25n+25										Choose ANY ICE-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Fighting Party TM	partyTM	25n+25										Choose ANY FIGHTING-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Poison Party TM	partyTM	25n+25										Choose ANY POISON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Ground Party TM	partyTM	25n+25										Choose ANY GROUND-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Flying Party TM	partyTM	25n+25										Choose ANY FLYING-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Psychic Party TM	partyTM	25n+25										Choose ANY PSYCHIC-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Bug Party TM	partyTM	25n+25										Choose ANY BUG-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Rock Party TM	partyTM	25n+25										Choose ANY ROCK-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Ghost Party TM	partyTM	25n+25										Choose ANY GHOST-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Dark Party TM	partyTM	25n+25										Choose ANY DARK-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Dragon Party TM	partyTM	25n+25										Choose ANY DRAGON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Steel Party TM	partyTM	25n+25										Choose ANY STEEL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Fairy Party TM	partyTM	25n+25										Choose ANY FAIRY-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
 Perfect Egg	egg	5r+90										In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. </span>			
 Mirror Egg	egg	5r+60										Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.			
 Reflecting Egg	beforeBattle	5r+55										Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
