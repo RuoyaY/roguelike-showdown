@@ -3406,7 +3406,7 @@ function buyItem(itemDiv, item, itemPrice) {
 
   if (!pay(itemPrice)) return;
 
-  if (!(numOfKeyItem(KEY_ITEMS.RE_BUY) > 0 && itemPrice >= 0)) {
+  if (!(numOfKeyItem(KEY_ITEMS.RE_BUY) > 0 && !(itemPrice < 0 || item.name.includes('Trivia') || item.name.includes('Quiz')))) {
     // replace buy button with checkmark
     const buyButton = itemDiv.querySelector('button');
     const checkmarkEle = document.createElement('h2');
