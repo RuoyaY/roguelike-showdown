@@ -3062,7 +3062,7 @@ function randomEgg() {
 }
 
 const MIN_TRANSFORMER_STAT_DIFF = -50;
-const MAX_TRANSFORMER_STAT_DIFF = 150;
+const MAX_TRANSFORMER_STAT_DIFF = 100;
 function randomTransformer() {
   const partyIndex = getTmSeekerIndex();
   const pokemonStr = getPartyStrs()[partyIndex];
@@ -3077,7 +3077,7 @@ function randomTransformer() {
   return {
     name: apparentPrevSpeciesName + ' → ' + newSpeciesInfo.speciesName,
     type: 'transformer',
-    price: 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff),
+    price: 5 + roundToNearest5(newSpeciesInfo.effectiveStatDiff),
     desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(newSpeciesInfo.speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
             + '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true) + '</div>'
