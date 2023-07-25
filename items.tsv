@@ -65,14 +65,16 @@ Kee Berry	heldItem	20										hit by physical, +1 Def
 Maranga Berry	heldItem	20										hit by special, +1 SpD			
 Mirror Berry	misc	10					2					Copy a Pokemon's held berry to another Pokemon.			
 Perfect Berry	misc	25										Set a Pokemon's held item to any berry other than Sitrus Berry.			
-Rare Candy	misc	20										Increase a Pokemon's level by one.			
-Rare Bi-Candy	misc	40										Increase a Pokemon's level by two.			
-Rare Tri-Candy	misc	60										Increase a Pokemon's level by three.			
-Rare Quad-Candy	misc	80										Increase a Pokemon's level by four.			
-Rare Penta-Candy	misc	100										Increase a Pokemon's level by five.			
-Rare Candy Party	partyMisc	15n+5										Increase EVERY Pokemon's level by one.			
-Doom Seed	misc	-15										Decrease a Pokemon's level by one (can't choose a Lv1 Pokemon).			
-Doom Seed Party	partyMisc	-15n										Decrease EVERY Pokemon's level by one (can't go below Lv1).			
+Rare Candy	misc	20										Raise a Pokemon's level by 1.			
+Rare Bi-Candy	misc	40										Raise a Pokemon's level by 2.			
+Rare Tri-Candy	misc	60										Raise a Pokemon's level by 3.			
+Rare Quad-Candy	misc	80										Raise a Pokemon's level by 4.			
+Rare Penta-Candy	misc	100										Raise a Pokemon's level by 5.			
+Rare Candy Party	partyMisc	15n+5										Raise EVERY Pokemon's level by 1.			
+Doom Seed	misc	-15										Lower a Pokemon's level by 1 (can't choose a Lv1 Pokemon).			
+Doom Seed Party	partyMisc	-15n										Lower EVERY Pokemon's level by 1 (can't go below Lv1).			
+Twin Rare Candies	misc	0										Before battle: Raise both you and your opponent's [nth] Pokemon's level by 1.			
+Twin Doom Seeds	misc	0										Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
 HP Up	misc	15										Set a Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein	misc	15										Set a Pokemon's Atk EV to 100 (max 508 total EVs).			
 Iron	misc	15										Set a Pokemon's Def EV to 100 (max 508 total EVs).			
@@ -180,11 +182,12 @@ Steel Gem	heldItem	15
 Fairy Gem	heldItem	15													
 Perfect Gem	misc	20										Set a Pokemon's held item to any gem (e.g. "*Ice Gem*").			
 Random Gem	misc	5										Generate a random type, then set a Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").			
-Wrong Gem	misc	5										Set a Pokemon's held item to any gem (e.g. "*Ice Gem*") that DOES NOT correspond to the type of ANY of its moves.			
+Wrong Gem	misc	5										Set a Pokemon's held item to any gem (e.g. "*Ice Gem*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
 Mirror Item	misc	25					2					Copy a Pokemon's held item to another Pokemon.			
-Perfect Item	misc	45										Set a Pokemon's held item to anything other than an Eviolite, a Z-Crystal, or a Pokemon-specific item.			
+(Almost) Perfect Item	misc	45										Set a Pokemon's held item to anything other than an Eviolite or a Z-Crystal.			
 Shadow Item	misc	20								x		Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last battle. Exception: Z-Crystals.			
-Reflect Item	beforeBattle	25										Before battle: Set your [mth] Pokemon's held item to a copy of your opponent's [nth] Pokemon's held item. Exception: Z-Crystals.			
+Reflect Item	beforeBattle	20										Before battle: Set your [mth] Pokemon's held item to a copy of your opponent's [nth] Pokemon's held item. Exception: Z-Crystals.			
+(Almost) Perfect Twin Items	beforeBattle	30										Before battle: Both players MAY give their [nth] Pokemon a [_____] (can't choose Eviolite or a Z-Crystal).			
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld											
 Black Belt	heldItem	20													
 Silk Scarf	heldItem	15													
@@ -207,6 +210,7 @@ Iron Plate	heldItem	20
 Pixie Plate	heldItem	20													
 Perfect Plate	misc	25										Set a Pokemon's held item to ANY Plate (e.g. "*Zap Plate*").			
 Random Plate	misc	10										Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").			
+Wrong Plate	misc	5										Set a Pokemon's held item to any Plate (e.g. "*Zap Plate*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
 Buginium Z	heldItem	60													
 Darkinium Z	heldItem	60													
 Dragonium Z	heldItem	60													
@@ -227,6 +231,7 @@ Steelium Z	heldItem	60
 Waterium Z	heldItem	60													
 Perfect Z-Crystal	misc	70										Set a Pokemon's held item to any Z-Crystal.			
 Random Z-Crystal	misc	40										Generate a random type, then give the corresponding Z-Crystal to any 1 Pokemon.			
+Wrong Z-Crystal	misc	35										Set a Pokemon's held item to any Z-Crystal that DOES NOT correspond to the current type of ANY of its moves.			
 Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola								Teach Raichu-Alola *Thunderbolt* and set its held item to *Aloraichium Z*.			
 Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye								Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.			
 Last Resort TM & Eevium Z	TMAndZCrystal	100		eevee								Teach Eevee *Last Resort* and set its held item to *Eevium Z*.			
@@ -253,6 +258,7 @@ Perfect Hidden Power TM	universalTM	20										Teach ANY 1 Pokemon any Hidden P
 Random Hidden Power TM	universalTM	10										Generate a random type. You must teach ANY 1 Pokemon the Hidden Power of that type (e.g. "*Hidden Power Ice*").			
 Perfect TM	universalTM	60										Teach ANY 1 Pokemon ANY 1 move (excluding Z-Moves).			
 Perfect Party TM	partyTM	30n+30										Choose ANY move (excluding Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Twin TMs	beforeTM	30										Before battle: Both players MAY teach their [nth] Pokemon the move [_____] (can't choose Z-Moves).			
 Mirror TM	universalTM	40					2					Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves).			
 Mirror Moveset	misc	20					2					Replace a Pokemon's ENTIRE moveset with a copy of another Pokemon's moveset.			
 Reflect Moveset	beforeBattle	45										Before battle: Replace your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
@@ -372,6 +378,7 @@ True Mirror	misc	50	0									The next thing you buy, you get twice.
 Wonder Guard-ifier	misc	15										Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.			
 Plus & Minus Abilitizers	abilitizer	100					2					Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 (Almost) Perfect Abilitizer	abilitizer	70										Set a Pokemon's ability to any ability other than Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Perfect Twin Abilitizers	abilitizer	50										Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Mirror Abilitizer	abilitizer	30					2					Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Shadow Abilitizer	abilitizer	25								x		Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last battle.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Reflecting Abilitizer	beforeBattle	30										Before battle: Set your [mth] Pokemon's ability to your opponent's [nth] Pokemon's ability.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
@@ -884,8 +891,8 @@ Inverse Battle	nextBattle	40/b										Next battle only: Type matchups are inve
 Camomon Battle	nextBattle	40/b										Next battle only: Both players' Pokemon become the typing of their first 2 moves. <br><span class="command">/challenge gen9doublescustomgame @@@ Camomons Mod</span>			
 Tera Type Preview	nextBattle	0										Next battle only: Both players' Tera Types are revealed during team preview. <br><span class="command">/challenge gen9doublescustomgame @@@ Tera Type Preview</span>			
 No Switching Battle	nextBattle	20/b					3					Next battle only: Both players cannot switch out. <br><span class="command">/challenge gen9doublescustomgame @@@ No Switching</span>			
-Crazyhouse	nextBattle	5					2					Next battle only: Singles battle. When a Pokemon is directly KO'd, they are given to their foe (-25% max HP after every swap). <br><span class="command">/challenge gen9customgame @@@ Crazyhouse Rule, !! Max Team Size = 12</span>			
-First Blood Warm-up	beforeBattle	10									x	Before battle: Do an extra battle where the first person to get one KO, wins. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ First Blood Rule</span>			
+Crazyhouse	nextBattle	0					2					Next battle only: Singles battle. When a Pokemon is directly KO'd, they are given to their foe (-25% max HP after every swap). <br><span class="command">/challenge gen9customgame @@@ Crazyhouse Rule, !! Max Team Size = 12</span>			
+First Blood Warm-up	beforeBattle	5					2				x	Before battle: Do an extra battle where the first person to get one KO, wins. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ First Blood Rule</span>			
 Revelationmons Battle	nextBattle	20/b										Next battle only: For both players' Pokemon, their 1st move becomes their 1st type, and their 2nd move becomes their 2nd type, if any. <br><span class="command">/challenge gen9doublescustomgame @@@ Revelationmons Mod</span>			
 Category Swapped Battle	nextBattle	60/b										Next battle only: Both teams' physical moves become special moves, and vice versa. <br><span class="command">/challenge gen9doublescustomgame @@@ Category Swap Mod</span>			
 VoltTurn Mayhem Battle	nextBattle	20/b					3					Next battle only: If either player's Pokemon successfully uses a move that affects foe(s), it switches out. <br><span class="command">/challenge gen9doublescustomgame @@@ VoltTurn Mayhem Mod</span>			
@@ -913,7 +920,7 @@ Next Pokemon Trivia	misc	1										Your opponent sends you a pic of a random Po
 Running Shoes	keyItem	4r+4										Refreshing the shop now only costs $2.	0.6666666667	24	8
 Dowsing Machine	keyItem	3r+3										+1 slot in the shop.	0.75	24	6
 Losing Machine	keyItem	-4.5r-4.5										-1 slot in the shop.	1.5	18	-9
-Shopping Cart	keyItem	2r+2										Can now buy the same thing multiple times (doesn't work for earning money).	since money/slots are worth more now than later, "$ saved" is halved		
+Shopping Cart	keyItem	2r+2										Can now buy the same thing multiple times (doesn't work for Quizzes, Trivia, or earning money).	since money/slots are worth more now than later, "$ saved" is halved		
 Combee Hive	keyItem	3.75m									x	Every round, +1 species option for your new Pokemon.			
 Trubbish Bin	keyItem	-7.5m									x	Every round, -1 species option for your new Pokemon (can't go below 1).			
 Black Flute	keyItem	15m									x	The new Pokemon you get every round is 1 level higher than normal.			
@@ -1008,3 +1015,26 @@ Dark Magnet	keyItem	5m-5									x	Each round, you are guaranteed to get Dark-ty
 Dragon Magnet	keyItem	0m-5									x	Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Steel Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Fairy Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+TM Ban	keyItem	-60m										TMs stop appearing in the shop, unless forced.			
+Abilitizer Ban	keyItem	0										Abilitizers stop appearing in the shop, unless forced.			
+Species Changer Ban	keyItem	0										Species Changers stop appearing in the shop, unless forced.			
+Egg Ban	keyItem	0										Eggs stop appearing in the shop, unless forced.			
+Held Item Ban	keyItem	0										Held Items stop appearing in the shop, unless forced.			
+Perfect Twin Normal TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Normal-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Fire TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Fire-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Water TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Water-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Grass TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Grass-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Electric TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Electric-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Ice TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Ice-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Fighting TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Fighting-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Poison TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Poison-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Ground TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Ground-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Flying TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Flying-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Psychic TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Psychic-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Bug TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Bug-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Rock TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Rock-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Ghost TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Ghost-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Dark TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Dark-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Dragon TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Dragon-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Steel TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Steel-type move [_____] (can't choose Z-Moves).			
+Perfect Twin Fairy TMs	beforeTM	25										Before battle: Both players MAY teach their [nth] Pokemon the Fairy-type move [_____] (can't choose Z-Moves).			
