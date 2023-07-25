@@ -3444,7 +3444,11 @@ function buyItem(itemDiv, item, itemPrice) {
 
   } else if (item.type === 'keyItem') {
     document.getElementById('keyItemsDiv').hidden = false;
-    document.getElementById('keyItems').innerText += item.name + '\n';
+    let keyItemsStr = document.getElementById('keyItems').innerText;
+    keyItemsStr = keyItemsStr.trimEnd();
+    keyItemsStr += '\n' + item.name;
+    keyItemsStr = keyItemsStr.trimStart();
+    document.getElementById('keyItems').innerText = keyItemsStr;
     updateKeyItemsEle();
 
     // if it's a magnet, Guaranteed Type is also set on-buy
