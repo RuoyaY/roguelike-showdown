@@ -592,6 +592,11 @@ const KEY_ITEMS = {
   ROUNDLY_MAGIKARP: 'Auto Rod',
   LOAN: 'Loan',
   INVESTMENT: 'Investment',
+  NO_TM: 'TM Ban',
+  NO_ABILITIZER: 'Abilitizer Ban',
+  NO_TRANSFORMER: 'Species Changer Ban',
+  NO_EGG: 'Egg Ban',
+  NO_HELD_ITEM: 'Held Item Ban',
 };
 // magnets. KEYS CAN'T BE CHANGED w/o changing code
 for (const type of TYPES)
@@ -2766,26 +2771,42 @@ function funcWithoutRepeat(itemFunc) {
 // categoryRandy is set outside the do-while loop so categories that are likely to give a prevSeenItem
 // (such as randomTM when tmSeeker has a small learnset) don't become less likely overall
 function randomItem(categoryRandy) {
-  let randy = categoryRandy;
-  if ((randy -= 1/3) < 0)
+  let randy = categoryRandy ?? Math.random();
+  if ((randy -= 1/3) < 0) {
+    if (numOfKeyItem(KEY_ITEMS.NO_TM) > 0)
+      return randomItem();
     return randomTM();
-  else if ((randy -= 1/12) < 0)
+  } else if ((randy -= 1/12) < 0) {
+    if (numOfKeyItem(KEY_ITEMS.NO_ABILITIZER) > 0)
+      return randomItem();
     return randomAbilitizer(100);
-  else if ((randy -= 1/12) < 0)
+  } else if ((randy -= 1/12) < 0) {
+    if (numOfKeyItem(KEY_ITEMS.NO_TRANSFORMER) > 0)
+      return randomItem();
     return randomTransformer();
-  else if ((randy -= 1/24) < 0)
+  } else if ((randy -= 1/24) < 0) {
+    if (numOfKeyItem(KEY_ITEMS.NO_EGG) > 0)
+      return randomItem();
     return randomEgg();
-  else if ((randy -= 1/6) < 0)
+  } else if ((randy -= 1/6) < 0) {
+    if (numOfKeyItem(KEY_ITEMS.NO_HELD_ITEM) > 0)
+      return randomItem();
     return randomHeldItem();
-  else
+  } else {
     return randomNonheldItem();
+  }
 }
 
 function randomNonheldItem() {
   let item;
   do {
     item = randomElement(items);
-  } while (!(isLegalItem(item) && item.type !== 'heldItem'));
+  } while (!(isLegalItem(item) 
+            && item.type !== 'heldItem'
+            && !(numOfKeyItem(KEY_ITEMS.NO_TM) > 0 && item.type.includes('TM'))
+            && !(numOfKeyItem(KEY_ITEMS.NO_ABILITIZER) > 0 && item.type === 'abilitizer')
+            && !(numOfKeyItem(KEY_ITEMS.NO_EGG) > 0 && item.type === 'egg')
+          ));
   return item;
 }
 function randomHeldItem(mustBeBerry) {
