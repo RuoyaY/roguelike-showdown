@@ -1740,7 +1740,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
   if (hasChooseButton) {
     level += numOfKeyItem(KEY_ITEMS.HIGHER_LEVEL);
     level -= numOfKeyItem(KEY_ITEMS.LOWER_LEVEL);
-    if (bossLevelUps != null && getPartyStrs().length > 0)
+    if (inBossBattle() && getPartyStrs().length > 0)
       level = 1;
   }
   if (level < 1)
@@ -1776,6 +1776,9 @@ function updateBossLevelUps() {
   if (bossLevelUps.length === 0)
     str = '';
   document.getElementById('bossLevelUps').textContent = str;
+}
+function inBossBattle() {
+  return bossLevelUps != null;
 }
 
 function allMoveIdsSuchThat(predicate) {
@@ -2542,7 +2545,7 @@ function nextRound() {
   document.getElementById('skip').hidden = !isPartyFull;
 
   // handle boss level ups
-  if (bossLevelUps != null && bossLevelUps.length > 0) {
+  if (inBossBattle() && bossLevelUps.length > 0) {
     const levelDelta = bossLevelUps.shift();
     updateBossLevelUps();
 
