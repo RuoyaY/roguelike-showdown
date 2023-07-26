@@ -1576,7 +1576,10 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
     if (!TYPES.includes(requiredType))
       requiredType = null;
     
-    speciesName = randomSpeciesName(requiredType, null, false);
+    const illegalSpeciesNames = [];
+    if (inBossBattle())
+      illegalSpeciesNames.push('Pokestar Spirit');
+    speciesName = randomSpeciesName(requiredType, illegalSpeciesNames, false);
   }
   
   // speciesName = 'Pokestar Spirit';
@@ -1778,7 +1781,7 @@ function updateBossLevelUps() {
   document.getElementById('bossLevelUps').textContent = str;
 }
 function inBossBattle() {
-  return bossLevelUps != null;
+  return document.getElementById('bossBattle').checked;
 }
 
 function allMoveIdsSuchThat(predicate) {
@@ -2563,7 +2566,7 @@ function nextRound() {
   document.getElementById('skip').hidden = !isPartyFull;
 
   // handle boss level ups
-  if (inBossBattle() && bossLevelUps.length > 0) {
+  if (bossLevelUps != null && bossLevelUps.length > 0) {
     const levelDelta = bossLevelUps.shift();
     updateBossLevelUps();
 
