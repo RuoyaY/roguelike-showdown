@@ -298,6 +298,7 @@ button:focus {
 <div class="flex-row">
   <div>
     <h1>Roguelike Showdown</h1>
+
     <button onclick="copyBingoJSON()">copy bingo JSON to clipboard</button>
     <br class="mb-4px">
     <button id="save" onclick="save()">save</button>
@@ -307,6 +308,11 @@ button:focus {
     Round <span id="roundCounter">0</span> of <input id="numRounds" type="number" size="3" class="mb-4px">
     <input type="checkbox" id="endless">
     <label for="endless" class="hasHoverText" title="Keeps the final round at least 1 round away, so you never reach it.">Endless</label>
+    <br>
+    <input type="checkbox" id="bossBattle">
+    <label for="bossBattle" class="hasHoverText" title="Your 1st Pokemon gets higher leveled as your foe gets more Pokemon. Your other Pokemon are Lv1.">Boss Battle</label>
+    <span id="bossLevelUps" class="attr"></span>
+
     <h2 class="attr">Start Round</h2>
     <div id="pokeballDiv" hidden>
       <label for="pokeball">Poké Ball:</label>
@@ -367,6 +373,7 @@ button:focus {
         <button id="skip" onclick="skipPokemonChoice()">skip</button>
       </div>
     </div>
+
     <h2 class="attr">Shop</h2>
     <label for="tmSeeker">Find TMs and species changes for: </label>
     <select id="tmSeeker" class="mb-4px"></select>
@@ -377,6 +384,7 @@ button:focus {
       Next round, you'll lose $<span id="tax">0</span> in wealth tax.
     </div>
     <div id="shop"></div>
+
     <h2 class="attr">Generate a Pokemon</h2>
     <div class="mb-1">
       <label for="speciesInput">Species: </label><input id="speciesInput" class="mb-4px">
@@ -386,6 +394,7 @@ button:focus {
     <p id="speciesError"></p>
     <div id="species" class=""></div>
   </div>
+
   <div class="ml-1">
     <div id="beforeBattleDiv" class="party-width" hidden>
       <h2>
@@ -937,6 +946,7 @@ loadItems();
 let roundCounter = 0;
 const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
+let bossLevelUps = null;
 
 onLoad();
 
@@ -965,6 +975,7 @@ function onLoad() {
   
   setNumRounds(7);
   document.getElementById('endless').checked = false;
+  document.getElementById('bossBattle').checked = false;
 
   document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
   document.getElementById('skip').hidden = true;
@@ -1729,6 +1740,8 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
   if (hasChooseButton) {
     level += numOfKeyItem(KEY_ITEMS.HIGHER_LEVEL);
     level -= numOfKeyItem(KEY_ITEMS.LOWER_LEVEL);
+    if (bossLevelUps != null && getPartyStrs().length > 0)
+      level = 1;
   }
   if (level < 1)
     level = 1;
@@ -1756,6 +1769,13 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
   pokemonStr += '\nEVs: 1 HP';
 
   return pokemonStr;
+}
+
+function updateBossLevelUps() {
+  let str = 'Level raises: +' + bossLevelUps.join(', +') + '.';
+  if (bossLevelUps.length === 0)
+    str = '';
+  document.getElementById('bossLevelUps').textContent = str;
 }
 
 function allMoveIdsSuchThat(predicate) {
@@ -1807,11 +1827,14 @@ function getLearnset(speciesId) {
   return Array.from(learnset);
 }
 
-function getLevelWithAbility(species, abilityName) {
+function getLevelWithAbility(species, abilityName, statTotalMultiplier) {
   if (species.name === 'Pokestar Spirit' && abilityName === 'Wonder Guard')
     return 1; 
   // we want: stat goal * ability value = base stat goal * base ability value
-  return getLevel(species, STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species.name, abilityName));
+  let statTotalGoal =  STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species.name, abilityName);
+  if (statTotalMultiplier)
+    statTotalGoal *= statTotalMultiplier;
+  return getLevel(species, statTotalGoal);
 }
 function getAbilityValue(speciesName, abilityName) {
   if (speciesName != null)
@@ -2061,8 +2084,7 @@ function getStatRelevantInfo(pokemonStr) {
   const species = allSpecies[speciesId];
   const strLines = pokemonStr.split('\n');
 
-  const levelStr = strLines.find(line => line.startsWith('Level: '));
-  const level = levelStr ? parseInt(levelStr.substring('Level: '.length)) : 100;
+  const level = getLevelOfPokemon(pokemonStr);
 
   const evsStr = pokemonStr.split('\n').find(line => line.startsWith('EVs: '));
   const evs = getEvs(evsStr);
@@ -2136,6 +2158,24 @@ function choosePokemon(choicesDiv, pokemonStr) {
     alert('Your party is full! Delete a Pokemon, or skip getting a new one.\n'
             + 'NOTE: you may NOT replace a Pokemon you got at Lv1.');
     return;
+  }
+
+  const bossBattleCheckbox = document.getElementById('bossBattle');
+  if (bossBattleCheckbox.checked && getPartyStrs().length === 0) {
+    // calculate bossLevelUps
+    const numSlots = getPartyPokeDivs().length;
+    const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
+    const abilityName = getAbilityNameOfPokemon(pokemonStr);
+    bossLevelUps = [];
+    let prevLevel = getLevelOfPokemon(pokemonStr);
+    for (let i = 2; i <= numSlots; i++) {
+      const nextLevel = getLevelWithAbility(species, abilityName, Math.pow(i, 1/4));
+      bossLevelUps.push(nextLevel - prevLevel);
+      prevLevel = nextLevel;
+    }
+    updateBossLevelUps();
+    // disable the checkbox
+    bossBattleCheckbox.disabled = true;
   }
 
   document.getElementById('skip').hidden = true;
@@ -2501,7 +2541,18 @@ function nextRound() {
   const isPartyFull = getEmptyPartyDiv() === null;
   document.getElementById('skip').hidden = !isPartyFull;
 
-  // handle Power items (Power Anklet, etc), Oval Stone, and type stones
+  // handle boss level ups
+  if (bossLevelUps != null && bossLevelUps.length > 0) {
+    const levelDelta = bossLevelUps.shift();
+    updateBossLevelUps();
+
+    const pokeDiv = getPartyPokeDivs()[0];
+    const pokeEle = pokeDiv.querySelector('.pokemon');
+    pokeEle.innerText = leveledUp(pokeEle.innerText.trim(), levelDelta);
+    updatePartyPokemonDiv(pokeDiv);
+  }
+
+  // handle held items that happen every round: Power items (Power Anklet, etc), Oval Stone, and type stones
   for (const pokeDiv of getPartyPokeDivs()) {
     const pokeEle = pokeDiv.querySelector('.pokemon');
     const pokemonStr = pokeEle.innerText.trim();
@@ -2602,10 +2653,15 @@ function updateForRoundlyHeldItem(pokemonStr) {
   }
 }
 
-function leveledUp(pokemonStr) {
+function leveledUp(pokemonStr, levelDelta) {
+  if (!levelDelta)
+    levelDelta = 1;
+  const lv = getLevelOfPokemon(pokemonStr);
+  return pokemonStr.replace('Level: ' + lv, 'Level: ' + (lv + levelDelta));
+}
+function getLevelOfPokemon(pokemonStr) {
   const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
-  const lv = parseInt(lvStr.substring('Level: '.length));
-  return pokemonStr.replace(lvStr, 'Level: ' + (lv+1));
+  return lvStr ? parseInt(lvStr.substring('Level: '.length)) : 100;
 }
 
 function pokemonHasMove(pokemonStr, moveName) {
