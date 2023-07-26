@@ -2451,6 +2451,11 @@ function save() {
   localStorage.setItem('numRounds', getNumRounds());
   localStorage.setItem('endless', document.getElementById('endless').checked);
 
+  if (!inBossBattle())
+    localStorage.removeItem('bossLevelUps');
+  else
+    localStorage.setItem('bossLevelUps', bossLevelUps.join(','));
+
   localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
 
   localStorage.setItem('beforeBattle', document.getElementById('beforeBattle').innerHTML);
@@ -2490,6 +2495,19 @@ function load() {
   setRoundCounter(parseInt(localStorage.getItem('roundCounter')));
   setNumRounds(localStorage.getItem('numRounds'));
   document.getElementById('endless').checked = localStorage.getItem('endless') === 'true';
+
+  const bossLevelUpsStr = localStorage.getItem('bossLevelUps');
+  const bossBattleCheckbox = document.getElementById('bossBattle');
+  if (bossLevelUpsStr == null) {
+    bossLevelUps = null;
+    bossBattleCheckbox.checked = false;
+    document.getElementById('bossLevelUps').textContent = '';
+  } else {
+    bossLevelUps = bossLevelUpsStr.split(',').map(str => parseInt(str));
+    bossBattleCheckbox.checked = true;
+    updateBossLevelUps();
+  }
+  bossBattleCheckbox.disabled = true;
   
   document.getElementById('tmSeeker').value = localStorage.getItem('tmSeeker');
 
