@@ -2180,8 +2180,6 @@ function choosePokemon(choicesDiv, pokemonStr) {
       prevLevel = nextLevel;
     }
     updateBossLevelUps();
-    // disable the checkbox
-    bossBattleCheckbox.disabled = true;
   }
 
   document.getElementById('skip').hidden = true;
@@ -2564,6 +2562,8 @@ function nextRound() {
   
   const isPartyFull = getEmptyPartyDiv() === null;
   document.getElementById('skip').hidden = !isPartyFull;
+
+  document.getElementById('bossBattle').disabled = true;
 
   // handle boss level ups
   if (bossLevelUps != null && bossLevelUps.length > 0) {
