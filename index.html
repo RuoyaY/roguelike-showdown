@@ -310,8 +310,10 @@ button:focus {
     <label for="endless" class="hasHoverText" title="Keeps the final round at least 1 round away, so you never reach it.">Endless</label>
     <br>
     <input type="checkbox" id="bossBattle">
-    <label for="bossBattle" class="hasHoverText" title="Your 1st Pokemon gets higher leveled as your foe gets more Pokemon. Your other Pokemon are Lv1.">Boss Battle</label>
+    <label for="bossBattle" class="hasHoverText" title="Your 1st Pokemon gets higher leveled as your foe gets more Pokemon. Your other Pokemon are Lv1.">Boss</label>
     <span id="bossLevelUps" class="attr"></span>
+    <input type="checkbox" id="vsBossBattle">
+    <label for="vsBossBattle" class="hasHoverText" title="Check this box if you're against a Boss (certain items won't appear).">Vs Boss</label>
 
     <h2 class="attr">Start Round</h2>
     <div id="pokeballDiv" hidden>
@@ -976,6 +978,7 @@ function onLoad() {
   setNumRounds(7);
   document.getElementById('endless').checked = false;
   document.getElementById('bossBattle').checked = false;
+  document.getElementById('vsBossBattle').checked = false;
 
   document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
   document.getElementById('skip').hidden = true;
@@ -1061,8 +1064,9 @@ function loadItems() {
       item.bannedIfPartyFull = splitByTab[9] !== '';
       item.bannedFirstRound = splitByTab[10] !== '';
       item.bannedLastRound = splitByTab[11] !== '';
+      item.bannedIfBoss = splitByTab[12] !== '';
 
-      item.desc = splitByTab[12];
+      item.desc = splitByTab[13];
       
       // for testing purposes: check itemToTsv is working
       // if (!responseLines[i].startsWith(itemToTsv(item)))
@@ -1577,7 +1581,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
       requiredType = null;
     
     const illegalSpeciesNames = [];
-    if (inBossBattle())
+    if (isBoss())
       illegalSpeciesNames.push('Pokestar Spirit');
     speciesName = randomSpeciesName(requiredType, illegalSpeciesNames, false);
   }
@@ -1743,7 +1747,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
   if (hasChooseButton) {
     level += numOfKeyItem(KEY_ITEMS.HIGHER_LEVEL);
     level -= numOfKeyItem(KEY_ITEMS.LOWER_LEVEL);
-    if (inBossBattle() && getPartyStrs().length > 0)
+    if (isBoss() && getPartyStrs().length > 0)
       level = 1;
   }
   if (level < 1)
@@ -1780,8 +1784,11 @@ function updateBossLevelUps() {
     str = '';
   document.getElementById('bossLevelUps').textContent = str;
 }
-function inBossBattle() {
+function isBoss() {
   return document.getElementById('bossBattle').checked;
+}
+function isBossOrVsBoss() {
+  return document.getElementById('bossBattle').checked || document.getElementById('vsBossBattle').checked;
 }
 
 function allMoveIdsSuchThat(predicate) {
@@ -2452,7 +2459,7 @@ function save() {
   localStorage.setItem('numRounds', getNumRounds());
   localStorage.setItem('endless', document.getElementById('endless').checked);
 
-  if (!inBossBattle())
+  if (!isBoss())
     localStorage.removeItem('bossLevelUps');
   else
     localStorage.setItem('bossLevelUps', bossLevelUps.join(','));
@@ -2564,6 +2571,7 @@ function nextRound() {
   document.getElementById('skip').hidden = !isPartyFull;
 
   document.getElementById('bossBattle').disabled = true;
+  document.getElementById('vsBossBattle').disabled = true;
 
   // handle boss level ups
   if (bossLevelUps != null && bossLevelUps.length > 0) {
@@ -2960,6 +2968,8 @@ function isLegalItem(item, ignoreLastRoundReq) {
   if (item.bannedIfPartyNotFull && partySize < getPartyPokeDivs().length)
     return false;
   if (item.bannedIfPartyFull && partySize === getPartyPokeDivs().length)
+    return false;
+  if (item.bannedIfBoss && isBossOrVsBoss())
     return false;
 
   if (item.bannedFirstRound && roundCounter <= 1)

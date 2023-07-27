@@ -1,6 +1,4 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
-Power Anklet	heldItem	0										
-Name Trivia	misc	20										Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.
-EVs Charm	keyItem	6r+3										+1 Max Nutrience slot (for items that set a given EV to 252) in the shop.
-Normal Magnet	keyItem	-5m-5									x	Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)
-Fire Magnet	keyItem	10m-5									x	Each round, you are guaranteed to get Fire-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)
+Power Anklet	heldItem	0											
+Name Trivia	misc	20											Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.
+Twin K.O.	nextBattle	25/b					2					x	Next battle only: Remove both players' [nth] Pokemon.			
