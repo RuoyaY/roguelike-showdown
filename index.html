@@ -2173,8 +2173,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
     return;
   }
 
-  const bossBattleCheckbox = document.getElementById('bossBattle');
-  if (bossBattleCheckbox.checked && getPartyStrs().length === 0) {
+  if (isBoss() && getPartyStrs().length === 0) {
     // calculate bossLevelUps
     const numSlots = getPartyPokeDivs().length;
     const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
@@ -2201,8 +2200,10 @@ function choosePokemon(choicesDiv, pokemonStr) {
   
   updatePartyPokemonDiv(pokeDiv);
 
-  const tmSeekerEle = document.getElementById('tmSeeker');
-  tmSeekerEle.selectedIndex = getPartyPokeDivs().indexOf(pokeDiv);
+  if (!isBoss())
+    document.getElementById('tmSeeker').selectedIndex = getPartyPokeDivs().indexOf(pokeDiv);
+  else if (isBoss() && getPartyStrs().length === 1)
+    document.getElementById('tmSeeker').selectedIndex = 0;
   
   killAllChildren(choicesDiv);
   
