@@ -123,11 +123,9 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 .types {
   width: max-content; /* only relevant to randomTransformer */
 }
-.types > img {
-  margin-right: 1px;
-}
-.tera-type > img {
+.types > img, .tera-type > img {
   margin-left: 1px;
+  margin-right: 1px;
 }
 
 .matchups {
@@ -1295,11 +1293,11 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
   div.append(pokemonEle);
 
   const typesEle = document.createElement('div');
-  typesEle.classList.add('overlay', 'types');
+  typesEle.classList.add('overlay', 'types', 'position-left');
   div.append(typesEle);
 
   const teraTypeEle = document.createElement('div');
-  teraTypeEle.classList.add('overlay', 'position-left', 'tera-type');
+  teraTypeEle.classList.add('overlay', 'tera-type');
   div.append(teraTypeEle);
 
   const statsEle = document.createElement('p');
@@ -1365,13 +1363,13 @@ function updatePokemonDiv(div) {
   const typesEle = div.querySelector('.types');
   killAllChildren(typesEle);
   const types = allSpecies[getSpeciesId(speciesName)].types;
-  typesEle.innerHTML = getTypesHTML(types, false);
+  typesEle.innerHTML = getTypesHTML(types, true);
 
   const teraTypeEle = div.querySelector('.tera-type');
   killAllChildren(teraTypeEle);
   const teraType = getTeraTypeOfPokemon(pokemonStr);
   if (teraType != null)
-    teraTypeEle.innerHTML = getTypesHTML([teraType], true);
+    teraTypeEle.innerHTML = getTypesHTML([teraType], false);
   
   const statsEle = div.querySelector('.stats');
   statsEle.innerHTML = statsInHTML(getStatRelevantInfo(pokemonStr), true);
