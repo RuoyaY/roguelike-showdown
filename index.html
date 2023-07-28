@@ -310,7 +310,7 @@ button:focus {
     <label for="endless" class="hasHoverText" title="Keeps the final round at least 1 round away, so you never reach it.">Endless</label>
     <br>
     <input type="checkbox" id="bossBattle">
-    <label for="bossBattle" class="hasHoverText" title="Your 1st Pokemon gets higher leveled as your foe gets more Pokemon. Your other Pokemon are Lv1.">Boss</label>
+    <label for="bossBattle" class="hasHoverText" title="Your 1st Pokemon gets free level-ups and move slots every round. Your other Pokemon are Lv1.">Boss</label>
     <input type="checkbox" id="vsBossBattle">
     <label for="vsBossBattle" class="hasHoverText" title="Check this box if you're against a Boss (certain items won't appear).">Vs Boss</label>
     <span id="bossLevelUps" class="attr"></span>
@@ -2582,13 +2582,19 @@ function nextRound() {
   document.getElementById('vsBossBattle').disabled = true;
 
   // handle boss level ups
-  if (bossLevelUps != null && bossLevelUps.length > 0) {
-    const levelDelta = bossLevelUps.shift();
-    updateBossLevelUps();
-
+  if (bossLevelUps != null) {
     const pokeDiv = getPartyPokeDivs()[0];
     const pokeEle = pokeDiv.querySelector('.pokemon');
-    pokeEle.innerText = leveledUp(pokeEle.innerText.trim(), levelDelta);
+
+    let pokemonStr = pokeEle.innerText.trim();
+    if (bossLevelUps.length > 0) {
+      const levelDelta = bossLevelUps.shift();
+      updateBossLevelUps();
+      pokemonStr = leveledUp(pokemonStr, levelDelta);
+    }
+    pokemonStr += '\n-';
+
+    pokeEle.innerText = pokemonStr;
     updatePartyPokemonDiv(pokeDiv);
   }
 
