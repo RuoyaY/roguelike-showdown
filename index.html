@@ -3015,10 +3015,10 @@ function getItemPrice(item) {
 // for handling item prices of the form an, an+b, or an-b
 function resolveANplusB(str, nStr, nNum) {
   const splitByN = str.split(nStr);
-  let a = parseInt(splitByN[0]);
+  let a = parseFloat(splitByN[0]);
   if (isNaN(a))
     a = 1;
-  let b = parseInt(splitByN[1]);
+  let b = parseFloat(splitByN[1]);
   if (isNaN(b))
     b = 0;
   return a * nNum + b;
