@@ -2903,12 +2903,7 @@ function randomNonheldItem() {
   let item;
   do {
     item = randomElement(items);
-  } while (!(isLegalItem(item) 
-            && item.type !== 'heldItem'
-            && !(numOfKeyItem(KEY_ITEMS.NO_TM) > 0 && item.type.includes('TM'))
-            && !(numOfKeyItem(KEY_ITEMS.NO_ABILITIZER) > 0 && item.type.includes('bilitizer') && item.type !== 'nextAbilitizer')
-            && !(numOfKeyItem(KEY_ITEMS.NO_EGG) > 0 && item.type === 'egg')
-          ));
+  } while (!(isLegalItem(item) && item.type !== 'heldItem'));
   return item;
 }
 function randomHeldItem(mustBeBerry) {
