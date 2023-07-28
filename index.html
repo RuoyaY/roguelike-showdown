@@ -3170,9 +3170,18 @@ const MAX_TRANSFORMER_STAT_DIFF = 100;
 function randomTransformer() {
   const partyIndex = getTmSeekerIndex();
   const pokemonStr = getPartyStrs()[partyIndex];
+
+  let statMultiplier = 1; // how much stats will multiply by, by the end
+  if (isBoss() && partyIndex === 0) {
+    // note this doesn't account for Atk/SpA multiplying faster, not starting w/ 4 Pokemon, or 
+    // the fact that early battles don't have all the level-ups yet 
+    let levelUpsLeft = bossLevelUps.length;
+    statMultiplier = Math.pow(4, 1/4) / Math.pow(4-levelUpsLeft, 1/4);
+  }
   const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
   
-  newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, MIN_TRANSFORMER_STAT_DIFF, MAX_TRANSFORMER_STAT_DIFF);
+  newSpeciesInfo = randomTransformedSpeciesForPokemon(pokemonStr, 
+          MIN_TRANSFORMER_STAT_DIFF / statMultiplier, MAX_TRANSFORMER_STAT_DIFF / statMultiplier);
   if (newSpeciesInfo === null) {
     console.error("Couldn't find a valid transformer for " + apparentPrevSpeciesName);
     return randomTM();
@@ -3181,7 +3190,7 @@ function randomTransformer() {
   return {
     name: apparentPrevSpeciesName + ' → ' + newSpeciesInfo.speciesName,
     type: 'transformer',
-    price: 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff),
+    price: 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff * statMultiplier),
     desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(newSpeciesInfo.speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
             + '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true) + '</div>'
