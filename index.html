@@ -3001,18 +3001,21 @@ function getItemPrice(item) {
   let price = item.price;
   if (typeof price !== 'string')
     return price;
-  if (price.includes('n')) // number of party members
-    return roundToNearest5(resolveANplusB(price, 'n', getPartyStrs().length), true);
-  else if (price.includes('m')) // how many more Pokemon will be added
-  {
+  if (price.includes('n')) { // number of party members
+    let n = getPartyStrs().length;
+    if (isBoss())
+      n = 1 + (n-1)/2;  // halve n for Lv1 allies
+    return roundToNearest5(resolveANplusB(price, 'n', n), true);
+  } else if (price.includes('m')) { // how many more Pokemon will be added
     const numEmptySlots = getPartyPokeDivs().length  - getPartyStrs().length;
     const numRoundsLeft = getNumRounds() - roundCounter;
     let expectedNumAddedPoke = Math.min(numEmptySlots, numRoundsLeft);
     if (numEmptySlots === 0 && numRoundsLeft > 0)
       expectedNumAddedPoke = 0.5;
+    if (isBoss())
+      expectedNumAddedPoke *= 0.5; // halve m for Lv1 allies
     return roundToNearest5(resolveANplusB(price, 'm', expectedNumAddedPoke), true);
-  } 
-  else if (price.includes('r')) // number of rounds left
+  } else if (price.includes('r')) // number of rounds left
     return roundToNearest5(resolveANplusB(price, 'r', getNumRounds() - roundCounter), true);
   else if (price.includes('/b')) // 1 / (number of battles left)
     return roundToNearest5(resolveANplusB(price, '/b', 1 / (getNumRounds() - roundCounter + 1)), true);
