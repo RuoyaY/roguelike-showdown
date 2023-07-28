@@ -22,6 +22,7 @@ p {
   border-color: inherit;
   border-radius: 6px;
   border-top-right-radius: 0;
+  border-top-left-radius: 0;
   padding: 6px;
   margin: 0px;
   white-space: pre-wrap;
@@ -34,8 +35,7 @@ p {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   white-space: pre;
-  padding-top: .7rem;
-  padding-bottom: .7rem;
+  padding-top: 16px;
   min-height: 10rem;
 }
 .tera-choice, .move-choice, .pokemon {
@@ -126,6 +126,9 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 .types > img {
   margin-right: 1px;
 }
+.tera-type > img {
+  margin-left: 1px;
+}
 
 .matchups {
   background-color: rgba(0,0,0,.8);
@@ -139,9 +142,12 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 }
 .position-left {
   left: 0;
+  right: unset;
+}
+.ml-body {
   margin-left: 8px;
 }
-.types:hover .matchups {
+.types:hover > .matchups, .tera-type:hover > .matchups {
   visibility: visible;
   /* opacity: 1; */
 }
@@ -1292,6 +1298,10 @@ function fillPokemonDiv(div, editable, noMoveHeight) {
   typesEle.classList.add('overlay', 'types');
   div.append(typesEle);
 
+  const teraTypeEle = document.createElement('div');
+  teraTypeEle.classList.add('overlay', 'position-left', 'tera-type');
+  div.append(teraTypeEle);
+
   const statsEle = document.createElement('p');
   statsEle.classList.add('info-box', 'stats');
   div.append(statsEle);
@@ -1356,11 +1366,17 @@ function updatePokemonDiv(div) {
   killAllChildren(typesEle);
   const types = allSpecies[getSpeciesId(speciesName)].types;
   typesEle.innerHTML = getTypesHTML(types, false);
+
+  const teraTypeEle = div.querySelector('.tera-type');
+  killAllChildren(teraTypeEle);
+  const teraType = getTeraTypeOfPokemon(pokemonStr);
+  if (teraType != null)
+    teraTypeEle.innerHTML = getTypesHTML([teraType], true);
   
   const statsEle = div.querySelector('.stats');
   statsEle.innerHTML = statsInHTML(getStatRelevantInfo(pokemonStr), true);
 }
-function getTypesHTML(types, positionLeft) {
+function getTypesHTML(types, positionLeft, mlBody) {
   let typesHTML = '';
   for (const type of types)
     typesHTML += getTypeImageHTML(type, false);
@@ -1376,7 +1392,7 @@ function getTypesHTML(types, positionLeft) {
     if (matchupNum === 2)
       matchupInnerHTML += '<hr>';
   }
-  typesHTML += '<div class="info-box matchups' + (positionLeft ? ' position-left' : '') + '">' 
+  typesHTML += '<div class="info-box matchups' + (positionLeft ? ' position-left' : '') + (mlBody ? ' ml-body' : '') + '">' 
             + matchupInnerHTML + '</div>';
 
   return typesHTML;
@@ -2238,6 +2254,7 @@ function chooseTera(choicesDiv, pokeDiv, type) {
   const pokeEle = pokeDiv.querySelector('.pokemon');
   const pokemonStr = pokeEle.innerText.replace('Tera Type:', 'Tera Type: ' + type);
   pokeEle.innerHTML = pokemonInHTML(pokemonStr);
+  updatePokemonDiv(pokeDiv);
 
   killAllChildren(choicesDiv);
 
@@ -2708,6 +2725,14 @@ function leveledUp(pokemonStr, levelDelta) {
 function getLevelOfPokemon(pokemonStr) {
   const lvStr = pokemonStr.split('\n').find(line => line.startsWith('Level: '));
   return lvStr ? parseInt(lvStr.substring('Level: '.length)) : 100;
+}
+
+function getTeraTypeOfPokemon(pokemonStr) {
+  const line = pokemonStr.split('\n').find(line => line.startsWith('Tera Type: '));
+  if (line == null)
+    return null;
+  const type = line.substring('Tera Type: '.length);
+  return TYPES.includes(type) ? type : null;
 }
 
 function pokemonHasMove(pokemonStr, moveName) {
@@ -3191,7 +3216,7 @@ function randomTransformer() {
     price: 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff * statMultiplier),
     desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(newSpeciesInfo.speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
-            + '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true) + '</div>'
+            + '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true, true) + '</div>'
             + spanWithClass(statsInHTML(newSpeciesInfo.statInfo, false), 'attr'),
   }
 }
