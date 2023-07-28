@@ -2252,7 +2252,8 @@ function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
 }
 function chooseTera(choicesDiv, pokeDiv, type) {
   const pokeEle = pokeDiv.querySelector('.pokemon');
-  const pokemonStr = pokeEle.innerText.replace('Tera Type:', 'Tera Type: ' + type);
+  let pokemonStr = pokeEle.innerText;
+  pokemonStr = pokemonStr.replace(getTeraTypeLineOfPokemon(pokemonStr), 'Tera Type: ' + type);
   pokeEle.innerHTML = pokemonInHTML(pokemonStr);
   updatePokemonDiv(pokeDiv);
 
@@ -2728,11 +2729,14 @@ function getLevelOfPokemon(pokemonStr) {
 }
 
 function getTeraTypeOfPokemon(pokemonStr) {
-  const line = pokemonStr.split('\n').find(line => line.startsWith('Tera Type: '));
+  const line = getTeraTypeLineOfPokemon(pokemonStr);
   if (line == null)
     return null;
   const type = line.substring('Tera Type: '.length);
   return TYPES.includes(type) ? type : null;
+}
+function getTeraTypeLineOfPokemon(pokemonStr) {
+  return pokemonStr.split('\n').find(line => line.startsWith('Tera Type: '));
 }
 
 function pokemonHasMove(pokemonStr, moveName) {
