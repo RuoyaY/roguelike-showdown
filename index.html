@@ -3327,7 +3327,7 @@ function randomTM() {
     return {
       name: 'Party TM #' + move.num,
       type: 'partyTM',
-      price: (tmPrice(move)/2 - 5) + 'n+' + (tmPrice(move)/2 + 15),
+      price: (tmPrice(move)/2 - 3) + 'n+' + (tmPrice(move)/2 + 3 + 10),
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
   } else if ((randy -= .10) < 0) {
