@@ -3314,16 +3314,20 @@ function randomTM() {
 
   if ((randy -= .35) < 0) {
     // Universal TM
-    return randomUniversalTM();
+    const move = randomMove(true);
+    return {
+      name: 'Universal TM #' + move.num,
+      type: 'universalTM',
+      price: tmPrice(move) + 10,
+      desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
+    };
   } else if ((randy -= .05) < 0) {
-    if (getPartyStrs().length === 1)
-      return randomUniversalTM();
     // Party TM
     const move = randomMove(true);
     return {
       name: 'Party TM #' + move.num,
       type: 'partyTM',
-      price: tmPrice(move)/2 + 'n+10',
+      price: (tmPrice(move)/2 - 5) + 'n+' + (tmPrice(move)/2 + 15),
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
   } else if ((randy -= .10) < 0) {
@@ -3404,15 +3408,6 @@ function randomTM() {
     return speciesTM(speciesName, move, isImpossibleTM);
   }
 }
-function randomUniversalTM() {
-  const move = randomMove(true);
-  return {
-    name: 'Universal TM #' + move.num,
-    type: 'universalTM',
-    price: 10 + tmPrice(move),
-    desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
-  };
-}
 function speciesTM(speciesName, move, isImpossibleTM) {
   return {
     name: (isImpossibleTM ? 'Impossible ' : '') + speciesName + ' TM #' + move.num,
@@ -3421,7 +3416,7 @@ function speciesTM(speciesName, move, isImpossibleTM) {
     desc: tmDesc('Teach ' + speciesName + ' the move ', move),
   };
 }
-function tmPrice(move) { // expected to be a multiple of 10, for Party TM prices
+function tmPrice(move) {
   if (move.name === 'Clangorous Soulblaze')
     return 150;
   else if (move.isZ || move.name === 'Zippy Zap')
