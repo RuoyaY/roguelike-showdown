@@ -1227,8 +1227,8 @@ function makeNumsUnique(objs) {
 
 function addTRsToImprovedItems() {
   for (const tr of getTRs()) 
-    IMPROVED_ITEMS[tr.name] = 'During battle, holder automatically gets ' + tr.moveName 
-            + ' in a NEW move slot.\n\n'
+    IMPROVED_ITEMS[tr.name] = 'During battle, all your OTHER Pokemon get ' + tr.moveName 
+            + ' in a new move slot.\n\n'
             + moveDesc(moves[getMoveId(tr.moveName)], true);
 }
 
@@ -2436,23 +2436,27 @@ function getPartyPokeDivs() {
 }
 
 function copyParty() {
-  let str = getPartyStrs().map(pokemonStr => editOnCopy(pokemonStr)).join('\n\n');
+  const partyStrs = getPartyStrs();
 
   // handle MAGIKARP key item
-  for (let i = 0; i < numOfKeyItem(KEY_ITEMS.MAGIKARP); i++) {
-    str += '\n\n' + randomLv1Magikarp();
+  for (let i = 0; i < numOfKeyItem(KEY_ITEMS.MAGIKARP); i++)
+    partyStrs.push(randomLv1Magikarp().slice(0, -1 * '\n- \n- \n- '.length));
+
+  // handle TRs
+  for (let i = 0; i < partyStrs.length; i++) {
+    const heldItem = getHeldItemOfPokemon(partyStrs[i]);
+    if (isTR(heldItem)) {
+      for (let j = 0; j < partyStrs.length; j++) {
+        if (i !== j)
+          partyStrs[j] += '\n- ' + getTRMoveName(heldItem);
+      }
+    }
   }
 
-  copyStr(str);
+  copyStr(partyStrs.join('\n\n'));
 }
 function copyStr(str) {
   navigator.clipboard.writeText(str);
-}
-function editOnCopy(pokemonStr) {
-  const heldItem = getHeldItemOfPokemon(pokemonStr);
-  if (isTR(heldItem))
-    pokemonStr += '\n- ' + getTRMoveName(heldItem);
-  return pokemonStr;
 }
 
 function randomLv1Magikarp() {
