@@ -42,7 +42,7 @@ p {
   width: 31ch;
 }
 .tera-choice {
-  height: calc(1.5rem + 60px);
+  height: 65px;
 }
 .key-items {
   white-space: pre;
@@ -195,6 +195,13 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 
 .text-center {
   text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .keep-newlines {
@@ -2236,8 +2243,11 @@ function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
   teraChoiceDiv.classList.add('flex-col');
 
   const teraChoiceEle = document.createElement('p');
-  teraChoiceEle.classList.add('info-box', 'text-center', 'tera-choice');
-  teraChoiceEle.innerHTML = spanWithClass(spanWithType(type, type), 'big-text') + '\n';
+  teraChoiceEle.classList.add('info-box', 'tera-choice', 'flex-center');
+  const teraChoiceMatchups = document.createElement('div');
+  teraChoiceMatchups.classList.add('overlay', 'tera-type');
+  teraChoiceMatchups.innerHTML = getTypesHTML([type], false);
+  teraChoiceEle.append(teraChoiceMatchups);
   const teraChoiceImg = document.createElement('img');
   teraChoiceImg.src = 'https://play.pokemonshowdown.com/sprites/types/Tera' + type + '.png';
   teraChoiceEle.append(teraChoiceImg);
