@@ -2745,7 +2745,7 @@ function getTeraTypeOfPokemon(pokemonStr) {
   const line = getTeraTypeLineOfPokemon(pokemonStr);
   if (line == null)
     return null;
-  const type = line.substring('Tera Type: '.length);
+  const type = line.substring('Tera Type: '.length).trimEnd();
   return TYPES.includes(type) ? type : null;
 }
 function getTeraTypeLineOfPokemon(pokemonStr) {
