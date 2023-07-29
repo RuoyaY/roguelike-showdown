@@ -185,6 +185,7 @@ Random Gem	misc	5											Generate a random type, then set a Pokemon's held it
 Wrong Gem	misc	5											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
 (Almost) Perfect Item	misc	45											Set a Pokemon's held item to anything other than an Eviolite or a Z-Crystal.			
 Mirror Item	misc	25					2						Copy a Pokemon's held item to another Pokemon. Can't copy Eviolite.			
+Mirror Party Item	misc	20n+5					2						Copy a Pokemon's held item to ALL other Pokemon.			
 Shadow Item	misc	20								x			Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last battle. Exception: Z-Crystals.			
 Reflect Item	beforeBattle	20											Before battle: Set your [mth] Pokemon's held item to a copy of your opponent's [nth] Pokemon's held item. Can't copy Z-Crystals.			
 (Almost) Perfect Twin Items	beforeBattle	30											Before battle: Both players MAY give their [nth] Pokemon a [_____] (can't choose Eviolite or a Z-Crystal).			
@@ -375,9 +376,10 @@ Chill Drive	heldItem	0				Techno Blast
 Douse Drive	heldItem	0				Techno Blast										
 Shock Drive	heldItem	0				Techno Blast										
 True Mirror	misc	50	0										The next thing you buy, you get twice.			
-Wonder Guard-ifier	misc	15											Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1.			
+Wonder Guard-ifier	misc	15									x		Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Plus & Minus Abilitizers	abilitizer	100					2						Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-(Almost) Perfect Abilitizer	abilitizer	70											Set a Pokemon's ability to any ability other than Fur Coat, Huge Power/Pure Power, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+(Almost) Perfect Abilitizer	abilitizer	70											Set a Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+(Almost) Perfect Party Abilitizer	partyAbilitizer	50n+20											Set EVERY Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Perfect Twin Abilitizers	beforeAbilitizer	50											Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Mirror Abilitizer	abilitizer	30					2						Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Shadow Abilitizer	abilitizer	25								x			Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last battle.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
@@ -411,7 +413,7 @@ Toxic Orb	heldItem	-20
 Flame Orb	heldItem	-20														
 Lagging Tail	heldItem	-20														
 Iron Ball	heldItem	-20														
-Time Machine	misc	120						x					Press the "start round" button (with no checkboxes checked). Increase the total number of rounds by one.			
+Time Machine	misc	125						x					Press the "start round" button (with no checkboxes checked). Increase the total number of rounds by one.			
 Stop Shopping	misc	-20									x		You may not buy, earn, or refresh until next round.			
 Ability Shield	heldItem	5														
 Adrenaline Orb	heldItem	1														
@@ -483,7 +485,7 @@ Shed Shell	heldItem	1
 Shell Bell	heldItem	25														
 Sticky Barb	heldItem	0														
 Throat Spray	heldItem	35				Boomburst,Bug Buzz,Chatter,Clanging Scales,Clangorous Soul,Clangorous Soulblaze,Confide,Disarming Voice,Echoed Voice,Eerie Spell,Grass Whistle,Growl,Heal Bell,Howl,Hyper Voice,Metal Sound,Noble Roar,Overdrive,Parting Shot,Perish Song,Relic Song,Roar,Round,Screech,Sing,Snarl,Snore,Sparkling Aria,Supersonic,Torch Song,Uproar										
-Utility Umbrella	heldItem	1														
+Utility Umbrella	heldItem	5														
 Weakness Policy	heldItem	30														
 Wide Lens	heldItem	10														
 Zoom Lens	heldItem	10														
@@ -589,6 +591,7 @@ Magikarpifier	nextBattle	150/b					3					x	Next battle only: Your opponent's [nt
 Knock Out	nextBattle	240/b					3					x	Next battle only: Remove your opponent's [nth] Pokemon.			
 Self K.O.	nextBattle	-240/b+5					3						Next battle only: Remove your [nth] Pokemon. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Sacrifice	misc	-240/b-50						x			x		Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv1. </span>			
+New Slot	misc	-240/b+240						x			x		Gain a new Pokemon slot.			
 Twin K.O.	nextBattle	25/b					2					x	Next battle only: Remove both players' [nth] Pokemon.			
 HP Surge	nextBattle	35/b											Next battle only: Set your [nth] Pokemon's HP EV to 252 (max 508 total EVs).			
 Attack Surge	nextBattle	35/b											Next battle only: Set your [nth] Pokemon's Atk EV to 252 (max 508 total EVs).			
@@ -924,7 +927,7 @@ Shopping Cart	keyItem	2r+2											Can now buy the same thing multiple times (
 Combee Hive	keyItem	3.75m									x		Every round, +1 species option for your new Pokemon.			
 Trubbish Bin	keyItem	-7.5m									x		Every round, -1 species option for your new Pokemon (can't go below 1).			
 Black Flute	keyItem	15m									x		The new Pokemon you get every round is 1 level higher than normal.			
-White Flute	keyItem	-15m									x		The new Pokemon you get every round is 1 level lower than normal.			
+White Flute	keyItem	-15m									x		The new Pokemon you get every round is 1 level lower than normal (can't go below 1).			
 TM Charm	keyItem	3.5r+3.5											+1 TM slot in the shop.			
 Abilitizer Charm	keyItem	3r+3											+1 Abilitizer slot in the shop.			
 Double Helix Charm	keyItem	4r+4											+1 Species Changer slot in the shop.			
@@ -1015,11 +1018,11 @@ Dark Magnet	keyItem	5m-5									x		Each round, you are guaranteed to get Dark-t
 Dragon Magnet	keyItem	0m-5									x		Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Steel Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Fairy Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-TM Ban	keyItem	-60m											TMs stop appearing in the shop, unless forced.			
-Abilitizer Ban	keyItem	0											Abilitizers stop appearing in the shop, unless forced.			
+TM Ban	keyItem	-30m											Generic TMs stop appearing in the shop, unless forced.			
+Abilitizer Ban	keyItem	0											Generic Abilitizers stop appearing in the shop, unless forced.			
 Species Changer Ban	keyItem	0											Species Changers stop appearing in the shop, unless forced.			
-Egg Ban	keyItem	0											Eggs stop appearing in the shop, unless forced.			
-Held Item Ban	keyItem	0											Held Items stop appearing in the shop, unless forced.			
+Egg Ban	keyItem	0											Generic Eggs stop appearing in the shop, unless forced.			
+Held Item Ban	keyItem	0											Generic Held Items stop appearing in the shop, unless forced.			
 Perfect Twin Normal TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Normal-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Fire TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Fire-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Water TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Water-type move [_____] (can't choose Z-Moves).			

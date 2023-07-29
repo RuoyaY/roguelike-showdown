@@ -31,11 +31,10 @@ x		Tera on turn 1, and win
 x		Tera on turn 9
 x		land a critical hit
 x		heal back to full
-x		win w/ 1 Pokemon left
 x		lead w/ 2 Pokemon sharing a type
 x		win without Tera
 x		switch 2 Pokemon out turn 1, and win
-x		heal a non-volatile status effect (not by turn count)
+x		cure a non-volatile status effect
 x		run out of PP on a move
 x		a Pokemon uses all its moves in 1 battle (not Lv1)
 		2 Pokemon w/ same level
@@ -70,7 +69,12 @@ x		fall asleep
 x		get frozen
 x		get confused
 x		set an entry hazard
-x		a field effect on your side (Reflect, entry hazards, etc)
+x		have a screen (eg Reflect)
+x		a field effect on your side (eg Reflect, Tailwind)
+x	0	a field effect on foe's side (eg Reflect, Tailwind)
+x		win w/ a field effect on your side (eg Reflect, Tailwind)
+x		set a global field effect that isn't Weather/Terrain (eg Gravity)
+x		win w/ a global field effect (eg Gravity)
 x		make it sunny/Desolate Land
 x		make rain/Primordial Sea
 x		make a sandstorm
@@ -83,6 +87,14 @@ x	0	remove/nullify weather
 x	0	remove terrain
 x		change or remove/nullify the active weather
 x		change or remove the active terrain
+x		win in sun/Desolate Land
+x		win in rain/Primordial Sea
+x		win in a sandstorm
+x		win in snow/hail
+x		win on Grassy Terrain
+x		win on Electric Terrain
+x		win on Psychic Terrain
+x		win on Misty Terrain
 		Pokemon w/ only status moves
 		Pokemon w/ only physical moves
 		Pokemon w/ only special moves
@@ -134,12 +146,13 @@ x	0	foe's forme changed
 x		KO foe via status effect
 		have >4 moves
 		have <4 moves (not Lv1)
-x		a Pokemon uses >4 unique moves in 1 battle
+x		a Pokemon uses 8+ unique moves over all battles
 x		successfully use a move w/ 10-40 BP
 x		successfully use a move w/ >100 BP
 x		successfully use a move that costs 50% max HP
-x		lose your held item (not berry/gem)
-x		foe loses held item (not berry/gem)
+x		lose your held item without using its effect
+x		foe loses held item without using its effect
+x		lose your item by using its effect. not berry, gem, or air balloon.
 		have 6+ Pokemon
 x		Tera into Grass
 x		Tera into Ice
@@ -150,7 +163,8 @@ x		Tera into Rock
 x		use a Z-move
 x		activate Quark Drive or Protosynthesis
 x		win w/ 1+ Pokemon at full HP (not Lv1)
-x		4+ Next Battle Only items at once
+		4+ Next Battle Only items at once
+		4+ Before Battle items at once
 x		block/avoid 2 moves w/ 1 Pokemon's turn
 x		force switch-out (eg Whirlwind)
 x		a foe misses
@@ -293,7 +307,10 @@ x		get past or destroy a protection, screen, or Substitute
 x		use a G-Max move
 x		foe has option to Struggle
 x		use a Ground move on a Flying type
-x		win without getting KO'd
+x		win w/ 1 Pokemon left
+x		win with no KO'd Pokemon
+x		win with 3+ Pokemon KO'd
+x		win with 4+ Pokemon alive
 		a Pokemon uses a Physical, Special, and Status move in 1 battle
 x		be weak to a Fire move
 x		be weak to a Water move
@@ -343,3 +360,40 @@ x		lose your held item on entry (before move selection)
 x		trigger an effect due to foe contacting you
 x		use a move that causes the user to feint
 x		gain status effect from held item (confusion counts)
+x		use a move that's useless in Single Battles
+x		have a move fail
+x		your item is revealed
+x		foe's item is revealed
+x		your ability is revealed
+x		foe's ability is revealed
+x		one-hit KO, not with an OHKO move
+x		wake up from sleep (not cured)
+		Tera Type where ALL weaknesses become resists (or immunities)
+x		get x2 or better STAB
+		every slot w/ impossible ability
+x		make something last more turns than usual
+		2+ Pokemon w/ Tera matching an original type
+		buy something for $100 or more
+x		1 Pokemon knows 2 copies of a move
+x		KO a Normal-type
+x		KO a Fire-type
+x		KO a Water-type
+x		KO a Grass-type
+x		KO a Electric-type
+x		KO a Ice-type
+x		KO a Fighting-type
+x		KO a Poison-type
+x		KO a Ground-type
+x		KO a Flying-type
+x		KO a Psychic-type
+x		KO a Bug-type
+x		KO a Rock-type
+x		KO a Ghost-type
+x		KO a Dark-type
+x		KO a Dragon-type
+x		KO a Steel-type
+x		KO a Fairy-type
+x		every living ally has a non-volatile status
+x		every living foe has a non-volatile status
+x		both allies restore HP in 1 turn
+x		use a self-KO move
