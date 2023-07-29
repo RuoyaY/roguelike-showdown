@@ -691,108 +691,108 @@ Dawn Stone	heldItem	0									x		Every round, automatically sets EVERY move slot
 Dusk Stone	heldItem	0									x		Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).			
 Dubious Disc	heldItem	-20r-10											permanently can't be changed/replaced			
 Up-Grade	heldItem	5r									x		Every round, changes to a random species w/ higher stats			
-TR00	heldItem	25	0.2										adds the move Swords Dance			
-TR01	heldItem	25	0.2										adds the move Body Slam			
-TR02	heldItem	25	0.2										adds the move Flamethrower			
-TR03	heldItem	25	0.2										adds the move Hydro Pump			
-TR04	heldItem	25	0.2										adds the move Surf			
-TR05	heldItem	25	0.2										adds the move Ice Beam			
-TR06	heldItem	25	0.2										adds the move Blizzard			
-TR07	heldItem	25	0.2										adds the move Low Kick			
-TR08	heldItem	25	0.2										adds the move Thunderbolt			
-TR09	heldItem	25	0.2										adds the move Thunder			
-TR10	heldItem	25	0.2										adds the move Earthquake			
-TR11	heldItem	25	0.2										adds the move Psychic			
-TR12	heldItem	25	0.2										adds the move Agility			
-TR13	heldItem	15	0.2										adds the move Focus Energy			
-TR14	heldItem	15	0.2										adds the move Metronome			
-TR15	heldItem	25	0.2										adds the move Fire Blast			
-TR16	heldItem	25	0.2										adds the move Waterfall			
-TR17	heldItem	25	0.2										adds the move Amnesia			
-TR18	heldItem	25	0.2										adds the move Leech Life			
-TR19	heldItem	25	0.2										adds the move Tri Attack			
-TR20	heldItem	25	0.2										adds the move Substitute			
-TR21	heldItem	25	0.2										adds the move Reversal			
-TR22	heldItem	25	0.2										adds the move Sludge Bomb			
-TR23	heldItem	15	0.2										adds the move Spikes			
-TR24	heldItem	25	0.2										adds the move Outrage			
-TR25	heldItem	25	0.2										adds the move Psyshock			
-TR26	heldItem	15	0.2										adds the move Endure			
-TR27	heldItem	25	0.2										adds the move Sleep Talk			
-TR28	heldItem	25	0.2										adds the move Megahorn			
-TR29	heldItem	25	0.2										adds the move Baton Pass			
-TR30	heldItem	25	0.2										adds the move Encore			
-TR31	heldItem	25	0.2										adds the move Iron Tail			
-TR32	heldItem	25	0.2										adds the move Crunch			
-TR33	heldItem	25	0.2										adds the move Shadow Ball			
-TR34	heldItem	25	0.2										adds the move Future Sight			
-TR35	heldItem	25	0.2										adds the move Uproar			
-TR36	heldItem	25	0.2										adds the move Heat Wave			
-TR37	heldItem	25	0.2										adds the move Taunt			
-TR38	heldItem	15	0.2										adds the move Trick			
-TR39	heldItem	25	0.2										adds the move Superpower			
-TR40	heldItem	15	0.2										adds the move Skill Swap			
-TR41	heldItem	25	0.2										adds the move Blaze Kick			
-TR42	heldItem	25	0.2										adds the move Hyper Voice			
-TR43	heldItem	25	0.2										adds the move Overheat			
-TR44	heldItem	25	0.2										adds the move Cosmic Power			
-TR45	heldItem	25	0.2										adds the move Muddy Water			
-TR46	heldItem	25	0.2										adds the move Iron Defense			
-TR47	heldItem	25	0.2										adds the move Dragon Claw			
-TR48	heldItem	25	0.2										adds the move Bulk Up			
-TR49	heldItem	25	0.2										adds the move Calm Mind			
-TR50	heldItem	25	0.2										adds the move Leaf Blade			
-TR51	heldItem	25	0.2										adds the move Dragon Dance			
-TR52	heldItem	25	0.2										adds the move Gyro Ball			
-TR53	heldItem	25	0.2										adds the move Close Combat			
-TR54	heldItem	15	0.2										adds the move Toxic Spikes			
-TR55	heldItem	25	0.2										adds the move Flare Blitz			
-TR56	heldItem	25	0.2										adds the move Aura Sphere			
-TR57	heldItem	25	0.2										adds the move Poison Jab			
-TR58	heldItem	25	0.2										adds the move Dark Pulse			
-TR59	heldItem	25	0.2										adds the move Seed Bomb			
-TR60	heldItem	25	0.2										adds the move X-Scissor			
-TR61	heldItem	25	0.2										adds the move Bug Buzz			
-TR62	heldItem	25	0.2										adds the move Dragon Pulse			
-TR63	heldItem	25	0.2										adds the move Power Gem			
-TR64	heldItem	25	0.2										adds the move Focus Blast			
-TR65	heldItem	25	0.2										adds the move Energy Ball			
-TR66	heldItem	25	0.2										adds the move Brave Bird			
-TR67	heldItem	25	0.2										adds the move Earth Power			
-TR68	heldItem	25	0.2										adds the move Nasty Plot			
-TR69	heldItem	25	0.2										adds the move Zen Headbutt			
-TR70	heldItem	25	0.2										adds the move Flash Cannon			
-TR71	heldItem	25	0.2										adds the move Leaf Storm			
-TR72	heldItem	25	0.2										adds the move Power Whip			
-TR73	heldItem	25	0.2										adds the move Gunk Shot			
-TR74	heldItem	25	0.2										adds the move Iron Head			
-TR75	heldItem	25	0.2										adds the move Stone Edge			
-TR76	heldItem	15	0.2										adds the move Stealth Rock			
-TR77	heldItem	25	0.2										adds the move Grass Knot			
-TR78	heldItem	25	0.2										adds the move Sludge Wave			
-TR79	heldItem	25	0.2										adds the move Heavy Slam			
-TR80	heldItem	25	0.2										adds the move Electro Ball			
-TR81	heldItem	25	0.2										adds the move Foul Play			
-TR82	heldItem	25	0.2										adds the move Stored Power			
-TR83	heldItem	25	0.2										adds the move Ally Switch			
-TR84	heldItem	25	0.2										adds the move Scald			
-TR85	heldItem	15	0.2										adds the move Work Up			
-TR86	heldItem	25	0.2										adds the move Wild Charge			
-TR87	heldItem	25	0.2										adds the move Drill Run			
-TR88	heldItem	25	0.2										adds the move Heat Crash			
-TR89	heldItem	25	0.2										adds the move Hurricane			
-TR90	heldItem	25	0.2										adds the move Play Rough			
-TR91	heldItem	25	0.2										adds the move Venom Drench			
-TR92	heldItem	25	0.2										adds the move Dazzling Gleam			
-TR93	heldItem	25	0.2										adds the move Darkest Lariat			
-TR94	heldItem	25	0.2										adds the move High Horsepower			
-TR95	heldItem	25	0.2										adds the move Throat Chop			
-TR96	heldItem	25	0.2										adds the move Pollen Puff			
-TR97	heldItem	25	0.2										adds the move Psychic Fangs			
-TR98	heldItem	25	0.2										adds the move Liquidation			
-TR99	heldItem	25	0.2										adds the move Body Press			
-Perfect TR	misc	30											Set a Pokemon's held item to any TR (e.g. *TR00*).			
-Random TR	misc	15											Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
+TR00	heldItem	40	0.2										all others learn Swords Dance			
+TR01	heldItem	40	0.2										all others learn Body Slam			
+TR02	heldItem	40	0.2										all others learn Flamethrower			
+TR03	heldItem	40	0.2										all others learn Hydro Pump			
+TR04	heldItem	40	0.2										all others learn Surf			
+TR05	heldItem	40	0.2										all others learn Ice Beam			
+TR06	heldItem	40	0.2										all others learn Blizzard			
+TR07	heldItem	40	0.2										all others learn Low Kick			
+TR08	heldItem	40	0.2										all others learn Thunderbolt			
+TR09	heldItem	40	0.2										all others learn Thunder			
+TR10	heldItem	40	0.2										all others learn Earthquake			
+TR11	heldItem	40	0.2										all others learn Psychic			
+TR12	heldItem	40	0.2										all others learn Agility			
+TR13	heldItem	20	0.2										all others learn Focus Energy			
+TR14	heldItem	20	0.2										all others learn Metronome			
+TR15	heldItem	40	0.2										all others learn Fire Blast			
+TR16	heldItem	40	0.2										all others learn Waterfall			
+TR17	heldItem	40	0.2										all others learn Amnesia			
+TR18	heldItem	40	0.2										all others learn Leech Life			
+TR19	heldItem	40	0.2										all others learn Tri Attack			
+TR20	heldItem	40	0.2										all others learn Substitute			
+TR21	heldItem	40	0.2										all others learn Reversal			
+TR22	heldItem	40	0.2										all others learn Sludge Bomb			
+TR23	heldItem	20	0.2										all others learn Spikes			
+TR24	heldItem	40	0.2										all others learn Outrage			
+TR25	heldItem	40	0.2										all others learn Psyshock			
+TR26	heldItem	20	0.2										all others learn Endure			
+TR27	heldItem	40	0.2										all others learn Sleep Talk			
+TR28	heldItem	40	0.2										all others learn Megahorn			
+TR29	heldItem	40	0.2										all others learn Baton Pass			
+TR30	heldItem	40	0.2										all others learn Encore			
+TR31	heldItem	40	0.2										all others learn Iron Tail			
+TR32	heldItem	40	0.2										all others learn Crunch			
+TR33	heldItem	40	0.2										all others learn Shadow Ball			
+TR34	heldItem	40	0.2										all others learn Future Sight			
+TR35	heldItem	40	0.2										all others learn Uproar			
+TR36	heldItem	40	0.2										all others learn Heat Wave			
+TR37	heldItem	40	0.2										all others learn Taunt			
+TR38	heldItem	20	0.2										all others learn Trick			
+TR39	heldItem	40	0.2										all others learn Superpower			
+TR40	heldItem	20	0.2										all others learn Skill Swap			
+TR41	heldItem	40	0.2										all others learn Blaze Kick			
+TR42	heldItem	40	0.2										all others learn Hyper Voice			
+TR43	heldItem	40	0.2										all others learn Overheat			
+TR44	heldItem	40	0.2										all others learn Cosmic Power			
+TR45	heldItem	40	0.2										all others learn Muddy Water			
+TR46	heldItem	40	0.2										all others learn Iron Defense			
+TR47	heldItem	40	0.2										all others learn Dragon Claw			
+TR48	heldItem	40	0.2										all others learn Bulk Up			
+TR49	heldItem	40	0.2										all others learn Calm Mind			
+TR50	heldItem	40	0.2										all others learn Leaf Blade			
+TR51	heldItem	40	0.2										all others learn Dragon Dance			
+TR52	heldItem	40	0.2										all others learn Gyro Ball			
+TR53	heldItem	40	0.2										all others learn Close Combat			
+TR54	heldItem	20	0.2										all others learn Toxic Spikes			
+TR55	heldItem	40	0.2										all others learn Flare Blitz			
+TR56	heldItem	40	0.2										all others learn Aura Sphere			
+TR57	heldItem	40	0.2										all others learn Poison Jab			
+TR58	heldItem	40	0.2										all others learn Dark Pulse			
+TR59	heldItem	40	0.2										all others learn Seed Bomb			
+TR60	heldItem	40	0.2										all others learn X-Scissor			
+TR61	heldItem	40	0.2										all others learn Bug Buzz			
+TR62	heldItem	40	0.2										all others learn Dragon Pulse			
+TR63	heldItem	40	0.2										all others learn Power Gem			
+TR64	heldItem	40	0.2										all others learn Focus Blast			
+TR65	heldItem	40	0.2										all others learn Energy Ball			
+TR66	heldItem	40	0.2										all others learn Brave Bird			
+TR67	heldItem	40	0.2										all others learn Earth Power			
+TR68	heldItem	40	0.2										all others learn Nasty Plot			
+TR69	heldItem	40	0.2										all others learn Zen Headbutt			
+TR70	heldItem	40	0.2										all others learn Flash Cannon			
+TR71	heldItem	40	0.2										all others learn Leaf Storm			
+TR72	heldItem	40	0.2										all others learn Power Whip			
+TR73	heldItem	40	0.2										all others learn Gunk Shot			
+TR74	heldItem	40	0.2										all others learn Iron Head			
+TR75	heldItem	40	0.2										all others learn Stone Edge			
+TR76	heldItem	20	0.2										all others learn Stealth Rock			
+TR77	heldItem	40	0.2										all others learn Grass Knot			
+TR78	heldItem	40	0.2										all others learn Sludge Wave			
+TR79	heldItem	40	0.2										all others learn Heavy Slam			
+TR80	heldItem	40	0.2										all others learn Electro Ball			
+TR81	heldItem	40	0.2										all others learn Foul Play			
+TR82	heldItem	40	0.2										all others learn Stored Power			
+TR83	heldItem	40	0.2										all others learn Ally Switch			
+TR84	heldItem	40	0.2										all others learn Scald			
+TR85	heldItem	20	0.2										all others learn Work Up			
+TR86	heldItem	40	0.2										all others learn Wild Charge			
+TR87	heldItem	40	0.2										all others learn Drill Run			
+TR88	heldItem	40	0.2										all others learn Heat Crash			
+TR89	heldItem	40	0.2										all others learn Hurricane			
+TR90	heldItem	40	0.2										all others learn Play Rough			
+TR91	heldItem	40	0.2										all others learn Venom Drench			
+TR92	heldItem	40	0.2										all others learn Dazzling Gleam			
+TR93	heldItem	40	0.2										all others learn Darkest Lariat			
+TR94	heldItem	40	0.2										all others learn High Horsepower			
+TR95	heldItem	40	0.2										all others learn Throat Chop			
+TR96	heldItem	40	0.2										all others learn Pollen Puff			
+TR97	heldItem	40	0.2										all others learn Psychic Fangs			
+TR98	heldItem	40	0.2										all others learn Liquidation			
+TR99	heldItem	40	0.2										all others learn Body Press			
+Perfect TR	misc	50											Set a Pokemon's held item to any TR (e.g. *TR00*).			
+Random TR	misc	20											Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
 Berserk Gene	heldItem	25											confusion and +2 Atk on entry			
 Normal Candy Party	misc	20											Increase ALL Normal-type Pokemon's level by one.			
 Fire Candy Party	misc	20											Increase ALL Fire-type Pokemon's level by one.			
