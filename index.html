@@ -1352,6 +1352,12 @@ function getKeyItems() {
   return document.getElementById('keyItems').innerText.split('\n').map(line => line.trim());
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event#examples
+const beforeUnloadListener = (event) => {
+  event.preventDefault();
+  return (event.returnValue = "");
+};
+
 function updatePokemonDiv(div) {
   const pokemonEle = div.querySelector('.pokemon');
   const pokemonStr = pokemonEle.innerText;
@@ -1362,6 +1368,9 @@ function updatePokemonDiv(div) {
     div.querySelector('.stats').innerHTML = '';
     return;
   }
+
+  if (getPartyPokeDivs().includes(div))
+    addEventListener("beforeunload", beforeUnloadListener, { capture: true });
 
   pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
 
@@ -2504,6 +2513,8 @@ function save() {
   localStorage.setItem('nextBattle', document.getElementById('nextBattle').innerHTML);
 
   localStorage.setItem('keyItems', document.getElementById('keyItems').innerHTML);
+
+  removeEventListener("beforeunload", beforeUnloadListener, { capture: true });
 }
 function load() {
   if (getPartyStrs().length > 0) {
@@ -2573,6 +2584,8 @@ function load() {
   }
 
   toggleAfterFirstRoundChoices(true);
+
+  removeEventListener("beforeunload", beforeUnloadListener, { capture: true });
 }
 
 function nextRound() {
