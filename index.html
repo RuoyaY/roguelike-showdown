@@ -1365,6 +1365,7 @@ function updatePokemonDiv(div) {
   if (pokemonStr.trim() === '') {
     pokemonEle.style.backgroundImage = '';
     killAllChildren(div.querySelector('.types'));
+    killAllChildren(div.querySelector('.tera-type'));
     div.querySelector('.stats').innerHTML = '';
     return;
   }
