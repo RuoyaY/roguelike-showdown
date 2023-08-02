@@ -3488,12 +3488,13 @@ function speciesTM(speciesName, move, isImpossibleTM) {
     desc: tmDesc('Teach ' + speciesName + ' the move ', move),
   };
 }
+const SIXTH_HP_PER_TURN = ["G-Max Cannonade", "G-Max Vine Lash", "G-Max Volcalith", "G-Max Wildfire"];
 function tmPrice(move) {
   if (move.name === 'Clangorous Soulblaze')
     return 150;
-  else if (isZ(move))
+  else if (isZ(move) || SIXTH_HP_PER_TURN.includes(move.name))
     return 80;
-  else if (isLGPE(move))
+  else if (isLGPE(move) || move.name === 'G-Max Resonance')
     return 30;
   else if (move.basePower > 75)
     return 20;
