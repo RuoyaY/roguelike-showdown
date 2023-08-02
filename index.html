@@ -1385,9 +1385,11 @@ function updatePokemonDiv(div) {
 
   const teraTypeEle = div.querySelector('.tera-type');
   killAllChildren(teraTypeEle);
-  const teraType = getTeraTypeOfPokemon(pokemonStr);
-  if (teraType != null)
-    teraTypeEle.innerHTML = getTypesHTML([teraType], false);
+  if (pokemonCanTera(pokemonStr)) {
+    const teraType = getTeraTypeOfPokemon(pokemonStr);
+    if (teraType != null)
+      teraTypeEle.innerHTML = getTypesHTML([teraType], false);
+  }
   
   const statsEle = div.querySelector('.stats');
   statsEle.innerHTML = statsInHTML(getStatRelevantInfo(pokemonStr), true);
