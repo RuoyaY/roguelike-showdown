@@ -3358,9 +3358,13 @@ function abilitizerDesc(strBeforeAbilityName, ability) {
           + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning');
 }
 
-function roundToNearest5(num, canRoundToOne) {
-  if (canRoundToOne && (0+1)/2 < num && num < (0+5)/2)
-    return 1;
+function roundToNearest5(num, canRoundToOnes) {
+  if (canRoundToOnes) {
+    if ((0+1)/2 <= num && num < (0+5)/2)
+      return 1;
+    if ((0-1)/2 > num && num >= (0-5)/2)
+      return -1;
+  }
   return 5 * Math.round(num/5);
 }
 
