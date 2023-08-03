@@ -959,10 +959,12 @@ loadHeldItems();
 let items = [];
 loadItems();
 
+// global variables
 let roundCounter = 0;
 const prevSeenSpecies = new Set();
 const prevSeenItems = new Set();
 let bossLevelUps = null;
+let startingNumSlots = null;
 
 onLoad();
 
@@ -2207,7 +2209,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
 
   if (isBoss() && getPartyStrs().length === 0) {
     // calculate bossLevelUps
-    const numSlots = getPartyPokeDivs().length;
+    const numSlots = startingNumSlots;
     const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
     const abilityName = getAbilityNameOfPokemon(pokemonStr);
     bossLevelUps = [];
@@ -2611,6 +2613,9 @@ function nextRound() {
     return;
   }
   toggleNonPokemonChoices(false);
+  
+  const isPartyFull = getEmptyPartyDiv() === null;
+  document.getElementById('skip').hidden = !isPartyFull;
 
   document.getElementById('beforeBattleDiv').hidden = true;
   document.getElementById('beforeBattle').innerHTML = '';
@@ -2619,12 +2624,13 @@ function nextRound() {
 
   if (won)
     document.getElementById('winCounter').textContent += '✓ ';
-  
-  const isPartyFull = getEmptyPartyDiv() === null;
-  document.getElementById('skip').hidden = !isPartyFull;
 
-  document.getElementById('bossBattle').disabled = true;
-  document.getElementById('vsBossBattle').disabled = true;
+  if (roundCounter === 0) {
+    startingNumSlots = getPartyPokeDivs().length;
+
+    document.getElementById('bossBattle').disabled = true;
+    document.getElementById('vsBossBattle').disabled = true;
+  }
 
   // handle boss level ups
   if (bossLevelUps != null) {
@@ -3230,10 +3236,10 @@ function randomTransformer() {
 
   let statMultiplier = 1; // how much stats will multiply by, by the end
   if (isBoss() && partyIndex === 0) {
-    // note this doesn't account for Atk/SpA multiplying faster, not starting w/ 4 Pokemon, or 
+    // note this doesn't account for Atk/SpA multiplying faster, or
     // the fact that early battles don't have all the level-ups yet 
     let levelUpsLeft = bossLevelUps.length;
-    statMultiplier = Math.pow(4, 1/4) / Math.pow(4-levelUpsLeft, 1/4);
+    statMultiplier = Math.pow(startingNumSlots, 1/4) / Math.pow(startingNumSlots-levelUpsLeft, 1/4);
   }
   const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
   
