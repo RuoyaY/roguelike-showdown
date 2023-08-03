@@ -2524,6 +2524,8 @@ function save() {
 
   localStorage.setItem('keyItems', document.getElementById('keyItems').innerHTML);
 
+  localStorage.setItem('startingNumSlots', startingNumSlots);
+
   removeEventListener("beforeunload", beforeUnloadListener, { capture: true });
 }
 function load() {
@@ -2592,6 +2594,10 @@ function load() {
     document.getElementById('keyItems').innerHTML = keyItemsHTML;
     updateKeyItemsEle();
   }
+
+  const startingNumSlotsStr = localStorage.getItem('startingNumSlots');
+  if (startingNumSlotsStr != null)
+    startingNumSlots = parseInt(startingNumSlotsStr);
 
   toggleAfterFirstRoundChoices(true);
 
