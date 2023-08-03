@@ -3252,7 +3252,7 @@ function randomTransformer() {
     // note this doesn't account for Atk/SpA multiplying faster, or
     // the fact that early battles don't have all the level-ups yet 
     let levelUpsLeft = bossLevelUps.length;
-    statMultiplier = Math.pow(startingNumSlots, 1/4) / Math.pow(startingNumSlots-levelUpsLeft, 1/4);
+    statMultiplier = Math.pow(startingNumSlots, 1/4) / Math.pow(startingNumSlots - levelUpsLeft, 1/4);
   }
   const apparentPrevSpeciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
   
