@@ -1570,14 +1570,14 @@ function generateSpecificSpecies() {
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
     for (const abilityName of Object.values(allSpecies[species].abilities))
-      addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random');
+      addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random', isVsBoss());
   } else {
     const abilityName = getProperAbilityName(abilityNameInput);
     if (abilityName == null) {
       speciesErrorEle.textContent = 'ERROR: ability name not recognized';
       return;
     }
-    addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random');
+    addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random', isVsBoss());
   }
 
   speciesErrorEle.textContent = '';
@@ -1612,7 +1612,7 @@ function passesIdenticalSpeciesBias(speciesId) {
     return true;
 }
 
-function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, teraType) {  
+function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, teraType, showBossLevelUps) {  
   if (speciesName == null) {
     let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
@@ -1629,7 +1629,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   let pokeball = null;
   if (hasChooseButton)
     pokeball = getPokeball();
-  let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType, hasChooseButton, hasChooseButton);
+  let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType, hasChooseButton, hasChooseButton, showBossLevelUps);
 
   if (hasChooseButton) {
     switch (pokeball) {
@@ -1730,7 +1730,7 @@ function getImageUrlName(speciesName) {
 
 const GENDER_PLACEHOLDER = '[GENDER]';
 
-function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, canBeShiny, hasChooseButton) {
+function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, canBeShiny, hasChooseButton, showBossLevelUps) {
   const speciesId = getSpeciesId(speciesName);
   const species = allSpecies[speciesId];
 
@@ -1793,6 +1793,9 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
 
   pokemonStr += '\nLevel: ' + level;
 
+  if (showBossLevelUps)
+    pokemonStr += getBossLevelUps(species, abilityName).map(lvUp => ' +' + lvUp).join('');
+
   if (isCalculatingStats) {
     levelStats += level + ', ';
     for (let i = 0; i < STATS.length; i++) {
@@ -1825,8 +1828,8 @@ function updateBossLevelUps() {
 function isBoss() {
   return document.getElementById('bossBattle').checked;
 }
-function isBossOrVsBoss() {
-  return document.getElementById('bossBattle').checked || document.getElementById('vsBossBattle').checked;
+function isVsBoss() {
+  return document.getElementById('vsBossBattle').checked;
 }
 
 function allMoveIdsSuchThat(predicate) {
@@ -2209,16 +2212,9 @@ function choosePokemon(choicesDiv, pokemonStr) {
 
   if (isBoss() && getPartyStrs().length === 0) {
     // calculate bossLevelUps
-    const numSlots = startingNumSlots;
     const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
     const abilityName = getAbilityNameOfPokemon(pokemonStr);
-    bossLevelUps = [];
-    let prevLevel = getLevelOfPokemon(pokemonStr);
-    for (let i = 2; i <= numSlots; i++) {
-      const nextLevel = getLevelWithAbility(species, abilityName, Math.pow(i, 1/4));
-      bossLevelUps.push(nextLevel - prevLevel);
-      prevLevel = nextLevel;
-    }
+    bossLevelUps = getBossLevelUps(species, abilityName);
     updateBossLevelUps();
   }
 
@@ -2344,6 +2340,17 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
       endPokemonChoosing(pokeDiv);
     }
   }
+}
+
+function getBossLevelUps(species, abilityName) {
+  let levelUps = [];
+  let prevLevel = getLevelWithAbility(species, abilityName);
+  for (let i = 2; i <= (startingNumSlots ?? getPartyPokeDivs().length); i++) {
+    const nextLevel = getLevelWithAbility(species, abilityName, Math.pow(i, 1/4));
+    levelUps.push(nextLevel - prevLevel);
+    prevLevel = nextLevel;
+  }
+  return levelUps;
 }
 
 function endPokemonChoosing(pokeDiv) {
@@ -2508,7 +2515,7 @@ function save() {
   else
     localStorage.setItem('bossLevelUps', bossLevelUps.join(','));
 
-  localStorage.setItem('vsBossBattle', document.getElementById('vsBossBattle').checked);
+  localStorage.setItem('vsBossBattle', isVsBoss());
 
   localStorage.setItem('tmSeeker', document.getElementById('tmSeeker').value);
 
@@ -3043,7 +3050,7 @@ function isLegalItem(item, ignoreLastRoundReq) {
     return false;
   if (item.bannedIfPartyFull && partySize === getPartyPokeDivs().length)
     return false;
-  if (item.bannedIfBoss && isBossOrVsBoss())
+  if (item.bannedIfBoss && (isBoss() || vsBoss()))
     return false;
 
   if (item.bannedFirstRound && roundCounter <= 1)
