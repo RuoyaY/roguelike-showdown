@@ -658,8 +658,8 @@ const IMPROVED_ITEMS = {
   'Ability Shield': "Holder's Ability cannot be changed by any effect, including by you or your opponent OUTSIDE OF BATTLE.",
   'Up-Grade': 'Each round, automatically tries to transform into a random species with a ' 
                   + UP_GRADE_MIN_DIFF + '-' + UP_GRADE_MAX_DIFF + ' higher effective stat total.',
-  'Sun Stone': 'Each round, automatically gets a random stat-raising move in a NEW move slot.',
-  'Moon Stone': 'Each round, automatically gets a random stat-lowering move in a NEW move slot.',
+  'Sun Stone': 'Each round, automatically gets a random high-priority move in a NEW move slot.',
+  'Moon Stone': 'Each round, automatically gets a random low-priority move in a NEW move slot.',
   'Dawn Stone': 'Each round, automatically sets EVERY move slot to a random move.',
   'Dusk Stone': 'Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).',
 };
@@ -2706,9 +2706,9 @@ function updateForRoundlyHeldItem(pokemonStr) {
   }
   // Sun/Moon Stone
   if (pokemonStr.includes(' @ Sun Stone'))
-    return addRandomMoveSuchThat(pokemonStr, move => isStatRaising(move));
+    return addRandomMoveSuchThat(pokemonStr, move => move.priority != null && move.priority > 0);
   if (pokemonStr.includes(' @ Moon Stone'))
-    return addRandomMoveSuchThat(pokemonStr, move => isStatLowering(move));
+    return addRandomMoveSuchThat(pokemonStr, move => move.priority != null && move.priority < 0);
   // Dawn Stone
   if (pokemonStr.includes(' @ Dawn Stone')) {
     const pokeStrSplit = pokemonStr.split('\n-');
