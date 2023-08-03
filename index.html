@@ -1716,6 +1716,8 @@ function getImageUrlName(speciesName) {
     return 'unown-em';
   if (speciesName.endsWith('-Totem'))
     speciesName = speciesName.slice(0, -1 * '-Totem'.length);
+  if (speciesName.startsWith('Furfrou'))
+    return 'furfrou';
   const species = allSpecies[getSpeciesId(speciesName)];
   if (species.baseSpecies || species.cosmeticFormes?.includes(speciesName)) {
     let baseSpeciesName = species.baseSpecies ?? species.name;
