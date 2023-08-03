@@ -3496,9 +3496,9 @@ const SIXTH_HP_PER_TURN = ["G-Max Cannonade", "G-Max Vine Lash", "G-Max Volcalit
 function tmPrice(move) {
   if (move.name === 'Clangorous Soulblaze')
     return 150;
-  else if (isZ(move) || SIXTH_HP_PER_TURN.includes(move.name))
+  else if (isZ(move))
     return 80;
-  else if (isLGPE(move) || move.name === 'G-Max Resonance')
+  else if (isLGPE(move))
     return 30;
   else if (move.basePower > 75)
     return 20;
@@ -3506,10 +3506,10 @@ function tmPrice(move) {
     return 10;
 }
 function isZ(move) {
-  return move.isZ || move.name === 'Zippy Zap';
+  return move.isZ || move.name === 'Zippy Zap' || SIXTH_HP_PER_TURN.includes(move.name);
 }
 function isLGPE(move) {
-  return move.isNonstandard === 'LGPE' && move.name !== 'Zippy Zap';
+  return (move.isNonstandard === 'LGPE' && move.name !== 'Zippy Zap') || move.name === 'G-Max Resonance';
 }
 function tmDesc(strBeforeMoveName, move) {
   return strBeforeMoveName + spanWithType(move.name, move.type) + '.'
