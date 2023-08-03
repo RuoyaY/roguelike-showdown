@@ -493,6 +493,7 @@ const SPECIES_WITH_ABILITY_VALUES = {
   'Cramorant-Gorging w/ Gulp Missile': 650/(650 - 1.5 * (150/4 + 50 + 50)),
   'Wishiwashi-School w/ Schooling': (650 - 150/4)/650,
   'Palafin w/ Zero to Hero': 660/530,
+  'Shedinja w/ Wonder Guard': 800/650,
 
   // calculated to average w/ Zygarde-Complete at ~660 stat total
   'Zygarde w/ Power Construct': 660/611,
@@ -547,7 +548,8 @@ const ABILITY_VALUES = {
   // Stakeout seems less OP in Doubles
   'Supreme Overlord': (650 + .2 * (133 + 69))/650,
   'Water Bubble': 750/650, // x2 water power; can't be burned; fire resistance
-  'Wonder Guard': 800/650,
+  
+  'Wonder Guard': 650/36, // Pokestar Spirit is Lv1; Shedinja's transformers are impossibly expensive
 
   '': 1,
   'No Ability': 1,
@@ -1875,8 +1877,6 @@ function getLearnset(speciesId) {
 }
 
 function getLevelWithAbility(species, abilityName, statTotalMultiplier) {
-  if (species.name === 'Pokestar Spirit' && abilityName === 'Wonder Guard')
-    return 1; 
   // we want: stat goal * ability value = base stat goal * base ability value
   let statTotalGoal =  STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species.name, abilityName);
   if (statTotalMultiplier)
@@ -2142,8 +2142,6 @@ function getStatRelevantInfo(pokemonStr) {
 }
 
 function getEffectiveStatTotal(species, level, evs, nature, abilityName) {
-  if (species.name === 'Pokestar Spirit' && abilityName === 'Wonder Guard')
-    return STAT_TOTAL_GOAL;
   const abilityValue = getAbilityValue(species.name, abilityName);
   return getStatTotal(species, level, evs, nature) * abilityValue;
 }
