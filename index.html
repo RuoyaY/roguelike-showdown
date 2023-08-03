@@ -1470,7 +1470,6 @@ function getProperSpeciesName(speciesNameInput) {
 
 function getProperAbilityName(abilityNameInput) {
   const simplifiedInput = abilityNameInput.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g, '');
-  console.log(simplifiedInput)
   for (const ability of Object.values(abilities)) {
     if (ability.name.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g, '') === simplifiedInput)
       return ability.name;
