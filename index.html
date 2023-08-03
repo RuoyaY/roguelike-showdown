@@ -2776,8 +2776,11 @@ function addRandomMove(pokemonStr) {
 }
 function addRandomMoveSuchThat(pokemonStr, movePredicate) {
   let move;
+  let failsafe = 1000;
   do {
     move = randomMove(false);
+    if (failsafe-- < 0)
+      return pokemonStr;
   } while (!movePredicate(move) || pokemonHasMove(pokemonStr, move.name));
   return pokemonStr + '\n- ' + move.name;
 }
