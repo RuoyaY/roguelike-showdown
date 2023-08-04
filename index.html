@@ -3080,9 +3080,14 @@ function getItemPrice(item) {
   if (typeof price !== 'string')
     return price;
   if (price.includes('n')) { // number of party members
-    let n = getPartyStrs().length;
-    if (isBoss())
-      n = 1 + (n-1)/2;  // halve n for Lv1 allies
+    const partyStrs = getPartyStrs();
+    let n = 0;
+    for (const pokemonStr of partyStrs) {
+      if (getEffectiveStatTotal(...getStatRelevantInfo(pokemonStr), getAbilityNameOfPokemon(pokemonStr)) < STAT_TOTAL_GOAL/2)
+        n += 1/2; // halve n for weak allies, like Eggs
+      else
+        n += 1; 
+    }
     return roundToNearest5(resolveANplusB(price, 'n', n), true);
   } else if (price.includes('m')) { // how many more Pokemon will be added
     const numEmptySlots = getPartyPokeDivs().length  - getPartyStrs().length;
