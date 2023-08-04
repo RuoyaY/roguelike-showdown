@@ -1976,7 +1976,7 @@ function pokemonInHTML(pokemonStr) {
       const splitBySpace = strLine.split(' ');
       splitBySpace.shift(); // remove 'Level:'
       const level = parseInt(splitBySpace.shift());
-      const remainder = ' ' + splitBySpace.join(' ');
+      const remainder = splitBySpace.map(str => ' ' + str).join('');
       if (level === getLevel(species, STAT_TOTAL_GOAL))
         out += spanWithClass(strLine, 'gray');
       else
