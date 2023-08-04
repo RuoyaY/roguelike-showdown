@@ -1973,11 +1973,14 @@ function pokemonInHTML(pokemonStr) {
       out += abilityInHTML(strLine.substring('Ability: '.length));
       
     } else if (strLine.startsWith('Level: ')) {
-      const level = parseInt(strLine.split(' ')[1]);
+      const splitBySpace = strLine.split(' ');
+      splitBySpace.shift(); // remove 'Level:'
+      const level = parseInt(splitBySpace.shift());
+      const remainder = ' ' + splitBySpace.join(' ');
       if (level === getLevel(species, STAT_TOTAL_GOAL))
         out += spanWithClass(strLine, 'gray');
       else
-        out += strLine.replace('Level: ', spanWithClass('Level: ', 'attr'));
+        out += spanWithClass('Level: ', 'attr') + level + spanWithClass(remainder, 'gray');
       
     } else if (strLine.startsWith('Shiny:')) {
       out += spanWithClass(strLine, 'gray');
