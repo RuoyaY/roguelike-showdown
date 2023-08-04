@@ -622,6 +622,8 @@ const KEY_ITEMS = {
   NO_TRANSFORMER: 'Species Changer Ban',
   NO_EGG: 'Egg Ban',
   NO_HELD_ITEM: 'Held Item Ban',
+  LV_UP_HIGHEST: 'Exp Crown',
+  LV_UP_LOWEST: 'Exp Boots',
 };
 // magnets. KEYS CAN'T BE CHANGED w/o changing code
 for (const type of TYPES)
@@ -1266,7 +1268,7 @@ function losePartySlot() {
     return;
 
   const lastPokeDiv = lastFlexRow.children[lastFlexRow.children.length-1];
-  if (lastPokeDiv.querySelector('.pokemon').innerText.trim() !== '') {
+  if (getPokeEle(lastPokeDiv).innerText.trim() !== '') {
     alert('You must delete your last Pokemon before deleting its slot.');
     return;
   }
@@ -1363,7 +1365,7 @@ const beforeUnloadListener = (event) => {
 };
 
 function updatePokemonDiv(div) {
-  const pokemonEle = div.querySelector('.pokemon');
+  const pokemonEle = getPokeEle(div);
   const pokemonStr = pokemonEle.innerText;
 
   if (pokemonStr.trim() === '') {
@@ -1658,7 +1660,7 @@ function addPokemon(choicesDiv, hasChooseButton, pokemonStr) {
   const divEle = document.createElement('div');
   fillPokemonDiv(divEle, !hasChooseButton, true);
   
-  const pokemonEle = divEle.querySelector('.pokemon');
+  const pokemonEle = getPokeEle(divEle);
   pokemonEle.innerHTML = pokemonStr;
   
   if (hasChooseButton) {
@@ -2230,7 +2232,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
     pokemonStr = pokemonStr.replace('\n- ', '\n- '.repeat(4) + '\n- ');
   else
     pokemonStr += '\n- '.repeat(4) + '\n';
-  pokeDiv.querySelector('.pokemon').innerText = pokemonStr;
+  getPokeEle(pokeDiv).innerText = pokemonStr;
   
   updatePartyPokemonDiv(pokeDiv);
 
@@ -2272,7 +2274,7 @@ function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
   choicesDiv.append(teraChoiceDiv);
 }
 function chooseTera(choicesDiv, pokeDiv, type) {
-  const pokeEle = pokeDiv.querySelector('.pokemon');
+  const pokeEle = getPokeEle(pokeDiv);
   let pokemonStr = pokeEle.innerText;
   pokemonStr = pokemonStr.replace(getTeraTypeLineOfPokemon(pokemonStr), 'Tera Type: ' + type);
   pokeEle.innerHTML = pokemonInHTML(pokemonStr);
@@ -2302,7 +2304,7 @@ function addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds) {
 function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   let move;
   if (moveIds.length === 0) {
-    const pokemonStr = pokeDiv.querySelector('.pokemon').innerText;
+    const pokemonStr = getPokeEle(pokeDiv).innerText;
     do {
       move = randomMove(false);
     } while (pokemonHasMove(pokemonStr, move.name) || isLGPE(move));
@@ -2326,7 +2328,7 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   choicesDiv.append(choiceDiv);
 }
 function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
-  const pokeEle = pokeDiv.querySelector('.pokemon');
+  const pokeEle = getPokeEle(pokeDiv);
   const pokemonStr = pokeEle.innerText.replace('\n- \n', '\n- ' + move.name + '\n');
   pokeEle.innerHTML = pokemonInHTML(pokemonStr);
 
@@ -2435,7 +2437,7 @@ function removeRandom(arr) {
 
 function getEmptyPartyDiv() {
   for (const partyPokeDiv of getPartyPokeDivs()) {
-    const partyPokeEle = partyPokeDiv.querySelector('.pokemon');
+    const partyPokeEle = getPokeEle(partyPokeDiv);
     if (partyPokeEle.innerText.trim() === '') {
       return partyPokeDiv;
     }
@@ -2450,8 +2452,12 @@ function getPartyStrs(includeEmptyStrs) {
   return partyStrs;
 }
 
+function getPokeEle(pokeDiv) {
+  return pokeDiv.querySelector('.pokemon');
+}
+
 function getPartyPokeEles() {
-  return getPartyPokeDivs().map(pokeDiv => pokeDiv.querySelector('.pokemon'));
+  return getPartyPokeDivs().map(pokeDiv => getPokeEle(pokeDiv));
 }
 function getPartyPokeDivs() {
   const partyDiv = document.getElementById('party');
@@ -2649,10 +2655,13 @@ function nextRound() {
     document.getElementById('vsBossBattle').disabled = true;
   }
 
+  // NOTE: For roundly events, there may be some minor interactions, so make it happen in order
+  // of how they'd be read on the website.
+  
   // handle boss level ups & extra move slots
   if (bossLevelUps != null) {
     const pokeDiv = getPartyPokeDivs()[0];
-    const pokeEle = pokeDiv.querySelector('.pokemon');
+    const pokeEle = getPokeEle(pokeDiv);
 
     let pokemonStr = pokeEle.innerText.trim();
     if (bossLevelUps.length > 0) {
@@ -2669,7 +2678,7 @@ function nextRound() {
 
   // handle held items that happen every round: Power items (Power Anklet, etc), Oval Stone, and type stones
   for (const pokeDiv of getPartyPokeDivs()) {
-    const pokeEle = pokeDiv.querySelector('.pokemon');
+    const pokeEle = getPokeEle(pokeDiv);
     const pokemonStr = pokeEle.innerText.trim();
     let updatedPokemonStr = updateForRoundlyHeldItem(pokemonStr);
     if (updatedPokemonStr != null) {
@@ -2684,12 +2693,24 @@ function nextRound() {
     keyItemsEle.innerText = keyItemsEle.innerText.replaceAll(allSlotKeyItem, allSlotKeyItem + ' (Used)');
   updateKeyItemsEle();
 
-  // handle ROUNDLY_MAGIKARP
-  for (let i = 0; i < numOfKeyItem(KEY_ITEMS.ROUNDLY_MAGIKARP); i++) {
-    if (addPartySlot()) {
-      const pokeDiv = getPartyPokeDivs().pop();
-      pokeDiv.querySelector('.pokemon').innerText = randomLv1Magikarp();
-      updatePartyPokemonDiv(pokeDiv);
+  // handle Roundly Key Items
+  for (const keyItem of getKeyItems()) {
+    switch (keyItem) {
+      case KEY_ITEMS.ROUNDLY_MAGIKARP:
+        if (addPartySlot()) {
+          const pokeDiv = getPartyPokeDivs().pop();
+          getPokeEle(pokeDiv).innerText = randomLv1Magikarp();
+          updatePartyPokemonDiv(pokeDiv);
+        }
+        break;
+
+      case KEY_ITEMS.LV_UP_HIGHEST:
+        levelUpExtremes(true);
+        break;
+      
+      case KEY_ITEMS.LV_UP_LOWEST:
+        levelUpExtremes(false);
+        break;
     }
   }
 
@@ -2765,6 +2786,32 @@ function updateForRoundlyHeldItem(pokemonStr) {
     if (moveIndices.length === 1)
       newPokemonStr = newPokemonStr.replace('\n-', '\n- Struggle');
     return newPokemonStr;
+  }
+}
+
+function levelUpExtremes(isMaxNotMin) {
+  const partyDivs = getPartyPokeDivs();
+
+  let extremeIndices = null;
+  let extremeLv;
+  for (let i = 0; i < partyDivs.length; i++) {
+    const pokeStr = getPokeEle(partyDivs[i]).innerText.trim();
+    if (pokeStr !== '') {
+      const lv = getLevelOfPokemon(pokeStr);
+      if (extremeIndices == null || (isMaxNotMin ? (lv > extremeLv) : (lv < extremeLv))) {
+        extremeIndices = [i];
+        extremeLv = lv;
+      } else if (lv === extremeLv) {
+        extremeIndices.push(i);
+      }
+    }
+  }
+
+  for (const i of extremeIndices) {
+    const pokeDiv = partyDivs[i];
+    const pokeEle = getPokeEle(pokeDiv);
+    pokeEle.innerText = leveledUp(pokeEle.innerText.trim());
+    updatePartyPokemonDiv(pokeDiv);
   }
 }
 
