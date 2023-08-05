@@ -624,6 +624,7 @@ const KEY_ITEMS = {
   NO_HELD_ITEM: 'Held Item Ban',
   LV_UP_HIGHEST: 'Exp Crown',
   LV_UP_LOWEST: 'Exp Boots',
+  LV_UP_RANDOM: 'Exp Dice',
 };
 // magnets. KEYS CAN'T BE CHANGED w/o changing code
 for (const type of TYPES)
@@ -2710,6 +2711,22 @@ function nextRound() {
       
       case KEY_ITEMS.LV_UP_LOWEST:
         levelUpExtremes(false);
+        break;
+
+      case KEY_ITEMS.LV_UP_RANDOM:
+        let partyIndex = randomInt(getPartyStrs().length);
+        for (const pokeDiv of getPartyPokeDivs()) {
+          const pokeEle = getPokeEle(pokeDiv);
+          const pokemonStr = pokeEle.innerText.trim();
+          if (pokemonStr !== '') {
+            if (partyIndex === 0) {
+              pokeEle.innerText = leveledUp(pokemonStr);
+              updatePartyPokemonDiv(pokeDiv);
+              break;
+            }
+            partyIndex--;
+          }
+        }
         break;
     }
   }
