@@ -394,7 +394,7 @@ Power Lens	heldItem	0									x		1/2 speed. every round, +100 [stat EV]
 Power Band	heldItem	0									x		1/2 speed. every round, +100 [stat EV]			
 Power Anklet	heldItem	0									x		1/2 speed. every round, +100 [stat EV]			
 Mirror Pokemon	misc	100					2						Replace one of your Pokemon with a clone of one of your other Pokemon. <span class="warning"> <br>Cannot replace Pokemon you got at Lv1. </span>			
-Reflect Pokemon	beforeBattle	100											Before battle: Replace your [mth] Pokemon with a clone of your opponent's [nth] Pokemon. <span class="warning"> <br>Cannot replace Pokemon you got at Lv1. </span>			
+Reflect Pokemon	beforeBattle	100										x	Before battle: Replace your [mth] Pokemon with a clone of your opponent's [nth] Pokemon. <span class="warning"> <br>Cannot replace Pokemon you got at Lv1. </span>			
 Trade	beforeBattle	160	0										Before battle: Swap your [mth] Pokemon your opponent's [nth] Pokemon. <span class="warning"> <br>Cannot swap away Pokemon you got at Lv1. </span>			
 Super Rod	misc	150	0.5										REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning"> <br>Cannot replace Pokemon you got at Lv1. </span>			
 Super Rod	misc	150	0.5										REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning"> <br>Cannot replace Pokemon you got at Lv1. </span>			
@@ -892,7 +892,7 @@ Perfect Forced Nature	nextBattle	15/b											Next battle only: Set your oppon
 Perfect Forced Twin Natures	nextBattle	25/b											Next battle only: Set both players' [nth] Pokemon's nature to [_____].			
 Dynamax Battle	nextBattle	0											Next battle only: Both players' Pokemon can Dynamax, but cannot Terastallize. <br><span class="command">/challenge gen8doublescustomgame</span>			
 No Team Preview	nextBattle	0											Next battle only: No team preview. Players may choose their leads by changing the order of their Pokemon in Teambuilder. <br><span class="command">/challenge gen9doublescustomgame @@@ ! Team Preview</span>			
-Blitz Battle	nextBattle	0											Next battle only: Both players get 10 sec per turn. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>			
+Blitz Warm-up	beforeBattle	5									x		Before battle: Do an extra battle where both players get 10 sec per turn. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>			
 Inverse Battle	nextBattle	40/b											Next battle only: Type matchups are inverted (weaknesses become resistances, and immunities & resistances become weaknesses). <br><span class="command">/challenge gen9doublescustomgame @@@ Inverse Mod</span>			
 Camomon Battle	nextBattle	40/b											Next battle only: Both players' Pokemon become the typing of their first 2 moves. <br><span class="command">/challenge gen9doublescustomgame @@@ Camomons Mod</span>			
 Tera Type Preview	nextBattle	0											Next battle only: Both players' Tera Types are revealed during team preview. <br><span class="command">/challenge gen9doublescustomgame @@@ Tera Type Preview</span>			
