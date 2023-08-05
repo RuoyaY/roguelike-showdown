@@ -2073,14 +2073,14 @@ function pokemonCanTera(pokemonStr) {
   return canTera(species, heldItem);
 }
 function canTera(species, heldItem) {
-  if (species.forme && 
-    (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
-    return false;
+  // if (species.forme && 
+  //   (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
+  //   return false;
   if (heldItem) {
     if (heldItem.name.endsWith(' Z'))
       return false;
     if ((heldItem.desc.includes('Mega Evolve') || heldItem.desc.includes('Primal Reversion'))
-          && heldItem.desc.includes(species.name))
+          && species.baseSpecies != null && heldItem.desc.includes(species.baseSpecies))
       return false;
   }
   return true;
