@@ -51,7 +51,7 @@ Babiri Berry	heldItem	5											[halve super-effective ____-type move]
 Roseli Berry	heldItem	5											[halve super-effective ____-type move]			
 Chilan Berry	heldItem	5											[halve normal-type move]			
 Cheri Berry	heldItem	5														
-Chesto Berry	heldItem	25				Rest										
+Chesto Berry	heldItem	5														
 Pecha Berry	heldItem	5														
 Rawst Berry	heldItem	5														
 Aspear Berry	heldItem	1														
@@ -154,13 +154,13 @@ Snowball	heldItem	10											hit by ice, +1 Atk
 Wonder Gummi	misc	10											A Pokemon gains an extra move slot (add a hyphen on a new line).			
 Wonder Gummi Party	partyMisc	10n											EVERY Pokemon gains an extra move slot (add a hyphen on a new line).			
 Move Reducer	misc	-10											A Pokemon loses a move slot (delete a hyphen).			
-Move Deleter	misc	1											Delete 1 or more moves from 1 or more Pokemon (leave the hyphens) (a Pokemon with no moves learns *Struggle*). Give yourself $1 for each move you delete.			
+Move Deleter	misc	-5											Delete 1 or more moves from 1 or more Pokemon (leave the hyphens) (a Pokemon with no moves learns *Struggle*). Earn an extra $1 for each move you delete.			
 Move-Deleting Duo	misc	-20											A Pokemon forgets 2 moves (leave the hyphens) (a Pokemon with no moves learns *Struggle*) (can't be used if it has <2 moves).			
 Move-Deleting Trio	misc	-40											A Pokemon forgets 3 moves (leave the hyphens) (a Pokemon with no moves learns *Struggle*) (can't be used if it has <3 moves).			
 Move Deletion Party	partyMisc	-10n+5											EVERY Pokemon forgets 1 move (leave the hyphens) (a Pokemon with no moves learns *Struggle*).			
 Same-Type Move Deleter	misc	5n-35											A Pokemon forgets ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).			
 Random Move Deleter	misc	-25											Pick a Pokemon. It forgets a random move (leave the hyphen) (a Pokemon with no moves learns *Struggle*).			
-Deleveler	misc	1											Lower 1 or more Pokemon's level by any amount (can't go below 1). Give yourself $1 for each level lowered.			
+Deleveler	misc	-10											Lower 1 or more Pokemon's level by 1 or more (can't go below 1). Earn an extra $1 for each level lowered.			
 Destiny Knot	heldItem	1														
 Normal Gem	heldItem	15														
 Fire Gem	heldItem	15														
@@ -191,7 +191,7 @@ Reflect Item	beforeBattle	20											Before battle: Set your [mth] Pokemon's h
 (Almost) Perfect Twin Items	beforeBattle	30											Before battle: Both players MAY give their [nth] Pokemon a [_____] (can't choose Eviolite or a Z-Crystal).			
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld												
 Black Belt	heldItem	20														
-Silk Scarf	heldItem	15														
+Silk Scarf	heldItem	20														
 Flame Plate	heldItem	20														
 Splash Plate	heldItem	20														
 Meadow Plate	heldItem	20														
@@ -224,7 +224,7 @@ Ghostium Z	heldItem	60
 Grassium Z	heldItem	60														
 Groundium Z	heldItem	60														
 Icium Z	heldItem	60														
-Normalium Z	heldItem	50														
+Normalium Z	heldItem	60														
 Poisonium Z	heldItem	60														
 Psychium Z	heldItem	60														
 Rockium Z	heldItem	60														
@@ -554,10 +554,10 @@ Perfect Dark Party TM	partyTM	25n+25											Choose ANY DARK-TYPE move (other 
 Perfect Dragon Party TM	partyTM	25n+25											Choose ANY DRAGON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
 Perfect Steel Party TM	partyTM	25n+25											Choose ANY STEEL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
 Perfect Fairy Party TM	partyTM	25n+25											Choose ANY FAIRY-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Egg	egg	5r+90											In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. CAN choose Shedinja. </span>			
-Mirror Egg	egg	5r+60											Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.			
-Reflecting Egg	beforeBattle	5r+55											Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
-Shadow Egg	egg	5r+50								x			In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>			
+Perfect Egg	egg	2r+100											In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. CAN choose Shedinja. </span>			
+Mirror Egg	egg	2r+70											Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.			
+Reflecting Egg	beforeBattle	2r+70											Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
+Shadow Egg	egg	2r+60								x			In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>			
 1v1 Battle	nextBattle	50/b	0				2					x	Next battle only: Both players can only use 1 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
 2v2 Battle	nextBattle	50/b					3					x	Next battle only: Both players can only use 2 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9doublescustomgame @@@ Picked Team Size = 2</span>			
 1v1 Warm-up	beforeBattle	5					2				x	x	Before battle: Do an extra battle where both players can only use 1 Pokemon (chosen during team preview). Winner gets $30. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
@@ -569,7 +569,7 @@ Court Change	nextBattle	100/b											Next battle only: BOTH players use their
 Vs 1-Time Reflected Pokemon	nextBattle	25/b-5										x	Next battle only: Replace your opponent's [nth] Pokemon with your Pokemon in that slot.			
 Lv1 Battle	nextBattle	80/b											Next battle only: BOTH players' Pokemon are ALL set to level 1. <br><span class="command">/challenge gen9doublescustomgame @@@ Adjust Level = 1</span>			
 Lv50 Battle	nextBattle	160/b											Next battle only: BOTH players' Pokemon are ALL set to level 50. <br><span class="command">/challenge gen9doublescustomgame @@@ Adjust Level = 50</span>			
-1-Time Lv50 Team	nextBattle	60/b											Next battle only: Your Pokemon are ALL set to level 50.			
+1-Time Lv50 Team	nextBattle	60/b										x	Next battle only: Your Pokemon are ALL set to level 50.			
 Vs 1-Time Lv50 Team	nextBattle	80/b											Next battle only: Your opponent's Pokemon are ALL set to level 50.			
 Vs Random Leads	nextBattle	20/b					3						Next battle only: Your opponent's leading Pokemon must be randomly selected (in private).			
 Random Leads	nextBattle	-20/b					3						Next battle only: Your leading Pokemon must be randomly selected (in private).			
@@ -678,15 +678,18 @@ Forced Psychic Surge	nextAbilitizer	20/b											Next battle only: Set your op
 Forced Misty Surge	nextAbilitizer	20/b											Next battle only: Set your opponent's [nth] Pokemon's ability to *Misty Surge*.			
 (Almost) Perfect Forced Ability 	nextBattle	55/b											Next battle only: Set your opponent's [nth] Pokemon's ability to [_____]. Cannot choose Defeatist, Normalize, Slow Start, Stall, or Truant.			
 Perfect Forced Twin Abilitizers	nextBattle	100/b											Next battle only: Set both players' [nth] Pokemon's ability to [_____].			
-Next-Battle-Only Flipper	nextBattle	15/b											Next battle only: ALL "next battle only" effects (from both players) are flipped: ones that would affect you affect your opponent instead, and vice versa.			
+Next-Battle-Only Flipper	nextBattle	0											Next battle only: ALL of your remaining "next battle only" effects are flipped: ones that would affect you affect your opponent instead, and vice versa.			
 Oval Stone	heldItem	10r									x		Lv +1 every round			
+Exp Crown	keyItem	7.5r									x		Each round, your highest-level Pokemon levels up. If there's a tie, all tied Pokemon level up.			
+Exp Boots	keyItem	10r									x		Each round, your lowest-level Pokemon levels up. If there's a tie, all tied Pokemon level up.			
+Exp Dice	keyItem	7r									x		Each round, a random Pokemon levels up.			
 Fire Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
 Ice Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
 Leaf Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
 Thunder Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
 Water Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
-Sun Stone	heldItem	5r									x		Every round, add a random stat-raising move in a new slot			
-Moon Stone	heldItem	5r									x		Every round, add a random stat-lowering move in a new slot			
+Sun Stone	heldItem	5r+5									x		Every round, add a random high-prio move in a new slot			
+Moon Stone	heldItem	5r+5									x		Every round, add a random low-prio move in a new slot			
 Dawn Stone	heldItem	0									x		Every round, automatically sets EVERY move slot to a random move.			
 Dusk Stone	heldItem	0									x		Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).			
 Dubious Disc	heldItem	-20r-10											permanently can't be changed/replaced			
@@ -899,10 +902,10 @@ First Blood Warm-up	beforeBattle	5					2				x		Before battle: Do an extra battle
 Revelationmons Battle	nextBattle	20/b											Next battle only: For both players' Pokemon, their 1st move becomes their 1st type, and their 2nd move becomes their 2nd type, if any. <br><span class="command">/challenge gen9doublescustomgame @@@ Revelationmons Mod</span>			
 Category Swapped Battle	nextBattle	60/b											Next battle only: Both teams' physical moves become special moves, and vice versa. <br><span class="command">/challenge gen9doublescustomgame @@@ Category Swap Mod</span>			
 VoltTurn Mayhem Battle	nextBattle	20/b					3						Next battle only: If either player's Pokemon successfully uses a move that affects foe(s), it switches out. <br><span class="command">/challenge gen9doublescustomgame @@@ VoltTurn Mayhem Mod</span>			
-Held Item Quiz	misc	15								x			Randomly pick an opposing Pokemon from LAST BATTLE. If you correctly name its held item (or lack thereof), earn $30.			
-Ability Quiz	misc	15								x			Randomly pick an opposing Pokemon from LAST BATTLE. If you correctly name its ability, earn $30.			
-Tera Type Quiz	misc	10								x			Randomly pick an opposing Pokemon from LAST BATTLE. If you correctly name its Tera Type, earn $30.			
-Moveset Quiz	misc	5								x			Randomly pick an opposing Pokemon from LAST BATTLE. If you correctly name ALL of its moves, earn $30.			
+Held Item Quiz	misc	15								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its held item (or lack thereof), earn $30.			
+Ability Quiz	misc	15								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its ability, earn $30.			
+Tera Type Quiz	misc	10								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its Tera Type, earn $30.			
+Moveset Quiz	misc	5								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name ALL of its moves, earn $30.			
 Name Trivia	misc	20											Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.			
 Category Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about its category name (e.g. "Mouse Pokemon"). If you correctly say true/false, earn $30.			
 Ability Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about an ability it can have. If you correctly say true/false, earn $30.			
@@ -918,8 +921,12 @@ Shape Trivia	misc	10											Your opponent sends you the NAME of a random Poke
 Color Trivia	misc	10											Your opponent sends you the NAME of a random Pokemon. If you correctly state its Pokedex color, earn $30. <span class="attr"> <br>Colors: brown, red, yellow, green, blue, purple, pink, white, gray, black. </span>			
 Learnset Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about a move it can learn (in National Dex AG). If you correctly say true/false, earn $30.			
 Generation Trivia	misc	20											Your opponent sends you a pic of a random Pokemon. If you correctly state the generation number it was introduced in, earn $30.			
+Approx. Pokedex Number Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly state its National Pokedex number ROUNDED TO THE NEAREST TEN, earn $30.			
 Prev Pokemon Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon BEFORE IT in the Pokedex, earn $30.			
-Next Pokemon Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon AFTER IT in the Pokedex, earn $30.	refresh price multiplier	$ spent on refresh per round	$ saved per round
+Next Pokemon Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon AFTER IT in the Pokedex, earn $30.			
+Move BP Challenge	misc	10											Your opponent CHOOSES a move name to send you. If you correctly state its Base Power (or lack thereof), earn $30.			
+Move Accuracy Challenge	misc	10											Your opponent CHOOSES a move name to send you. If you correctly state its Accuracy (note: 100% is different from No Accuracy Check), earn $30.			
+Move Type Challenge	misc	15											Your opponent CHOOSES a move name to send you. If you correctly state its type (Fire, Water, etc), earn $30.	refresh price multiplier	$ spent on refresh per round	$ saved per round
 Running Shoes	keyItem	4r+4											Refreshing the shop now only costs $2.	0.6666666667	24	8
 Dowsing Machine	keyItem	3r+3											+1 slot in the shop.	0.75	24	6
 Losing Machine	keyItem	-4.5r-4.5											-1 slot in the shop.	1.5	18	-9
@@ -927,7 +934,7 @@ Shopping Cart	keyItem	2r+2											Can now buy the same thing multiple times (
 Combee Hive	keyItem	3.75m									x		Every round, +1 species option for your new Pokemon.			
 Trubbish Bin	keyItem	-7.5m									x		Every round, -1 species option for your new Pokemon (can't go below 1).			
 Black Flute	keyItem	15m									x		The new Pokemon you get every round is 1 level higher than normal.			
-White Flute	keyItem	-15m									x		The new Pokemon you get every round is 1 level lower than normal (can't go below 1).			
+White Flute	keyItem	-15m									x	x	The new Pokemon you get every round is 1 level lower than normal (can't go below 1).			
 TM Charm	keyItem	3.5r+3.5											+1 TM slot in the shop.			
 Abilitizer Charm	keyItem	3r+3											+1 Abilitizer slot in the shop.			
 Double Helix Charm	keyItem	4r+4											+1 Species Changer slot in the shop.			
@@ -1018,11 +1025,11 @@ Dark Magnet	keyItem	5m-5									x		Each round, you are guaranteed to get Dark-t
 Dragon Magnet	keyItem	0m-5									x		Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Steel Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Fairy Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-TM Ban	keyItem	-30m											Generic TMs stop appearing in the shop, unless forced.			
-Abilitizer Ban	keyItem	0											Generic Abilitizers stop appearing in the shop, unless forced.			
+TM Ban	keyItem	-25m											Random TMs stop appearing in the shop, unless forced.			
+Abilitizer Ban	keyItem	0											Random Abilitizers stop appearing in the shop, unless forced.			
 Species Changer Ban	keyItem	0											Species Changers stop appearing in the shop, unless forced.			
-Egg Ban	keyItem	0											Generic Eggs stop appearing in the shop, unless forced.			
-Held Item Ban	keyItem	0											Generic Held Items stop appearing in the shop, unless forced.			
+Egg Ban	keyItem	0											Random Eggs stop appearing in the shop, unless forced.			
+Held Item Ban	keyItem	0											Random Held Items stop appearing in the shop, unless forced.			
 Perfect Twin Normal TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Normal-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Fire TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Fire-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Water TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Water-type move [_____] (can't choose Z-Moves).			

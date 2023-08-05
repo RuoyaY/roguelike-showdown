@@ -36,7 +36,7 @@ x		win without Tera
 x		switch 2 Pokemon out turn 1, and win
 x		cure a non-volatile status effect
 x		run out of PP on a move
-x		a Pokemon uses all its moves in 1 battle (not Lv1)
+x		an ally uses all its moves in 1 battle (not Lv1)
 		2 Pokemon w/ same level
 x		foe flinched
 x		get flinched
@@ -50,6 +50,7 @@ x		use a gem
 x		take recoil/crash damage
 x		KO with a not-very-effective move
 x		use a 4x super-effective move
+x		use a 0.25x not-very-effective move
 x		be at 1 HP
 x		foe at <10% HP
 x		land an OHKO move
@@ -146,7 +147,7 @@ x	0	foe's forme changed
 x		KO foe via status effect
 		have >4 moves
 		have <4 moves (not Lv1)
-x		a Pokemon uses 8+ unique moves over all battles
+x		an ally uses 8+ unique moves over all battles
 x		successfully use a move w/ 10-40 BP
 x		successfully use a move w/ >100 BP
 x		successfully use a move that costs 50% max HP
@@ -266,8 +267,8 @@ x		1 Pokemon KOs 2+ allies in 1 battle
 		every slot's SpA ≥ Atk
 x		unselectable move
 x		block a move w/ Quick Guard, Wide Guard, or Crafty Shield
-x		lose 4+ PP of a Pokemon's Substitute
-x		lose 5+ PP of a Pokemon's move
+x		lose 4+ PP of an ally's Substitute
+x		lose 5+ PP of an ally's move
 		every slot has same held item (not empty)
 		every slot has different held item (not empty)
 		every slot has Pokemon w/ no EVs
@@ -290,7 +291,7 @@ x		your Lightning Rod or Storm Drain activates
 x		forfeit w/ 1 foe left
 x		win without using status moves
 x		win without ever having raised stat stages
-x		successfully use a move that switches self out
+x		an ally uses a move & switches out in 1 turn
 		replace a slot
 		2+ Pokemon with 1 weakness (ignore ability, etc)
 		2+ Pokemon with 5+ weaknesses (ignore ability, etc)
@@ -301,7 +302,7 @@ x		have a protection move fail
 x		get past or destroy a protection, screen, or Substitute
 		Def > SpD + 30
 		SpD > Def + 30
-		a Pokemon w/ Atk=SpA, Def=SpD
+		an ally w/ Atk=SpA, Def=SpD
 		Mega Pokemon (or use a Mega Stone)
 		3+ Pokemon w/ impossible abilities
 x		use a G-Max move
@@ -311,7 +312,7 @@ x		win w/ 1 Pokemon left
 x		win with no KO'd Pokemon
 x		win with 3+ Pokemon KO'd
 x		win with 4+ Pokemon alive
-		a Pokemon uses a Physical, Special, and Status move in 1 battle
+		an ally uses a Physical, Special, and Status move in 1 battle
 x		be weak to a Fire move
 x		be weak to a Water move
 x		be weak to a Grass move
@@ -396,4 +397,3 @@ x		KO a Fairy-type
 x		every living ally has a non-volatile status
 x		every living foe has a non-volatile status
 x		both allies restore HP in 1 turn
-x		use a self-KO move
