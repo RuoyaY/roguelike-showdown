@@ -3125,7 +3125,7 @@ function isLegalItem(item, ignoreLastRoundReq) {
     return false;
   if (item.bannedIfPartyFull && partySize === getPartyPokeDivs().length)
     return false;
-  if (item.bannedIfBoss && (isBoss() || vsBoss()))
+  if (item.bannedIfBoss && (isBoss() || isVsBoss()))
     return false;
 
   if (item.bannedFirstRound && roundCounter <= 1)
