@@ -1721,6 +1721,8 @@ function getImageUrlName(speciesName) {
     speciesName = speciesName.slice(0, -1 * '-Totem'.length);
   if (speciesName.startsWith('Furfrou'))
     return 'furfrou';
+  if (speciesName.startsWith('Vivillon') && !['Vivillon-Fancy', 'Vivillon-Pokeball'].includes(speciesName))
+    return 'vivillon';
   const species = allSpecies[getSpeciesId(speciesName)];
   if (species.baseSpecies || species.cosmeticFormes?.includes(speciesName)) {
     let baseSpeciesName = species.baseSpecies ?? species.name;
