@@ -2908,7 +2908,7 @@ const KEY_ITEM_SHOP_FUNCS = Object.freeze({
   EGG: funcWithoutRepeat(randomEgg),
   HELD_ITEM: funcWithoutRepeat(randomHeldItem),
   NEXT_BATTLE: funcWithoutRepeat(function() {
-    return randomElement(items.filter(item => isNextBattleItem(item) && isLegalItem(item, true)));
+    return randomElement(items.filter(item => isNextBattleItem(item) && getItemPrice(item) >= 0 && isLegalItem(item, true)));
   }),
   POKEBALL: function() {
     return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
