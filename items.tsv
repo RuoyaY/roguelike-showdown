@@ -73,8 +73,8 @@ Rare Penta-Candy	misc	100											Raise a Pokemon's level by 5.
 Rare Candy Party	partyMisc	15n+5											Raise EVERY Pokemon's level by 1.			
 Doom Seed	misc	-15											Lower a Pokemon's level by 1 (can't choose a Lv1 Pokemon).			
 Doom Seed Party	partyMisc	-15n											Lower EVERY Pokemon's level by 1 (can't go below Lv1).			
-Twin Rare Candies	beforeBattle	0											Before battle: Raise both you and your opponent's [nth] Pokemon's level by 1.			
-Twin Doom Seeds	beforeBattle	0											Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
+Twin Rare Candies	beforeBattle	0	0										Before battle: Raise both you and your opponent's [nth] Pokemon's level by 1.			
+Twin Doom Seeds	beforeBattle	0	0										Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
 HP Up	misc	15											Set a Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein	misc	15											Set a Pokemon's Atk EV to 100 (max 508 total EVs).			
 Iron	misc	15											Set a Pokemon's Def EV to 100 (max 508 total EVs).			
@@ -154,13 +154,13 @@ Snowball	heldItem	10											hit by ice, +1 Atk
 Wonder Gummi	misc	10											A Pokemon gains an extra move slot (add a hyphen on a new line).			
 Wonder Gummi Party	partyMisc	10n											EVERY Pokemon gains an extra move slot (add a hyphen on a new line).			
 Move Reducer	misc	-10											A Pokemon loses a move slot (delete a hyphen).			
-Move Deleter	misc	-5											Delete 1 or more moves from 1 or more Pokemon (leave the hyphens) (a Pokemon with no moves learns *Struggle*). Earn an extra $1 for each move you delete.			
+Move Deleter	misc	-1											Delete 1 or more moves from 1 or more Pokemon (leave the hyphens) (a Pokemon with no moves learns *Struggle*). Earn an extra $1 for each move you delete.			
 Move-Deleting Duo	misc	-20											A Pokemon forgets 2 moves (leave the hyphens) (a Pokemon with no moves learns *Struggle*) (can't be used if it has <2 moves).			
 Move-Deleting Trio	misc	-40											A Pokemon forgets 3 moves (leave the hyphens) (a Pokemon with no moves learns *Struggle*) (can't be used if it has <3 moves).			
 Move Deletion Party	partyMisc	-10n+5											EVERY Pokemon forgets 1 move (leave the hyphens) (a Pokemon with no moves learns *Struggle*).			
 Same-Type Move Deleter	misc	5n-35											A Pokemon forgets ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).			
 Random Move Deleter	misc	-25											Pick a Pokemon. It forgets a random move (leave the hyphen) (a Pokemon with no moves learns *Struggle*).			
-Deleveler	misc	-10											Lower 1 or more Pokemon's level by 1 or more (can't go below 1). Earn an extra $1 for each level lowered.			
+Deleveler	misc	-15											Lower 1 or more Pokemon's level by 1 or more (can't go below 1). Earn an extra $1 for each level lowered.			
 Destiny Knot	heldItem	1														
 Normal Gem	heldItem	15														
 Fire Gem	heldItem	15														
@@ -257,16 +257,16 @@ Stockpile TMs	universalTM	30											Teach ANY 1 Pokemon one or more of the fo
 Defense Curl TMs	universalTM	30											Teach ANY 1 Pokemon one or more of the following: *Defense Curl*, *Rollout*, *Ice Ball*.			
 Perfect Hidden Power TM	universalTM	20											Teach ANY 1 Pokemon any Hidden Power (other than Normal or Fairy) (e.g. "*Hidden Power Ice*").			
 Random Hidden Power TM	universalTM	10											Generate a random type. You must teach ANY 1 Pokemon the Hidden Power of that type (e.g. "*Hidden Power Ice*").			
-Perfect TM	universalTM	60											Teach ANY 1 Pokemon ANY 1 move (excluding Z-Moves and Zippy Zap).			
-Perfect Party TM	partyTM	30n+30											Choose ANY move (excluding Z-Moves and Zippy Zap). Teach EVERY Pokemon that move.			
+Perfect TM	universalTM	60											Teach ANY 1 Pokemon ANY 1 move (no Z-Moves, G-Max moves, or Zippy Zap).			
+Perfect Party TM	partyTM	30n+30											Choose ANY move (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
 Perfect Twin TMs	beforeTM	30											Before battle: Both players MAY teach their [nth] Pokemon the move [_____] (can't choose Z-Moves).			
-Mirror TM	universalTM	40					2						Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves).			
+Mirror TM	universalTM	40					2						Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves or Zippy Zap).			
 Mirror Moveset	misc	20					2						Replace a Pokemon's ENTIRE moveset with a copy of another Pokemon's moveset.			
 Reflect Moveset	beforeBattle	45											Before battle: Replace your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
-Mirror Party TM	partyTM	20n					2						Teach EVERY Pokemon any 1 move one of your Pokemon know (excluding Z-Moves).			
-Shadow TM	universalTM	35								x			Teach any 1 Pokemon any 1 move you KNOW FOR SURE your opponent had last battle (excluding Z-Moves).			
-Shadow Party TM	partyTM	15n+20								x			Choose any move you KNOW FOR SURE your opponent had last battle (excluding Z-Moves). Teach EVERY Pokemon that move.			
-Reflecting TM	beforeBattle	10											Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it is a Z-Move.			
+Mirror Party TM	partyTM	20n					2						Teach EVERY Pokemon any 1 move one of your Pokemon know (excluding Z-Moves or Zippy Zap).			
+Shadow TM	universalTM	35								x			Teach any 1 Pokemon any 1 move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, or Zippy Zap).			
+Shadow Party TM	partyTM	15n+20								x			Choose any move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
+Reflecting TM	beforeBattle	10											Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it is a Z-Move, G-Max move, or Zippy Zap.			
 Normal Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.			
 Fire Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.			
 Water Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-water">Water</span>.			
@@ -518,42 +518,42 @@ Rare Dragon Candy	misc	15	0										Increase a Dragon-type Pokemon's level by o
 Rare Steel Candy	misc	15	0										Increase a Steel-type Pokemon's level by one.			
 Rare Fairy Candy	misc	15	0										Increase a Fairy-type Pokemon's level by one.			
 Rare Single-Type Candy	misc	15	0										Increase a Pokemon with only one type's level by one.			
-Perfect Normal TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 NORMAL-TYPE move (other than Z-Moves).			
-Perfect Fire TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FIRE-TYPE move (other than Z-Moves).			
-Perfect Water TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 WATER-TYPE move (other than Z-Moves).			
-Perfect Grass TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GRASS-TYPE move (other than Z-Moves).			
-Perfect Electric TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ELECTRIC-TYPE move (other than Z-Moves and Zippy Zap).			
-Perfect Ice TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ICE-TYPE move (other than Z-Moves).			
-Perfect Fighting TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FIGHTING-TYPE move (other than Z-Moves).			
-Perfect Poison TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 POISON-TYPE move (other than Z-Moves).			
-Perfect Ground TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GROUND-TYPE move (other than Z-Moves).			
-Perfect Flying TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FLYING-TYPE move (other than Z-Moves).			
-Perfect Psychic TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 PSYCHIC-TYPE move (other than Z-Moves).			
-Perfect Bug TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 BUG-TYPE move (other than Z-Moves).			
-Perfect Rock TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ROCK-TYPE move (other than Z-Moves).			
-Perfect Ghost TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GHOST-TYPE move (other than Z-Moves).			
-Perfect Dark TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 DARK-TYPE move (other than Z-Moves).			
-Perfect Dragon TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 DRAGON-TYPE move (other than Z-Moves).			
-Perfect Steel TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 STEEL-TYPE move (other than Z-Moves).			
-Perfect Fairy TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FAIRY-TYPE move (other than Z-Moves).			
-Perfect Normal Party TM	partyTM	25n+25											Choose ANY NORMAL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Fire Party TM	partyTM	25n+25											Choose ANY FIRE-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Water Party TM	partyTM	25n+25											Choose ANY WATER-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Grass Party TM	partyTM	25n+25											Choose ANY GRASS-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Electric Party TM	partyTM	25n+25											Choose ANY ELECTRIC-TYPE move (other than Z-Moves and Zippy Zap). Teach EVERY Pokemon that move.			
-Perfect Ice Party TM	partyTM	25n+25											Choose ANY ICE-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Fighting Party TM	partyTM	25n+25											Choose ANY FIGHTING-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Poison Party TM	partyTM	25n+25											Choose ANY POISON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Ground Party TM	partyTM	25n+25											Choose ANY GROUND-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Flying Party TM	partyTM	25n+25											Choose ANY FLYING-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Psychic Party TM	partyTM	25n+25											Choose ANY PSYCHIC-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Bug Party TM	partyTM	25n+25											Choose ANY BUG-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Rock Party TM	partyTM	25n+25											Choose ANY ROCK-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Ghost Party TM	partyTM	25n+25											Choose ANY GHOST-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Dark Party TM	partyTM	25n+25											Choose ANY DARK-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Dragon Party TM	partyTM	25n+25											Choose ANY DRAGON-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Steel Party TM	partyTM	25n+25											Choose ANY STEEL-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
-Perfect Fairy Party TM	partyTM	25n+25											Choose ANY FAIRY-TYPE move (other than Z-Moves). Teach EVERY Pokemon that move.			
+Perfect Normal TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 NORMAL-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Fire TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FIRE-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Water TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 WATER-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Grass TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GRASS-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Electric TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ELECTRIC-TYPE move (no Z-Moves, G-Max moves, or Zippy Zap).			
+Perfect Ice TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ICE-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Fighting TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FIGHTING-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Poison TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 POISON-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Ground TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GROUND-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Flying TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FLYING-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Psychic TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 PSYCHIC-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Bug TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 BUG-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Rock TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ROCK-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Ghost TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GHOST-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Dark TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 DARK-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Dragon TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 DRAGON-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Steel TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 STEEL-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Fairy TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FAIRY-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Normal Party TM	partyTM	25n+25											Choose ANY NORMAL-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Fire Party TM	partyTM	25n+25											Choose ANY FIRE-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Water Party TM	partyTM	25n+25											Choose ANY WATER-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Grass Party TM	partyTM	25n+25											Choose ANY GRASS-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Electric Party TM	partyTM	25n+25											Choose ANY ELECTRIC-TYPE move (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
+Perfect Ice Party TM	partyTM	25n+25											Choose ANY ICE-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Fighting Party TM	partyTM	25n+25											Choose ANY FIGHTING-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Poison Party TM	partyTM	25n+25											Choose ANY POISON-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Ground Party TM	partyTM	25n+25											Choose ANY GROUND-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Flying Party TM	partyTM	25n+25											Choose ANY FLYING-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Psychic Party TM	partyTM	25n+25											Choose ANY PSYCHIC-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Bug Party TM	partyTM	25n+25											Choose ANY BUG-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Rock Party TM	partyTM	25n+25											Choose ANY ROCK-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Ghost Party TM	partyTM	25n+25											Choose ANY GHOST-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Dark Party TM	partyTM	25n+25											Choose ANY DARK-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Dragon Party TM	partyTM	25n+25											Choose ANY DRAGON-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Steel Party TM	partyTM	25n+25											Choose ANY STEEL-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Fairy Party TM	partyTM	25n+25											Choose ANY FAIRY-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
 Perfect Egg	egg	2r+100											In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. CAN choose Shedinja. </span>			
 Mirror Egg	egg	2r+70											Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.			
 Reflecting Egg	beforeBattle	2r+70											Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
@@ -694,108 +694,108 @@ Dawn Stone	heldItem	0									x		Every round, automatically sets EVERY move slot
 Dusk Stone	heldItem	0									x		Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).			
 Dubious Disc	heldItem	-20r-10											permanently can't be changed/replaced			
 Up-Grade	heldItem	5r									x		Every round, changes to a random species w/ higher stats			
-TR00	heldItem	40	0.2										all others learn Swords Dance			
-TR01	heldItem	40	0.2										all others learn Body Slam			
-TR02	heldItem	40	0.2										all others learn Flamethrower			
-TR03	heldItem	40	0.2										all others learn Hydro Pump			
-TR04	heldItem	40	0.2										all others learn Surf			
-TR05	heldItem	40	0.2										all others learn Ice Beam			
-TR06	heldItem	40	0.2										all others learn Blizzard			
-TR07	heldItem	40	0.2										all others learn Low Kick			
-TR08	heldItem	40	0.2										all others learn Thunderbolt			
-TR09	heldItem	40	0.2										all others learn Thunder			
-TR10	heldItem	40	0.2										all others learn Earthquake			
-TR11	heldItem	40	0.2										all others learn Psychic			
-TR12	heldItem	40	0.2										all others learn Agility			
-TR13	heldItem	20	0.2										all others learn Focus Energy			
-TR14	heldItem	20	0.2										all others learn Metronome			
-TR15	heldItem	40	0.2										all others learn Fire Blast			
-TR16	heldItem	40	0.2										all others learn Waterfall			
-TR17	heldItem	40	0.2										all others learn Amnesia			
-TR18	heldItem	40	0.2										all others learn Leech Life			
-TR19	heldItem	40	0.2										all others learn Tri Attack			
-TR20	heldItem	40	0.2										all others learn Substitute			
-TR21	heldItem	40	0.2										all others learn Reversal			
-TR22	heldItem	40	0.2										all others learn Sludge Bomb			
-TR23	heldItem	20	0.2										all others learn Spikes			
-TR24	heldItem	40	0.2										all others learn Outrage			
-TR25	heldItem	40	0.2										all others learn Psyshock			
-TR26	heldItem	20	0.2										all others learn Endure			
-TR27	heldItem	40	0.2										all others learn Sleep Talk			
-TR28	heldItem	40	0.2										all others learn Megahorn			
-TR29	heldItem	40	0.2										all others learn Baton Pass			
-TR30	heldItem	40	0.2										all others learn Encore			
-TR31	heldItem	40	0.2										all others learn Iron Tail			
-TR32	heldItem	40	0.2										all others learn Crunch			
-TR33	heldItem	40	0.2										all others learn Shadow Ball			
-TR34	heldItem	40	0.2										all others learn Future Sight			
-TR35	heldItem	40	0.2										all others learn Uproar			
-TR36	heldItem	40	0.2										all others learn Heat Wave			
-TR37	heldItem	40	0.2										all others learn Taunt			
-TR38	heldItem	20	0.2										all others learn Trick			
-TR39	heldItem	40	0.2										all others learn Superpower			
-TR40	heldItem	20	0.2										all others learn Skill Swap			
-TR41	heldItem	40	0.2										all others learn Blaze Kick			
-TR42	heldItem	40	0.2										all others learn Hyper Voice			
-TR43	heldItem	40	0.2										all others learn Overheat			
-TR44	heldItem	40	0.2										all others learn Cosmic Power			
-TR45	heldItem	40	0.2										all others learn Muddy Water			
-TR46	heldItem	40	0.2										all others learn Iron Defense			
-TR47	heldItem	40	0.2										all others learn Dragon Claw			
-TR48	heldItem	40	0.2										all others learn Bulk Up			
-TR49	heldItem	40	0.2										all others learn Calm Mind			
-TR50	heldItem	40	0.2										all others learn Leaf Blade			
-TR51	heldItem	40	0.2										all others learn Dragon Dance			
-TR52	heldItem	40	0.2										all others learn Gyro Ball			
-TR53	heldItem	40	0.2										all others learn Close Combat			
-TR54	heldItem	20	0.2										all others learn Toxic Spikes			
-TR55	heldItem	40	0.2										all others learn Flare Blitz			
-TR56	heldItem	40	0.2										all others learn Aura Sphere			
-TR57	heldItem	40	0.2										all others learn Poison Jab			
-TR58	heldItem	40	0.2										all others learn Dark Pulse			
-TR59	heldItem	40	0.2										all others learn Seed Bomb			
-TR60	heldItem	40	0.2										all others learn X-Scissor			
-TR61	heldItem	40	0.2										all others learn Bug Buzz			
-TR62	heldItem	40	0.2										all others learn Dragon Pulse			
-TR63	heldItem	40	0.2										all others learn Power Gem			
-TR64	heldItem	40	0.2										all others learn Focus Blast			
-TR65	heldItem	40	0.2										all others learn Energy Ball			
-TR66	heldItem	40	0.2										all others learn Brave Bird			
-TR67	heldItem	40	0.2										all others learn Earth Power			
-TR68	heldItem	40	0.2										all others learn Nasty Plot			
-TR69	heldItem	40	0.2										all others learn Zen Headbutt			
-TR70	heldItem	40	0.2										all others learn Flash Cannon			
-TR71	heldItem	40	0.2										all others learn Leaf Storm			
-TR72	heldItem	40	0.2										all others learn Power Whip			
-TR73	heldItem	40	0.2										all others learn Gunk Shot			
-TR74	heldItem	40	0.2										all others learn Iron Head			
-TR75	heldItem	40	0.2										all others learn Stone Edge			
-TR76	heldItem	20	0.2										all others learn Stealth Rock			
-TR77	heldItem	40	0.2										all others learn Grass Knot			
-TR78	heldItem	40	0.2										all others learn Sludge Wave			
-TR79	heldItem	40	0.2										all others learn Heavy Slam			
-TR80	heldItem	40	0.2										all others learn Electro Ball			
-TR81	heldItem	40	0.2										all others learn Foul Play			
-TR82	heldItem	40	0.2										all others learn Stored Power			
-TR83	heldItem	40	0.2										all others learn Ally Switch			
-TR84	heldItem	40	0.2										all others learn Scald			
-TR85	heldItem	20	0.2										all others learn Work Up			
-TR86	heldItem	40	0.2										all others learn Wild Charge			
-TR87	heldItem	40	0.2										all others learn Drill Run			
-TR88	heldItem	40	0.2										all others learn Heat Crash			
-TR89	heldItem	40	0.2										all others learn Hurricane			
-TR90	heldItem	40	0.2										all others learn Play Rough			
-TR91	heldItem	40	0.2										all others learn Venom Drench			
-TR92	heldItem	40	0.2										all others learn Dazzling Gleam			
-TR93	heldItem	40	0.2										all others learn Darkest Lariat			
-TR94	heldItem	40	0.2										all others learn High Horsepower			
-TR95	heldItem	40	0.2										all others learn Throat Chop			
-TR96	heldItem	40	0.2										all others learn Pollen Puff			
-TR97	heldItem	40	0.2										all others learn Psychic Fangs			
-TR98	heldItem	40	0.2										all others learn Liquidation			
-TR99	heldItem	40	0.2										all others learn Body Press			
-Perfect TR	misc	50											Set a Pokemon's held item to any TR (e.g. *TR00*).			
-Random TR	misc	20											Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
+TR00	heldItem	40	0.2				2						all others learn Swords Dance			
+TR01	heldItem	40	0.2				2						all others learn Body Slam			
+TR02	heldItem	40	0.2				2						all others learn Flamethrower			
+TR03	heldItem	40	0.2				2						all others learn Hydro Pump			
+TR04	heldItem	40	0.2				2						all others learn Surf			
+TR05	heldItem	40	0.2				2						all others learn Ice Beam			
+TR06	heldItem	40	0.2				2						all others learn Blizzard			
+TR07	heldItem	40	0.2				2						all others learn Low Kick			
+TR08	heldItem	40	0.2				2						all others learn Thunderbolt			
+TR09	heldItem	40	0.2				2						all others learn Thunder			
+TR10	heldItem	40	0.2				2						all others learn Earthquake			
+TR11	heldItem	40	0.2				2						all others learn Psychic			
+TR12	heldItem	40	0.2				2						all others learn Agility			
+TR13	heldItem	20	0.2				2						all others learn Focus Energy			
+TR14	heldItem	20	0.2				2						all others learn Metronome			
+TR15	heldItem	40	0.2				2						all others learn Fire Blast			
+TR16	heldItem	40	0.2				2						all others learn Waterfall			
+TR17	heldItem	40	0.2				2						all others learn Amnesia			
+TR18	heldItem	40	0.2				2						all others learn Leech Life			
+TR19	heldItem	40	0.2				2						all others learn Tri Attack			
+TR20	heldItem	40	0.2				2						all others learn Substitute			
+TR21	heldItem	40	0.2				2						all others learn Reversal			
+TR22	heldItem	40	0.2				2						all others learn Sludge Bomb			
+TR23	heldItem	20	0.2				2						all others learn Spikes			
+TR24	heldItem	40	0.2				2						all others learn Outrage			
+TR25	heldItem	40	0.2				2						all others learn Psyshock			
+TR26	heldItem	20	0.2				2						all others learn Endure			
+TR27	heldItem	40	0.2				2						all others learn Sleep Talk			
+TR28	heldItem	40	0.2				2						all others learn Megahorn			
+TR29	heldItem	40	0.2				2						all others learn Baton Pass			
+TR30	heldItem	40	0.2				2						all others learn Encore			
+TR31	heldItem	40	0.2				2						all others learn Iron Tail			
+TR32	heldItem	40	0.2				2						all others learn Crunch			
+TR33	heldItem	40	0.2				2						all others learn Shadow Ball			
+TR34	heldItem	40	0.2				2						all others learn Future Sight			
+TR35	heldItem	40	0.2				2						all others learn Uproar			
+TR36	heldItem	40	0.2				2						all others learn Heat Wave			
+TR37	heldItem	40	0.2				2						all others learn Taunt			
+TR38	heldItem	20	0.2				2						all others learn Trick			
+TR39	heldItem	40	0.2				2						all others learn Superpower			
+TR40	heldItem	20	0.2				2						all others learn Skill Swap			
+TR41	heldItem	40	0.2				2						all others learn Blaze Kick			
+TR42	heldItem	40	0.2				2						all others learn Hyper Voice			
+TR43	heldItem	40	0.2				2						all others learn Overheat			
+TR44	heldItem	40	0.2				2						all others learn Cosmic Power			
+TR45	heldItem	40	0.2				2						all others learn Muddy Water			
+TR46	heldItem	40	0.2				2						all others learn Iron Defense			
+TR47	heldItem	40	0.2				2						all others learn Dragon Claw			
+TR48	heldItem	40	0.2				2						all others learn Bulk Up			
+TR49	heldItem	40	0.2				2						all others learn Calm Mind			
+TR50	heldItem	40	0.2				2						all others learn Leaf Blade			
+TR51	heldItem	40	0.2				2						all others learn Dragon Dance			
+TR52	heldItem	40	0.2				2						all others learn Gyro Ball			
+TR53	heldItem	40	0.2				2						all others learn Close Combat			
+TR54	heldItem	20	0.2				2						all others learn Toxic Spikes			
+TR55	heldItem	40	0.2				2						all others learn Flare Blitz			
+TR56	heldItem	40	0.2				2						all others learn Aura Sphere			
+TR57	heldItem	40	0.2				2						all others learn Poison Jab			
+TR58	heldItem	40	0.2				2						all others learn Dark Pulse			
+TR59	heldItem	40	0.2				2						all others learn Seed Bomb			
+TR60	heldItem	40	0.2				2						all others learn X-Scissor			
+TR61	heldItem	40	0.2				2						all others learn Bug Buzz			
+TR62	heldItem	40	0.2				2						all others learn Dragon Pulse			
+TR63	heldItem	40	0.2				2						all others learn Power Gem			
+TR64	heldItem	40	0.2				2						all others learn Focus Blast			
+TR65	heldItem	40	0.2				2						all others learn Energy Ball			
+TR66	heldItem	40	0.2				2						all others learn Brave Bird			
+TR67	heldItem	40	0.2				2						all others learn Earth Power			
+TR68	heldItem	40	0.2				2						all others learn Nasty Plot			
+TR69	heldItem	40	0.2				2						all others learn Zen Headbutt			
+TR70	heldItem	40	0.2				2						all others learn Flash Cannon			
+TR71	heldItem	40	0.2				2						all others learn Leaf Storm			
+TR72	heldItem	40	0.2				2						all others learn Power Whip			
+TR73	heldItem	40	0.2				2						all others learn Gunk Shot			
+TR74	heldItem	40	0.2				2						all others learn Iron Head			
+TR75	heldItem	40	0.2				2						all others learn Stone Edge			
+TR76	heldItem	20	0.2				2						all others learn Stealth Rock			
+TR77	heldItem	40	0.2				2						all others learn Grass Knot			
+TR78	heldItem	40	0.2				2						all others learn Sludge Wave			
+TR79	heldItem	40	0.2				2						all others learn Heavy Slam			
+TR80	heldItem	40	0.2				2						all others learn Electro Ball			
+TR81	heldItem	40	0.2				2						all others learn Foul Play			
+TR82	heldItem	40	0.2				2						all others learn Stored Power			
+TR83	heldItem	40	0.2				2						all others learn Ally Switch			
+TR84	heldItem	40	0.2				2						all others learn Scald			
+TR85	heldItem	20	0.2				2						all others learn Work Up			
+TR86	heldItem	40	0.2				2						all others learn Wild Charge			
+TR87	heldItem	40	0.2				2						all others learn Drill Run			
+TR88	heldItem	40	0.2				2						all others learn Heat Crash			
+TR89	heldItem	40	0.2				2						all others learn Hurricane			
+TR90	heldItem	40	0.2				2						all others learn Play Rough			
+TR91	heldItem	40	0.2				2						all others learn Venom Drench			
+TR92	heldItem	40	0.2				2						all others learn Dazzling Gleam			
+TR93	heldItem	40	0.2				2						all others learn Darkest Lariat			
+TR94	heldItem	40	0.2				2						all others learn High Horsepower			
+TR95	heldItem	40	0.2				2						all others learn Throat Chop			
+TR96	heldItem	40	0.2				2						all others learn Pollen Puff			
+TR97	heldItem	40	0.2				2						all others learn Psychic Fangs			
+TR98	heldItem	40	0.2				2						all others learn Liquidation			
+TR99	heldItem	40	0.2				2						all others learn Body Press			
+Perfect TR	misc	50					2						Set a Pokemon's held item to any TR (e.g. *TR00*).			
+Random TR	misc	20					2						Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
 Berserk Gene	heldItem	25											confusion and +2 Atk on entry			
 Normal Candy Party	misc	20											Increase ALL Normal-type Pokemon's level by one.			
 Fire Candy Party	misc	20											Increase ALL Fire-type Pokemon's level by one.			
@@ -906,7 +906,7 @@ Held Item Quiz	misc	15								x			RANDOMLY pick an opposing Pokemon from LAST BA
 Ability Quiz	misc	15								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its ability, earn $30.			
 Tera Type Quiz	misc	10								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its Tera Type, earn $30.			
 Moveset Quiz	misc	5								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name ALL of its moves, earn $30.			
-Name Trivia	misc	20											Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.			
+Name Trivia	misc	15											Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.			
 Category Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about its category name (e.g. "Mouse Pokemon"). If you correctly say true/false, earn $30.			
 Ability Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about an ability it can have. If you correctly say true/false, earn $30.			
 Ability Trivia	misc	15											Your opponent sends you a pic of a random Pokemon. If you correctly name an ability it can have, earn $30.			
@@ -940,7 +940,7 @@ Abilitizer Charm	keyItem	3r+3											+1 Abilitizer slot in the shop.
 Double Helix Charm	keyItem	4r+4											+1 Species Changer slot in the shop.			
 Oval Charm	keyItem	4r+4											+1 Egg (Lv1 Pokemon) slot in the shop.			
 Handheld Charm	keyItem	3r+3											+1 Held Item slot in the shop.			
-Battle Charm	keyItem	3.5r-3.5									x		+1 Next Battle Only slot in the shop.			
+Battle Charm	keyItem	3.5r-3.5									x		+1 Next Battle Only slot in the shop. Won't offer items that earn money.			
 Pokeball Charm	keyItem	3m									x		+1 Pokeball slot in the shop.			
 Tera Charm	keyItem	2r+2											+1 Tera Shards slot in the shop.			
 Unlimited Encounter Power	keyItem	7.5m									x		+1 free Encounter Power slot in the shop.			

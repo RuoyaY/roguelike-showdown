@@ -33,7 +33,7 @@ x		land a critical hit
 x		heal back to full
 x		lead w/ 2 Pokemon sharing a type
 x		win without Tera
-x		switch 2 Pokemon out turn 1, and win
+x		switch 2 Pokemon out in a turn, and win
 x		cure a non-volatile status effect
 x		run out of PP on a move
 x		an ally uses all its moves in 1 battle (not Lv1)
@@ -177,7 +177,7 @@ x		successfully use Spit Up/Swallow
 x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 		3+ single-type Pokemon
 		every slot's same gender (M/F/-)
-		all Normal moveset
+		all Normal moveset (not Lv1)
 		all Fire moveset
 		all Water moveset
 		all Grass moveset
@@ -195,6 +195,9 @@ x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 		all Dragon moveset
 		all Steel moveset
 		all Fairy moveset
+		all Status Moves moveset (not Lv1)
+		all Physical Moves moveset
+		all Special Moves moveset
 		every slot has Pokemon w/ NO held items
 		every slot has a held item
 		Pokemon name starts w/ A
@@ -241,24 +244,24 @@ x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 	0	ability name includes V
 	0	ability name includes W
 	0	ability name includes Y
-		every slot has a Normal move
-		every slot has a Fire move
-		every slot has a Water move
-		every slot has a Grass move
-		every slot has a Electric move
-		every slot has a Ice move
-		every slot has a Fighting move
-		every slot has a Poison move
-		every slot has a Ground move
-		every slot has a Flying move
-		every slot has a Psychic move
-		every slot has a Bug move
-		every slot has a Rock move
-		every slot has a Ghost move
-		every slot has a Dark move
-		every slot has a Dragon move
-		every slot has a Steel move
-		every slot has a Fairy move
+		4+ Normal moves
+		3+ Fire moves
+		3+ Water moves
+		3+ Grass moves
+		3+ Electric moves
+		3+ Ice moves
+		3+ Fighting moves
+		3+ Poison moves
+		3+ Ground moves
+		3+ Flying moves
+		3+ Psychic moves
+		3+ Bug moves
+		3+ Rock moves
+		3+ Ghost moves
+		3+ Dark moves
+		3+ Dragon moves
+		3+ Steel moves
+		3+ Fairy moves
 x		do <1% damage
 x		1 Pokemon KOs 4+ others in 1 battle
 x		1 Pokemon KOs 3+ foes in 1 battle
@@ -287,7 +290,7 @@ x		your ability lowered a stat stage
 x		your ability activates due to contact
 x		your Lightning Rod or Storm Drain activates
 		3+ Pokemon w/ same Tera
-		2+ Pokemon that can't Tera
+	0	2+ Pokemon that can't Tera
 x		forfeit w/ 1 foe left
 x		win without using status moves
 x		win without ever having raised stat stages
@@ -371,7 +374,7 @@ x		one-hit KO, not with an OHKO move
 x		wake up from sleep (not cured)
 		Tera Type where ALL weaknesses become resists (or immunities)
 x		get x2 or better STAB
-		every slot w/ impossible ability
+		every slot w/ ability it can't normally get
 x		make something last more turns than usual
 		2+ Pokemon w/ Tera matching an original type
 		buy something for $100 or more
