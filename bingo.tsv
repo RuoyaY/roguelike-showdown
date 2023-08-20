@@ -71,11 +71,11 @@ x		get frozen
 x		get confused
 x		set an entry hazard
 x		have a screen (eg Reflect)
-x		a field effect on your side (eg Reflect, Tailwind)
-x	0	a field effect on foe's side (eg Reflect, Tailwind)
-x		win w/ a field effect on your side (eg Reflect, Tailwind)
+x		a field effect on your side (eg Reflect, Spikes)
+x		a field effect on foe's side (eg Reflect, Spikes)
+x		win w/ a field effect on your side (eg Reflect, Spikes)
 x		set a global field effect that isn't Weather/Terrain (eg Gravity)
-x		win w/ a global field effect (eg Gravity)
+x	0	win w/ a global field effect that isn't Weather/Terrain (eg Gravity)
 x		make it sunny/Desolate Land
 x		make rain/Primordial Sea
 x		make a sandstorm
@@ -244,24 +244,24 @@ x		cancel a move w/ Disable, Torment, Taunt, Embargo, or Heal Block
 	0	ability name includes V
 	0	ability name includes W
 	0	ability name includes Y
-		4+ Normal moves
-		3+ Fire moves
-		3+ Water moves
-		3+ Grass moves
-		3+ Electric moves
-		3+ Ice moves
-		3+ Fighting moves
-		3+ Poison moves
-		3+ Ground moves
-		3+ Flying moves
-		3+ Psychic moves
-		3+ Bug moves
-		3+ Rock moves
-		3+ Ghost moves
-		3+ Dark moves
-		3+ Dragon moves
-		3+ Steel moves
-		3+ Fairy moves
+		6+ Normal moves
+		4+ Fire moves
+		4+ Water moves
+		4+ Grass moves
+		4+ Electric moves
+		4+ Ice moves
+		4+ Fighting moves
+		4+ Poison moves
+		4+ Ground moves
+		4+ Flying moves
+		4+ Psychic moves
+		4+ Bug moves
+		4+ Rock moves
+		4+ Ghost moves
+		4+ Dark moves
+		4+ Dragon moves
+		4+ Steel moves
+		4+ Fairy moves
 x		do <1% damage
 x		1 Pokemon KOs 4+ others in 1 battle
 x		1 Pokemon KOs 3+ foes in 1 battle
@@ -290,11 +290,12 @@ x		your ability lowered a stat stage
 x		your ability activates due to contact
 x		your Lightning Rod or Storm Drain activates
 		3+ Pokemon w/ same Tera
-	0	2+ Pokemon that can't Tera
+	0	Pokemon that can't Tera
 x		forfeit w/ 1 foe left
 x		win without using status moves
 x		win without ever having raised stat stages
 x		an ally uses a move & switches out in 1 turn
+x		an ally exits & enters battle in 1 turn
 		replace a slot
 		2+ Pokemon with 1 weakness (ignore ability, etc)
 		2+ Pokemon with 5+ weaknesses (ignore ability, etc)
@@ -372,7 +373,7 @@ x		your ability is revealed
 x		foe's ability is revealed
 x		one-hit KO, not with an OHKO move
 x		wake up from sleep (not cured)
-		Tera Type where ALL weaknesses become resists (or immunities)
+x		Tera so that ALL weaknesses become resists or immunes
 x		get x2 or better STAB
 		every slot w/ ability it can't normally get
 x		make something last more turns than usual
