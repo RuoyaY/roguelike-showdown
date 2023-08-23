@@ -311,12 +311,13 @@ button:focus {
   <div>
     <h1>Roguelike Showdown</h1>
 
-    <button onclick="copyBingoJSON()">copy bingo JSON to clipboard</button>
+    <input type="checkbox" id="hasCrowns" checked>
+    <label for="hasCrowns">Add crowns</label>
+    <button onclick="copyBingoJSON()">copy bingo JSON</button>
     <br class="mb-4px">
     <button id="save" onclick="save()">save</button>
     <button id="load" onclick="load()">load</button>
-    <br>
-    <br>
+    <hr>
     Round <span id="roundCounter">0</span> of <input id="numRounds" type="number" size="3" class="mb-4px">
     <input type="checkbox" id="endless">
     <label for="endless" class="hasHoverText" title="Keeps the final round at least 1 round away, so you never reach it.">Endless</label>
@@ -1113,6 +1114,7 @@ function itemToTsv(item) {
 }
 
 function copyBingoJSON() {
+  const hasCrowns = document.getElementById('hasCrowns').checked;
   let filename = 'bingo.tsv';
   // filename = 'bingoTest.tsv';
   loadFile(filename, function() {
@@ -1122,7 +1124,7 @@ function copyBingoJSON() {
     let goals = [];
     for (let x = 0; x < 5; x++) {
       for (let y = 0; y < 5; y++) {
-        if (x === 4-y)
+        if (hasCrowns && x === 4-y)
           goals.push({"name": '👑'});
         else {
           let splitByTab, prob;
