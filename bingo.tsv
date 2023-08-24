@@ -54,9 +54,9 @@ x		use a 0.25x not-very-effective move
 x		be at 1 HP
 x		foe at <10% HP
 x		land an OHKO move
-		$0 at some point
-		$69 at some point
-		$150 or more at some point
+		$0
+		$69
+		$150 or more
 x		burned foe
 x		poisoned/badly poisoned foe
 x		paralyzed foe
@@ -365,7 +365,7 @@ x		lose your held item on entry (before move selection)
 x		trigger an effect due to foe contacting you
 x		use a move that causes the user to feint
 x		gain status effect from held item (confusion counts)
-x		use a move that's useless in Single Battles
+x		use a move that's only useful in Doubles
 x		have a move fail
 x		your item is revealed
 x		foe's item is revealed
@@ -400,4 +400,4 @@ x		KO a Steel-type
 x		KO a Fairy-type
 x		every living ally has a non-volatile status
 x		every living foe has a non-volatile status
-x		both allies restore HP in 1 turn
+x		two allies restore HP in 1 turn
