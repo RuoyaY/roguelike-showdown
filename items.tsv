@@ -257,16 +257,16 @@ Stockpile TMs	universalTM	30											Teach ANY 1 Pokemon one or more of the fo
 Defense Curl TMs	universalTM	30											Teach ANY 1 Pokemon one or more of the following: *Defense Curl*, *Rollout*, *Ice Ball*.			
 Perfect Hidden Power TM	universalTM	20											Teach ANY 1 Pokemon any Hidden Power (other than Normal or Fairy) (e.g. "*Hidden Power Ice*").			
 Random Hidden Power TM	universalTM	10											Generate a random type. You must teach ANY 1 Pokemon the Hidden Power of that type (e.g. "*Hidden Power Ice*").			
-Perfect TM	universalTM	60											Teach ANY 1 Pokemon ANY 1 move (no Z-Moves, G-Max moves, or Zippy Zap).			
-Perfect Party TM	partyTM	30n+30											Choose ANY move (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
+Perfect TM	universalTM	60											Teach ANY 1 Pokemon ANY 1 move (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
+Perfect Party TM	partyTM	30n+30											Choose ANY move (no Z-Moves, G-Max moves, Zippy Zap, or Spore). Teach EVERY Pokemon that move.			
 Perfect Twin TMs	beforeTM	30											Before battle: Both players MAY teach their [nth] Pokemon the move [_____] (can't choose Z-Moves).			
-Mirror TM	universalTM	40					2						Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves or Zippy Zap).			
+Mirror TM	universalTM	40					2						Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves, Zippy Zap, and Spore).			
 Mirror Moveset	misc	20					2						Replace a Pokemon's ENTIRE moveset with a copy of another Pokemon's moveset.			
 Reflect Moveset	beforeBattle	45											Before battle: Replace your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
-Mirror Party TM	partyTM	20n					2						Teach EVERY Pokemon any 1 move one of your Pokemon know (excluding Z-Moves or Zippy Zap).			
-Shadow TM	universalTM	35								x			Teach any 1 Pokemon any 1 move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, or Zippy Zap).			
-Shadow Party TM	partyTM	15n+20								x			Choose any move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
-Reflecting TM	beforeBattle	10											Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it is a Z-Move, G-Max move, or Zippy Zap.			
+Mirror Party TM	partyTM	20n					2						Teach EVERY Pokemon any 1 move one of your Pokemon know (excluding Z-Moves, Zippy Zap, and Spore).			
+Shadow TM	universalTM	35								x			Teach any 1 Pokemon any 1 move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
+Shadow Party TM	partyTM	15n+20								x			Choose any move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, Zippy Zap, or Spore). Teach EVERY Pokemon that move.			
+Reflecting TM	beforeBattle	10											Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it is a Z-Move, G-Max move, Zippy Zap, or Spore.			
 Normal Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.			
 Fire Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.			
 Water Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-water">Water</span>.			
@@ -521,7 +521,7 @@ Rare Single-Type Candy	misc	15	0										Increase a Pokemon with only one type'
 Perfect Normal TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 NORMAL-TYPE move (no Z-Moves or G-Max moves).			
 Perfect Fire TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FIRE-TYPE move (no Z-Moves or G-Max moves).			
 Perfect Water TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 WATER-TYPE move (no Z-Moves or G-Max moves).			
-Perfect Grass TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GRASS-TYPE move (no Z-Moves or G-Max moves).			
+Perfect Grass TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 GRASS-TYPE move (no Z-Moves, G-Max moves, or Spore).			
 Perfect Electric TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ELECTRIC-TYPE move (no Z-Moves, G-Max moves, or Zippy Zap).			
 Perfect Ice TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 ICE-TYPE move (no Z-Moves or G-Max moves).			
 Perfect Fighting TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FIGHTING-TYPE move (no Z-Moves or G-Max moves).			
@@ -539,7 +539,7 @@ Perfect Fairy TM	universalTM	50											Teach ANY 1 Pokemon ANY 1 FAIRY-TYPE m
 Perfect Normal Party TM	partyTM	25n+25											Choose ANY NORMAL-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
 Perfect Fire Party TM	partyTM	25n+25											Choose ANY FIRE-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
 Perfect Water Party TM	partyTM	25n+25											Choose ANY WATER-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-Perfect Grass Party TM	partyTM	25n+25											Choose ANY GRASS-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Perfect Grass Party TM	partyTM	25n+25											Choose ANY GRASS-TYPE move (no Z-Moves, G-Max moves, or Spore). Teach EVERY Pokemon that move.			
 Perfect Electric Party TM	partyTM	25n+25											Choose ANY ELECTRIC-TYPE move (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
 Perfect Ice Party TM	partyTM	25n+25											Choose ANY ICE-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
 Perfect Fighting Party TM	partyTM	25n+25											Choose ANY FIGHTING-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
