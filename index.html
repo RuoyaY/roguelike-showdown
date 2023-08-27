@@ -2298,7 +2298,7 @@ function beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr) {
     moveIds = getLearnset(speciesId);
   moveIds = moveIds.filter(moveId => {
     const move = moves[moveId];
-    return !(pokemonHasMove(pokemonStr, move.name) || isLGPE(move));
+    return !(pokemonHasMove(pokemonStr, move.name) || isLGPE(move) || isZ(move));
   });
   addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
 }
@@ -2312,7 +2312,7 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
     const pokemonStr = getPokeEle(pokeDiv).innerText;
     do {
       move = randomMove(false);
-    } while (pokemonHasMove(pokemonStr, move.name) || isLGPE(move));
+    } while (pokemonHasMove(pokemonStr, move.name) || isLGPE(move) || isZ(move));
   } else 
     move = addHiddenPowerType(moves[removeRandom(moveIds)]);
 
@@ -3604,7 +3604,7 @@ function tmPrice(move) {
     return 10;
 }
 function isZ(move) {
-  return move.isZ || move.name === 'Zippy Zap' || SIXTH_HP_PER_TURN.includes(move.name);
+  return move.isZ || move.name === 'Spore' || move.name === 'Zippy Zap' || SIXTH_HP_PER_TURN.includes(move.name);
 }
 function isLGPE(move) {
   return (move.isNonstandard === 'LGPE' && move.name !== 'Zippy Zap') || move.name === 'G-Max Resonance';
