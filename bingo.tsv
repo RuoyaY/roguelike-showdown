@@ -41,8 +41,8 @@ x		an ally uses all its moves in 1 battle (not Lv1)
 x		foe flinched
 x		get flinched
 x		miss a move
-x		use a type's immunity
-x		use an ability immunity
+x		be immune due to your type
+x		be immune due to your ability
 x		be immune to foe's move
 x		use a Subtitute's immunity
 x		eat a berry
@@ -365,7 +365,7 @@ x		lose your held item on entry (before move selection)
 x		trigger an effect due to foe contacting you
 x		use a move that causes the user to feint
 x		gain status effect from held item (confusion counts)
-x		use a move that's only useful in Doubles
+x	0	use a move that's only useful in Doubles
 x		have a move fail
 x		your item is revealed
 x		foe's item is revealed
