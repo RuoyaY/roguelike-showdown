@@ -949,10 +949,10 @@ Pokeball Charm	keyItem	3m									x		+1 Pokeball slot in the shop.
 Tera Charm	keyItem	2r+2											+1 Tera Shards slot in the shop.			
 Unlimited Encounter Power	keyItem	7.5m									x		+1 free Encounter Power slot in the shop.			
 EVs Charm	keyItem	3r+3											+1 Max Nutrience (set a given EV to 252) slot in the shop.			
-Berry Charm	keyItem	3r+3											+1 free Berry slot in the shop.			
-Candy Party Charm	keyItem	3r+3											+1 free Type Candy Party (level up every Pokemon of a given type) slot in the shop.			
+Berry Charm	keyItem	3r+3											+1 Berry slot in the shop.			
+Candy Party Charm	keyItem	3r+3											+1 Type Candy Party (level up every Pokemon of a given type) slot in the shop.			
 Reveal Glass	keyItem	r+1											Whenever the shop refreshes, you may buy Scouting for $5 in an extra slot (Before battle: Your opponent must reveal their [nth] Pokemon).			
-Mint Charm	keyItem	2r+2											+1 free Mint (for setting Nature) slot in the shop.			
+Mint Charm	keyItem	2r+2											+1 Mint (for setting Nature) slot in the shop.			
 Oops! All TMs	keyItem	0											For the rest of the round, ALL slots in the shop only offer TMs.			
 Oops! All Abilitizers	keyItem	-5											For the rest of the round, ALL slots in the shop only offer Abilitizers.			
 Oops! All Species Changers	keyItem	5											For the rest of the round, ALL slots in the shop only offer Species Changers.			
