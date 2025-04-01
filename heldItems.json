@@ -1,8 +1,7 @@
 {
   "abilityshield": {
     "name": "Ability Shield",
-    "desc": "Holder's Ability cannot be changed by any effect.",
-    "block": "  [POKEMON]'s Ability is protected by the effects of its Ability Shield!"
+    "desc": "Holder's Ability cannot be changed, suppressed, or ignored by any effect."
   },
   "abomasite": {
     "name": "Abomasite",
@@ -38,19 +37,11 @@
   },
   "aguavberry": {
     "name": "Aguav Berry",
-    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
-    "gen7": {
-      "desc": "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use."
-    },
-    "gen6": {
-      "desc": "Restores 1/8 max HP at 1/2 max HP or less; confuses if -SpD Nature. Single use."
-    }
+    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use."
   },
   "airballoon": {
     "name": "Air Balloon",
-    "desc": "Holder is immune to Ground-type attacks. Pops when holder is hit.",
-    "start": "  [POKEMON] floats in the air with its Air Balloon!",
-    "end": "  [POKEMON]'s Air Balloon popped!"
+    "desc": "Holder is immune to Ground-type attacks. Pops when holder is hit."
   },
   "alakazite": {
     "name": "Alakazite",
@@ -120,12 +111,13 @@
     "name": "Berry Sweet",
     "desc": "Evolves Milcery into Alcremie when held and spun around."
   },
+  "bignugget": {
+    "name": "Big Nugget",
+    "desc": "A big nugget of pure gold that gives off a lustrous gleam."
+  },
   "bigroot": {
     "name": "Big Root",
-    "desc": "Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
-    "gen6": {
-      "desc": "Holder gains 1.3x HP from draining moves, Aqua Ring, Ingrain, and Leech Seed."
-    }
+    "desc": "Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap."
   },
   "bindingband": {
     "name": "Binding Band",
@@ -133,22 +125,15 @@
   },
   "blackbelt": {
     "name": "Black Belt",
-    "desc": "Holder's Fighting-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Fighting-type attacks have 1.1x power."
-    }
-  },
-  "blacksludge": {
-    "name": "Black Sludge",
-    "desc": "Each turn, if holder is a Poison type, restores 1/16 max HP; loses 1/8 if not.",
-    "heal": "  [POKEMON] restored a little HP using its Black Sludge!"
+    "desc": "Holder's Fighting-type attacks have 1.2x power."
   },
   "blackglasses": {
     "name": "Black Glasses",
-    "desc": "Holder's Dark-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Dark-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Dark-type attacks have 1.2x power."
+  },
+  "blacksludge": {
+    "name": "Black Sludge",
+    "desc": "Each turn, if holder is a Poison type, restores 1/16 max HP; loses 1/8 if not."
   },
   "blastoisinite": {
     "name": "Blastoisinite",
@@ -180,17 +165,11 @@
   },
   "brightpowder": {
     "name": "Bright Powder",
-    "desc": "The accuracy of attacks against the holder is 0.9x.",
-    "gen2": {
-      "desc": "An attack against the holder has its accuracy out of 255 lowered by 20."
-    }
+    "desc": "The accuracy of attacks against the holder is 0.9x."
   },
   "buggem": {
     "name": "Bug Gem",
-    "desc": "Holder's first successful Bug-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Bug-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Bug-type attack will have 1.3x power. Single use."
   },
   "bugmemory": {
     "name": "Bug Memory",
@@ -214,10 +193,7 @@
   },
   "charcoal": {
     "name": "Charcoal",
-    "desc": "Holder's Fire-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Fire-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Fire-type attacks have 1.2x power."
   },
   "charizarditex": {
     "name": "Charizardite X",
@@ -277,8 +253,7 @@
   },
   "clearamulet": {
     "name": "Clear Amulet",
-    "desc": "Prevents other Pokemon from lowering the holder's stat stages.",
-    "block": "  The effects of [POKEMON]'s Clear Amulet prevent its stats from being lowered!"
+    "desc": "Prevents other Pokemon from lowering the holder's stat stages."
   },
   "cloversweet": {
     "name": "Clover Sweet",
@@ -291,6 +266,10 @@
   "colburberry": {
     "name": "Colbur Berry",
     "desc": "Halves damage taken from a supereffective Dark-type attack. Single use."
+  },
+  "cornerstonemask": {
+    "name": "Cornerstone Mask",
+    "desc": "Ogerpon-Cornerstone: 1.2x power attacks; Terastallize to gain Embody Aspect."
   },
   "cornnberry": {
     "name": "Cornn Berry",
@@ -310,8 +289,7 @@
   },
   "custapberry": {
     "name": "Custap Berry",
-    "desc": "Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.",
-    "activate": "  [POKEMON] can act faster than normal, thanks to its Custap Berry!"
+    "desc": "Holder moves first in its priority bracket when at 1/4 max HP or less. Single use."
   },
   "damprock": {
     "name": "Damp Rock",
@@ -319,10 +297,7 @@
   },
   "darkgem": {
     "name": "Dark Gem",
-    "desc": "Holder's first successful Dark-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Dark-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Dark-type attack will have 1.3x power. Single use."
   },
   "darkmemory": {
     "name": "Dark Memory",
@@ -377,20 +352,11 @@
   },
   "dragonfang": {
     "name": "Dragon Fang",
-    "desc": "Holder's Dragon-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Dragon-type attacks have 1.1x power."
-    },
-    "gen2": {
-      "desc": "No competitive use."
-    }
+    "desc": "Holder's Dragon-type attacks have 1.2x power."
   },
   "dragongem": {
     "name": "Dragon Gem",
-    "desc": "Holder's first successful Dragon-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Dragon-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Dragon-type attack will have 1.3x power. Single use."
   },
   "dragonmemory": {
     "name": "Dragon Memory",
@@ -398,10 +364,7 @@
   },
   "dragonscale": {
     "name": "Dragon Scale",
-    "desc": "Evolves Seadra into Kingdra when traded.",
-    "gen2": {
-      "desc": "Holder's Dragon-type attacks have 1.1x power. Evolves Seadra (trade)."
-    }
+    "desc": "Evolves Seadra into Kingdra when traded."
   },
   "dragoniumz": {
     "name": "Dragonium Z",
@@ -413,10 +376,7 @@
   },
   "dreamball": {
     "name": "Dream Ball",
-    "desc": "A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.",
-    "gen7": {
-      "desc": "A special Poke Ball that appears out of nowhere in a bag at the Entree Forest."
-    }
+    "desc": "A Poke Ball that makes it easier to catch wild Pokémon while they're asleep."
   },
   "dubiousdisc": {
     "name": "Dubious Disc",
@@ -445,13 +405,11 @@
   },
   "ejectbutton": {
     "name": "Eject Button",
-    "desc": "If holder survives a hit, it immediately switches out to a chosen ally. Single use.",
-    "end": "  [POKEMON] is switched out with the Eject Button!"
+    "desc": "If holder survives a hit, it immediately switches out to a chosen ally. Single use."
   },
   "ejectpack": {
     "name": "Eject Pack",
-    "desc": "If the holder's stat stages are lowered, it switches to a chosen ally. Single use.",
-    "end": "  [POKEMON] is switched out by the Eject Pack!"
+    "desc": "If the holder's stat stages are lowered, it switches to a chosen ally. Single use."
   },
   "electirizer": {
     "name": "Electirizer",
@@ -459,10 +417,7 @@
   },
   "electricgem": {
     "name": "Electric Gem",
-    "desc": "Holder's first successful Electric-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Electric-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Electric-type attack will have 1.3x power. Single use."
   },
   "electricmemory": {
     "name": "Electric Memory",
@@ -478,10 +433,7 @@
   },
   "enigmaberry": {
     "name": "Enigma Berry",
-    "desc": "Restores 1/4 max HP after holder is hit by a supereffective move. Single use.",
-    "gen3": {
-      "desc": "No competitive use."
-    }
+    "desc": "Restores 1/4 max HP after holder is hit by a supereffective move. Single use."
   },
   "eviolite": {
     "name": "Eviolite",
@@ -494,6 +446,10 @@
   "fairiumz": {
     "name": "Fairium Z",
     "desc": "If holder has a Fairy move, this item allows it to use a Fairy Z-Move."
+  },
+  "fairyfeather": {
+    "name": "Fairy Feather",
+    "desc": "Holder's Fairy-type attacks have 1.2x power."
   },
   "fairygem": {
     "name": "Fairy Gem",
@@ -509,10 +465,7 @@
   },
   "fightinggem": {
     "name": "Fighting Gem",
-    "desc": "Holder's first successful Fighting-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Fighting-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Fighting-type attack will have 1.3x power. Single use."
   },
   "fightingmemory": {
     "name": "Fighting Memory",
@@ -524,20 +477,11 @@
   },
   "figyberry": {
     "name": "Figy Berry",
-    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
-    "gen7": {
-      "desc": "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use."
-    },
-    "gen6": {
-      "desc": "Restores 1/8 max HP at 1/2 max HP or less; confuses if -Atk Nature. Single use."
-    }
+    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use."
   },
   "firegem": {
     "name": "Fire Gem",
-    "desc": "Holder's first successful Fire-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Fire-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Fire-type attack will have 1.3x power. Single use."
   },
   "firememory": {
     "name": "Fire Memory",
@@ -574,10 +518,7 @@
   },
   "flyinggem": {
     "name": "Flying Gem",
-    "desc": "Holder's first successful Flying-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Flying-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Flying-type attack will have 1.3x power. Single use."
   },
   "flyingmemory": {
     "name": "Flying Memory",
@@ -589,19 +530,11 @@
   },
   "focusband": {
     "name": "Focus Band",
-    "desc": "Holder has a 10% chance to survive an attack that would KO it with 1 HP.",
-    "gen2": {
-      "desc": "Holder has a ~11.7% chance to survive an attack that would KO it with 1 HP."
-    },
-    "activate": "  [POKEMON] hung on using its Focus Band!"
+    "desc": "Holder has a 10% chance to survive an attack that would KO it with 1 HP."
   },
   "focussash": {
     "name": "Focus Sash",
-    "desc": "If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use.",
-    "gen4": {
-      "desc": "If holder's HP is full, survives all hits of one attack with at least 1 HP. Single use."
-    },
-    "end": "  [POKEMON] hung on using its Focus Sash!"
+    "desc": "If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use."
   },
   "fossilizedbird": {
     "name": "Fossilized Bird",
@@ -657,10 +590,7 @@
   },
   "ghostgem": {
     "name": "Ghost Gem",
-    "desc": "Holder's first successful Ghost-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Ghost-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Ghost-type attack will have 1.3x power. Single use."
   },
   "ghostmemory": {
     "name": "Ghost Memory",
@@ -680,10 +610,7 @@
   },
   "grassgem": {
     "name": "Grass Gem",
-    "desc": "Holder's first successful Grass-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Grass-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Grass-type attack will have 1.3x power. Single use."
   },
   "grassmemory": {
     "name": "Grass Memory",
@@ -715,17 +642,11 @@
   },
   "griseousorb": {
     "name": "Griseous Orb",
-    "desc": "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",
-    "gen4": {
-      "desc": "Can only be held by Giratina. Its Ghost- & Dragon-type attacks have 1.2x power."
-    }
+    "desc": "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power."
   },
   "groundgem": {
     "name": "Ground Gem",
-    "desc": "Holder's first successful Ground-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Ground-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Ground-type attack will have 1.3x power. Single use."
   },
   "groundmemory": {
     "name": "Ground Memory",
@@ -745,14 +666,15 @@
   },
   "hardstone": {
     "name": "Hard Stone",
-    "desc": "Holder's Rock-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Rock-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Rock-type attacks have 1.2x power."
   },
   "healball": {
     "name": "Heal Ball",
     "desc": "A remedial Poke Ball that restores the caught Pokemon's HP and status problem."
+  },
+  "hearthflamemask": {
+    "name": "Hearthflame Mask",
+    "desc": "Ogerpon-Hearthflame: 1.2x power attacks; Terastallize to gain Embody Aspect."
   },
   "heatrock": {
     "name": "Heat Rock",
@@ -784,20 +706,11 @@
   },
   "iapapaberry": {
     "name": "Iapapa Berry",
-    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
-    "gen7": {
-      "desc": "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use."
-    },
-    "gen6": {
-      "desc": "Restores 1/8 max HP at 1/2 max HP or less; confuses if -Def Nature. Single use."
-    }
+    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use."
   },
   "icegem": {
     "name": "Ice Gem",
-    "desc": "Holder's first successful Ice-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Ice-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Ice-type attack will have 1.3x power. Single use."
   },
   "icememory": {
     "name": "Ice Memory",
@@ -806,10 +719,7 @@
   "icestone": {
     "name": "Ice Stone",
     "desc": "Evolves Alolan Sandshrew into Alolan Sandslash, Alolan Vulpix into Alolan Ninetales, Eevee into Glaceon, and Galarian Darumaka into Galarian Darmanitan when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used.",
-    "gen7": {
-      "desc": "Evolves Alolan Sandshrew into Alolan Sandslash and Alolan Vulpix into Alolan Ninetales when used."
-    }
+    "shortDesc": "Evolves certain species of Pokemon when used."
   },
   "icicleplate": {
     "name": "Icicle Plate",
@@ -821,7 +731,7 @@
   },
   "icyrock": {
     "name": "Icy Rock",
-    "desc": "Holder's use of Hail lasts 8 turns instead of 5."
+    "desc": "Holder's use of Snowscape lasts 8 turns instead of 5."
   },
   "inciniumz": {
     "name": "Incinium Z",
@@ -833,10 +743,7 @@
   },
   "ironball": {
     "name": "Iron Ball",
-    "desc": "Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.",
-    "gen4": {
-      "desc": "Holder's Speed is halved and it becomes grounded."
-    }
+    "desc": "Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage."
   },
   "ironplate": {
     "name": "Iron Plate",
@@ -897,18 +804,12 @@
   },
   "laxincense": {
     "name": "Lax Incense",
-    "desc": "The accuracy of attacks against the holder is 0.9x.",
-    "gen3": {
-      "desc": "The accuracy of attacks against the holder is 0.95x."
-    }
+    "desc": "The accuracy of attacks against the holder is 0.9x."
   },
   "leafstone": {
     "name": "Leaf Stone",
     "desc": "Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Eevee into Leafeon, Nuzleaf into Shiftry, and Pansage into Simisage when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used.",
-    "gen7": {
-      "desc": "Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Nuzleaf into Shiftry, and Pansage into Simisage when used."
-    }
+    "shortDesc": "Evolves certain species of Pokemon when used."
   },
   "leek": {
     "name": "Leek",
@@ -916,13 +817,11 @@
   },
   "leftovers": {
     "name": "Leftovers",
-    "desc": "At the end of every turn, holder restores 1/16 of its max HP.",
-    "heal": "  [POKEMON] restored a little HP using its Leftovers!"
+    "desc": "At the end of every turn, holder restores 1/16 of its max HP."
   },
   "leppaberry": {
     "name": "Leppa Berry",
-    "desc": "Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use.",
-    "activate": "  [POKEMON] restored PP to its move [MOVE] using its Leppa Berry!"
+    "desc": "Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use."
   },
   "levelball": {
     "name": "Level Ball",
@@ -934,29 +833,20 @@
   },
   "lifeorb": {
     "name": "Life Orb",
-    "desc": "Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack.",
-    "damage": "  [POKEMON] lost some of its HP!"
+    "desc": "Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack."
   },
   "lightball": {
     "name": "Light Ball",
-    "desc": "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
-    "gen4": {
-      "desc": "If held by a Pikachu, its attacks have their power doubled."
-    },
-    "gen3": {
-      "desc": "If held by a Pikachu, its Special Attack is doubled."
-    }
+    "desc": "If held by a Pikachu, its Attack and Sp. Atk are doubled."
   },
   "lightclay": {
     "name": "Light Clay",
-    "desc": "Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5.",
-    "gen6": {
-      "desc": "Holder's use of Light Screen or Reflect lasts 8 turns instead of 5."
-    }
+    "desc": "Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5."
   },
   "loadeddice": {
     "name": "Loaded Dice",
-    "desc": "Holder's moves that hit 2-5 times hit 4-5 times; Population Bomb hits 4-10 times."
+    "desc": "The holder's moves that normally hit 2 to 5 times instead hit 4 or 5 times. If the first hit is successful, the holder's use of Triple Kick or Triple Axel hits 3 times, and Population Bomb hits 4 to 10 times, at random.",
+    "shortDesc": "Holder's moves that hit 2-5 times hit 4-5 times; Population Bomb hits 4-10 times."
   },
   "lopunnite": {
     "name": "Lopunnite",
@@ -976,10 +866,7 @@
   },
   "luckypunch": {
     "name": "Lucky Punch",
-    "desc": "If held by a Chansey, its critical hit ratio is raised by 2 stages.",
-    "gen2": {
-      "desc": "If held by a Chansey, its critical hit ratio is always at stage 2. (25% crit rate)"
-    }
+    "desc": "If held by a Chansey, its critical hit ratio is raised by 2 stages."
   },
   "lumberry": {
     "name": "Lum Berry",
@@ -1023,20 +910,11 @@
   },
   "magnet": {
     "name": "Magnet",
-    "desc": "Holder's Electric-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Electric-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Electric-type attacks have 1.2x power."
   },
   "magoberry": {
     "name": "Mago Berry",
-    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
-    "gen7": {
-      "desc": "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use."
-    },
-    "gen6": {
-      "desc": "Restores 1/8 max HP at 1/2 max HP or less; confuses if -Spe Nature. Single use."
-    }
+    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use."
   },
   "magostberry": {
     "name": "Magost Berry",
@@ -1066,6 +944,10 @@
     "name": "Master Ball",
     "desc": "The best Ball with the ultimate performance. It will catch any wild Pokemon."
   },
+  "masterpieceteacup": {
+    "name": "Masterpiece Teacup",
+    "desc": "Evolves Poltchageist-Artisan into Sinistcha-Masterpiece when used."
+  },
   "mawilite": {
     "name": "Mawilite",
     "desc": "If held by a Mawile, this item allows it to Mega Evolve in battle."
@@ -1080,37 +962,28 @@
   },
   "mentalherb": {
     "name": "Mental Herb",
-    "desc": "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use.",
-    "gen4": {
-      "desc": "Holder is cured if it is infatuated. Single use."
-    }
+    "desc": "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use."
   },
   "metagrossite": {
     "name": "Metagrossite",
     "desc": "If held by a Metagross, this item allows it to Mega Evolve in battle."
   },
+  "metalalloy": {
+    "name": "Metal Alloy",
+    "desc": "Evolves Duraludon into Archaludon when used."
+  },
   "metalcoat": {
     "name": "Metal Coat",
     "desc": "Holder's Steel-type attacks have 1.2x power. Evolves Onix into Steelix and Scyther into Scizor when traded.",
-    "shortDesc": "Holder's Steel-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Steel-type attacks have 1.1x power. Evolves Onix into Steelix and Scyther into Scizor when traded.",
-      "shortDesc": "Holder's Steel-type attacks have 1.1x power."
-    }
+    "shortDesc": "Holder's Steel-type attacks have 1.2x power."
   },
   "metalpowder": {
     "name": "Metal Powder",
-    "desc": "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
-    "gen2": {
-      "desc": "If held by a Ditto, its Defense and Sp. Def are 1.5x, even while Transformed."
-    }
+    "desc": "If held by a Ditto that hasn't Transformed, its Defense is doubled."
   },
   "metronome": {
     "name": "Metronome",
-    "desc": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
-    "gen4": {
-      "desc": "Damage of moves used on consecutive turns is increased. Max 2x after 10 turns."
-    }
+    "desc": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns."
   },
   "mewniumz": {
     "name": "Mewnium Z",
@@ -1138,15 +1011,11 @@
   },
   "miracleseed": {
     "name": "Miracle Seed",
-    "desc": "Holder's Grass-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Grass-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Grass-type attacks have 1.2x power."
   },
   "mirrorherb": {
     "name": "Mirror Herb",
-    "desc": "When an opposing Pokemon raises a stat stage, the holder copies it. Single use.",
-    "activate": "  [POKEMON] used its Mirror Herb to mirror its opponent's stat changes!"
+    "desc": "When an opposing Pokemon raises a stat stage, the holder copies it. Single use."
   },
   "mistyseed": {
     "name": "Misty Seed",
@@ -1167,10 +1036,7 @@
   },
   "mysticwater": {
     "name": "Mystic Water",
-    "desc": "Holder's Water-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Water-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Water-type attacks have 1.2x power."
   },
   "nanabberry": {
     "name": "Nanab Berry",
@@ -1186,10 +1052,7 @@
   },
   "nevermeltice": {
     "name": "Never-Melt Ice",
-    "desc": "Holder's Ice-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Ice-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Ice-type attacks have 1.2x power."
   },
   "nomelberry": {
     "name": "Nomel Berry",
@@ -1197,10 +1060,7 @@
   },
   "normalgem": {
     "name": "Normal Gem",
-    "desc": "Holder's first successful Normal-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Normal-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Normal-type attack will have 1.3x power. Single use."
   },
   "normaliumz": {
     "name": "Normalium Z",
@@ -1284,17 +1144,11 @@
   },
   "poisonbarb": {
     "name": "Poison Barb",
-    "desc": "Holder's Poison-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Poison-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Poison-type attacks have 1.2x power."
   },
   "poisongem": {
     "name": "Poison Gem",
-    "desc": "Holder's first successful Poison-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Poison-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Poison-type attack will have 1.3x power. Single use."
   },
   "poisonmemory": {
     "name": "Poison Memory",
@@ -1330,8 +1184,7 @@
   },
   "powerherb": {
     "name": "Power Herb",
-    "desc": "Holder's two-turn moves complete in one turn (except Sky Drop). Single use.",
-    "end": "  [POKEMON] became fully charged due to its Power Herb!"
+    "desc": "Holder's two-turn moves complete in one turn (except Sky Drop). Single use."
   },
   "powerlens": {
     "name": "Power Lens",
@@ -1355,8 +1208,7 @@
   },
   "protectivepads": {
     "name": "Protective Pads",
-    "desc": "Holder's moves are protected from adverse contact effects, except Pickpocket.",
-    "block": "  [POKEMON] protected itself with its Protective Pads!"
+    "desc": "Holder's moves are protected from adverse contact effects, except Pickpocket."
   },
   "protector": {
     "name": "Protector",
@@ -1364,10 +1216,7 @@
   },
   "psychicgem": {
     "name": "Psychic Gem",
-    "desc": "Holder's first successful Psychic-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Psychic-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Psychic-type attack will have 1.3x power. Single use."
   },
   "psychicmemory": {
     "name": "Psychic Memory",
@@ -1395,11 +1244,7 @@
   },
   "quickclaw": {
     "name": "Quick Claw",
-    "desc": "Each turn, holder has a 20% chance to move first in its priority bracket.",
-    "gen2": {
-      "desc": "Each turn, holder has a ~23.4% chance to move first in its priority bracket."
-    },
-    "activate": "  [POKEMON] can act faster than normal, thanks to its Quick Claw!"
+    "desc": "Each turn, holder has a 20% chance to move first in its priority bracket."
   },
   "quickpowder": {
     "name": "Quick Powder",
@@ -1437,8 +1282,7 @@
   },
   "redcard": {
     "name": "Red Card",
-    "desc": "If holder survives a hit, attacker is forced to switch to a random ally. Single use.",
-    "end": "  [POKEMON] held up its Red Card against [TARGET]!"
+    "desc": "If holder survives a hit, attacker is forced to switch to a random ally. Single use."
   },
   "redorb": {
     "name": "Red Orb",
@@ -1462,10 +1306,7 @@
   },
   "rockgem": {
     "name": "Rock Gem",
-    "desc": "Holder's first successful Rock-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Rock-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Rock-type attack will have 1.3x power. Single use."
   },
   "rockincense": {
     "name": "Rock Incense",
@@ -1481,8 +1322,7 @@
   },
   "rockyhelmet": {
     "name": "Rocky Helmet",
-    "desc": "If holder is hit by a contact move, the attacker loses 1/6 of its max HP.",
-    "damage": "  [POKEMON] was hurt by the Rocky Helmet!"
+    "desc": "If holder is hit by a contact move, the attacker loses 1/6 of its max HP."
   },
   "roomservice": {
     "name": "Room Service",
@@ -1526,8 +1366,7 @@
   },
   "safetygoggles": {
     "name": "Safety Goggles",
-    "desc": "Holder is immune to powder moves and damage from Sandstorm or Hail.",
-    "block": "  [POKEMON] is not affected by [MOVE] thanks to its Safety Goggles!"
+    "desc": "Holder is immune to powder moves and damage from Sandstorm or Hail."
   },
   "sailfossil": {
     "name": "Sail Fossil",
@@ -1555,17 +1394,11 @@
   },
   "seaincense": {
     "name": "Sea Incense",
-    "desc": "Holder's Water-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Water-type attacks have 1.05x power."
-    }
+    "desc": "Holder's Water-type attacks have 1.2x power."
   },
   "sharpbeak": {
     "name": "Sharp Beak",
-    "desc": "Holder's Flying-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Flying-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Flying-type attacks have 1.2x power."
   },
   "sharpedonite": {
     "name": "Sharpedonite",
@@ -1573,12 +1406,11 @@
   },
   "shedshell": {
     "name": "Shed Shell",
-    "desc": "Holder may switch out even when trapped by another Pokemon, or by Ingrain."
+    "desc": "Holder cannot be prevented from choosing to switch out by any effect."
   },
   "shellbell": {
     "name": "Shell Bell",
-    "desc": "After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon.",
-    "heal": "  [POKEMON] restored a little HP using its Shell Bell!"
+    "desc": "After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon."
   },
   "shinystone": {
     "name": "Shiny Stone",
@@ -1595,24 +1427,15 @@
   },
   "silkscarf": {
     "name": "Silk Scarf",
-    "desc": "Holder's Normal-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Normal-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Normal-type attacks have 1.2x power."
   },
   "silverpowder": {
     "name": "Silver Powder",
-    "desc": "Holder's Bug-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Bug-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Bug-type attacks have 1.2x power."
   },
   "sitrusberry": {
     "name": "Sitrus Berry",
-    "desc": "Restores 1/4 max HP when at 1/2 max HP or less. Single use.",
-    "gen3": {
-      "desc": "Restores 30 HP when at 1/2 max HP or less. Single use."
-    }
+    "desc": "Restores 1/4 max HP when at 1/2 max HP or less. Single use."
   },
   "skullfossil": {
     "name": "Skull Fossil",
@@ -1640,10 +1463,7 @@
   },
   "softsand": {
     "name": "Soft Sand",
-    "desc": "Holder's Ground-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Ground-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Ground-type attacks have 1.2x power."
   },
   "solganiumz": {
     "name": "Solganium Z",
@@ -1651,17 +1471,11 @@
   },
   "souldew": {
     "name": "Soul Dew",
-    "desc": "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
-    "gen6": {
-      "desc": "If held by a Latias or a Latios, its Sp. Atk and Sp. Def are 1.5x."
-    }
+    "desc": "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power."
   },
   "spelltag": {
     "name": "Spell Tag",
-    "desc": "Holder's Ghost-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Ghost-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Ghost-type attacks have 1.2x power."
   },
   "spelonberry": {
     "name": "Spelon Berry",
@@ -1693,10 +1507,7 @@
   },
   "steelgem": {
     "name": "Steel Gem",
-    "desc": "Holder's first successful Steel-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Steel-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Steel-type attack will have 1.3x power. Single use."
   },
   "steelmemory": {
     "name": "Steel Memory",
@@ -1708,10 +1519,7 @@
   },
   "stick": {
     "name": "Stick",
-    "desc": "If held by a Farfetch’d, its critical hit ratio is raised by 2 stages.",
-    "gen2": {
-      "desc": "If held by a Farfetch’d, its critical hit ratio is always at stage 2. (25% crit rate)"
-    }
+    "desc": "If held by a Farfetch’d, its critical hit ratio is raised by 2 stages."
   },
   "stickybarb": {
     "name": "Sticky Barb",
@@ -1720,6 +1528,10 @@
   "stoneplate": {
     "name": "Stone Plate",
     "desc": "Holder's Rock-type attacks have 1.2x power. Judgment is Rock type."
+  },
+  "strangeball": {
+    "name": "Strange Ball",
+    "desc": "Placeholder if caught in Poke Ball not in current game."
   },
   "strawberrysweet": {
     "name": "Strawberry Sweet",
@@ -1737,6 +1549,10 @@
   "sweetapple": {
     "name": "Sweet Apple",
     "desc": "Evolves Applin into Appletun when used."
+  },
+  "syrupyapple": {
+    "name": "Syrupy Apple",
+    "desc": "Evolves Applin into Dipplin when used."
   },
   "tamatoberry": {
     "name": "Tamato Berry",
@@ -1769,10 +1585,7 @@
   "thunderstone": {
     "name": "Thunder Stone",
     "desc": "Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, Eelektrik into Eelektross, and Charjabug into Vikavolt when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used.",
-    "gen7": {
-      "desc": "Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, and Eelektrik into Eelektross when used."
-    }
+    "shortDesc": "Evolves certain species of Pokemon when used."
   },
   "timerball": {
     "name": "Timer Ball",
@@ -2188,10 +2001,7 @@
   },
   "twistedspoon": {
     "name": "Twisted Spoon",
-    "desc": "Holder's Psychic-type attacks have 1.2x power.",
-    "gen3": {
-      "desc": "Holder's Psychic-type attacks have 1.1x power."
-    }
+    "desc": "Holder's Psychic-type attacks have 1.2x power."
   },
   "tyranitarite": {
     "name": "Tyranitarite",
@@ -2203,9 +2013,11 @@
   },
   "ultranecroziumz": {
     "name": "Ultranecrozium Z",
-    "desc": "Dusk Mane/Dawn Wings Necrozma: Ultra Burst, then Z-Move w/ Photon Geyser.",
-    "transform": "  Bright light is about to burst out of [POKEMON]!",
-    "activate": "[POKEMON] regained its true power through Ultra Burst!"
+    "desc": "Dusk Mane/Dawn Wings Necrozma: Ultra Burst, then Z-Move w/ Photon Geyser."
+  },
+  "unremarkableteacup": {
+    "name": "Unremarkable Teacup",
+    "desc": "Evolves Poltchageist into Sinistcha when used."
   },
   "upgrade": {
     "name": "Up-Grade",
@@ -2213,7 +2025,7 @@
   },
   "utilityumbrella": {
     "name": "Utility Umbrella",
-    "desc": "The holder ignores rain- and sun-based effects. Damage and accuracy calculations from attacks used by the holder are affected by rain and sun, but not attacks used against the holder.",
+    "desc": "The holder ignores rain- and sun-based effects, including those of its Ability unless it is Orichalcum Pulse or Protosynthesis. Damage and accuracy calculations from attacks used by the holder are affected by rain and sun, but not attacks used against the holder.",
     "shortDesc": "The holder ignores rain- and sun-based effects."
   },
   "venusaurite": {
@@ -2226,10 +2038,7 @@
   },
   "watergem": {
     "name": "Water Gem",
-    "desc": "Holder's first successful Water-type attack will have 1.3x power. Single use.",
-    "gen5": {
-      "desc": "Holder's first successful Water-type attack will have 1.5x power. Single use."
-    }
+    "desc": "Holder's first successful Water-type attack will have 1.3x power. Single use."
   },
   "watermemory": {
     "name": "Water Memory",
@@ -2256,6 +2065,10 @@
     "name": "Weakness Policy",
     "desc": "If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use."
   },
+  "wellspringmask": {
+    "name": "Wellspring Mask",
+    "desc": "Ogerpon-Wellspring: 1.2x power attacks; Terastallize to gain Embody Aspect."
+  },
   "wepearberry": {
     "name": "Wepear Berry",
     "desc": "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck."
@@ -2266,8 +2079,7 @@
   },
   "whiteherb": {
     "name": "White Herb",
-    "desc": "Restores all lowered stat stages to 0 when one is less than 0. Single use.",
-    "end": "  [POKEMON] returned its stats to normal using its White Herb!"
+    "desc": "Restores all lowered stat stages to 0 when one is less than 0. Single use."
   },
   "widelens": {
     "name": "Wide Lens",
@@ -2275,13 +2087,7 @@
   },
   "wikiberry": {
     "name": "Wiki Berry",
-    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
-    "gen7": {
-      "desc": "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use."
-    },
-    "gen6": {
-      "desc": "Restores 1/8 max HP at 1/2 max HP or less; confuses if -SpA Nature. Single use."
-    }
+    "desc": "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use."
   },
   "wiseglasses": {
     "name": "Wise Glasses",
@@ -2333,8 +2139,7 @@
   },
   "mysteryberry": {
     "name": "Mystery Berry",
-    "desc": "(Gen 2) Restores 5 PP to the first of the holder's moves to reach 0 PP. Single use.",
-    "activate": "  [POKEMON] restored PP to its [MOVE] move using Mystery Berry!"
+    "desc": "(Gen 2) Restores 5 PP to the first of the holder's moves to reach 0 PP. Single use."
   },
   "pinkbow": {
     "name": "Pink Bow",
