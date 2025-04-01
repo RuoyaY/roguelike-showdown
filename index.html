@@ -1826,10 +1826,10 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     pokemonStr += '\nShiny: Yes';
 
   pokemonStr += '\nTera Type: ';
-  if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)])) {
+  if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)]) || forcedTera(species)) {
     if (TERA_TYPES.includes(teraType))
       pokemonStr += teraType;
-    else
+    else // we sometimes uses teraType='random' to reach this case
       pokemonStr += randomElement(TERA_TYPES);
   }
     
