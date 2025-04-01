@@ -2005,7 +2005,7 @@ function pokemonInHTML(pokemonStr) {
 
     } else if (strLine.startsWith('Tera Type:')) {
       const teraType = strLine.substring('Tera Type: '.length);
-      if (!canTera(species, heldItem)) {
+      if (!canTera(species, heldItem) || forcedTera(species)) {
         out += spanWithClass(strLine, 'gray');
       } else {
         out += spanWithClass('Tera Type: ', 'attr');
@@ -2099,6 +2099,14 @@ function canTera(species, heldItem) {
       return false;
   }
   return true;
+}
+
+function pokemonForcedTera(pokemonStr) {
+  const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
+  return forcedTera(species);
+}
+function forcedTera(species) {
+  return species.forceTeraType;
 }
 
 function statsInHTML(statRelevantInfo, hasColor) {
@@ -2354,7 +2362,7 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
   } else {
     pokeEle.innerHTML = pokeEle.innerHTML.slice(0, -1); // remove the extra \n at the end
-    if (pokemonCanTera(pokemonStr)) {
+    if (pokemonCanTera(pokemonStr) || pokemonForcedTera(pokemonStr)) {
       const typeChoices = [];
       for (let i = 0; i < numChoices(); i++)
         addTeraChoice(choicesDiv, pokeDiv, typeChoices);
@@ -2859,6 +2867,10 @@ function getLevelOfPokemon(pokemonStr) {
 }
 
 function getTeraTypeOfPokemon(pokemonStr) {
+  const forcedType = pokemonForcedTera(pokemonStr);
+  if (forcedType != null)
+    return forcedType;
+
   const line = getTeraTypeLineOfPokemon(pokemonStr);
   if (line == null)
     return null;
