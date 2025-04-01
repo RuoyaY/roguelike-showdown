@@ -2656,7 +2656,7 @@ function nextRound() {
   killAllChildren(choicesDiv);
   const addChoicesSuccessful = addChoices(choicesDiv);
   if (!addChoicesSuccessful) {
-    setMoney(money);
+    setMoney(prevMoney);
     return;
   }
   toggleNonPokemonChoices(false);
