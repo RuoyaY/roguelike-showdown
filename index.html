@@ -293,6 +293,7 @@ button:focus {
 .type-dragon { color: #7038F8 }
 .type-dark { color: #705848 }
 .type-fairy { color: #EE99AC }
+.type-stellar { color: #48c9b0 }
 
 .attr { color: #A0A0A0 }
 
@@ -464,6 +465,10 @@ const TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
   'Ice', 'Fighting', 'Poison', 'Ground', 'Flying',
   'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
   'Dragon', 'Steel', 'Fairy'];
+const TERA_TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric',
+  'Ice', 'Fighting', 'Poison', 'Ground', 'Flying',
+  'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 
+  'Dragon', 'Steel', 'Fairy', 'Stellar'];
 // x: attacker index, y: defender index
 const TYPE_MATCHUPS = [
 [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,.5, 0, 1, 1,.5, 1,],
@@ -863,7 +868,7 @@ function printInvalidItems() {
       console.error(item);
   }
   // make sure all tera shards exist, and cost $0 or more, for the sake of Tera Charm
-  for (const type of TYPES) {
+  for (const type of TERA_TYPES) {
     let item = items.find(item => item.name === type + ' Tera Shards');
     if (item == null) {
       console.error('"' + type + ' Tera Shards" not found');
@@ -1411,15 +1416,19 @@ function getTypesHTML(types, positionLeft, mlBody) {
     typesHTML += getTypeImageHTML(type, false);
 
   let matchupInnerHTML = '';
-  for (const [matchupNum, attackTypes] of getTypeMatchups(types)) {
-    if (attackTypes.length > 0) {
-      matchupInnerHTML += matchupNumToStr(matchupNum) + ': ';
-      for (const attackType of attackTypes)
-        matchupInnerHTML += getTypeImageHTML(attackType, true);
-      matchupInnerHTML += '\n';
+  if (types[0] === 'Stellar') {
+    matchupInnerHTML = '<span class="attr">(Unchanged)</span>';
+  } else {
+    for (const [matchupNum, attackTypes] of getTypeMatchups(types)) {
+      if (attackTypes.length > 0) {
+        matchupInnerHTML += matchupNumToStr(matchupNum) + ': ';
+        for (const attackType of attackTypes)
+          matchupInnerHTML += getTypeImageHTML(attackType, true);
+        matchupInnerHTML += '\n';
+      }
+      if (matchupNum === 2)
+        matchupInnerHTML += '<hr>';
     }
-    if (matchupNum === 2)
-      matchupInnerHTML += '<hr>';
   }
   typesHTML += '<div class="info-box matchups' + (positionLeft ? ' position-left' : '') + (mlBody ? ' ml-body' : '') + '">' 
             + matchupInnerHTML + '</div>';
@@ -1818,10 +1827,10 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
 
   pokemonStr += '\nTera Type: ';
   if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)])) {
-    if (TYPES.includes(teraType))
+    if (TERA_TYPES.includes(teraType))
       pokemonStr += teraType;
     else
-      pokemonStr += randomElement(TYPES);
+      pokemonStr += randomElement(TERA_TYPES);
   }
     
   pokemonStr += '\nEVs: 1 HP';
@@ -2253,11 +2262,11 @@ function choosePokemon(choicesDiv, pokemonStr) {
   beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr);
 }
 function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
-  if (TYPES.every(type => typeChoices.includes(type)))
+  if (TERA_TYPES.every(type => typeChoices.includes(type)))
     throw new Error('Too many tera choices!');
-  let type = randomElement(TYPES);
+  let type = randomElement(TERA_TYPES);
   while (typeChoices.includes(type))
-    type = randomElement(TYPES);
+    type = randomElement(TERA_TYPES);
   typeChoices.push(type);
 
   const teraChoiceDiv = document.createElement('div');
@@ -2854,7 +2863,7 @@ function getTeraTypeOfPokemon(pokemonStr) {
   if (line == null)
     return null;
   const type = line.substring('Tera Type: '.length).trimEnd();
-  return TYPES.includes(type) ? type : null;
+  return TERA_TYPES.includes(type) ? type : null;
 }
 function getTeraTypeLineOfPokemon(pokemonStr) {
   return pokemonStr.split('\n').find(line => line.startsWith('Tera Type: '));
@@ -2918,7 +2927,7 @@ const KEY_ITEM_SHOP_FUNCS = Object.freeze({
     return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
   },
   TERA: function() {
-    let type = randomElement(TYPES);
+    let type = randomElement(TERA_TYPES);
     return items.find(item => item.name === type + ' Tera Shards');
   },
   FREE_GUARANTEED_TYPE: funcWithoutRepeat(function() {
