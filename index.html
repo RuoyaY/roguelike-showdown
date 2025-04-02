@@ -2047,8 +2047,11 @@ function pokemonInHTML(pokemonStr) {
       const remainder = splitBySpace.map(str => ' ' + str).join('');
       if (level === getLevel(species, STAT_TOTAL_GOAL))
         out += spanWithClass(strLine, 'gray');
-      else
-        out += spanWithClass('Level: ', 'attr') + level + spanWithClass(remainder, 'gray');
+      else {
+        out += spanWithClass('Level: ', 'attr') + level;
+        if (remainder != null && remainder != '')
+         out += spanWithClass(remainder, 'gray');
+      }
       
     } else if (strLine.startsWith('Shiny:')) {
       out += spanWithClass(strLine, 'gray');
