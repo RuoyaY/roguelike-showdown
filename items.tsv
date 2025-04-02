@@ -255,8 +255,8 @@ Pledge TMs	universalTM	80					3						Teach ANY 3 Pokemon *Fire Pledge*, *Water P
 Fusion TMs	universalTM	70					2						Teach ANY 2 Pokemon *Fusion Flare* and *Fusion Bolt* (one each). Keep in mind power is doubled only if no moves are successfully used in between Fusion Flare and Fusion Bolt.			
 Stockpile TMs	universalTM	30											Teach ANY 1 Pokemon one or more of the following: *Stockpile*, *Spit Up*, *Swallow*.			
 Defense Curl TMs	universalTM	30											Teach ANY 1 Pokemon one or more of the following: *Defense Curl*, *Rollout*, *Ice Ball*.			
-Perfect Hidden Power TM	universalTM	20											Teach ANY 1 Pokemon any Hidden Power (other than Normal or Fairy) (e.g. "*Hidden Power Ice*").			
-Random Hidden Power TM	universalTM	10											Generate a random type. You must teach ANY 1 Pokemon the Hidden Power of that type (e.g. "*Hidden Power Ice*").			
+Perfect Hidden Power TM	universalTM	20											Teach ANY 1 Pokemon any Hidden Power (other than Normal/Fairy/Stellar) (e.g. "*Hidden Power Ice*").			
+Random Hidden Power TM	universalTM	10											Generate a random type (other than Normal/Fairy/Stellar). You must teach ANY 1 Pokemon the Hidden Power of that type (e.g. "*Hidden Power Ice*").			
 Perfect TM	universalTM	60											Teach ANY 1 Pokemon ANY 1 move (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Perfect Party TM	partyTM	30n+30											Choose ANY move (no Z-Moves, G-Max moves, Zippy Zap, or Spore). Teach EVERY Pokemon that move.			
 Perfect Twin TMs	beforeTM	30											Before battle: Both players MAY teach their [nth] Pokemon the move [_____] (can't choose Z-Moves).			
@@ -285,8 +285,9 @@ Dark Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type
 Dragon Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.			
 Steel Tera Shards	misc	15											Set a Pokemon's Tera Type to <span class="type-steel">Steel</span>.			
 Fairy Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.			
-Perfect Tera Shards	misc	20											Set a Pokemon's Tera Type to any type.			
-Random Tera Shards	misc	5											Generate a random type, then set any 1 Pokemon's Tera Type to that type.			
+Stellar Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-stellar">Stellar</span>.			
+Perfect Tera Shards	misc	20											Set a Pokemon's Tera Type to anything.			
+Random Tera Shards	misc	5											Generate a random type (including Stellar), then set any 1 Pokemon's Tera Type to that type.			
 Mirror Tera Shards	misc	15					2						Copy a Pokemon's Tera Type to another Pokemon.			
 Shadow Tera Shards	misc	10								x			Set a Pokemon's Tera Type to one you KNOW FOR SURE your opponent had last battle.			
 Reflecting Tera Shards	beforeBattle	15											Before battle: Set your [mth] Pokemon's Tera Type to your opponent's [nth] Pokemon's Tera Type.			
@@ -310,8 +311,9 @@ Dark Tera Party	partyMisc	5n											Set EVERY Pokemon's Tera Type to <span cl
 Dragon Tera Party	partyMisc	5n											Set EVERY Pokemon's Tera Type to <span class="type-dragon">Dragon</span>.			
 Steel Tera Party	partyMisc	15n											Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.			
 Fairy Tera Party	partyMisc	10n											Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.			
+Stellar Tera Party	partyMisc	5n											Set EVERY Pokemon's Tera Type to <span class="type-stellar">Stellar</span>.			
 Mirror Tera Party	partyMisc	15n-15					2						Copy a Pokemon's Tera Type to EVERY other Pokemon.			
-Random Tera Party	partyMisc	0											Generate a random type, then set EVERY Pokemon's Tera Type to that type.			
+Random Tera Party	partyMisc	0											Generate a random type (including Stellar), then set EVERY Pokemon's Tera Type to that type.			
 Venusaurite	heldItem	85		venusaur									If held by a Venusaur, this item allows it to Mega Evolve in battle.			
 Charizardite X	heldItem	85		charizard									If held by a Charizard, this item allows it to Mega Evolve in battle.			
 Charizardite Y	heldItem	130		charizard									If held by a Charizard, this item allows it to Mega Evolve in battle.			
@@ -368,6 +370,9 @@ Adamant Crystal	heldItem	20		dialga,dialgaorigin									If held by a Dialga, it
 Lustrous Globe	heldItem	20		palkia,palkiaorigin									If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.			
 Griseous Core	heldItem	20		giratina,giratinaorigin									If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.			
 Vile Vial	heldItem	20		venomicon,venomiconepilogue									If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.			
+Cornerstone Mask	heldItem	25		ogerponcornerstone,ogerponcornerstonetera									Ogerpon-Cornerstone: 1.2x power attacks			
+Hearthflame Mask	heldItem	25		ogerponhearthflame,ogerponhearthflametera									Ogerpon-Hearthflame: 1.2x power attacks			
+Wellspring Mask	heldItem	25		ogerponwellspring,ogerponwellspringtera									Ogerpon-Wellspring: 1.2x power attacks			
 Soul Dew	heldItem	20		latias,latios												
 Metal Powder	heldItem	80		ditto												
 Quick Powder	heldItem	80		ditto												
@@ -583,7 +588,7 @@ Level Surge	nextBattle	100/b											Next battle only: Increase your [nth] Pok
 Vs Level Surge	nextBattle	-80/b										x	Next battle only: Increase your opponent's [nth] Pokemon's level by 5.			
 Level Plunge	nextBattle	-80/b											Next battle only: Decrease your [nth] Pokemon's level by 5 (can't choose a Pokemon at level 5 or below).			
 Vs Level Plunge	nextBattle	100/b											Next battle only: Decrease your opponent's [nth] Pokemon's level by 5 (can't go below 1).			
-Instant Lv50	nextBattle	50/b											Next battle only: Set your [nth] Pokemon's level to 50.			
+Instant Lv50	nextBattle	50/b											Next battle only: Set your [nth] Pokemon's level to 50. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Instant Lv1	nextBattle	-200/b					3						Next battle only: Set your [nth] Pokemon's level to 1. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Vs Instant Lv50	nextBattle	130/b										x	Next battle only: Set your opponent's [nth] Pokemon's level to 50.			
 Vs Instant Lv1	nextBattle	200/b					3					x	Next battle only: Set your opponent's [nth] Pokemon's level to 1.			
@@ -861,6 +866,7 @@ Forced Dark Tera Party	nextBattle	20/b											Next battle only: All of your o
 Forced Dragon Tera Party	nextBattle	20/b											Next battle only: All of your opponent's Pokemon have their Tera Type set to Dragon.			
 Forced Steel Tera Party	nextBattle	-15/b											Next battle only: All of your opponent's Pokemon have their Tera Type set to Steel.			
 Forced Fairy Tera Party	nextBattle	0/b											Next battle only: All of your opponent's Pokemon have their Tera Type set to Fairy.			
+Forced Stellar Tera Party	nextBattle	50/b											Next battle only: All of your opponent's Pokemon have their Tera Type set to Stellar.			
 Scouting	beforeBattle	5											Before battle: Your opponent must reveal their [nth] Pokemon.			
 Party Scouting	beforeBattle	5n											Before battle: Your opponent must reveal their team.			
 Reveal Pokemon	beforeBattle	-5											Before battle: You must reveal your [nth] Pokemon.			
@@ -926,9 +932,10 @@ Color Trivia	misc	10											Your opponent sends you the NAME of a random Poke
 Learnset Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about a move it can learn (in National Dex AG). If you correctly say true/false, earn $30.			
 Generation Trivia	misc	20											Your opponent sends you a pic of a random Pokemon. If you correctly state the generation number it was introduced in, earn $30.			
 Approx. Pokedex Number Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly state its National Pokedex number ROUNDED TO THE NEAREST TEN, earn $30.			
-Prev Pokemon Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon BEFORE IT in the Pokedex, earn $30.			
-Next Pokemon Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon AFTER IT in the Pokedex, earn $30.			
-Move BP Challenge	misc	10											Your opponent CHOOSES a move name to send you. If you correctly state its Base Power (or lack thereof), earn $30.			
+Prev Pokemon Trivia	misc	5											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon BEFORE IT in the Pokedex, earn $30.			
+Next Pokemon Trivia	misc	5											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon AFTER IT in the Pokedex, earn $30.			
+Move Power Challenge	misc	10											Your opponent CHOOSES a move name to send you. If you correctly state its Base Power (or lack thereof), earn $30.			
+Move PP Challenge	misc	5											Your opponent CHOOSES a move name to send you. If you correctly state its base PP (or max PP), earn $30.			
 Move Accuracy Challenge	misc	10											Your opponent CHOOSES a move name to send you. If you correctly state its Accuracy (note: 100% is different from No Accuracy Check), earn $30.			
 Move Type Challenge	misc	15											Your opponent CHOOSES a move name to send you. If you correctly state its type (Fire, Water, etc), earn $30.	refresh price multiplier	$ spent on refresh per round	$ saved per round
 Running Shoes	keyItem	4r+4											Refreshing the shop now only costs $2.	0.6666666667	24	8
