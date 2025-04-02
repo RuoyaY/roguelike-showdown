@@ -497,6 +497,25 @@ const TYPE_MATCHUPS = [
 const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
 const FOUR_POINT_FIVE_ABILITY_VALUE = 700/650;
+const CANT_TERA_VALUE = 620/650;
+const STUCK_ON_STELLAR_VALUE = 630/650;
+const SPECIES_VALUES = {
+  // can't change tera type, but does get a stat-raising ability on Tera
+  'Ogerpon': 1,
+  'Ogerpon-Cornerstone': 1,
+  'Ogerpon-Heartflame': 1,
+  'Ogerpon-Wellspring': 1,
+  // can't tera without glitching
+  'Ogerpon-Teal-Tera': CANT_TERA_VALUE,
+  'Ogerpon-Cornerstone-Tera': CANT_TERA_VALUE,
+  'Ogerpon-Heartflame-Tera': CANT_TERA_VALUE,
+  'Ogerpon-Wellspring-Tera': CANT_TERA_VALUE,
+  // stuck with Stellar tera type
+  'Terapagos': STUCK_ON_STELLAR_VALUE,
+  'Terapagos-Stellar': STUCK_ON_STELLAR_VALUE,
+  // stuck with Stellar tera type, but does get a stat-raising transformation & new ability on Tera
+  'Terapagos-Terastal': 1,
+}
 const SPECIES_WITH_ABILITY_VALUES = {
   'Cramorant-Gulping w/ Gulp Missile': 650/(650 - 2 * (150/4 + 100/3)), // since it'll be higher Lv, i figure it'll trigger more often
   'Cramorant-Gorging w/ Gulp Missile': 650/(650 - 1.5 * (150/4 + 50 + 50)),
@@ -508,11 +527,22 @@ const SPECIES_WITH_ABILITY_VALUES = {
   'Zygarde w/ Power Construct': 660/611,
   'Zygarde-10% w/ Power Construct': 660/566,
 
+  'Terapagos-Terastal w/ Tera Shell': BASE_ABILITY_VALUE,
+
   // calculated to equal its balanced, otherwise-identical forme
   'Wishiwashi w/ Schooling': 660/310,
   'Minior w/ Shields Down': 660/711,
-  'Terapagos w/ Tera Shift': 644/524,
+  // effectively a Terapagos-Terastal w/ Tera Shift
+  'Terapagos w/ Tera Shift': 650/524 * BASE_ABILITY_VALUE,
+  'Terapagos-Terastal w/ Tera Shift': BASE_ABILITY_VALUE,
+  'Terapagos-Stellar w/ Tera Shift': 650/725 * BASE_ABILITY_VALUE,
 
+  'Ogerpon-Teal-Tera w/ Embody Aspect (Teal)': CANT_TERA_VALUE * (650 + 30)/650, // Spe>150 doesn't seem so useful
+  'Ogerpon-Cornerstone-Tera w/ Embody Aspect (Cornerstone)': CANT_TERA_VALUE * 700/650, 
+  'Ogerpon-Hearthflame-Tera w/ Embody Aspect (Hearthflame)': CANT_TERA_VALUE * 710/650, 
+  'Ogerpon-Wellspring-Tera w/ Embody Aspect (Wellspring)': CANT_TERA_VALUE * 700/650, 
+  
+  // these abilities do nothing, since the form has already changed
   'Eiscue-Noice w/ Ice Face': 1,
   'Mimikyu-Busted w/ Disguise': 1,
   'Mimikyu-Busted-Totem w/ Disguise': 1,
@@ -1912,20 +1942,30 @@ function getLearnset(speciesId) {
 
 function getLevelWithAbility(species, abilityName, statTotalMultiplier) {
   // we want: stat goal * ability value = base stat goal * base ability value
-  let statTotalGoal =  STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species.name, abilityName);
+  let statTotalGoal =  STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species, abilityName);
   if (statTotalMultiplier)
     statTotalGoal *= statTotalMultiplier;
   return getLevel(species, statTotalGoal);
 }
-function getAbilityValue(speciesName, abilityName) {
+function getAbilityValue(species, abilityName) {
+  let speciesName = species?.name;
   if (speciesName != null)
     speciesName = allSpecies[getSpeciesId(speciesName)].name; // remove cosmetic forme
+
   if (     SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName])
     return SPECIES_WITH_ABILITY_VALUES[speciesName + ' w/ ' + abilityName];
-  else if (ABILITY_VALUES[abilityName])
-    return ABILITY_VALUES[abilityName];
+
+  let multiplier = 1;
+
+  if (SPECIES_VALUES[speciesName])
+    multiplier *= SPECIES_VALUES[speciesName];
+
+  if (ABILITY_VALUES[abilityName])
+    multiplier *= ABILITY_VALUES[abilityName];
   else
-    return BASE_ABILITY_VALUE;
+    multiplier *= BASE_ABILITY_VALUE;
+
+  return multiplier;
 }
 function getLevel(species, statTotalGoal) {
   let prevStatTotal = Number.NEGATIVE_INFINITY;
@@ -2193,7 +2233,7 @@ function getStatRelevantInfo(pokemonStr) {
 }
 
 function getEffectiveStatTotal(species, level, evs, nature, abilityName) {
-  const abilityValue = getAbilityValue(species.name, abilityName);
+  const abilityValue = getAbilityValue(species, abilityName);
   return getStatTotal(species, level, evs, nature) * abilityValue;
 }
 function getStatTotal(species, level, evs, nature) {
