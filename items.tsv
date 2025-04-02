@@ -427,15 +427,15 @@ Blunder Policy	heldItem	10
 Booster Energy	heldItem	25			Protosynthesis,Quark Drive											
 Clear Amulet	heldItem	20														
 Covert Cloak	heldItem	15														
-Damp Rock	heldItem	20			Drizzle	Rain Dance										
-Heat Rock	heldItem	20			Drought,Orichalcum Pulse	Sunny Day										
-Icy Rock	heldItem	10			Snow Warning	Hail,Snowscape,Chilly Reception										
-Smooth Rock	heldItem	20			Sand Stream,Sand Spit	Sandstorm										
+Damp Rock	heldItem	10			Drizzle	Rain Dance										
+Heat Rock	heldItem	10			Drought,Orichalcum Pulse	Sunny Day										
+Icy Rock	heldItem	5			Snow Warning	Hail,Snowscape,Chilly Reception										
+Smooth Rock	heldItem	10			Sand Stream,Sand Spit	Sandstorm										
 Electric Seed	heldItem	30			Electric Surge,Hadron Engine	Electric Terrain										
 Grassy Seed	heldItem	30			Grassy Surge,Seed Sower	Grassy Terrain										
 Misty Seed	heldItem	30			Misty Surge	Misty Terrain										
 Psychic Seed	heldItem	30			Psychic Surge	Psychic Terrain,Genesis Supernova										
-Terrain Extender	heldItem	10			Electric Surge,Hadron Engine,Grassy Surge,Seed Sower,Misty Surge,Psychic Surge	Electric Terrain,Grassy Terrain,Misty Terrain,Psychic Terrain,Genesis Supernova										
+Terrain Extender	heldItem	5			Electric Surge,Hadron Engine,Grassy Surge,Seed Sower,Misty Surge,Psychic Surge	Electric Terrain,Grassy Terrain,Misty Terrain,Psychic Terrain,Genesis Supernova										
 Grip Claw	heldItem	5				Bind,Clamp,Fire Spin,G-Max Centiferno,G-Max Sandblast,Infestation,Magma Storm,Sand Tomb,Snap Trap,Thunder Cage,Whirlpool,Wrap										
 Binding Band	heldItem	5				Bind,Clamp,Fire Spin,G-Max Centiferno,G-Max Sandblast,Infestation,Magma Storm,Sand Tomb,Snap Trap,Thunder Cage,Whirlpool,Wrap										
 Light Clay	heldItem	20				Light Screen,Reflect,Aurora Veil,G-Max Resonance,Glitzy Glow,Baddy Bad										
