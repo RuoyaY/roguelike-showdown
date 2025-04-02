@@ -733,7 +733,7 @@ const ILLEGAL_MONS = [
   // functionally identical because of its ability, but stats are less helpful.
   // also, while it's alone, the Abilitizer price is stupid (-325).
   'wishiwashi',
-  // (almost) functionally identical because of its ability, but stats are less helpful.
+  // functionally identical because of its ability, but stats are less helpful.
   'terapagos',
   // misleadingly, a cap Pikachu that can't use Pikashunium Z. can't use Pikanium Z or cosplay moves, either.
   'pikachuworld',
@@ -3535,6 +3535,8 @@ function randomAbilitizerAbility() {
   do {
     ability = randomValue(abilities);
   } while (ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
+            || ability.name.substring(0, 'Embody Aspect'.length) === 'Embody Aspect'
+            || ability.name === 'Teraform Zero'
             || ability.name === 'Wonder Guard');
   return ability;
 }
