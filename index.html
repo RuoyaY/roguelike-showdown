@@ -244,6 +244,9 @@ button:focus {
 .improvedAbility, .improvedItem {
   background-color: rgba(0,255,0,.3);
 }
+.worsened {
+  background-color: rgba(255,0,0,.3);
+}
 .changedAbilityDesc {
   font-style: italic;
 }
@@ -2008,7 +2011,13 @@ function pokemonInHTML(pokemonStr) {
 
     } else if (strLine.startsWith('Tera Type:')) {
       const teraType = strLine.substring('Tera Type: '.length);
-      if (!canTera(species, heldItem) || forcedTera(species)) {
+      if (teraBroken(species)) {
+        out += '<span class="hasHoverText worsened gray" title="Tera type is fixed, AND glitches upon terastallizing, losing ability and severely lowering stats.">'
+          + strLine
+          + '</span>';
+      } else if (forcedTera(species)) {
+        out += spanWithClass(spanWithTitle(strLine, 'Tera type is fixed.'), 'gray');
+      } else if (!canTera(species, heldItem)) {
         out += spanWithClass(strLine, 'gray');
       } else {
         out += spanWithClass('Tera Type: ', 'attr');
@@ -3313,6 +3322,12 @@ function abilityDesc(ability) {
   if (IMPROVED_ABILITIES[ability.name])
     return IMPROVED_ABILITIES[ability.name];
   return ability.shortDesc;
+}
+
+
+function teraBroken(species) {
+  const name = species.name;
+  return name.substring(name.length-5, name.length) === '-Tera';
 }
 
 function heldItemInHTML(heldItemName) {
