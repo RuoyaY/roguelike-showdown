@@ -2418,7 +2418,7 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
   } else {
     pokeEle.innerHTML = pokeEle.innerHTML.slice(0, -1); // remove the extra \n at the end
-    if (pokemonCanTera(pokemonStr) || pokemonForcedTera(pokemonStr)) {
+    if (pokemonCanTera(pokemonStr) && !pokemonForcedTera(pokemonStr)) {
       const typeChoices = [];
       for (let i = 0; i < numChoices(); i++)
         addTeraChoice(choicesDiv, pokeDiv, typeChoices);
