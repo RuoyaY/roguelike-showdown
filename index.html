@@ -247,7 +247,7 @@ button:focus {
 .worsened {
   background-color: rgba(255,0,0,.3);
 }
-.changedAbilityDesc {
+.abilityUnexpected {
   font-style: italic;
 }
 
@@ -2055,12 +2055,13 @@ function pokemonInHTML(pokemonStr) {
 
     } else if (strLine.startsWith('Tera Type:')) {
       const teraType = strLine.substring('Tera Type: '.length);
-      if (teraBroken(species)) {
-        out += '<span class="hasHoverText worsened gray" title="Tera type is fixed, AND glitches upon terastallizing, losing ability and severely lowering stats.">'
+      if (glitchedTera(species)) {
+        out += '<span class="hasHoverText worsened gray" title="Glitches upon terastallizing, losing ability and severely lowering stats.'
+          + '\n(Also, tera type becomes ' + forcedTera(species) + ' during battle.)">'
           + strLine
           + '</span>';
       } else if (forcedTera(species)) {
-        out += spanWithClass(spanWithTitle(strLine, 'Tera type is fixed.'), 'gray');
+        out += spanWithClass(spanWithTitle(strLine, 'Tera type becomes ' + forcedTera(species) + ' during battle.'), 'gray');
       } else if (!canTera(species, heldItem)) {
         out += spanWithClass(strLine, 'gray');
       } else {
@@ -2147,6 +2148,8 @@ function canTera(species, heldItem) {
   // if (species.forme && 
   //   (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
   //   return false;
+  if (glitchedTera(species))
+    return false; // a bit misleading, but I don't see it ever coming up in regular gameplay
   if (heldItem) {
     if (heldItem.name.endsWith(' Z'))
       return false;
@@ -3354,8 +3357,8 @@ function abilityInHTML(abilityName) {
   return html;
 }
 function abilityNameInHTML(abilityName) {
-  if (CHANGED_ABILITY_DESC[abilityName])
-    abilityName = spanWithClass(abilityName, 'changedAbilityDesc');
+  if (abilityName === 'Illusion')
+    abilityName = spanWithClass(abilityName, 'abilityUnexpected');
   if (IMPROVED_ABILITIES[abilityName])
     abilityName = spanWithClass(abilityName, 'improvedAbility');
   return abilityName;
@@ -3369,7 +3372,7 @@ function abilityDesc(ability) {
 }
 
 
-function teraBroken(species) {
+function glitchedTera(species) {
   const name = species.name;
   return name.substring(name.length-5, name.length) === '-Tera';
 }
