@@ -3403,33 +3403,33 @@ function heldItemDesc(heldItemName) {
       desc = heldItem.shortDesc ?? heldItem.desc;
   }
 
-  if (heldItem.fling) {
+  if (getPartyStrs().some(pokemonStr => pokemonHasMove(pokemonStr, 'Fling')) && heldItem.fling) {
     let bonus = '';
     switch (heldItemName) {
       case 'Flame Orb':
-        bonus = ' and inflicts Burn!';
+        bonus = ' and inflicts Burn';
         break;
       case "King's Rock":
       case "Razor Fang":
-        bonus = ' and causes guaranteed flinch!';
+        bonus = ' and causes guaranteed flinch';
         break;
       case "Light Ball":
-        bonus = ' and inflicts Paralysis!';
+        bonus = ' and inflicts Paralysis';
         break;   
       case "Mental Herb":
       case "White Herb":
         bonus = ' and cures target';
         break;
       case "Poison Barb":
-        bonus = ' and inflicts Poison!';
+        bonus = ' and inflicts Poison';
         break;
       case "Toxic Orb":
-        bonus = ' and inflicts Badly Poisoned!';
+        bonus = ' and inflicts Badly Poisoned';
         break;
     }
-    if (desc.indexOf('\n') !== -1)
+    if (desc.indexOf('\n\n') !== -1)
       desc += '\n'; // Add an extra newline for TRs, which have the entire move in its desc
-    desc += '\n(Fling: ' + heldItem.fling.basePower + ' power' + bonus + ')';
+    desc += '\n(Fling: ' + heldItem.fling.basePower + ' power' + bonus + '.)';
   }
   return desc;
 }
