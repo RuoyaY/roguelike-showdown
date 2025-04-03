@@ -1,7 +1,10 @@
 {
   "abilityshield": {
     "name": "Ability Shield",
-    "desc": "Holder's Ability cannot be changed, suppressed, or ignored by any effect."
+    "desc": "Holder's Ability cannot be changed, suppressed, or ignored by any effect.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "abomasite": {
     "name": "Abomasite",
@@ -13,7 +16,10 @@
   },
   "absorbbulb": {
     "name": "Absorb Bulb",
-    "desc": "Raises holder's Sp. Atk by 1 stage if hit by a Water-type attack. Single use."
+    "desc": "Raises holder's Sp. Atk by 1 stage if hit by a Water-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "adamantcrystal": {
     "name": "Adamant Crystal",
@@ -21,11 +27,17 @@
   },
   "adamantorb": {
     "name": "Adamant Orb",
-    "desc": "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power."
+    "desc": "If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "adrenalineorb": {
     "name": "Adrenaline Orb",
-    "desc": "Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use."
+    "desc": "Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "aerodactylite": {
     "name": "Aerodactylite",
@@ -41,7 +53,10 @@
   },
   "airballoon": {
     "name": "Air Balloon",
-    "desc": "Holder is immune to Ground-type attacks. Pops when holder is hit."
+    "desc": "Holder is immune to Ground-type attacks. Pops when holder is hit.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "alakazite": {
     "name": "Alakazite",
@@ -65,7 +80,10 @@
   },
   "armorfossil": {
     "name": "Armor Fossil",
-    "desc": "Can be revived into Shieldon."
+    "desc": "Can be revived into Shieldon.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "aspearberry": {
     "name": "Aspear Berry",
@@ -73,7 +91,10 @@
   },
   "assaultvest": {
     "name": "Assault Vest",
-    "desc": "Holder's Sp. Def is 1.5x, but it can only select damaging moves."
+    "desc": "Holder's Sp. Def is 1.5x, but it can only select damaging moves.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "audinite": {
     "name": "Audinite",
@@ -81,7 +102,10 @@
   },
   "auspiciousarmor": {
     "name": "Auspicious Armor",
-    "desc": "Evolves Charcadet into Armarouge when used."
+    "desc": "Evolves Charcadet into Armarouge when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "babiriberry": {
     "name": "Babiri Berry",
@@ -105,35 +129,59 @@
   },
   "berryjuice": {
     "name": "Berry Juice",
-    "desc": "Restores 20 HP when at 1/2 max HP or less. Single use."
+    "desc": "Restores 20 HP when at 1/2 max HP or less. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "berrysweet": {
     "name": "Berry Sweet",
-    "desc": "Evolves Milcery into Alcremie when held and spun around."
+    "desc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "bignugget": {
     "name": "Big Nugget",
-    "desc": "A big nugget of pure gold that gives off a lustrous gleam."
+    "desc": "A big nugget of pure gold that gives off a lustrous gleam.",
+    "fling": {
+      "basePower": 130
+    }
   },
   "bigroot": {
     "name": "Big Root",
-    "desc": "Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap."
+    "desc": "Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "bindingband": {
     "name": "Binding Band",
-    "desc": "Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8."
+    "desc": "Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "blackbelt": {
     "name": "Black Belt",
-    "desc": "Holder's Fighting-type attacks have 1.2x power."
+    "desc": "Holder's Fighting-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "blackglasses": {
     "name": "Black Glasses",
-    "desc": "Holder's Dark-type attacks have 1.2x power."
+    "desc": "Holder's Dark-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "blacksludge": {
     "name": "Black Sludge",
-    "desc": "Each turn, if holder is a Poison type, restores 1/16 max HP; loses 1/8 if not."
+    "desc": "Each turn, if holder is a Poison type, restores 1/16 max HP; loses 1/8 if not.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "blastoisinite": {
     "name": "Blastoisinite",
@@ -153,19 +201,31 @@
   },
   "blunderpolicy": {
     "name": "Blunder Policy",
-    "desc": "If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use."
+    "desc": "If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "boosterenergy": {
     "name": "Booster Energy",
-    "desc": "Activates the Protosynthesis or Quark Drive Abilities. Single use."
+    "desc": "Activates the Protosynthesis or Quark Drive Abilities. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "bottlecap": {
     "name": "Bottle Cap",
-    "desc": "Used for Hyper Training. One of a Pokemon's stats is calculated with an IV of 31."
+    "desc": "Used for Hyper Training. One of a Pokemon's stats is calculated with an IV of 31.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "brightpowder": {
     "name": "Bright Powder",
-    "desc": "The accuracy of attacks against the holder is 0.9x."
+    "desc": "The accuracy of attacks against the holder is 0.9x.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "buggem": {
     "name": "Bug Gem",
@@ -189,11 +249,17 @@
   },
   "cellbattery": {
     "name": "Cell Battery",
-    "desc": "Raises holder's Attack by 1 if hit by an Electric-type attack. Single use."
+    "desc": "Raises holder's Attack by 1 if hit by an Electric-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "charcoal": {
     "name": "Charcoal",
-    "desc": "Holder's Fire-type attacks have 1.2x power."
+    "desc": "Holder's Fire-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "charizarditex": {
     "name": "Charizardite X",
@@ -229,19 +295,31 @@
   },
   "chippedpot": {
     "name": "Chipped Pot",
-    "desc": "Evolves Sinistea-Antique into Polteageist-Antique when used."
+    "desc": "Evolves Sinistea-Antique into Polteageist-Antique when used.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "choiceband": {
     "name": "Choice Band",
-    "desc": "Holder's Attack is 1.5x, but it can only select the first move it executes."
+    "desc": "Holder's Attack is 1.5x, but it can only select the first move it executes.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "choicescarf": {
     "name": "Choice Scarf",
-    "desc": "Holder's Speed is 1.5x, but it can only select the first move it executes."
+    "desc": "Holder's Speed is 1.5x, but it can only select the first move it executes.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "choicespecs": {
     "name": "Choice Specs",
-    "desc": "Holder's Sp. Atk is 1.5x, but it can only select the first move it executes."
+    "desc": "Holder's Sp. Atk is 1.5x, but it can only select the first move it executes.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "chopleberry": {
     "name": "Chople Berry",
@@ -249,15 +327,24 @@
   },
   "clawfossil": {
     "name": "Claw Fossil",
-    "desc": "Can be revived into Anorith."
+    "desc": "Can be revived into Anorith.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "clearamulet": {
     "name": "Clear Amulet",
-    "desc": "Prevents other Pokemon from lowering the holder's stat stages."
+    "desc": "Prevents other Pokemon from lowering the holder's stat stages.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "cloversweet": {
     "name": "Clover Sweet",
-    "desc": "Evolves Milcery into Alcremie when held and spun around."
+    "desc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "cobaberry": {
     "name": "Coba Berry",
@@ -269,7 +356,10 @@
   },
   "cornerstonemask": {
     "name": "Cornerstone Mask",
-    "desc": "Ogerpon-Cornerstone: 1.2x power attacks; Terastallize to gain Embody Aspect."
+    "desc": "Ogerpon-Cornerstone: 1.2x power attacks; Terastallize to gain Embody Aspect.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "cornnberry": {
     "name": "Cornn Berry",
@@ -277,15 +367,24 @@
   },
   "coverfossil": {
     "name": "Cover Fossil",
-    "desc": "Can be revived into Tirtouga."
+    "desc": "Can be revived into Tirtouga.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "covertcloak": {
     "name": "Covert Cloak",
-    "desc": "Holder is not affected by the secondary effect of another Pokemon's attack."
+    "desc": "Holder is not affected by the secondary effect of another Pokemon's attack.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "crackedpot": {
     "name": "Cracked Pot",
-    "desc": "Evolves Sinistea into Polteageist when used."
+    "desc": "Evolves Sinistea into Polteageist when used.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "custapberry": {
     "name": "Custap Berry",
@@ -293,7 +392,10 @@
   },
   "damprock": {
     "name": "Damp Rock",
-    "desc": "Holder's use of Rain Dance lasts 8 turns instead of 5."
+    "desc": "Holder's use of Rain Dance lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "darkgem": {
     "name": "Dark Gem",
@@ -310,7 +412,10 @@
   "dawnstone": {
     "name": "Dawn Stone",
     "desc": "Evolves male Kirlia into Gallade and female Snorunt into Froslass when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "decidiumz": {
     "name": "Decidium Z",
@@ -319,16 +424,25 @@
   "deepseascale": {
     "name": "Deep Sea Scale",
     "desc": "If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.",
-    "shortDesc": "If held by a Clamperl, its Sp. Def is doubled."
+    "shortDesc": "If held by a Clamperl, its Sp. Def is doubled.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "deepseatooth": {
     "name": "Deep Sea Tooth",
     "desc": "If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",
-    "shortDesc": "If held by a Clamperl, its Sp. Atk is doubled."
+    "shortDesc": "If held by a Clamperl, its Sp. Atk is doubled.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "destinyknot": {
     "name": "Destiny Knot",
-    "desc": "If holder becomes infatuated, the other Pokemon also becomes infatuated."
+    "desc": "If holder becomes infatuated, the other Pokemon also becomes infatuated.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "diancite": {
     "name": "Diancite",
@@ -340,7 +454,10 @@
   },
   "domefossil": {
     "name": "Dome Fossil",
-    "desc": "Can be revived into Kabuto."
+    "desc": "Can be revived into Kabuto.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "dousedrive": {
     "name": "Douse Drive",
@@ -352,7 +469,10 @@
   },
   "dragonfang": {
     "name": "Dragon Fang",
-    "desc": "Holder's Dragon-type attacks have 1.2x power."
+    "desc": "Holder's Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 70
+    }
   },
   "dragongem": {
     "name": "Dragon Gem",
@@ -364,7 +484,10 @@
   },
   "dragonscale": {
     "name": "Dragon Scale",
-    "desc": "Evolves Seadra into Kingdra when traded."
+    "desc": "Evolves Seadra into Kingdra when traded.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "dragoniumz": {
     "name": "Dragonium Z",
@@ -380,7 +503,10 @@
   },
   "dubiousdisc": {
     "name": "Dubious Disc",
-    "desc": "Evolves Porygon2 into Porygon-Z when traded."
+    "desc": "Evolves Porygon2 into Porygon-Z when traded.",
+    "fling": {
+      "basePower": 50
+    }
   },
   "durinberry": {
     "name": "Durin Berry",
@@ -393,7 +519,10 @@
   "duskstone": {
     "name": "Dusk Stone",
     "desc": "Evolves Murkrow into Honchkrow, Misdreavus into Mismagius, Lampent into Chandelure, and Doublade into Aegislash when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "earthplate": {
     "name": "Earth Plate",
@@ -405,15 +534,24 @@
   },
   "ejectbutton": {
     "name": "Eject Button",
-    "desc": "If holder survives a hit, it immediately switches out to a chosen ally. Single use."
+    "desc": "If holder survives a hit, it immediately switches out to a chosen ally. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "ejectpack": {
     "name": "Eject Pack",
-    "desc": "If the holder's stat stages are lowered, it switches to a chosen ally. Single use."
+    "desc": "If the holder's stat stages are lowered, it switches to a chosen ally. Single use.",
+    "fling": {
+      "basePower": 50
+    }
   },
   "electirizer": {
     "name": "Electirizer",
-    "desc": "Evolves Electabuzz into Electivire when traded."
+    "desc": "Evolves Electabuzz into Electivire when traded.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "electricgem": {
     "name": "Electric Gem",
@@ -425,7 +563,10 @@
   },
   "electricseed": {
     "name": "Electric Seed",
-    "desc": "If the terrain is Electric Terrain, raises holder's Defense by 1 stage. Single use."
+    "desc": "If the terrain is Electric Terrain, raises holder's Defense by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "electriumz": {
     "name": "Electrium Z",
@@ -437,11 +578,17 @@
   },
   "eviolite": {
     "name": "Eviolite",
-    "desc": "If holder's species can evolve, its Defense and Sp. Def are 1.5x."
+    "desc": "If holder's species can evolve, its Defense and Sp. Def are 1.5x.",
+    "fling": {
+      "basePower": 40
+    }
   },
   "expertbelt": {
     "name": "Expert Belt",
-    "desc": "Holder's attacks that are super effective against the target do 1.2x damage."
+    "desc": "Holder's attacks that are super effective against the target do 1.2x damage.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "fairiumz": {
     "name": "Fairium Z",
@@ -449,7 +596,10 @@
   },
   "fairyfeather": {
     "name": "Fairy Feather",
-    "desc": "Holder's Fairy-type attacks have 1.2x power."
+    "desc": "Holder's Fairy-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "fairygem": {
     "name": "Fairy Gem",
@@ -490,7 +640,10 @@
   "firestone": {
     "name": "Fire Stone",
     "desc": "Evolves Vulpix into Ninetales, Growlithe into Arcanine, Eevee into Flareon, and Pansear into Simisear when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "firiumz": {
     "name": "Firium Z",
@@ -502,7 +655,11 @@
   },
   "flameorb": {
     "name": "Flame Orb",
-    "desc": "At the end of every turn, this item attempts to burn the holder."
+    "desc": "At the end of every turn, this item attempts to burn the holder.",
+    "fling": {
+      "basePower": 30,
+      "status": "brn"
+    }
   },
   "flameplate": {
     "name": "Flame Plate",
@@ -510,11 +667,17 @@
   },
   "floatstone": {
     "name": "Float Stone",
-    "desc": "Holder's weight is halved."
+    "desc": "Holder's weight is halved.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "flowersweet": {
     "name": "Flower Sweet",
-    "desc": "Evolves Milcery into Alcremie when held and spun around."
+    "desc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 0
+    }
   },
   "flyinggem": {
     "name": "Flying Gem",
@@ -530,27 +693,45 @@
   },
   "focusband": {
     "name": "Focus Band",
-    "desc": "Holder has a 10% chance to survive an attack that would KO it with 1 HP."
+    "desc": "Holder has a 10% chance to survive an attack that would KO it with 1 HP.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "focussash": {
     "name": "Focus Sash",
-    "desc": "If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use."
+    "desc": "If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "fossilizedbird": {
     "name": "Fossilized Bird",
-    "desc": "Can revive into Dracozolt with Fossilized Drake or Arctozolt with Fossilized Dino."
+    "desc": "Can revive into Dracozolt with Fossilized Drake or Arctozolt with Fossilized Dino.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "fossilizeddino": {
     "name": "Fossilized Dino",
-    "desc": "Can revive into Arctovish with Fossilized Fish or Arctozolt with Fossilized Bird."
+    "desc": "Can revive into Arctovish with Fossilized Fish or Arctozolt with Fossilized Bird.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "fossilizeddrake": {
     "name": "Fossilized Drake",
-    "desc": "Can revive into Dracozolt with Fossilized Bird or Dracovish with Fossilized Fish."
+    "desc": "Can revive into Dracozolt with Fossilized Bird or Dracovish with Fossilized Fish.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "fossilizedfish": {
     "name": "Fossilized Fish",
-    "desc": "Can revive into Dracovish with Fossilized Drake or Arctovish with Fossilized Dino."
+    "desc": "Can revive into Dracovish with Fossilized Drake or Arctovish with Fossilized Dino.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "friendball": {
     "name": "Friend Ball",
@@ -558,15 +739,24 @@
   },
   "fullincense": {
     "name": "Full Incense",
-    "desc": "Holder moves last in its priority bracket."
+    "desc": "Holder moves last in its priority bracket.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "galaricacuff": {
     "name": "Galarica Cuff",
-    "desc": "Evolves Galarian Slowpoke into Galarian Slowbro when used."
+    "desc": "Evolves Galarian Slowpoke into Galarian Slowbro when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "galaricawreath": {
     "name": "Galarica Wreath",
-    "desc": "Evolves Galarian Slowpoke into Galarian Slowking when used."
+    "desc": "Evolves Galarian Slowpoke into Galarian Slowking when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "galladite": {
     "name": "Galladite",
@@ -606,7 +796,10 @@
   },
   "goldbottlecap": {
     "name": "Gold Bottle Cap",
-    "desc": "Used for Hyper Training. All of a Pokemon's stats are calculated with an IV of 31."
+    "desc": "Used for Hyper Training. All of a Pokemon's stats are calculated with an IV of 31.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "grassgem": {
     "name": "Grass Gem",
@@ -622,7 +815,10 @@
   },
   "grassyseed": {
     "name": "Grassy Seed",
-    "desc": "If the terrain is Grassy Terrain, raises holder's Defense by 1 stage. Single use."
+    "desc": "If the terrain is Grassy Terrain, raises holder's Defense by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "greatball": {
     "name": "Great Ball",
@@ -634,7 +830,10 @@
   },
   "gripclaw": {
     "name": "Grip Claw",
-    "desc": "Holder's partial-trapping moves always last 7 turns."
+    "desc": "Holder's partial-trapping moves always last 7 turns.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "griseouscore": {
     "name": "Griseous Core",
@@ -642,7 +841,10 @@
   },
   "griseousorb": {
     "name": "Griseous Orb",
-    "desc": "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power."
+    "desc": "If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "groundgem": {
     "name": "Ground Gem",
@@ -666,7 +868,10 @@
   },
   "hardstone": {
     "name": "Hard Stone",
-    "desc": "Holder's Rock-type attacks have 1.2x power."
+    "desc": "Holder's Rock-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "healball": {
     "name": "Heal Ball",
@@ -674,11 +879,17 @@
   },
   "hearthflamemask": {
     "name": "Hearthflame Mask",
-    "desc": "Ogerpon-Hearthflame: 1.2x power attacks; Terastallize to gain Embody Aspect."
+    "desc": "Ogerpon-Hearthflame: 1.2x power attacks; Terastallize to gain Embody Aspect.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "heatrock": {
     "name": "Heat Rock",
-    "desc": "Holder's use of Sunny Day lasts 8 turns instead of 5."
+    "desc": "Holder's use of Sunny Day lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "heavyball": {
     "name": "Heavy Ball",
@@ -686,11 +897,17 @@
   },
   "heavydutyboots": {
     "name": "Heavy-Duty Boots",
-    "desc": "When switching in, the holder is unaffected by hazards on its side of the field."
+    "desc": "When switching in, the holder is unaffected by hazards on its side of the field.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "helixfossil": {
     "name": "Helix Fossil",
-    "desc": "Can be revived into Omanyte."
+    "desc": "Can be revived into Omanyte.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "heracronite": {
     "name": "Heracronite",
@@ -719,7 +936,10 @@
   "icestone": {
     "name": "Ice Stone",
     "desc": "Evolves Alolan Sandshrew into Alolan Sandslash, Alolan Vulpix into Alolan Ninetales, Eevee into Glaceon, and Galarian Darumaka into Galarian Darmanitan when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "icicleplate": {
     "name": "Icicle Plate",
@@ -731,7 +951,10 @@
   },
   "icyrock": {
     "name": "Icy Rock",
-    "desc": "Holder's use of Snowscape lasts 8 turns instead of 5."
+    "desc": "Holder's use of Snowscape lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 40
+    }
   },
   "inciniumz": {
     "name": "Incinium Z",
@@ -743,7 +966,10 @@
   },
   "ironball": {
     "name": "Iron Ball",
-    "desc": "Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage."
+    "desc": "Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.",
+    "fling": {
+      "basePower": 130
+    }
   },
   "ironplate": {
     "name": "Iron Plate",
@@ -755,7 +981,10 @@
   },
   "jawfossil": {
     "name": "Jaw Fossil",
-    "desc": "Can be revived into Tyrunt."
+    "desc": "Can be revived into Tyrunt.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "kasibberry": {
     "name": "Kasib Berry",
@@ -780,7 +1009,11 @@
   "kingsrock": {
     "name": "King's Rock",
     "desc": "Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Poliwhirl into Politoed and Slowpoke into Slowking when traded.",
-    "shortDesc": "Holder's attacks without a chance to flinch gain a 10% chance to flinch."
+    "shortDesc": "Holder's attacks without a chance to flinch gain a 10% chance to flinch.",
+    "fling": {
+      "basePower": 30,
+      "volatileStatus": "flinch"
+    }
   },
   "kommoniumz": {
     "name": "Kommonium Z",
@@ -788,7 +1021,10 @@
   },
   "laggingtail": {
     "name": "Lagging Tail",
-    "desc": "Holder moves last in its priority bracket."
+    "desc": "Holder moves last in its priority bracket.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "lansatberry": {
     "name": "Lansat Berry",
@@ -804,20 +1040,32 @@
   },
   "laxincense": {
     "name": "Lax Incense",
-    "desc": "The accuracy of attacks against the holder is 0.9x."
+    "desc": "The accuracy of attacks against the holder is 0.9x.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "leafstone": {
     "name": "Leaf Stone",
     "desc": "Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Eevee into Leafeon, Nuzleaf into Shiftry, and Pansage into Simisage when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "leek": {
     "name": "Leek",
-    "desc": "If held by a Farfetch’d or Sirfetch’d, its critical hit ratio is raised by 2 stages."
+    "desc": "If held by a Farfetch’d or Sirfetch’d, its critical hit ratio is raised by 2 stages.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "leftovers": {
     "name": "Leftovers",
-    "desc": "At the end of every turn, holder restores 1/16 of its max HP."
+    "desc": "At the end of every turn, holder restores 1/16 of its max HP.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "leppaberry": {
     "name": "Leppa Berry",
@@ -833,20 +1081,33 @@
   },
   "lifeorb": {
     "name": "Life Orb",
-    "desc": "Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack."
+    "desc": "Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "lightball": {
     "name": "Light Ball",
-    "desc": "If held by a Pikachu, its Attack and Sp. Atk are doubled."
+    "desc": "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
+    "fling": {
+      "basePower": 30,
+      "status": "par"
+    }
   },
   "lightclay": {
     "name": "Light Clay",
-    "desc": "Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5."
+    "desc": "Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "loadeddice": {
     "name": "Loaded Dice",
     "desc": "The holder's moves that normally hit 2 to 5 times instead hit 4 or 5 times. If the first hit is successful, the holder's use of Triple Kick or Triple Axel hits 3 times, and Population Bomb hits 4 to 10 times, at random.",
-    "shortDesc": "Holder's moves that hit 2-5 times hit 4-5 times; Population Bomb hits 4-10 times."
+    "shortDesc": "Holder's moves that hit 2-5 times hit 4-5 times; Population Bomb hits 4-10 times.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "lopunnite": {
     "name": "Lopunnite",
@@ -858,7 +1119,10 @@
   },
   "lovesweet": {
     "name": "Love Sweet",
-    "desc": "Evolves Milcery into Alcremie when held and spun around."
+    "desc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "lucarionite": {
     "name": "Lucarionite",
@@ -866,7 +1130,10 @@
   },
   "luckypunch": {
     "name": "Lucky Punch",
-    "desc": "If held by a Chansey, its critical hit ratio is raised by 2 stages."
+    "desc": "If held by a Chansey, its critical hit ratio is raised by 2 stages.",
+    "fling": {
+      "basePower": 40
+    }
   },
   "lumberry": {
     "name": "Lum Berry",
@@ -874,7 +1141,10 @@
   },
   "luminousmoss": {
     "name": "Luminous Moss",
-    "desc": "Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use."
+    "desc": "Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "lunaliumz": {
     "name": "Lunalium Z",
@@ -890,7 +1160,10 @@
   },
   "lustrousorb": {
     "name": "Lustrous Orb",
-    "desc": "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power."
+    "desc": "If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "luxuryball": {
     "name": "Luxury Ball",
@@ -902,15 +1175,24 @@
   },
   "machobrace": {
     "name": "Macho Brace",
-    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect."
+    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "magmarizer": {
     "name": "Magmarizer",
-    "desc": "Evolves Magmar into Magmortar when traded."
+    "desc": "Evolves Magmar into Magmortar when traded.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "magnet": {
     "name": "Magnet",
-    "desc": "Holder's Electric-type attacks have 1.2x power."
+    "desc": "Holder's Electric-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "magoberry": {
     "name": "Mago Berry",
@@ -926,7 +1208,10 @@
   },
   "maliciousarmor": {
     "name": "Malicious Armor",
-    "desc": "Evolves Charcadet into Ceruledge when used."
+    "desc": "Evolves Charcadet into Ceruledge when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "manectite": {
     "name": "Manectite",
@@ -946,7 +1231,10 @@
   },
   "masterpieceteacup": {
     "name": "Masterpiece Teacup",
-    "desc": "Evolves Poltchageist-Artisan into Sinistcha-Masterpiece when used."
+    "desc": "Evolves Poltchageist-Artisan into Sinistcha-Masterpiece when used.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "mawilite": {
     "name": "Mawilite",
@@ -962,7 +1250,10 @@
   },
   "mentalherb": {
     "name": "Mental Herb",
-    "desc": "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use."
+    "desc": "Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "metagrossite": {
     "name": "Metagrossite",
@@ -975,15 +1266,24 @@
   "metalcoat": {
     "name": "Metal Coat",
     "desc": "Holder's Steel-type attacks have 1.2x power. Evolves Onix into Steelix and Scyther into Scizor when traded.",
-    "shortDesc": "Holder's Steel-type attacks have 1.2x power."
+    "shortDesc": "Holder's Steel-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "metalpowder": {
     "name": "Metal Powder",
-    "desc": "If held by a Ditto that hasn't Transformed, its Defense is doubled."
+    "desc": "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "metronome": {
     "name": "Metronome",
-    "desc": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns."
+    "desc": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "mewniumz": {
     "name": "Mewnium Z",
@@ -1011,15 +1311,24 @@
   },
   "miracleseed": {
     "name": "Miracle Seed",
-    "desc": "Holder's Grass-type attacks have 1.2x power."
+    "desc": "Holder's Grass-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "mirrorherb": {
     "name": "Mirror Herb",
-    "desc": "When an opposing Pokemon raises a stat stage, the holder copies it. Single use."
+    "desc": "When an opposing Pokemon raises a stat stage, the holder copies it. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "mistyseed": {
     "name": "Misty Seed",
-    "desc": "If the terrain is Misty Terrain, raises holder's Sp. Def by 1 stage. Single use."
+    "desc": "If the terrain is Misty Terrain, raises holder's Sp. Def by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "moonball": {
     "name": "Moon Ball",
@@ -1028,15 +1337,24 @@
   "moonstone": {
     "name": "Moon Stone",
     "desc": "Evolves Nidorina into Nidoqueen, Nidorino into Nidoking, Clefairy into Clefable, Jigglypuff into Wigglytuff, Skitty into Delcatty, and Munna into Musharna when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "muscleband": {
     "name": "Muscle Band",
-    "desc": "Holder's physical attacks have 1.1x power."
+    "desc": "Holder's physical attacks have 1.1x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "mysticwater": {
     "name": "Mystic Water",
-    "desc": "Holder's Water-type attacks have 1.2x power."
+    "desc": "Holder's Water-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "nanabberry": {
     "name": "Nanab Berry",
@@ -1052,7 +1370,10 @@
   },
   "nevermeltice": {
     "name": "Never-Melt Ice",
-    "desc": "Holder's Ice-type attacks have 1.2x power."
+    "desc": "Holder's Ice-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "nomelberry": {
     "name": "Nomel Berry",
@@ -1072,11 +1393,17 @@
   },
   "oddincense": {
     "name": "Odd Incense",
-    "desc": "Holder's Psychic-type attacks have 1.2x power."
+    "desc": "Holder's Psychic-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "oldamber": {
     "name": "Old Amber",
-    "desc": "Can be revived into Aerodactyl."
+    "desc": "Can be revived into Aerodactyl.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "oranberry": {
     "name": "Oran Berry",
@@ -1084,7 +1411,10 @@
   },
   "ovalstone": {
     "name": "Oval Stone",
-    "desc": "Evolves Happiny into Chansey when held and leveled up during the day."
+    "desc": "Evolves Happiny into Chansey when held and leveled up during the day.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "pamtreberry": {
     "name": "Pamtre Berry",
@@ -1140,11 +1470,18 @@
   },
   "plumefossil": {
     "name": "Plume Fossil",
-    "desc": "Can be revived into Archen."
+    "desc": "Can be revived into Archen.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "poisonbarb": {
     "name": "Poison Barb",
-    "desc": "Holder's Poison-type attacks have 1.2x power."
+    "desc": "Holder's Poison-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 70,
+      "status": "psn"
+    }
   },
   "poisongem": {
     "name": "Poison Gem",
@@ -1168,31 +1505,52 @@
   },
   "poweranklet": {
     "name": "Power Anklet",
-    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect."
+    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    }
   },
   "powerband": {
     "name": "Power Band",
-    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect."
+    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    }
   },
   "powerbelt": {
     "name": "Power Belt",
-    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect."
+    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    }
   },
   "powerbracer": {
     "name": "Power Bracer",
-    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect."
+    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    }
   },
   "powerherb": {
     "name": "Power Herb",
-    "desc": "Holder's two-turn moves complete in one turn (except Sky Drop). Single use."
+    "desc": "Holder's two-turn moves complete in one turn (except Sky Drop). Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "powerlens": {
     "name": "Power Lens",
-    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect."
+    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    }
   },
   "powerweight": {
     "name": "Power Weight",
-    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect."
+    "desc": "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+    "fling": {
+      "basePower": 70
+    }
   },
   "premierball": {
     "name": "Premier Ball",
@@ -1204,15 +1562,24 @@
   },
   "prismscale": {
     "name": "Prism Scale",
-    "desc": "Evolves Feebas into Milotic when traded."
+    "desc": "Evolves Feebas into Milotic when traded.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "protectivepads": {
     "name": "Protective Pads",
-    "desc": "Holder's moves are protected from adverse contact effects, except Pickpocket."
+    "desc": "Holder's moves are protected from adverse contact effects, except Pickpocket.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "protector": {
     "name": "Protector",
-    "desc": "Evolves Rhydon into Rhyperior when traded."
+    "desc": "Evolves Rhydon into Rhyperior when traded.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "psychicgem": {
     "name": "Psychic Gem",
@@ -1224,7 +1591,10 @@
   },
   "psychicseed": {
     "name": "Psychic Seed",
-    "desc": "If the terrain is Psychic Terrain, raises holder's Sp. Def by 1 stage. Single use."
+    "desc": "If the terrain is Psychic Terrain, raises holder's Sp. Def by 1 stage. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "psychiumz": {
     "name": "Psychium Z",
@@ -1232,7 +1602,10 @@
   },
   "punchingglove": {
     "name": "Punching Glove",
-    "desc": "Holder's punch-based attacks have 1.1x power and do not make contact."
+    "desc": "Holder's punch-based attacks have 1.1x power and do not make contact.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "qualotberry": {
     "name": "Qualot Berry",
@@ -1244,11 +1617,17 @@
   },
   "quickclaw": {
     "name": "Quick Claw",
-    "desc": "Each turn, holder has a 20% chance to move first in its priority bracket."
+    "desc": "Each turn, holder has a 20% chance to move first in its priority bracket.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "quickpowder": {
     "name": "Quick Powder",
-    "desc": "If held by a Ditto that hasn't Transformed, its Speed is doubled."
+    "desc": "If held by a Ditto that hasn't Transformed, its Speed is doubled.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "rabutaberry": {
     "name": "Rabuta Berry",
@@ -1256,7 +1635,10 @@
   },
   "rarebone": {
     "name": "Rare Bone",
-    "desc": "No competitive use other than when used with Fling."
+    "desc": "No competitive use other than when used with Fling.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "rawstberry": {
     "name": "Rawst Berry",
@@ -1265,12 +1647,19 @@
   "razorclaw": {
     "name": "Razor Claw",
     "desc": "Holder's critical hit ratio is raised by 1 stage. Evolves Sneasel into Weavile when held and leveled up during the night.",
-    "shortDesc": "Holder's critical hit ratio is raised by 1 stage."
+    "shortDesc": "Holder's critical hit ratio is raised by 1 stage.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "razorfang": {
     "name": "Razor Fang",
     "desc": "Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Gligar into Gliscor when held and leveled up during the night.",
-    "shortDesc": "Holder's attacks without a chance to flinch gain a 10% chance to flinch."
+    "shortDesc": "Holder's attacks without a chance to flinch gain a 10% chance to flinch.",
+    "fling": {
+      "basePower": 30,
+      "volatileStatus": "flinch"
+    }
   },
   "razzberry": {
     "name": "Razz Berry",
@@ -1278,11 +1667,17 @@
   },
   "reapercloth": {
     "name": "Reaper Cloth",
-    "desc": "Evolves Dusclops into Dusknoir when traded."
+    "desc": "Evolves Dusclops into Dusknoir when traded.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "redcard": {
     "name": "Red Card",
-    "desc": "If holder survives a hit, attacker is forced to switch to a random ally. Single use."
+    "desc": "If holder survives a hit, attacker is forced to switch to a random ally. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "redorb": {
     "name": "Red Orb",
@@ -1294,7 +1689,10 @@
   },
   "ribbonsweet": {
     "name": "Ribbon Sweet",
-    "desc": "Evolves Milcery into Alcremie when held and spun around."
+    "desc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "rindoberry": {
     "name": "Rindo Berry",
@@ -1302,7 +1700,10 @@
   },
   "ringtarget": {
     "name": "Ring Target",
-    "desc": "The holder's type immunities granted solely by its typing are negated."
+    "desc": "The holder's type immunities granted solely by its typing are negated.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "rockgem": {
     "name": "Rock Gem",
@@ -1310,7 +1711,10 @@
   },
   "rockincense": {
     "name": "Rock Incense",
-    "desc": "Holder's Rock-type attacks have 1.2x power."
+    "desc": "Holder's Rock-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "rockmemory": {
     "name": "Rock Memory",
@@ -1322,19 +1726,31 @@
   },
   "rockyhelmet": {
     "name": "Rocky Helmet",
-    "desc": "If holder is hit by a contact move, the attacker loses 1/6 of its max HP."
+    "desc": "If holder is hit by a contact move, the attacker loses 1/6 of its max HP.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "roomservice": {
     "name": "Room Service",
-    "desc": "If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use."
+    "desc": "If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "rootfossil": {
     "name": "Root Fossil",
-    "desc": "Can be revived into Lileep."
+    "desc": "Can be revived into Lileep.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "roseincense": {
     "name": "Rose Incense",
-    "desc": "Holder's Grass-type attacks have 1.2x power."
+    "desc": "Holder's Grass-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "roseliberry": {
     "name": "Roseli Berry",
@@ -1358,7 +1774,10 @@
   },
   "sachet": {
     "name": "Sachet",
-    "desc": "Evolves Spritzee into Aromatisse when traded."
+    "desc": "Evolves Spritzee into Aromatisse when traded.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "safariball": {
     "name": "Safari Ball",
@@ -1366,11 +1785,17 @@
   },
   "safetygoggles": {
     "name": "Safety Goggles",
-    "desc": "Holder is immune to powder moves and damage from Sandstorm or Hail."
+    "desc": "Holder is immune to powder moves and damage from Sandstorm or Hail.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "sailfossil": {
     "name": "Sail Fossil",
-    "desc": "Can be revived into Amaura."
+    "desc": "Can be revived into Amaura.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "salacberry": {
     "name": "Salac Berry",
@@ -1390,15 +1815,24 @@
   },
   "scopelens": {
     "name": "Scope Lens",
-    "desc": "Holder's critical hit ratio is raised by 1 stage."
+    "desc": "Holder's critical hit ratio is raised by 1 stage.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "seaincense": {
     "name": "Sea Incense",
-    "desc": "Holder's Water-type attacks have 1.2x power."
+    "desc": "Holder's Water-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "sharpbeak": {
     "name": "Sharp Beak",
-    "desc": "Holder's Flying-type attacks have 1.2x power."
+    "desc": "Holder's Flying-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 50
+    }
   },
   "sharpedonite": {
     "name": "Sharpedonite",
@@ -1406,16 +1840,25 @@
   },
   "shedshell": {
     "name": "Shed Shell",
-    "desc": "Holder cannot be prevented from choosing to switch out by any effect."
+    "desc": "Holder cannot be prevented from choosing to switch out by any effect.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "shellbell": {
     "name": "Shell Bell",
-    "desc": "After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon."
+    "desc": "After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "shinystone": {
     "name": "Shiny Stone",
     "desc": "Evolves Togetic into Togekiss, Roselia into Roserade, Minccino into Cinccino, and Floette into Florges when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "shockdrive": {
     "name": "Shock Drive",
@@ -1427,11 +1870,17 @@
   },
   "silkscarf": {
     "name": "Silk Scarf",
-    "desc": "Holder's Normal-type attacks have 1.2x power."
+    "desc": "Holder's Normal-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "silverpowder": {
     "name": "Silver Powder",
-    "desc": "Holder's Bug-type attacks have 1.2x power."
+    "desc": "Holder's Bug-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "sitrusberry": {
     "name": "Sitrus Berry",
@@ -1439,7 +1888,10 @@
   },
   "skullfossil": {
     "name": "Skull Fossil",
-    "desc": "Can be revived into Cranidos."
+    "desc": "Can be revived into Cranidos.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "skyplate": {
     "name": "Sky Plate",
@@ -1451,7 +1903,10 @@
   },
   "smoothrock": {
     "name": "Smooth Rock",
-    "desc": "Holder's use of Sandstorm lasts 8 turns instead of 5."
+    "desc": "Holder's use of Sandstorm lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "snorliumz": {
     "name": "Snorlium Z",
@@ -1459,11 +1914,17 @@
   },
   "snowball": {
     "name": "Snowball",
-    "desc": "Raises holder's Attack by 1 if hit by an Ice-type attack. Single use."
+    "desc": "Raises holder's Attack by 1 if hit by an Ice-type attack. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "softsand": {
     "name": "Soft Sand",
-    "desc": "Holder's Ground-type attacks have 1.2x power."
+    "desc": "Holder's Ground-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "solganiumz": {
     "name": "Solganium Z",
@@ -1471,11 +1932,17 @@
   },
   "souldew": {
     "name": "Soul Dew",
-    "desc": "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power."
+    "desc": "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "spelltag": {
     "name": "Spell Tag",
-    "desc": "Holder's Ghost-type attacks have 1.2x power."
+    "desc": "Holder's Ghost-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "spelonberry": {
     "name": "Spelon Berry",
@@ -1499,7 +1966,10 @@
   },
   "starsweet": {
     "name": "Star Sweet",
-    "desc": "Evolves Milcery into Alcremie when held and spun around."
+    "desc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "steelixite": {
     "name": "Steelixite",
@@ -1519,11 +1989,17 @@
   },
   "stick": {
     "name": "Stick",
-    "desc": "If held by a Farfetch’d, its critical hit ratio is raised by 2 stages."
+    "desc": "If held by a Farfetch’d, its critical hit ratio is raised by 2 stages.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "stickybarb": {
     "name": "Sticky Barb",
-    "desc": "Each turn, holder loses 1/8 max HP. An attacker making contact can receive it."
+    "desc": "Each turn, holder loses 1/8 max HP. An attacker making contact can receive it.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "stoneplate": {
     "name": "Stone Plate",
@@ -1535,12 +2011,18 @@
   },
   "strawberrysweet": {
     "name": "Strawberry Sweet",
-    "desc": "Evolves Milcery into Alcremie when held and spun around."
+    "desc": "Evolves Milcery into Alcremie when held and spun around.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "sunstone": {
     "name": "Sun Stone",
     "desc": "Evolves Gloom into Bellossom, Sunkern into Sunflora, Cottonee into Whimsicott, Petilil into Lilligant, and Helioptile into Heliolisk when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "swampertite": {
     "name": "Swampertite",
@@ -1548,11 +2030,17 @@
   },
   "sweetapple": {
     "name": "Sweet Apple",
-    "desc": "Evolves Applin into Appletun when used."
+    "desc": "Evolves Applin into Appletun when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "syrupyapple": {
     "name": "Syrupy Apple",
-    "desc": "Evolves Applin into Dipplin when used."
+    "desc": "Evolves Applin into Dipplin when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "tamatoberry": {
     "name": "Tamato Berry",
@@ -1568,24 +2056,39 @@
   },
   "tartapple": {
     "name": "Tart Apple",
-    "desc": "Evolves Applin into Flapple when used."
+    "desc": "Evolves Applin into Flapple when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "terrainextender": {
     "name": "Terrain Extender",
-    "desc": "Holder's use of Electric/Grassy/Misty/Psychic Terrain lasts 8 turns instead of 5."
+    "desc": "Holder's use of Electric/Grassy/Misty/Psychic Terrain lasts 8 turns instead of 5.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "thickclub": {
     "name": "Thick Club",
-    "desc": "If held by a Cubone or a Marowak, its Attack is doubled."
+    "desc": "If held by a Cubone or a Marowak, its Attack is doubled.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "throatspray": {
     "name": "Throat Spray",
-    "desc": "Raises holder's Special Attack by 1 stage after it uses a sound move. Single use."
+    "desc": "Raises holder's Special Attack by 1 stage after it uses a sound move. Single use.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "thunderstone": {
     "name": "Thunder Stone",
     "desc": "Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, Eelektrik into Eelektross, and Charjabug into Vikavolt when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "timerball": {
     "name": "Timer Ball",
@@ -1593,7 +2096,11 @@
   },
   "toxicorb": {
     "name": "Toxic Orb",
-    "desc": "At the end of every turn, this item attempts to badly poison the holder."
+    "desc": "At the end of every turn, this item attempts to badly poison the holder.",
+    "fling": {
+      "basePower": 30,
+      "status": "tox"
+    }
   },
   "toxicplate": {
     "name": "Toxic Plate",
@@ -1601,407 +2108,710 @@
   },
   "tr00": {
     "name": "TR00",
-    "desc": "Teaches certain Pokemon the move Swords Dance. One use."
+    "desc": "Teaches certain Pokemon the move Swords Dance. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr01": {
     "name": "TR01",
-    "desc": "Teaches certain Pokemon the move Body Slam. One use."
+    "desc": "Teaches certain Pokemon the move Body Slam. One use.",
+    "fling": {
+      "basePower": 85
+    }
   },
   "tr02": {
     "name": "TR02",
-    "desc": "Teaches certain Pokemon the move Flamethrower. One use."
+    "desc": "Teaches certain Pokemon the move Flamethrower. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr03": {
     "name": "TR03",
-    "desc": "Teaches certain Pokemon the move Hydro Pump. One use."
+    "desc": "Teaches certain Pokemon the move Hydro Pump. One use.",
+    "fling": {
+      "basePower": 110
+    }
   },
   "tr04": {
     "name": "TR04",
-    "desc": "Teaches certain Pokemon the move Surf. One use."
+    "desc": "Teaches certain Pokemon the move Surf. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr05": {
     "name": "TR05",
-    "desc": "Teaches certain Pokemon the move Ice Beam. One use."
+    "desc": "Teaches certain Pokemon the move Ice Beam. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr06": {
     "name": "TR06",
-    "desc": "Teaches certain Pokemon the move Blizzard. One use."
+    "desc": "Teaches certain Pokemon the move Blizzard. One use.",
+    "fling": {
+      "basePower": 110
+    }
   },
   "tr07": {
     "name": "TR07",
-    "desc": "Teaches certain Pokemon the move Low Kick. One use."
+    "desc": "Teaches certain Pokemon the move Low Kick. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr08": {
     "name": "TR08",
-    "desc": "Teaches certain Pokemon the move Thunderbolt. One use."
+    "desc": "Teaches certain Pokemon the move Thunderbolt. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr09": {
     "name": "TR09",
-    "desc": "Teaches certain Pokemon the move Thunder. One use."
+    "desc": "Teaches certain Pokemon the move Thunder. One use.",
+    "fling": {
+      "basePower": 110
+    }
   },
   "tr10": {
     "name": "TR10",
-    "desc": "Teaches certain Pokemon the move Earthquake. One use."
+    "desc": "Teaches certain Pokemon the move Earthquake. One use.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "tr11": {
     "name": "TR11",
-    "desc": "Teaches certain Pokemon the move Psychic. One use."
+    "desc": "Teaches certain Pokemon the move Psychic. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr12": {
     "name": "TR12",
-    "desc": "Teaches certain Pokemon the move Agility. One use."
+    "desc": "Teaches certain Pokemon the move Agility. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr13": {
     "name": "TR13",
-    "desc": "Teaches certain Pokemon the move Focus Energy. One use."
+    "desc": "Teaches certain Pokemon the move Focus Energy. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr14": {
     "name": "TR14",
-    "desc": "Teaches certain Pokemon the move Metronome. One use."
+    "desc": "Teaches certain Pokemon the move Metronome. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr15": {
     "name": "TR15",
-    "desc": "Teaches certain Pokemon the move Fire Blast. One use."
+    "desc": "Teaches certain Pokemon the move Fire Blast. One use.",
+    "fling": {
+      "basePower": 110
+    }
   },
   "tr16": {
     "name": "TR16",
-    "desc": "Teaches certain Pokemon the move Waterfall. One use."
+    "desc": "Teaches certain Pokemon the move Waterfall. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr17": {
     "name": "TR17",
-    "desc": "Teaches certain Pokemon the move Amnesia. One use."
+    "desc": "Teaches certain Pokemon the move Amnesia. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr18": {
     "name": "TR18",
-    "desc": "Teaches certain Pokemon the move Leech Life. One use."
+    "desc": "Teaches certain Pokemon the move Leech Life. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr19": {
     "name": "TR19",
-    "desc": "Teaches certain Pokemon the move Tri Attack. One use."
+    "desc": "Teaches certain Pokemon the move Tri Attack. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr20": {
     "name": "TR20",
-    "desc": "Teaches certain Pokemon the move Substitute. One use."
+    "desc": "Teaches certain Pokemon the move Substitute. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr21": {
     "name": "TR21",
-    "desc": "Teaches certain Pokemon the move Reversal. One use."
+    "desc": "Teaches certain Pokemon the move Reversal. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr22": {
     "name": "TR22",
-    "desc": "Teaches certain Pokemon the move Sludge Bomb. One use."
+    "desc": "Teaches certain Pokemon the move Sludge Bomb. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr23": {
     "name": "TR23",
-    "desc": "Teaches certain Pokemon the move Spikes. One use."
+    "desc": "Teaches certain Pokemon the move Spikes. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr24": {
     "name": "TR24",
-    "desc": "Teaches certain Pokemon the move Outrage. One use."
+    "desc": "Teaches certain Pokemon the move Outrage. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr25": {
     "name": "TR25",
-    "desc": "Teaches certain Pokemon the move Psyshock. One use."
+    "desc": "Teaches certain Pokemon the move Psyshock. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr26": {
     "name": "TR26",
-    "desc": "Teaches certain Pokemon the move Endure. One use."
+    "desc": "Teaches certain Pokemon the move Endure. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr27": {
     "name": "TR27",
-    "desc": "Teaches certain Pokemon the move Sleep Talk. One use."
+    "desc": "Teaches certain Pokemon the move Sleep Talk. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr28": {
     "name": "TR28",
-    "desc": "Teaches certain Pokemon the move Megahorn. One use."
+    "desc": "Teaches certain Pokemon the move Megahorn. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr29": {
     "name": "TR29",
-    "desc": "Teaches certain Pokemon the move Baton Pass. One use."
+    "desc": "Teaches certain Pokemon the move Baton Pass. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr30": {
     "name": "TR30",
-    "desc": "Teaches certain Pokemon the move Encore. One use."
+    "desc": "Teaches certain Pokemon the move Encore. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr31": {
     "name": "TR31",
-    "desc": "Teaches certain Pokemon the move Iron Tail. One use."
+    "desc": "Teaches certain Pokemon the move Iron Tail. One use.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "tr32": {
     "name": "TR32",
-    "desc": "Teaches certain Pokemon the move Crunch. One use."
+    "desc": "Teaches certain Pokemon the move Crunch. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr33": {
     "name": "TR33",
-    "desc": "Teaches certain Pokemon the move Shadow Ball. One use."
+    "desc": "Teaches certain Pokemon the move Shadow Ball. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr34": {
     "name": "TR34",
-    "desc": "Teaches certain Pokemon the move Future Sight. One use."
+    "desc": "Teaches certain Pokemon the move Future Sight. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr35": {
     "name": "TR35",
-    "desc": "Teaches certain Pokemon the move Uproar. One use."
+    "desc": "Teaches certain Pokemon the move Uproar. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr36": {
     "name": "TR36",
-    "desc": "Teaches certain Pokemon the move Heat Wave. One use."
+    "desc": "Teaches certain Pokemon the move Heat Wave. One use.",
+    "fling": {
+      "basePower": 95
+    }
   },
   "tr37": {
     "name": "TR37",
-    "desc": "Teaches certain Pokemon the move Taunt. One use."
+    "desc": "Teaches certain Pokemon the move Taunt. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr38": {
     "name": "TR38",
-    "desc": "Teaches certain Pokemon the move Trick. One use."
+    "desc": "Teaches certain Pokemon the move Trick. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr39": {
     "name": "TR39",
-    "desc": "Teaches certain Pokemon the move Superpower. One use."
+    "desc": "Teaches certain Pokemon the move Superpower. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr40": {
     "name": "TR40",
-    "desc": "Teaches certain Pokemon the move Skill Swap. One use."
+    "desc": "Teaches certain Pokemon the move Skill Swap. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr41": {
     "name": "TR41",
-    "desc": "Teaches certain Pokemon the move Blaze Kick. One use."
+    "desc": "Teaches certain Pokemon the move Blaze Kick. One use.",
+    "fling": {
+      "basePower": 85
+    }
   },
   "tr42": {
     "name": "TR42",
-    "desc": "Teaches certain Pokemon the move Hyper Voice. One use."
+    "desc": "Teaches certain Pokemon the move Hyper Voice. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr43": {
     "name": "TR43",
-    "desc": "Teaches certain Pokemon the move Overheat. One use."
+    "desc": "Teaches certain Pokemon the move Overheat. One use.",
+    "fling": {
+      "basePower": 130
+    }
   },
   "tr44": {
     "name": "TR44",
-    "desc": "Teaches certain Pokemon the move Cosmic Power. One use."
+    "desc": "Teaches certain Pokemon the move Cosmic Power. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr45": {
     "name": "TR45",
-    "desc": "Teaches certain Pokemon the move Muddy Water. One use."
+    "desc": "Teaches certain Pokemon the move Muddy Water. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr46": {
     "name": "TR46",
-    "desc": "Teaches certain Pokemon the move Iron Defense. One use."
+    "desc": "Teaches certain Pokemon the move Iron Defense. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr47": {
     "name": "TR47",
-    "desc": "Teaches certain Pokemon the move Dragon Claw. One use."
+    "desc": "Teaches certain Pokemon the move Dragon Claw. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr48": {
     "name": "TR48",
-    "desc": "Teaches certain Pokemon the move Bulk Up. One use."
+    "desc": "Teaches certain Pokemon the move Bulk Up. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr49": {
     "name": "TR49",
-    "desc": "Teaches certain Pokemon the move Calm Mind. One use."
+    "desc": "Teaches certain Pokemon the move Calm Mind. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr50": {
     "name": "TR50",
-    "desc": "Teaches certain Pokemon the move Leaf Blade. One use."
+    "desc": "Teaches certain Pokemon the move Leaf Blade. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr51": {
     "name": "TR51",
-    "desc": "Teaches certain Pokemon the move Dragon Dance. One use."
+    "desc": "Teaches certain Pokemon the move Dragon Dance. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr52": {
     "name": "TR52",
-    "desc": "Teaches certain Pokemon the move Gyro Ball. One use."
+    "desc": "Teaches certain Pokemon the move Gyro Ball. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr53": {
     "name": "TR53",
-    "desc": "Teaches certain Pokemon the move Close Combat. One use."
+    "desc": "Teaches certain Pokemon the move Close Combat. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr54": {
     "name": "TR54",
-    "desc": "Teaches certain Pokemon the move Toxic Spikes. One use."
+    "desc": "Teaches certain Pokemon the move Toxic Spikes. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr55": {
     "name": "TR55",
-    "desc": "Teaches certain Pokemon the move Flare Blitz. One use."
+    "desc": "Teaches certain Pokemon the move Flare Blitz. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr56": {
     "name": "TR56",
-    "desc": "Teaches certain Pokemon the move Aura Sphere. One use."
+    "desc": "Teaches certain Pokemon the move Aura Sphere. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr57": {
     "name": "TR57",
-    "desc": "Teaches certain Pokemon the move Poison Jab. One use."
+    "desc": "Teaches certain Pokemon the move Poison Jab. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr58": {
     "name": "TR58",
-    "desc": "Teaches certain Pokemon the move Dark Pulse. One use."
+    "desc": "Teaches certain Pokemon the move Dark Pulse. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr59": {
     "name": "TR59",
-    "desc": "Teaches certain Pokemon the move Seed Bomb. One use."
+    "desc": "Teaches certain Pokemon the move Seed Bomb. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr60": {
     "name": "TR60",
-    "desc": "Teaches certain Pokemon the move X-Scissor. One use."
+    "desc": "Teaches certain Pokemon the move X-Scissor. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr61": {
     "name": "TR61",
-    "desc": "Teaches certain Pokemon the move Bug Buzz. One use."
+    "desc": "Teaches certain Pokemon the move Bug Buzz. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr62": {
     "name": "TR62",
-    "desc": "Teaches certain Pokemon the move Dragon Pulse. One use."
+    "desc": "Teaches certain Pokemon the move Dragon Pulse. One use.",
+    "fling": {
+      "basePower": 85
+    }
   },
   "tr63": {
     "name": "TR63",
-    "desc": "Teaches certain Pokemon the move Power Gem. One use."
+    "desc": "Teaches certain Pokemon the move Power Gem. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr64": {
     "name": "TR64",
-    "desc": "Teaches certain Pokemon the move Focus Blast. One use."
+    "desc": "Teaches certain Pokemon the move Focus Blast. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr65": {
     "name": "TR65",
-    "desc": "Teaches certain Pokemon the move Energy Ball. One use."
+    "desc": "Teaches certain Pokemon the move Energy Ball. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr66": {
     "name": "TR66",
-    "desc": "Teaches certain Pokemon the move Brave Bird. One use."
+    "desc": "Teaches certain Pokemon the move Brave Bird. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr67": {
     "name": "TR67",
-    "desc": "Teaches certain Pokemon the move Earth Power. One use."
+    "desc": "Teaches certain Pokemon the move Earth Power. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr68": {
     "name": "TR68",
-    "desc": "Teaches certain Pokemon the move Nasty Plot. One use."
+    "desc": "Teaches certain Pokemon the move Nasty Plot. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr69": {
     "name": "TR69",
-    "desc": "Teaches certain Pokemon the move Zen Headbutt. One use."
+    "desc": "Teaches certain Pokemon the move Zen Headbutt. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr70": {
     "name": "TR70",
-    "desc": "Teaches certain Pokemon the move Flash Cannon. One use."
+    "desc": "Teaches certain Pokemon the move Flash Cannon. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr71": {
     "name": "TR71",
-    "desc": "Teaches certain Pokemon the move Leaf Storm. One use."
+    "desc": "Teaches certain Pokemon the move Leaf Storm. One use.",
+    "fling": {
+      "basePower": 130
+    }
   },
   "tr72": {
     "name": "TR72",
-    "desc": "Teaches certain Pokemon the move Power Whip. One use."
+    "desc": "Teaches certain Pokemon the move Power Whip. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr73": {
     "name": "TR73",
-    "desc": "Teaches certain Pokemon the move Gunk Shot. One use."
+    "desc": "Teaches certain Pokemon the move Gunk Shot. One use.",
+    "fling": {
+      "basePower": 120
+    }
   },
   "tr74": {
     "name": "TR74",
-    "desc": "Teaches certain Pokemon the move Iron Head. One use."
+    "desc": "Teaches certain Pokemon the move Iron Head. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr75": {
     "name": "TR75",
-    "desc": "Teaches certain Pokemon the move Stone Edge. One use."
+    "desc": "Teaches certain Pokemon the move Stone Edge. One use.",
+    "fling": {
+      "basePower": 100
+    }
   },
   "tr76": {
     "name": "TR76",
-    "desc": "Teaches certain Pokemon the move Stealth Rock. One use."
+    "desc": "Teaches certain Pokemon the move Stealth Rock. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr77": {
     "name": "TR77",
-    "desc": "Teaches certain Pokemon the move Grass Knot. One use."
+    "desc": "Teaches certain Pokemon the move Grass Knot. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr78": {
     "name": "TR78",
-    "desc": "Teaches certain Pokemon the move Sludge Wave. One use."
+    "desc": "Teaches certain Pokemon the move Sludge Wave. One use.",
+    "fling": {
+      "basePower": 95
+    }
   },
   "tr79": {
     "name": "TR79",
-    "desc": "Teaches certain Pokemon the move Heavy Slam. One use."
+    "desc": "Teaches certain Pokemon the move Heavy Slam. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr80": {
     "name": "TR80",
-    "desc": "Teaches certain Pokemon the move Electro Ball. One use."
+    "desc": "Teaches certain Pokemon the move Electro Ball. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr81": {
     "name": "TR81",
-    "desc": "Teaches certain Pokemon the move Foul Play. One use."
+    "desc": "Teaches certain Pokemon the move Foul Play. One use.",
+    "fling": {
+      "basePower": 95
+    }
   },
   "tr82": {
     "name": "TR82",
-    "desc": "Teaches certain Pokemon the move Stored Power. One use."
+    "desc": "Teaches certain Pokemon the move Stored Power. One use.",
+    "fling": {
+      "basePower": 20
+    }
   },
   "tr83": {
     "name": "TR83",
-    "desc": "Teaches certain Pokemon the move Ally Switch. One use."
+    "desc": "Teaches certain Pokemon the move Ally Switch. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr84": {
     "name": "TR84",
-    "desc": "Teaches certain Pokemon the move Scald. One use."
+    "desc": "Teaches certain Pokemon the move Scald. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr85": {
     "name": "TR85",
-    "desc": "Teaches certain Pokemon the move Work Up. One use."
+    "desc": "Teaches certain Pokemon the move Work Up. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr86": {
     "name": "TR86",
-    "desc": "Teaches certain Pokemon the move Wild Charge. One use."
+    "desc": "Teaches certain Pokemon the move Wild Charge. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr87": {
     "name": "TR87",
-    "desc": "Teaches certain Pokemon the move Drill Run. One use."
+    "desc": "Teaches certain Pokemon the move Drill Run. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr88": {
     "name": "TR88",
-    "desc": "Teaches certain Pokemon the move Heat Crash. One use."
+    "desc": "Teaches certain Pokemon the move Heat Crash. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr89": {
     "name": "TR89",
-    "desc": "Teaches certain Pokemon the move Hurricane. One use."
+    "desc": "Teaches certain Pokemon the move Hurricane. One use.",
+    "fling": {
+      "basePower": 110
+    }
   },
   "tr90": {
     "name": "TR90",
-    "desc": "Teaches certain Pokemon the move Play Rough. One use."
+    "desc": "Teaches certain Pokemon the move Play Rough. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr91": {
     "name": "TR91",
-    "desc": "Teaches certain Pokemon the move Venom Drench. One use."
+    "desc": "Teaches certain Pokemon the move Venom Drench. One use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "tr92": {
     "name": "TR92",
-    "desc": "Teaches certain Pokemon the move Dazzling Gleam. One use."
+    "desc": "Teaches certain Pokemon the move Dazzling Gleam. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr93": {
     "name": "TR93",
-    "desc": "Teaches certain Pokemon the move Darkest Lariat. One use."
+    "desc": "Teaches certain Pokemon the move Darkest Lariat. One use.",
+    "fling": {
+      "basePower": 85
+    }
   },
   "tr94": {
     "name": "TR94",
-    "desc": "Teaches certain Pokemon the move High Horsepower. One use."
+    "desc": "Teaches certain Pokemon the move High Horsepower. One use.",
+    "fling": {
+      "basePower": 95
+    }
   },
   "tr95": {
     "name": "TR95",
-    "desc": "Teaches certain Pokemon the move Throat Chop. One use."
+    "desc": "Teaches certain Pokemon the move Throat Chop. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "tr96": {
     "name": "TR96",
-    "desc": "Teaches certain Pokemon the move Pollen Puff. One use."
+    "desc": "Teaches certain Pokemon the move Pollen Puff. One use.",
+    "fling": {
+      "basePower": 90
+    }
   },
   "tr97": {
     "name": "TR97",
-    "desc": "Teaches certain Pokemon the move Psychic Fangs. One use."
+    "desc": "Teaches certain Pokemon the move Psychic Fangs. One use.",
+    "fling": {
+      "basePower": 85
+    }
   },
   "tr98": {
     "name": "TR98",
-    "desc": "Teaches certain Pokemon the move Liquidation. One use."
+    "desc": "Teaches certain Pokemon the move Liquidation. One use.",
+    "fling": {
+      "basePower": 85
+    }
   },
   "tr99": {
     "name": "TR99",
-    "desc": "Teaches certain Pokemon the move Body Press. One use."
+    "desc": "Teaches certain Pokemon the move Body Press. One use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "twistedspoon": {
     "name": "Twisted Spoon",
-    "desc": "Holder's Psychic-type attacks have 1.2x power."
+    "desc": "Holder's Psychic-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "tyranitarite": {
     "name": "Tyranitarite",
@@ -2017,16 +2827,25 @@
   },
   "unremarkableteacup": {
     "name": "Unremarkable Teacup",
-    "desc": "Evolves Poltchageist into Sinistcha when used."
+    "desc": "Evolves Poltchageist into Sinistcha when used.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "upgrade": {
     "name": "Up-Grade",
-    "desc": "Evolves Porygon into Porygon2 when traded."
+    "desc": "Evolves Porygon into Porygon2 when traded.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "utilityumbrella": {
     "name": "Utility Umbrella",
     "desc": "The holder ignores rain- and sun-based effects, including those of its Ability unless it is Orichalcum Pulse or Protosynthesis. Damage and accuracy calculations from attacks used by the holder are affected by rain and sun, but not attacks used against the holder.",
-    "shortDesc": "The holder ignores rain- and sun-based effects."
+    "shortDesc": "The holder ignores rain- and sun-based effects.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "venusaurite": {
     "name": "Venusaurite",
@@ -2047,7 +2866,10 @@
   "waterstone": {
     "name": "Water Stone",
     "desc": "Evolves Poliwhirl into Poliwrath, Shellder into Cloyster, Staryu into Starmie, Eevee into Vaporeon, Lombre into Ludicolo, and Panpour into Simipour when used.",
-    "shortDesc": "Evolves certain species of Pokemon when used."
+    "shortDesc": "Evolves certain species of Pokemon when used.",
+    "fling": {
+      "basePower": 30
+    }
   },
   "wateriumz": {
     "name": "Waterium Z",
@@ -2059,15 +2881,24 @@
   },
   "waveincense": {
     "name": "Wave Incense",
-    "desc": "Holder's Water-type attacks have 1.2x power."
+    "desc": "Holder's Water-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "weaknesspolicy": {
     "name": "Weakness Policy",
-    "desc": "If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use."
+    "desc": "If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "wellspringmask": {
     "name": "Wellspring Mask",
-    "desc": "Ogerpon-Wellspring: 1.2x power attacks; Terastallize to gain Embody Aspect."
+    "desc": "Ogerpon-Wellspring: 1.2x power attacks; Terastallize to gain Embody Aspect.",
+    "fling": {
+      "basePower": 60
+    }
   },
   "wepearberry": {
     "name": "Wepear Berry",
@@ -2075,15 +2906,24 @@
   },
   "whippeddream": {
     "name": "Whipped Dream",
-    "desc": "Evolves Swirlix into Slurpuff when traded."
+    "desc": "Evolves Swirlix into Slurpuff when traded.",
+    "fling": {
+      "basePower": 80
+    }
   },
   "whiteherb": {
     "name": "White Herb",
-    "desc": "Restores all lowered stat stages to 0 when one is less than 0. Single use."
+    "desc": "Restores all lowered stat stages to 0 when one is less than 0. Single use.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "widelens": {
     "name": "Wide Lens",
-    "desc": "The accuracy of attacks by the holder is 1.1x."
+    "desc": "The accuracy of attacks by the holder is 1.1x.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "wikiberry": {
     "name": "Wiki Berry",
@@ -2091,7 +2931,10 @@
   },
   "wiseglasses": {
     "name": "Wise Glasses",
-    "desc": "Holder's special attacks have 1.1x power."
+    "desc": "Holder's special attacks have 1.1x power.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "yacheberry": {
     "name": "Yache Berry",
@@ -2103,7 +2946,10 @@
   },
   "zoomlens": {
     "name": "Zoom Lens",
-    "desc": "The accuracy of attacks by the holder is 1.2x if it moves after its target."
+    "desc": "The accuracy of attacks by the holder is 1.2x if it moves after its target.",
+    "fling": {
+      "basePower": 10
+    }
   },
   "berserkgene": {
     "name": "Berserk Gene",
@@ -2163,6 +3009,9 @@
   },
   "vilevial": {
     "name": "Vile Vial",
-    "desc": "If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power."
+    "desc": "If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.",
+    "fling": {
+      "basePower": 60
+    }
   }
 }

@@ -3391,12 +3391,47 @@ function heldItemNameInHTML(heldItemName) {
   return heldItemName;
 }
 function heldItemDesc(heldItemName) {
-  if (IMPROVED_ITEMS[heldItemName])
-    return IMPROVED_ITEMS[heldItemName];
+  let desc = '';
   const heldItem = heldItems[getHeldItemId(heldItemName)];
-  if (heldItemName === 'Utility Umbrella')
-    return heldItem.desc;
-  return heldItem.shortDesc ?? heldItem.desc;
+
+  if (IMPROVED_ITEMS[heldItemName])
+    desc = IMPROVED_ITEMS[heldItemName];
+  else {
+    if (heldItemName === 'Utility Umbrella')
+      desc = heldItem.desc;
+    else
+      desc = heldItem.shortDesc ?? heldItem.desc;
+  }
+
+  if (heldItem.fling) {
+    let bonus = '';
+    switch (heldItemName) {
+      case 'Flame Orb':
+        bonus = ' and inflicts Burn!';
+        break;
+      case "King's Rock":
+      case "Razor Fang":
+        bonus = ' and causes guaranteed flinch!';
+        break;
+      case "Light Ball":
+        bonus = ' and inflicts Paralysis!';
+        break;   
+      case "Mental Herb":
+      case "White Herb":
+        bonus = ' and cures target';
+        break;
+      case "Poison Barb":
+        bonus = ' and inflicts Poison!';
+        break;
+      case "Toxic Orb":
+        bonus = ' and inflicts Badly Poisoned!';
+        break;
+    }
+    if (desc.indexOf('\n') !== -1)
+      desc += '\n'; // Add an extra newline for TRs, which have the entire move in its desc
+    desc += '\n(Fling: ' + heldItem.fling.basePower + ' power' + bonus + ')';
+  }
+  return desc;
 }
 
 function randomEgg() {
