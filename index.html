@@ -1102,6 +1102,10 @@ function loadAbilities() {
 function loadHeldItems() {
   loadFile('heldItems.json', function() {
     heldItems = JSON.parse(this.responseText);
+    for (const item of Object.values(heldItems)) {
+      if (item.name.split(' ')[1] === 'Plate')
+        item.fling = {'basePower': 90}; // oddly missing from heldItems.json
+    }
     doneLoading();
   });
 }
