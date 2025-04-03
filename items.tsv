@@ -192,6 +192,7 @@ Reflect Item	beforeBattle	20											Before battle: Set your [mth] Pokemon's h
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld												
 Black Belt	heldItem	20														
 Silk Scarf	heldItem	20														
+Poison Barb	heldItem	20				Fling										
 Flame Plate	heldItem	20														
 Splash Plate	heldItem	20														
 Meadow Plate	heldItem	20														
@@ -382,7 +383,7 @@ Douse Drive	heldItem	0				Techno Blast
 Shock Drive	heldItem	0				Techno Blast										
 True Mirror	misc	50	0										The next thing you buy, you get twice.			
 Wonder Guard-ifier	misc	15									x		Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
-Plus & Minus Abilitizers	abilitizer	100					2						Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Plus & Minus Abilitizers	abilitizer	60					2						Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 (Almost) Perfect Abilitizer	abilitizer	70											Set a Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 (Almost) Perfect Party Abilitizer	partyAbilitizer	50n+20											Set EVERY Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Perfect Twin Abilitizers	beforeAbilitizer	50											Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
@@ -503,7 +504,7 @@ Big Root	heldItem	15				Absorb,Bitter Blade,Bouncy Bubble,Drain Punch,Draining K
 Float Stone	heldItem	1														
 Focus Band	heldItem	5														
 Ring Target	heldItem	0														
-Rare Bone	heldItem	5				Fling										
+Big Nugget	heldItem	15				Fling										
 Rare Normal Candy	misc	15	0										Increase a Normal-type Pokemon's level by one.			
 Rare Fire Candy	misc	15	0										Increase a Fire-type Pokemon's level by one.			
 Rare Water Candy	misc	15	0										Increase a Water-type Pokemon's level by one.			
