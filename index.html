@@ -1074,6 +1074,7 @@ function loadAllSpecies() {
       }
     }
     allSpecies.missingno.types = allSpecies.missingno.types.filter(type => TYPES.includes(type));
+    allSpecies.missingno.abilities = {0: 'No Ability'};
     doneLoading();
   });
 }
