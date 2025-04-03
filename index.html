@@ -236,6 +236,10 @@ button:focus {
   text-decoration-line: underline;
   text-decoration-style: dashed; 
 }
+.strikethrough {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
 
 .big-text {
   font-size: large;
@@ -2065,12 +2069,14 @@ function pokemonInHTML(pokemonStr) {
     } else if (strLine.startsWith('Tera Type:')) {
       const teraType = strLine.substring('Tera Type: '.length);
       if (glitchedTera(species)) {
-        out += '<span class="hasHoverText worsened gray" title="Glitches upon terastallizing, losing ability and severely lowering stats.'
-          + '\n(Also, tera type becomes ' + forcedTera(species) + ' during battle.)">'
-          + strLine
-          + '</span>';
+        out += spanWithClass('Tera Type: ', 'attr')
+          + spanWithTitle(spanWithClass(teraType, 'attr strikethrough worsened'),
+              'Glitches upon terastallizing, losing ability and severely lowering stats.'
+                + '\n(Also, tera type becomes ' + forcedTera(species) + ' during battle.)');
       } else if (forcedTera(species)) {
-        out += spanWithClass(spanWithTitle(strLine, 'Tera type becomes ' + forcedTera(species) + ' during battle.'), 'gray');
+        out += spanWithClass('Tera Type: ', 'attr')
+          + spanWithTitle(spanWithClass(teraType, 'attr strikethrough'),
+              'Tera type becomes ' + forcedTera(species) + ' during battle.');
       } else if (!canTera(species, heldItem)) {
         out += spanWithClass(strLine, 'gray');
       } else {
