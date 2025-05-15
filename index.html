@@ -382,7 +382,8 @@ button:focus {
         <option>Dream Ball</option>
         <option>Friend Ball</option>
         <option>Love Ball</option>
-        <option>Beast Ball</option>
+        <option>Truant Ball</option>
+        <option>Wonder Ball</option>
         <option>Strange Ball</option>
         <option>Repeat Ball</option>
         <option>Snag Ball</option>
@@ -1645,7 +1646,11 @@ function addChoices(choicesDiv) {
     numPokeChoices -= numOfKeyItem(KEY_ITEMS.LESS_POKE_CHOICE);
     if (numPokeChoices < 1)
       numPokeChoices = 1;
-    const abilityName = pokeball === 'Beast Ball' ? 'Beast Boost' : null;
+    let abilityName = null;
+    if (pokeball === 'Truant Ball')
+      abilityName = 'Truant';
+    if (pokeball === 'Wonder Ball')
+      abilityName = 'Wonder Guard';
     for (let i = 0; i < numPokeChoices; i++)
       addRandomPokemon(choicesDiv, true, null, abilityName);
   }
