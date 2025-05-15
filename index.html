@@ -643,7 +643,9 @@ const IMPROVED_ABILITIES = {
   'Run Away': 'Refreshing the shop only costs $' + RUN_AWAY_REFRESH_COST + '.',
   'Ball Fetch': 'When you refresh the shop, you get an extra Poke Ball choice.'
 };
+const ABILITIES_WITH_UNEXPECTED_DESC = ['Wonder Guard', 'Illusion'];
 const CHANGED_ABILITY_DESC = {
+  'Wonder Guard': 'This Pokemon can only be damaged by supereffective moves and indirect damage.\nIt cannot get Species Changers.',
   'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate or Z-Crystal.',
   'Embody Aspect (Cornerstone)': 'If this Pokemon is an Ogerpon-Cornerstone, on switch-in, this Pokemon\'s Defense is raised by 1 stage.',
@@ -1910,6 +1912,8 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     if (isBoss() && getPartyStrs().length > 0)
       level = 1;
   }
+  if (abilityName === 'Wonder Guard')
+    level = 1;
   if (level < 1)
     level = 1;
 
@@ -3427,7 +3431,7 @@ function abilityInHTML(abilityName) {
   return html;
 }
 function abilityNameInHTML(abilityName) {
-  if (abilityName === 'Illusion')
+  if (ABILITIES_WITH_UNEXPECTED_DESC.includes(abilityName))
     abilityName = spanWithClass(abilityName, 'abilityUnexpected');
   if (IMPROVED_ABILITIES[abilityName])
     abilityName = spanWithClass(abilityName, 'improvedAbility');
