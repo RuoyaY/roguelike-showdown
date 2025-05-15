@@ -333,6 +333,9 @@ button:focus {
     <input type="checkbox" id="endless">
     <label for="endless" class="hasHoverText" title="Keeps the final round at least 1 round away, so you never reach it.">Endless</label>
     <br>
+    <input type="checkbox" id="camomons">
+    <label for="camomons" class="hasHoverText" title="Pokemon instead have the type(s) of their first 2 moves (revealed on entry).">Camomons</label>
+    <br>
 
     <div hidden>
     <input type="checkbox" id="bossBattle">
@@ -1478,7 +1481,21 @@ function updatePokemonDiv(div) {
 
   const typesEle = div.querySelector('.types');
   killAllChildren(typesEle);
-  const types = allSpecies[getSpeciesId(speciesName)].types;
+  let types = allSpecies[getSpeciesId(speciesName)].types;
+  if (document.getElementById('camomons').checked) {
+    let movesSeen = 0;
+    types = [];
+    const splitStr = pokemonStr.split('\n- ');
+    for (let i = 1; i < splitStr.length && movesSeen < 2; i++) {
+      const moveId = getMoveId(splitStr[i]);
+      if (moveId == null)
+        continue;
+      movesSeen++;
+      const type = moves[moveId].type;
+      if (!types.includes(type))
+        types.push(type);
+    }
+  }
   typesEle.innerHTML = getTypesHTML(types, true);
 
   const teraTypeEle = div.querySelector('.tera-type');
@@ -2460,6 +2477,7 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
   const pokeEle = getPokeEle(pokeDiv);
   const pokemonStr = pokeEle.innerText.replace('\n- \n', '\n- ' + move.name + '\n');
   pokeEle.innerHTML = pokemonInHTML(pokemonStr);
+  updatePokemonDiv(pokeDiv);
 
   killAllChildren(choicesDiv);
 
@@ -3513,13 +3531,19 @@ function randomTransformer() {
     return randomTM();
   }
 
+  let price = 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff * statMultiplier);
+  let typesHtml = '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true, true) + '</div>';
+  if (document.getElementById('camomons').checked) {
+    price -= 5;
+    typesHtml = '';
+  }
   return {
     name: apparentPrevSpeciesName + ' → ' + newSpeciesInfo.speciesName,
     type: 'transformer',
-    price: 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff * statMultiplier),
+    price: price,
     desc: 'Change your ' + ordinal(partyIndex+1) + ' Pokemon from ' + aOrAn(apparentPrevSpeciesName) + ' into ' + aOrAn(newSpeciesInfo.speciesName) + '. '
             + 'Its gender, ability, etc. stays the same.\n'
-            + '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true, true) + '</div>'
+            + typesHtml
             + spanWithClass(statsInHTML(newSpeciesInfo.statInfo, false), 'attr'),
   }
 }
