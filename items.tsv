@@ -9,9 +9,27 @@ Friend Ball	pokeball	25									x		Next round, your new Pokemon knows the move *
 Love Ball	pokeball	25									x		Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will be able to choose its gender.			
 Beast Ball	pokeball	15									x		Next round, your new Pokemon has *Beast Boost* instead of its regular ability. Keep in mind you can hover over Atk and SpA to see unadjusted values.			
 Strange Ball	pokeball	15									x		Next round, your new Pokemon can get an ability it doesn't normally have, and moves it can't normally learn.			
-Repeat Ball	pokeball	5									x		Next round, you can choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).			
-Snag Ball	pokeball	10									x		Next round, you can choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).			
-Master Ball	pokeball	20									x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
+Repeat Ball	pokeball	0									x		Next round, you choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).			
+Snag Ball	pokeball	10									x		Next round, you choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).			
+Normal Ball	pokeball	20									x		Next round, you can choose a Normal-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fire Ball	pokeball	20									x		Next round, you can choose a Fire-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Water Ball	pokeball	20									x		Next round, you can choose a Water-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Grass Ball	pokeball	15									x		Next round, you can choose a Grass-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Electric Ball	pokeball	20									x		Next round, you can choose a Electric-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ice Ball	pokeball	20									x		Next round, you can choose a Ice-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fighting Ball	pokeball	20									x		Next round, you can choose a Fighting-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Poison Ball	pokeball	20									x		Next round, you can choose a Poison-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ground Ball	pokeball	20									x		Next round, you can choose a Ground-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Flying Ball	pokeball	20									x		Next round, you can choose a Flying-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Psychic Ball	pokeball	20									x		Next round, you can choose a Psychic-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Bug Ball	pokeball	15									x		Next round, you can choose a Bug-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Rock Ball	pokeball	20									x		Next round, you can choose a Rock-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ghost Ball	pokeball	20									x		Next round, you can choose a Ghost-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dark Ball	pokeball	20									x		Next round, you can choose a Dark-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dragon Ball	pokeball	20									x		Next round, you can choose a Dragon-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Steel Ball	pokeball	20									x		Next round, you can choose a Steel-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fairy Ball	pokeball	20									x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Master Ball	pokeball	25									x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
 Random Ball	pokeball	15									x		Automatically sets your Poke Ball for the next round to a random one (other than the default).			
 Berry Juice	heldItem	15											heal 20 hp at 1/2			
 Sitrus Berry	heldItem	35														
@@ -103,7 +121,9 @@ Perfect Feathers	misc	15	0										Increase a Pokemon's EV in any 1 stat by 80.
 Ultra Training	misc	180	0										Set a Pokemon's EVs to 252 in every stat (i.e. "EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe").			
 Androgen Pills	misc	0	0.5										Set a Pokemon's gender to male (even if it does not normally have a gender).			
 Estrogen Pills	misc	0	0.5										Set a Pokemon's gender to female (even if it does not normally have a gender).			
-Gender Liquidator	misc	1											Remove a Pokemon's gender (it'll get a random gender at the start of each battle, if possible).			
+Androgen Pill Party	partyMisc	-1	0.5										Set every Pokemon's gender to male (even if it does not normally have a gender).			
+Estrogen Pill Party	partyMisc	-1	0.5										Set every Pokemon's gender to female (even if it does not normally have a gender).			
+Gender Liquidator	misc	1	0										Remove a Pokemon's gender (it'll get a random gender at the start of each battle, if possible).			
 Lonely Mint	misc	1											Set a Pokemon's Nature to Lonely (+Atk, -Def).			
 Adamant Mint	misc	10											Set a Pokemon's Nature to Adamant (+Atk, -SpA).			
 Naughty Mint	misc	1											Set a Pokemon's Nature to Naughty (+Atk, -SpD).			
@@ -591,11 +611,12 @@ Level Plunge	nextBattle	-80/b											Next battle only: Decrease your [nth] Po
 Vs Level Plunge	nextBattle	100/b											Next battle only: Decrease your opponent's [nth] Pokemon's level by 5 (can't go below 1).			
 Instant Lv50	nextBattle	50/b											Next battle only: Set your [nth] Pokemon's level to 50. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Instant Lv1	nextBattle	-200/b					3						Next battle only: Set your [nth] Pokemon's level to 1. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
+Instant Magikarp	nextBattle	-150/b					3						Next battle only: Your [nth] Pokemon becomes a Magikarp (its gender, ability, etc. stays the same). <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
+Self K.O.	nextBattle	-240/b+5					3						Next battle only: Remove your [nth] Pokemon. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Vs Instant Lv50	nextBattle	130/b										x	Next battle only: Set your opponent's [nth] Pokemon's level to 50.			
 Vs Instant Lv1	nextBattle	200/b					3					x	Next battle only: Set your opponent's [nth] Pokemon's level to 1.			
-Magikarpifier	nextBattle	150/b					3					x	Next battle only: Your opponent's [nth] Pokemon becomes a Magikarp (its gender, ability, etc. stays the same).			
+Vs Instant Magikarp	nextBattle	175/b					3					x	Next battle only: Your opponent's [nth] Pokemon becomes a Magikarp (its gender, ability, etc. stays the same).			
 Knock Out	nextBattle	240/b					3					x	Next battle only: Remove your opponent's [nth] Pokemon.			
-Self K.O.	nextBattle	-240/b+5					3						Next battle only: Remove your [nth] Pokemon. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Sacrifice	misc	-240/b-50						x			x		Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv1. </span>			
 New Slot	misc	-240/b+240						x			x		Gain a new Pokemon slot.			
 Twin K.O.	nextBattle	25/b					2					x	Next battle only: Remove both players' [nth] Pokemon.			

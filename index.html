@@ -383,6 +383,24 @@ button:focus {
         <option>Strange Ball</option>
         <option>Repeat Ball</option>
         <option>Snag Ball</option>
+        <option>Normal Ball</option>
+        <option>Fire Ball</option>
+        <option>Water Ball</option>
+        <option>Grass Ball</option>
+        <option>Electric Ball</option>
+        <option>Ice Ball</option>
+        <option>Fighting Ball</option>
+        <option>Poison Ball</option>
+        <option>Ground Ball</option>
+        <option>Flying Ball</option>
+        <option>Psychic Ball</option>
+        <option>Bug Ball</option>
+        <option>Rock Ball</option>
+        <option>Ghost Ball</option>
+        <option>Dark Ball</option>
+        <option>Dragon Ball</option>
+        <option>Steel Ball</option>
+        <option>Fairy Ball</option>
         <option>Master Ball</option>
       </select>
       <br>
@@ -831,11 +849,11 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printTypeMagnets() {
+function printTypeBalls() {
   let tsv = '';
   for (const type of TYPES)
-    tsv += type + ' Magnet\tkeyItem\t\t\t\t\t\t\t\t\t\t\t'
-        + 'Each round, you are guaranteed to get ' + type + '-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)\n';
+    tsv += type + ' Ball\tpokeball\t20\t\t\t\t\t\t\t\t\tx\t\t'
+        + 'Next round, you can choose a ' + type + '-type Pokemon of any species (you will then be able to choose any ability that species can have).\n';
   console.log(tsv);
 }
 function printPlatesAndMemories() {
@@ -1571,9 +1589,11 @@ const PROMPTS = {
                   + "(not verified, so make sure your opponent indeed had this species last round).",
   'Master Ball': 'Choose a species.',
 };
+for (const type of TYPES)
+  PROMPTS[type + ' Ball'] = 'Choose a ' + type + '-type species.';
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
-  if (pokeball === 'Master Ball' || pokeball === 'Snag Ball' || pokeball === 'Repeat Ball') {
+  if (PROMPTS[pokeball] !== undefined) {
     const speciesNameInput = prompt(PROMPTS[pokeball]);
     if (speciesNameInput == null)
       return false;
@@ -1590,7 +1610,12 @@ function addChoices(choicesDiv) {
     }
     const species = allSpecies[speciesId];
     if (!isLegal(speciesId, null)) {
-      alert('Error: species is not legal.');
+      alert('Error: this forme is not legal.');
+      return false;
+    }
+    const requiredType = pokeball.split(' ')[0];
+    if (TYPES.includes(requiredType) && !species.types.includes(requiredType)) {
+      alert('You must choose a ' + requiredType + '-type!');
       return false;
     }
     for (const abilityName of Object.values(species.abilities))
