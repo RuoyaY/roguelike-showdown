@@ -2457,8 +2457,6 @@ function addMoveChoice(choicesDiv, pokeDiv, speciesId, moveIds) {
   } else 
     move = addHiddenPowerType(moves[removeRandom(moveIds)]);
 
-  prevSeenItems.add(speciesTM(allSpecies[speciesId].name, move).name);
-
   const choiceDiv = document.createElement('div');
   choiceDiv.classList.add('flex-col');
 
@@ -2480,6 +2478,8 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
   updatePokemonDiv(pokeDiv);
 
   killAllChildren(choicesDiv);
+
+  prevSeenItems.add(speciesTM(allSpecies[speciesId].name, move).name);
 
   if (pokemonStr.includes('\n- \n')) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
