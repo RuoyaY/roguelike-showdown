@@ -333,7 +333,7 @@ button:focus {
     <input type="checkbox" id="endless">
     <label for="endless" class="hasHoverText" title="Keeps the final round at least 1 round away, so you never reach it.">Endless</label>
     <br>
-    
+
     <div hidden>
     <input type="checkbox" id="bossBattle">
     <label for="bossBattle" class="hasHoverText" title="Your 1st Pokemon gets level-ups and a move slot every round you get new Pokemon. Your other Pokemon are Lv1.">Boss</label>
@@ -343,8 +343,8 @@ button:focus {
     </div>
 
     <h2 class="attr">Start Round</h2>
-    <span id="typeDiv">
-      <label for="type">Guaranteed Type:</label>
+    <span id="guaranteedTypeDiv">
+      <label id="guaranteedTypeLabel" for="type">Guaranteed Type:</label>
       <select id="type" class="mb-4px">
         <option></option>
         <option>Normal</option>
@@ -818,6 +818,15 @@ const IDENTICAL_MONS = [
 ];
 // these items do not transform the base species when given in Showdown
 const FAKE_REQUIRED_ITEMS = ['Adamant Crystal', 'Lustrous Globe', 'Griseous Core', 'Vile Vial'];
+
+const POKEBALL_PROMPTS = {
+  'Repeat Ball': 'Choose a species you already own.',
+  'Snag Ball': "Choose a species your opponent owns "
+                  + "(not verified, so make sure your opponent indeed had this species last round).",
+  'Master Ball': 'Choose a species.',
+};
+for (const type of TYPES)
+  POKEBALL_PROMPTS[type + ' Ball'] = 'Choose a ' + type + '-type species.';
 
 // for testing/studying purposes
 let isCalculatingStats = false;
@@ -1583,18 +1592,10 @@ function killAllChildren(div) {
     div.removeChild(div.firstChild);
 }
 
-const PROMPTS = {
-  'Repeat Ball': 'Choose a species you already own.',
-  'Snag Ball': "Choose a species your opponent owns "
-                  + "(not verified, so make sure your opponent indeed had this species last round).",
-  'Master Ball': 'Choose a species.',
-};
-for (const type of TYPES)
-  PROMPTS[type + ' Ball'] = 'Choose a ' + type + '-type species.';
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
-  if (PROMPTS[pokeball] !== undefined) {
-    const speciesNameInput = prompt(PROMPTS[pokeball]);
+  if (POKEBALL_PROMPTS[pokeball] !== undefined) {
+    const speciesNameInput = prompt(POKEBALL_PROMPTS[pokeball]);
     if (speciesNameInput == null)
       return false;
     const speciesName = getProperSpeciesName(speciesNameInput);
@@ -2496,7 +2497,7 @@ function endPokemonChoosing(pokeDiv) {
 function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
   // document.getElementById('pokeballDiv').hidden = true;
-  document.getElementById('pokeballDesc').innerText = '';
+  updatePokeballDesc('Poke Ball');
 
   const lastMagnetType = getKeyItems().map(item => getMagnetType(item)).findLast(type => type != null);
   if (lastMagnetType == null)
@@ -4004,6 +4005,12 @@ function updatePokeballDesc(pokeball) {
   const pokeballItem = items.find(item => item.name === pokeball);
   const pokeballDesc = pokeballItem ? pokeballItem.desc : '';
   pokeballDescEle.textContent = pokeballDesc.replaceAll('*', '');
+
+  const guaranteedTypeEle = document.getElementById('guaranteedTypeLabel');
+  if (POKEBALL_PROMPTS[pokeball] !== undefined)
+    guaranteedTypeEle.classList.add('strikethrough');
+  else
+    guaranteedTypeEle.classList.remove('strikethrough');
 }
 
 function getGuaranteedType() {
