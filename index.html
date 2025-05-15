@@ -3462,6 +3462,8 @@ const MAX_TRANSFORMER_STAT_DIFF = 100;
 function randomTransformer() {
   const partyIndex = getTmSeekerIndex();
   const pokemonStr = getPartyStrs()[partyIndex];
+  if (getAbilityNameOfPokemon(pokemonStr) === 'Wonder Guard')
+    return randomTM();
 
   let statMultiplier = 1; // how much stats will multiply by, by the end
   if (isBoss() && partyIndex === 0) {
