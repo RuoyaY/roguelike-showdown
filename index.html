@@ -337,28 +337,7 @@ button:focus {
     <span id="bossLevelUps" class="attr"></span>
 
     <h2 class="attr">Start Round</h2>
-    <div id="pokeballDiv" hidden>
-      <label for="pokeball">Poké Ball:</label>
-      <select id="pokeball" class="mb-4px">
-        <option>Poké Ball</option>
-        <option>Great Ball</option>
-        <option>Ultra Ball</option>
-        <option>Level Ball</option>
-        <option>Quick Ball</option>
-        <option>Moon Ball</option>
-        <option>Dream Ball</option>
-        <option>Friend Ball</option>
-        <option>Love Ball</option>
-        <option>Beast Ball</option>
-        <option>Strange Ball</option>
-        <option>Repeat Ball</option>
-        <option>Snag Ball</option>
-        <option>Master Ball</option>
-      </select>
-      <br>
-      <p id="pokeballDesc" class="pokeball-desc attr mb-4px"></p>
-    </div>
-    <div id="typeDiv">
+    <span id="typeDiv">
       <label for="type">Guaranteed type:</label>
       <select id="type" class="mb-4px">
         <option></option>
@@ -381,8 +360,28 @@ button:focus {
         <option>Steel</option>
         <option>Fairy</option>
       </select>
+    </span>
+    <span id="pokeballDiv">
+      <label for="pokeball">Poké Ball:</label>
+      <select id="pokeball" class="mb-4px">
+        <option>Poké Ball</option>
+        <option>Great Ball</option>
+        <option>Ultra Ball</option>
+        <option>Level Ball</option>
+        <option>Quick Ball</option>
+        <option>Moon Ball</option>
+        <option>Dream Ball</option>
+        <option>Friend Ball</option>
+        <option>Love Ball</option>
+        <option>Beast Ball</option>
+        <option>Strange Ball</option>
+        <option>Repeat Ball</option>
+        <option>Snag Ball</option>
+        <option>Master Ball</option>
+      </select>
       <br>
-    </div>
+      <p id="pokeballDesc" class="pokeball-desc attr mb-4px"></p>
+    </span>
     <input type="checkbox" id="extraIncome">
     <label for="extraIncome" id="extraIncomeLabel" class="hasHoverText">Used a money-making move</label>
     <br>
@@ -2465,7 +2464,8 @@ function endPokemonChoosing(pokeDiv) {
 }
 function resetRoundBasedInputs() {
   document.getElementById('pokeball').selectedIndex = 0;
-  document.getElementById('pokeballDiv').hidden = true;
+  // document.getElementById('pokeballDiv').hidden = true;
+  document.getElementById('pokeballDesc').innerText = '';
 
   const lastMagnetType = getKeyItems().map(item => getMagnetType(item)).findLast(type => type != null);
   if (lastMagnetType == null)
@@ -3847,7 +3847,7 @@ function buyItem(itemDiv, item, itemPrice) {
     }
     else
       setPokeball(item.name);
-    document.getElementById('pokeballDiv').hidden = false;
+    // document.getElementById('pokeballDiv').hidden = false;
 
   } else if (item.name.startsWith('Encounter Power: ')) {
     const type = item.name.split(' ')[2];
@@ -3971,7 +3971,7 @@ function setPokeball(pokeball) {
 function updatePokeballDesc(pokeball) {
   const pokeballDescEle = document.getElementById('pokeballDesc');
   const pokeballItem = items.find(item => item.name === pokeball);
-  const pokeballDesc = pokeballItem ? pokeballItem.desc : 'No special effect.';
+  const pokeballDesc = pokeballItem ? pokeballItem.desc : '';
   pokeballDescEle.textContent = pokeballDesc.replaceAll('*', '');
 }
 
