@@ -376,7 +376,7 @@ button:focus {
         <option>Poké Ball</option>
         <option>Great Ball</option>
         <option>Ultra Ball</option>
-        <option>Level Ball</option>
+        <option>Nest Ball</option>
         <option>Quick Ball</option>
         <option>Moon Ball</option>
         <option>Dream Ball</option>
@@ -1654,7 +1654,7 @@ function addChoices(choicesDiv) {
 function numChoices() {
   switch (getPokeball()) {
     case 'Great Ball':
-    case 'Level Ball':
+    case 'Nest Ball':
       return 3;
     case 'Ultra Ball':
       return 4;
@@ -1895,7 +1895,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
 
   if (level == null)
     level = getLevelWithAbility(species, abilityName);
-  if (pokeball === 'Level Ball')
+  if (pokeball === 'Nest Ball')
     level -= 1;
   if (pokeball === 'Quick Ball')
     level += 3;
