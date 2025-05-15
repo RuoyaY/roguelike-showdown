@@ -1557,6 +1557,10 @@ function matchupNumToStr(matchupNum) {
   }
 }
 
+function getNumWeakness(defendTypes) {
+  let typeMatchups = getTypeMatchups(defendTypes);
+  return typeMatchups[0][1].length + typeMatchups[1][1].length;
+}
 function getTypeMatchups(defendTypes) {
   let matchups = [[4,[]], [2,[]], [.5,[]], [.25,[]], [0,[]]];
   for (const attackType of TYPES) {
@@ -1648,13 +1652,18 @@ function addChoices(choicesDiv) {
     numPokeChoices -= numOfKeyItem(KEY_ITEMS.LESS_POKE_CHOICE);
     if (numPokeChoices < 1)
       numPokeChoices = 1;
+
     let abilityName = null;
     if (pokeball === 'Truant Ball')
       abilityName = 'Truant';
     if (pokeball === 'Wonder Ball')
       abilityName = 'Wonder Guard';
+
+    let speciesPredicate;
+    if (pokeball === 'Wonder Ball')
+      speciesPredicate = ((species) => getNumWeakness(species.types) <= 2);
     for (let i = 0; i < numPokeChoices; i++)
-      addRandomPokemon(choicesDiv, true, null, abilityName);
+      addRandomPokemon(choicesDiv, true, null, abilityName, false, false, speciesPredicate);
   }
   return true;
 }
@@ -1732,7 +1741,7 @@ function passesIdenticalSpeciesBias(speciesId) {
     return true;
 }
 
-function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, teraType, showBossLevelUps) {  
+function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, teraType, showBossLevelUps, speciesPredicate) {  
   if (speciesName == null) {
     let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
@@ -1741,10 +1750,8 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
     const illegalSpeciesNames = [];
     if (isBoss())
       illegalSpeciesNames.push('Pokestar Spirit');
-    speciesName = randomSpeciesName(requiredType, illegalSpeciesNames, false);
+    speciesName = randomSpeciesName(requiredType, illegalSpeciesNames, false, speciesPredicate);
   }
-  
-  // speciesName = 'Pokestar Spirit';
   
   let pokeball = null;
   if (hasChooseButton)
@@ -1794,7 +1801,7 @@ function addPokemon(choicesDiv, hasChooseButton, pokemonStr) {
   choicesDiv.append(divEle);
 }
 
-function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen) {
+function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen, speciesPredicate) {
   let speciesId;
   let failsafe = 1000;
   do {
@@ -1804,6 +1811,7 @@ function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen) {
   } while (!isLegal(speciesId, requiredType) 
               || !passesIdenticalSpeciesBias(speciesId)
               || (illegalSpeciesIds && illegalSpeciesIds.includes(speciesId))
+              || (speciesPredicate && !speciesPredicate(allSpecies[speciesId]))
               || (!canBePrevSeen && prevSeenSpecies.has(speciesId)));
   if (!canBePrevSeen)
     prevSeenSpecies.add(speciesId);
