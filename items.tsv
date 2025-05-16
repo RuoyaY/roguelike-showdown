@@ -1,36 +1,37 @@
 name	type	price	prob	required species	required abilities	required moves	min party size	banned if party not full	banned if party full	banned first round	banned last round	banned if Boss	desc			
 Great Ball	pokeball	20									x		Next round, +1 option to all choices for your new Pokemon.			
 Ultra Ball	pokeball	30									x		Next round, +2 options to all choices for your new Pokemon.			
-Level Ball	pokeball	5									x		Next round, +1 option to all choices for your new Pokemon, but your new Pokemon is 1 level lower than usual.			
+Nest Ball	pokeball	5									x		Next round, +1 option to all choices for your new Pokemon, but your new Pokemon is 1 level lower than usual.			
 Quick Ball	pokeball	15									x		Next round, -1 option to all choices for your new Pokemon, but your new Pokemon is 3 levels higher than usual.			
-Moon Ball	pokeball	30									x		Next round, your new Pokemon knows the move *Moonlight* in an extra move slot.			
-Dream Ball	pokeball	40									x		Next round, your new Pokemon knows the moves *Rest* and *Sleep Talk* in extra move slots.			
+Moon Ball	pokeball	25									x		Next round, your new Pokemon knows the move *Moonlight* in an extra move slot.			
+Dream Ball	pokeball	35									x		Next round, your new Pokemon knows the moves *Rest* and *Sleep Talk* in extra move slots.			
 Friend Ball	pokeball	25									x		Next round, your new Pokemon knows the move *Return* in an extra move slot.			
 Love Ball	pokeball	25									x		Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will be able to choose its gender.			
-Beast Ball	pokeball	15									x		Next round, your new Pokemon has *Beast Boost* instead of its regular ability. Keep in mind you can hover over Atk and SpA to see unadjusted values.			
+Truant Ball	pokeball	0									x		Next round, your new Pokemon has *Truant* instead of its regular ability, but its level is higher than usual.			
+Wonder Ball	pokeball	5									x	x	Next round, your new Pokemon has *Wonder Guard* instead of its regular ability, but its level is 1. It will be guaranteed to have 2 or fewer weaknesses.			
 Strange Ball	pokeball	15									x		Next round, your new Pokemon can get an ability it doesn't normally have, and moves it can't normally learn.			
 Repeat Ball	pokeball	0									x		Next round, you choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).			
 Snag Ball	pokeball	10									x		Next round, you choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).			
-Normal Ball	pokeball	20									x		Next round, you can choose a Normal-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Fire Ball	pokeball	20									x		Next round, you can choose a Fire-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Water Ball	pokeball	20									x		Next round, you can choose a Water-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Grass Ball	pokeball	15									x		Next round, you can choose a Grass-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Electric Ball	pokeball	20									x		Next round, you can choose a Electric-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Ice Ball	pokeball	20									x		Next round, you can choose a Ice-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Fighting Ball	pokeball	20									x		Next round, you can choose a Fighting-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Poison Ball	pokeball	20									x		Next round, you can choose a Poison-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Ground Ball	pokeball	20									x		Next round, you can choose a Ground-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Flying Ball	pokeball	20									x		Next round, you can choose a Flying-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Psychic Ball	pokeball	20									x		Next round, you can choose a Psychic-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Bug Ball	pokeball	15									x		Next round, you can choose a Bug-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Rock Ball	pokeball	20									x		Next round, you can choose a Rock-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Ghost Ball	pokeball	20									x		Next round, you can choose a Ghost-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Dark Ball	pokeball	20									x		Next round, you can choose a Dark-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Dragon Ball	pokeball	20									x		Next round, you can choose a Dragon-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Steel Ball	pokeball	20									x		Next round, you can choose a Steel-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Fairy Ball	pokeball	20									x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Master Ball	pokeball	25									x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
-Random Ball	pokeball	15									x		Automatically sets your Poke Ball for the next round to a random one (other than the default).			
+Normal Ball	pokeball	15									x		Next round, you can choose a Normal-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fire Ball	pokeball	15									x		Next round, you can choose a Fire-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Water Ball	pokeball	15									x		Next round, you can choose a Water-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Grass Ball	pokeball	10									x		Next round, you can choose a Grass-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Electric Ball	pokeball	15									x		Next round, you can choose a Electric-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ice Ball	pokeball	10									x		Next round, you can choose a Ice-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fighting Ball	pokeball	15									x		Next round, you can choose a Fighting-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Poison Ball	pokeball	15									x		Next round, you can choose a Poison-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ground Ball	pokeball	15									x		Next round, you can choose a Ground-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Flying Ball	pokeball	15									x		Next round, you can choose a Flying-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Psychic Ball	pokeball	15									x		Next round, you can choose a Psychic-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Bug Ball	pokeball	10									x		Next round, you can choose a Bug-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Rock Ball	pokeball	15									x		Next round, you can choose a Rock-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ghost Ball	pokeball	15									x		Next round, you can choose a Ghost-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dark Ball	pokeball	15									x		Next round, you can choose a Dark-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dragon Ball	pokeball	15									x		Next round, you can choose a Dragon-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Steel Ball	pokeball	15									x		Next round, you can choose a Steel-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fairy Ball	pokeball	15									x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Master Ball	pokeball	20									x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
+Random Ball	pokeball	10									x		Automatically sets your Poke Ball for the next round to a random one (other than the default).			
 Berry Juice	heldItem	15											heal 20 hp at 1/2			
 Sitrus Berry	heldItem	35														
 Oran Berry	heldItem	5											heal 10 hp at 1/2			
@@ -171,9 +172,9 @@ Absorb Bulb	heldItem	10											hit by water, +1 SpA
 Luminous Moss	heldItem	10											hit by water, +1 SpD			
 Cell Battery	heldItem	10											hit by electric, +1 Atk			
 Snowball	heldItem	10											hit by ice, +1 Atk			
-Wonder Gummi	misc	10											A Pokemon gains an extra move slot (add a hyphen on a new line).			
-Wonder Gummi Party	partyMisc	10n											EVERY Pokemon gains an extra move slot (add a hyphen on a new line).			
-Move Reducer	misc	-10											A Pokemon loses a move slot (delete a hyphen).			
+IQ Booster	misc	10											A Pokemon gains an extra move slot (add a hyphen on a new line).			
+Party IQ Booster	partyMisc	10n											EVERY Pokemon gains an extra move slot (add a hyphen on a new line).			
+Move Reducer	misc	-15											A Pokemon loses a move slot (delete a hyphen).			
 Move Deleter	misc	-1											Delete 1 or more moves from 1 or more Pokemon (leave the hyphens) (a Pokemon with no moves learns *Struggle*). Earn an extra $1 for each move you delete.			
 Move-Deleting Duo	misc	-20											A Pokemon forgets 2 moves (leave the hyphens) (a Pokemon with no moves learns *Struggle*) (can't be used if it has <2 moves).			
 Move-Deleting Trio	misc	-40											A Pokemon forgets 3 moves (leave the hyphens) (a Pokemon with no moves learns *Struggle*) (can't be used if it has <3 moves).			
