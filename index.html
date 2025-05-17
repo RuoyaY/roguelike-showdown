@@ -1081,7 +1081,7 @@ function onLoad() {
   });
 
   document.getElementById('camomons').addEventListener('change', event => {
-   document.getElementById('camomonsCommand').hidden = !document.getElementById('camomons').checked;
+   document.getElementById('camomonsCommand').hidden = !isCamomons();
   });
   
   document.getElementById('money').addEventListener('change', event => {updateTax()});
@@ -1492,7 +1492,7 @@ function updatePokemonDiv(div) {
   const typesEle = div.querySelector('.types');
   killAllChildren(typesEle);
   let types = allSpecies[getSpeciesId(speciesName)].types;
-  if (document.getElementById('camomons').checked) {
+  if (isCamomons()) {
     let movesSeen = 0;
     types = [];
     const splitStr = pokemonStr.split('\n- ');
@@ -1501,7 +1501,9 @@ function updatePokemonDiv(div) {
       if (moveId == null)
         continue;
       movesSeen++;
-      const type = moves[moveId].type;
+      let type = moves[moveId].type;
+      if (moves[moveId].name.startsWith('Hidden Power'))
+        type = 'Normal';
       if (!types.includes(type))
         types.push(type);
     }
@@ -1973,6 +1975,10 @@ function isVsBoss() {
   return document.getElementById('vsBossBattle').checked;
 }
 
+function isCamomons() {
+  return document.getElementById('camomons').checked;
+}
+
 function allMoveIdsSuchThat(predicate) {
   return Object.entries(moves).filter(([moveId, move]) => predicate(move)).map(arr => arr[0]);
 }
@@ -2214,8 +2220,11 @@ function moveDesc(move, shortened) {
     title += '\nPP: 1';
 
   let shortDesc = move.shortDesc;
-  if (move.name.startsWith('Hidden Power'))
+  if (move.name.startsWith('Hidden Power')) {
     shortDesc = "A Pokemon can only know 1 Hidden Power at a time.";
+    if (isCamomons())
+      shortDesc += '\nCounts as Normal-type for Camomons.';
+  }
   shortDesc = shortDesc.replace('Base move affects power. ', '');
   if (MONEY_MOVES.includes(move.name))
     shortDesc += '\nOnce per round, earn $' + MONEY_MOVE_INCOME + ' if successfully used.';
@@ -3560,7 +3569,7 @@ function randomTransformer() {
 
   let price = 10 + roundToNearest5(newSpeciesInfo.effectiveStatDiff * statMultiplier);
   let typesHtml = '<div class="types">' + getTypesHTML(newSpeciesInfo.species.types, true, true) + '</div>';
-  if (document.getElementById('camomons').checked) {
+  if (isCamomons()) {
     price -= 5;
     typesHtml = '';
   }
