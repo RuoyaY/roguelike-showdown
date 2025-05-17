@@ -1099,6 +1099,8 @@ function onLoad() {
   document.getElementById('bossBattle').checked = false;
   document.getElementById('vsBossBattle').checked = false;
 
+  resetRoundBasedInputs();
+
   document.getElementById('nextRound').textContent += ' ($' + INCOME + ')';
   document.getElementById('skip').hidden = true;
   setMoney(0);
