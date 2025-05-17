@@ -1,3 +1,3 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0											
-Mindslaver Ball	beforeBattle	60							x		x		Before battle: Tell your opponent you'll be making every choice for their new Pokemon next round. (You can see the choices, but nothing else.) (If their team is full, they may first choose not to add anyone.)			
+Random Ball	pokeball	10									x		Automatically sets your Poke Ball for the next round to a random one (other than the default).			

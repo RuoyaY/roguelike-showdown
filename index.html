@@ -388,24 +388,24 @@ button:focus {
         <option>Strange Ball</option>
         <option>Repeat Ball</option>
         <option>Snag Ball</option>
-        <option>Normal Ball</option>
-        <option>Fire Ball</option>
-        <option>Water Ball</option>
-        <option>Grass Ball</option>
-        <option>Electric Ball</option>
-        <option>Ice Ball</option>
-        <option>Fighting Ball</option>
-        <option>Poison Ball</option>
-        <option>Ground Ball</option>
-        <option>Flying Ball</option>
-        <option>Psychic Ball</option>
-        <option>Bug Ball</option>
-        <option>Rock Ball</option>
-        <option>Ghost Ball</option>
-        <option>Dark Ball</option>
-        <option>Dragon Ball</option>
-        <option>Steel Ball</option>
-        <option>Fairy Ball</option>
+        <option>Normal-Type Ball</option>
+        <option>Fire-Type Ball</option>
+        <option>Water-Type Ball</option>
+        <option>Grass-Type Ball</option>
+        <option>Electric-Type Ball</option>
+        <option>Ice-Type Ball</option>
+        <option>Fighting-Type Ball</option>
+        <option>Poison-Type Ball</option>
+        <option>Ground-Type Ball</option>
+        <option>Flying-Type Ball</option>
+        <option>Psychic-Type Ball</option>
+        <option>Bug-Type Ball</option>
+        <option>Rock-Type Ball</option>
+        <option>Ghost-Type Ball</option>
+        <option>Dark-Type Ball</option>
+        <option>Dragon-Type Ball</option>
+        <option>Steel-Type Ball</option>
+        <option>Fairy-Type Ball</option>
         <option>Master Ball</option>
       </select>
       <br>
@@ -835,7 +835,7 @@ const POKEBALL_PROMPTS = {
   'Master Ball': 'Choose a species.',
 };
 for (const type of TYPES)
-  POKEBALL_PROMPTS[type + ' Ball'] = 'Choose a ' + type + '-type species.';
+  POKEBALL_PROMPTS[type + '-Type Ball'] = 'Choose a ' + type + '-type species.';
 
 // for testing/studying purposes
 let isCalculatingStats = false;
@@ -1649,7 +1649,7 @@ function addChoices(choicesDiv) {
       alert('Error: this forme is not legal.');
       return false;
     }
-    const requiredType = pokeball.split(' ')[0];
+    const requiredType = pokeball.split('-Type ')[0];
     if (TYPES.includes(requiredType) && !species.types.includes(requiredType)) {
       alert('You must choose a ' + requiredType + '-type!');
       return false;

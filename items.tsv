@@ -12,24 +12,24 @@ Wonder Ball	pokeball	5									x	x	Next round, your new Pokemon has *Wonder Guar
 Strange Ball	pokeball	15									x		Next round, your new Pokemon can get an ability it doesn't normally have, and moves it can't normally learn.			
 Repeat Ball	pokeball	0									x		Next round, you choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).			
 Snag Ball	pokeball	10									x		Next round, you choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).			
-Normal Ball	pokeball	15									x		Next round, you can choose a Normal-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Fire Ball	pokeball	15									x		Next round, you can choose a Fire-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Water Ball	pokeball	15									x		Next round, you can choose a Water-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Grass Ball	pokeball	10									x		Next round, you can choose a Grass-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Electric Ball	pokeball	15									x		Next round, you can choose a Electric-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Ice Ball	pokeball	10									x		Next round, you can choose a Ice-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Fighting Ball	pokeball	15									x		Next round, you can choose a Fighting-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Poison Ball	pokeball	15									x		Next round, you can choose a Poison-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Ground Ball	pokeball	15									x		Next round, you can choose a Ground-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Flying Ball	pokeball	15									x		Next round, you can choose a Flying-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Psychic Ball	pokeball	15									x		Next round, you can choose a Psychic-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Bug Ball	pokeball	10									x		Next round, you can choose a Bug-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Rock Ball	pokeball	15									x		Next round, you can choose a Rock-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Ghost Ball	pokeball	15									x		Next round, you can choose a Ghost-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Dark Ball	pokeball	15									x		Next round, you can choose a Dark-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Dragon Ball	pokeball	15									x		Next round, you can choose a Dragon-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Steel Ball	pokeball	15									x		Next round, you can choose a Steel-type Pokemon of any species (you will then be able to choose any ability that species can have).			
-Fairy Ball	pokeball	15									x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Normal-Type Ball	pokeball	15									x		Next round, you can choose a Normal-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fire-Type Ball	pokeball	15									x		Next round, you can choose a Fire-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Water-Type Ball	pokeball	15									x		Next round, you can choose a Water-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Grass-Type Ball	pokeball	10									x		Next round, you can choose a Grass-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Electric-Type Ball	pokeball	15									x		Next round, you can choose a Electric-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ice-Type Ball	pokeball	10									x		Next round, you can choose a Ice-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fighting-Type Ball	pokeball	15									x		Next round, you can choose a Fighting-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Poison-Type Ball	pokeball	15									x		Next round, you can choose a Poison-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ground-Type Ball	pokeball	15									x		Next round, you can choose a Ground-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Flying-Type Ball	pokeball	15									x		Next round, you can choose a Flying-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Psychic-Type Ball	pokeball	15									x		Next round, you can choose a Psychic-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Bug-Type Ball	pokeball	10									x		Next round, you can choose a Bug-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Rock-Type Ball	pokeball	15									x		Next round, you can choose a Rock-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ghost-Type Ball	pokeball	15									x		Next round, you can choose a Ghost-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dark-Type Ball	pokeball	15									x		Next round, you can choose a Dark-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dragon-Type Ball	pokeball	15									x		Next round, you can choose a Dragon-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Steel-Type Ball	pokeball	15									x		Next round, you can choose a Steel-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fairy-Type Ball	pokeball	15									x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
 Master Ball	pokeball	20									x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
 Random Ball	pokeball	10									x		Automatically sets your Poke Ball for the next round to a random one (other than the default).			
 Mindslaver Ball	beforeBattle	60							x		x		Before battle: Tell your opponent you'll be making every choice for their new Pokemon next round. (You can see the choices, but nothing else.) (If their team is full, they may first choose not to add anyone.)			
@@ -453,7 +453,7 @@ Old Rod	misc	40	0										ADD the following Pokemon in an EXTRA SLOT: <span cla
 Old Rod	misc	40	0										ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Twin Rods	beforeBattle	0	0.5										Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Twin Rods	beforeBattle	0	0.5										Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
-Move Swapper	misc	20					2						Swap ANY two moves between any two Pokemon.			
+Move Swapper	misc	10					2						Swap ANY two moves between any two Pokemon.			
 Moveset Swapper	misc	5					2						Swap two Pokemon's ENTIRE movesets.			
 EVs Swapper	misc	5					2						Swap two Pokemon's EVs.			
 Tera Swapper	misc	5					2						Swap two Pokemon's Tera Types.			
