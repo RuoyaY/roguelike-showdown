@@ -1815,6 +1815,8 @@ function addPokemon(choicesDiv, hasChooseButton, pokemonStr) {
 }
 
 function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen, speciesPredicate) {
+  if (speciesPredicate) // true iff Wonder Ball, at least for now
+    requiredType = null;
   let speciesId;
   let failsafe = 1000;
   do {
@@ -4089,7 +4091,7 @@ function updatePokeballDesc(pokeball) {
   pokeballDescEle.textContent = pokeballDesc.replaceAll('*', '');
 
   const guaranteedTypeEle = document.getElementById('guaranteedTypeLabel');
-  if (POKEBALL_PROMPTS[pokeball] !== undefined)
+  if (POKEBALL_PROMPTS[pokeball] !== undefined || pokeball === 'Wonder Ball')
     guaranteedTypeEle.classList.add('strikethrough');
   else
     guaranteedTypeEle.classList.remove('strikethrough');
