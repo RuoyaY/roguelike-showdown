@@ -454,10 +454,10 @@ Old Rod	misc	40	0										ADD the following Pokemon in an EXTRA SLOT: <span cla
 Twin Rods	beforeBattle	0	0.5										Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Twin Rods	beforeBattle	0	0.5										Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Move Swapper	misc	10					2						Swap ANY two moves between any two Pokemon.			
-Moveset Swapper	misc	5					2						Swap two Pokemon's ENTIRE movesets.			
-EVs Swapper	misc	5					2						Swap two Pokemon's EVs.			
+Moveset Swapper	misc	-50					2						Swap two Pokemon's ENTIRE movesets.			
+EVs Swapper	misc	0					2						Swap two Pokemon's EVs.			
 Tera Swapper	misc	5					2						Swap two Pokemon's Tera Types.			
-Ability Swapper	misc	5					2						Swap two Pokemon's abilities.			
+Ability Swapper	misc	0					2						Swap two Pokemon's abilities.			
 Item Swapper	misc	5					2						Swap two Pokemon's held items (if one Pokemon is not holding an item, the other gives its away).			
 Incinerator	misc	-15											Remove a Pokemon's held item.			
 Toxic Orb	heldItem	-20														
