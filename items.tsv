@@ -32,6 +32,7 @@ Steel Ball	pokeball	15									x		Next round, you can choose a Steel-type Pokemo
 Fairy Ball	pokeball	15									x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
 Master Ball	pokeball	20									x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
 Random Ball	pokeball	10									x		Automatically sets your Poke Ball for the next round to a random one (other than the default).			
+Mindslaver Ball	beforeBattle	60							x		x		Before battle: Tell your opponent you'll be making every choice for their new Pokemon next round. (You can see the choices, but nothing else.) (If their team is full, they may first choose not to add anyone.)			
 Berry Juice	heldItem	15											heal 20 hp at 1/2			
 Sitrus Berry	heldItem	35														
 Oran Berry	heldItem	5											heal 10 hp at 1/2			
@@ -102,6 +103,16 @@ Zinc	misc	15											Set a Pokemon's SpD EV to 100 (max 508 total EVs).
 Carbos	misc	15											Set a Pokemon's Spe EV to 100 (max 508 total EVs).			
 Perfect Nutrience	misc	20											Set a Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
 Random Nutrience	misc	10											Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
+Nutrience Request	misc	5											Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
+HP Up Party	partyMisc	15n+5											Set every Pokemon's HP EV to 100 (max 508 total EVs).			
+Protein Party	partyMisc	10n+5											Set every Pokemon's Atk EV to 100 (max 508 total EVs).			
+Iron Party	partyMisc	15n+5											Set every Pokemon's Def EV to 100 (max 508 total EVs).			
+Calcium Party	partyMisc	10n+5											Set every Pokemon's SpA EV to 100 (max 508 total EVs).			
+Zinc Party	partyMisc	15n+5											Set every Pokemon's SpD EV to 100 (max 508 total EVs).			
+Carbos Party	partyMisc	15n+5											Set every Pokemon's Spe EV to 100 (max 508 total EVs).			
+Perfect Nutrience Party	partyMisc	15n+10											Set every Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
+Random Nutrience Party	partyMisc	13n+5											Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
+Nutrience Party Request	partyMisc	10n+5											Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
 Multi-Vitamin	misc	40											Set a Pokemon's EVs to 50 HP / 50 Atk / 50 Def / 50 SpA / 50 SpD / 50 Spe.			
 HP Max	misc	35											Set a Pokemon's HP EV to 252 (max 508 total EVs).		 	
 Max Protein	misc	35											Set a Pokemon's Atk EV to 252 (max 508 total EVs).			
@@ -111,6 +122,7 @@ Max Zinc	misc	35											Set a Pokemon's SpD EV to 252 (max 508 total EVs).
 Max Carbos	misc	35											Set a Pokemon's Spe EV to 252 (max 508 total EVs).			
 Perfect Max Nutrience	misc	40											Set a Pokemon's EV in any 1 stat to 252 (max 508 total EVs).			
 Random Max Nutrience	misc	30											Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
+Max Nutrience Request	misc	25											Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
 Super Training	misc	75											Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV) (ignore preexisting EVs).			
 Health Feathers	misc	10	0										Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)			
 Muscle Feathers	misc	10	0										Increase a Pokemon's Atk EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)			
@@ -128,19 +140,19 @@ Gender Liquidator	misc	1	0										Remove a Pokemon's gender (it'll get a rando
 Lonely Mint	misc	1											Set a Pokemon's Nature to Lonely (+Atk, -Def).			
 Adamant Mint	misc	10											Set a Pokemon's Nature to Adamant (+Atk, -SpA).			
 Naughty Mint	misc	1											Set a Pokemon's Nature to Naughty (+Atk, -SpD).			
-Brave Mint	misc	1											Set a Pokemon's Nature to Brave (+Atk, -Spe).			
+Brave Mint	misc	5											Set a Pokemon's Nature to Brave (+Atk, -Spe).			
 Bold Mint	misc	10											Set a Pokemon's Nature to Bold (+Def, -Atk).			
 Impish Mint	misc	10											Set a Pokemon's Nature to Impish (+Def, -SpA).			
 Lax Mint	misc	1											Set a Pokemon's Nature to Lax (+Def, -SpD).			
-Relaxed Mint	misc	1											Set a Pokemon's Nature to Relaxed (+Def, -Spe).			
+Relaxed Mint	misc	5											Set a Pokemon's Nature to Relaxed (+Def, -Spe).			
 Modest Mint	misc	10											Set a Pokemon's Nature to Modest (+SpA, -Atk).			
 Mild Mint	misc	1											Set a Pokemon's Nature to Mild (+SpA, -Def).			
 Rash Mint	misc	1											Set a Pokemon's Nature to Rash (+SpA, -SpD).			
-Quiet Mint	misc	1											Set a Pokemon's Nature to Quiet (+SpA, -Spe).			
+Quiet Mint	misc	5											Set a Pokemon's Nature to Quiet (+SpA, -Spe).			
 Calm Mint	misc	10											Set a Pokemon's Nature to Calm (+SpD, -Atk).			
 Gentle Mint	misc	1											Set a Pokemon's Nature to Gentle (+SpD, -Def).			
 Careful Mint	misc	10											Set a Pokemon's Nature to Careful (+SpD, -SpA).			
-Sassy Mint	misc	1											Set a Pokemon's Nature to Sassy (+SpD, -Spe).			
+Sassy Mint	misc	5											Set a Pokemon's Nature to Sassy (+SpD, -Spe).			
 Timid Mint	misc	10											Set a Pokemon's Nature to Timid (+Spe, -Atk).			
 Hasty Mint	misc	1											Set a Pokemon's Nature to Hasty (+Spe, -Def).			
 Jolly Mint	misc	10											Set a Pokemon's Nature to Jolly (+Spe, -SpA).			
@@ -204,12 +216,14 @@ Fairy Gem	heldItem	15
 Perfect Gem	misc	20											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*").			
 Random Gem	misc	5											Generate a random type, then set a Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").			
 Wrong Gem	misc	5											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
+Gem Request	misc	5											Ask your opponent to pick a gem (e.g. "*Ice Gem*"), then set a Pokemon's held item to the gem of that type.			
 (Almost) Perfect Item	misc	45											Set a Pokemon's held item to anything other than an Eviolite or a Z-Crystal.			
 Mirror Item	misc	25					2						Copy a Pokemon's held item to another Pokemon. Can't copy Eviolite.			
 Mirror Party Item	misc	20n+5					2						Copy a Pokemon's held item to ALL other Pokemon.			
 Shadow Item	misc	20								x			Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last battle. Exception: Z-Crystals.			
 Reflect Item	beforeBattle	20											Before battle: Set your [mth] Pokemon's held item to a copy of your opponent's [nth] Pokemon's held item. Can't copy Z-Crystals.			
 (Almost) Perfect Twin Items	beforeBattle	30											Before battle: Both players MAY give their [nth] Pokemon a [_____] (can't choose Eviolite or a Z-Crystal).			
+Item Request	misc	-20											Ask your opponent to pick a held item, then set a Pokemon's held item to that item.			
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld												
 Black Belt	heldItem	20														
 Silk Scarf	heldItem	20														
@@ -234,6 +248,7 @@ Pixie Plate	heldItem	20
 Perfect Plate	misc	25											Set a Pokemon's held item to ANY Plate (e.g. "*Zap Plate*").			
 Random Plate	misc	10											Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").			
 Wrong Plate	misc	5											Set a Pokemon's held item to any Plate (e.g. "*Zap Plate*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
+Plate Request	misc	5											Ask your opponent to pick a Plate (e.g. "*Zap Plate*"). Set any 1 Pokemon's held item to that Plate.			
 Buginium Z	heldItem	60														
 Darkinium Z	heldItem	60														
 Dragonium Z	heldItem	60														
@@ -254,7 +269,8 @@ Steelium Z	heldItem	60
 Waterium Z	heldItem	60														
 Perfect Z-Crystal	misc	70											Set a Pokemon's held item to any Z-Crystal.			
 Random Z-Crystal	misc	40											Generate a random type, then give the corresponding Z-Crystal to any 1 Pokemon.			
-Wrong Z-Crystal	misc	35											Set a Pokemon's held item to any Z-Crystal that DOES NOT correspond to the current type of ANY of its moves.			
+Wrong Z-Crystal	misc	40											Set a Pokemon's held item to any Z-Crystal that DOES NOT correspond to the current type of ANY of its moves.			
+Z-Crystal Request	misc	35											Ask your opponent to pick a type-based Z-Crystal. Set any 1 Pokemon's held item to that Z-Crystal.			
 Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola									Teach Raichu-Alola *Thunderbolt* and set its held item to *Aloraichium Z*.			
 Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye									Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.			
 Last Resort TM & Eevium Z	TMAndZCrystal	100		eevee									Teach Eevee *Last Resort* and set its held item to *Eevium Z*.			
@@ -282,13 +298,17 @@ Random Hidden Power TM	universalTM	10											Generate a random type (other th
 Perfect TM	universalTM	60											Teach ANY 1 Pokemon ANY 1 move (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Perfect Party TM	partyTM	30n+30											Choose ANY move (no Z-Moves, G-Max moves, Zippy Zap, or Spore). Teach EVERY Pokemon that move.			
 Perfect Twin TMs	beforeTM	30											Before battle: Both players MAY teach their [nth] Pokemon the move [_____] (can't choose Z-Moves).			
-Mirror TM	universalTM	40					2						Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves, Zippy Zap, and Spore).			
+Perfect Species TM	universalTM	30											Teach ANY 1 Pokemon any move it can learn (in National Dex AG) (excluding Z-Moves, G-Max moves, Zippy Zap, and Spore).			
+Mirror TM	universalTM	40					2						Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves, G-Max moves, Zippy Zap, and Spore).			
 Mirror Moveset	misc	20					2						Replace a Pokemon's ENTIRE moveset with a copy of another Pokemon's moveset.			
-Reflect Moveset	beforeBattle	45											Before battle: Replace your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
-Mirror Party TM	partyTM	20n					2						Teach EVERY Pokemon any 1 move one of your Pokemon know (excluding Z-Moves, Zippy Zap, and Spore).			
+Reflect Moveset	beforeBattle	30											Before battle: Replace your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
+Mirror Party TM	partyTM	20n					2						Teach EVERY Pokemon any 1 move one of your Pokemon know (excluding Z-Moves, G-Max moves, Zippy Zap, and Spore).			
 Shadow TM	universalTM	35								x			Teach any 1 Pokemon any 1 move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Shadow Party TM	partyTM	15n+20								x			Choose any move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, Zippy Zap, or Spore). Teach EVERY Pokemon that move.			
-Reflecting TM	beforeBattle	10											Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it is a Z-Move, G-Max move, Zippy Zap, or Spore.			
+Reflecting TM	beforeTM	10											Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it is a Z-Move, G-Max move, Zippy Zap, or Spore.			
+Perfect 40PP TM	universalTM	15											Teach ANY 1 Pokemon ANY 1 move with 40 Base PP (not to be confused with Power).			
+Perfect 30PP TM	universalTM	25											Teach ANY 1 Pokemon ANY 1 move with 30 Base PP (not to be confused with Power).			
+Alliterative TM	universalTM	40											Replace any 1 move with a move that starts with the same letter (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Normal Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.			
 Fire Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.			
 Water Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-water">Water</span>.			
@@ -310,6 +330,7 @@ Fairy Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="ty
 Stellar Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-stellar">Stellar</span>.			
 Perfect Tera Shards	misc	20											Set a Pokemon's Tera Type to anything.			
 Random Tera Shards	misc	5											Generate a random type (including Stellar), then set any 1 Pokemon's Tera Type to that type.			
+Tera Shards Request	misc	1											Ask your opponent to pick a Tera Type. Set any 1 Pokemon's Tera Type to that type.			
 Mirror Tera Shards	misc	15					2						Copy a Pokemon's Tera Type to another Pokemon.			
 Shadow Tera Shards	misc	10								x			Set a Pokemon's Tera Type to one you KNOW FOR SURE your opponent had last battle.			
 Reflecting Tera Shards	beforeBattle	15											Before battle: Set your [mth] Pokemon's Tera Type to your opponent's [nth] Pokemon's Tera Type.			
@@ -407,12 +428,15 @@ Wonder Guard-ifier	misc	15									x		Set a Pokemon's ability to *Wonder Guard*,
 Plus & Minus Abilitizers	abilitizer	60					2						Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 (Almost) Perfect Abilitizer	abilitizer	70											Set a Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 (Almost) Perfect Party Abilitizer	partyAbilitizer	50n+20											Set EVERY Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Perfect Twin Abilitizers	beforeAbilitizer	50											Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Perfect Twin Abilitizers	beforeAbilitizer	50											Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Mirror Abilitizer	abilitizer	30					2						Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Shadow Abilitizer	abilitizer	25								x			Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last battle.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Reflecting Abilitizer	beforeBattle	30											Before battle: Set your [mth] Pokemon's ability to your opponent's [nth] Pokemon's ability.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Alliterative Abilitizer	abilitizer	40											Set a Pokemon's ability to any ability starting with the same letter as the current one. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class=""warning""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Species-Based Abilitizer	abilitizer	25											Set a Pokemon's ability to any ability it can normally get (including Hidden Abilities). Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class=""""warning""""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Weather Chaos Abilitizers	abilitizer	30					4						Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Terrain Chaos Abilitizers	abilitizer	5					4						Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Abilitizer Request	abilitizer	-50											Ask your opponent to pick an ability other than Truant (remind them Defeatist, Slow Start, and Stall cannot be replaced). Give 1 Pokemon that ability. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Debilitizer	misc	-10											Set a Pokemon's ability to "No Ability". <span class="warning"> <br>Cannot remove Defeatist, Slow Start, Stall, or Truant. </span>			
 Power Weight	heldItem	0									x		1/2 speed. every round, +100 [stat EV]			
 Power Bracer	heldItem	0									x		1/2 speed. every round, +100 [stat EV]			
@@ -583,8 +607,9 @@ Perfect Steel Party TM	partyTM	25n+25											Choose ANY STEEL-TYPE move (no Z
 Perfect Fairy Party TM	partyTM	25n+25											Choose ANY FAIRY-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
 Perfect Egg	egg	2r+100											In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. CAN choose Shedinja. </span>			
 Mirror Egg	egg	2r+70											Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.			
-Reflecting Egg	beforeBattle	2r+70											Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
+Reflecting Egg	beforeBattle	2r+75											Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
 Shadow Egg	egg	2r+60								x			In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>			
+Egg Request	egg	2r+45											Ask your opponent to pick a species and an ability that species normally gets. You get that pokemon. Set its level to 1, its Tera Type to Stellar, and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>?			
 1v1 Battle	nextBattle	50/b	0				2					x	Next battle only: Both players can only use 1 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
 2v2 Battle	nextBattle	50/b					3					x	Next battle only: Both players can only use 2 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9doublescustomgame @@@ Picked Team Size = 2</span>			
 1v1 Warm-up	beforeBattle	5					2				x	x	Before battle: Do an extra battle where both players can only use 1 Pokemon (chosen during team preview). Winner gets $30. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
@@ -824,6 +849,7 @@ TR98	heldItem	40	0.2				2						all others learn Liquidation
 TR99	heldItem	40	0.2				2						all others learn Body Press			
 Perfect TR	misc	50					2						Set a Pokemon's held item to any TR (e.g. *TR00*).			
 Random TR	misc	20					2						Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
+TR Request	misc	5											Ask your opponenet to choose at TR (e.g. *TR00*). Set any 1 Pokemon's held item to that TR.			
 Berserk Gene	heldItem	25											confusion and +2 Atk on entry			
 Normal Candy Party	misc	20											Increase ALL Normal-type Pokemon's level by one.			
 Fire Candy Party	misc	20											Increase ALL Fire-type Pokemon's level by one.			
@@ -1039,6 +1065,7 @@ Vs Encounter Power: Dragon	beforeBattle	5									x		Before battle: Set your opp
 Vs Encounter Power: Steel	beforeBattle	0									x		Before battle: Set your opponent's "guaranteed type" to Steel (next round, they are guaranteed to get Pokemon of that type).			
 Vs Encounter Power: Fairy	beforeBattle	0									x		Before battle: Set your opponent's "guaranteed type" to Fairy (next round, they are guaranteed to get Pokemon of that type).			
 Perfect Vs Encounter Power	beforeBattle	20									x		Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).			
+Encounter Power Request	misc	-15									x		Ask your opponent to choose a "guaranteed type". Set your "guaranteed type" to that type.			
 Mirrored Vs Encounter Power	beforeBattle	10									x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).			
 Shadowed Vs Encounter Power 	beforeBattle	15								x	x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).			
 Normal Magnet	keyItem	-5m-5									x		Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			

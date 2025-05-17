@@ -1,4 +1,3 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 Power Anklet	heldItem	0											
-Name Trivia	misc	20											Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.
-Stellar Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-stellar">Stellar</span>.
+Mindslaver Ball	beforeBattle	60							x		x		Before battle: Tell your opponent you'll be making every choice for their new Pokemon next round. (You can see the choices, but nothing else.) (If their team is full, they may first choose not to add anyone.)			
