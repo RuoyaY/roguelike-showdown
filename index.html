@@ -655,6 +655,8 @@ const CHANGED_ABILITY_DESC = {
   'Embody Aspect (Wellspring)': "If this Pokemon is an Ogerpon-Wellspring, on switch-in, this Pokemon's Special Defense is raised by 1 stage.",
 };
 
+const CAMOMONS_DOUBLES_COMMAND = '/challenge gen9doublecustomgame @@@ Camomons Mod';
+
 const KEY_ITEMS = {
   CHEAP_REFRESH: 'Running Shoes',
   MORE_SHOP_SLOT: 'Dowsing Machine',
@@ -2700,6 +2702,7 @@ function save() {
   localStorage.setItem('roundCounter', roundCounter);
   localStorage.setItem('numRounds', getNumRounds());
   localStorage.setItem('endless', document.getElementById('endless').checked);
+  localStorage.setItem('camomons', document.getElementById('camomons').checked);
 
   if (!isBoss())
     localStorage.removeItem('bossLevelUps');
@@ -2724,6 +2727,9 @@ function load() {
     alert('Cannot load over existing party Pokemon.');
     return;
   }
+
+  // needs to happen before updatePartyPokemonDiv, so that types are displayed correctly
+  document.getElementById('camomons').checked = localStorage.getItem('camomons') === 'true';
 
   const partySize = parseInt(localStorage.getItem('partySize'));
   setPartySize(partySize);
@@ -2751,6 +2757,13 @@ function load() {
   setRoundCounter(parseInt(localStorage.getItem('roundCounter')));
   setNumRounds(localStorage.getItem('numRounds'));
   document.getElementById('endless').checked = localStorage.getItem('endless') === 'true';
+  
+  if (isCamomons()) {
+    const commandEle = document.getElementById('camomonsCommand');
+    commandEle.hidden = false;
+    if (getPartyStrs().length >= 2)
+      commandEle.innerText = CAMOMONS_DOUBLES_COMMAND;
+  }
 
   const bossLevelUpsStr = localStorage.getItem('bossLevelUps');
   const bossBattleCheckbox = document.getElementById('bossBattle');
@@ -2837,7 +2850,7 @@ function nextRound() {
   }
 
   if (getPartyStrs().length + 1 >= 2)
-    document.getElementById('camomonsCommand').innerText = '/challenge gen9doublecustomgame @@@ Camomons Mod';
+    document.getElementById('camomonsCommand').innerText = CAMOMONS_DOUBLES_COMMAND;
 
   // NOTE: For roundly events, there may be some minor interactions, so make it happen in order
   // of how they'd be read on the website.
