@@ -3141,6 +3141,13 @@ function refreshShop(isViaMoney) {
   });
   for ([key, func] of Object.entries(KEY_ITEM_SHOP_FUNCS))
     pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS[key + '_SLOT']), func);  
+  if (isCamomons())
+    shopSlotFuncs.push(() => {return {
+      name: 'Slot Swap',
+      type: 'misc',
+      price: 30,
+      desc: 'Pick a pokemon. Swap any two of its move slots.',
+    }});
   let AllSlotsKeyItem = getKeyItems().find(keyItem => ALL_SLOTS_KEY_ITEMS.includes(keyItem));
   if (AllSlotsKeyItem != null) {
     const keyItemKey = Object.keys(KEY_ITEMS).find(key => KEY_ITEMS[key] === AllSlotsKeyItem);
