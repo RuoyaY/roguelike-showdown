@@ -335,6 +335,7 @@ button:focus {
     <br>
     <input type="checkbox" id="camomons">
     <label for="camomons" class="hasHoverText" title="Pokemon instead have the type(s) of their first 2 moves (revealed on entry).">Camomons</label>
+    <span id="camomonsCommand" class="command">/challenge gen9customgame @@@ Camomons Mod</span>
     <br>
 
     <div hidden>
@@ -1078,6 +1079,10 @@ function onLoad() {
   pokeballEle.addEventListener('change', event => {
     updatePokeballDesc(pokeballEle.value);
   });
+
+  document.getElementById('camomons').addEventListener('change', event => {
+   document.getElementById('camomonsCommand').hidden = !document.getElementById('camomons').checked;
+  });
   
   document.getElementById('money').addEventListener('change', event => {updateTax()});
 
@@ -1087,6 +1092,8 @@ function onLoad() {
   
   setNumRounds(4);
   document.getElementById('endless').checked = false;
+  document.getElementById('camomons').checked = false;
+  document.getElementById('camomonsCommand').hidden = true;
   document.getElementById('bossBattle').checked = false;
   document.getElementById('vsBossBattle').checked = false;
 
@@ -2819,6 +2826,9 @@ function nextRound() {
     document.getElementById('bossBattle').disabled = true;
     document.getElementById('vsBossBattle').disabled = true;
   }
+
+  if (getPartyStrs().length + 1 >= 2)
+    document.getElementById('camomonsCommand').innerText = '/challenge gen9doublecustomgame @@@ Camomons Mod';
 
   // NOTE: For roundly events, there may be some minor interactions, so make it happen in order
   // of how they'd be read on the website.
