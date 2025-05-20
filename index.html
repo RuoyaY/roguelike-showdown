@@ -3852,6 +3852,8 @@ const SIXTH_HP_PER_TURN = ["G-Max Cannonade", "G-Max Vine Lash", "G-Max Volcalit
 function tmPrice(move) {
   if (move.name === 'Clangorous Soulblaze')
     return 150;
+  else if (move.name === 'Extreme Evoboost')
+    return 150;
   else if (isZ(move))
     return 80;
   else if (isLGPE(move))
