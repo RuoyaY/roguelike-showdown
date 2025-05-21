@@ -38,52 +38,54 @@ Sitrus Berry	heldItem	35
 Oran Berry	heldItem	5											heal 10 hp at 1/2			
 Gold Berry	heldItem	25											heal 30 hp at 1/2			
 Enigma Berry	heldItem	20											heal 1/4 if hit by super-effective			
-Aguav Berry	heldItem	20	0.2										[heal 1/3 at 1/4]			
-Figy Berry	heldItem	20	0.2										[heal 1/3 at 1/4]			
-Iapapa Berry	heldItem	20	0.2										[heal 1/3 at 1/4]			
-Mago Berry	heldItem	20	0.2										[heal 1/3 at 1/4]			
-Wiki Berry	heldItem	20	0.2										[heal 1/3 at 1/4]			
-Salac Berry	heldItem	15											1/4, +1 Spe			
-Liechi Berry	heldItem	10											1/4, +1 Atk			
-Ganlon Berry	heldItem	5											1/4, +1 Def			
-Petaya Berry	heldItem	10											1/4, +1 SpA			
-Apicot Berry	heldItem	5											1/4, +1 SpD			
-Lansat Berry	heldItem	5											1/4, 50% crit rate			
-Starf Berry	heldItem	15											1/4, +2 random stat			
+Aguav Berry	heldItem	10	0.2										[heal 1/3 at 1/4]			
+Figy Berry	heldItem	10	0.2										[heal 1/3 at 1/4]			
+Iapapa Berry	heldItem	10	0.2										[heal 1/3 at 1/4]			
+Mago Berry	heldItem	10	0.2										[heal 1/3 at 1/4]			
+Wiki Berry	heldItem	10	0.2										[heal 1/3 at 1/4]			
+Salac Berry	heldItem	5											1/4, +1 Spe			
+Liechi Berry	heldItem	5											1/4, +1 Atk			
+Ganlon Berry	heldItem	1											1/4, +1 Def			
+Petaya Berry	heldItem	5											1/4, +1 SpA			
+Apicot Berry	heldItem	1											1/4, +1 SpD			
+Lansat Berry	heldItem	1											1/4, 50% crit rate			
+Starf Berry	heldItem	5											1/4, +2 random stat			
 Micle Berry	heldItem	1											1/4, next move x1.2 accuracy			
-Custap Berry	heldItem	15											1/4, go first next turn			
-Occa Berry	heldItem	5											[halve super-effective ____-type move]			
-Passho Berry	heldItem	5											[halve super-effective ____-type move]			
-Wacan Berry	heldItem	5											[halve super-effective ____-type move]			
-Rindo Berry	heldItem	5											[halve super-effective ____-type move]			
-Yache Berry	heldItem	5											[halve super-effective ____-type move]			
-Chople Berry	heldItem	5											[halve super-effective ____-type move]			
-Kebia Berry	heldItem	5											[halve super-effective ____-type move]			
-Shuca Berry	heldItem	5											[halve super-effective ____-type move]			
-Coba Berry	heldItem	5											[halve super-effective ____-type move]			
-Payapa Berry	heldItem	5											[halve super-effective ____-type move]			
-Tanga Berry	heldItem	5											[halve super-effective ____-type move]			
-Charti Berry	heldItem	5											[halve super-effective ____-type move]			
-Kasib Berry	heldItem	5											[halve super-effective ____-type move]			
-Haban Berry	heldItem	5											[halve super-effective ____-type move]			
-Colbur Berry	heldItem	5											[halve super-effective ____-type move]			
-Babiri Berry	heldItem	5											[halve super-effective ____-type move]			
-Roseli Berry	heldItem	5											[halve super-effective ____-type move]			
+Custap Berry	heldItem	5											1/4, go first next turn			
+Occa Berry	heldItem	10											[halve super-effective ____-type move]			
+Passho Berry	heldItem	10											[halve super-effective ____-type move]			
+Wacan Berry	heldItem	10											[halve super-effective ____-type move]			
+Rindo Berry	heldItem	10											[halve super-effective ____-type move]			
+Yache Berry	heldItem	10											[halve super-effective ____-type move]			
+Chople Berry	heldItem	10											[halve super-effective ____-type move]			
+Kebia Berry	heldItem	10											[halve super-effective ____-type move]			
+Shuca Berry	heldItem	10											[halve super-effective ____-type move]			
+Coba Berry	heldItem	10											[halve super-effective ____-type move]			
+Payapa Berry	heldItem	10											[halve super-effective ____-type move]			
+Tanga Berry	heldItem	10											[halve super-effective ____-type move]			
+Charti Berry	heldItem	10											[halve super-effective ____-type move]			
+Kasib Berry	heldItem	10											[halve super-effective ____-type move]			
+Haban Berry	heldItem	10											[halve super-effective ____-type move]			
+Colbur Berry	heldItem	10											[halve super-effective ____-type move]			
+Babiri Berry	heldItem	10											[halve super-effective ____-type move]			
+Roseli Berry	heldItem	10											[halve super-effective ____-type move]			
 Chilan Berry	heldItem	5											[halve normal-type move]			
-Cheri Berry	heldItem	5														
-Chesto Berry	heldItem	5														
+Cheri Berry	heldItem	10														
+Chesto Berry	heldItem	10														
 Pecha Berry	heldItem	5														
-Rawst Berry	heldItem	5														
+Rawst Berry	heldItem	10														
 Aspear Berry	heldItem	1														
 Persim Berry	heldItem	1														
 Lum Berry	heldItem	10														
 Miracle Berry	heldItem	10											Lum Berry + confusion			
-Leppa Berry	heldItem	5														
+Leppa Berry	heldItem	10				Revival Blessing,Struggle										
+Leppa Berry	heldItem	60				Acid Downpour,All-Out Pummeling,Black Hole Eclipse,Bloom Doom,Breakneck Blitz,Catastropika,Clangorous Soulblaze,Continental Crush,Corkscrew Crash,Devastating Drake,Extreme Evoboost,Genesis Supernova,Gigavolt Havoc,Guardian of Alola,Hydro Vortex,Inferno Overdrive,Let's Snuggle Forever,Light That Burns the Sky,Malicious Moonsault,Menacing Moonraze Maelstrom,Never-Ending Nightmare,Oceanic Operetta,Pulverizing Pancake,Savage Spin-Out,Searing Sunraze Smash,Shattered Psyche,Sinister Arrow Raid,Soul-Stealing 7-Star Strike,Splintered Stormshards,Stoked Sparksurfer,Subzero Slammer,Supersonic Skystrike,Tectonic Rage,Twinkle Tackle										
 Jaboca Berry	heldItem	15											physical attacker loses 1/8 max HP			
 Rowap Berry	heldItem	15											special attacker loses 1/8 max HP			
 Kee Berry	heldItem	20											hit by physical, +1 Def			
 Maranga Berry	heldItem	20											hit by special, +1 SpD			
-Mirror Berry	misc	10					2						Copy a Pokemon's held berry to another Pokemon.			
+Mirror Berry	misc	10	0				2						Copy a Pokemon's held berry to another Pokemon.			
+Random Type-Defense Berry	misc	5											Generate a random type, then set any 1 Pokemon's held item to the corresponding defensive berry (e.g. "*Occa Berry*").			
 Perfect Berry	misc	25											Set a Pokemon's held item to any berry other than Sitrus Berry.			
 Rare Candy	misc	20											Raise a Pokemon's level by 1.			
 Rare Bi-Candy	misc	40											Raise a Pokemon's level by 2.			
@@ -93,7 +95,7 @@ Rare Penta-Candy	misc	100											Raise a Pokemon's level by 5.
 Rare Candy Party	partyMisc	15n+5											Raise EVERY Pokemon's level by 1.			
 Doom Seed	misc	-15											Lower a Pokemon's level by 1 (can't choose a Lv1 Pokemon).			
 Doom Seed Party	partyMisc	-15n											Lower EVERY Pokemon's level by 1 (can't go below Lv1).			
-Twin Rare Candies	beforeBattle	0	0										Before battle: Raise both you and your opponent's [nth] Pokemon's level by 1.			
+Twin Rare Candies	beforeBattle	5											Before battle: Both players MAY increase their [nth] Pokemon's level by 1.			
 Twin Doom Seeds	beforeBattle	0	0										Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
 HP Up	misc	15											Set a Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein	misc	15											Set a Pokemon's Atk EV to 100 (max 508 total EVs).			
@@ -214,7 +216,7 @@ Dragon Gem	heldItem	15
 Steel Gem	heldItem	15														
 Fairy Gem	heldItem	15														
 Perfect Gem	misc	20											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*").			
-Random Gem	misc	5											Generate a random type, then set a Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").			
+Random Gem	misc	5											Generate a random type, then set any 1 Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").			
 Wrong Gem	misc	5											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
 Gem Request	misc	5											Ask your opponent to pick a gem (e.g. "*Ice Gem*"), then set a Pokemon's held item to the gem of that type.			
 (Almost) Perfect Item	misc	45											Set a Pokemon's held item to anything other than an Eviolite or a Z-Crystal.			
@@ -454,7 +456,7 @@ Old Rod	misc	40	0										ADD the following Pokemon in an EXTRA SLOT: <span cla
 Twin Rods	beforeBattle	0	0.5										Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Twin Rods	beforeBattle	0	0.5										Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Move Swapper	misc	10					2						Swap ANY two moves between any two Pokemon.			
-Moveset Swapper	misc	-50					2						Swap two Pokemon's ENTIRE movesets.			
+Moveset Swapper	misc	-40					2						Swap two Pokemon's ENTIRE movesets.			
 EVs Swapper	misc	0					2						Swap two Pokemon's EVs.			
 Tera Swapper	misc	5					2						Swap two Pokemon's Tera Types.			
 Ability Swapper	misc	0					2						Swap two Pokemon's abilities.			
@@ -990,11 +992,11 @@ Move Type Challenge	misc	15											Your opponent CHOOSES a move name to send 
 Running Shoes	keyItem	4r+4											Refreshing the shop now only costs $2.	0.6666666667	24	8
 Dowsing Machine	keyItem	3r+3											+1 slot in the shop.	0.75	24	6
 Losing Machine	keyItem	-4.5r-4.5											-1 slot in the shop.	1.5	18	-9
-Shopping Cart	keyItem	2r+2											Can now buy the same thing multiple times (doesn't work for Quizzes, Trivia, or earning money).	since money/slots are worth more now than later, "$ saved" is halved		
+Shopping Cart	keyItem	2r+2											Can now buy the same thing multiple times (doesn't work for earning money, including via Quizzes, etc).	since money/slots are worth more now than later, "$ saved" is halved		
 Combee Hive	keyItem	3.75m									x		Every round, +1 species option for your new Pokemon.			
 Trubbish Bin	keyItem	-7.5m									x		Every round, -1 species option for your new Pokemon (can't go below 1).			
-Black Flute	keyItem	15m									x		The new Pokemon you get every round is 1 level higher than normal.			
-White Flute	keyItem	-15m									x	x	The new Pokemon you get every round is 1 level lower than normal (can't go below 1).			
+Black Flute	keyItem	15m	0								x		The new Pokemon you get every round is 1 level higher than normal.			
+White Flute	keyItem	-15m	0								x	x	The new Pokemon you get every round is 1 level lower than normal (can't go below 1).			
 TM Charm	keyItem	3.5r+3.5											+1 TM slot in the shop.			
 Abilitizer Charm	keyItem	3r+3											+1 Abilitizer slot in the shop.			
 Double Helix Charm	keyItem	4r+4											+1 Species Changer slot in the shop.			
@@ -1022,7 +1024,7 @@ Oops! All Berries	keyItem	0											For the rest of the round, ALL slots in th
 Oops! All Candy Parties	keyItem	0											For the rest of the round, ALL slots in the shop only offer Type Candy Parties (level up every Pokemon of a given type).			
 Oops! All Mints	keyItem	-10											For the rest of the round, ALL slots in the shop only offer Mints (for setting nature).			
 Fish Bowl	keyItem	35											During battle, you get a random Lv1 Magikarp that only knows Splash in an extra slot.	value of putting trash on egg	value of 1 meat shield	value of added meat shields
-Auto Rod	keyItem	15r+20									x		At the start of each round, gain a random Lv1 Magikarp in an extra slot.	5r-5	35	10(r-1)
+Auto Rod	keyItem	15r+20									x		At the start of each round, gain a random Lv1 Magikarp that only knows Splash in an extra slot.	5r-5	35	10(r-1)
 Loan	keyItem	-15r									x		Each round, lose $30.			
 Investment	keyItem	15r									x		Each round, earn $30.			
 Encounter Power: Normal	misc	-5									x		Next round, you are guaranteed to get Normal-type Pokemon.			
@@ -1068,24 +1070,24 @@ Perfect Vs Encounter Power	beforeBattle	20									x		Before battle: Set your op
 Encounter Power Request	misc	-15									x		Ask your opponent to choose a "guaranteed type". Set your "guaranteed type" to that type.			
 Mirrored Vs Encounter Power	beforeBattle	10									x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).			
 Shadowed Vs Encounter Power 	beforeBattle	15								x	x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).			
-Normal Magnet	keyItem	-5m-5									x		Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Fire Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Fire-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Water Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Water-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Grass Magnet	keyItem	-10m-5									x		Each round, you are guaranteed to get Grass-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Electric Magnet	keyItem	0m-5									x		Each round, you are guaranteed to get Electric-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Ice Magnet	keyItem	-5m-5									x		Each round, you are guaranteed to get Ice-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Fighting Magnet	keyItem	-5m-5									x		Each round, you are guaranteed to get Fighting-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Poison Magnet	keyItem	0m-5									x		Each round, you are guaranteed to get Poison-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Ground Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Ground-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Flying Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Flying-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Psychic Magnet	keyItem	-5m-5									x		Each round, you are guaranteed to get Psychic-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Bug Magnet	keyItem	-10m-5									x		Each round, you are guaranteed to get Bug-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Rock Magnet	keyItem	5m-5									x		Each round, you are guaranteed to get Rock-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Ghost Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Ghost-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Dark Magnet	keyItem	5m-5									x		Each round, you are guaranteed to get Dark-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Dragon Magnet	keyItem	0m-5									x		Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Steel Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Fairy Magnet	keyItem	10m-5									x		Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Normal Magnet	keyItem	-10m+5									x		Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fire Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Fire-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Water Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Water-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Grass Magnet	keyItem	-15m+5									x		Each round, you are guaranteed to get Grass-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Electric Magnet	keyItem	-5m+5									x		Each round, you are guaranteed to get Electric-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ice Magnet	keyItem	-10m+5									x		Each round, you are guaranteed to get Ice-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fighting Magnet	keyItem	-10m+5									x		Each round, you are guaranteed to get Fighting-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Poison Magnet	keyItem	-5m+5									x		Each round, you are guaranteed to get Poison-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ground Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Ground-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Flying Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Flying-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Psychic Magnet	keyItem	-10m+5									x		Each round, you are guaranteed to get Psychic-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Bug Magnet	keyItem	-15m+5									x		Each round, you are guaranteed to get Bug-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Rock Magnet	keyItem	0m+5									x		Each round, you are guaranteed to get Rock-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ghost Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Ghost-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Dark Magnet	keyItem	0m+5									x		Each round, you are guaranteed to get Dark-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Dragon Magnet	keyItem	-5m+5									x		Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Steel Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fairy Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 TM Ban	keyItem	-25m											Random TMs stop appearing in the shop, unless forced.			
 Abilitizer Ban	keyItem	0											Random Abilitizers stop appearing in the shop, unless forced.			
 Species Changer Ban	keyItem	0											Species Changers stop appearing in the shop, unless forced.			
