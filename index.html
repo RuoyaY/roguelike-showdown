@@ -2229,7 +2229,7 @@ function moveDesc(move, shortened) {
   if (move.name.startsWith('Hidden Power')) {
     shortDesc = "A Pokemon can only know 1 Hidden Power at a time.";
     if (isCamomons())
-      shortDesc += '\nCounts as Normal-type for Camomons.';
+      shortDesc += '\n\nNOTE: counts as Normal-type for Camomons.';
   }
   shortDesc = shortDesc.replace('Base move affects power. ', '');
   if (MONEY_MOVES.includes(move.name))
