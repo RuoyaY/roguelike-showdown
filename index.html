@@ -245,7 +245,7 @@ button:focus {
   font-size: large;
   font-weight: 700;
 }
-.improvedAbility, .improvedItem {
+.improvedAbility, .improvedItem, .improvedMove {
   background-color: rgba(0,255,0,.3);
 }
 .worsened {
@@ -755,6 +755,12 @@ for (let i = 0; i < POWER_ITEMS.length; i++)
 for (const [key, value] of Object.entries(TYPE_STONES))
   IMPROVED_ITEMS[key] = "Each round, automatically gets a random " + value + '-type move in a NEW move slot.';
 
+const IMPROVED_MOVES = {
+  'Celebrate': 'Win the battle after this Pokemon successfully uses this move 4 times!' 
+                  + '\n(Tell your opponent about this rule after your first time using it).',
+  'Hold Hands': 'Win the battle after this Pokemon successfully uses this move on 3 unique allies!' 
+                  + '\n(Tell your opponent about this rule after your first time using it).',
+}
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
 const MONEY_MOVE_INCOME = 15;
 
@@ -2214,7 +2220,10 @@ function moveInHTML(moveName, prefix) {
   const move = moves[getMoveId(moveName)];
   const type = move.type;
 
-  return spanWithType(prefix + spanWithTitle(moveName, moveDesc(move)), type);
+  let moveSpan = spanWithTitle(moveName, moveDesc(move));
+  if (IMPROVED_MOVES[moveName] || MONEY_MOVES.includes(moveName))
+    moveSpan = spanWithClass(moveSpan, 'improvedMove');
+  return spanWithType(prefix + moveSpan, type);
 }
 function moveDesc(move, shortened) {
   let title = 'Type: ' + move.type + '\nCat: ' + move.category;
@@ -2234,6 +2243,9 @@ function moveDesc(move, shortened) {
   shortDesc = shortDesc.replace('Base move affects power. ', '');
   if (MONEY_MOVES.includes(move.name))
     shortDesc += '\nOnce per round, earn $' + MONEY_MOVE_INCOME + ' if successfully used.';
+  else if (IMPROVED_MOVES[move.name])
+    shortDesc = IMPROVED_MOVES[move.name];
+
   if (!shortened)
     title += '\n';
   title += '\n' + shortDesc;
