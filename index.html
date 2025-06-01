@@ -1348,8 +1348,7 @@ function makeNumsUnique(objs) {
 
 function addTRsToImprovedItems() {
   for (const tr of getTRs()) 
-    IMPROVED_ITEMS[tr.name] = 'During battle, all your OTHER Pokemon get ' + tr.moveName 
-            + ' in a new move slot.\n\n'
+    IMPROVED_ITEMS[tr.name] = '+1 shop slot with free Universal TMs for ' + tr.moveName + '.\n\n'
             + moveDesc(moves[getMoveId(tr.moveName)], true);
 }
 
@@ -2670,17 +2669,6 @@ function copyParty() {
   for (let i = 0; i < numOfKeyItem(KEY_ITEMS.MAGIKARP); i++)
     partyStrs.push(randomLv1Magikarp().slice(0, -1 * '\n- \n- \n-'.length));
 
-  // handle TRs
-  for (let i = 0; i < partyStrs.length; i++) {
-    const heldItem = getHeldItemOfPokemon(partyStrs[i]);
-    if (isTR(heldItem)) {
-      for (let j = 0; j < partyStrs.length; j++) {
-        if (i !== j)
-          partyStrs[j] += '\n- ' + getTRMoveName(heldItem);
-      }
-    }
-  }
-
   copyStr(partyStrs.join('\n\n'));
 }
 function copyStr(str) {
@@ -3170,6 +3158,20 @@ function refreshShop(isViaMoney) {
   });
   for ([key, func] of Object.entries(KEY_ITEM_SHOP_FUNCS))
     pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS[key + '_SLOT']), func);  
+  // handle TRs
+  const partyStrs = getPartyStrs();
+  for (let i = 0; i < partyStrs.length; i++) {
+    const heldItem = getHeldItemOfPokemon(partyStrs[i]);
+    if (isTR(heldItem)) {
+      const moveName = getTRMoveName(heldItem);
+      shopSlotFuncs.push(() => { return {
+        name: 'Free Universal TM #' + heldItem.name.substring(2),
+        type: 'universalTM',
+        price: 0,
+        desc: tmDesc(UNIVERSAL_TM_PREFIX, moves[getMoveId(moveName)])
+      }})
+    }
+  }
   if (isCamomons())
     shopSlotFuncs.push(() => {return {
       name: 'Slot Swap',
@@ -3753,6 +3755,7 @@ function getHeldItemNameOfPokemon(pokemonStr) {
     return firstLine.substring(atIndex + ' @ '.length);
 }
 
+const UNIVERSAL_TM_PREFIX = 'Teach ANY 1 Pokemon the move ';
 function randomTM() {
   let randy = Math.random();
 
@@ -3763,7 +3766,7 @@ function randomTM() {
       name: 'Universal TM #' + move.num,
       type: 'universalTM',
       price: tmPrice(move) + 10,
-      desc: tmDesc('Teach ANY 1 Pokemon the move ', move),
+      desc: tmDesc(UNIVERSAL_TM_PREFIX, move),
     };
   } else if ((randy -= .05) < 0) {
     // Party TM

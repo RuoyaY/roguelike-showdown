@@ -77,7 +77,7 @@ Rawst Berry	heldItem	10
 Aspear Berry	heldItem	1														
 Persim Berry	heldItem	1														
 Lum Berry	heldItem	10														
-Miracle Berry	heldItem	10											Lum Berry + confusion			
+Miracle Berry	heldItem	10	0													
 Leppa Berry	heldItem	10				Revival Blessing,Struggle										
 Leppa Berry	heldItem	60				Acid Downpour,All-Out Pummeling,Black Hole Eclipse,Bloom Doom,Breakneck Blitz,Catastropika,Clangorous Soulblaze,Continental Crush,Corkscrew Crash,Devastating Drake,Extreme Evoboost,Genesis Supernova,Gigavolt Havoc,Guardian of Alola,Hydro Vortex,Inferno Overdrive,Let's Snuggle Forever,Light That Burns the Sky,Malicious Moonsault,Menacing Moonraze Maelstrom,Never-Ending Nightmare,Oceanic Operetta,Pulverizing Pancake,Savage Spin-Out,Searing Sunraze Smash,Shattered Psyche,Sinister Arrow Raid,Soul-Stealing 7-Star Strike,Splintered Stormshards,Stoked Sparksurfer,Subzero Slammer,Supersonic Skystrike,Tectonic Rage,Twinkle Tackle										
 Jaboca Berry	heldItem	15											physical attacker loses 1/8 max HP			
@@ -251,28 +251,28 @@ Perfect Plate	misc	25											Set a Pokemon's held item to ANY Plate (e.g. "*Z
 Random Plate	misc	10											Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").			
 Wrong Plate	misc	5											Set a Pokemon's held item to any Plate (e.g. "*Zap Plate*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
 Plate Request	misc	5											Ask your opponent to pick a Plate (e.g. "*Zap Plate*"). Set any 1 Pokemon's held item to that Plate.			
-Buginium Z	heldItem	60														
-Darkinium Z	heldItem	60														
-Dragonium Z	heldItem	60														
-Electrium Z	heldItem	60														
-Fairium Z	heldItem	60														
-Fightinium Z	heldItem	60														
-Firium Z	heldItem	60														
-Flyinium Z	heldItem	60														
-Ghostium Z	heldItem	60														
-Grassium Z	heldItem	60														
-Groundium Z	heldItem	60														
-Icium Z	heldItem	60														
-Normalium Z	heldItem	60														
-Poisonium Z	heldItem	60														
-Psychium Z	heldItem	60														
-Rockium Z	heldItem	60														
-Steelium Z	heldItem	60														
-Waterium Z	heldItem	60														
-Perfect Z-Crystal	misc	70											Set a Pokemon's held item to any Z-Crystal.			
-Random Z-Crystal	misc	40											Generate a random type, then give the corresponding Z-Crystal to any 1 Pokemon.			
-Wrong Z-Crystal	misc	40											Set a Pokemon's held item to any Z-Crystal that DOES NOT correspond to the current type of ANY of its moves.			
-Z-Crystal Request	misc	35											Ask your opponent to pick a type-based Z-Crystal. Set any 1 Pokemon's held item to that Z-Crystal.			
+Buginium Z	heldItem	55														
+Darkinium Z	heldItem	55														
+Dragonium Z	heldItem	55														
+Electrium Z	heldItem	55														
+Fairium Z	heldItem	55														
+Fightinium Z	heldItem	55														
+Firium Z	heldItem	55														
+Flyinium Z	heldItem	55														
+Ghostium Z	heldItem	55														
+Grassium Z	heldItem	55														
+Groundium Z	heldItem	55														
+Icium Z	heldItem	55														
+Normalium Z	heldItem	55														
+Poisonium Z	heldItem	55														
+Psychium Z	heldItem	55														
+Rockium Z	heldItem	55														
+Steelium Z	heldItem	55														
+Waterium Z	heldItem	55														
+Perfect Z-Crystal	misc	65											Set a Pokemon's held item to any Z-Crystal.			
+Random Z-Crystal	misc	35											Generate a random type, then give the corresponding Z-Crystal to any 1 Pokemon.			
+Wrong Z-Crystal	misc	30											Set a Pokemon's held item to any Z-Crystal that DOES NOT correspond to the current type of ANY of its moves.			
+Z-Crystal Request	misc	30											Ask your opponent to pick a type-based Z-Crystal. Set any 1 Pokemon's held item to that Z-Crystal.			
 Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola									Teach Raichu-Alola *Thunderbolt* and set its held item to *Aloraichium Z*.			
 Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye									Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.			
 Last Resort TM & Eevium Z	TMAndZCrystal	100		eevee									Teach Eevee *Last Resort* and set its held item to *Eevium Z*.			
@@ -332,7 +332,7 @@ Fairy Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="ty
 Stellar Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-stellar">Stellar</span>.			
 Perfect Tera Shards	misc	20											Set a Pokemon's Tera Type to anything.			
 Random Tera Shards	misc	5											Generate a random type (including Stellar), then set any 1 Pokemon's Tera Type to that type.			
-Tera Shards Request	misc	1											Ask your opponent to pick a Tera Type. Set any 1 Pokemon's Tera Type to that type.			
+Tera Shards Request	misc	0											Ask your opponent to pick a Tera Type. Set any 1 Pokemon's Tera Type to that type.			
 Mirror Tera Shards	misc	15					2						Copy a Pokemon's Tera Type to another Pokemon.			
 Shadow Tera Shards	misc	10								x			Set a Pokemon's Tera Type to one you KNOW FOR SURE your opponent had last battle.			
 Reflecting Tera Shards	beforeBattle	15											Before battle: Set your [mth] Pokemon's Tera Type to your opponent's [nth] Pokemon's Tera Type.			
@@ -408,7 +408,7 @@ Abomasite	heldItem	125		abomasnow									If held by an Abomasnow, this item all
 Galladite	heldItem	65		gallade									If held by a Gallade, this item allows it to Mega Evolve in battle.			
 Audinite	heldItem	90		audino									If held by an Audino, this item allows it to Mega Evolve in battle.			
 Diancite	heldItem	50		diancie									If held by a Diancie, this item allows it to Mega Evolve in battle.			
-Rusted Sword	heldItem	10		zacian									If held by a Zacian, this item changes its forme to Crowned Sword.			
+Rusted Sword	heldItem	30		zacian									If held by a Zacian, this item changes its forme to Crowned Sword.			
 Rusted Shield	heldItem	30		zamazenta									If held by a Zamazenta, this item changes its forme to Crowned Shield.			
 Crucibellite	heldItem	65		crucibelle									If held by a Crucibelle, this item allows it to Mega Evolve in battle.			
 Adamant Crystal	heldItem	20		dialga,dialgaorigin									If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.			
@@ -749,109 +749,109 @@ Dawn Stone	heldItem	0									x		Every round, automatically sets EVERY move slot
 Dusk Stone	heldItem	0									x		Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).			
 Dubious Disc	heldItem	-20r-10											permanently can't be changed/replaced			
 Up-Grade	heldItem	5r									x		Every round, changes to a random species w/ higher stats			
-TR00	heldItem	40	0.2				2						all others learn Swords Dance			
-TR01	heldItem	40	0.2				2						all others learn Body Slam			
-TR02	heldItem	40	0.2				2						all others learn Flamethrower			
-TR03	heldItem	40	0.2				2						all others learn Hydro Pump			
-TR04	heldItem	40	0.2				2						all others learn Surf			
-TR05	heldItem	40	0.2				2						all others learn Ice Beam			
-TR06	heldItem	40	0.2				2						all others learn Blizzard			
-TR07	heldItem	40	0.2				2						all others learn Low Kick			
-TR08	heldItem	40	0.2				2						all others learn Thunderbolt			
-TR09	heldItem	40	0.2				2						all others learn Thunder			
-TR10	heldItem	40	0.2				2						all others learn Earthquake			
-TR11	heldItem	40	0.2				2						all others learn Psychic			
-TR12	heldItem	40	0.2				2						all others learn Agility			
-TR13	heldItem	20	0.2				2						all others learn Focus Energy			
-TR14	heldItem	20	0.2				2						all others learn Metronome			
-TR15	heldItem	40	0.2				2						all others learn Fire Blast			
-TR16	heldItem	40	0.2				2						all others learn Waterfall			
-TR17	heldItem	40	0.2				2						all others learn Amnesia			
-TR18	heldItem	40	0.2				2						all others learn Leech Life			
-TR19	heldItem	40	0.2				2						all others learn Tri Attack			
-TR20	heldItem	40	0.2				2						all others learn Substitute			
-TR21	heldItem	40	0.2				2						all others learn Reversal			
-TR22	heldItem	40	0.2				2						all others learn Sludge Bomb			
-TR23	heldItem	20	0.2				2						all others learn Spikes			
-TR24	heldItem	40	0.2				2						all others learn Outrage			
-TR25	heldItem	40	0.2				2						all others learn Psyshock			
-TR26	heldItem	20	0.2				2						all others learn Endure			
-TR27	heldItem	40	0.2				2						all others learn Sleep Talk			
-TR28	heldItem	40	0.2				2						all others learn Megahorn			
-TR29	heldItem	40	0.2				2						all others learn Baton Pass			
-TR30	heldItem	40	0.2				2						all others learn Encore			
-TR31	heldItem	40	0.2				2						all others learn Iron Tail			
-TR32	heldItem	40	0.2				2						all others learn Crunch			
-TR33	heldItem	40	0.2				2						all others learn Shadow Ball			
-TR34	heldItem	40	0.2				2						all others learn Future Sight			
-TR35	heldItem	40	0.2				2						all others learn Uproar			
-TR36	heldItem	40	0.2				2						all others learn Heat Wave			
-TR37	heldItem	40	0.2				2						all others learn Taunt			
-TR38	heldItem	20	0.2				2						all others learn Trick			
-TR39	heldItem	40	0.2				2						all others learn Superpower			
-TR40	heldItem	20	0.2				2						all others learn Skill Swap			
-TR41	heldItem	40	0.2				2						all others learn Blaze Kick			
-TR42	heldItem	40	0.2				2						all others learn Hyper Voice			
-TR43	heldItem	40	0.2				2						all others learn Overheat			
-TR44	heldItem	40	0.2				2						all others learn Cosmic Power			
-TR45	heldItem	40	0.2				2						all others learn Muddy Water			
-TR46	heldItem	40	0.2				2						all others learn Iron Defense			
-TR47	heldItem	40	0.2				2						all others learn Dragon Claw			
-TR48	heldItem	40	0.2				2						all others learn Bulk Up			
-TR49	heldItem	40	0.2				2						all others learn Calm Mind			
-TR50	heldItem	40	0.2				2						all others learn Leaf Blade			
-TR51	heldItem	40	0.2				2						all others learn Dragon Dance			
-TR52	heldItem	40	0.2				2						all others learn Gyro Ball			
-TR53	heldItem	40	0.2				2						all others learn Close Combat			
-TR54	heldItem	20	0.2				2						all others learn Toxic Spikes			
-TR55	heldItem	40	0.2				2						all others learn Flare Blitz			
-TR56	heldItem	40	0.2				2						all others learn Aura Sphere			
-TR57	heldItem	40	0.2				2						all others learn Poison Jab			
-TR58	heldItem	40	0.2				2						all others learn Dark Pulse			
-TR59	heldItem	40	0.2				2						all others learn Seed Bomb			
-TR60	heldItem	40	0.2				2						all others learn X-Scissor			
-TR61	heldItem	40	0.2				2						all others learn Bug Buzz			
-TR62	heldItem	40	0.2				2						all others learn Dragon Pulse			
-TR63	heldItem	40	0.2				2						all others learn Power Gem			
-TR64	heldItem	40	0.2				2						all others learn Focus Blast			
-TR65	heldItem	40	0.2				2						all others learn Energy Ball			
-TR66	heldItem	40	0.2				2						all others learn Brave Bird			
-TR67	heldItem	40	0.2				2						all others learn Earth Power			
-TR68	heldItem	40	0.2				2						all others learn Nasty Plot			
-TR69	heldItem	40	0.2				2						all others learn Zen Headbutt			
-TR70	heldItem	40	0.2				2						all others learn Flash Cannon			
-TR71	heldItem	40	0.2				2						all others learn Leaf Storm			
-TR72	heldItem	40	0.2				2						all others learn Power Whip			
-TR73	heldItem	40	0.2				2						all others learn Gunk Shot			
-TR74	heldItem	40	0.2				2						all others learn Iron Head			
-TR75	heldItem	40	0.2				2						all others learn Stone Edge			
-TR76	heldItem	20	0.2				2						all others learn Stealth Rock			
-TR77	heldItem	40	0.2				2						all others learn Grass Knot			
-TR78	heldItem	40	0.2				2						all others learn Sludge Wave			
-TR79	heldItem	40	0.2				2						all others learn Heavy Slam			
-TR80	heldItem	40	0.2				2						all others learn Electro Ball			
-TR81	heldItem	40	0.2				2						all others learn Foul Play			
-TR82	heldItem	40	0.2				2						all others learn Stored Power			
-TR83	heldItem	40	0.2				2						all others learn Ally Switch			
-TR84	heldItem	40	0.2				2						all others learn Scald			
-TR85	heldItem	20	0.2				2						all others learn Work Up			
-TR86	heldItem	40	0.2				2						all others learn Wild Charge			
-TR87	heldItem	40	0.2				2						all others learn Drill Run			
-TR88	heldItem	40	0.2				2						all others learn Heat Crash			
-TR89	heldItem	40	0.2				2						all others learn Hurricane			
-TR90	heldItem	40	0.2				2						all others learn Play Rough			
-TR91	heldItem	40	0.2				2						all others learn Venom Drench			
-TR92	heldItem	40	0.2				2						all others learn Dazzling Gleam			
-TR93	heldItem	40	0.2				2						all others learn Darkest Lariat			
-TR94	heldItem	40	0.2				2						all others learn High Horsepower			
-TR95	heldItem	40	0.2				2						all others learn Throat Chop			
-TR96	heldItem	40	0.2				2						all others learn Pollen Puff			
-TR97	heldItem	40	0.2				2						all others learn Psychic Fangs			
-TR98	heldItem	40	0.2				2						all others learn Liquidation			
-TR99	heldItem	40	0.2				2						all others learn Body Press			
-Perfect TR	misc	50					2						Set a Pokemon's held item to any TR (e.g. *TR00*).			
-Random TR	misc	20					2						Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
-TR Request	misc	5											Ask your opponenet to choose at TR (e.g. *TR00*). Set any 1 Pokemon's held item to that TR.			
+TR00	heldItem	50	0.2										all others learn Swords Dance			
+TR01	heldItem	50	0.2										all others learn Body Slam			
+TR02	heldItem	50	0.2										all others learn Flamethrower			
+TR03	heldItem	50	0.2										all others learn Hydro Pump			
+TR04	heldItem	50	0.2										all others learn Surf			
+TR05	heldItem	50	0.2										all others learn Ice Beam			
+TR06	heldItem	50	0.2										all others learn Blizzard			
+TR07	heldItem	50	0.2										all others learn Low Kick			
+TR08	heldItem	50	0.2										all others learn Thunderbolt			
+TR09	heldItem	50	0.2										all others learn Thunder			
+TR10	heldItem	50	0.2										all others learn Earthquake			
+TR11	heldItem	50	0.2										all others learn Psychic			
+TR12	heldItem	20	0.2										all others learn Agility			
+TR13	heldItem	20	0.2										all others learn Focus Energy			
+TR14	heldItem	20	0.2										all others learn Metronome			
+TR15	heldItem	50	0.2										all others learn Fire Blast			
+TR16	heldItem	50	0.2										all others learn Waterfall			
+TR17	heldItem	20	0.2										all others learn Amnesia			
+TR18	heldItem	50	0.2										all others learn Leech Life			
+TR19	heldItem	50	0.2										all others learn Tri Attack			
+TR20	heldItem	50	0.2										all others learn Substitute			
+TR21	heldItem	50	0.2										all others learn Reversal			
+TR22	heldItem	50	0.2										all others learn Sludge Bomb			
+TR23	heldItem	20	0.2										all others learn Spikes			
+TR24	heldItem	50	0.2										all others learn Outrage			
+TR25	heldItem	50	0.2										all others learn Psyshock			
+TR26	heldItem	20	0.2										all others learn Endure			
+TR27	heldItem	20	0.2										all others learn Sleep Talk			
+TR28	heldItem	50	0.2										all others learn Megahorn			
+TR29	heldItem	20	0.2										all others learn Baton Pass			
+TR30	heldItem	50	0.2										all others learn Encore			
+TR31	heldItem	50	0.2										all others learn Iron Tail			
+TR32	heldItem	50	0.2										all others learn Crunch			
+TR33	heldItem	50	0.2										all others learn Shadow Ball			
+TR34	heldItem	50	0.2										all others learn Future Sight			
+TR35	heldItem	50	0.2										all others learn Uproar			
+TR36	heldItem	50	0.2										all others learn Heat Wave			
+TR37	heldItem	50	0.2										all others learn Taunt			
+TR38	heldItem	20	0.2										all others learn Trick			
+TR39	heldItem	50	0.2										all others learn Superpower			
+TR40	heldItem	20	0.2										all others learn Skill Swap			
+TR41	heldItem	50	0.2										all others learn Blaze Kick			
+TR42	heldItem	50	0.2										all others learn Hyper Voice			
+TR43	heldItem	50	0.2										all others learn Overheat			
+TR44	heldItem	50	0.2										all others learn Cosmic Power			
+TR45	heldItem	50	0.2										all others learn Muddy Water			
+TR46	heldItem	20	0.2										all others learn Iron Defense			
+TR47	heldItem	50	0.2										all others learn Dragon Claw			
+TR48	heldItem	50	0.2										all others learn Bulk Up			
+TR49	heldItem	50	0.2										all others learn Calm Mind			
+TR50	heldItem	50	0.2										all others learn Leaf Blade			
+TR51	heldItem	50	0.2										all others learn Dragon Dance			
+TR52	heldItem	50	0.2										all others learn Gyro Ball			
+TR53	heldItem	50	0.2										all others learn Close Combat			
+TR54	heldItem	20	0.2										all others learn Toxic Spikes			
+TR55	heldItem	50	0.2										all others learn Flare Blitz			
+TR56	heldItem	50	0.2										all others learn Aura Sphere			
+TR57	heldItem	50	0.2										all others learn Poison Jab			
+TR58	heldItem	50	0.2										all others learn Dark Pulse			
+TR59	heldItem	50	0.2										all others learn Seed Bomb			
+TR60	heldItem	50	0.2										all others learn X-Scissor			
+TR61	heldItem	50	0.2										all others learn Bug Buzz			
+TR62	heldItem	50	0.2										all others learn Dragon Pulse			
+TR63	heldItem	50	0.2										all others learn Power Gem			
+TR64	heldItem	50	0.2										all others learn Focus Blast			
+TR65	heldItem	50	0.2										all others learn Energy Ball			
+TR66	heldItem	50	0.2										all others learn Brave Bird			
+TR67	heldItem	50	0.2										all others learn Earth Power			
+TR68	heldItem	50	0.2										all others learn Nasty Plot			
+TR69	heldItem	50	0.2										all others learn Zen Headbutt			
+TR70	heldItem	50	0.2										all others learn Flash Cannon			
+TR71	heldItem	50	0.2										all others learn Leaf Storm			
+TR72	heldItem	50	0.2										all others learn Power Whip			
+TR73	heldItem	50	0.2										all others learn Gunk Shot			
+TR74	heldItem	50	0.2										all others learn Iron Head			
+TR75	heldItem	50	0.2										all others learn Stone Edge			
+TR76	heldItem	20	0.2										all others learn Stealth Rock			
+TR77	heldItem	50	0.2										all others learn Grass Knot			
+TR78	heldItem	50	0.2										all others learn Sludge Wave			
+TR79	heldItem	50	0.2										all others learn Heavy Slam			
+TR80	heldItem	50	0.2										all others learn Electro Ball			
+TR81	heldItem	50	0.2										all others learn Foul Play			
+TR82	heldItem	20	0.2										all others learn Stored Power			
+TR83	heldItem	50	0.2										all others learn Ally Switch			
+TR84	heldItem	50	0.2										all others learn Scald			
+TR85	heldItem	20	0.2										all others learn Work Up			
+TR86	heldItem	50	0.2										all others learn Wild Charge			
+TR87	heldItem	50	0.2										all others learn Drill Run			
+TR88	heldItem	50	0.2										all others learn Heat Crash			
+TR89	heldItem	50	0.2										all others learn Hurricane			
+TR90	heldItem	50	0.2										all others learn Play Rough			
+TR91	heldItem	20	0.2										all others learn Venom Drench			
+TR92	heldItem	50	0.2										all others learn Dazzling Gleam			
+TR93	heldItem	50	0.2										all others learn Darkest Lariat			
+TR94	heldItem	50	0.2										all others learn High Horsepower			
+TR95	heldItem	50	0.2										all others learn Throat Chop			
+TR96	heldItem	50	0.2										all others learn Pollen Puff			
+TR97	heldItem	50	0.2										all others learn Psychic Fangs			
+TR98	heldItem	50	0.2										all others learn Liquidation			
+TR99	heldItem	50	0.2										all others learn Body Press			
+Perfect TR	misc	60											Set a Pokemon's held item to any TR (e.g. *TR00*).			
+Random TR	misc	20											Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
+Offensive TR Request	misc	20											Ask your opponenet to choose a non-status move TR (e.g. *TR01*). Set any 1 Pokemon's held item to that TR.			
 Berserk Gene	heldItem	25											confusion and +2 Atk on entry			
 Normal Candy Party	misc	20											Increase ALL Normal-type Pokemon's level by one.			
 Fire Candy Party	misc	20											Increase ALL Fire-type Pokemon's level by one.			
