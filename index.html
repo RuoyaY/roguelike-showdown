@@ -529,24 +529,23 @@ const TYPE_MATCHUPS = [
 const STAT_TOTAL_GOAL = 650;
 const BASE_ABILITY_VALUE = 660/650;
 const FOUR_POINT_FIVE_ABILITY_VALUE = 700/650;
-const CANT_TERA_VALUE = 620/650;
-const STUCK_ON_STELLAR_VALUE = 630/650;
+const PROB_TERA_OGERPON = 1/2; // my guess for % of Ogerpon's turns where she is terastallized
+const PROB_TERA_TERAPAGOS = 1/3; // my guess for % of Terapagos-Terastal's turns where they're terastallized
 const SPECIES_VALUES = {
-  // can't change tera type, but does get a stat-raising ability on Tera
-  'Ogerpon': 1,
-  'Ogerpon-Cornerstone': 1,
-  'Ogerpon-Heartflame': 1,
-  'Ogerpon-Wellspring': 1,
-  // can't tera without glitching
-  'Ogerpon-Teal-Tera': CANT_TERA_VALUE,
-  'Ogerpon-Cornerstone-Tera': CANT_TERA_VALUE,
-  'Ogerpon-Heartflame-Tera': CANT_TERA_VALUE,
-  'Ogerpon-Wellspring-Tera': CANT_TERA_VALUE,
-  // stuck with Stellar tera type
-  'Terapagos': STUCK_ON_STELLAR_VALUE,
-  'Terapagos-Stellar': STUCK_ON_STELLAR_VALUE,
-  // stuck with Stellar tera type, but does get a stat-raising transformation & new ability on Tera
-  'Terapagos-Terastal': 1,
+  // Only 4 valid tera types. Gets a stat-raising ability on Tera.
+  'Ogerpon': 1 + PROB_TERA_OGERPON*(60/655 - (BASE_ABILITY_VALUE-1)),
+  'Ogerpon-Teal-Tera': 1 + PROB_TERA_OGERPON*(60/655 - (BASE_ABILITY_VALUE-1)),
+  'Ogerpon-Cornerstone': 1 + PROB_TERA_OGERPON*(48/655 - (BASE_ABILITY_VALUE-1)),
+  'Ogerpon-Cornerstone-Tera': 1 + PROB_TERA_OGERPON*(48/655 - (BASE_ABILITY_VALUE-1)),
+  'Ogerpon-Hearthflame': 1 + PROB_TERA_OGERPON*(60/655 - (BASE_ABILITY_VALUE-1)),
+  'Ogerpon-Hearthflame-Tera': 1 + PROB_TERA_OGERPON*(60/655 - (BASE_ABILITY_VALUE-1)),
+  'Ogerpon-Wellspring': 1 + PROB_TERA_OGERPON*(53/655 - (BASE_ABILITY_VALUE-1)),
+  'Ogerpon-Wellspring-Tera': 1 + PROB_TERA_OGERPON*(53/655 - (BASE_ABILITY_VALUE-1)),
+  // gets a stat-raising transformation & new ability on Tera
+  'Terapagos-Terastal': 1 + PROB_TERA_TERAPAGOS*(725-644)/644,
+  // no special treatment (aside from abilities; see below)
+  // 'Terapagos': 1,
+  // 'Terapagos-Stellar': 1,
 }
 const SPECIES_WITH_ABILITY_VALUES = {
   'Cramorant-Gulping w/ Gulp Missile': 650/(650 - 2 * (150/4 + 100/3)), // since it'll be higher Lv, i figure it'll trigger more often
@@ -559,28 +558,38 @@ const SPECIES_WITH_ABILITY_VALUES = {
   'Zygarde w/ Power Construct': 660/611,
   'Zygarde-10% w/ Power Construct': 660/566,
 
-  'Terapagos-Terastal w/ Tera Shell': BASE_ABILITY_VALUE,
-
   // calculated to equal its balanced, otherwise-identical forme
   'Wishiwashi w/ Schooling': 660/310,
   'Minior w/ Shields Down': 660/711,
-  // effectively a Terapagos-Terastal w/ Tera Shift
-  'Terapagos w/ Tera Shift': 650/524 * BASE_ABILITY_VALUE,
-  'Terapagos-Terastal w/ Tera Shift': BASE_ABILITY_VALUE,
-  'Terapagos-Stellar w/ Tera Shift': 650/725 * BASE_ABILITY_VALUE,
-
-  'Ogerpon-Teal-Tera w/ Embody Aspect (Teal)': CANT_TERA_VALUE * (650 + 30)/650, // Spe>150 doesn't seem so useful
-  'Ogerpon-Cornerstone-Tera w/ Embody Aspect (Cornerstone)': CANT_TERA_VALUE * 700/650, 
-  'Ogerpon-Hearthflame-Tera w/ Embody Aspect (Hearthflame)': CANT_TERA_VALUE * 710/650, 
-  'Ogerpon-Wellspring-Tera w/ Embody Aspect (Wellspring)': CANT_TERA_VALUE * 700/650, 
   
-  // these abilities do nothing, since the form has already changed
-  'Eiscue-Noice w/ Ice Face': 1,
-  'Mimikyu-Busted w/ Disguise': 1,
-  'Mimikyu-Busted-Totem w/ Disguise': 1,
-  'Palafin-Hero w/ Zero to Hero': 1,
-  'Zygarde-Complete w/ Power Construct': 1,
+  // almost never comes up
+  "Tatsugiri w/ Commander": 1,
+  
+  // idk its value
+  "Greninja-Ash w/ Battle Bond": BASE_ABILITY_VALUE,
+  "Mimikyu w/ Disguise": BASE_ABILITY_VALUE,
+  "Mimikyu-Totem w/ Disguise": BASE_ABILITY_VALUE,
+  "Castform w/ Forecast": BASE_ABILITY_VALUE,
+  "Morpeko w/ Hunger Switch": BASE_ABILITY_VALUE,
+  "Morpeko-Hangry w/ Hunger Switch": BASE_ABILITY_VALUE,
+  "Eiscue w/ Ice Face": BASE_ABILITY_VALUE,
+  "Arceus w/ Multitype": BASE_ABILITY_VALUE,
+  "Pecharunt w/ Poison Puppeteer": BASE_ABILITY_VALUE,
+  "Silvally w/ RKS System": BASE_ABILITY_VALUE,
+  "Aegislash w/ Stance Change": BASE_ABILITY_VALUE,
+  "Aegislash-Blade w/ Stance Change": BASE_ABILITY_VALUE,
+  'Terapagos-Terastal w/ Tera Shell': SPECIES_VALUES['Terapagos-Terastal'] * BASE_ABILITY_VALUE,
+  'Terapagos-Stellar w/ Teraform Zero': BASE_ABILITY_VALUE,
+  "Darmanitan w/ Zen Mode": BASE_ABILITY_VALUE,
+  "Darmanitan-Zen w/ Zen Mode": BASE_ABILITY_VALUE,
+  "Darmanitan-Galar w/ Zen Mode": BASE_ABILITY_VALUE,
+  "Darmanitan-Galar-Zen w/ Zen Mode": BASE_ABILITY_VALUE,
+  "Palafin w/ Zero to Hero": BASE_ABILITY_VALUE,
 }
+// effectively a Terapagos-Terastal w/ Tera Shell
+SPECIES_WITH_ABILITY_VALUES['Terapagos w/ Tera Shift'] = 625/510 * SPECIES_WITH_ABILITY_VALUES['Terapagos-Terastal w/ Tera Shell'];
+SPECIES_WITH_ABILITY_VALUES['Terapagos-Stellar w/ Tera Shift'] = 625/708 * SPECIES_WITH_ABILITY_VALUES['Terapagos-Terastal w/ Tera Shell'];
+
 const ABILITY_VALUES = {
   'Beads of Ruin': 650/625, // SpD drop
   'Sword of Ruin': 650/625, // Def drop
@@ -629,10 +638,32 @@ const ABILITY_VALUES = {
   'No Ability': 1,
 
   'Defeatist': 610/650,
-  // Klutz isn't bad enough in this context to warrant adjusting
+  'Klutz': 645/650,
   'Slow Start': 550/650,
   'Stall': (650-79)/650,
   'Truant': 550/650,
+
+  // species-dependant
+  "Battle Bond": 1,
+  "Commander": 1,
+  "Disguise": 1,
+  "Flower Gift": 1,
+  "Forecast": 1,
+  "Gulp Missile": 1,
+  "Hunger Switch": 1,
+  "Ice Face": 1,
+  "Multitype": 1,
+  "Poison Puppeteer": 1,
+  "Power Construct": 1,
+  "RKS System": 1,
+  "Schooling": 1,
+  "Shields Down": 1,
+  "Stance Change": 1,
+  "Tera Shell": 1,
+  "Tera Shift": 1,
+  "Teraform Zero": 1,
+  "Zen Mode": 1,
+  "Zero to Hero": 1,
 };
 const IRREPLACEABLE_ABILITIES = ['Defeatist', 'Slow Start', 'Stall', 'Truant'];
 
@@ -647,13 +678,21 @@ const IMPROVED_ABILITIES = {
 const ABILITIES_WITH_UNEXPECTED_DESC = ['Wonder Guard', 'Illusion'];
 const CHANGED_ABILITY_DESC = {
   'Wonder Guard': 'This Pokemon can only be damaged by supereffective moves and indirect damage.\nIt cannot get Species Changers.',
-  'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage. Level is NOT disguised.',
+  'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage.\nLevel is NOT disguised.',
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate or Z-Crystal.',
-  'Embody Aspect (Cornerstone)': 'If this Pokemon is an Ogerpon-Cornerstone, on switch-in, this Pokemon\'s Defense is raised by 1 stage.',
-  'Embody Aspect (Hearthflame)': "If this Pokemon is an Ogerpon-Hearthflame, on switch-in, this Pokemon's Attack is raised by 1 stage.",
-  'Embody Aspect (Teal)': "If this Pokemon is an Ogerpon wearing the Teal mask, on switch-in, this Pokemon's Speed is raised by 1 stage.",
-  'Embody Aspect (Wellspring)': "If this Pokemon is an Ogerpon-Wellspring, on switch-in, this Pokemon's Special Defense is raised by 1 stage.",
+  'Tera Shell': 'Terapagos-Terastal: If full HP, attacks taken have 0.5x effectiveness unless naturally immune.',
+  'Teraform Zero': 'Terapagos-Stellar: Terastallizing ends the effects of weather and terrain. Once per battle.',
 };
+const DO_NOTHING_ABILITIES = [
+  'Embody Aspect (Cornerstone)',
+  'Embody Aspect (Hearthflame)',
+  'Embody Aspect (Teal)',
+  'Embody Aspect (Wellspring)',
+]
+for (const ability of DO_NOTHING_ABILITIES) {
+  ABILITY_VALUES[ability] = 1;
+  CHANGED_ABILITY_DESC[ability] = 'Does nothing.';
+}
 
 const CAMOMONS_DOUBLES_COMMAND = '/challenge gen9doublescustomgame @@@ Camomons Mod';
 
@@ -779,6 +818,11 @@ const ILLEGAL_MONS = [
   'terapagos',
   // misleadingly, a cap Pikachu that can't use Pikashunium Z. can't use Pikanium Z or cosplay moves, either.
   'pikachuworld',
+  // misleadingly, having Embody Aspect before Tera doesn't do anything (and it gets it for free, after Tera)
+  "ogerpontealtera",
+  "ogerponwellspringtera",
+  "ogerponhearthflametera",
+  "ogerponcornerstonetera",
 ];
 const IDENTICAL_MONS = [
   ['sinistea', 'sinisteaantique'],
@@ -1652,7 +1696,7 @@ function addChoices(choicesDiv) {
     }
     const species = allSpecies[speciesId];
     if (!isLegal(speciesId, null)) {
-      alert('Error: this forme is not legal.');
+      alert('Error: please pick a different forme for this Pokemon.');
       return false;
     }
     const requiredType = pokeball.split('-Type ')[0];
@@ -1740,11 +1784,11 @@ function generateSpecificSpecies() {
   // console.log(formes);
 }
 
-function isLegal(speciesId, requiredType) {
+function isLegal(speciesId, requiredType, ignoreIllegalMons) {
   const species = allSpecies[speciesId];
   if (species.forme && ILLEGAL_FORMES.includes(species.forme))
     return false;
-  if (ILLEGAL_MONS.includes(speciesId))
+  if (!ignoreIllegalMons && ILLEGAL_MONS.includes(speciesId))
     return false;
   if (requiredType && !species.types.includes(requiredType))
     return false;
@@ -1759,6 +1803,10 @@ function passesIdenticalSpeciesBias(speciesId) {
 }
 
 function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName, teraType, showBossLevelUps, speciesPredicate) {  
+  let pokeball = null;
+  if (hasChooseButton)
+    pokeball = getPokeball();
+  
   if (speciesName == null) {
     let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
@@ -1767,12 +1815,9 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
     const illegalSpeciesNames = [];
     if (isBoss())
       illegalSpeciesNames.push('Pokestar Spirit');
-    speciesName = randomSpeciesName(requiredType, illegalSpeciesNames, false, speciesPredicate);
+    speciesName = randomSpeciesName(requiredType, illegalSpeciesNames, false, speciesPredicate, abilityName == null&& pokeball !== 'Strange Ball');
   }
   
-  let pokeball = null;
-  if (hasChooseButton)
-    pokeball = getPokeball();
   let pokemonStr = randomOfSpecies(speciesName, abilityName, pokeball, null, teraType, hasChooseButton, hasChooseButton, showBossLevelUps);
 
   if (hasChooseButton) {
@@ -1818,7 +1863,7 @@ function addPokemon(choicesDiv, hasChooseButton, pokemonStr) {
   choicesDiv.append(divEle);
 }
 
-function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen, speciesPredicate) {
+function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen, speciesPredicate, hasOriginalAbility) {
   if (speciesPredicate) // true iff Wonder Ball, at least for now
     requiredType = null;
   let speciesId;
@@ -1827,7 +1872,7 @@ function randomSpeciesName(requiredType, illegalSpeciesIds, canBePrevSeen, speci
     speciesId = randomKey(allSpecies);
     if (!canBePrevSeen && failsafe-- < 0)
       prevSeenSpecies.clear();
-  } while (!isLegal(speciesId, requiredType) 
+  } while (!isLegal(speciesId, requiredType, !hasOriginalAbility) 
               || !passesIdenticalSpeciesBias(speciesId)
               || (illegalSpeciesIds && illegalSpeciesIds.includes(speciesId))
               || (speciesPredicate && !speciesPredicate(allSpecies[speciesId]))
@@ -3497,6 +3542,8 @@ function abilityInHTML(abilityName) {
 function abilityNameInHTML(abilityName) {
   if (ABILITIES_WITH_UNEXPECTED_DESC.includes(abilityName))
     abilityName = spanWithClass(abilityName, 'abilityUnexpected');
+  if (DO_NOTHING_ABILITIES.includes(abilityName))
+    abilityName = spanWithClass(abilityName, 'attr');
   if (IMPROVED_ABILITIES[abilityName])
     abilityName = spanWithClass(abilityName, 'improvedAbility');
   return abilityName;
@@ -3568,7 +3615,7 @@ function heldItemDesc(heldItemName) {
 }
 
 function randomEgg() {
-  const speciesName = randomSpeciesName(null, ['pokestarspirit'], true);
+  const speciesName = randomSpeciesName(null, ['pokestarspirit', 'shedinja'], true);
   let pokemonStr = randomOfSpecies(speciesName, null, null, 1, 'random', true, false)
                     + '\n- Splash\n- \n- \n- ';
   return {
@@ -3630,7 +3677,7 @@ function randomTransformedSpeciesForPokemon(pokemonStr, minStatDiff, maxStatDiff
 function randomTransformedSpecies(prevStatInfo, abilityName, prevEffectiveStatTotal, minStatDiff, maxStatDiff) {
   const outputOptions = [];
   for (const [speciesId, species] of Object.entries(allSpecies)) {
-    if (!isLegal(speciesId))
+    if (!isLegal(speciesId, null, true))
       continue;
     if (prevStatInfo[0] === species) // same species
       continue;
@@ -3717,7 +3764,7 @@ function randomAbilitizerAbility() {
     ability = randomValue(abilities);
   } while (ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
             || ability.name.substring(0, 'Embody Aspect'.length) === 'Embody Aspect'
-            || ability.name === 'Teraform Zero'
+            || ability.name === 'Teraform Zero' // Tera Shift and Tera Shell are in the 'if this Pokemon is a' case
             || ability.name === 'Wonder Guard');
   return ability;
 }
