@@ -3933,8 +3933,10 @@ function tmPrice(move) {
     return 80;
   else if (isLGPE(move))
     return 30;
-  else if (move.basePower > 75)
+  else if (move.basePower >= 80)
     return 20;
+  else if (move.basePower >= 70)
+    return 15;
   else
     return 10;
 }
