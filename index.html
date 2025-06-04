@@ -2005,7 +2005,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     pokemonStr += '\nShiny: Yes';
 
   pokemonStr += '\nTera Type: ';
-  if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)], 'Grass') || forcedTera(species)) {
+  if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)]) || forcedTera(species)) {
     if (TERA_TYPES.includes(teraType))
       pokemonStr += teraType;
     else // we sometimes uses teraType='random' to reach this case
@@ -2301,7 +2301,7 @@ function canTera(species, heldItem, teraType) {
   // if (species.forme && 
   //   (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
   //   return false;
-  if (isOgerpon(species) && !OGERPON_TERA_TYPES.includes(teraType))
+  if (isOgerpon(species) && teraType && !OGERPON_TERA_TYPES.includes(teraType))
     return false;
   if (heldItem) {
     if (heldItem.name.endsWith(' Z'))
@@ -2482,12 +2482,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
   beginAddMoveChoices(choicesDiv, pokeDiv, pokemonStr);
 }
 function addTeraChoice(choicesDiv, pokeDiv, typeChoices) {
-  if (TERA_TYPES.every(type => typeChoices.includes(type)))
-    throw new Error('Too many tera choices!');
-  let type = randomElement(TERA_TYPES);
-  while (typeChoices.includes(type))
-    type = randomElement(TERA_TYPES);
-  typeChoices.push(type);
+  let type = removeRandom(typeChoices);
 
   const teraChoiceDiv = document.createElement('div');
   teraChoiceDiv.classList.add('flex-col');
@@ -2575,9 +2570,13 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
     addMoveChoices(choicesDiv, pokeDiv, speciesId, moveIds);
   } else {
     pokeEle.innerHTML = pokeEle.innerHTML.slice(0, -1); // remove the extra \n at the end
-    if (pokemonCanTera(pokemonStr) && !pokemonForcedTera(pokemonStr)) {
-      const typeChoices = [];
-      for (let i = 0; i < numChoices(); i++)
+    const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
+    if (canTera(species) && !pokemonForcedTera(pokemonStr)) {
+      let typeChoices = TERA_TYPES.slice();
+      if (isOgerpon(species))
+        typeChoices = OGERPON_TERA_TYPES.slice();
+
+      for (let i = 0; i < numChoices() && typeChoices.length > 0; i++)
         addTeraChoice(choicesDiv, pokeDiv, typeChoices);
     } else {
       endPokemonChoosing(pokeDiv);
