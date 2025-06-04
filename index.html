@@ -547,6 +547,19 @@ const SPECIES_VALUES = {
   // 'Terapagos': 1,
   // 'Terapagos-Stellar': 1,
 }
+const SPECIES_WITH_DESC = {
+  // ogerpon
+  'Ogerpon': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Speed).',
+  'Ogerpon-Teal-Tera': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Speed).',
+  'Ogerpon-Cornerstone': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Defense).',
+  'Ogerpon-Cornerstone-Tera': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Defense).',
+  'Ogerpon-Hearthflame': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Attack).',
+  'Ogerpon-Hearthflame-Tera': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Attack).',
+  'Ogerpon-Wellspring': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Sp. Def).',
+  'Ogerpon-Wellspring-Tera': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Sp. Def).',
+  // terapagos
+  'Terapagos-Terastal': 'After tera, becomes Terapagos-Stellar and ability becomes Teraform Zero.',
+}
 const SPECIES_WITH_ABILITY_VALUES = {
   'Cramorant-Gulping w/ Gulp Missile': 650/(650 - 2 * (150/4 + 100/3)), // since it'll be higher Lv, i figure it'll trigger more often
   'Cramorant-Gorging w/ Gulp Missile': 650/(650 - 1.5 * (150/4 + 50 + 50)),
@@ -2178,6 +2191,9 @@ function pokemonInHTML(pokemonStr) {
         heldItem = heldItems[getHeldItemId(strLineSplit[1])];
         firstLine = strLineSplit[0] + ' @ ' + heldItemInHTML(strLineSplit[1]);
       }
+      const speciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
+      if (SPECIES_WITH_DESC[speciesName])
+        firstLine = firstLine.replace(speciesName, spanWithTitle(speciesName, SPECIES_WITH_DESC[speciesName]));
       out += firstLine;
     } else if (strLine.startsWith('Ability:')) {
       out += spanWithClass('Ability: ', 'attr');
