@@ -2021,8 +2021,12 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
   if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)]) || forcedTera(species)) {
     if (TERA_TYPES.includes(teraType))
       pokemonStr += teraType;
-    else // we sometimes uses teraType='random' to reach this case
-      pokemonStr += randomElement(TERA_TYPES);
+    else { // we sometimes uses teraType='random' to reach this case
+      if (isOgerpon(species))
+        pokemonStr += randomElement(OGERPON_TERA_TYPES);
+      else
+        pokemonStr += randomElement(TERA_TYPES);
+    }
   }
     
   pokemonStr += '\nEVs: 1 HP';
