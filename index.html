@@ -609,13 +609,13 @@ const ABILITY_VALUES = {
   'Tablets of Ruin': 650/610, // Atk drop
   'Vessel of Ruin': 650/610, // SpA drop
   
-  'Desolate Land': 700/650, // sunny + no water while in battle
-  'Primordial Sea': 700/650, // rain + no fire while in battle
-  'Drizzle': 700/650,
-  'Drought': 700/650,
-  'Sand Stream': 700/650,
-  'Snow Warning': 700/650,
-  'Orichalcum Pulse': (700 + 33)/650,
+  'Desolate Land': 690/650, // sunny + no water while in battle
+  'Primordial Sea': 690/650, // rain + no fire while in battle
+  'Drizzle': 690/650,
+  'Drought': 690/650,
+  'Sand Stream': 690/650,
+  'Snow Warning': 690/650,
+  'Orichalcum Pulse': (680 + 33)/650,
   'Hadron Engine': (650 + 30 + 33)/650,
   
   'Intrepid Sword': 690/650,
@@ -3726,7 +3726,7 @@ function randomAbilitizer(failsafe) {
   }
 
   const ability = randomAbilitizerAbility();
-  // ability = abilities.defeatist;
+  // const ability = abilities.drought;
 
   const typicalEffectiveStatDiff = STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE);
 
