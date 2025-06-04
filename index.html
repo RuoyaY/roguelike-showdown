@@ -2005,7 +2005,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     pokemonStr += '\nShiny: Yes';
 
   pokemonStr += '\nTera Type: ';
-  if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)]) || forcedTera(species)) {
+  if (teraType || !canTera(species, heldItems[getHeldItemId(heldItemName)], 'Grass') || forcedTera(species)) {
     if (TERA_TYPES.includes(teraType))
       pokemonStr += teraType;
     else // we sometimes uses teraType='random' to reach this case
@@ -2201,16 +2201,11 @@ function pokemonInHTML(pokemonStr) {
 
     } else if (strLine.startsWith('Tera Type:')) {
       const teraType = strLine.substring('Tera Type: '.length);
-      if (glitchedTera(species)) {
-        out += spanWithClass('Tera Type: ', 'attr')
-          + spanWithTitle(spanWithClass(teraType, 'attr strikethrough worsened'),
-              'Glitches upon terastallizing, losing ability and severely lowering stats.'
-                + '\n(Also, tera type becomes ' + forcedTera(species) + ' during battle.)');
-      } else if (forcedTera(species)) {
+      if (forcedTera(species)) {
         out += spanWithClass('Tera Type: ', 'attr')
           + spanWithTitle(spanWithClass(teraType, 'attr strikethrough'),
               'Tera type becomes ' + forcedTera(species) + ' during battle.');
-      } else if (!canTera(species, heldItem)) {
+      } else if (!canTera(species, heldItem, teraType)) {
         out += spanWithClass(strLine, 'gray');
       } else {
         out += spanWithClass('Tera Type: ', 'attr');
@@ -2299,14 +2294,15 @@ function moveDesc(move, shortened) {
 function pokemonCanTera(pokemonStr) {
   const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
   const heldItem = heldItems[getHeldItemId(pokemonStr.split('\n')[0].split(' @ ')[1])];
-  return canTera(species, heldItem);
+  const teraType = getTeraTypeOfPokemon(pokemonStr);
+  return canTera(species, heldItem, teraType);
 }
-function canTera(species, heldItem) {
+function canTera(species, heldItem, teraType) {
   // if (species.forme && 
   //   (species.forme.includes('Mega') || species.forme === 'Primal' || species.forme === 'Ultra'))
   //   return false;
-  if (glitchedTera(species))
-    return false; // a bit misleading, but I don't see it ever coming up in regular gameplay
+  if (isOgerpon(species) && !OGERPON_TERA_TYPES.includes(teraType))
+    return false;
   if (heldItem) {
     if (heldItem.name.endsWith(' Z'))
       return false;
@@ -3556,10 +3552,9 @@ function abilityDesc(ability) {
   return ability.shortDesc;
 }
 
-
-function glitchedTera(species) {
-  const name = species.name;
-  return name.substring(name.length-5, name.length) === '-Tera';
+const OGERPON_TERA_TYPES = ['Grass', 'Fire', 'Water', 'Rock'];
+function isOgerpon(species) {
+  return species.name.includes('Ogerpon');
 }
 
 function heldItemInHTML(heldItemName) {
