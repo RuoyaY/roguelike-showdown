@@ -628,7 +628,7 @@ const ABILITY_VALUES = {
   'Arena Trap': FOUR_POINT_FIVE_ABILITY_VALUE,
   'Shadow Tag': FOUR_POINT_FIVE_ABILITY_VALUE,
 
-  'Contrary': FOUR_POINT_FIVE_ABILITY_VALUE,
+  // 'Contrary': FOUR_POINT_FIVE_ABILITY_VALUE, // easier to take advantage of in Constructed
   'Fluffy': 690/650,  // x.5 damage from contact moves; *2 from fire
   'Fur Coat': 730/650,  // double DEF
   'Good as Gold': FOUR_POINT_FIVE_ABILITY_VALUE, 
@@ -638,12 +638,16 @@ const ABILITY_VALUES = {
   'Imposter': 1.3,
   'Intimidate': 650/600,
   'Moody': 690/650,
-  'Parental Bond': 700/650,
+  'Parental Bond': 680/650,
   // Regenator seems less OP in Doubles
   'Speed Boost': 700/650,
   // Stakeout seems less OP in Doubles
   'Supreme Overlord': (650 + .2 * (133 + 69))/650,
   'Water Bubble': 750/650, // x2 water power; can't be burned; fire resistance
+
+  // seems better in this context (few entry hazards)
+  'Multiscale': 685/650,
+  'Shadow Shield': 685/650,
   
   'Wonder Guard': 650/36, // Pokestar Spirit is Lv1; Shedinja's transformers are impossibly expensive
 
@@ -693,6 +697,7 @@ const CHANGED_ABILITY_DESC = {
   'Wonder Guard': 'This Pokemon can only be damaged by supereffective moves and indirect damage.\nIt cannot get Species Changers.',
   'Illusion': 'This Pokemon appears as the last Pokemon in the party until it takes direct damage.\nLevel is NOT disguised.',
   'Multitype': 'If this Pokemon is an Arceus, its type changes to match its held Plate or Z-Crystal.',
+  'Parental Bond': "This Pokemon's damaging moves hit twice. The second hit has its damage quartered. Does not affect moves with multiple targets, two-turn moves, and some others.",
   'Tera Shell': 'Terapagos-Terastal: If full HP, attacks taken have 0.5x effectiveness unless naturally immune.',
   'Teraform Zero': 'Terapagos-Stellar: Terastallizing ends the effects of weather and terrain. Once per battle.',
 };
