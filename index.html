@@ -1324,6 +1324,40 @@ function loadFile(filename, onLoadFunc) {
   xhttp.send();
 }
 
+function printAlphabetTM() {
+  let out = '';
+  let outP = '';
+  let outT = '';
+  for (let i = 0; i < 26; i++) {
+    const char = String.fromCharCode(65 + i);
+
+    const movesWithStart = Object.values(moves).filter(move => 
+      isLegalMove(move, false, false) && move.name.toUpperCase().startsWith(char));
+    let prob = 0.5;
+    let valueOfAddedChoice = 10;
+    if (movesWithStart.length <= 1) {
+      prob = 0.01;
+      valueOfAddedChoice = 0;
+    } else if (movesWithStart.length <= 5)
+      valueOfAddedChoice = 5;
+    
+    const maxTmPrice = movesWithStart.reduce((acc, curr) => Math.max(acc, tmPrice(curr)), 0);
+    const price = Math.min(maxTmPrice + 10 + valueOfAddedChoice, 50);
+    const partyPrice = (maxTmPrice/2 - 3) + 'n+' + (maxTmPrice + 3 + 10 + valueOfAddedChoice);
+    const twinPrice = roundToNearest5(maxTmPrice/2) + valueOfAddedChoice;
+
+    let exceptions = 'Z-Moves or G-Max moves';
+    if (char === 'S')
+      exceptions = 'Z-Moves, G-Max moves, or Spore';
+    else if (char === 'Z')
+      exceptions = 'Z-Moves, G-Max moves, or Zippy Zap';
+
+    out += char + '* TM\tuniversalTM\t' + price + '\t' + prob + '\t\t\t\t\t\t\t\t\t\tTeach ANY 1 Pokemon any move beginning with the letter ' + char + ' (no ' + exceptions + ').\n';
+    outP += char + '* Party TM\tpartyTM\t' + partyPrice + '\t' + prob + '\t\t\t\t\t\t\t\t\t\tChoose any move beginning with the letter ' + char + ' (no ' + exceptions + '). Teach EVERY Pokemon that move.\n';
+    outT += 'Twin ' + char + '* TMs\tbeforeTM\t' + twinPrice + '\t' + prob + "\t\t\t\t\t\t\t\t\t\tBefore battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter " + char + " (can't choose Z-Moves).\n";
+  }
+  console.log(out + outP + outT);
+}
 function printAlphabetGoals() {
   const TOO_LOW = 0.05;
   const TOO_HIGH = .2;
@@ -3848,7 +3882,7 @@ function randomTM() {
     return {
       name: 'Twin TMs #' + move.num,
       type: 'beforeTM',
-      price: tmPrice(move)/2,
+      price: roundToNearest5(tmPrice(move)/2),
       desc: tmDesc("Before battle: Both players MAY teach their [nth] Pokemon the move ", move),
     };
   } else if ((randy -= .25) < 0) {
@@ -3928,7 +3962,6 @@ function speciesTM(speciesName, move, isImpossibleTM) {
     desc: tmDesc('Teach ' + speciesName + ' the move ', move),
   };
 }
-const SIXTH_HP_PER_TURN = ["G-Max Cannonade", "G-Max Vine Lash", "G-Max Volcalith", "G-Max Wildfire"];
 function tmPrice(move) {
   if (move.name === 'Clangorous Soulblaze')
     return 150;
@@ -3937,7 +3970,7 @@ function tmPrice(move) {
   else if (isZ(move))
     return 80;
   else if (isLGPE(move))
-    return 30;
+    return 40;
   else if (move.basePower >= 80)
     return 20;
   else if (move.basePower >= 70)
@@ -3945,11 +3978,14 @@ function tmPrice(move) {
   else
     return 10;
 }
+// these functions are about power levels, not if it's literally a Z-Move/Let's Go move
+const SIXTH_HP_PER_TURN = ["G-Max Cannonade", "G-Max Vine Lash", "G-Max Volcalith", "G-Max Wildfire"];
 function isZ(move) {
   return move.isZ || move.name === 'Spore' || move.name === 'Zippy Zap' || SIXTH_HP_PER_TURN.includes(move.name);
 }
+const LGPE_POWER_MOVES = ['Baddy Bad', 'Glitzy Glow', 'G-Max Resonance', 'Sizzly Slide', 'Buzzy Buzz'];
 function isLGPE(move) {
-  return (move.isNonstandard === 'LGPE' && move.name !== 'Zippy Zap') || move.name === 'G-Max Resonance';
+  return LGPE_POWER_MOVES.includes(move.name);
 }
 function tmDesc(strBeforeMoveName, move) {
   return strBeforeMoveName + spanWithType(move.name, move.type) + '.'
