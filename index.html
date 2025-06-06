@@ -2063,7 +2063,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     if (isBoss() && getPartyStrs().length > 0)
       level = 1;
   }
-  if (abilityName === 'Wonder Guard')
+  if (abilityName === 'Wonder Guard' && species.name !== 'Shedinja')
     level = 1;
   if (level < 1)
     level = 1;
