@@ -1,3 +1,4 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 TR00	heldItem	50	0.2										all others learn Swords Dance			
 A* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter A (no Z-Moves or G-Max moves).
+Exp Power: Normal	keyItem	8.75r									x		Each round, all of your Normal-type Pokemon level up.

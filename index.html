@@ -752,6 +752,25 @@ const KEY_ITEMS = {
   BERRY_ALL: 'Oops! All Berries',
   CANDY_PARTY_ALL: 'Oops! All Candy Parties',
   MINT_ALL: 'Oops! All Mints',
+  // lv up all ___-type pokemon
+  NORMAL_LV_UP: 'Exp Power: Normal',
+  FIRE_LV_UP: 'Exp Power: Fire',
+  WATER_LV_UP: 'Exp Power: Water',
+  GRASS_LV_UP: 'Exp Power: Grass',
+  ELECTRIC_LV_UP: 'Exp Power: Electric',
+  ICE_LV_UP: 'Exp Power: Ice',
+  FIGHTING_LV_UP: 'Exp Power: Fighting',
+  POISON_LV_UP: 'Exp Power: Poison',
+  GROUND_LV_UP: 'Exp Power: Ground',
+  FLYING_LV_UP: 'Exp Power: Flying',
+  PSYCHIC_LV_UP: 'Exp Power: Psychic',
+  BUG_LV_UP: 'Exp Power: Bug',
+  ROCK_LV_UP: 'Exp Power: Rock',
+  GHOST_LV_UP: 'Exp Power: Ghost',
+  DARK_LV_UP: 'Exp Power: Dark',
+  DRAGON_LV_UP: 'Exp Power: Dragon',
+  STEEL_LV_UP: 'Exp Power: Steel',
+  FAIRY_LV_UP: 'Exp Power: Fairy',
   // misc., continued
   MAGIKARP: 'Fish Bowl',
   ROUNDLY_MAGIKARP: 'Auto Rod',
@@ -934,11 +953,12 @@ function printMints() {
   }
   console.log(mintTsv);
 }
-function printTypeBalls() {
+function printTypeExpPowers() {
   let tsv = '';
   for (const type of TYPES)
-    tsv += type + ' Ball\tpokeball\t20\t\t\t\t\t\t\t\t\tx\t\t'
-        + 'Next round, you can choose a ' + type + '-type Pokemon of any species (you will then be able to choose any ability that species can have).\n';
+    tsv += 'Exp Power: ' + type + '\tkeyItem\t10r\t\t\t\t\t\t\t\t\tx\t\t'
+        + 'Each round, all of your ' + type + '-type Pokemon level up.\n';
+    // tsv += type.toUpperCase() + "_LV_UP: 'Exp Power: " + type + "',\n";
   console.log(tsv);
 }
 function printPlatesAndMemories() {
@@ -1595,23 +1615,7 @@ function updatePokemonDiv(div) {
 
   const typesEle = div.querySelector('.types');
   killAllChildren(typesEle);
-  let types = allSpecies[getSpeciesId(speciesName)].types;
-  if (isCamomons()) {
-    let movesSeen = 0;
-    types = [];
-    const splitStr = pokemonStr.split('\n- ');
-    for (let i = 1; i < splitStr.length && movesSeen < 2; i++) {
-      const moveId = getMoveId(splitStr[i]);
-      if (moveId == null)
-        continue;
-      movesSeen++;
-      let type = moves[moveId].type;
-      if (moves[moveId].name.startsWith('Hidden Power'))
-        type = 'Normal';
-      if (!types.includes(type))
-        types.push(type);
-    }
-  }
+  let types = getTypesOfPokemon(pokemonStr);
   typesEle.innerHTML = getTypesHTML(types, true);
 
   const teraTypeEle = div.querySelector('.tera-type');
@@ -1657,6 +1661,28 @@ function getTypeImageHTML(type, textAligned) {
 }
 function getTypeImageURL(type) {
   return 'https://play.pokemonshowdown.com/sprites/types/' + type + '.png';
+}
+
+function getTypesOfPokemon(pokemonStr) {
+  if (isCamomons()) {
+    let movesSeen = 0;
+    const types = [];
+    const splitStr = pokemonStr.split('\n- ');
+    for (let i = 1; i < splitStr.length && movesSeen < 2; i++) {
+      const moveId = getMoveId(splitStr[i]);
+      if (moveId == null)
+        continue;
+      movesSeen++;
+      let type = moves[moveId].type;
+      if (moves[moveId].name.startsWith('Hidden Power'))
+        type = 'Normal';
+      if (!types.includes(type))
+        types.push(type);
+    }
+    return types;
+  } else {
+    return allSpecies[getSpeciesIdOfPokemon(pokemonStr)].types;
+  }
 }
 
 function matchupNumToStr(matchupNum) {
@@ -3026,6 +3052,22 @@ function nextRound() {
           }
         }
         break;
+
+      default:
+        // NORMAL_LV_UP, etc
+        for (const type of TYPES) {
+          if (keyItem === KEY_ITEMS[type.toUpperCase() + '_LV_UP']) {
+            for (const pokeDiv of getPartyPokeDivs()) {
+              const pokeEle = getPokeEle(pokeDiv);
+              const pokemonStr = pokeEle.innerText.trim();
+              if (pokemonStr !== '' && getTypesOfPokemon(pokemonStr).includes(type)) {
+                pokeEle.innerText = leveledUp(pokemonStr);
+                updatePartyPokemonDiv(pokeDiv);
+              }
+            }
+            break;
+          }
+        }
     }
   }
 
