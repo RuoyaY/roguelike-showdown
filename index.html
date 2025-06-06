@@ -823,6 +823,7 @@ const IMPROVED_ITEMS = {
   'Moon Stone': 'Each round, automatically gets a random low-priority move in a NEW move slot.',
   'Dawn Stone': 'Each round, automatically sets EVERY move slot to a random move.',
   'Dusk Stone': 'Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).',
+  'Big Nugget': 'Each round, earn $30.',
 };
 for (let i = 0; i < POWER_ITEMS.length; i++)
   IMPROVED_ITEMS[POWER_ITEMS[i]] = "Holder's Speed is halved.\nEach round, it automatically gains "
@@ -3144,6 +3145,9 @@ function updateForRoundlyHeldItem(pokemonStr) {
       newPokemonStr = newPokemonStr.replace('\n-', '\n- Struggle');
     return newPokemonStr;
   }
+  // Big Nugget
+  if (pokemonStr.includes(' @ Big Nugget'))
+    pay(-30);
 }
 
 function levelUpExtremes(isMaxNotMin) {
