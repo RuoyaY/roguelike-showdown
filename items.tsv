@@ -225,7 +225,7 @@ Mirror Party Item	misc	20n+5					2						Copy a Pokemon's held item to ALL other 
 Shadow Item	misc	20								x			Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last battle. Exception: Z-Crystals.			
 Reflect Item	beforeBattle	20											Before battle: Set your [mth] Pokemon's held item to a copy of your opponent's [nth] Pokemon's held item. Can't copy Z-Crystals.			
 (Almost) Perfect Twin Items	beforeBattle	30											Before battle: Both players MAY give their [nth] Pokemon a [_____] (can't choose Eviolite or a Z-Crystal).			
-Item Request	misc	-20											Ask your opponent to pick a held item, then set a Pokemon's held item to that item.			
+Item Request	misc	-20											Ask your opponent to pick a held item (other than Dubious Disc), then set a Pokemon's held item to that item.			
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld												
 Black Belt	heldItem	20														
 Silk Scarf	heldItem	20														
@@ -310,7 +310,7 @@ Shadow Party TM	partyTM	15n+20								x			Choose any move you KNOW FOR SURE your
 Reflecting TM	beforeTM	10											Before battle: Replace your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move. Fails if it is a Z-Move, G-Max move, Zippy Zap, or Spore.			
 Perfect 40PP TM	universalTM	15											Teach ANY 1 Pokemon ANY 1 move with 40 Base PP (not to be confused with Power).			
 Perfect 30PP TM	universalTM	25											Teach ANY 1 Pokemon ANY 1 move with 30 Base PP (not to be confused with Power).			
-Alliterative TM	universalTM	40											Replace any 1 move with a move that starts with the same letter (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
+Alliterative TM	universalTM	40	0										Replace any 1 move with a move that starts with the same letter (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Normal Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-normal">Normal</span>.			
 Fire Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="type-fire">Fire</span>.			
 Water Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-water">Water</span>.			
@@ -436,8 +436,8 @@ Shadow Abilitizer	abilitizer	25								x			Set a Pokemon's ability to an ability
 Reflecting Abilitizer	beforeBattle	30											Before battle: Set your [mth] Pokemon's ability to your opponent's [nth] Pokemon's ability.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Alliterative Abilitizer	abilitizer	40											Set a Pokemon's ability to any ability starting with the same letter as the current one. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class=""warning""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Species-Based Abilitizer	abilitizer	25											Set a Pokemon's ability to any ability it can normally get (including Hidden Abilities). Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class=""""warning""""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Weather Chaos Abilitizers	abilitizer	30					4						Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Terrain Chaos Abilitizers	abilitizer	5					4						Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Weather Chaos Abilitizers	abilitizer	0					4						Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Terrain Chaos Abilitizers	abilitizer	0					4						Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Abilitizer Request	abilitizer	-50											Ask your opponent to pick an ability other than Truant (remind them Defeatist, Slow Start, and Stall cannot be replaced). Give 1 Pokemon that ability. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Debilitizer	misc	-10											Set a Pokemon's ability to "No Ability". <span class="warning"> <br>Cannot remove Defeatist, Slow Start, Stall, or Truant. </span>			
 Power Weight	heldItem	0									x		1/2 speed. every round, +100 [stat EV]			
@@ -468,7 +468,7 @@ Lagging Tail	heldItem	-20
 Iron Ball	heldItem	-20														
 Time Machine	misc	125						x					Press the "start round" button (with no checkboxes checked). Increase the total number of rounds by one.			
 Stop Shopping	misc	-20									x		You may not buy, earn, or refresh until next round.			
-Ability Shield	heldItem	5														
+Ability Shield	heldItem	1														
 Adrenaline Orb	heldItem	1														
 Air Balloon	heldItem	15														
 Blunder Policy	heldItem	10														
@@ -738,6 +738,24 @@ Oval Stone	heldItem	10r									x		Lv +1 every round
 Exp Crown	keyItem	7.5r									x		Each round, your highest-level Pokemon levels up. If there's a tie, all tied Pokemon level up.			
 Exp Boots	keyItem	10r									x		Each round, your lowest-level Pokemon levels up. If there's a tie, all tied Pokemon level up.			
 Exp Dice	keyItem	7r									x		Each round, a random Pokemon levels up.			
+Exp Power: Normal	keyItem	8.75r									x		Each round, all of your Normal-type Pokemon level up.			
+Exp Power: Fire	keyItem	10r									x		Each round, all of your Fire-type Pokemon level up.			
+Exp Power: Water	keyItem	10r									x		Each round, all of your Water-type Pokemon level up.			
+Exp Power: Grass	keyItem	7.5r									x		Each round, all of your Grass-type Pokemon level up.			
+Exp Power: Electric	keyItem	10r									x		Each round, all of your Electric-type Pokemon level up.			
+Exp Power: Ice	keyItem	8.75r									x		Each round, all of your Ice-type Pokemon level up.			
+Exp Power: Fighting	keyItem	8.75r									x		Each round, all of your Fighting-type Pokemon level up.			
+Exp Power: Poison	keyItem	10r									x		Each round, all of your Poison-type Pokemon level up.			
+Exp Power: Ground	keyItem	10r									x		Each round, all of your Ground-type Pokemon level up.			
+Exp Power: Flying	keyItem	10r									x		Each round, all of your Flying-type Pokemon level up.			
+Exp Power: Psychic	keyItem	8.75r									x		Each round, all of your Psychic-type Pokemon level up.			
+Exp Power: Bug	keyItem	7.5r									x		Each round, all of your Bug-type Pokemon level up.			
+Exp Power: Rock	keyItem	10r									x		Each round, all of your Rock-type Pokemon level up.			
+Exp Power: Ghost	keyItem	10r									x		Each round, all of your Ghost-type Pokemon level up.			
+Exp Power: Dark	keyItem	10r									x		Each round, all of your Dark-type Pokemon level up.			
+Exp Power: Dragon	keyItem	10r									x		Each round, all of your Dragon-type Pokemon level up.			
+Exp Power: Steel	keyItem	10r									x		Each round, all of your Steel-type Pokemon level up.			
+Exp Power: Fairy	keyItem	10r									x		Each round, all of your Fairy-type Pokemon level up.			
 Fire Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
 Ice Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
 Leaf Stone	heldItem	5r+10									x		Every round, add a random ___-type move in a new slot			
@@ -749,106 +767,106 @@ Dawn Stone	heldItem	0									x		Every round, automatically sets EVERY move slot
 Dusk Stone	heldItem	0									x		Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).			
 Dubious Disc	heldItem	-20r-10											permanently can't be changed/replaced			
 Up-Grade	heldItem	5r									x		Every round, changes to a random species w/ higher stats			
-TR00	heldItem	50	0.2										all others learn Swords Dance			
-TR01	heldItem	50	0.2										all others learn Body Slam			
-TR02	heldItem	50	0.2										all others learn Flamethrower			
-TR03	heldItem	50	0.2										all others learn Hydro Pump			
-TR04	heldItem	50	0.2										all others learn Surf			
-TR05	heldItem	50	0.2										all others learn Ice Beam			
-TR06	heldItem	50	0.2										all others learn Blizzard			
-TR07	heldItem	50	0.2										all others learn Low Kick			
-TR08	heldItem	50	0.2										all others learn Thunderbolt			
-TR09	heldItem	50	0.2										all others learn Thunder			
-TR10	heldItem	50	0.2										all others learn Earthquake			
-TR11	heldItem	50	0.2										all others learn Psychic			
-TR12	heldItem	20	0.2										all others learn Agility			
-TR13	heldItem	20	0.2										all others learn Focus Energy			
-TR14	heldItem	20	0.2										all others learn Metronome			
-TR15	heldItem	50	0.2										all others learn Fire Blast			
-TR16	heldItem	50	0.2										all others learn Waterfall			
-TR17	heldItem	20	0.2										all others learn Amnesia			
-TR18	heldItem	50	0.2										all others learn Leech Life			
-TR19	heldItem	50	0.2										all others learn Tri Attack			
-TR20	heldItem	50	0.2										all others learn Substitute			
-TR21	heldItem	50	0.2										all others learn Reversal			
-TR22	heldItem	50	0.2										all others learn Sludge Bomb			
-TR23	heldItem	20	0.2										all others learn Spikes			
-TR24	heldItem	50	0.2										all others learn Outrage			
-TR25	heldItem	50	0.2										all others learn Psyshock			
-TR26	heldItem	20	0.2										all others learn Endure			
-TR27	heldItem	20	0.2										all others learn Sleep Talk			
-TR28	heldItem	50	0.2										all others learn Megahorn			
-TR29	heldItem	20	0.2										all others learn Baton Pass			
-TR30	heldItem	50	0.2										all others learn Encore			
-TR31	heldItem	50	0.2										all others learn Iron Tail			
-TR32	heldItem	50	0.2										all others learn Crunch			
-TR33	heldItem	50	0.2										all others learn Shadow Ball			
-TR34	heldItem	50	0.2										all others learn Future Sight			
-TR35	heldItem	50	0.2										all others learn Uproar			
-TR36	heldItem	50	0.2										all others learn Heat Wave			
-TR37	heldItem	50	0.2										all others learn Taunt			
-TR38	heldItem	20	0.2										all others learn Trick			
-TR39	heldItem	50	0.2										all others learn Superpower			
-TR40	heldItem	20	0.2										all others learn Skill Swap			
-TR41	heldItem	50	0.2										all others learn Blaze Kick			
-TR42	heldItem	50	0.2										all others learn Hyper Voice			
-TR43	heldItem	50	0.2										all others learn Overheat			
-TR44	heldItem	50	0.2										all others learn Cosmic Power			
-TR45	heldItem	50	0.2										all others learn Muddy Water			
-TR46	heldItem	20	0.2										all others learn Iron Defense			
-TR47	heldItem	50	0.2										all others learn Dragon Claw			
-TR48	heldItem	50	0.2										all others learn Bulk Up			
-TR49	heldItem	50	0.2										all others learn Calm Mind			
-TR50	heldItem	50	0.2										all others learn Leaf Blade			
-TR51	heldItem	50	0.2										all others learn Dragon Dance			
-TR52	heldItem	50	0.2										all others learn Gyro Ball			
-TR53	heldItem	50	0.2										all others learn Close Combat			
-TR54	heldItem	20	0.2										all others learn Toxic Spikes			
-TR55	heldItem	50	0.2										all others learn Flare Blitz			
-TR56	heldItem	50	0.2										all others learn Aura Sphere			
-TR57	heldItem	50	0.2										all others learn Poison Jab			
-TR58	heldItem	50	0.2										all others learn Dark Pulse			
-TR59	heldItem	50	0.2										all others learn Seed Bomb			
-TR60	heldItem	50	0.2										all others learn X-Scissor			
-TR61	heldItem	50	0.2										all others learn Bug Buzz			
-TR62	heldItem	50	0.2										all others learn Dragon Pulse			
-TR63	heldItem	50	0.2										all others learn Power Gem			
-TR64	heldItem	50	0.2										all others learn Focus Blast			
-TR65	heldItem	50	0.2										all others learn Energy Ball			
-TR66	heldItem	50	0.2										all others learn Brave Bird			
-TR67	heldItem	50	0.2										all others learn Earth Power			
-TR68	heldItem	50	0.2										all others learn Nasty Plot			
-TR69	heldItem	50	0.2										all others learn Zen Headbutt			
-TR70	heldItem	50	0.2										all others learn Flash Cannon			
-TR71	heldItem	50	0.2										all others learn Leaf Storm			
-TR72	heldItem	50	0.2										all others learn Power Whip			
-TR73	heldItem	50	0.2										all others learn Gunk Shot			
-TR74	heldItem	50	0.2										all others learn Iron Head			
-TR75	heldItem	50	0.2										all others learn Stone Edge			
-TR76	heldItem	20	0.2										all others learn Stealth Rock			
-TR77	heldItem	50	0.2										all others learn Grass Knot			
-TR78	heldItem	50	0.2										all others learn Sludge Wave			
-TR79	heldItem	50	0.2										all others learn Heavy Slam			
-TR80	heldItem	50	0.2										all others learn Electro Ball			
-TR81	heldItem	50	0.2										all others learn Foul Play			
-TR82	heldItem	20	0.2										all others learn Stored Power			
-TR83	heldItem	50	0.2										all others learn Ally Switch			
-TR84	heldItem	50	0.2										all others learn Scald			
-TR85	heldItem	20	0.2										all others learn Work Up			
-TR86	heldItem	50	0.2										all others learn Wild Charge			
-TR87	heldItem	50	0.2										all others learn Drill Run			
-TR88	heldItem	50	0.2										all others learn Heat Crash			
-TR89	heldItem	50	0.2										all others learn Hurricane			
-TR90	heldItem	50	0.2										all others learn Play Rough			
-TR91	heldItem	20	0.2										all others learn Venom Drench			
-TR92	heldItem	50	0.2										all others learn Dazzling Gleam			
-TR93	heldItem	50	0.2										all others learn Darkest Lariat			
-TR94	heldItem	50	0.2										all others learn High Horsepower			
-TR95	heldItem	50	0.2										all others learn Throat Chop			
-TR96	heldItem	50	0.2										all others learn Pollen Puff			
-TR97	heldItem	50	0.2										all others learn Psychic Fangs			
-TR98	heldItem	50	0.2										all others learn Liquidation			
-TR99	heldItem	50	0.2										all others learn Body Press			
+TR00	heldItem	45	0.2										free TMs for Swords Dance			
+TR01	heldItem	45	0.2										free TMs for Body Slam			
+TR02	heldItem	45	0.2										free TMs for Flamethrower			
+TR03	heldItem	45	0.2										free TMs for Hydro Pump			
+TR04	heldItem	45	0.2										free TMs for Surf			
+TR05	heldItem	45	0.2										free TMs for Ice Beam			
+TR06	heldItem	45	0.2										free TMs for Blizzard			
+TR07	heldItem	45	0.2										free TMs for Low Kick			
+TR08	heldItem	45	0.2										free TMs for Thunderbolt			
+TR09	heldItem	45	0.2										free TMs for Thunder			
+TR10	heldItem	45	0.2										free TMs for Earthquake			
+TR11	heldItem	45	0.2										free TMs for Psychic			
+TR12	heldItem	20	0.2										free TMs for Agility			
+TR13	heldItem	20	0.2										free TMs for Focus Energy			
+TR14	heldItem	20	0.2										free TMs for Metronome			
+TR15	heldItem	45	0.2										free TMs for Fire Blast			
+TR16	heldItem	45	0.2										free TMs for Waterfall			
+TR17	heldItem	20	0.2										free TMs for Amnesia			
+TR18	heldItem	45	0.2										free TMs for Leech Life			
+TR19	heldItem	45	0.2										free TMs for Tri Attack			
+TR20	heldItem	45	0.2										free TMs for Substitute			
+TR21	heldItem	45	0.2										free TMs for Reversal			
+TR22	heldItem	45	0.2										free TMs for Sludge Bomb			
+TR23	heldItem	20	0.2										free TMs for Spikes			
+TR24	heldItem	45	0.2										free TMs for Outrage			
+TR25	heldItem	45	0.2										free TMs for Psyshock			
+TR26	heldItem	20	0.2										free TMs for Endure			
+TR27	heldItem	20	0.2										free TMs for Sleep Talk			
+TR28	heldItem	45	0.2										free TMs for Megahorn			
+TR29	heldItem	20	0.2										free TMs for Baton Pass			
+TR30	heldItem	45	0.2										free TMs for Encore			
+TR31	heldItem	45	0.2										free TMs for Iron Tail			
+TR32	heldItem	45	0.2										free TMs for Crunch			
+TR33	heldItem	45	0.2										free TMs for Shadow Ball			
+TR34	heldItem	45	0.2										free TMs for Future Sight			
+TR35	heldItem	45	0.2										free TMs for Uproar			
+TR36	heldItem	45	0.2										free TMs for Heat Wave			
+TR37	heldItem	45	0.2										free TMs for Taunt			
+TR38	heldItem	20	0.2										free TMs for Trick			
+TR39	heldItem	45	0.2										free TMs for Superpower			
+TR40	heldItem	20	0.2										free TMs for Skill Swap			
+TR41	heldItem	45	0.2										free TMs for Blaze Kick			
+TR42	heldItem	45	0.2										free TMs for Hyper Voice			
+TR43	heldItem	45	0.2										free TMs for Overheat			
+TR44	heldItem	45	0.2										free TMs for Cosmic Power			
+TR45	heldItem	45	0.2										free TMs for Muddy Water			
+TR46	heldItem	20	0.2										free TMs for Iron Defense			
+TR47	heldItem	45	0.2										free TMs for Dragon Claw			
+TR48	heldItem	45	0.2										free TMs for Bulk Up			
+TR49	heldItem	45	0.2										free TMs for Calm Mind			
+TR50	heldItem	45	0.2										free TMs for Leaf Blade			
+TR51	heldItem	45	0.2										free TMs for Dragon Dance			
+TR52	heldItem	45	0.2										free TMs for Gyro Ball			
+TR53	heldItem	45	0.2										free TMs for Close Combat			
+TR54	heldItem	20	0.2										free TMs for Toxic Spikes			
+TR55	heldItem	45	0.2										free TMs for Flare Blitz			
+TR56	heldItem	45	0.2										free TMs for Aura Sphere			
+TR57	heldItem	45	0.2										free TMs for Poison Jab			
+TR58	heldItem	45	0.2										free TMs for Dark Pulse			
+TR59	heldItem	45	0.2										free TMs for Seed Bomb			
+TR60	heldItem	45	0.2										free TMs for X-Scissor			
+TR61	heldItem	45	0.2										free TMs for Bug Buzz			
+TR62	heldItem	45	0.2										free TMs for Dragon Pulse			
+TR63	heldItem	45	0.2										free TMs for Power Gem			
+TR64	heldItem	45	0.2										free TMs for Focus Blast			
+TR65	heldItem	45	0.2										free TMs for Energy Ball			
+TR66	heldItem	45	0.2										free TMs for Brave Bird			
+TR67	heldItem	45	0.2										free TMs for Earth Power			
+TR68	heldItem	45	0.2										free TMs for Nasty Plot			
+TR69	heldItem	45	0.2										free TMs for Zen Headbutt			
+TR70	heldItem	45	0.2										free TMs for Flash Cannon			
+TR71	heldItem	45	0.2										free TMs for Leaf Storm			
+TR72	heldItem	45	0.2										free TMs for Power Whip			
+TR73	heldItem	45	0.2										free TMs for Gunk Shot			
+TR74	heldItem	45	0.2										free TMs for Iron Head			
+TR75	heldItem	45	0.2										free TMs for Stone Edge			
+TR76	heldItem	20	0.2										free TMs for Stealth Rock			
+TR77	heldItem	45	0.2										free TMs for Grass Knot			
+TR78	heldItem	45	0.2										free TMs for Sludge Wave			
+TR79	heldItem	45	0.2										free TMs for Heavy Slam			
+TR80	heldItem	45	0.2										free TMs for Electro Ball			
+TR81	heldItem	45	0.2										free TMs for Foul Play			
+TR82	heldItem	20	0.2										free TMs for Stored Power			
+TR83	heldItem	45	0.2										free TMs for Ally Switch			
+TR84	heldItem	45	0.2										free TMs for Scald			
+TR85	heldItem	20	0.2										free TMs for Work Up			
+TR86	heldItem	45	0.2										free TMs for Wild Charge			
+TR87	heldItem	45	0.2										free TMs for Drill Run			
+TR88	heldItem	45	0.2										free TMs for Heat Crash			
+TR89	heldItem	45	0.2										free TMs for Hurricane			
+TR90	heldItem	45	0.2										free TMs for Play Rough			
+TR91	heldItem	20	0.2										free TMs for Venom Drench			
+TR92	heldItem	45	0.2										free TMs for Dazzling Gleam			
+TR93	heldItem	45	0.2										free TMs for Darkest Lariat			
+TR94	heldItem	45	0.2										free TMs for High Horsepower			
+TR95	heldItem	45	0.2										free TMs for Throat Chop			
+TR96	heldItem	45	0.2										free TMs for Pollen Puff			
+TR97	heldItem	45	0.2										free TMs for Psychic Fangs			
+TR98	heldItem	45	0.2										free TMs for Liquidation			
+TR99	heldItem	45	0.2										free TMs for Body Press			
 Perfect TR	misc	60											Set a Pokemon's held item to any TR (e.g. *TR00*).			
 Random TR	misc	20											Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
 Offensive TR Request	misc	20											Ask your opponenet to choose a non-status move TR (e.g. *TR01*). Set any 1 Pokemon's held item to that TR.			
@@ -960,31 +978,45 @@ Revelationmons Battle	nextBattle	20/b											Next battle only: For both playe
 Category Swapped Battle	nextBattle	60/b											Next battle only: Both teams' physical moves become special moves, and vice versa. <br><span class="command">/challenge gen9doublescustomgame @@@ Category Swap Mod</span>			
 VoltTurn Mayhem Battle	nextBattle	20/b					3						Next battle only: If either player's Pokemon successfully uses a move that affects foe(s), it switches out. <br><span class="command">/challenge gen9doublescustomgame @@@ VoltTurn Mayhem Mod</span>			
 Held Item Quiz	misc	15								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its held item (or lack thereof), earn $30.			
-Ability Quiz	misc	15								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its ability, earn $30.			
+Ability Quiz	misc	10								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its ability, earn $30.			
 Tera Type Quiz	misc	10								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name its Tera Type, earn $30.			
-Moveset Quiz	misc	5								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name ALL of its moves, earn $30.			
+Moveset Quiz	misc	1								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name ALL of its moves, earn $30.			
+First Move Quiz	misc	5								x			RANDOMLY pick an opposing Pokemon from LAST BATTLE. If you correctly name which of its move is listed first, earn $30.			
 Name Trivia	misc	15											Your opponent sends you a pic of a random Pokemon. If you correctly spell its name, earn $30.			
 Category Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about its category name (e.g. "Mouse Pokemon"). If you correctly say true/false, earn $30.			
 Ability Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about an ability it can have. If you correctly say true/false, earn $30.			
 Ability Trivia	misc	15											Your opponent sends you a pic of a random Pokemon. If you correctly name an ability it can have, earn $30.			
 Catch Rate Trivia	misc	5											Your opponent sends you a pic of a random Pokemon. If you correctly state its catch rate, earn $30. <span class="attr"> <br>Catch rate is a number 3-255, usually a multiple of 5. </span>			
+Catch Rate Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its catch rate. If you're closer/tied, earn $30. <span class="attr"> <br>TELL THEM: catch rate is a number 3-255, usually a multiple of 5. </span>			
 Egg Group Trivia	misc	15											Your opponent sends you a pic of a random Pokemon. If you correctly state one of its Egg Groups, earn $30. <span class="attr"> <br>Egg Groups: monster, water 1 (amphibious), water 2 (fish), water 3 (invertebrate), bug, flying, field, fairy, grass, human-like, mineral, amorphous, dragon, ditto, no eggs discovered. </span>			
 Height Trivia	misc	5	0										Your opponent sends you a pic of a random Pokemon. If you correctly state its height rounded to the nearest foot, earn $30.			
 Weight Trivia	misc	10	0										Your opponent sends you a pic of a random Pokemon. If you correctly state Low Kick's base power against it, earn $30. <span class="attr"> <br> 20:   0.1 -  21.8 lb <br> 40:  21.9 -  55.0 lb <br> 60:  55.1 - 110.0 lb <br> 80: 110.2 - 220.2 lb <br>100: 220.4 - 440.7 lb <br>120: 440.9 - 999.9 lb </span>			
 Tallest Mon Trivia	misc	15	0.5										Your opponent sends you the NAMES of THREE random Pokemon. If you correctly state which is tallest, earn $30.			
 Shortest Mon Trivia	misc	15	0.5										Your opponent sends you the NAMES of THREE random Pokemon. If you correctly state which is shortest, earn $30.			
+Height Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its height. If you're closer/tied, earn $30.			
 Heaviest Mon Trivia	misc	15	0.5										Your opponent sends you the NAMES of THREE random Pokemon. If you correctly state which is heaviest, earn $30.			
 Lightest Mon Trivia	misc	15	0.5										Your opponent sends you the NAMES of THREE random Pokemon. If you correctly state which is lightest, earn $30.			
+Weight Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its weight. If you're closer/tied, earn $30.			
 Leveling Rate Trivia	misc	10											Your opponent sends you a pic of a random Pokemon. If you correctly state its leveling rate, earn $30. <span class="attr"> <br>Leveling Rates: Erratic, Fast, Medium Fast, Medium Slow, Slow, Fluctuating. <br>Erratic and Fluctuating is mostly for gen 3 Pokemon. </span>			
+Exp Yield Face-Off	misc	10											"Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base exp yield. If you're closer/tied, earn $30. <span class=""attr""> <br>TELL THEM: it's usually between 36 and 360. </span>"			
 EV Yield Trivia	misc	5											Your opponent sends you a pic of a random Pokemon. If you correctly state its EV yield, earn $30. <span class="attr"> <br>Total 1-3 pts, sometimes split between different stats. </span>			
 Highest Stat Trivia	misc	10											Your opponent sends you a pic of a random Pokemon. If you correctly state which stat is its highest, earn $30. (If there are multiple, you only need to state one of them.)			
+HP Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base HP stat. If you're closer/tied, earn $30.			
+Atk Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base Atk stat. If you're closer/tied, earn $30.			
+Def Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base Def stat. If you're closer/tied, earn $30.			
+SpA Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base SpA stat. If you're closer/tied, earn $30.			
+SpD Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base SpD stat. If you're closer/tied, earn $30.			
+Spe Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base Spe stat. If you're closer/tied, earn $30.			
+Stat Total Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base stat total. If you're closer/tied, earn $30.			
 Shape Trivia	misc	10											Your opponent sends you the NAME of a random Pokemon. If you can identify its Pokedex shape, earn $30. <span class="attr"> <br>Shapes: https://pbs.twimg.com/media/Fr7AVBsWcA0SB7T.png </span>			
 Color Trivia	misc	10											Your opponent sends you the NAME of a random Pokemon. If you correctly state its Pokedex color, earn $30. <span class="attr"> <br>Colors: brown, red, yellow, green, blue, purple, pink, white, gray, black. </span>			
 Learnset Trivia (T/F)	misc	15											Your opponent sends you a pic of a random Pokemon, then MAY LIE about a move it can learn (in National Dex AG). If you correctly say true/false, earn $30.			
 Generation Trivia	misc	20											Your opponent sends you a pic of a random Pokemon. If you correctly state the generation number it was introduced in, earn $30.			
 Approx. Pokedex Number Trivia	misc	1											Your opponent sends you a pic of a random Pokemon. If you correctly state its National Pokedex number ROUNDED TO THE NEAREST TEN, earn $30.			
+Pokedex Number Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its pokedex number. If you're closer/tied, earn $30.			
 Prev Pokemon Trivia	misc	5											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon BEFORE IT in the Pokedex, earn $30.			
 Next Pokemon Trivia	misc	5											Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon AFTER IT in the Pokedex, earn $30.			
+Shiny Trivia	misc	10											Your opponent sends you a pic of a random Pokemon. If you correctly name a color it gains in its shiny form, earn $30. (Yes, this is subjective. You are hereby allowed to be kind to yourself.)			
 Move Power Challenge	misc	10											Your opponent CHOOSES a move name to send you. If you correctly state its Base Power (or lack thereof), earn $30.			
 Move PP Challenge	misc	5											Your opponent CHOOSES a move name to send you. If you correctly state its base PP (or max PP), earn $30.			
 Move Accuracy Challenge	misc	10											Your opponent CHOOSES a move name to send you. If you correctly state its Accuracy (note: 100% is different from No Accuracy Check), earn $30.			
@@ -992,7 +1024,7 @@ Move Type Challenge	misc	15											Your opponent CHOOSES a move name to send 
 Running Shoes	keyItem	4r+4											Refreshing the shop now only costs $2.	0.6666666667	24	8
 Dowsing Machine	keyItem	3r+3											+1 slot in the shop.	0.75	24	6
 Losing Machine	keyItem	-4.5r-4.5											-1 slot in the shop.	1.5	18	-9
-Shopping Cart	keyItem	2r+2											Can now buy the same thing multiple times (doesn't work for earning money, including via Quizzes, etc).	since money/slots are worth more now than later, "$ saved" is halved		
+Shopping Cart	keyItem	2r+2											Can now buy the same thing multiple times (doesn't work for any method of earning money).	since money/slots are worth more now than later, "$ saved" is halved		
 Combee Hive	keyItem	3.75m									x		Every round, +1 species option for your new Pokemon.			
 Trubbish Bin	keyItem	-7.5m									x		Every round, -1 species option for your new Pokemon (can't go below 1).			
 Black Flute	keyItem	15m	0								x		The new Pokemon you get every round is 1 level higher than normal.			
@@ -1025,8 +1057,9 @@ Oops! All Candy Parties	keyItem	0											For the rest of the round, ALL slots
 Oops! All Mints	keyItem	-10											For the rest of the round, ALL slots in the shop only offer Mints (for setting nature).			
 Fish Bowl	keyItem	35											During battle, you get a random Lv1 Magikarp that only knows Splash in an extra slot.	value of putting trash on egg	value of 1 meat shield	value of added meat shields
 Auto Rod	keyItem	15r+20									x		At the start of each round, gain a random Lv1 Magikarp that only knows Splash in an extra slot.	5r-5	35	10(r-1)
-Loan	keyItem	-15r									x		Each round, lose $30.			
-Investment	keyItem	15r									x		Each round, earn $30.			
+Loan	keyItem	-15r	0								x		Each round, lose $30.			
+Investment	keyItem	15r	0								x		Each round, earn $30.			
+Big Nugget	heldItem	12.5r									x		Each round, earn $30.			
 Encounter Power: Normal	misc	-5									x		Next round, you are guaranteed to get Normal-type Pokemon.			
 Encounter Power: Fire	misc	10									x		Next round, you are guaranteed to get Fire-type Pokemon.			
 Encounter Power: Water	misc	10									x		Next round, you are guaranteed to get Water-type Pokemon.			
@@ -1088,7 +1121,7 @@ Dark Magnet	keyItem	0m+5									x		Each round, you are guaranteed to get Dark-t
 Dragon Magnet	keyItem	-5m+5									x		Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Steel Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Fairy Magnet	keyItem	5m+5									x		Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-TM Ban	keyItem	-25m											Random TMs stop appearing in the shop, unless forced.			
+TM Ban	keyItem	-20m-10											Random TMs stop appearing in the shop, unless forced.			
 Abilitizer Ban	keyItem	0											Random Abilitizers stop appearing in the shop, unless forced.			
 Species Changer Ban	keyItem	0											Species Changers stop appearing in the shop, unless forced.			
 Egg Ban	keyItem	0											Random Eggs stop appearing in the shop, unless forced.			
@@ -1111,3 +1144,81 @@ Perfect Twin Dark TMs	beforeTM	25											Before battle: Both players MAY teac
 Perfect Twin Dragon TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Dragon-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Steel TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Steel-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Fairy TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Fairy-type move [_____] (can't choose Z-Moves).			
+A* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter A (no Z-Moves or G-Max moves).			
+B* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move beginning with the letter B (no Z-Moves or G-Max moves).			
+C* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter C (no Z-Moves or G-Max moves).			
+D* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter D (no Z-Moves or G-Max moves).			
+E* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter E (no Z-Moves or G-Max moves).			
+F* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter F (no Z-Moves or G-Max moves).			
+G* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move beginning with the letter G (no Z-Moves or G-Max moves).			
+H* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter H (no Z-Moves or G-Max moves).			
+I* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter I (no Z-Moves or G-Max moves).			
+J* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter J (no Z-Moves or G-Max moves).			
+K* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter K (no Z-Moves or G-Max moves).			
+L* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter L (no Z-Moves or G-Max moves).			
+M* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter M (no Z-Moves or G-Max moves).			
+N* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter N (no Z-Moves or G-Max moves).			
+O* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter O (no Z-Moves or G-Max moves).			
+P* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter P (no Z-Moves or G-Max moves).			
+Q* TM	universalTM	25	0.5										Teach ANY 1 Pokemon any move beginning with the letter Q (no Z-Moves or G-Max moves).			
+R* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter R (no Z-Moves or G-Max moves).			
+S* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move beginning with the letter S (no Z-Moves, G-Max moves, or Spore).			
+T* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter T (no Z-Moves or G-Max moves).			
+U* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter U (no Z-Moves or G-Max moves).			
+V* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter V (no Z-Moves or G-Max moves).			
+W* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter W (no Z-Moves or G-Max moves).			
+X* TM	universalTM	30	0.01										Teach ANY 1 Pokemon any move beginning with the letter X (no Z-Moves or G-Max moves).			
+Y* TM	universalTM	20	0.01										Teach ANY 1 Pokemon any move beginning with the letter Y (no Z-Moves or G-Max moves).			
+Z* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter Z (no Z-Moves, G-Max moves, or Zippy Zap).			
+A* Party TM	partyTM	7n+43	0.25										Choose any move beginning with the letter A (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+B* Party TM	partyTM	17n+63	0.5										Choose any move beginning with the letter B (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+C* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter C (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+D* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter D (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+E* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter E (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+F* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter F (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+G* Party TM	partyTM	17n+63	0.5										Choose any move beginning with the letter G (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+H* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter H (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+I* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter I (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+J* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter J (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+K* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter K (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+L* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter L (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+M* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter M (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+N* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter N (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+O* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter O (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+P* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter P (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Q* Party TM	partyTM	2n+28	0.5										Choose any move beginning with the letter Q (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+R* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter R (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+S* Party TM	partyTM	17n+63	0.5										Choose any move beginning with the letter S (no Z-Moves, G-Max moves, or Spore). Teach EVERY Pokemon that move.			
+T* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter T (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+U* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter U (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+V* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter V (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+W* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter W (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+X* Party TM	partyTM	7n+33	0.01										Choose any move beginning with the letter X (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Y* Party TM	partyTM	2n+23	0.01										Choose any move beginning with the letter Y (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Z* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter Z (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
+Twin A* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter A (can't choose Z-Moves).			
+Twin B* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter B (can't choose Z-Moves).			
+Twin C* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter C (can't choose Z-Moves).			
+Twin D* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter D (can't choose Z-Moves).			
+Twin E* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter E (can't choose Z-Moves).			
+Twin F* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter F (can't choose Z-Moves).			
+Twin G* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter G (can't choose Z-Moves).			
+Twin H* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter H (can't choose Z-Moves).			
+Twin I* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter I (can't choose Z-Moves).			
+Twin J* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter J (can't choose Z-Moves).			
+Twin K* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter K (can't choose Z-Moves).			
+Twin L* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter L (can't choose Z-Moves).			
+Twin M* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter M (can't choose Z-Moves).			
+Twin N* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter N (can't choose Z-Moves).			
+Twin O* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter O (can't choose Z-Moves).			
+Twin P* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter P (can't choose Z-Moves).			
+Twin Q* TMs	beforeTM	10	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter Q (can't choose Z-Moves).			
+Twin R* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter R (can't choose Z-Moves).			
+Twin S* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter S (can't choose Z-Moves).			
+Twin T* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter T (can't choose Z-Moves).			
+Twin U* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter U (can't choose Z-Moves).			
+Twin V* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter V (can't choose Z-Moves).			
+Twin W* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter W (can't choose Z-Moves).			
+Twin X* TMs	beforeTM	10	0.01										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter X (can't choose Z-Moves).			
+Twin Y* TMs	beforeTM	5	0.01										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter Y (can't choose Z-Moves).			
+Twin Z* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter Z (can't choose Z-Moves).			
