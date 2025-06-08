@@ -102,6 +102,11 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   justify-content: center;
 }
 
+.equalWidth {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
 .pokemon-div, .flex-col {
   display: flex;
   flex-direction: column;
@@ -172,6 +177,9 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   font-style: italic;
 }
 
+.mr-half {
+  margin-right: 0.5em;
+}
 .ml-1 {
   margin-left: 1rem;
 }
@@ -3922,7 +3930,7 @@ function randomTM() {
       price: (tmPrice(move)/2 - 3) + 'n+' + (tmPrice(move)/2 + 3 + 10),
       desc: tmDesc('EVERY Pokemon MUST learn ', move),
     };
-  } else if ((randy -= .10) < 0) {
+  } else if ((randy -= .05) < 0) {
     // Twin TMs
     const move = randomMove(true);
     return {
@@ -3930,6 +3938,16 @@ function randomTM() {
       type: 'beforeTM',
       price: roundToNearest5(tmPrice(move)/2),
       desc: tmDesc("Before battle: Both players MAY teach their [nth] Pokemon the move ", move),
+    };
+  } else if ((randy -= .05) < 0) {
+    // Binary TMs
+    const move = randomMove(true, (move) => tmPrice(move) <= 100);
+    const move2 = randomMove(true, (oMove) => Math.abs(tmPrice(oMove) - tmPrice(move)) <= 10 && oMove != move);
+    return {
+      name: 'Binary TMs #' + move.num + ' and #' + move2.num,
+      type: 'beforeTM',
+      price: roundToNearest5(Math.min(tmPrice(move), tmPrice(move2))),
+      desc: binaryTmDesc('Before battle: Your opponent chooses whether you teach 1 of your Pokemon the move ', move, ' or ', move2),
     };
   } else if ((randy -= .25) < 0) {
     // Type-based Species TM
@@ -4037,9 +4055,13 @@ function tmDesc(strBeforeMoveName, move) {
   return strBeforeMoveName + spanWithType(move.name, move.type) + '.'
           + '\n' + spanWithClass(moveDesc(move, true), 'attr');
 }
-function randomMove(allowZMoves) {
+function binaryTmDesc(str, move, str2, move2) {
+  return str + spanWithType(move.name, move.type) + str2 + spanWithType(move2.name, move2.type) + '.'
+          + '\n<div class="flex-row attr">' + spanWithClass(moveDesc(move, true), 'equalWidth mr-half') + spanWithClass(moveDesc(move2, true), 'equalWidth') + '</div>';
+}
+function randomMove(allowZMoves, predicate) {
   let move = randomValue(moves);
-  while (!isLegalMove(move, allowZMoves, true))
+  while (!isLegalMove(move, allowZMoves, true) || (predicate && !predicate(move)))
     move = randomValue(moves);
   return addHiddenPowerType(move);
 }
