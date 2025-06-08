@@ -3820,44 +3820,55 @@ function randomAbilitizer(failsafe) {
 
   const ability = randomAbilitizerAbility();
   // const ability = abilities.drought;
-
-  const typicalEffectiveStatDiff = STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE);
-
-  const effectiveStatDiffs = [];
-  for (const pokemonStr of getPartyStrs()) {
-    const speciesName = getSpeciesNameOfPokemon(pokemonStr);
-    const prevAbilityName = getAbilityNameOfPokemon(pokemonStr);
-    if (IRREPLACEABLE_ABILITIES.includes(prevAbilityName))
-      continue;
-
-    const statInfo = getStatRelevantInfo(pokemonStr);
-    effectiveStatDiffs.push(getEffectiveStatTotal(...statInfo, ability.name) - getEffectiveStatTotal(...statInfo, prevAbilityName));
-  }
-  if (effectiveStatDiffs.length === 0)
-    effectiveStatDiffs.push(typicalEffectiveStatDiff);
-
   let abilitizer = {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
-    price: 20 + roundToNearest5(typicalEffectiveStatDiff),
+    price: 20 + abilitizerPrice(ability),
     desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
   };
 
   let randy = Math.random();
-  const twinAbilitizerPrice = 10 + roundToNearest5(typicalEffectiveStatDiff); // used in if-conditional
+  const twinAbilitizerPrice = 10 + abilitizerPrice(ability); // used in if-conditional
   if ((randy -= .05) < 0 && !(ability.name === 'Plus' || ability.name === 'Minus')) {
+      // Party Abilitizer
+      const effectiveStatDiffs = [];
+      for (const pokemonStr of getPartyStrs()) {
+        const speciesName = getSpeciesNameOfPokemon(pokemonStr);
+        const prevAbilityName = getAbilityNameOfPokemon(pokemonStr);
+        if (IRREPLACEABLE_ABILITIES.includes(prevAbilityName))
+          continue;
+
+        const statInfo = getStatRelevantInfo(pokemonStr);
+        effectiveStatDiffs.push(getEffectiveStatTotal(...statInfo, ability.name) - getEffectiveStatTotal(...statInfo, prevAbilityName));
+      }
+      if (effectiveStatDiffs.length === 0)
+        effectiveStatDiffs.push(typicalEffectiveStatDiff);
+
     abilitizer = {
       name: 'Party Abilitizer #' + ability.num,
       type: 'partyAbilitizer',
       price: 20 + roundToNearest5(sumArr(effectiveStatDiffs)),
       desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
     };
-  } else if ((randy -= .1) < 0 && twinAbilitizerPrice >= 0) {
+  } else if ((randy -= .05) < 0 && twinAbilitizerPrice >= 0) {
+    // Twin Abilitizers
     abilitizer = {
       name: 'Twin Abilitizers #' + ability.num,
       type: 'beforeAbilitizer',
       price: twinAbilitizerPrice,
       desc: abilitizerDesc("Before battle: Both players MAY set their [nth] Pokemon's ability to ", ability),
+    }
+  } else if ((randy -= .05) < 0) {
+    // Binary Abilitizers
+    let ability2;
+    do {
+      ability2 = randomAbilitizerAbility();
+    } while (ability2 == ability);
+    abilitizer = {
+      name: 'Binary Abilitizers #' + ability.num + ' and #' + ability2.num,
+      type: 'beforeAbilitizer',
+      price: 5 + Math.min(abilitizerPrice(ability), abilitizerPrice(ability2)),
+      desc: binaryAbilitizerDesc("Before battle: Your opponent chooses whether you set 1 of your Pokemons' ability to ", ability, ' or ', ability2),
     }
   }
   
@@ -3879,6 +3890,15 @@ function abilitizerDesc(strBeforeAbilityName, ability) {
   return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n'
           + spanWithClass(abilityDesc(ability), 'attr') + '\n'
           + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning');
+}
+function binaryAbilitizerDesc(str, ability, str2, ability2) {
+  return str + abilityNameInHTML(ability.name) + str2 + abilityNameInHTML(ability2.name) + '.\n'
+          + twoEqualWidthAttr(abilityDesc(ability), abilityDesc(ability2))
+          + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning');
+}
+function abilitizerPrice(ability) {
+  const typicalEffectiveStatDiff = STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE);
+  return roundToNearest5(typicalEffectiveStatDiff);
 }
 
 function roundToNearest5(num, canRoundToOnes) {
@@ -4057,7 +4077,13 @@ function tmDesc(strBeforeMoveName, move) {
 }
 function binaryTmDesc(str, move, str2, move2) {
   return str + spanWithType(move.name, move.type) + str2 + spanWithType(move2.name, move2.type) + '.'
-          + '\n<div class="flex-row attr">' + spanWithClass(moveDesc(move, true), 'equalWidth mr-half') + spanWithClass(moveDesc(move2, true), 'equalWidth') + '</div>';
+          + '\n' + twoEqualWidthAttr(moveDesc(move, true), moveDesc(move2, true));
+}
+function twoEqualWidthAttr(str, str2) {
+  return '<div class="flex-row attr">' 
+            + spanWithClass(str, 'equalWidth mr-half') 
+            + spanWithClass(str2, 'equalWidth') 
+            + '</div>';
 }
 function randomMove(allowZMoves, predicate) {
   let move = randomValue(moves);
