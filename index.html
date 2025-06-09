@@ -1029,7 +1029,7 @@ function printRequiredItems() {
       const usualStatTotal = getStatTotal(species, getLevelWithAbility(species, species.abilities[0]));
       return newStatTotal - usualStatTotal;
     })
-    const price = roundToNearest5((Math.max(...statDiffs) - AVG_HELD_ITEM_VALUE));
+    const price = roundToNearest5((Math.max(...statDiffs) - AVG_HELD_ITEM_VALUE), true);
 
     tsv += requiredItem + '\theldItem\t' + price + '\t\t' + getSpeciesId(species.baseSpecies);
     tsv += '\t' + heldItemDesc(requiredItem) + '\n';
@@ -3439,6 +3439,7 @@ function randomHeldItem(mustBeBerry) {
 
   item = structuredClone(item);
   const heldItemName = item.name;
+
   let randy = Math.random();
   if (mustBeBerry)
     randy = 1; // must be a regular held item
@@ -3449,32 +3450,78 @@ function randomHeldItem(mustBeBerry) {
     item.price = getItemPrice(item);
     if (item.price === 1)
       item.price = 0;
-    if ((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
-          && heldItemName !== 'Chilan Berry')
+    if (fewValidHolders(item, heldItemName))
       item.price = (-1 * AVG_HELD_ITEM_VALUE) + 'n+' + (item.price + AVG_HELD_ITEM_VALUE);
     else
       item.price = (item.price - AVG_HELD_ITEM_VALUE) + 'n+' + AVG_HELD_ITEM_VALUE;
-    item.desc = "Set EVERY Pokemon's held item to ";
-  } else if ((randy -= .1) < 0 && getItemPrice(item) >= 0) {
+    item.desc = "Set EVERY Pokemon's held item to " + heldItemNameAndDesc(heldItemName);
+  } else if ((randy -= .05) < 0 && getItemPrice(item) >= 0) {
     // twin held items
     item.name = 'Twin ' + item.name + '(s)';
     item.type = 'beforeHeldItem';
     item.price = getItemPrice(item);
-    if (((hasRequirement(item) || TYPES.some(type => heldItemDesc(heldItemName).includes(type)))
-          && heldItemName !== 'Chilan Berry') || heldItemName === 'Eviolite')
-      item.price = Math.max(0, Math.min(roundToNearest5(item.price * .8, true), item.price - 5));
+    if (fewValidHolders(item, heldItemName) || heldItemName === 'Eviolite')
+      item.price = slightlyLowerNonnegativePrice(item.price);
     else
       item.price = 0;
     item.desc = 'Before battle: Both players MAY give their [nth] Pokemon ' 
-                    + aOrAn(heldItemName).slice(0, -1 * heldItemName.length);
+                    + aOrAn(heldItemName).slice(0, -1 * heldItemName.length) // just "a" or "an"
+                    + heldItemNameAndDesc(heldItemName);
+  } else if ((randy -= .05) < 0) {
+    // binary held items
+    let item2;
+    do {
+      item2 = randomElement(items);
+    } while (!(isLegalItem(item2) && item2.type === 'heldItem') 
+                || (mustBeBerry && !item2.name.endsWith(' Berry'))
+                || item == item2);
+    item2 = structuredClone(item2);
+    const heldItemName2 = item2.name;
+    
+    // adjust prices
+    for (const itemI of [item, item2]) {
+      if (itemI.price < 0)
+        itemI.price = itemI.desc; // the janky location where i put the price if applied Before Battle. see Sticky Barb, etc.
+      // Note: Dubious Disc's price looks like -20r-10; it is intentionally not captured in the above case
+      itemI.price = getItemPrice(itemI);
+      if (itemI.price > 0) {
+        const itemIName = itemI == item ? heldItemName : heldItemName2;
+        if (fewValidHolders(itemI, itemIName, true))
+          itemI.price = roundToNearest5(itemI.price/2, true);
+        else
+          itemI.price = slightlyLowerNonnegativePrice(itemI.price);
+      }
+    }
+
+    item.name = item.name + ' or ' + item2.name;
+    item.type = 'beforeHeldItem';
+    item.price = Math.min(item.price, item2.price);
+
+    item.desc = "Before battle: Your opponent chooses whether you set 1 of your Pokemon's held item to " 
+                    + heldItemNameInHTML(heldItemName) + ' or ' + heldItemNameInHTML(heldItemName2) + '.\n'
+                    + twoEqualWidthAttr(heldItemDesc(heldItemName), heldItemDesc(heldItemName2));
+    
   } else {
-    // held item
-    item.desc = "Set a Pokemon's held item to ";
+    // regular held item
+    item.desc = "Set a Pokemon's held item to " + heldItemNameAndDesc(heldItemName);
   }
-  item.desc += heldItemNameInHTML(heldItemName) + '.\n'
-                + spanWithClass(heldItemDesc(heldItemName), 'attr');
 
   return item;
+}
+function heldItemNameAndDesc(heldItemName) {
+  return heldItemNameInHTML(heldItemName) + '.\n'
+                + spanWithClass(heldItemDesc(heldItemName), 'attr');
+}
+function slightlyLowerNonnegativePrice(price) {
+  if (price < 0) {
+    console.err('slightlyLowerNonnegativePrice was run on price=' + price);
+    return price;
+  }
+  return Math.max(0, Math.min(roundToNearest5(price * .8, true), price - 5));
+}
+function fewValidHolders(item, heldItemName, ignoreReqs) {
+  return (!ignoreReqs && hasRequirement(item)) 
+    || (TYPES.some(type => heldItemDesc(heldItemName).includes(type)) && heldItemName !== 'Chilan Berry');
 }
 
 function isLegalItem(item, ignoreLastRoundReq) {
@@ -3956,7 +4003,7 @@ function randomTM() {
     return {
       name: 'Twin TMs #' + move.num,
       type: 'beforeTM',
-      price: roundToNearest5(tmPrice(move)/2),
+      price: roundToNearest5(tmPrice(move)/2, true),
       desc: tmDesc("Before battle: Both players MAY teach their [nth] Pokemon the move ", move),
     };
   } else if ((randy -= .05) < 0) {
@@ -3966,7 +4013,7 @@ function randomTM() {
     return {
       name: 'Binary TMs #' + move.num + ' and #' + move2.num,
       type: 'beforeTM',
-      price: roundToNearest5(Math.min(tmPrice(move), tmPrice(move2))),
+      price: roundToNearest5(Math.min(tmPrice(move), tmPrice(move2)), true),
       desc: binaryTmDesc('Before battle: Your opponent chooses whether you teach 1 of your Pokemon the move ', move, ' or ', move2),
     };
   } else if ((randy -= .25) < 0) {
