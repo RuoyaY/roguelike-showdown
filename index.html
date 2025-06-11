@@ -3342,7 +3342,7 @@ function refreshShop(isViaMoney) {
       price: 20,
       desc: 'Pick a pokemon. Swap any two of its move slots.',
     }});
-  let AllSlotsKeyItem = getKeyItems().find(keyItem => ALL_SLOTS_KEY_ITEMS.includes(keyItem));
+  const AllSlotsKeyItem = getKeyItems().findLast(keyItem => ALL_SLOTS_KEY_ITEMS.includes(keyItem));
   if (AllSlotsKeyItem != null) {
     const keyItemKey = Object.keys(KEY_ITEMS).find(key => KEY_ITEMS[key] === AllSlotsKeyItem);
     const keyItemShopFuncsKey = keyItemKey.slice(0, -1 * '_ALL'.length);
