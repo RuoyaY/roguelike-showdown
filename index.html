@@ -556,6 +556,8 @@ const SPECIES_VALUES = {
   // 'Terapagos-Stellar': 1,
 }
 const SPECIES_WITH_DESC = {
+  // pikachuworld
+  'Pikachu-World': "Can use neither Pikanium Z nor Pikashunium Z, despite being in a cap.",
   // ogerpon
   'Ogerpon': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Speed).',
   'Ogerpon-Teal-Tera': 'Can only tera into Grass/Fire/Water/Rock.\nAfter tera, ability becomes Embody Aspect (+1 Speed).',
@@ -856,14 +858,14 @@ const WIN_INCOME_DELTA = -20;
 const BASE_REFRESH_COST = 3;
 
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
-const ILLEGAL_MONS = [
-  // functionally identical because of its ability, but stats are less helpful.
-  // also, while it's alone, the Abilitizer price is stupid (-325).
-  'wishiwashi',
-  // functionally identical because of its ability, but stats are less helpful.
-  'terapagos',
+// These are functionally identical to another forme because of its ability, but the stats displayed are less helpful.
+// Also, while it's alone, the Abilitizer price is dumb (-325 for Wishiwashi).
+const ILLEGAL_DUE_TO_ABILITY = ['wishiwashi', 'terapagos'];
+const STRICTLY_WORSE_MONS = [
   // misleadingly, a cap Pikachu that can't use Pikashunium Z. can't use Pikanium Z or cosplay moves, either.
   'pikachuworld',
+];
+const ILLEGAL_MONS = [
   // misleadingly, having Embody Aspect before Tera doesn't do anything (and it gets it for free, after Tera)
   "ogerpontealtera",
   "ogerponwellspringtera",
@@ -1782,7 +1784,7 @@ function addChoices(choicesDiv) {
       return false;
     }
     const species = allSpecies[speciesId];
-    if (!isLegal(speciesId, null)) {
+    if (!isLegal(speciesId, null, false, true)) {
       alert('Error: please pick a different forme for this Pokemon.');
       return false;
     }
@@ -1871,11 +1873,15 @@ function generateSpecificSpecies() {
   // console.log(formes);
 }
 
-function isLegal(speciesId, requiredType, ignoreIllegalMons) {
+function isLegal(speciesId, requiredType, ignoreDueToAbility, ignoreStrictlyWorse) {
   const species = allSpecies[speciesId];
   if (species.forme && ILLEGAL_FORMES.includes(species.forme))
     return false;
-  if (!ignoreIllegalMons && ILLEGAL_MONS.includes(speciesId))
+  if (ILLEGAL_MONS.includes(speciesId))
+    return false;
+  if (!ignoreDueToAbility && ILLEGAL_DUE_TO_ABILITY.includes(speciesId))
+    return false;
+  if (!ignoreStrictlyWorse && STRICTLY_WORSE_MONS.includes(speciesId))
     return false;
   if (requiredType && !species.types.includes(requiredType))
     return false;
