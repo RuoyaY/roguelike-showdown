@@ -3496,6 +3496,8 @@ function randomHeldItem(mustBeBerry) {
           itemI.price = roundToNearest5(itemI.price/2, true);
         else
           itemI.price = slightlyLowerNonnegativePrice(itemI.price);
+        if (itemI.price <= 0)
+          itemI.price = 1;
       }
     }
 
