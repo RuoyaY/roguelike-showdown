@@ -97,34 +97,38 @@ Doom Seed	misc	-15											Lower a Pokemon's level by 1 (can't choose a Lv1 Po
 Doom Seed Party	partyMisc	-15n											Lower EVERY Pokemon's level by 1 (can't go below Lv1).			
 Twin Rare Candies	beforeBattle	5											Before battle: Both players MAY increase their [nth] Pokemon's level by 1.			
 Twin Doom Seeds	beforeBattle	0	0										Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
+Candy Target Request	msic	15											Ask your opponent to pick one of your nonempty Pokemon slots, then raise that Pokemon's level by 1.			
 HP Up	misc	15											Set a Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein	misc	15											Set a Pokemon's Atk EV to 100 (max 508 total EVs).			
 Iron	misc	15											Set a Pokemon's Def EV to 100 (max 508 total EVs).			
 Calcium	misc	15											Set a Pokemon's SpA EV to 100 (max 508 total EVs).			
 Zinc	misc	15											Set a Pokemon's SpD EV to 100 (max 508 total EVs).			
-Carbos	misc	15											Set a Pokemon's Spe EV to 100 (max 508 total EVs).			
+Carbos	misc	20											Set a Pokemon's Spe EV to 100 (max 508 total EVs).			
 Perfect Nutrience	misc	20											Set a Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
 Random Nutrience	misc	10											Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
 Nutrience Request	misc	5											Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
+Binary Nutrience	beforeBattle	15											Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 100 (max 508 total EVs).			
 HP Up Party	partyMisc	15n+5											Set every Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein Party	partyMisc	10n+5											Set every Pokemon's Atk EV to 100 (max 508 total EVs).			
 Iron Party	partyMisc	15n+5											Set every Pokemon's Def EV to 100 (max 508 total EVs).			
 Calcium Party	partyMisc	10n+5											Set every Pokemon's SpA EV to 100 (max 508 total EVs).			
 Zinc Party	partyMisc	15n+5											Set every Pokemon's SpD EV to 100 (max 508 total EVs).			
-Carbos Party	partyMisc	15n+5											Set every Pokemon's Spe EV to 100 (max 508 total EVs).			
-Perfect Nutrience Party	partyMisc	15n+10											Set every Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
+Carbos Party	partyMisc	20n+5											Set every Pokemon's Spe EV to 100 (max 508 total EVs).			
+Perfect Nutrience Party	partyMisc	20n+5											Set every Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
 Random Nutrience Party	partyMisc	13n+5											Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
 Nutrience Party Request	misc	10n+5											Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
+Binary Nutrience Parties	beforeBattle	15n+5											Before battle: Your opponent chooses whether you set ALL of your Pokemon's [_____] or [_____] EV to 100 (max 508 total EVs).			
 Multi-Vitamin	misc	40											Set a Pokemon's EVs to 50 HP / 50 Atk / 50 Def / 50 SpA / 50 SpD / 50 Spe.			
 HP Max	misc	35											Set a Pokemon's HP EV to 252 (max 508 total EVs).		 	
 Max Protein	misc	35											Set a Pokemon's Atk EV to 252 (max 508 total EVs).			
 Max Iron	misc	35											Set a Pokemon's Def EV to 252 (max 508 total EVs).			
 Max Calcium	misc	35											Set a Pokemon's SpA EV to 252 (max 508 total EVs).			
 Max Zinc	misc	35											Set a Pokemon's SpD EV to 252 (max 508 total EVs).			
-Max Carbos	misc	35											Set a Pokemon's Spe EV to 252 (max 508 total EVs).			
+Max Carbos	misc	40											Set a Pokemon's Spe EV to 252 (max 508 total EVs).			
 Perfect Max Nutrience	misc	40											Set a Pokemon's EV in any 1 stat to 252 (max 508 total EVs).			
 Random Max Nutrience	misc	30											Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
 Max Nutrience Request	misc	25											Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
+Binary Max Nutrience	beforeBattle	35											Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 252 (max 508 total EVs).			
 Super Training	misc	75											Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV) (ignore preexisting EVs).			
 Health Feathers	misc	10	0										Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)			
 Muscle Feathers	misc	10	0										Increase a Pokemon's Atk EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)			
@@ -156,11 +160,34 @@ Gentle Mint	misc	1											Set a Pokemon's Nature to Gentle (+SpD, -Def).
 Careful Mint	misc	10											Set a Pokemon's Nature to Careful (+SpD, -SpA).			
 Sassy Mint	misc	5											Set a Pokemon's Nature to Sassy (+SpD, -Spe).			
 Timid Mint	misc	10											Set a Pokemon's Nature to Timid (+Spe, -Atk).			
-Hasty Mint	misc	1											Set a Pokemon's Nature to Hasty (+Spe, -Def).			
+Hasty Mint	misc	5											Set a Pokemon's Nature to Hasty (+Spe, -Def).			
 Jolly Mint	misc	10											Set a Pokemon's Nature to Jolly (+Spe, -SpA).			
-Naive Mint	misc	1											Set a Pokemon's Nature to Naive (+Spe, -SpD).			
+Naive Mint	misc	5											Set a Pokemon's Nature to Naive (+Spe, -SpD).			
 Perfect Mint	misc	15											Set a Pokemon's Nature to any Nature.			
 Random Mint	misc	1	0										Generate a random Nature (excluding neutral natures), then set any 1 Pokemon's Nature to that Nature.			
+Mint Request	misc	0											Ask your opponent to pick a non-neutral Nature, then set any 1 of your Pokemon's Nature to it.			
+Lonely Mint Party	partyMisc	5											Set every Pokemon's Nature to Lonely (+Atk, -Def).			
+Adamant Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Adamant (+Atk, -SpA).			
+Naughty Mint Party	partyMisc	5											Set every Pokemon's Nature to Naughty (+Atk, -SpD).			
+Brave Mint Party	partyMisc	5											Set every Pokemon's Nature to Brave (+Atk, -Spe).			
+Bold Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Bold (+Def, -Atk).			
+Impish Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Impish (+Def, -SpA).			
+Lax Mint Party	partyMisc	5											Set every Pokemon's Nature to Lax (+Def, -SpD).			
+Relaxed Mint Party	partyMisc	5											Set every Pokemon's Nature to Relaxed (+Def, -Spe).			
+Modest Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Modest (+SpA, -Atk).			
+Mild Mint Party	partyMisc	5											Set every Pokemon's Nature to Mild (+SpA, -Def).			
+Rash Mint Party	partyMisc	5											Set every Pokemon's Nature to Rash (+SpA, -SpD).			
+Quiet Mint Party	partyMisc	5											Set every Pokemon's Nature to Quiet (+SpA, -Spe).			
+Calm Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Calm (+SpD, -Atk).			
+Gentle Mint Party	partyMisc	5											Set every Pokemon's Nature to Gentle (+SpD, -Def).			
+Careful Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Careful (+SpD, -SpA).			
+Sassy Mint Party	partyMisc	5											Set every Pokemon's Nature to Sassy (+SpD, -Spe).			
+Timid Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Timid (+Spe, -Atk).			
+Hasty Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Hasty (+Spe, -Def).			
+Jolly Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Jolly (+Spe, -SpA).			
+Naive Mint Party	partyMisc	5n+5											Set every Pokemon's Nature to Naive (+Spe, -SpD).			
+Perfect Mint Party	partyMisc	5n+10											Set every Pokemon's Nature to any 1 Nature.			
+Mint Party Request	partyMisc	-3n											Ask your opponent to pick a Nature, then set all of your Pokemon's Nature to it.			
 Leftovers	heldItem	30											[held items have automatically generated descriptions]			
 Black Sludge	heldItem	20														
 Choice Band	heldItem	40														
@@ -197,35 +224,29 @@ Same-Type Move Deleter	misc	5n-35											A Pokemon forgets ALL moves of its o
 Random Move Deleter	misc	-25											Pick a Pokemon. It forgets a random move (leave the hyphen) (a Pokemon with no moves learns *Struggle*).			
 Deleveler	misc	-15											Lower 1 or more Pokemon's level by 1 or more (can't go below 1). Earn an extra $1 for each level lowered.			
 Destiny Knot	heldItem	1														
-Normal Gem	heldItem	15														
-Fire Gem	heldItem	15														
-Water Gem	heldItem	15														
-Grass Gem	heldItem	15														
-Electric Gem	heldItem	15														
-Ice Gem	heldItem	15														
-Fighting Gem	heldItem	15														
-Poison Gem	heldItem	15														
-Ground Gem	heldItem	15														
-Flying Gem	heldItem	15														
-Psychic Gem	heldItem	15														
-Bug Gem	heldItem	15														
-Rock Gem	heldItem	15														
-Ghost Gem	heldItem	15														
-Dark Gem	heldItem	15														
-Dragon Gem	heldItem	15														
-Steel Gem	heldItem	15														
-Fairy Gem	heldItem	15														
-Perfect Gem	misc	20											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*").			
+Normal Gem	heldItem	20														
+Fire Gem	heldItem	20														
+Water Gem	heldItem	20														
+Grass Gem	heldItem	20														
+Electric Gem	heldItem	20														
+Ice Gem	heldItem	20														
+Fighting Gem	heldItem	20														
+Poison Gem	heldItem	20														
+Ground Gem	heldItem	20														
+Flying Gem	heldItem	20														
+Psychic Gem	heldItem	20														
+Bug Gem	heldItem	20														
+Rock Gem	heldItem	20														
+Ghost Gem	heldItem	20														
+Dark Gem	heldItem	20														
+Dragon Gem	heldItem	20														
+Steel Gem	heldItem	20														
+Fairy Gem	heldItem	20														
+Perfect Gem	misc	25											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*").			
 Random Gem	misc	5											Generate a random type, then set any 1 Pokemon's held item to the gem of that type (e.g. "*Ice Gem*").			
 Wrong Gem	misc	5											Set a Pokemon's held item to any gem (e.g. "*Ice Gem*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
 Gem Request	misc	5											Ask your opponent to pick a gem (e.g. "*Ice Gem*"), then set a Pokemon's held item to the gem of that type.			
-(Almost) Perfect Item	misc	45											Set a Pokemon's held item to anything other than an Eviolite or a Z-Crystal.			
-Mirror Item	misc	25					2						Copy a Pokemon's held item to another Pokemon. Can't copy Eviolite.			
-Mirror Party Item	misc	20n+5					2						Copy a Pokemon's held item to ALL other Pokemon.			
-Shadow Item	misc	20								x			Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last battle. Exception: Z-Crystals.			
-Reflect Item	beforeBattle	20											Before battle: Set your [mth] Pokemon's held item to a copy of your opponent's [nth] Pokemon's held item. Can't copy Z-Crystals.			
-(Almost) Perfect Twin Items	beforeBattle	30											Before battle: Both players MAY give their [nth] Pokemon a [_____] (can't choose Eviolite or a Z-Crystal).			
-Item Request	misc	-20											Ask your opponent to pick a held item (other than Dubious Disc), then set a Pokemon's held item to that item.			
+Binary Gems	beforeBattle	20											Before battle: Your opponent chooses whether you set 1 of your Pokemon's held item to [_____] or [_____]. Must choose gems (e.g. *Ice Gem*).			
 Light Ball	heldItem	200		pikachu,pikachucosplay,pikachurockstar,pikachubelle,pikachupopstar,pikachuphd,pikachulibre,pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner,pikachustarter,pikachugmax,pikachuworld												
 Black Belt	heldItem	20														
 Silk Scarf	heldItem	20														
@@ -251,6 +272,15 @@ Perfect Plate	misc	25											Set a Pokemon's held item to ANY Plate (e.g. "*Z
 Random Plate	misc	10											Generate a random type, then set any 1 Pokemon's held item to the corresponding Plate (e.g. "*Zap Plate*").			
 Wrong Plate	misc	5											Set a Pokemon's held item to any Plate (e.g. "*Zap Plate*") that DOES NOT correspond to the current type of any of its Physical/Special moves.			
 Plate Request	misc	5											Ask your opponent to pick a Plate (e.g. "*Zap Plate*"). Set any 1 Pokemon's held item to that Plate.			
+Binary Plates	beforeBattle	20											Before battle: Your opponent chooses whether you set 1 of your Pokemon's held item to [_____] or [_____]. Must choose Plates (e.g. "*Zap Plate*").			
+(Almost) Perfect Item	misc	45											Set a Pokemon's held item to anything other than an Eviolite or a Z-Crystal.			
+Mirror Item	misc	25					2						Copy a Pokemon's held item to another Pokemon. Can't copy Eviolite.			
+Mirror Party Item	misc	20n+5					2						Copy a Pokemon's held item to ALL other Pokemon.			
+Shadow Item	misc	20								x			Set a Pokemon's held item to any item you KNOW FOR SURE your opponent had last battle. Exception: Z-Crystals.			
+Reflect Item	beforeBattle	20											Before battle: Set your [mth] Pokemon's held item to a copy of your opponent's [nth] Pokemon's held item. Can't copy Z-Crystals.			
+(Almost) Perfect Twin Items	beforeBattle	30											Before battle: Both players MAY give their [nth] Pokemon a [_____] (can't choose Eviolite or a Z-Crystal).			
+Item Request	misc	-20											Ask your opponent to pick a held item (other than Dubious Disc), then set a Pokemon's held item to that item.			
+(Almost) Perfect Binary Items	beforeBattle	35											Before battle: Your opponent chooses whether you set 1 of your Pokemon's held item to [_____] or [_____] (can't choose Eviolite or a Z-Crystal).			
 Buginium Z	heldItem	55														
 Darkinium Z	heldItem	55														
 Dragonium Z	heldItem	55														
@@ -273,6 +303,7 @@ Perfect Z-Crystal	misc	65											Set a Pokemon's held item to any Z-Crystal.
 Random Z-Crystal	misc	35											Generate a random type, then give the corresponding Z-Crystal to any 1 Pokemon.			
 Wrong Z-Crystal	misc	30											Set a Pokemon's held item to any Z-Crystal that DOES NOT correspond to the current type of ANY of its moves.			
 Z-Crystal Request	misc	30											Ask your opponent to pick a type-based Z-Crystal. Set any 1 Pokemon's held item to that Z-Crystal.			
+Binary Z-Crystals	beforeBattle	50											Before battle: Your opponent chooses whether you set 1 of your Pokemon's held item to the Z-Crystal [_____] or [_____].			
 Thunderbolt TM & Aloraichium Z	TMAndZCrystal	120		raichualola									Teach Raichu-Alola *Thunderbolt* and set its held item to *Aloraichium Z*.			
 Spirit Shackle TM & Decidium Z	TMAndZCrystal	100		decidueye									Teach Decidueye *Spirit Shackle* and set its held item to *Decidium Z*.			
 Last Resort TM & Eevium Z	TMAndZCrystal	100		eevee									Teach Eevee *Last Resort* and set its held item to *Eevium Z*.			
@@ -284,7 +315,7 @@ Spectral Thief TM & Marshadium Z	TMAndZCrystal	100		marshadow									Teach Mars
 Psychic TM & Mewnium Z	TMAndZCrystal	120		mew									Teach Mew *Psychic* and set its held item to *Mewnium Z*.			
 Play Rough TM & Mimikium Z	TMAndZCrystal	100		mimikyu,mimikyubusted,mimikyutotem,mimikyubustedtotem									Teach Mimikyu *Play Rough* and set its held item to *Mimikium Z*.			
 Volt Tackle TM & Pikanium Z	TMAndZCrystal	100		pikachu									Teach Pikachu *Volt Tackle* and set its held item to *Pikanium Z*.			
-Thunderbolt TM & Pikashunium Z	TMAndZCrystal	120		pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner									Teach a cap Pikachu (not Pikachu-Starter) *Thunderbolt* and set its held item to *Pikashunium Z*.			
+Thunderbolt TM & Pikashunium Z	TMAndZCrystal	120		pikachuoriginal,pikachuhoenn,pikachusinnoh,pikachuunova,pikachukalos,pikachualola,pikachupartner									Teach a cap Pikachu (not Pikachu-World) *Thunderbolt* and set its held item to *Pikashunium Z*.			
 Sparkling Aria TM & Primarium Z	TMAndZCrystal	100		primarina									Teach Primarina *Sparkling Aria* and set its held item to *Primarium Z*.			
 Giga Impact TM & Snorlium Z	TMAndZCrystal	100		snorlax									Teach Snorlax *Giga Impact* and set its held item to *Snorlium Z*.			
 Sunsteel Strike TM & Solganium Z	TMAndZCrystal	100		solgaleo,necrozmaduskmane									Teach Solgaleo or Necrozma-Dusk-Mane *Sunsteel Strike* and set its held item to *Solganium Z*.			
@@ -301,6 +332,7 @@ Perfect TM	universalTM	60											Teach ANY 1 Pokemon ANY 1 move (no Z-Moves, 
 Perfect Party TM	partyTM	30n+30											Choose ANY move (no Z-Moves, G-Max moves, Zippy Zap, or Spore). Teach EVERY Pokemon that move.			
 Perfect Twin TMs	beforeTM	30											Before battle: Both players MAY teach their [nth] Pokemon the move [_____] (can't choose Z-Moves).			
 Perfect Species TM	universalTM	30											Teach ANY 1 Pokemon any move it can learn (in National Dex AG) (excluding Z-Moves, G-Max moves, Zippy Zap, and Spore).			
+Perfect Binary TMs	beforeTM	55											Before battle: Your opponent chooses whether you teach 1 Pokemon the move [_____] or [_____] (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Mirror TM	universalTM	40					2						Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves, G-Max moves, Zippy Zap, and Spore).			
 Mirror Moveset	misc	20					2						Replace a Pokemon's ENTIRE moveset with a copy of another Pokemon's moveset.			
 Reflect Moveset	beforeBattle	30											Before battle: Replace your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
@@ -332,7 +364,8 @@ Fairy Tera Shards	misc	10											Set a Pokemon's Tera Type to <span class="ty
 Stellar Tera Shards	misc	5											Set a Pokemon's Tera Type to <span class="type-stellar">Stellar</span>.			
 Perfect Tera Shards	misc	20											Set a Pokemon's Tera Type to anything.			
 Random Tera Shards	misc	5											Generate a random type (including Stellar), then set any 1 Pokemon's Tera Type to that type.			
-Tera Shards Request	misc	0											Ask your opponent to pick a Tera Type. Set any 1 Pokemon's Tera Type to that type.			
+Tera Shards Request	misc	-5											Ask your opponent to pick a Tera Type. Set any 1 Pokemon's Tera Type to that type.			
+Binary Tera Shards	beforeBattle	10											Before battle: Your opponent chooses whether you set 1 of your Pokemon's Tera Type to [_____] or [_____].			
 Mirror Tera Shards	misc	15					2						Copy a Pokemon's Tera Type to another Pokemon.			
 Shadow Tera Shards	misc	10								x			Set a Pokemon's Tera Type to one you KNOW FOR SURE your opponent had last battle.			
 Reflecting Tera Shards	beforeBattle	15											Before battle: Set your [mth] Pokemon's Tera Type to your opponent's [nth] Pokemon's Tera Type.			
@@ -428,14 +461,15 @@ Shock Drive	heldItem	0				Techno Blast
 True Mirror	misc	50	0										The next thing you buy, you get twice.			
 Wonder Guard-ifier	misc	15									x		Set a Pokemon's ability to *Wonder Guard*, but set its Level to 1. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
 Plus & Minus Abilitizers	abilitizer	60					2						Set 2 Pokemon's abilities to *Plus* and *Minus*.  <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-(Almost) Perfect Abilitizer	abilitizer	70											Set a Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-(Almost) Perfect Party Abilitizer	partyAbilitizer	50n+20											Set EVERY Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Perfect Twin Abilitizers	beforeAbilitizer	50											Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Mirror Abilitizer	abilitizer	30					2						Copy a Pokemon's ability to any other Pokemon. Cannot COPY Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+(Almost) Perfect Abilitizer	abilitizer	70											Set a Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, Imposter, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+(Almost) Perfect Party Abilitizer	partyAbilitizer	50n+20											Set EVERY Pokemon's ability to any ability other than Huge Power/Pure Power, Fur Coat, Ice Scales, Imposter, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+(Almost) Perfect Twin Abilitizers	beforeAbilitizer	50											Before battle: Both players MAY set their [nth] Pokemon's ability to [_____]. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, Imposter, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+(Almost) Perfect Binary Abilitizers	beforeAbilitizer	50											Before battle: Your opponent chooses whether you set 1 of your Pokemon's ability to [_____] or [_____]. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, Imposter, or Wonder Guard. <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Mirror Abilitizer	abilitizer	30					2						Copy a Pokemon's ability to any other Pokemon. <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Shadow Abilitizer	abilitizer	25								x			Set a Pokemon's ability to an ability you KNOW FOR SURE your opponent had last battle.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Reflecting Abilitizer	beforeBattle	30											Before battle: Set your [mth] Pokemon's ability to your opponent's [nth] Pokemon's ability.  <span class="warning"> <br>Cannot copy Wonder Guard. <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Alliterative Abilitizer	abilitizer	40											Set a Pokemon's ability to any ability starting with the same letter as the current one. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class=""warning""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
-Species-Based Abilitizer	abilitizer	25											Set a Pokemon's ability to any ability it can normally get (including Hidden Abilities). Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, or Wonder Guard. <span class=""""warning""""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Alliterative Abilitizer	abilitizer	40											Set a Pokemon's ability to any ability starting with the same letter as the current one. Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, Imposter, or Wonder Guard. <span class=""warning""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
+Species-Based Abilitizer	abilitizer	25											Set a Pokemon's ability to any ability it can normally get (including Hidden Abilities). Can't choose Huge Power/Pure Power, Fur Coat, Ice Scales, Imposter, or Wonder Guard. <span class=""""warning""""> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Weather Chaos Abilitizers	abilitizer	0					4						Set 4 Pokemon's abilities to *Drizzle*, *Drought*, *Sand Stream*, and *Snow Warning* (the slower Pokemon will override the faster Pokemon's weather). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Terrain Chaos Abilitizers	abilitizer	0					4						Set 4 Pokemon's abilities to *Electric Surge*, *Grassy Surge*, *Misty Surge*, and *Psychic Surge* (the slower Pokemon will override the faster Pokemon's terrain). <span class="warning"> <br>Cannot replace Defeatist, Slow Start, Stall, or Truant. </span>			
 Abilitizer Request	abilitizer	-50											Ask your opponent to pick an ability other than Truant (remind them Defeatist, Slow Start, and Stall cannot be replaced). Give 1 Pokemon that ability. <span class="warning"> <br>Cannot choose Pokemon you got at Lv1. </span>			
@@ -493,7 +527,7 @@ Muscle Band	heldItem	10
 Wise Glasses	heldItem	10														
 Protective Pads	heldItem	1														
 Punching Glove	heldItem	10				Bullet Punch,Comet Punch,Dizzy Punch,Double Iron Bash,Drain Punch,Dynamic Punch,Fire Punch,Focus Punch,Hammer Arm,Headlong Rush,Ice Hammer,Ice Punch,Jet Punch,Mach Punch,Mega Punch,Meteor Mash,Plasma Fists,Power-Up Punch,Rage Fist,Shadow Punch,Sky Uppercut,Surging Strikes,Thunder Punch,Wicked Blow										
-Quick Claw	heldItem	10														
+Quick Claw	heldItem	20														
 Fire Memory	heldItem	15			RKS System											
 Water Memory	heldItem	10			RKS System											
 Grass Memory	heldItem	0			RKS System											
@@ -607,11 +641,11 @@ Perfect Dark Party TM	partyTM	25n+25											Choose ANY DARK-TYPE move (no Z-M
 Perfect Dragon Party TM	partyTM	25n+25											Choose ANY DRAGON-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
 Perfect Steel Party TM	partyTM	25n+25											Choose ANY STEEL-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
 Perfect Fairy Party TM	partyTM	25n+25											Choose ANY FAIRY-TYPE move (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-Perfect Egg	egg	2r+100											In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose Pokestar Spirit. CAN choose Shedinja. </span>			
+Perfect Egg	egg	2r+90											In an EXTRA SLOT, add a Pokemon of ANY species, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span> <span class="warning"> <br>Cannot choose a Pokemon with Wonder Guard. </span>			
 Mirror Egg	egg	2r+70											Copy one of your Pokemon into an EXTRA SLOT. Set the copy's level to 1.			
 Reflecting Egg	beforeBattle	2r+75											Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
 Shadow Egg	egg	2r+60								x			In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>			
-Egg Request	egg	2r+45											Ask your opponent to pick a species and an ability that species normally gets. You get that pokemon. Set its level to 1, its Tera Type to Stellar, and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>?			
+Egg Request	egg	2r+40											Ask your opponent to pick a species and an ability that species normally gets. You get that pokemon. Set its level to 1, its Tera Type to Stellar, and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>			
 1v1 Battle	nextBattle	50/b	0				2					x	Next battle only: Both players can only use 1 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
 2v2 Battle	nextBattle	50/b					3					x	Next battle only: Both players can only use 2 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9doublescustomgame @@@ Picked Team Size = 2</span>			
 1v1 Warm-up	beforeBattle	5					2				x	x	Before battle: Do an extra battle where both players can only use 1 Pokemon (chosen during team preview). Winner gets $30. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
@@ -767,109 +801,110 @@ Dawn Stone	heldItem	0									x		Every round, automatically sets EVERY move slot
 Dusk Stone	heldItem	0									x		Each round, automatically levels up, but forgets a random move (a Pokemon with no moves learns Struggle).			
 Dubious Disc	heldItem	-20r-10											permanently can't be changed/replaced			
 Up-Grade	heldItem	5r									x		Every round, changes to a random species w/ higher stats			
-TR00	heldItem	45	0.2										free TMs for Swords Dance			
-TR01	heldItem	45	0.2										free TMs for Body Slam			
-TR02	heldItem	45	0.2										free TMs for Flamethrower			
-TR03	heldItem	45	0.2										free TMs for Hydro Pump			
-TR04	heldItem	45	0.2										free TMs for Surf			
-TR05	heldItem	45	0.2										free TMs for Ice Beam			
-TR06	heldItem	45	0.2										free TMs for Blizzard			
-TR07	heldItem	45	0.2										free TMs for Low Kick			
-TR08	heldItem	45	0.2										free TMs for Thunderbolt			
-TR09	heldItem	45	0.2										free TMs for Thunder			
-TR10	heldItem	45	0.2										free TMs for Earthquake			
-TR11	heldItem	45	0.2										free TMs for Psychic			
+TR00	heldItem	40	0.2										free TMs for Swords Dance			
+TR01	heldItem	40	0.2										free TMs for Body Slam			
+TR02	heldItem	40	0.2										free TMs for Flamethrower			
+TR03	heldItem	40	0.2										free TMs for Hydro Pump			
+TR04	heldItem	40	0.2										free TMs for Surf			
+TR05	heldItem	40	0.2										free TMs for Ice Beam			
+TR06	heldItem	40	0.2										free TMs for Blizzard			
+TR07	heldItem	40	0.2										free TMs for Low Kick			
+TR08	heldItem	40	0.2										free TMs for Thunderbolt			
+TR09	heldItem	40	0.2										free TMs for Thunder			
+TR10	heldItem	40	0.2										free TMs for Earthquake			
+TR11	heldItem	40	0.2										free TMs for Psychic			
 TR12	heldItem	20	0.2										free TMs for Agility			
 TR13	heldItem	20	0.2										free TMs for Focus Energy			
 TR14	heldItem	20	0.2										free TMs for Metronome			
-TR15	heldItem	45	0.2										free TMs for Fire Blast			
-TR16	heldItem	45	0.2										free TMs for Waterfall			
+TR15	heldItem	40	0.2										free TMs for Fire Blast			
+TR16	heldItem	40	0.2										free TMs for Waterfall			
 TR17	heldItem	20	0.2										free TMs for Amnesia			
-TR18	heldItem	45	0.2										free TMs for Leech Life			
-TR19	heldItem	45	0.2										free TMs for Tri Attack			
-TR20	heldItem	45	0.2										free TMs for Substitute			
-TR21	heldItem	45	0.2										free TMs for Reversal			
-TR22	heldItem	45	0.2										free TMs for Sludge Bomb			
+TR18	heldItem	40	0.2										free TMs for Leech Life			
+TR19	heldItem	40	0.2										free TMs for Tri Attack			
+TR20	heldItem	40	0.2										free TMs for Substitute			
+TR21	heldItem	40	0.2										free TMs for Reversal			
+TR22	heldItem	40	0.2										free TMs for Sludge Bomb			
 TR23	heldItem	20	0.2										free TMs for Spikes			
-TR24	heldItem	45	0.2										free TMs for Outrage			
-TR25	heldItem	45	0.2										free TMs for Psyshock			
+TR24	heldItem	40	0.2										free TMs for Outrage			
+TR25	heldItem	40	0.2										free TMs for Psyshock			
 TR26	heldItem	20	0.2										free TMs for Endure			
 TR27	heldItem	20	0.2										free TMs for Sleep Talk			
-TR28	heldItem	45	0.2										free TMs for Megahorn			
+TR28	heldItem	40	0.2										free TMs for Megahorn			
 TR29	heldItem	20	0.2										free TMs for Baton Pass			
-TR30	heldItem	45	0.2										free TMs for Encore			
-TR31	heldItem	45	0.2										free TMs for Iron Tail			
-TR32	heldItem	45	0.2										free TMs for Crunch			
-TR33	heldItem	45	0.2										free TMs for Shadow Ball			
-TR34	heldItem	45	0.2										free TMs for Future Sight			
-TR35	heldItem	45	0.2										free TMs for Uproar			
-TR36	heldItem	45	0.2										free TMs for Heat Wave			
-TR37	heldItem	45	0.2										free TMs for Taunt			
+TR30	heldItem	40	0.2										free TMs for Encore			
+TR31	heldItem	40	0.2										free TMs for Iron Tail			
+TR32	heldItem	40	0.2										free TMs for Crunch			
+TR33	heldItem	40	0.2										free TMs for Shadow Ball			
+TR34	heldItem	40	0.2										free TMs for Future Sight			
+TR35	heldItem	40	0.2										free TMs for Uproar			
+TR36	heldItem	40	0.2										free TMs for Heat Wave			
+TR37	heldItem	40	0.2										free TMs for Taunt			
 TR38	heldItem	20	0.2										free TMs for Trick			
-TR39	heldItem	45	0.2										free TMs for Superpower			
+TR39	heldItem	40	0.2										free TMs for Superpower			
 TR40	heldItem	20	0.2										free TMs for Skill Swap			
-TR41	heldItem	45	0.2										free TMs for Blaze Kick			
-TR42	heldItem	45	0.2										free TMs for Hyper Voice			
-TR43	heldItem	45	0.2										free TMs for Overheat			
-TR44	heldItem	45	0.2										free TMs for Cosmic Power			
-TR45	heldItem	45	0.2										free TMs for Muddy Water			
+TR41	heldItem	40	0.2										free TMs for Blaze Kick			
+TR42	heldItem	40	0.2										free TMs for Hyper Voice			
+TR43	heldItem	40	0.2										free TMs for Overheat			
+TR44	heldItem	40	0.2										free TMs for Cosmic Power			
+TR45	heldItem	40	0.2										free TMs for Muddy Water			
 TR46	heldItem	20	0.2										free TMs for Iron Defense			
-TR47	heldItem	45	0.2										free TMs for Dragon Claw			
-TR48	heldItem	45	0.2										free TMs for Bulk Up			
-TR49	heldItem	45	0.2										free TMs for Calm Mind			
-TR50	heldItem	45	0.2										free TMs for Leaf Blade			
-TR51	heldItem	45	0.2										free TMs for Dragon Dance			
-TR52	heldItem	45	0.2										free TMs for Gyro Ball			
-TR53	heldItem	45	0.2										free TMs for Close Combat			
+TR47	heldItem	40	0.2										free TMs for Dragon Claw			
+TR48	heldItem	40	0.2										free TMs for Bulk Up			
+TR49	heldItem	40	0.2										free TMs for Calm Mind			
+TR50	heldItem	40	0.2										free TMs for Leaf Blade			
+TR51	heldItem	40	0.2										free TMs for Dragon Dance			
+TR52	heldItem	40	0.2										free TMs for Gyro Ball			
+TR53	heldItem	40	0.2										free TMs for Close Combat			
 TR54	heldItem	20	0.2										free TMs for Toxic Spikes			
-TR55	heldItem	45	0.2										free TMs for Flare Blitz			
-TR56	heldItem	45	0.2										free TMs for Aura Sphere			
-TR57	heldItem	45	0.2										free TMs for Poison Jab			
-TR58	heldItem	45	0.2										free TMs for Dark Pulse			
-TR59	heldItem	45	0.2										free TMs for Seed Bomb			
-TR60	heldItem	45	0.2										free TMs for X-Scissor			
-TR61	heldItem	45	0.2										free TMs for Bug Buzz			
-TR62	heldItem	45	0.2										free TMs for Dragon Pulse			
-TR63	heldItem	45	0.2										free TMs for Power Gem			
-TR64	heldItem	45	0.2										free TMs for Focus Blast			
-TR65	heldItem	45	0.2										free TMs for Energy Ball			
-TR66	heldItem	45	0.2										free TMs for Brave Bird			
-TR67	heldItem	45	0.2										free TMs for Earth Power			
-TR68	heldItem	45	0.2										free TMs for Nasty Plot			
-TR69	heldItem	45	0.2										free TMs for Zen Headbutt			
-TR70	heldItem	45	0.2										free TMs for Flash Cannon			
-TR71	heldItem	45	0.2										free TMs for Leaf Storm			
-TR72	heldItem	45	0.2										free TMs for Power Whip			
-TR73	heldItem	45	0.2										free TMs for Gunk Shot			
-TR74	heldItem	45	0.2										free TMs for Iron Head			
-TR75	heldItem	45	0.2										free TMs for Stone Edge			
+TR55	heldItem	40	0.2										free TMs for Flare Blitz			
+TR56	heldItem	40	0.2										free TMs for Aura Sphere			
+TR57	heldItem	40	0.2										free TMs for Poison Jab			
+TR58	heldItem	40	0.2										free TMs for Dark Pulse			
+TR59	heldItem	40	0.2										free TMs for Seed Bomb			
+TR60	heldItem	40	0.2										free TMs for X-Scissor			
+TR61	heldItem	40	0.2										free TMs for Bug Buzz			
+TR62	heldItem	40	0.2										free TMs for Dragon Pulse			
+TR63	heldItem	40	0.2										free TMs for Power Gem			
+TR64	heldItem	40	0.2										free TMs for Focus Blast			
+TR65	heldItem	40	0.2										free TMs for Energy Ball			
+TR66	heldItem	40	0.2										free TMs for Brave Bird			
+TR67	heldItem	40	0.2										free TMs for Earth Power			
+TR68	heldItem	40	0.2										free TMs for Nasty Plot			
+TR69	heldItem	40	0.2										free TMs for Zen Headbutt			
+TR70	heldItem	40	0.2										free TMs for Flash Cannon			
+TR71	heldItem	40	0.2										free TMs for Leaf Storm			
+TR72	heldItem	40	0.2										free TMs for Power Whip			
+TR73	heldItem	40	0.2										free TMs for Gunk Shot			
+TR74	heldItem	40	0.2										free TMs for Iron Head			
+TR75	heldItem	40	0.2										free TMs for Stone Edge			
 TR76	heldItem	20	0.2										free TMs for Stealth Rock			
-TR77	heldItem	45	0.2										free TMs for Grass Knot			
-TR78	heldItem	45	0.2										free TMs for Sludge Wave			
-TR79	heldItem	45	0.2										free TMs for Heavy Slam			
-TR80	heldItem	45	0.2										free TMs for Electro Ball			
-TR81	heldItem	45	0.2										free TMs for Foul Play			
+TR77	heldItem	40	0.2										free TMs for Grass Knot			
+TR78	heldItem	40	0.2										free TMs for Sludge Wave			
+TR79	heldItem	40	0.2										free TMs for Heavy Slam			
+TR80	heldItem	40	0.2										free TMs for Electro Ball			
+TR81	heldItem	40	0.2										free TMs for Foul Play			
 TR82	heldItem	20	0.2										free TMs for Stored Power			
-TR83	heldItem	45	0.2										free TMs for Ally Switch			
-TR84	heldItem	45	0.2										free TMs for Scald			
+TR83	heldItem	40	0.2										free TMs for Ally Switch			
+TR84	heldItem	40	0.2										free TMs for Scald			
 TR85	heldItem	20	0.2										free TMs for Work Up			
-TR86	heldItem	45	0.2										free TMs for Wild Charge			
-TR87	heldItem	45	0.2										free TMs for Drill Run			
-TR88	heldItem	45	0.2										free TMs for Heat Crash			
-TR89	heldItem	45	0.2										free TMs for Hurricane			
-TR90	heldItem	45	0.2										free TMs for Play Rough			
+TR86	heldItem	40	0.2										free TMs for Wild Charge			
+TR87	heldItem	40	0.2										free TMs for Drill Run			
+TR88	heldItem	40	0.2										free TMs for Heat Crash			
+TR89	heldItem	40	0.2										free TMs for Hurricane			
+TR90	heldItem	40	0.2										free TMs for Play Rough			
 TR91	heldItem	20	0.2										free TMs for Venom Drench			
-TR92	heldItem	45	0.2										free TMs for Dazzling Gleam			
-TR93	heldItem	45	0.2										free TMs for Darkest Lariat			
-TR94	heldItem	45	0.2										free TMs for High Horsepower			
-TR95	heldItem	45	0.2										free TMs for Throat Chop			
-TR96	heldItem	45	0.2										free TMs for Pollen Puff			
-TR97	heldItem	45	0.2										free TMs for Psychic Fangs			
-TR98	heldItem	45	0.2										free TMs for Liquidation			
-TR99	heldItem	45	0.2										free TMs for Body Press			
-Perfect TR	misc	60											Set a Pokemon's held item to any TR (e.g. *TR00*).			
+TR92	heldItem	40	0.2										free TMs for Dazzling Gleam			
+TR93	heldItem	40	0.2										free TMs for Darkest Lariat			
+TR94	heldItem	40	0.2										free TMs for High Horsepower			
+TR95	heldItem	40	0.2										free TMs for Throat Chop			
+TR96	heldItem	40	0.2										free TMs for Pollen Puff			
+TR97	heldItem	40	0.2										free TMs for Psychic Fangs			
+TR98	heldItem	40	0.2										free TMs for Liquidation			
+TR99	heldItem	40	0.2										free TMs for Body Press			
+Perfect TR	misc	50											Set a Pokemon's held item to any TR (e.g. *TR00*).			
 Random TR	misc	20											Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
 Offensive TR Request	misc	20											Ask your opponenet to choose a non-status move TR (e.g. *TR01*). Set any 1 Pokemon's held item to that TR.			
+Binary TRs	beforeBattle	-40/b+40									x		Before battle: Your opponent chooses whether you set 1 of your Pokemon's held item to [_____] or [_____]. Must choose TRs (e.g. *TR00*).			
 Berserk Gene	heldItem	25											confusion and +2 Atk on entry			
 Normal Candy Party	misc	20											Increase ALL Normal-type Pokemon's level by one.			
 Fire Candy Party	misc	20											Increase ALL Fire-type Pokemon's level by one.			
@@ -967,7 +1002,7 @@ Perfect Forced Nature	nextBattle	15/b											Next battle only: Set your oppon
 Perfect Forced Twin Natures	nextBattle	25/b											Next battle only: Set both players' [nth] Pokemon's nature to [_____].			
 Dynamax Battle	nextBattle	0											Next battle only: Both players' Pokemon can Dynamax, but cannot Terastallize. <br><span class="command">/challenge gen8doublescustomgame</span>			
 No Team Preview	nextBattle	0											Next battle only: No team preview. Players may choose their leads by changing the order of their Pokemon in Teambuilder. <br><span class="command">/challenge gen9doublescustomgame @@@ ! Team Preview</span>			
-Blitz Warm-up	beforeBattle	5									x		Before battle: Do an extra battle where both players get 10 sec per turn. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>			
+Blitz Warm-up	beforeBattle	0									x		Before battle: Do an extra battle where both players get 10 sec per turn. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>			
 Inverse Battle	nextBattle	40/b											Next battle only: Type matchups are inverted (weaknesses become resistances, and immunities & resistances become weaknesses). <br><span class="command">/challenge gen9doublescustomgame @@@ Inverse Mod</span>			
 Camomon Battle	nextBattle	40/b											Next battle only: Both players' Pokemon become the typing of their first 2 moves. <br><span class="command">/challenge gen9doublescustomgame @@@ Camomons Mod</span>			
 Tera Type Preview	nextBattle	0											Next battle only: Both players' Tera Types are revealed during team preview. <br><span class="command">/challenge gen9doublescustomgame @@@ Tera Type Preview</span>			
@@ -998,7 +1033,7 @@ Heaviest Mon Trivia	misc	15	0.5										Your opponent sends you the NAMES of TH
 Lightest Mon Trivia	misc	15	0.5										Your opponent sends you the NAMES of THREE random Pokemon. If you correctly state which is lightest, earn $30.			
 Weight Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its weight. If you're closer/tied, earn $30.			
 Leveling Rate Trivia	misc	10											Your opponent sends you a pic of a random Pokemon. If you correctly state its leveling rate, earn $30. <span class="attr"> <br>Leveling Rates: Erratic, Fast, Medium Fast, Medium Slow, Slow, Fluctuating. <br>Erratic and Fluctuating is mostly for gen 3 Pokemon. </span>			
-Exp Yield Face-Off	misc	10											"Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base exp yield. If you're closer/tied, earn $30. <span class=""attr""> <br>TELL THEM: it's usually between 36 and 360. </span>"			
+Exp Yield Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base exp yield. If you're closer/tied, earn $30. <span class="attr"> <br>TELL THEM: it's usually between 36 and 360. </span>			
 EV Yield Trivia	misc	5											Your opponent sends you a pic of a random Pokemon. If you correctly state its EV yield, earn $30. <span class="attr"> <br>Total 1-3 pts, sometimes split between different stats. </span>			
 Highest Stat Trivia	misc	10											Your opponent sends you a pic of a random Pokemon. If you correctly state which stat is its highest, earn $30. (If there are multiple, you only need to state one of them.)			
 HP Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent simultaneously guess its base HP stat. If you're closer/tied, earn $30.			
@@ -1081,6 +1116,8 @@ Encounter Power: Fairy	misc	10									x		Next round, you are guaranteed to get 
 Perfect Encounter Power	misc	15									x		Choose a "guaranteed type" (next round, you are guaranteed to get Pokemon of that type).			
 Mirror Encounter Power	misc	0									x		Choose a "guaranteed type" that is a Pokemon type you already own (next round, you are guaranteed to get Pokemon of that type).			
 Shadow Encounter Power 	misc	10								x	x		Choose a "guaranteed type" that is a Pokemon type your opponent owned last battle (next round, you are guaranteed to get Pokemon of that type).			
+Encounter Power Request	misc	-15									x		Ask your opponent to choose a "guaranteed type". Set your "guaranteed type" to that type.			
+Binary Encounter Powers	beforeBattle	5									x		Before battle: Your opponent chooses whether you set your "guaranteed type" to [_____] or [_____] (next round, you are guaranteed to get Pokemon of that type).			
 Vs Encounter Power: Normal	beforeBattle	10									x		Before battle: Set your opponent's "guaranteed type" to Normal (next round, they are guaranteed to get Pokemon of that type).			
 Vs Encounter Power: Fire	beforeBattle	0									x		Before battle: Set your opponent's "guaranteed type" to Fire (next round, they are guaranteed to get Pokemon of that type).			
 Vs Encounter Power: Water	beforeBattle	0									x		Before battle: Set your opponent's "guaranteed type" to Water (next round, they are guaranteed to get Pokemon of that type).			
@@ -1100,7 +1137,6 @@ Vs Encounter Power: Dragon	beforeBattle	5									x		Before battle: Set your opp
 Vs Encounter Power: Steel	beforeBattle	0									x		Before battle: Set your opponent's "guaranteed type" to Steel (next round, they are guaranteed to get Pokemon of that type).			
 Vs Encounter Power: Fairy	beforeBattle	0									x		Before battle: Set your opponent's "guaranteed type" to Fairy (next round, they are guaranteed to get Pokemon of that type).			
 Perfect Vs Encounter Power	beforeBattle	20									x		Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).			
-Encounter Power Request	misc	-15									x		Ask your opponent to choose a "guaranteed type". Set your "guaranteed type" to that type.			
 Mirrored Vs Encounter Power	beforeBattle	10									x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).			
 Shadowed Vs Encounter Power 	beforeBattle	15								x	x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).			
 Normal Magnet	keyItem	-10m+5									x		Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
@@ -1144,81 +1180,127 @@ Perfect Twin Dark TMs	beforeTM	25											Before battle: Both players MAY teac
 Perfect Twin Dragon TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Dragon-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Steel TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Steel-type move [_____] (can't choose Z-Moves).			
 Perfect Twin Fairy TMs	beforeTM	25											Before battle: Both players MAY teach their [nth] Pokemon the Fairy-type move [_____] (can't choose Z-Moves).			
-A* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter A (no Z-Moves or G-Max moves).			
-B* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move beginning with the letter B (no Z-Moves or G-Max moves).			
-C* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter C (no Z-Moves or G-Max moves).			
-D* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter D (no Z-Moves or G-Max moves).			
-E* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter E (no Z-Moves or G-Max moves).			
-F* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter F (no Z-Moves or G-Max moves).			
-G* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move beginning with the letter G (no Z-Moves or G-Max moves).			
-H* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter H (no Z-Moves or G-Max moves).			
-I* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter I (no Z-Moves or G-Max moves).			
-J* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter J (no Z-Moves or G-Max moves).			
-K* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter K (no Z-Moves or G-Max moves).			
-L* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter L (no Z-Moves or G-Max moves).			
-M* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter M (no Z-Moves or G-Max moves).			
-N* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter N (no Z-Moves or G-Max moves).			
-O* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter O (no Z-Moves or G-Max moves).			
-P* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter P (no Z-Moves or G-Max moves).			
-Q* TM	universalTM	25	0.5										Teach ANY 1 Pokemon any move beginning with the letter Q (no Z-Moves or G-Max moves).			
-R* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter R (no Z-Moves or G-Max moves).			
-S* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move beginning with the letter S (no Z-Moves, G-Max moves, or Spore).			
-T* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter T (no Z-Moves or G-Max moves).			
-U* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter U (no Z-Moves or G-Max moves).			
-V* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter V (no Z-Moves or G-Max moves).			
-W* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move beginning with the letter W (no Z-Moves or G-Max moves).			
-X* TM	universalTM	30	0.01										Teach ANY 1 Pokemon any move beginning with the letter X (no Z-Moves or G-Max moves).			
-Y* TM	universalTM	20	0.01										Teach ANY 1 Pokemon any move beginning with the letter Y (no Z-Moves or G-Max moves).			
-Z* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move beginning with the letter Z (no Z-Moves, G-Max moves, or Zippy Zap).			
-A* Party TM	partyTM	7n+43	0.25										Choose any move beginning with the letter A (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-B* Party TM	partyTM	17n+63	0.5										Choose any move beginning with the letter B (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-C* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter C (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-D* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter D (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-E* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter E (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-F* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter F (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-G* Party TM	partyTM	17n+63	0.5										Choose any move beginning with the letter G (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-H* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter H (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-I* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter I (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-J* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter J (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-K* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter K (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-L* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter L (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-M* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter M (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-N* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter N (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-O* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter O (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-P* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter P (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-Q* Party TM	partyTM	2n+28	0.5										Choose any move beginning with the letter Q (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-R* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter R (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-S* Party TM	partyTM	17n+63	0.5										Choose any move beginning with the letter S (no Z-Moves, G-Max moves, or Spore). Teach EVERY Pokemon that move.			
-T* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter T (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-U* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter U (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-V* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter V (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-W* Party TM	partyTM	7n+43	0.5										Choose any move beginning with the letter W (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-X* Party TM	partyTM	7n+33	0.01										Choose any move beginning with the letter X (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-Y* Party TM	partyTM	2n+23	0.01										Choose any move beginning with the letter Y (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
-Z* Party TM	partyTM	7n+38	0.5										Choose any move beginning with the letter Z (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
-Twin A* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter A (can't choose Z-Moves).			
-Twin B* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter B (can't choose Z-Moves).			
-Twin C* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter C (can't choose Z-Moves).			
-Twin D* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter D (can't choose Z-Moves).			
-Twin E* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter E (can't choose Z-Moves).			
-Twin F* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter F (can't choose Z-Moves).			
-Twin G* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter G (can't choose Z-Moves).			
-Twin H* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter H (can't choose Z-Moves).			
-Twin I* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter I (can't choose Z-Moves).			
-Twin J* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter J (can't choose Z-Moves).			
-Twin K* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter K (can't choose Z-Moves).			
-Twin L* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter L (can't choose Z-Moves).			
-Twin M* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter M (can't choose Z-Moves).			
-Twin N* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter N (can't choose Z-Moves).			
-Twin O* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter O (can't choose Z-Moves).			
-Twin P* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter P (can't choose Z-Moves).			
-Twin Q* TMs	beforeTM	10	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter Q (can't choose Z-Moves).			
-Twin R* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter R (can't choose Z-Moves).			
-Twin S* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter S (can't choose Z-Moves).			
-Twin T* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter T (can't choose Z-Moves).			
-Twin U* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter U (can't choose Z-Moves).			
-Twin V* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter V (can't choose Z-Moves).			
-Twin W* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter W (can't choose Z-Moves).			
-Twin X* TMs	beforeTM	10	0.01										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter X (can't choose Z-Moves).			
-Twin Y* TMs	beforeTM	5	0.01										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter Y (can't choose Z-Moves).			
-Twin Z* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter Z (can't choose Z-Moves).			
+A* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter A (no Z-Moves or G-Max moves).			
+B* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move starting with the letter B (no Z-Moves or G-Max moves).			
+C* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter C (no Z-Moves or G-Max moves).			
+D* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter D (no Z-Moves or G-Max moves).			
+E* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter E (no Z-Moves or G-Max moves).			
+F* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter F (no Z-Moves or G-Max moves).			
+G* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move starting with the letter G (no Z-Moves or G-Max moves).			
+H* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter H (no Z-Moves or G-Max moves).			
+I* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter I (no Z-Moves or G-Max moves).			
+J* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move starting with the letter J (no Z-Moves or G-Max moves).			
+K* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move starting with the letter K (no Z-Moves or G-Max moves).			
+L* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter L (no Z-Moves or G-Max moves).			
+M* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter M (no Z-Moves or G-Max moves).			
+N* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter N (no Z-Moves or G-Max moves).			
+O* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter O (no Z-Moves or G-Max moves).			
+P* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter P (no Z-Moves or G-Max moves).			
+Q* TM	universalTM	25	0.5										Teach ANY 1 Pokemon any move starting with the letter Q (no Z-Moves or G-Max moves).			
+R* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter R (no Z-Moves or G-Max moves).			
+S* TM	universalTM	50	0.5										Teach ANY 1 Pokemon any move starting with the letter S (no Z-Moves, G-Max moves, or Spore).			
+T* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter T (no Z-Moves or G-Max moves).			
+U* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move starting with the letter U (no Z-Moves or G-Max moves).			
+V* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter V (no Z-Moves or G-Max moves).			
+W* TM	universalTM	40	0.5										Teach ANY 1 Pokemon any move starting with the letter W (no Z-Moves or G-Max moves).			
+X* TM	universalTM	30	0.01										Teach ANY 1 Pokemon any move starting with the letter X (no Z-Moves or G-Max moves).			
+Y* TM	universalTM	20	0.01										Teach ANY 1 Pokemon any move starting with the letter Y (no Z-Moves or G-Max moves).			
+Z* TM	universalTM	35	0.5										Teach ANY 1 Pokemon any move starting with the letter Z (no Z-Moves, G-Max moves, or Zippy Zap).			
+A* Party TM	partyTM	7n+43	0.25										Choose any move starting with the letter A (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+B* Party TM	partyTM	17n+63	0.5										Choose any move starting with the letter B (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+C* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter C (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+D* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter D (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+E* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter E (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+F* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter F (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+G* Party TM	partyTM	17n+63	0.5										Choose any move starting with the letter G (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+H* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter H (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+I* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter I (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+J* Party TM	partyTM	7n+38	0.5										Choose any move starting with the letter J (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+K* Party TM	partyTM	7n+38	0.5										Choose any move starting with the letter K (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+L* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter L (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+M* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter M (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+N* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter N (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+O* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter O (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+P* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter P (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Q* Party TM	partyTM	2n+28	0.5										Choose any move starting with the letter Q (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+R* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter R (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+S* Party TM	partyTM	17n+63	0.5										Choose any move starting with the letter S (no Z-Moves, G-Max moves, or Spore). Teach EVERY Pokemon that move.			
+T* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter T (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+U* Party TM	partyTM	7n+38	0.5										Choose any move starting with the letter U (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+V* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter V (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+W* Party TM	partyTM	7n+43	0.5										Choose any move starting with the letter W (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+X* Party TM	partyTM	7n+33	0.01										Choose any move starting with the letter X (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Y* Party TM	partyTM	2n+23	0.01										Choose any move starting with the letter Y (no Z-Moves or G-Max moves). Teach EVERY Pokemon that move.			
+Z* Party TM	partyTM	7n+38	0.5										Choose any move starting with the letter Z (no Z-Moves, G-Max moves, or Zippy Zap). Teach EVERY Pokemon that move.			
+Twin A* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter A (can't choose Z-Moves).			
+Twin B* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter B (can't choose Z-Moves).			
+Twin C* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter C (can't choose Z-Moves).			
+Twin D* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter D (can't choose Z-Moves).			
+Twin E* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter E (can't choose Z-Moves).			
+Twin F* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter F (can't choose Z-Moves).			
+Twin G* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter G (can't choose Z-Moves).			
+Twin H* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter H (can't choose Z-Moves).			
+Twin I* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter I (can't choose Z-Moves).			
+Twin J* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter J (can't choose Z-Moves).			
+Twin K* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter K (can't choose Z-Moves).			
+Twin L* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter L (can't choose Z-Moves).			
+Twin M* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter M (can't choose Z-Moves).			
+Twin N* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter N (can't choose Z-Moves).			
+Twin O* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter O (can't choose Z-Moves).			
+Twin P* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter P (can't choose Z-Moves).			
+Twin Q* TMs	beforeTM	10	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter Q (can't choose Z-Moves).			
+Twin R* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter R (can't choose Z-Moves).			
+Twin S* TMs	beforeTM	30	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter S (can't choose Z-Moves).			
+Twin T* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter T (can't choose Z-Moves).			
+Twin U* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter U (can't choose Z-Moves).			
+Twin V* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter V (can't choose Z-Moves).			
+Twin W* TMs	beforeTM	20	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter W (can't choose Z-Moves).			
+Twin X* TMs	beforeTM	10	0.01										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter X (can't choose Z-Moves).			
+Twin Y* TMs	beforeTM	5	0.01										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter Y (can't choose Z-Moves).			
+Twin Z* TMs	beforeTM	15	0.5										Before battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter Z (can't choose Z-Moves).			
+A* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter A. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+B* Abilitizer	abilitizer	45	0.5										Set a Pokemon's ability to any ability starting with the letter B. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+C* Abilitizer	abilitizer	30	0.5										Set a Pokemon's ability to any ability starting with the letter C. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+D* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter D. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+E* Abilitizer	abilitizer	30	0.5										Set a Pokemon's ability to any ability starting with the letter E. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+F* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter F. Can't choose Fur Coat. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+G* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter G. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+H* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter H. Can't choose Huge Power. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+I* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter I. Can't choose Ice Scales or Imposter. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+J* Abilitizer	abilitizer	20	0.01										Set a Pokemon's ability to any ability starting with the letter J. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+K* Abilitizer	abilitizer	20	0.01										Set a Pokemon's ability to any ability starting with the letter K. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+L* Abilitizer	abilitizer	30	0.5										Set a Pokemon's ability to any ability starting with the letter L. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+M* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter M. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+N* Abilitizer	abilitizer	25	0.5										Set a Pokemon's ability to any ability starting with the letter N. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+O* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter O. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+P* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter P. Can't choose Pure Power. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Q* Abilitizer	abilitizer	25	0.5										Set a Pokemon's ability to any ability starting with the letter Q. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+R* Abilitizer	abilitizer	30	0.5										Set a Pokemon's ability to any ability starting with the letter R. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+S* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter S. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+T* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter T. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+U* Abilitizer	abilitizer	25	0.5										Set a Pokemon's ability to any ability starting with the letter U. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+V* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter V. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+W* Abilitizer	abilitizer	60	0.5										Set a Pokemon's ability to any ability starting with the letter W. Can't choose Wonder Guard. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin A* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter A. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin B* Abilitizers	beforeAbilitizer	35	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter B. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin C* Abilitizers	beforeAbilitizer	20	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter C. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin D* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter D. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin E* Abilitizers	beforeAbilitizer	20	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter E. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin F* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter F. Can't choose Fur Coat. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin G* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter G. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin H* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter H. Can't choose Huge Power. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin I* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter I. Can't choose Ice Scales or Imposter. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin J* Abilitizers	beforeAbilitizer	10	0.01										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter J. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin K* Abilitizers	beforeAbilitizer	10	0.01										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter K. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin L* Abilitizers	beforeAbilitizer	20	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter L. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin M* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter M. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin N* Abilitizers	beforeAbilitizer	15	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter N. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin O* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter O. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin P* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter P. Can't choose Pure Power. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin Q* Abilitizers	beforeAbilitizer	15	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter Q. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin R* Abilitizers	beforeAbilitizer	20	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter R. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin S* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter S. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin T* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter T. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin U* Abilitizers	beforeAbilitizer	15	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter U. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin V* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter V. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			
+Twin W* Abilitizers	beforeAbilitizer	40	0.5										Before battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter W. Can't choose Wonder Guard. <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>			

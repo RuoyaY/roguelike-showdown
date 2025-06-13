@@ -949,7 +949,7 @@ function printStats() {
   console.log(statStats);
   isCalculatingStats = false;
 }
-function printMints() {
+function printMintParties() {
   let mintTsv = '';
   for (const nature of Object.keys(NATURES)) {
     const raisedStat = STATS[NATURES[nature][0]];
@@ -957,10 +957,10 @@ function printMints() {
     if (raisedStat === loweredStat)
       continue; // skip neutral natures
     let price = 5;
-    if (loweredStat === 'Atk' || loweredStat === 'SpA')
-      price = 10;
-    mintTsv += nature + ' Mint\tmisc\t' + price 
-      + "\tSet a Pokemon's Nature to " + nature + ' (+' + raisedStat + ', -' + loweredStat + ').\n';
+    if (loweredStat === 'Atk' || loweredStat === 'SpA' || raisedStat === 'Spe')
+      price = '5n+5';
+    mintTsv += nature + ' Mint Party\tpartyMisc\t' + price 
+      + "\t\t\t\t\t\t\t\t\t\t\tSet every Pokemon's Nature to " + nature + ' (+' + raisedStat + ', -' + loweredStat + ').\n';
   }
   console.log(mintTsv);
 }
@@ -1383,11 +1383,45 @@ function printAlphabetTM() {
     else if (char === 'Z')
       exceptions = 'Z-Moves, G-Max moves, or Zippy Zap';
 
-    out += char + '* TM\tuniversalTM\t' + price + '\t' + prob + '\t\t\t\t\t\t\t\t\t\tTeach ANY 1 Pokemon any move beginning with the letter ' + char + ' (no ' + exceptions + ').\n';
-    outP += char + '* Party TM\tpartyTM\t' + partyPrice + '\t' + prob + '\t\t\t\t\t\t\t\t\t\tChoose any move beginning with the letter ' + char + ' (no ' + exceptions + '). Teach EVERY Pokemon that move.\n';
-    outT += 'Twin ' + char + '* TMs\tbeforeTM\t' + twinPrice + '\t' + prob + "\t\t\t\t\t\t\t\t\t\tBefore battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move beginning with the letter " + char + " (can't choose Z-Moves).\n";
+    out += char + '* TM\tuniversalTM\t' + price + '\t' + prob + '\t\t\t\t\t\t\t\t\t\tTeach ANY 1 Pokemon any move starting with the letter ' + char + ' (no ' + exceptions + ').\n';
+    outP += char + '* Party TM\tpartyTM\t' + partyPrice + '\t' + prob + '\t\t\t\t\t\t\t\t\t\tChoose any move starting with the letter ' + char + ' (no ' + exceptions + '). Teach EVERY Pokemon that move.\n';
+    outT += 'Twin ' + char + '* TMs\tbeforeTM\t' + twinPrice + '\t' + prob + "\t\t\t\t\t\t\t\t\t\tBefore battle: Both players MAY teach their [nth] Pokemon the move [_____]. Must choose a move starting with the letter " + char + " (can't choose Z-Moves).\n";
   }
   console.log(out + outP + outT);
+}
+function printAlphabetAbilitizers() {
+  const BANNED_ABILITIES = ['Huge Power', 'Pure Power', 'Fur Coat', 'Ice Scales', 'Imposter', 'Wonder Guard'];
+  let out = '';
+  let outT = '';
+  for (let i = 0; i < 26; i++) {
+    const char = String.fromCharCode(65 + i);
+
+    const abilitiesWithStart = Object.values(abilities).filter(ability => 
+      ability.name.toUpperCase().startsWith(char) && !BANNED_ABILITIES.includes(ability.name) && isRandomableAbility(ability) && abilitizerPrice(ability) >= 0);
+    if (abilitiesWithStart.length == 0)
+      continue;
+    let prob = 0.5;
+    let valueOfAddedChoice = 10;
+    if (abilitiesWithStart.length <= 1) {
+      prob = 0.01;
+      valueOfAddedChoice = 0;
+    } else if (abilitiesWithStart.length <= 5)
+      valueOfAddedChoice = 5;
+    
+    const maxPrice = abilitiesWithStart.reduce((acc, curr) => Math.max(acc, abilitizerPrice(curr)), 0);
+    const price = Math.min(maxPrice + 20 + valueOfAddedChoice, 60);
+    const twinPrice = Math.min(maxPrice + 10 + valueOfAddedChoice, 40);
+
+    let exceptions = '.';
+    const exceptionsArr = BANNED_ABILITIES.filter(ability => ability.startsWith(char));
+    if (exceptionsArr.length > 0)
+      exceptions = ". Can't choose " + exceptionsArr.join(' or ') + '.';
+
+    let ending = ' <span class="warning"><br>Cannot replace Defeatist, Slow Start, Stall, or Truant.</span>\n';
+    out += char + '* Abilitizer\tabilitizer\t' + price + '\t' + prob + "\t\t\t\t\t\t\t\t\t\tSet a Pokemon's ability to any ability starting with the letter " + char + exceptions + ending;
+    outT += 'Twin ' + char + '* Abilitizers\tbeforeAbilitizer\t' + twinPrice + '\t' + prob + "\t\t\t\t\t\t\t\t\t\tBefore battle: Both players MAY set their [nth] Pokemon's ability to the ability [_____]. Must choose an ability starting with the letter " + char + exceptions + ending;
+  }
+  console.log(out + outT);
 }
 function printAlphabetGoals() {
   const TOO_LOW = 0.05;
@@ -3928,7 +3962,7 @@ function randomAbilitizer(failsafe) {
       name: 'Binary Abilitizers #' + ability.num + ' and #' + ability2.num,
       type: 'beforeAbilitizer',
       price: 5 + Math.min(abilitizerPrice(ability), abilitizerPrice(ability2)),
-      desc: binaryAbilitizerDesc("Before battle: Your opponent chooses whether you set 1 of your Pokemons' ability to ", ability, ' or ', ability2),
+      desc: binaryAbilitizerDesc("Before battle: Your opponent chooses whether you set 1 of your Pokemon's ability to ", ability, ' or ', ability2),
     }
   }
   
@@ -3940,11 +3974,14 @@ function randomAbilitizerAbility() {
   let ability;
   do {
     ability = randomValue(abilities);
-  } while (ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
+  } while (!isRandomableAbility(ability));
+  return ability;
+}
+function isRandomableAbility(ability) {
+  return !(ability.desc.includes('f this Pokemon is a ') || ability.desc.includes('f this Pokemon is an ')
             || ability.name.substring(0, 'Embody Aspect'.length) === 'Embody Aspect'
             || ability.name === 'Teraform Zero' // Tera Shift and Tera Shell are in the 'if this Pokemon is a' case
             || ability.name === 'Wonder Guard');
-  return ability;
 }
 function abilitizerDesc(strBeforeAbilityName, ability) {
   return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n'
