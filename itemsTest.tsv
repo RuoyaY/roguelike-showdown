@@ -1,4 +1,4 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
 TR00	heldItem	50	0.2										all others learn Swords Dance			
 Catch Rate Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent guess its catch rate. If you're closer/tied, earn $30.<span class="attr"><br>TELL YOUR OPPONENT: catch rate is a number 3-255, usually a multiple of 5.</span>
-Binary Nutrience	beforeBattle	15											Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 100 (max 508 total EVs).
+Shahrazad's Egg	egg	2r+60											Start a 1-Round subgame of Roguelike Showdown. If you win, you gain all of your Pokemon in the subgame as Level 1 Pokemon, here, in EXTRA SLOT(S). If you lose, refund this purchase!			
