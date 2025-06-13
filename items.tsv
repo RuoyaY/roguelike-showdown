@@ -390,8 +390,37 @@ Dragon Tera Party	partyMisc	5n											Set EVERY Pokemon's Tera Type to <span 
 Steel Tera Party	partyMisc	15n											Set EVERY Pokemon's Tera Type to <span class="type-steel">Steel</span>.			
 Fairy Tera Party	partyMisc	10n											Set EVERY Pokemon's Tera Type to <span class="type-fairy">Fairy</span>.			
 Stellar Tera Party	partyMisc	5n											Set EVERY Pokemon's Tera Type to <span class="type-stellar">Stellar</span>.			
-Mirror Tera Party	partyMisc	15n-15					2						Copy a Pokemon's Tera Type to EVERY other Pokemon.			
+Perfect Tera Party	misc	15n+5											Choose a Tera Type. Set EVERY Pokemon's Tera Type to that type.			
 Random Tera Party	partyMisc	0											Generate a random type (including Stellar), then set EVERY Pokemon's Tera Type to that type.			
+Tera Party Request	partyMisc	-10n-5											Ask your opponent to pick a Tera Type. Set ALL of your Pokemon's Tera Types to that type.			
+Binary Tera Party	beforeBattle	10n-5											Before battle: Your opponent chooses whether you set ALL of your Pokemon's Tera Types to [_____] or [_____].			
+Mirror Tera Party	partyMisc	10n-10					2						Copy a Pokemon's Tera Type to EVERY Pokemon.			
+Reflecting Tera Spectrum	beforeBattle	5n											Before battle: Set each of your Pokemon's Tera Types to the Tera Type your opponent has in the corresponding slot (if any).			
+Origin Tera Spectrum	partyMisc	10n											For EACH Pokemon, set its Tera Type to any type it already has.			
+Move-Based Tera Shards	partyMisc	10n+5											For EACH Pokemon, set its Tera Type to the type of one of its moves.			
+Twin Normal Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Normal.			
+Twin Fire Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Fire.			
+Twin Water Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Water.			
+Twin Grass Tera	beforeBattle	0											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Grass.			
+Twin Electric Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Electric.			
+Twin Ice Tera	beforeBattle	0											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Ice.			
+Twin Fighting Tera	beforeBattle	0											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Fighting.			
+Twin Poison Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Poison.			
+Twin Ground Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Ground.			
+Twin Flying Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Flying.			
+Twin Psychic Tera	beforeBattle	0											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Psychic.			
+Twin Bug Tera	beforeBattle	0											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Bug.			
+Twin Rock Tera	beforeBattle	0											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Rock.			
+Twin Ghost Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Ghost.			
+Twin Dark Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Dark.			
+Twin Dragon Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Dragon.			
+Twin Steel Tera	beforeBattle	10											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Steel.			
+Twin Fairy Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Fairy.			
+Twin Stellar Tera	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to Stellar.			
+Perfect Twin Tera	beforeBattle	10											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to [_____].			
+Twin Mirror Tera	beforeBattle	5					2						Before battle: Both players MAY set their [nth] Pokemon's Tera Type to their own [mth] Pokemon's Tera Type.			
+Origin Tera Shards	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to any type the Pokemon already has.			
+Move-Based Tera Shards	beforeBattle	5											Before battle: Both players MAY set their [nth] Pokemon's Tera Type to the type of any one of its moves.			
 Venusaurite	heldItem	85		venusaur									If held by a Venusaur, this item allows it to Mega Evolve in battle.			
 Charizardite X	heldItem	85		charizard									If held by a Charizard, this item allows it to Mega Evolve in battle.			
 Charizardite Y	heldItem	130		charizard									If held by a Charizard, this item allows it to Mega Evolve in battle.			
@@ -646,9 +675,10 @@ Mirror Egg	egg	2r+70											Copy one of your Pokemon into an EXTRA SLOT. Set 
 Reflecting Egg	beforeBattle	2r+75											Before battle: Gain a copy your opponent's [nth] Pokemon in an EXTRA SLOT. Set the copy's level to 1.			
 Shadow Egg	egg	2r+60								x			In an EXTRA SLOT, add a Pokemon of ANY species your opponent had LAST BATTLE, with ANY ability that Pokemon normally gets, using "Generate a Pokemon". Set its level to 1 and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>			
 Egg Request	egg	2r+40											Ask your opponent to pick a species and an ability that species normally gets. You get that pokemon. Set its level to 1, its Tera Type to Stellar, and its moveset to the following: <span class="attr"> <br>- Splash <br>-  <br>-  <br>-  </span>			
+Shahrazad's Egg	beforeBattle	1r+25									x		Before battle: Start another 1-Round game of Roguelike Showdown. If you win, gain all of your Pokemon in the subgame as Level 1 Pokemon here in EXTRA SLOT(S).			
 1v1 Battle	nextBattle	50/b	0				2					x	Next battle only: Both players can only use 1 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
 2v2 Battle	nextBattle	50/b					3					x	Next battle only: Both players can only use 2 Pokemon (chosen during team preview). <br><span class="command">/challenge gen9doublescustomgame @@@ Picked Team Size = 2</span>			
-1v1 Warm-up	beforeBattle	5					2				x	x	Before battle: Do an extra battle where both players can only use 1 Pokemon (chosen during team preview). Winner gets $30. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
+1v1 Warm-up	beforeBattle	-18/b+18					2				x	x	Before battle: Do an extra battle where both players can only use 1 Pokemon (chosen during team preview). If you win, earn $30. <br><span class="command">/challenge gen9customgame @@@ Picked Team Size = 1</span>			
 Singles Battle	nextBattle	40/b					2						Next battle only: Do a singles battle instead of a doubles battle.			
 Court Change	nextBattle	100/b											Next battle only: BOTH players use their opponent's team instead of their own.			
 1-Time Trade	nextBattle	50/b										x	Next battle only: Swap your and your opponent's [nth] Pokemon.			
@@ -1002,13 +1032,13 @@ Perfect Forced Nature	nextBattle	15/b											Next battle only: Set your oppon
 Perfect Forced Twin Natures	nextBattle	25/b											Next battle only: Set both players' [nth] Pokemon's nature to [_____].			
 Dynamax Battle	nextBattle	0											Next battle only: Both players' Pokemon can Dynamax, but cannot Terastallize. <br><span class="command">/challenge gen8doublescustomgame</span>			
 No Team Preview	nextBattle	0											Next battle only: No team preview. Players may choose their leads by changing the order of their Pokemon in Teambuilder. <br><span class="command">/challenge gen9doublescustomgame @@@ ! Team Preview</span>			
-Blitz Warm-up	beforeBattle	0									x		Before battle: Do an extra battle where both players get 10 sec per turn. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>			
+Blitz Warm-up	beforeBattle	-15/b+15									x		Before battle: Do an extra battle where both players get 10 sec per turn. If you win, earn $30. <br><span class="command">/challenge gen9doublescustomgame @@@ Blitz</span>			
 Inverse Battle	nextBattle	40/b											Next battle only: Type matchups are inverted (weaknesses become resistances, and immunities & resistances become weaknesses). <br><span class="command">/challenge gen9doublescustomgame @@@ Inverse Mod</span>			
 Camomon Battle	nextBattle	40/b											Next battle only: Both players' Pokemon become the typing of their first 2 moves. <br><span class="command">/challenge gen9doublescustomgame @@@ Camomons Mod</span>			
 Tera Type Preview	nextBattle	0											Next battle only: Both players' Tera Types are revealed during team preview. <br><span class="command">/challenge gen9doublescustomgame @@@ Tera Type Preview</span>			
 No Switching Battle	nextBattle	20/b					3						Next battle only: Both players cannot switch out. <br><span class="command">/challenge gen9doublescustomgame @@@ No Switching</span>			
 Crazyhouse	nextBattle	0					2					x	Next battle only: Singles battle. When a Pokemon is directly KO'd, they are given to their foe (-25% max HP after every swap). <br><span class="command">/challenge gen9customgame @@@ Crazyhouse Rule, !! Max Team Size = 12</span>			
-First Blood Warm-up	beforeBattle	5					2				x		Before battle: Do an extra battle where the first person to get one KO, wins. Winner gets $30. <br><span class="command">/challenge gen9doublescustomgame @@@ First Blood Rule</span>			
+First Blood Warm-up	beforeBattle	-18/b+18					2				x		Before battle: Do an extra battle where the first person to get one KO, wins. If you win, earn $30. <br><span class="command">/challenge gen9doublescustomgame @@@ First Blood Rule</span>			
 Revelationmons Battle	nextBattle	20/b											Next battle only: For both players' Pokemon, their 1st move becomes their 1st type, and their 2nd move becomes their 2nd type, if any. <br><span class="command">/challenge gen9doublescustomgame @@@ Revelationmons Mod</span>			
 Category Swapped Battle	nextBattle	60/b											Next battle only: Both teams' physical moves become special moves, and vice versa. <br><span class="command">/challenge gen9doublescustomgame @@@ Category Swap Mod</span>			
 VoltTurn Mayhem Battle	nextBattle	20/b					3						Next battle only: If either player's Pokemon successfully uses a move that affects foe(s), it switches out. <br><span class="command">/challenge gen9doublescustomgame @@@ VoltTurn Mayhem Mod</span>			

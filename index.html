@@ -964,11 +964,11 @@ function printMintParties() {
   }
   console.log(mintTsv);
 }
-function printTypeExpPowers() {
+function printTwinTeraShards() {
   let tsv = '';
-  for (const type of TYPES)
-    tsv += 'Exp Power: ' + type + '\tkeyItem\t10r\t\t\t\t\t\t\t\t\tx\t\t'
-        + 'Each round, all of your ' + type + '-type Pokemon level up.\n';
+  for (const type of TERA_TYPES)
+    tsv += 'Twin ' + type + ' Tera\tbeforeBattle\t\t\t\t\t\t\t\t\t\t\t\t'
+        + "Before battle: Both players MAY set their [nth] Pokemon's Tera Type to " + type + '.\n';
     // tsv += type.toUpperCase() + "_LV_UP: 'Exp Power: " + type + "',\n";
   console.log(tsv);
 }
