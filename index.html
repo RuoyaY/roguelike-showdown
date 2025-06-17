@@ -161,8 +161,8 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 }
 
 .generated-species-row {
-  max-width: 70ch;
-  overflow-x: auto;
+  /* max-width: 70ch;
+  overflow-x: auto; */
 }
 
 .w-min-content {
@@ -444,14 +444,6 @@ button:focus {
     </div>
     <div id="shop"></div>
 
-    <h2 class="attr">Generate a Pokemon</h2>
-    <div class="mb-1">
-      <label for="speciesInput">Species: </label><input id="speciesInput" class="mb-4px">
-      <br><label for="abilityInput">Ability: </label><input id="abilityInput" class="mb-4px">
-      <br><button onclick="generateSpecificSpecies()">generate</button>
-    </div>
-    <p id="speciesError"></p>
-    <div id="species" class=""></div>
   </div>
 
   <div class="ml-1">
@@ -491,6 +483,15 @@ button:focus {
     <p id="winCounter" class="win-counter win-color"></p>
   </div>
 </div>
+
+<h2 class="attr">Generate a Pokemon</h2>
+<div class="mb-1">
+  <label for="speciesInput">Species: </label><input id="speciesInput" class="mb-4px">
+  <label for="abilityInput">Ability: </label><input id="abilityInput" class="mb-4px">
+  <button onclick="generateSpecificSpecies()">generate</button>
+</div>
+<p id="speciesError"></p>
+<div id="species" class=""></div>
 
 
 <script>
