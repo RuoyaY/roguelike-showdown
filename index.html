@@ -2282,6 +2282,9 @@ function getSpeciesNameOfPokemon(pokemonStr) {
 }
 function getApparentSpeciesNameOfPokemon(pokemonStr) {
   let firstLine = pokemonStr.split('\n')[0].trimEnd();
+  return getApparentSpeciesName(firstLine);
+}
+function getApparentSpeciesName(firstLine) {
   let name = firstLine;
   if (name.includes(' @'))
     name = name.substring(0, name.indexOf(' @'));
