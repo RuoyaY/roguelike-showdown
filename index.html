@@ -341,7 +341,7 @@ button:focus {
     <input type="checkbox" id="camomons">
     <label for="camomons" class="hasHoverText" title="Pokemon instead have the type(s) of their first 2 moves (revealed on entry).">Camomons</label>
     <input type="checkbox" id="fixedTeam" class="ml-half">
-    <label for="fixedTeam" class="hasHoverText" title="Your next Pokemon comes from the top of &quot;Generate a Pokemon&quot;.&NewLine;Species changers, etc. will not appear.">Fixed Team</label>
+    <label for="fixedTeam" class="hasHoverText" title="Your team's species/abilities comes from &quot;Generate a Pokemon&quot;.&NewLine;Species changers, etc. will not appear.">Fixed Team</label>
     <br>
     <span id="camomonsCommand" class="command">/challenge gen9customgame @@@ Camomons Mod</span>
 
@@ -490,7 +490,7 @@ button:focus {
   <button onclick="generateSpecificSpecies()">generate</button>
 </div>
 <p class="reddish" id="speciesError"></p>
-<div id="species" class=""></div>
+<div id="genAPokeDiv" class=""></div>
 
 
 <script>
@@ -1815,7 +1815,34 @@ function killAllChildren(div) {
 const ERROR_ILLEGAL_FORME = 'Error: please pick a different forme for this Pokemon.';
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
-  if (POKEBALL_PROMPTS[pokeball] !== undefined) {
+
+  let speciesList = [], abilitiesList = [], teraList = [];
+
+  if (isFixedTeam()) {
+    // handle Fixed Team
+    const genAPokeDiv = document.getElementById('genAPokeDiv');
+    const firstRow = genAPokeDiv.firstChild;
+    if (!firstRow) {
+      alert('First, choose your team using Generate a Pokemon.');
+      return false;
+    }
+    let successful = false;
+    for (const pokeDiv of firstRow.children) {
+      const pokemonStr = getPokeEle(pokeDiv).innerText.trim();
+      if (pokemonStr != '') {
+        speciesList.push(getSpeciesNameOfPokemon(pokemonStr));
+        abilitiesList.push(getAbilityNameOfPokemon(pokemonStr));
+        teraList.push(getTeraTypeOfPokemon(pokemonStr));
+        successful = true;
+      }
+    }
+    if (!successful) {
+      alert('Error: no species available in top row of Generate a Pokemon.');
+      return false;
+    }
+    genAPokeDiv.removeChild(firstRow);
+  } else if (POKEBALL_PROMPTS[pokeball] !== undefined) { 
+    // handle Master Ball, ___-Type Balls, etc.
     const speciesNameInput = prompt(POKEBALL_PROMPTS[pokeball]);
     if (speciesNameInput == null)
       return false;
@@ -1840,28 +1867,42 @@ function addChoices(choicesDiv) {
       alert('You must choose a ' + requiredType + '-type!');
       return false;
     }
-    for (const abilityName of Object.values(species.abilities))
-      addRandomPokemon(choicesDiv, true, speciesName, abilityName);
-  } else {
-    let numPokeChoices = numChoices();
+
+    for (const abilityName of Object.values(species.abilities)) {
+      speciesList.push(speciesName);
+      abilitiesList.push(abilityName);
+    }
+  }
+
+  let numPokeChoices;
+  if (speciesList.length == 0) {
+    numPokeChoices = numChoices();
     numPokeChoices += numPokemonWithAbility('Honey Gather');
     numPokeChoices += numOfKeyItem(KEY_ITEMS.MORE_POKE_CHOICE);
     numPokeChoices -= numOfKeyItem(KEY_ITEMS.LESS_POKE_CHOICE);
     if (numPokeChoices < 1)
       numPokeChoices = 1;
-
-    let abilityName = null;
-    if (pokeball === 'Truant Ball')
-      abilityName = 'Truant';
-    if (pokeball === 'Wonder Ball')
-      abilityName = 'Wonder Guard';
-
-    let speciesPredicate;
-    if (pokeball === 'Wonder Ball')
-      speciesPredicate = ((species) => getNumWeakness(species.types) <= 2);
-    for (let i = 0; i < numPokeChoices; i++)
-      addRandomPokemon(choicesDiv, true, null, abilityName, false, false, speciesPredicate);
+  } else {
+    numPokeChoices = speciesList.length;
   }
+
+  let abilityName = null;
+  if (pokeball === 'Truant Ball')
+    abilityName = 'Truant';
+  if (pokeball === 'Wonder Ball')
+    abilityName = 'Wonder Guard';
+  if (abilityName)
+    abilitiesList = new Array(numPokeChoices).fill(abilityName);
+  if (pokeball === 'Strange Ball')
+    abilitiesList = [];
+
+  let speciesPredicate;
+  if (pokeball === 'Wonder Ball')
+    speciesPredicate = ((species) => getNumWeakness(species.types) <= 2);
+
+  for (let i = 0; i < numPokeChoices; i++)
+    addRandomPokemon(choicesDiv, true, speciesList[i], abilitiesList[i], teraList[i], false, speciesPredicate);
+  
   return true;
 }
 function numChoices() {
@@ -1882,7 +1923,7 @@ function isMasterBallLegal(speciesId) {
 }
 
 function generateSpecificSpecies() {
-  const speciesDiv = document.getElementById('species');
+  const genAPokeDiv = document.getElementById('genAPokeDiv');
   const speciesName = getProperSpeciesName(document.getElementById('speciesInput').value.trim());
   const speciesId = getSpeciesId(speciesName);
 
@@ -1898,7 +1939,7 @@ function generateSpecificSpecies() {
 
   const speciesRow = document.createElement('div');
   speciesRow.classList.add('flex-row');
-  speciesDiv.prepend(speciesRow);
+  genAPokeDiv.append(speciesRow);
 
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
@@ -1943,7 +1984,7 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
   if (hasChooseButton)
     pokeball = getPokeball();
   
-  if (speciesName == null) {
+  if (!speciesName) {
     let requiredType = getGuaranteedType();
     if (!TYPES.includes(requiredType))
       requiredType = null;
@@ -2743,7 +2784,7 @@ function chooseMove(choicesDiv, pokeDiv, speciesId, moveIds, move) {
   } else {
     pokeEle.innerHTML = pokeEle.innerHTML.slice(0, -1); // remove the extra \n at the end
     const species = allSpecies[getSpeciesIdOfPokemon(pokemonStr)];
-    if (canTera(species) && !pokemonForcedTera(pokemonStr)) {
+    if (canTera(species) && !pokemonForcedTera(pokemonStr) && !TERA_TYPES.includes(getTeraTypeOfPokemon(pokemonStr))) {
       let typeChoices = TERA_TYPES.slice();
       if (isOgerpon(species))
         typeChoices = OGERPON_TERA_TYPES.slice();
