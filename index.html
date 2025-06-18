@@ -2285,8 +2285,12 @@ function getApparentSpeciesNameOfPokemon(pokemonStr) {
   let name = firstLine;
   if (name.includes(' @'))
     name = name.substring(0, name.indexOf(' @'));
-  if (name.includes(' ('))
-    name = name.substring(0, name.indexOf(' ('));
+  if (name.includes(' (M)'))
+    name = name.substring(0, name.indexOf(' (M)'));
+  if (name.includes(' (F)'))
+    name = name.substring(0, name.indexOf(' (F)'));
+  if (name.includes(' (')) // then it's nicknamed. ex: John (Pikachu)
+    name = name.substring(name.lastIndexOf('(') + 1, name.lastIndexOf(')'));
   return name;
 }
 
