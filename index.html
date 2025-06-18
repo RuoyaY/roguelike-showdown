@@ -141,8 +141,6 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
   width: max-content;
 
   visibility: hidden;
-  /* opacity: 0;
-  transition: opacity .3s; */
 }
 .position-left {
   left: 0;
@@ -153,25 +151,15 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 }
 .types:hover .matchups, .tera-type:hover .matchups {
   visibility: visible;
-  /* opacity: 1; */
 }
 
 .text-aligned-img {
   vertical-align: middle;
 }
 
-.generated-species-row {
-  /* max-width: 70ch;
-  overflow-x: auto; */
-}
-
 .w-min-content {
   width: min-content;
 }
-
-/* .win-counter {
-  text-align: center;
-} */
 
 .true-mirror {
   font-style: italic;
@@ -480,7 +468,7 @@ button:focus {
       <h2 class="attr">Key Items</h2>
       <p id="keyItems" class="info-box key-items editable mb-1" contenteditable="true" spellcheck="false"></p>
     </div>
-    <p id="winCounter" class="win-counter win-color"></p>
+    <p id="winCounter" class="win-color"></p>
   </div>
 </div>
 
@@ -1884,7 +1872,7 @@ function generateSpecificSpecies() {
   }
 
   const speciesRow = document.createElement('div');
-  speciesRow.classList.add('flex-row', 'generated-species-row');
+  speciesRow.classList.add('flex-row');
   speciesDiv.prepend(speciesRow);
 
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
