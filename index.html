@@ -1886,14 +1886,14 @@ function generateSpecificSpecies() {
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
     for (const abilityName of Object.values(allSpecies[speciesId].abilities))
-      addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random', isVsBoss());
+      addRandomPokemon(speciesRow, false, speciesName, abilityName, null, isVsBoss());
   } else {
     const abilityName = getProperAbilityName(abilityNameInput);
     if (abilityName == null) {
       speciesErrorEle.textContent = 'ERROR: ability name not recognized';
       return;
     }
-    addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random', isVsBoss());
+    addRandomPokemon(speciesRow, false, speciesName, abilityName, null, isVsBoss());
   }
 
   speciesErrorEle.textContent = '';
