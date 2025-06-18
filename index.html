@@ -3548,7 +3548,7 @@ function randomItem(categoryRandy) {
       return randomItem();
     return randomAbilitizer(100);
   } else if ((randy -= 1/12) < 0) {
-    if (numOfKeyItem(KEY_ITEMS.NO_TRANSFORMER) > 0)
+    if (numOfKeyItem(KEY_ITEMS.NO_TRANSFORMER) > 0 || isFixedTeam())
       return randomItem();
     return randomTransformer();
   } else if ((randy -= 1/24) < 0) {
