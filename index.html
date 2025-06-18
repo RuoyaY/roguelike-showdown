@@ -2677,10 +2677,7 @@ function choosePokemon(choicesDiv, pokemonStr) {
   
   pokeDiv.classList.add('chosen');
   
-  if (pokemonStr.includes('\n- '))
-    pokemonStr = pokemonStr.replace('\n- ', '\n- '.repeat(4) + '\n- ');
-  else
-    pokemonStr += '\n- '.repeat(4) + '\n';
+  pokemonStr += '\n- '.repeat(4) + '\n';
   getPokeEle(pokeDiv).innerText = pokemonStr;
   
   updatePartyPokemonDiv(pokeDiv);
