@@ -1300,9 +1300,10 @@ function loadItems() {
       item.bannedIfPartyFull = splitByTab[9] !== '';
       item.bannedFirstRound = splitByTab[10] !== '';
       item.bannedLastRound = splitByTab[11] !== '';
-      item.bannedIfBoss = splitByTab[12] !== '';
+      item.bannedIfFixedTeam = splitByTab[12] !== '';
+      item.bannedIfBoss = splitByTab[13] !== '';
 
-      item.desc = splitByTab[13];
+      item.desc = splitByTab[14];
       
       // for testing purposes: check itemToTsv is working
       // if (!responseLines[i].startsWith(itemToTsv(item)))
@@ -3680,6 +3681,8 @@ function isLegalItem(item, ignoreLastRoundReq) {
     return false;
   if (item.bannedIfPartyFull && partySize === getPartyPokeDivs().length)
     return false;
+  if (item.bannedIfFixedTeam && isFixedTeam())
+    return false;
   if (item.bannedIfBoss && (isBoss() || isVsBoss()))
     return false;
 
@@ -4352,8 +4355,9 @@ function buyItem(itemDiv, item, itemPrice) {
 
   if (item.type === 'pokeball') {
     if (item.name === 'Random Ball') {
-      const pokeballs = getAllPokeballNames();
-      pokeballs.shift();
+      let pokeballs = getAllPokeballNames();
+      pokeballs.shift(); // can't get the vanilla Poke Ball
+      pokeballs = pokeballs.filter(pokeball => isLegalItem(items.find(item => item.name === pokeball), true)); // can't random onto banned balls
       setPokeball(randomElement(pokeballs));
     }
     else

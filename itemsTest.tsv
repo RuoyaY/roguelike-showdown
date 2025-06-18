@@ -1,4 +1,36 @@
 [KEEP THIS LINE] [must have at least 1 held item, 1 non-held item]			
-TR00	heldItem	50	0.2										all others learn Swords Dance			
-Catch Rate Face-Off	misc	10											Share a pic of a random Pokemon. You and a random opponent guess its catch rate. If you're closer/tied, earn $30.<span class="attr"><br>TELL YOUR OPPONENT: catch rate is a number 3-255, usually a multiple of 5.</span>
-Shahrazad's Egg	egg	2r+60											Start a 1-Round subgame of Roguelike Showdown. If you win, you gain all of your Pokemon in the subgame as Level 1 Pokemon, here, in EXTRA SLOT(S). If you lose, refund this purchase!			
+Oran Berry	heldItem	5												heal 10 hp at 1/2			
+Shahrazad's Egg	egg	2r+70												Play a 1-Round subgame of Roguelike Showdown (be sure to change it to "Round 0 of 1"). You gain all of your Pokemon in the subgame as Level 1 Pokemon, here, in EXTRA SLOT(S). If you win, you also earn $30.			
+Great Ball	pokeball	20									x			Next round, +1 option to all choices for your new Pokemon.			
+Ultra Ball	pokeball	30									x			Next round, +2 options to all choices for your new Pokemon.			
+Nest Ball	pokeball	5									x			Next round, +1 option to all choices for your new Pokemon, but your new Pokemon is 1 level lower than usual.			
+Quick Ball	pokeball	15									x			Next round, -1 option to all choices for your new Pokemon, but your new Pokemon is 3 levels higher than usual.			
+Moon Ball	pokeball	25									x			Next round, your new Pokemon knows the move *Moonlight* in an extra move slot.			
+Dream Ball	pokeball	35									x			Next round, your new Pokemon knows the moves *Rest* and *Sleep Talk* in extra move slots.			
+Friend Ball	pokeball	25									x			Next round, your new Pokemon knows the move *Return* in an extra move slot.			
+Love Ball	pokeball	25									x			Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will be able to choose its gender.			
+Truant Ball	pokeball	0									x			Next round, your new Pokemon has *Truant* instead of its regular ability, but its level is higher than usual.			
+Wonder Ball	pokeball	5									x		x	Next round, your new Pokemon has *Wonder Guard* instead of its regular ability, but its level is 1. It will be guaranteed to have 2 or fewer weaknesses.			
+Strange Ball	pokeball	15									x			Next round, your new Pokemon can get an ability it doesn't normally have, and moves it can't normally learn.			
+Repeat Ball	pokeball	0									x	x		Next round, you choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).			
+Snag Ball	pokeball	10									x	x		Next round, you choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).			
+Normal-Type Ball	pokeball	15									x	x		Next round, you can choose a Normal-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fire-Type Ball	pokeball	15									x	x		Next round, you can choose a Fire-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Water-Type Ball	pokeball	15									x	x		Next round, you can choose a Water-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Grass-Type Ball	pokeball	10									x	x		Next round, you can choose a Grass-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Electric-Type Ball	pokeball	15									x	x		Next round, you can choose a Electric-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ice-Type Ball	pokeball	10									x	x		Next round, you can choose a Ice-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fighting-Type Ball	pokeball	15									x	x		Next round, you can choose a Fighting-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Poison-Type Ball	pokeball	15									x	x		Next round, you can choose a Poison-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ground-Type Ball	pokeball	15									x	x		Next round, you can choose a Ground-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Flying-Type Ball	pokeball	15									x	x		Next round, you can choose a Flying-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Psychic-Type Ball	pokeball	15									x	x		Next round, you can choose a Psychic-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Bug-Type Ball	pokeball	10									x	x		Next round, you can choose a Bug-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Rock-Type Ball	pokeball	15									x	x		Next round, you can choose a Rock-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Ghost-Type Ball	pokeball	15									x	x		Next round, you can choose a Ghost-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dark-Type Ball	pokeball	15									x	x		Next round, you can choose a Dark-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Dragon-Type Ball	pokeball	15									x	x		Next round, you can choose a Dragon-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Steel-Type Ball	pokeball	15									x	x		Next round, you can choose a Steel-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Fairy-Type Ball	pokeball	15									x	x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
+Master Ball	pokeball	20									x	x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
+Random Ball	pokeball	10									x			Automatically sets your Poke Ball for the next round to a random one (other than the default).			
