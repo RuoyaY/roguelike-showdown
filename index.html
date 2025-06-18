@@ -166,10 +166,13 @@ input[type=checkbox]:checked+.item, input[type=checkbox]:checked+.item+.item-pri
 }
 
 .mr-half {
-  margin-right: 0.5em;
+  margin-right: 0.5em;  /* there's probably a good reason it's not rem. forgot it though */
 }
 .mr-1 {
   margin-right: 1rem;
+}
+.ml-half {
+  margin-left: 0.5rem;
 }
 .ml-1 {
   margin-left: 1rem;
@@ -337,8 +340,10 @@ button:focus {
     <br>
     <input type="checkbox" id="camomons">
     <label for="camomons" class="hasHoverText" title="Pokemon instead have the type(s) of their first 2 moves (revealed on entry).">Camomons</label>
-    <span id="camomonsCommand" class="command">/challenge gen9customgame @@@ Camomons Mod</span>
+    <input type="checkbox" id="fixedTeam" class="ml-half">
+    <label for="fixedTeam" class="hasHoverText" title="Your next Pokemon comes from the top of &quot;Generate a Pokemon&quot;.&NewLine;Species changers, etc. will not appear.">Fixed Team</label>
     <br>
+    <span id="camomonsCommand" class="command">/challenge gen9customgame @@@ Camomons Mod</span>
 
     <div hidden>
     <input type="checkbox" id="bossBattle">
@@ -428,7 +433,7 @@ button:focus {
     </div>
 
     <h2 class="attr">Shop</h2>
-    <label for="tmSeeker">Find TMs and species changes for: </label>
+    <label for="tmSeeker">Find TMs <span id="andSpeciesChangers">and species changers </span>for: </label>
     <select id="tmSeeker" class="mb-4px"></select>
     <br>
     <label for="money">$</label> <input id="money" type="number">
@@ -1186,6 +1191,9 @@ function onLoad() {
   document.getElementById('camomons').addEventListener('change', event => {
    document.getElementById('camomonsCommand').hidden = !isCamomons();
   });
+  document.getElementById('fixedTeam').addEventListener('change', event => {
+   document.getElementById('andSpeciesChangers').hidden = isFixedTeam();
+  });
   
   document.getElementById('money').addEventListener('change', event => {updateTax()});
 
@@ -1196,6 +1204,7 @@ function onLoad() {
   setNumRounds(4);
   document.getElementById('endless').checked = false;
   document.getElementById('camomons').checked = false;
+  document.getElementById('fixedTeam').checked = false;
   document.getElementById('camomonsCommand').hidden = true;
   document.getElementById('bossBattle').checked = false;
   document.getElementById('vsBossBattle').checked = false;
@@ -2165,6 +2174,10 @@ function isCamomons() {
   return document.getElementById('camomons').checked;
 }
 
+function isFixedTeam() {
+  return document.getElementById('fixedTeam').checked;
+}
+
 function allMoveIdsSuchThat(predicate) {
   return Object.entries(moves).filter(([moveId, move]) => predicate(move)).map(arr => arr[0]);
 }
@@ -2911,6 +2924,7 @@ function save() {
   localStorage.setItem('numRounds', getNumRounds());
   localStorage.setItem('endless', document.getElementById('endless').checked);
   localStorage.setItem('camomons', document.getElementById('camomons').checked);
+  localStorage.setItem('fixedTeam', document.getElementById('fixedTeam').checked);
 
   if (!isBoss())
     localStorage.removeItem('bossLevelUps');
@@ -2965,13 +2979,14 @@ function load() {
   setRoundCounter(parseInt(localStorage.getItem('roundCounter')));
   setNumRounds(localStorage.getItem('numRounds'));
   document.getElementById('endless').checked = localStorage.getItem('endless') === 'true';
-  
-  if (isCamomons()) {
-    const commandEle = document.getElementById('camomonsCommand');
-    commandEle.hidden = false;
-    if (getPartyStrs().length >= 2)
-      commandEle.innerText = CAMOMONS_DOUBLES_COMMAND;
-  }
+
+  const commandEle = document.getElementById('camomonsCommand');
+  commandEle.hidden = !isCamomons();
+  if (getPartyStrs().length >= 2)
+    commandEle.innerText = CAMOMONS_DOUBLES_COMMAND;
+
+  document.getElementById('fixedTeam').checked = localStorage.getItem('fixedTeam') === 'true';
+  document.getElementById('andSpeciesChangers').hidden = isFixedTeam();
 
   const bossLevelUpsStr = localStorage.getItem('bossLevelUps');
   const bossBattleCheckbox = document.getElementById('bossBattle');
