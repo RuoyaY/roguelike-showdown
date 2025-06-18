@@ -1192,7 +1192,7 @@ function onLoad() {
    document.getElementById('camomonsCommand').hidden = !isCamomons();
   });
   document.getElementById('fixedTeam').addEventListener('change', event => {
-   document.getElementById('andSpeciesChangers').hidden = isFixedTeam();
+    fixedTeamChanged();
   });
   
   document.getElementById('money').addEventListener('change', event => {updateTax()});
@@ -1226,6 +1226,17 @@ function onLoad() {
   toggleAfterFirstRoundChoices(false);
 }
 
+function fixedTeamChanged() {
+  document.getElementById('andSpeciesChangers').hidden = isFixedTeam();
+  document.getElementById('guaranteedTypeDiv').hidden = isFixedTeam();
+  const ballSelect = document.getElementById('pokeball');
+  for (let i = 0; i < ballSelect.children.length; i++) {
+    const option = ballSelect.children[i];
+    if (items.find(item => item.name === option.innerText)?.bannedIfFixedTeam) {
+      option.hidden = isFixedTeam();
+    }
+  }
+}
 
 function loadAllSpecies() {
   loadFile('pokedex.json', function() {
@@ -3025,7 +3036,7 @@ function load() {
     commandEle.innerText = CAMOMONS_DOUBLES_COMMAND;
 
   document.getElementById('fixedTeam').checked = localStorage.getItem('fixedTeam') === 'true';
-  document.getElementById('andSpeciesChangers').hidden = isFixedTeam();
+  fixedTeamChanged();
 
   const bossLevelUpsStr = localStorage.getItem('bossLevelUps');
   const bossBattleCheckbox = document.getElementById('bossBattle');
