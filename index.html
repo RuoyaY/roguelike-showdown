@@ -842,6 +842,12 @@ for (let i = 0; i < POWER_ITEMS.length; i++)
 for (const [key, value] of Object.entries(TYPE_STONES))
   IMPROVED_ITEMS[key] = "Each round, automatically gets a random " + value + '-type move in a NEW move slot.';
 
+const CHANGED_MOVE_DESC = {
+  'Burning Jealousy': "100% burns foes that had a stat rise this turn.",
+  'Cotton Spore': "Lowers foes' Speed by 2.",
+  'Splishy Splash': "30% chance to paralyze foe(s).",
+  'Sparkling Aria': "Hits adjacent Pokemon. Cures their burn.",
+}
 const IMPROVED_MOVES = {
   'Celebrate': 'Win the battle after this Pokemon successfully uses this move 4 times!' 
                   + '\n(Tell your opponent about this rule after your first time using it).',
@@ -2414,16 +2420,34 @@ function moveDesc(move, shortened) {
       shortDesc += '\n\nNOTE: counts as Normal-type for Camomons.';
   }
   shortDesc = shortDesc.replace('Base move affects power. ', '');
+  switch (move.target) {
+    case 'allAdjacentFoes':
+      if (!(shortDesc.includes('foe(s)') || shortDesc.includes('foes')))
+        shortDesc = 'Hits adjacent foes. ' + shortDesc;
+      break;
+    case 'allAdjacent':
+      if (!shortDesc.includes('adjacent Pokemon'))
+        shortDesc = 'Hits adjacent Pokemon. ' + shortDesc;
+      break;
+    case 'adjacentFoe':
+      shortDesc = 'Targets 1 foe. ' + shortDesc;
+      break;
+    case 'randomNormal':
+      shortDesc = 'Hits a random foe. ' + shortDesc;
+      break;
+    default:
+  }
+  if (CHANGED_MOVE_DESC[move.name])
+    shortDesc = CHANGED_MOVE_DESC[move.name];
+  if (IMPROVED_MOVES[move.name])
+    shortDesc = IMPROVED_MOVES[move.name];
   if (MONEY_MOVES.includes(move.name))
     shortDesc += '\nOnce per round, earn $' + MONEY_MOVE_INCOME + ' if successfully used.';
-  else if (IMPROVED_MOVES[move.name])
-    shortDesc = IMPROVED_MOVES[move.name];
 
   if (!shortened)
     title += '\n';
-  title += '\n' + shortDesc;
 
-  return title;
+  return title + '\n' + shortDesc;
 }
 
 function pokemonCanTera(pokemonStr) {
