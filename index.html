@@ -1967,6 +1967,8 @@ function generateSpecificSpecies() {
   }
 
   speciesErrorEle.textContent = '';
+
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
 function isLegal(speciesId, requiredType, ignoreDueToAbility, ignoreStrictlyWorse) {
