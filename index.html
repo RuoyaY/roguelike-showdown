@@ -1795,6 +1795,7 @@ function killAllChildren(div) {
     div.removeChild(div.firstChild);
 }
 
+const ERROR_ILLEGAL_FORME = 'Error: please pick a different forme for this Pokemon.';
 function addChoices(choicesDiv) {
   const pokeball = getPokeball();
   if (POKEBALL_PROMPTS[pokeball] !== undefined) {
@@ -1813,8 +1814,8 @@ function addChoices(choicesDiv) {
       return false;
     }
     const species = allSpecies[speciesId];
-    if (!isLegal(speciesId, null, false, true)) {
-      alert('Error: please pick a different forme for this Pokemon.');
+    if (!isMasterBallLegal(speciesId)) {
+      alert(ERROR_ILLEGAL_FORME);
       return false;
     }
     const requiredType = pokeball.split('-Type ')[0];
@@ -1859,15 +1860,22 @@ function numChoices() {
       return 2;
   }
 }
+function isMasterBallLegal(speciesId) {
+  return isLegal(speciesId, null, false, true);
+}
 
 function generateSpecificSpecies() {
   const speciesDiv = document.getElementById('species');
   const speciesName = getProperSpeciesName(document.getElementById('speciesInput').value.trim());
-  const species = getSpeciesId(speciesName);
+  const speciesId = getSpeciesId(speciesName);
 
   const speciesErrorEle = document.getElementById('speciesError');
-  if (!species) {
+  if (!speciesId) {
     speciesErrorEle.textContent = 'ERROR: species name not recognized';
+    return;
+  }
+  if (!isLegal(speciesId, null, true, true)) {
+    speciesErrorEle.textContent = ERROR_ILLEGAL_FORME;
     return;
   }
 
@@ -1877,7 +1885,7 @@ function generateSpecificSpecies() {
 
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
   if (abilityNameInput === '') {
-    for (const abilityName of Object.values(allSpecies[species].abilities))
+    for (const abilityName of Object.values(allSpecies[speciesId].abilities))
       addRandomPokemon(speciesRow, false, speciesName, abilityName, 'random', isVsBoss());
   } else {
     const abilityName = getProperAbilityName(abilityNameInput);
