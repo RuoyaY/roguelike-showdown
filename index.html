@@ -2861,6 +2861,12 @@ function getPartyPokeDivs() {
 
 function copyParty() {
   const partyStrs = getPartyStrs();
+  
+  // remove extra lines in pokemon strs
+  for (let i = 0; i < partyStrs.length; i++) {
+    while (partyStrs[i].includes('\n\n'))
+      partyStrs[i] = partyStrs[i].replace('\n\n', '\n');
+  }
 
   // handle MAGIKARP key item
   for (let i = 0; i < numOfKeyItem(KEY_ITEMS.MAGIKARP); i++)
