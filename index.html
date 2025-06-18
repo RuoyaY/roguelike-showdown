@@ -1905,17 +1905,6 @@ function generateSpecificSpecies() {
   }
 
   speciesErrorEle.textContent = '';
-
-  // // list all formes
-  // let formes = {};
-  // for (const speciesId of Object.keys(allSpecies)) {
-  //   if (allSpecies[speciesId].forme) {
-  //     if (!formes[allSpecies[speciesId].forme])
-  //       formes[allSpecies[speciesId].forme] = [];
-  //     formes[allSpecies[speciesId].forme].push(speciesId);
-  //   }
-  // }
-  // console.log(formes);
 }
 
 function isLegal(speciesId, requiredType, ignoreDueToAbility, ignoreStrictlyWorse) {
