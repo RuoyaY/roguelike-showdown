@@ -1839,7 +1839,8 @@ function addChoices(choicesDiv) {
       return false;
     }
     let successful = false;
-    for (const pokeDiv of firstRow.children) {
+    for (let i = 1; i < firstRow.children.length; i++) { // skip 1st child, which is just a flex-col of buttons
+      const pokeDiv = firstRow.children[i];
       const pokemonStr = getPokeEle(pokeDiv).innerText.trim();
       if (pokemonStr != '') {
         speciesList.push(getSpeciesNameOfPokemon(pokemonStr));
@@ -1934,6 +1935,10 @@ function isMasterBallLegal(speciesId) {
   return isLegal(speciesId, null, false, true);
 }
 
+const GEN_A_POKE_BUTTONS = {
+  UP: '↑',
+  DOWN: '↓',
+}
 function generateSpecificSpecies() {
   const genAPokeDiv = document.getElementById('genAPokeDiv');
   const speciesName = getProperSpeciesName(document.getElementById('speciesInput').value.trim());
@@ -1949,26 +1954,70 @@ function generateSpecificSpecies() {
     return;
   }
 
-  const speciesRow = document.createElement('div');
-  speciesRow.classList.add('flex-row');
-  genAPokeDiv.append(speciesRow);
-
   let abilityNameInput = document.getElementById('abilityInput').value.trim();
-  if (abilityNameInput === '') {
-    for (const abilityName of Object.values(allSpecies[speciesId].abilities))
-      addRandomPokemon(speciesRow, false, speciesName, abilityName, null, isVsBoss());
-  } else {
-    const abilityName = getProperAbilityName(abilityNameInput);
+  let abilityName;
+  if (abilityNameInput !== '') {
+    abilityName = getProperAbilityName(abilityNameInput);
     if (abilityName == null) {
       speciesErrorEle.textContent = 'ERROR: ability name not recognized';
       return;
     }
+  }
+
+  const speciesRow = document.createElement('div');
+  speciesRow.classList.add('flex-row');
+  genAPokeDiv.append(speciesRow);
+  
+  const buttonsCol = document.createElement('div');
+  buttonsCol.classList.add('flex-col');
+  for (const buttonText of Object.values(GEN_A_POKE_BUTTONS)) {
+    const button = document.createElement('button');
+    button.classList.add('mb-4px');
+    button.innerText = buttonText;
+    button.onclick = function() {
+      const rows = genAPokeDiv.children;
+      let index;
+      for (index = 0; index < rows.length; index++)
+        if (rows[index] == speciesRow)
+          break;
+      if (buttonText == GEN_A_POKE_BUTTONS.UP)
+        genAPokeDiv.insertBefore(speciesRow, rows[index-1]);
+      else
+        genAPokeDiv.insertBefore(rows[index+1], speciesRow);
+      updateDisabledButtons();
+    };
+    buttonsCol.append(button);
+  }
+  speciesRow.append(buttonsCol);
+  updateDisabledButtons();
+
+  if (!abilityName) {
+    for (const ability of Object.values(allSpecies[speciesId].abilities))
+      addRandomPokemon(speciesRow, false, speciesName, ability, null, isVsBoss());
+  } else {
     addRandomPokemon(speciesRow, false, speciesName, abilityName, null, isVsBoss());
   }
 
   speciesErrorEle.textContent = '';
 
   window.scrollTo(0, document.body.scrollHeight);
+}
+
+function updateDisabledButtons() {
+  const genAPokeDiv = document.getElementById('genAPokeDiv');
+  for (const row of genAPokeDiv.children) {
+    const buttonsCol = row.firstChild;
+    for (const button of buttonsCol.children) {
+      switch(button.innerText) {
+        case GEN_A_POKE_BUTTONS.UP:
+          button.disabled = row == genAPokeDiv.firstChild;
+          break;
+        case GEN_A_POKE_BUTTONS.DOWN:
+          button.disabled = row == genAPokeDiv.lastChild;
+          break;
+      }
+    }
+  }
 }
 
 function isLegal(speciesId, requiredType, ignoreDueToAbility, ignoreStrictlyWorse) {
