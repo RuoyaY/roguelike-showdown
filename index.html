@@ -856,7 +856,8 @@ const IMPROVED_MOVES = {
                   + '\n(Tell your opponent about this rule after your first time using it).',
   'Hold Hands': 'Win the battle after this Pokemon successfully uses this move on 3 unique allies!' 
                   + '\n(Tell your opponent about this rule after your first time using it).',
-  'Sketch': 'Permanently copies the last move target used. (You change it here, too!)',
+  'Sketch': 'Permanently copies the last move target used.'
+                  + '\n(Change it here, too!)',
 }
 const MONEY_MOVES = ['Happy Hour', 'Pay Day', 'Make It Rain', 'G-Max Gold Rush'];
 const MONEY_MOVE_INCOME = 15;
@@ -2311,7 +2312,7 @@ function allMoveIdsSuchThat(predicate) {
 function getLearnset(speciesId) {
   if (speciesId === 'smeargle')
     return allMoveIdsSuchThat(move => isLegalMove(move, false, false)
-              && move.name !== 'Chatter' && move.name !== 'Struggle');
+              && (!move.flags.nosketch || move.name === 'Sketch'));
   const species = allSpecies[speciesId];
   let learnset;
   if (isPokestar(species.name)) {
