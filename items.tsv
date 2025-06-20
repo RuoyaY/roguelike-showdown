@@ -97,7 +97,7 @@ Doom Seed	misc	-15												Lower a Pokemon's level by 1 (can't choose a Lv1 P
 Doom Seed Party	partyMisc	-15n												Lower EVERY Pokemon's level by 1 (can't go below Lv1).			
 Twin Rare Candies	beforeBattle	5												Before battle: Both players MAY increase their [nth] Pokemon's level by 1.			
 Twin Doom Seeds	beforeBattle	0	0											Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
-Candy Target Request	msic	15												Ask your opponent to pick one of your nonempty Pokemon slots, then raise that Pokemon's level by 1.			
+Candy Target Request	misc	15												Ask your opponent to pick one of your nonempty Pokemon slots, then raise that Pokemon's level by 1.			
 HP Up	misc	15												Set a Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein	misc	15												Set a Pokemon's Atk EV to 100 (max 508 total EVs).			
 Iron	misc	15												Set a Pokemon's Def EV to 100 (max 508 total EVs).			
@@ -1083,7 +1083,7 @@ Approx. Pokedex Number Trivia	misc	1												Your opponent sends you a pic of
 Pokedex Number Face-Off	misc	10												Share a pic of a random Pokemon. You and a random opponent simultaneously guess its pokedex number. If you're closer/tied, earn $30.			
 Prev Pokemon Trivia	misc	5												Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon BEFORE IT in the Pokedex, earn $30.			
 Next Pokemon Trivia	misc	5												Your opponent sends you a pic of a random Pokemon. If you correctly spell the name of the Pokemon AFTER IT in the Pokedex, earn $30.			
-Shiny Trivia	misc	10												Your opponent sends you a pic of a random Pokemon. If you correctly name a color it gains in its shiny form, earn $30. (Yes, this is subjective. You are hereby allowed to be kind to yourself.)			
+Shiny Trivia	misc	10												Your opponent sends you a pic of a random Pokemon. If you name a color it changes to in its shiny form - and an opponent says you're correct - earn $30. 			
 Move Power Challenge	misc	10												Your opponent CHOOSES a move name to send you. If you correctly state its Base Power (or lack thereof), earn $30.			
 Move PP Challenge	misc	5												Your opponent CHOOSES a move name to send you. If you correctly state its base PP (or max PP), earn $30.			
 Move Accuracy Challenge	misc	10												Your opponent CHOOSES a move name to send you. If you correctly state its Accuracy (note: 100% is different from No Accuracy Check), earn $30.			
