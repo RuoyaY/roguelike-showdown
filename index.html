@@ -4085,12 +4085,13 @@ function randomAbilitizer(failsafe) {
   }
 
   const ability = randomAbilitizerAbility();
-  // const ability = abilities.drought;
+  // const ability = abilities.defeatist;
+  const basicCost = 20 + abilitizerPrice(ability);
   let abilitizer = {
     name: 'Abilitizer #' + ability.num,
     type: 'abilitizer',
-    price: 20 + abilitizerPrice(ability),
-    desc: abilitizerDesc("Set a Pokemon's ability to ", ability),
+    price: basicCost,
+    desc: abilitizerDesc("Set a Pokemon's ability to ", ability, basicCost),
   };
 
   let randy = Math.random();
@@ -4130,11 +4131,12 @@ function randomAbilitizer(failsafe) {
     do {
       ability2 = randomAbilitizerAbility();
     } while (ability2 == ability);
+    const binaryCost = 5 + Math.min(abilitizerPrice(ability), abilitizerPrice(ability2));
     abilitizer = {
       name: 'Binary Abilitizers #' + ability.num + ' and #' + ability2.num,
       type: 'beforeAbilitizer',
-      price: 5 + Math.min(abilitizerPrice(ability), abilitizerPrice(ability2)),
-      desc: binaryAbilitizerDesc("Before battle: Your opponent chooses whether you set 1 of your Pokemon's ability to ", ability, ' or ', ability2),
+      price: binaryCost,
+      desc: binaryAbilitizerDesc("Before battle: Your opponent chooses whether you set 1 of your Pokemon's ability to ", ability, ' or ', ability2, binaryCost),
     }
   }
   
@@ -4155,15 +4157,17 @@ function isRandomableAbility(ability) {
             || ability.name === 'Teraform Zero' // Tera Shift and Tera Shell are in the 'if this Pokemon is a' case
             || ability.name === 'Wonder Guard');
 }
-function abilitizerDesc(strBeforeAbilityName, ability) {
+function abilitizerDesc(strBeforeAbilityName, ability, cost) {
   return strBeforeAbilityName + abilityNameInHTML(ability.name) + '.\n'
           + spanWithClass(abilityDesc(ability), 'attr') + '\n'
-          + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning');
+          + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning')
+          + ((!cost || cost >= 0) ? '' : '\n' + spanWithClass("Cannot choose Pokemon you got at Lv1.", 'warning'));
 }
-function binaryAbilitizerDesc(str, ability, str2, ability2) {
+function binaryAbilitizerDesc(str, ability, str2, ability2, cost) {
   return str + abilityNameInHTML(ability.name) + str2 + abilityNameInHTML(ability2.name) + '.\n'
           + twoEqualWidthAttr(abilityDesc(ability), abilityDesc(ability2))
-          + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning');
+          + spanWithClass("Cannot replace " + enumerateWithOr(IRREPLACEABLE_ABILITIES) + '.', 'warning')
+          + ((!cost || cost >= 0) ? '' : '\n' + spanWithClass("Cannot choose Pokemon you got at Lv1.", 'warning'));
 }
 function abilitizerPrice(ability) {
   const typicalEffectiveStatDiff = STAT_TOTAL_GOAL * (getAbilityValue(null, ability.name) - BASE_ABILITY_VALUE);
