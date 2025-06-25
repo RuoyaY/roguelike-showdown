@@ -948,6 +948,12 @@ const POKEBALL_PROMPTS = {
 for (const type of TYPES)
   POKEBALL_PROMPTS[type + '-Type Ball'] = 'Choose a ' + type + '-type species.';
 
+let SHOP = {
+  shopSlots: [],
+  boughtSlots: [],
+  frozenSlots: [],
+};
+
 // for testing/studying purposes
 let isCalculatingStats = false;
 let levelStats;
@@ -3034,6 +3040,11 @@ function save() {
 
   localStorage.setItem('money', getMoneyStr());
 
+  const shopDiv = document.getElementById('shop');
+  checkBoughtSlots(shopDiv);
+  checkFrozenSlots(shopDiv);
+  localStorage.setItem('shop', JSON.stringify(SHOP));
+
   localStorage.setItem('pokeball', getPokeball());
   localStorage.setItem('pokeballHidden', document.getElementById('pokeballDiv').hidden);
   localStorage.setItem('type', getGuaranteedType());
@@ -3090,6 +3101,9 @@ function load() {
   }
 
   setMoney(localStorage.getItem('money'));
+
+  SHOP = JSON.parse(localStorage.getItem('shop'));
+  updateShopDiv();
 
   setPokeball(localStorage.getItem('pokeball'));
   document.getElementById('pokeballDiv').hidden = localStorage.getItem('pokeballHidden') === 'true';
@@ -3555,17 +3569,7 @@ function refreshShop(isViaMoney) {
     pushNTimes(shopSlotFuncs, n, KEY_ITEM_SHOP_FUNCS[keyItemShopFuncsKey]);
   }
 
-  let numItemsToAdd = shopSlotFuncs.length;
-  const frozenItems = [];
-  for (let i = 0, shopIndex = 0; i < shopDiv.childNodes.length; i++) {
-    const itemDiv = shopDiv.childNodes[i];
-    shopIndex++;
-    if (itemDiv.querySelector('input').checked) {
-      frozenItems[i] = itemDiv;
-      if (i < shopSlotFuncs.length)
-        numItemsToAdd--;
-    }
-  }
+  const numItemsToAdd = checkFrozenSlots(shopDiv, shopSlotFuncs.length);
 
   if (isViaMoney) {
     if (numItemsToAdd <= 0) {
@@ -3577,18 +3581,56 @@ function refreshShop(isViaMoney) {
     if(!pay(price)) return;
   }
 
+  const newSlots = [];
+  for (let i = 0; i < shopSlotFuncs.length; i++) {
+    if (SHOP.frozenSlots[i])
+      newSlots.push(SHOP.shopSlots[i]);
+    else
+      newSlots.push(shopSlotFuncs[i]()); // only resolve the funcs here, when we know the slot'll actually show up
+  }
+  for (let i = shopSlotFuncs.length; i < SHOP.frozenSlots.length; i++) {
+    if (SHOP.frozenSlots[i])
+      newSlots.push(SHOP.shopSlots[i]);
+  }
+  // fix the prices (don't let it change, for if it's frozen or save-&-loaded)
+  SHOP.shopSlots = newSlots.map((item) => {
+    const out = structuredClone(item);
+    out.price = getItemPrice(item);
+    return out;
+  });
+
+  SHOP.boughtSlots = [];
+  updateShopDiv();
+}
+function checkFrozenSlots(shopDiv, numShopSlots) { // and return numItemsToAdd
+  let numItemsToAdd = numShopSlots;
+  SHOP.frozenSlots = [];
+  for (let i = 0; i < shopDiv.childNodes.length; i++) {
+    const itemDiv = shopDiv.childNodes[i];
+    if (itemDiv.querySelector('input').checked) {
+      SHOP.frozenSlots[i] = true;
+      if (i < numShopSlots)
+        numItemsToAdd--;
+    }
+  }
+  return numItemsToAdd;
+}
+function checkBoughtSlots(shopDiv) {
+  SHOP.boughtSlots = [];
+  for (let i = 0; i < shopDiv.childNodes.length; i++) {
+    const itemDiv = shopDiv.childNodes[i];
+    if (!itemDiv.querySelector('button')) {
+      SHOP.boughtSlots[i] = true;
+    }
+  }
+}
+function updateShopDiv() {
+  const shopDiv = document.getElementById('shop');
+
   killAllChildren(shopDiv);
 
-  for (let i = 0; i < shopSlotFuncs.length; i++) {
-    if (frozenItems[i])
-      shopDiv.append(frozenItems[i]);
-    else
-      shopDiv.append(createItemDiv(shopSlotFuncs[i]()));
-  }
-  for (let i = shopSlotFuncs.length; i < frozenItems.length; i++) {
-    if (frozenItems[i])
-      shopDiv.append(frozenItems[i]);
-  }
+  for (let i = 0; i < SHOP.shopSlots.length; i++)
+    shopDiv.append(createItemDiv(SHOP.shopSlots[i], SHOP.frozenSlots[i], SHOP.boughtSlots[i]));
 }
 function pushNTimes(arr, n, element) {
   arr.push(...Array(n).fill(element));
@@ -3824,15 +3866,14 @@ function resolveANplusB(str, nStr, nNum) {
   return a * nNum + b;
 }
 
-function createItemDiv(item, isExtra) {
+function createItemDiv(item, isFrozen, lacksBuyButton) {
   const itemDiv = document.createElement('div');
   itemDiv.classList.add('flex-row', 'mt-1', 'mb-1');
 
   const freezeInput = document.createElement('input');
   freezeInput.type = 'checkbox';
   freezeInput.classList.add('checkbox');
-  if (isExtra)
-    freezeInput.disabled = true;
+  freezeInput.checked = isFrozen;
   freezeInput.hidden = true; // effectively removes freezeInput
 
   const itemEle = document.createElement('div');
@@ -3858,6 +3899,10 @@ function createItemDiv(item, isExtra) {
   itemPriceEle.append(priceEle, buyButton);
 
   itemDiv.append(freezeInput, itemEle, itemPriceEle);
+
+  if (lacksBuyButton)
+    removeBuyButton(itemDiv);
+
   return itemDiv;
 }
 function itemInHTML(item) {
@@ -4427,20 +4472,10 @@ function buyItem(itemDiv, item, itemPrice) {
   if (!pay(itemPrice)) return;
 
   if (!(numOfKeyItem(KEY_ITEMS.RE_BUY) > 0 && !(itemPrice < 0 || item.desc.includes('earn $')))) {
-    // replace buy button with checkmark
-    const buyButton = itemDiv.querySelector('button');
-    const checkmarkEle = document.createElement('h2');
-    checkmarkEle.classList.add('mb-4px');
-    checkmarkEle.textContent = '✅';
-    buyButton.insertAdjacentElement('afterend', checkmarkEle);
-    buyButton.remove();
-    // hide freeze checkbox
-    const checkbox = itemDiv.querySelector('input');
-    checkbox.checked = false;
-    checkbox.classList.add('invisible');
+    removeBuyButton(itemDiv);
+  } else {
+    itemDiv.classList.add('chosen');
   }
-
-  itemDiv.classList.add('chosen');
 
   if (item.type === 'pokeball') {
     if (item.name === 'Random Ball') {
@@ -4477,6 +4512,21 @@ function buyItem(itemDiv, item, itemPrice) {
     if (type)
       setGuaranteedType(type);
   }
+}
+function removeBuyButton(itemDiv) {
+  // green outline
+  itemDiv.classList.add('chosen');
+  // replace buy button with checkmark
+  const buyButton = itemDiv.querySelector('button');
+  const checkmarkEle = document.createElement('h2');
+  checkmarkEle.classList.add('mb-4px');
+  checkmarkEle.textContent = '✅';
+  buyButton.insertAdjacentElement('afterend', checkmarkEle);
+  buyButton.remove();
+  // hide freeze checkbox
+  const checkbox = itemDiv.querySelector('input');
+  checkbox.checked = false;
+  checkbox.classList.add('invisible');
 }
 
 function getMagnetType(itemName) {
