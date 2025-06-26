@@ -335,8 +335,9 @@ Perfect Species TM	universalTM	30												Teach ANY 1 Pokemon any move it can
 Perfect Binary TMs	beforeTM	55												Before battle: Your opponent chooses whether you teach 1 Pokemon the move [_____] or [_____] (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Mirror TM	universalTM	40					2							Teach ANY 1 Pokemon any 1 move another Pokemon knows (excluding Z-Moves, G-Max moves, Zippy Zap, and Spore).			
 Mirror Moveset	misc	20					2							REPLACE a Pokemon's moveset with a copy of another Pokemon's moveset.			
-Super Tutor	misc	60					2							ADD a Pokemon's entire moveset to another Pokemon's moveset (in new lines). Does not copy Z-Moves, G-Max moves, Zippy Zap, or Spore.			
-Reflect Moveset	beforeBattle	30												Before battle: Replace your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
+Mirror Moveset++	misc	55					2							ADD a Pokemon's entire moveset to another Pokemon's moveset (in new lines). Does not copy Z-Moves, G-Max moves, Zippy Zap, or Spore.			
+Reflect Moveset	beforeBattle	30												Before battle: REPLACE your [mth] Pokemon's ENTIRE moveset with your opponent's [nth] Pokemon's moveset.			
+Reflect Moveset++	beforeBattle	50												Before battle: ADD your opponent's [mth] Pokemon's moveset to your [nth] Pokemon's moveset. Does not reveal or copy Z-Moves, G-Max moves, Zippy Zap, or Spore.			
 Mirror Party TM	partyTM	20n					2							Teach EVERY Pokemon any 1 move one of your Pokemon know (excluding Z-Moves, G-Max moves, Zippy Zap, and Spore).			
 Shadow TM	universalTM	35								x				Teach any 1 Pokemon any 1 move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, Zippy Zap, or Spore).			
 Shadow Party TM	partyTM	15n+20								x				Choose any move you KNOW FOR SURE your opponent had last battle (no Z-Moves, G-Max moves, Zippy Zap, or Spore). Teach EVERY Pokemon that move.			
@@ -517,8 +518,8 @@ Super Rod	misc	150	0.5									x		REPLACE any Pokemon with the following: <span 
 Super Rod	misc	150	0.5									x		REPLACE any Pokemon with the following: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 100 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span> <span class="warning"> <br>Cannot replace Pokemon you got at Lv1. </span>			
 Old Rod	misc	40	0											ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Old Rod	misc	40	0											ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
-Twin Rods	beforeBattle	0	0.5											Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
-Twin Rods	beforeBattle	0	0.5											Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
+Twin Rods	beforeBattle	1	0.5											Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Swift Swim <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
+Twin Rods	beforeBattle	1	0.5											Before battle: ALL players ADD the following Pokemon in an EXTRA SLOT: <span class="attr"> <br>Magikarp <br>Ability: Rattled <br>Level: 1 <br>Tera Type: Water <br>EVs: 1 HP <br>- Splash <br>- <br>- <br>- </span>			
 Move Swapper	misc	10					2							Swap ANY two moves between any two Pokemon.			
 Moveset Swapper	misc	-40					2							Swap two Pokemon's ENTIRE movesets.			
 EVs Swapper	misc	0					2							Swap two Pokemon's EVs.			
@@ -769,8 +770,8 @@ Forced Comatose	nextAbilitizer	40/b			Bad Dreams	Hex,Wake-Up Slap,Dream Eater,Ni
 Forced Dry Skin	nextAbilitizer	20/b												Next battle only: Set your opponent's [nth] Pokemon's ability to *Dry Skin*.			
 Forced Wimp Out	nextAbilitizer	30/b	0.5				3							Next battle only: Set your opponent's [nth] Pokemon's ability to *Wimp Out*.			
 Forced Emergency Exit	nextAbilitizer	30/b	0.5				3							Next battle only: Set your opponent's [nth] Pokemon's ability to *Emergency Exit*.			
-Forced Lightning Rod	nextAbilitizer	20/b					3							Next battle only: Set your opponent's [nth] Pokemon's ability to *Lightning Rod*.			
-Forced Storm Drain	nextAbilitizer	20/b					3							Next battle only: Set your opponent's [nth] Pokemon's ability to *Storm Drain*.			
+Forced Lightning Rod	nextAbilitizer	20/b					2							Next battle only: Set your opponent's [nth] Pokemon's ability to *Lightning Rod*.			
+Forced Storm Drain	nextAbilitizer	20/b					2							Next battle only: Set your opponent's [nth] Pokemon's ability to *Storm Drain*.			
 Forced Mycelium Might	nextAbilitizer	30/b												Next battle only: Set your opponent's [nth] Pokemon's ability to *Mycelium Might*.			
 Forced Neutralizing Gas	nextAbilitizer	20/b												Next battle only: Set your opponent's [nth] Pokemon's ability to *Neutralizing Gas*.			
 Forced No Guard	nextAbilitizer	40/b												Next battle only: Set your opponent's [nth] Pokemon's ability to *No Guard*.			
@@ -934,7 +935,7 @@ TR98	heldItem	40	0.2											free TMs for Liquidation
 TR99	heldItem	40	0.2											free TMs for Body Press			
 Perfect TR	misc	50												Set a Pokemon's held item to any TR (e.g. *TR00*).			
 Random TR	misc	20												Generate a random TR (from *TR00* to *TR99*), then set any 1 Pokemon's held item to that TR.			
-Offensive TR Request	misc	20												Ask your opponenet to choose a non-status move TR (e.g. *TR01*). Set any 1 Pokemon's held item to that TR.			
+Offensive TR Request	misc	20												Ask your opponent to choose a non-status move TR (e.g. *TR01*). Set any 1 Pokemon's held item to that TR.			
 Binary TRs	beforeBattle	-40/b+40									x			Before battle: Your opponent chooses whether you set 1 of your Pokemon's held item to [_____] or [_____]. Must choose TRs (e.g. *TR00*).			
 Berserk Gene	heldItem	25												confusion and +2 Atk on entry			
 Normal Candy Party	misc	20												Increase ALL Normal-type Pokemon's level by one.			
@@ -955,6 +956,7 @@ Dark Candy Party	misc	20												Increase ALL Dark-type Pokemon's level by on
 Dragon Candy Party	misc	20												Increase ALL Dragon-type Pokemon's level by one.			
 Steel Candy Party	misc	20												Increase ALL Steel-type Pokemon's level by one.			
 Fairy Candy Party	misc	20												Increase ALL Fairy-type Pokemon's level by one.			
+Perfect Type Candy Party	misc	7n+13												Pick a type. Increase ALL Pokemon of that type's level by one.			
 Forced Normal Deletion	nextBattle	25/b												Next battle only: Your opponent must delete all Normal-type moves from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).			
 Forced Fire Deletion	nextBattle	25/b												Next battle only: Your opponent must delete all Fire-type moves from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).			
 Forced Water Deletion	nextBattle	25/b												Next battle only: Your opponent must delete all Water-type moves from their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).			
@@ -979,8 +981,8 @@ Forced Drunk Deletion	nextBattle	25/b	0											Next battle only: Your opponen
 Forced Same-Type Move Deletion	nextBattle	130/b												Next battle only: Your opponent's [nth] Pokemon loses ALL moves of its own type, if any (leave the hyphens) (a Pokemon with no moves learns *Struggle*).			
 Forced Move Deletion	nextBattle	25/b												Next battle only: Your opponent must delete the [mth] move of their [nth] Pokemon (a Pokemon with no moves learns *Struggle*).			
 Forced Twin Move Masters	nextBattle	80/b											x	Next battle only: Both players' [mth] Pokemon forgets every move EXCEPT its [nth] move (a Pokemon with no nth move learns *Struggle*).			
-1-Time Move Swap	nextBattle	35/b												Next battle only: Switch your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move.			
-1-Time Moveset Swap	nextBattle	60/b												Next battle only: Switch you and your opponent's [nth] Pokemon's ENTIRE movesets.			
+1-Time Move Swap	nextBattle	20/b												Next battle only: Switch your [mth] Pokemon's [nth] move with your opponent's [pth] Pokemon's [qth] move.			
+1-Time Moveset Swap	nextBattle	30/b												Next battle only: Switch you and your opponent's [nth] Pokemon's ENTIRE movesets.			
 Perfect Forced Deletion	nextBattle	40/b												Next battle only: Your opponent must delete the move [_____] from their [nth] Pokemon, if present (a Pokemon with no moves learns *Struggle*).			
 Perfect Forced Tera	nextBattle	30/b												Next battle only: Set your opponent's [nth] Pokemon's Tera Type to [_____].			
 Forced Normal Tera Party	nextBattle	20/b												Next battle only: All of your opponent's Pokemon have their Tera Type set to Normal.			
@@ -1002,8 +1004,8 @@ Forced Dragon Tera Party	nextBattle	20/b												Next battle only: All of you
 Forced Steel Tera Party	nextBattle	-15/b												Next battle only: All of your opponent's Pokemon have their Tera Type set to Steel.			
 Forced Fairy Tera Party	nextBattle	0/b												Next battle only: All of your opponent's Pokemon have their Tera Type set to Fairy.			
 Forced Stellar Tera Party	nextBattle	50/b												Next battle only: All of your opponent's Pokemon have their Tera Type set to Stellar.			
-Scouting	beforeBattle	10												Before battle: Your opponent must reveal their [nth] Pokemon.			
-Party Scouting	beforeBattle	10n												Before battle: Your opponent must reveal their team.			
+Scouting	beforeBattle	10												Before battle: Your opponent must reveal their [nth] Pokemon to you.			
+Party Scouting	beforeBattle	10n												Before battle: Your opponent must reveal their team to you.			
 Reveal Pokemon	beforeBattle	-5												Before battle: You must reveal your [nth] Pokemon.			
 Reveal Party	beforeBattle	-5n												Before battle: You must reveal your team.			
 Twin Knock Off	nextBattle	20/b												Next battle only: Both players' [nth] Pokemon cannot hold any items.			
