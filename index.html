@@ -1685,6 +1685,12 @@ const beforeUnloadListener = (event) => {
   event.preventDefault();
   return (event.returnValue = "");
 };
+function addReloadProtection() {
+  addEventListener("beforeunload", beforeUnloadListener, { capture: true });
+}
+function removeReloadProtection() {
+  removeEventListener("beforeunload", beforeUnloadListener, { capture: true });
+}
 
 function updatePokemonDiv(div) {
   const pokemonEle = getPokeEle(div);
@@ -1702,7 +1708,7 @@ function updatePokemonDiv(div) {
   }
 
   if (getPartyPokeDivs().includes(div))
-    addEventListener("beforeunload", beforeUnloadListener, { capture: true });
+    addReloadProtection();
 
   pokemonEle.innerHTML = pokemonInHTML(pokemonStr);
 
@@ -3077,7 +3083,7 @@ function save() {
 
   localStorage.setItem('startingNumSlots', startingNumSlots);
 
-  removeEventListener("beforeunload", beforeUnloadListener, { capture: true });
+  removeReloadProtection();
 }
 function load() {
   if (getPartyStrs().length > 0) {
@@ -3166,7 +3172,7 @@ function load() {
 
   toggleAfterFirstRoundChoices(true);
 
-  removeEventListener("beforeunload", beforeUnloadListener, { capture: true });
+  removeReloadProtection();
 }
 
 function nextRound() {
@@ -4613,6 +4619,8 @@ function updateTax() {
     document.getElementById('taxDiv').classList.replace('attr', 'gray');
   else
     document.getElementById('taxDiv').classList.replace('gray', 'attr'); 
+  if (getPartyStrs().length > 0)
+      addReloadProtection();
 }
 
 function getPokeball() {
