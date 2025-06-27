@@ -1946,7 +1946,7 @@ function addChoices(choicesDiv) {
 
   let speciesPredicate;
   if (pokeball === 'Wonder Ball')
-    speciesPredicate = ((species) => getNumWeakness(species.types) <= 2);
+    speciesPredicate = ((species) => getNumWeakness(species.types) == 2);
 
   for (let i = 0; i < numPokeChoices; i++)
     addRandomPokemon(choicesDiv, true, speciesList[i], abilitiesList[i], teraList[i], false, speciesPredicate);

@@ -8,7 +8,7 @@ Dream Ball	pokeball	35									x			Next round, your new Pokemon knows the moves 
 Friend Ball	pokeball	25									x			Next round, your new Pokemon knows the move *Return* in an extra move slot.			
 Love Ball	pokeball	25									x			Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will be able to choose its gender.			
 Truant Ball	pokeball	0									x			Next round, your new Pokemon has *Truant* instead of its regular ability, but its level is higher than usual.			
-Wonder Ball	pokeball	5									x		x	Next round, your new Pokemon has *Wonder Guard* instead of its regular ability, but its level is 1. It will be guaranteed to have 2 or fewer weaknesses.			
+Wonder Ball	pokeball	5									x		x	Next round, your new Pokemon has *Wonder Guard* instead of its regular ability, but its level is 1. It will be guaranteed to have only 2 weaknesses.			
 Strange Ball	pokeball	15									x			Next round, your new Pokemon can get an ability it doesn't normally have, and moves it can't normally learn.			
 Repeat Ball	pokeball	0									x	x		Next round, you choose a Pokemon of any species YOU already own (you will then be able to choose any ability that species can have).			
 Snag Ball	pokeball	10									x	x		Next round, you choose a Pokemon of any species YOUR OPPONENT owns (you will then be able to choose any ability that species can have).			
@@ -107,6 +107,7 @@ Carbos	misc	20												Set a Pokemon's Spe EV to 100 (max 508 total EVs).
 Perfect Nutrience	misc	20												Set a Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
 Random Nutrience	misc	10												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
 Nutrience Request	misc	5												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
+Nutrience Supplement	misc	15												Choose a Pokemon's lowest stat (based on the Atk/SpA displayed on this website). Set its EV in that stat to 100 (max 508 total EVs).			
 Binary Nutrience	beforeBattle	15												Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 100 (max 508 total EVs).			
 HP Up Party	partyMisc	15n+5												Set every Pokemon's HP EV to 100 (max 508 total EVs).			
 Protein Party	partyMisc	10n+5												Set every Pokemon's Atk EV to 100 (max 508 total EVs).			
@@ -128,6 +129,7 @@ Max Carbos	misc	40												Set a Pokemon's Spe EV to 252 (max 508 total EVs).
 Perfect Max Nutrience	misc	40												Set a Pokemon's EV in any 1 stat to 252 (max 508 total EVs).			
 Random Max Nutrience	misc	30												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
 Max Nutrience Request	misc	25												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
+Max Nutrience Supplement	misc	35												Choose a Pokemon's lowest stat (based on the Atk/SpA displayed on this website). Set its EV in that stat to 252 (max 508 total EVs).			
 Binary Max Nutrience	beforeBattle	35												Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 252 (max 508 total EVs).			
 Super Training	misc	75												Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV) (ignore preexisting EVs).			
 Health Feathers	misc	10	0											Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)			
