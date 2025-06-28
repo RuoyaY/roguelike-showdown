@@ -117,7 +117,8 @@ Zinc Party	partyMisc	15n+5												Set every Pokemon's SpD EV to 100 (max 508
 Carbos Party	partyMisc	20n+5												Set every Pokemon's Spe EV to 100 (max 508 total EVs).			
 Perfect Nutrience Party	partyMisc	20n+5												Set every Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
 Random Nutrience Party	partyMisc	13n+5												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
-Nutrience Party Request	misc	10n+5												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
+Nutrience Party Request	partyMisc	10n+5												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
+Nutrience Supplement Party	partyMisc	13n+5												For each Pokemon, choose one of its lowest stat (based on the Atk/SpA displayed on this website). Set its EV in that stat to 100 (max 508 total EVs).			
 Binary Nutrience Parties	beforeBattle	15n+5												Before battle: Your opponent chooses whether you set ALL of your Pokemon's [_____] or [_____] EV to 100 (max 508 total EVs).			
 Multi-Vitamin	misc	40												Set a Pokemon's EVs to 50 HP / 50 Atk / 50 Def / 50 SpA / 50 SpD / 50 Spe.			
 HP Max	misc	35												Set a Pokemon's HP EV to 252 (max 508 total EVs).		 	
