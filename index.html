@@ -394,6 +394,7 @@ button:focus {
         <option>Dream Ball</option>
         <option>Friend Ball</option>
         <option>Love Ball</option>
+        <option>Evoboost Ball</option>
         <option>Truant Ball</option>
         <option>Wonder Ball</option>
         <option>Strange Ball</option>
@@ -2110,6 +2111,9 @@ function addRandomPokemon(choicesDiv, hasChooseButton, speciesName, abilityName,
       case 'Love Ball':
         extraMove = '\n- Attract';
         break;
+      case 'Evoboost Ball':
+        extraMove = '\n- Extreme Evoboost';
+        break;
     }
     if (extraMove)
       pokemonStr += '\n- '.repeat(4) + extraMove;
@@ -2250,8 +2254,10 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
   if (abilityName)
     pokemonStr += abilityName;
 
-  if (level == null)
-    level = getLevelWithAbility(species, abilityName);
+  if (level == null) {
+    const statMultiplier = (pokeball == 'Evoboost Ball') ? 500/650 : 1;
+    level = getLevelWithAbility(species, abilityName, statMultiplier);
+  }
   if (pokeball === 'Nest Ball')
     level -= 1;
   if (pokeball === 'Quick Ball')
@@ -2371,7 +2377,7 @@ function getLearnset(speciesId) {
 
 function getLevelWithAbility(species, abilityName, statTotalMultiplier) {
   // we want: stat goal * ability value = base stat goal * base ability value
-  let statTotalGoal =  STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species, abilityName);
+  let statTotalGoal = STAT_TOTAL_GOAL * BASE_ABILITY_VALUE / getAbilityValue(species, abilityName);
   if (statTotalMultiplier)
     statTotalGoal *= statTotalMultiplier;
   return getLevel(species, statTotalGoal);

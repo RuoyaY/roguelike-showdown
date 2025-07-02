@@ -7,6 +7,7 @@ Moon Ball	pokeball	25									x			Next round, your new Pokemon knows the move *M
 Dream Ball	pokeball	35									x			Next round, your new Pokemon knows the moves *Rest* and *Sleep Talk* in extra move slots.			
 Friend Ball	pokeball	25									x			Next round, your new Pokemon knows the move *Return* in an extra move slot.			
 Love Ball	pokeball	25									x			Next round, your new Pokemon knows the move *Attract* in an extra move slot. You will be able to choose its gender.			
+Evoboost Ball	pokeball	0									x			Next round, your new Pokemon knows the move *Extreme Evoboost* in an extra move slot, but its level is lower than usual.			
 Truant Ball	pokeball	0									x			Next round, your new Pokemon has *Truant* instead of its regular ability, but its level is higher than usual.			
 Wonder Ball	pokeball	5									x		x	Next round, your new Pokemon has *Wonder Guard* instead of its regular ability, but its level is 1. It will be guaranteed to have only 2 weaknesses.			
 Strange Ball	pokeball	15									x			Next round, your new Pokemon can get an ability it doesn't normally have, and moves it can't normally learn.			
@@ -32,7 +33,7 @@ Steel-Type Ball	pokeball	15									x	x		Next round, you can choose a Steel-type
 Fairy-Type Ball	pokeball	15									x	x		Next round, you can choose a Fairy-type Pokemon of any species (you will then be able to choose any ability that species can have).			
 Master Ball	pokeball	20									x	x		Next round, you can choose a Pokemon of ANY species (you will then be able to choose any ability that species can have).			
 Random Ball	pokeball	10									x			Automatically sets your Poke Ball for the next round to a random one (other than the default).			
-Mindslaver Ball	beforeBattle	50							x		x			Before battle: Tell your opponent you'll be making every choice for their new Pokemon next round. (You can see the choices, but nothing else.)			
+Mindslaver Ball	beforeBattle	50									x			Before battle: Let your opponent know you'll be making every (pre-shopping) choice for their new Pokemon next round.			
 Berry Juice	heldItem	15												heal 20 hp at 1/2			
 Sitrus Berry	heldItem	35															
 Oran Berry	heldItem	5												heal 10 hp at 1/2			
