@@ -2255,7 +2255,7 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     pokemonStr += abilityName;
 
   if (level == null) {
-    const statMultiplier = (pokeball == 'Evoboost Ball') ? 500/650 : 1;
+    const statMultiplier = (pokeball == 'Evoboost Ball') ? 500/650 : 1; // 500 is written in the item desc.
     level = getLevelWithAbility(species, abilityName, statMultiplier);
   }
   if (pokeball === 'Nest Ball')
