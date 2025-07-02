@@ -697,6 +697,7 @@ const ABILITY_VALUES = {
   "Zero to Hero": 1,
 };
 const IRREPLACEABLE_ABILITIES = ['Defeatist', 'Slow Start', 'Stall', 'Truant'];
+const PERFECT_ABILITIZER_BANS = ['Huge Power', 'Pure Power', 'Fur Coat', 'Ice Scales', 'Imposter', 'Wonder Guard'];
 
 const RUN_AWAY_REFRESH_COST = 2;
 const IMPROVED_ABILITIES = {
@@ -1426,14 +1427,13 @@ function printAlphabetTM() {
   console.log(out + outP + outT);
 }
 function printAlphabetAbilitizers() {
-  const BANNED_ABILITIES = ['Huge Power', 'Pure Power', 'Fur Coat', 'Ice Scales', 'Imposter', 'Wonder Guard'];
   let out = '';
   let outT = '';
   for (let i = 0; i < 26; i++) {
     const char = String.fromCharCode(65 + i);
 
     const abilitiesWithStart = Object.values(abilities).filter(ability => 
-      ability.name.toUpperCase().startsWith(char) && !BANNED_ABILITIES.includes(ability.name) && isRandomableAbility(ability) && abilitizerPrice(ability) >= 0);
+      ability.name.toUpperCase().startsWith(char) && !PERFECT_ABILITIZER_BANS.includes(ability.name) && isRandomableAbility(ability) && abilitizerPrice(ability) >= 0);
     if (abilitiesWithStart.length == 0)
       continue;
     let prob = 0.5;
@@ -1449,7 +1449,7 @@ function printAlphabetAbilitizers() {
     const twinPrice = Math.min(maxPrice + 10 + valueOfAddedChoice, 40);
 
     let exceptions = '.';
-    const exceptionsArr = BANNED_ABILITIES.filter(ability => ability.startsWith(char));
+    const exceptionsArr = PERFECT_ABILITIZER_BANS.filter(ability => ability.startsWith(char));
     if (exceptionsArr.length > 0)
       exceptions = ". Can't choose " + exceptionsArr.join(' or ') + '.';
 
@@ -4136,7 +4136,7 @@ function randomAbilitizer(failsafe) {
   }
 
   const ability = randomAbilitizerAbility();
-  // const ability = abilities.defeatist;
+  // const ability = abilities.purepower;
   const basicCost = 20 + abilitizerPrice(ability);
   let abilitizer = {
     name: 'Abilitizer #' + ability.num,
@@ -4168,7 +4168,7 @@ function randomAbilitizer(failsafe) {
       price: 20 + roundToNearest5(sumArr(effectiveStatDiffs)),
       desc: abilitizerDesc("Set EVERY Pokemon's ability to ", ability),
     };
-  } else if ((randy -= .05) < 0 && twinAbilitizerPrice >= 0) {
+  } else if ((randy -= .05) < 0 && twinAbilitizerPrice >= 0 && !PERFECT_ABILITIZER_BANS.includes(ability.name)) {
     // Twin Abilitizers
     abilitizer = {
       name: 'Twin Abilitizers #' + ability.num,
