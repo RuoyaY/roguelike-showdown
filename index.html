@@ -3540,12 +3540,12 @@ function refreshShop(isViaMoney) {
   let shopSlotFuncs = [];
   const numAnySlots = Math.max(0, NUM_SHOP_OPTIONS + numOfKeyItem(KEY_ITEMS.MORE_SHOP_SLOT) - numOfKeyItem(KEY_ITEMS.LESS_SHOP_SLOT));
   pushNTimes(shopSlotFuncs, numAnySlots, funcWithoutRepeat(randomItem));
+  for ([key, func] of Object.entries(KEY_ITEM_SHOP_FUNCS))
+    pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS[key + '_SLOT']), func);  
   pushNTimes(shopSlotFuncs, numPokemonWithAbility('Ball Fetch'), function() {
     return randomElement(items.filter(item => item.type === 'pokeball' && isLegalItem(item, true)));
   });
-  for ([key, func] of Object.entries(KEY_ITEM_SHOP_FUNCS))
-    pushNTimes(shopSlotFuncs, numOfKeyItem(KEY_ITEMS[key + '_SLOT']), func);  
-  // handle TRs
+  // handle TRs. one of the last things added, so that non-random slots are always at the bottom
   const partyStrs = getPartyStrs();
   for (let i = 0; i < partyStrs.length; i++) {
     const heldItem = getHeldItemOfPokemon(partyStrs[i]);
