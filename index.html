@@ -2445,15 +2445,20 @@ function getApparentSpeciesNameOfPokemon(pokemonStr) {
   return getApparentSpeciesName(firstLine);
 }
 function getApparentSpeciesName(firstLine) {
-  let name = firstLine;
-  if (name.includes(' @'))
-    name = name.substring(0, name.indexOf(' @'));
-  if (name.includes(' (M)'))
-    name = name.substring(0, name.indexOf(' (M)'));
-  if (name.includes(' (F)'))
-    name = name.substring(0, name.indexOf(' (F)'));
-  if (name.includes(' (')) // then it's nicknamed. ex: John (Pikachu)
+  let name = getNamePart(firstLine);
+  if (name.includes(' ('))
     name = name.substring(name.lastIndexOf('(') + 1, name.lastIndexOf(')'));
+  return name;
+}
+// eg, given "John (Pikachu) (F) @ Leftovers" return "John (Pikachu)" Pikachu @ Leftovers (Pichu)
+function getNamePart(firstLine) { 
+  let name = firstLine;
+  if (name.includes(' @ '))
+    name = name.substring(0, name.lastIndexOf(' @ '));
+  if (name.includes(' (M)'))
+    name = name.substring(0, name.lastIndexOf(' (M)'));
+  if (name.includes(' (F)'))
+    name = name.substring(0, name.lastIndexOf(' (F)'));
   return name;
 }
 
@@ -2471,15 +2476,28 @@ function pokemonInHTML(pokemonStr) {
 
     if (i === 0) {
       let firstLine = strLine;
-      if (strLine.includes(' @ ')) {
-        strLineSplit = strLine.split(' @ ');
-        heldItem = heldItems[getHeldItemId(strLineSplit[1])];
-        firstLine = strLineSplit[0] + ' @ ' + heldItemInHTML(strLineSplit[1]);
+
+      if (firstLine.includes(' @ ')) {
+        let heldItemName = firstLine.substring(firstLine.lastIndexOf(' @ ')+3);
+        heldItem = heldItems[getHeldItemId(heldItemName)];
+        if (heldItem)
+          firstLine =firstLine.substring(0,firstLine.lastIndexOf(' @ ')) + ' @ ' + heldItemInHTML(heldItemName);
       }
-      const speciesName = getApparentSpeciesNameOfPokemon(pokemonStr);
+
+      const prevNamePart = getNamePart(firstLine);
+      let namePart = prevNamePart;
+      const speciesName = getApparentSpeciesName(firstLine);
+      if (namePart.includes('(')) { // if there is a nickname...
+        const nickname = namePart.slice(0, -(speciesName.length + ' ()'.length));
+        if (nickname.length > 18)
+          namePart = spanWithTitle(spanWithClass(nickname, 'worsened'), (nickname.length - 18) + ' too many letters!') + ' (' + speciesName + ')';
+      }
       if (SPECIES_WITH_DESC[speciesName])
-        firstLine = firstLine.replace(speciesName, spanWithTitle(speciesName, SPECIES_WITH_DESC[speciesName]));
+        namePart = namePart.replace(speciesName, spanWithTitle(speciesName, SPECIES_WITH_DESC[speciesName]));
+      firstLine = firstLine.replace(prevNamePart, namePart);
+
       out += firstLine;
+
     } else if (strLine.startsWith('Ability:')) {
       out += spanWithClass('Ability: ', 'attr');
       out += abilityInHTML(strLine.substring('Ability: '.length));
