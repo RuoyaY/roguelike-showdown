@@ -586,11 +586,12 @@ const SPECIES_WITH_ABILITY_VALUES = {
   'Zygarde w/ Power Construct': 660/611,
   'Zygarde-10% w/ Power Construct': 660/566,
 
-  // calculated to equal its balanced, otherwise-identical forme
-  'Wishiwashi-School w/ Schooling': (650 - 150/4)/650,
-  'Wishiwashi w/ Schooling': 660/310,
+  // the instant forme-change makes it underleveled, but you can just replace the ability or change the species
+  'Wishiwashi-School w/ Schooling': 647/650,
+  'Minior w/ Shields Down': 647/650,
+  // the other formes. slightly/ultra reliant on its ability, respectively
   'Minior-Meteor w/ Shields Down': BASE_ABILITY_VALUE,
-  'Minior w/ Shields Down': 660/711,
+  'Wishiwashi w/ Schooling': 660/310,
   
   // idk its value
   "Greninja-Ash w/ Battle Bond": BASE_ABILITY_VALUE,
@@ -872,9 +873,8 @@ const WIN_INCOME_DELTA = -20;
 const BASE_REFRESH_COST = 3;
 
 const ILLEGAL_FORMES = ['Gmax', 'Rapid-Strike-Gmax', 'Low-Key-Gmax'];
-// These are functionally identical to another forme because of its ability, but the stats displayed are less helpful.
-// Also, while it's alone, the Abilitizer price is dumb (-325 for Wishiwashi).
-const ILLEGAL_DUE_TO_ABILITY = ['wishiwashi', 'terapagos'];
+// identical to another forme because of its ability, but the stats displayed are less helpful.
+const ILLEGAL_DUE_TO_ABILITY = ['terapagos'];
 const STRICTLY_WORSE_MONS = [
   // misleadingly, a cap Pikachu that can't use Pikashunium Z. can't use Pikanium Z or cosplay moves, either.
   'pikachuworld',
@@ -898,8 +898,6 @@ const IDENTICAL_MONS = [
   ['zarude', 'zarudedada'],
   ['keldeo', 'keldeoresolute'],
   ['cherrim', 'cherrimsunshine'],
-  // required SPECIES_WITH_ABILITY_VALUES to have identical level
-  ['minior', 'miniormeteor'],
   // identical except for hidden ability
   ['squawkabilly', 'squawkabillyblue', 'squawkabillyyellow', 'squawkabillywhite'],
   // identical but for 1 move
@@ -921,7 +919,7 @@ const IDENTICAL_MONS = [
   // identical but for the starting type of 1 move
   ['morpeko', 'morpekohangry'],
   // identical except for TMs offered and if its ability is changed
-  ['castform', 'castformsunny', 'castformrainy', 'castformsnowy'],
+  // ['castform', 'castformsunny', 'castformrainy', 'castformsnowy'], ...but abilities change pretty often!
   // identical except for weight and ability possibilities
   ['raticatealola', 'raticatealolatotem'],
   ['marowakalola', 'marowakalolatotem'],
@@ -936,7 +934,7 @@ const IDENTICAL_MONS = [
   ['mimikyubusted', 'mimikyubustedtotem'],
   ['kommoo', 'kommoototem'],
   // different type OR stats is sufficient for exclusion, even for interchangable formes, 
-  // provided forme change is not instantaneous
+  // even if forme change is instantaneous
 ];
 // these items do not transform the base species when given in Showdown
 const FAKE_REQUIRED_ITEMS = ['Adamant Crystal', 'Lustrous Globe', 'Griseous Core', 'Vile Vial'];
@@ -1196,6 +1194,7 @@ function onLoad() {
   }
   document.getElementById('speciesInput').addEventListener('keyup', generateSpeciesOnEnter);
   document.getElementById('abilityInput').addEventListener('keyup', generateSpeciesOnEnter);
+  document.getElementById('abilityInput').value = '';
   
   const pokeballEle = document.getElementById('pokeball');
   pokeballEle.addEventListener('change', event => {
