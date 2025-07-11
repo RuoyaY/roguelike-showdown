@@ -99,40 +99,40 @@ Doom Seed Party	partyMisc	-15n												Lower EVERY Pokemon's level by 1 (can'
 Twin Rare Candies	beforeBattle	5												Before battle: Both players MAY increase their [nth] Pokemon's level by 1.			
 Twin Doom Seeds	beforeBattle	0	0											Before battle: Lower both you and your opponent's [nth] Pokemon's level by 1 (can't go below Lv1).			
 Candy Target Request	misc	15					2							Ask your opponent to pick one of your nonempty Pokemon slots, then raise that Pokemon's level by 1.			
-HP Up	misc	15												Set a Pokemon's HP EV to 100 (max 508 total EVs).			
-Protein	misc	15												Set a Pokemon's Atk EV to 100 (max 508 total EVs).			
-Iron	misc	15												Set a Pokemon's Def EV to 100 (max 508 total EVs).			
-Calcium	misc	15												Set a Pokemon's SpA EV to 100 (max 508 total EVs).			
-Zinc	misc	15												Set a Pokemon's SpD EV to 100 (max 508 total EVs).			
-Carbos	misc	20												Set a Pokemon's Spe EV to 100 (max 508 total EVs).			
-Perfect Nutrience	misc	20												Set a Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
-Random Nutrience	misc	10												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
-Nutrience Request	misc	5												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100 (max 508 total EVs).			
-Nutrience Supplement	misc	15												Choose a Pokemon's lowest stat (based on the Atk/SpA displayed on this website). Set its EV in that stat to 100 (max 508 total EVs).			
-Binary Nutrience	beforeBattle	15												Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 100 (max 508 total EVs).			
-HP Up Party	partyMisc	15n+5												Set every Pokemon's HP EV to 100 (max 508 total EVs).			
-Protein Party	partyMisc	10n+5												Set every Pokemon's Atk EV to 100 (max 508 total EVs).			
-Iron Party	partyMisc	15n+5												Set every Pokemon's Def EV to 100 (max 508 total EVs).			
-Calcium Party	partyMisc	10n+5												Set every Pokemon's SpA EV to 100 (max 508 total EVs).			
-Zinc Party	partyMisc	15n+5												Set every Pokemon's SpD EV to 100 (max 508 total EVs).			
-Carbos Party	partyMisc	20n+5												Set every Pokemon's Spe EV to 100 (max 508 total EVs).			
-Perfect Nutrience Party	partyMisc	20n+5												Set every Pokemon's EV in any 1 stat to 100 (max 508 total EVs).			
-Random Nutrience Party	partyMisc	13n+5												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
-Nutrience Party Request	partyMisc	10n+5												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100 (max 508 total EVs).			
-Nutrience Supplement Party	partyMisc	13n+5												For each Pokemon, choose one of its lowest stat (based on the Atk/SpA displayed on this website). Set its EV in that stat to 100 (max 508 total EVs).			
-Binary Nutrience Parties	beforeBattle	15n+5												Before battle: Your opponent chooses whether you set ALL of your Pokemon's [_____] or [_____] EV to 100 (max 508 total EVs).			
+HP Up	misc	15												Set a Pokemon's HP EV to 100.			
+Protein	misc	15												Set a Pokemon's Atk EV to 100.			
+Iron	misc	15												Set a Pokemon's Def EV to 100.			
+Calcium	misc	15												Set a Pokemon's SpA EV to 100.			
+Zinc	misc	15												Set a Pokemon's SpD EV to 100.			
+Carbos	misc	20												Set a Pokemon's Spe EV to 100.			
+Perfect Nutrience	misc	20												Set a Pokemon's EV in any 1 stat to 100.			
+Random Nutrience	misc	10												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100.			
+Nutrience Request	misc	5												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 100.			
+Nutrience Supplement	misc	15												Set a Pokemon's EV in its lowest stat(s) to 100 (based on the Atk/SpA displayed on this website).			
+Binary Nutrience	beforeBattle	15												Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 100.			
+HP Up Party	partyMisc	15n+5												Set every Pokemon's HP EV to 100.			
+Protein Party	partyMisc	10n+5												Set every Pokemon's Atk EV to 100.			
+Iron Party	partyMisc	15n+5												Set every Pokemon's Def EV to 100.			
+Calcium Party	partyMisc	10n+5												Set every Pokemon's SpA EV to 100.			
+Zinc Party	partyMisc	15n+5												Set every Pokemon's SpD EV to 100.			
+Carbos Party	partyMisc	20n+5												Set every Pokemon's Spe EV to 100.			
+Perfect Nutrience Party	partyMisc	20n+5												Set every Pokemon's EV in any 1 stat to 100.			
+Random Nutrience Party	partyMisc	13n+5												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100.			
+Nutrience Party Request	partyMisc	10n+5												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set every Pokemon's EV in that stat to 100.			
+Nutrience Supplement Party	partyMisc	13n+5												For each Pokemon, set its EV in its lowest stat(s) to 100 (based on the Atk/SpA displayed on this website).			
+Binary Nutrience Parties	beforeBattle	15n+5												Before battle: Your opponent chooses whether you set ALL of your Pokemon's [_____] or [_____] EV to 100.			
 Multi-Vitamin	misc	40												Set a Pokemon's EVs to 50 HP / 50 Atk / 50 Def / 50 SpA / 50 SpD / 50 Spe.			
-HP Max	misc	35												Set a Pokemon's HP EV to 252 (max 508 total EVs).		 	
-Max Protein	misc	35												Set a Pokemon's Atk EV to 252 (max 508 total EVs).			
-Max Iron	misc	35												Set a Pokemon's Def EV to 252 (max 508 total EVs).			
-Max Calcium	misc	35												Set a Pokemon's SpA EV to 252 (max 508 total EVs).			
-Max Zinc	misc	35												Set a Pokemon's SpD EV to 252 (max 508 total EVs).			
-Max Carbos	misc	40												Set a Pokemon's Spe EV to 252 (max 508 total EVs).			
-Perfect Max Nutrience	misc	40												Set a Pokemon's EV in any 1 stat to 252 (max 508 total EVs).			
-Random Max Nutrience	misc	30												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
-Max Nutrience Request	misc	25												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252 (max 508 total EVs).			
-Max Nutrience Supplement	misc	35												Choose a Pokemon's lowest stat (based on the Atk/SpA displayed on this website). Set its EV in that stat to 252 (max 508 total EVs).			
-Binary Max Nutrience	beforeBattle	35												Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 252 (max 508 total EVs).			
+HP Max	misc	35												Set a Pokemon's HP EV to 252.		 	
+Max Protein	misc	35												Set a Pokemon's Atk EV to 252.			
+Max Iron	misc	35												Set a Pokemon's Def EV to 252.			
+Max Calcium	misc	35												Set a Pokemon's SpA EV to 252.			
+Max Zinc	misc	35												Set a Pokemon's SpD EV to 252.			
+Max Carbos	misc	40												Set a Pokemon's Spe EV to 252.			
+Perfect Max Nutrience	misc	40												Set a Pokemon's EV in any 1 stat to 252.			
+Random Max Nutrience	misc	30												Generate a random stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252.			
+Max Nutrience Request	misc	25												Ask your opponent to pick a stat (HP/Atk/Def/SpA/SpD/Spe), then set any 1 Pokemon's EV in that stat to 252.			
+Max Nutrience Supplement	misc	35												Set a Pokemon's EV in its lowest stat(s) to 252 (based on the Atk/SpA displayed on this website).			
+Binary Max Nutrience	beforeBattle	35												Before battle: Your opponent chooses whether you set 1 Pokemon's [_____] or [_____] EV to 252.			
 Super Training	misc	75												Set a Pokemon's EVs to any distribution of 508 total (max 252 of each EV) (ignore preexisting EVs).			
 Health Feathers	misc	10	0											Increase a Pokemon's HP EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)			
 Muscle Feathers	misc	10	0											Increase a Pokemon's Atk EV by 80. (IGNORE the total EV max of 508. DO NOT IGNORE the max of 252 of each EV.)			
@@ -718,14 +718,14 @@ Knock Out	nextBattle	240/b					3						x	Next battle only: Remove your opponent's
 Sacrifice	misc	-240/b-50						x			x			Delete a Pokemon. <span class="warning"> <br>Cannot delete Pokemon you got at Lv1. </span>			
 New Slot	misc	-240/b+240						x			x			Gain a new Pokemon slot.			
 Twin K.O.	nextBattle	25/b					2						x	Next battle only: Remove both players' [nth] Pokemon.			
-HP Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's HP EV to 252 (max 508 total EVs).			
-Attack Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's Atk EV to 252 (max 508 total EVs).			
-Defense Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's Def EV to 252 (max 508 total EVs).			
-Special Attack Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's SpA EV to 252 (max 508 total EVs).			
-Special Defense Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's SpD EV to 252 (max 508 total EVs).			
-Speed Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's Spe EV to 252 (max 508 total EVs).			
-Vs Speed Surge	nextBattle	24.5/b				Trick Room								Next battle only: Set your opponent's [nth] Pokemon's Spe EV to 252 (max 508 total EVs).			
-Perfect Stat Surge	nextBattle	35/b+5												Next battle only: Set your [nth] Pokemon's [_____] EV to 252 (max 508 total EVs).			
+HP Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's HP EV to 252.			
+Attack Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's Atk EV to 252.			
+Defense Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's Def EV to 252.			
+Special Attack Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's SpA EV to 252.			
+Special Defense Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's SpD EV to 252.			
+Speed Surge	nextBattle	35/b												Next battle only: Set your [nth] Pokemon's Spe EV to 252.			
+Vs Speed Surge	nextBattle	24.5/b				Trick Room								Next battle only: Set your opponent's [nth] Pokemon's Spe EV to 252.			
+Perfect Stat Surge	nextBattle	35/b+5												Next battle only: Set your [nth] Pokemon's [_____] EV to 252.			
 EV Reset	nextBattle	15/b												Next battle only: Reset your opponent's [nth] Pokemon's EVs. 			
 Knock Off	nextBattle	30/b												Next battle only: Your opponent's [nth] Pokemon cannot hold any items.			
 Calculated Knock Off	nextBattle	15/b	0											Next battle only: You opponent must remove the item [_____] from their [nth] Pokemon, if present.			
