@@ -3750,7 +3750,7 @@ function randomHeldItem(mustBeBerry) {
       item2 = randomElement(items);
     } while (!(isLegalItem(item2) && item2.type === 'heldItem') 
                 || (mustBeBerry && !item2.name.endsWith(' Berry'))
-                || item == item2);
+                || item.name === item2.name);
     item2 = structuredClone(item2);
     const heldItemName2 = item2.name;
     
