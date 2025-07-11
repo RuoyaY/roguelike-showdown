@@ -769,25 +769,6 @@ const KEY_ITEMS = {
   BERRY_ALL: 'Oops! All Berries',
   CANDY_PARTY_ALL: 'Oops! All Candy Parties',
   MINT_ALL: 'Oops! All Mints',
-  // lv up all ___-type pokemon
-  NORMAL_LV_UP: 'Exp Power: Normal',
-  FIRE_LV_UP: 'Exp Power: Fire',
-  WATER_LV_UP: 'Exp Power: Water',
-  GRASS_LV_UP: 'Exp Power: Grass',
-  ELECTRIC_LV_UP: 'Exp Power: Electric',
-  ICE_LV_UP: 'Exp Power: Ice',
-  FIGHTING_LV_UP: 'Exp Power: Fighting',
-  POISON_LV_UP: 'Exp Power: Poison',
-  GROUND_LV_UP: 'Exp Power: Ground',
-  FLYING_LV_UP: 'Exp Power: Flying',
-  PSYCHIC_LV_UP: 'Exp Power: Psychic',
-  BUG_LV_UP: 'Exp Power: Bug',
-  ROCK_LV_UP: 'Exp Power: Rock',
-  GHOST_LV_UP: 'Exp Power: Ghost',
-  DARK_LV_UP: 'Exp Power: Dark',
-  DRAGON_LV_UP: 'Exp Power: Dragon',
-  STEEL_LV_UP: 'Exp Power: Steel',
-  FAIRY_LV_UP: 'Exp Power: Fairy',
   // misc., continued
   MAGIKARP: 'Fish Bowl',
   ROUNDLY_MAGIKARP: 'Auto Rod',
@@ -801,10 +782,15 @@ const KEY_ITEMS = {
   LV_UP_HIGHEST: 'Exp Crown',
   LV_UP_LOWEST: 'Exp Boots',
   LV_UP_RANDOM: 'Exp Dice',
+  // fill-in-the-blank style key items
+  ANY_MAGNET: '____ Magnet',
+  ANY_LV_UP: 'Exp Power: ____',
 };
-// magnets. KEYS CAN'T BE CHANGED w/o changing code
-for (const type of TYPES)
+// magnets, lv up all ___-type pokemon. KEYS CAN'T BE CHANGED w/o changing code
+for (const type of TYPES) {
   KEY_ITEMS[type.toUpperCase() + '_MAGNET'] = type + ' Magnet';
+  KEY_ITEMS[type.toUpperCase() + '_LV_UP'] = 'Exp Power: ' + type;
+}
   
 const ALL_SLOTS_KEY_ITEMS = [
   KEY_ITEMS.TM_ALL,
@@ -1392,7 +1378,7 @@ function loadFile(filename, onLoadFunc) {
   xhttp.send();
 }
 
-function printAlphabetTM() {
+function printAlphabetTMs() {
   let out = '';
   let outP = '';
   let outT = '';
@@ -2604,7 +2590,7 @@ function moveDesc(move, shortened) {
         shortDesc = 'Hits adjacent foes. ' + shortDesc;
       break;
     case 'allAdjacent':
-      if (!shortDesc.includes('adjacent Pokemon'))
+      if (!(shortDesc.includes('adjacent Pokemon') || shortDesc.includes('adjacent Pkmn')))
         shortDesc = 'Hits adjacent Pokemon. ' + shortDesc;
       break;
     case 'adjacentFoe':
@@ -4532,6 +4518,17 @@ function buyItem(itemDiv, item, itemPrice) {
     addItemDescToEle(item.desc, 'nextBattle');
 
   } else if (item.type === 'keyItem') {
+    // fill-in-the-blank style key items. must happen before handling magnets
+    if (item.name.includes('____')) {
+      let type = '';
+      while (!TYPES.includes(type)) {
+        const ans = prompt('Pick a type.');
+        type = TYPES.find(type => type.toLowerCase() === ans?.toLowerCase()?.trim());
+      }
+      item.name = item.name.replace('____', type);
+    }
+
+    // add to list
     document.getElementById('keyItemsDiv').hidden = false;
     let keyItemsStr = document.getElementById('keyItems').innerText;
     keyItemsStr = keyItemsStr.trimEnd();

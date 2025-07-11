@@ -826,6 +826,7 @@ Exp Power: Dark	keyItem	10r									x			Each round, all of your Dark-type Pokemo
 Exp Power: Dragon	keyItem	10r									x			Each round, all of your Dragon-type Pokemon level up.			
 Exp Power: Steel	keyItem	10r									x			Each round, all of your Steel-type Pokemon level up.			
 Exp Power: Fairy	keyItem	10r									x			Each round, all of your Fairy-type Pokemon level up.			
+Exp Power: ____	keyItem	14r									x			Each round, all of your ____-type Pokemon level up; you fill in the blank upon buying.			
 Fire Stone	heldItem	5r+10									x			Every round, add a random ___-type move in a new slot			
 Ice Stone	heldItem	5r+10									x			Every round, add a random ___-type move in a new slot			
 Leaf Stone	heldItem	5r+10									x			Every round, add a random ___-type move in a new slot			
@@ -1177,24 +1178,25 @@ Vs Encounter Power: Fairy	beforeBattle	0									x	x		Before battle: Set your op
 Perfect Vs Encounter Power	beforeBattle	20									x	x		Before battle: Set your opponent's "guaranteed type" to [_____] (next round, they are guaranteed to get Pokemon of that type).			
 Mirrored Vs Encounter Power	beforeBattle	10									x	x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type YOU own (next round, they are guaranteed to get Pokemon of that type).			
 Shadowed Vs Encounter Power 	beforeBattle	15								x	x	x		Before battle: Set your opponent's "guaranteed type" to [_____], a Pokemon type your OPPONENT owned LAST ROUND (next round, they are guaranteed to get Pokemon of that type).			
-Normal Magnet	keyItem	-10m+5									x	x		Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Fire Magnet	keyItem	5m+5									x	x		Each round, you are guaranteed to get Fire-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Water Magnet	keyItem	5m+5									x	x		Each round, you are guaranteed to get Water-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Grass Magnet	keyItem	-15m+5									x	x		Each round, you are guaranteed to get Grass-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Normal Magnet	keyItem	-7.5m+2.5									x	x		Each round, you are guaranteed to get Normal-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fire Magnet	keyItem	0m+10									x	x		Each round, you are guaranteed to get Fire-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Water Magnet	keyItem	0m+10									x	x		Each round, you are guaranteed to get Water-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Grass Magnet	keyItem	-10m+0									x	x		Each round, you are guaranteed to get Grass-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Electric Magnet	keyItem	-5m+5									x	x		Each round, you are guaranteed to get Electric-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Ice Magnet	keyItem	-10m+5									x	x		Each round, you are guaranteed to get Ice-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Fighting Magnet	keyItem	-10m+5									x	x		Each round, you are guaranteed to get Fighting-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ice Magnet	keyItem	-7.5m+2.5									x	x		Each round, you are guaranteed to get Ice-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fighting Magnet	keyItem	-7.5m+2.5									x	x		Each round, you are guaranteed to get Fighting-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Poison Magnet	keyItem	-5m+5									x	x		Each round, you are guaranteed to get Poison-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Ground Magnet	keyItem	5m+5									x	x		Each round, you are guaranteed to get Ground-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Flying Magnet	keyItem	5m+5									x	x		Each round, you are guaranteed to get Flying-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Psychic Magnet	keyItem	-10m+5									x	x		Each round, you are guaranteed to get Psychic-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Bug Magnet	keyItem	-15m+5									x	x		Each round, you are guaranteed to get Bug-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Rock Magnet	keyItem	0m+5									x	x		Each round, you are guaranteed to get Rock-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Ghost Magnet	keyItem	5m+5									x	x		Each round, you are guaranteed to get Ghost-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Dark Magnet	keyItem	0m+5									x	x		Each round, you are guaranteed to get Dark-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ground Magnet	keyItem	0m+10									x	x		Each round, you are guaranteed to get Ground-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Flying Magnet	keyItem	0m+10									x	x		Each round, you are guaranteed to get Flying-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Psychic Magnet	keyItem	-7.5m+2.5									x	x		Each round, you are guaranteed to get Psychic-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Bug Magnet	keyItem	-10m+0									x	x		Each round, you are guaranteed to get Bug-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Rock Magnet	keyItem	-2.5m+7.5									x	x		Each round, you are guaranteed to get Rock-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Ghost Magnet	keyItem	0m+10									x	x		Each round, you are guaranteed to get Ghost-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Dark Magnet	keyItem	-2.5m+7.5									x	x		Each round, you are guaranteed to get Dark-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 Dragon Magnet	keyItem	-5m+5									x	x		Each round, you are guaranteed to get Dragon-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Steel Magnet	keyItem	5m+5									x	x		Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
-Fairy Magnet	keyItem	5m+5									x	x		Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Steel Magnet	keyItem	0m+10									x	x		Each round, you are guaranteed to get Steel-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+Fairy Magnet	keyItem	0m+10									x	x		Each round, you are guaranteed to get Fairy-type Pokemon. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
+____ Magnet	keyItem	15									x	x		Each round, you are guaranteed to get ____-type Pokemon; you fill in the blank upon buying. (Effect can be replaced by newer Magnets, or Encounter Powers.)			
 TM Ban	keyItem	-20m-10												Random TMs stop appearing in the shop, unless forced.			
 Abilitizer Ban	keyItem	0												Random Abilitizers stop appearing in the shop, unless forced.			
 Species Changer Ban	keyItem	0										x		Species Changers stop appearing in the shop, unless forced.			
