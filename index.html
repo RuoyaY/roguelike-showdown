@@ -1162,8 +1162,8 @@ loadItems();
 
 // global variables
 let roundCounter = 0;
-const prevSeenSpecies = new Set();
-const prevSeenItems = new Set();
+let prevSeenSpecies = new Set();
+let prevSeenItems = new Set();
 let bossLevelUps = null;
 let startingNumSlots = null;
 
@@ -3065,6 +3065,9 @@ function save() {
   checkFrozenSlots(shopDiv);
   localStorage.setItem('shop', JSON.stringify(SHOP));
 
+  localStorage.setItem('prevSeenSpecies', JSON.stringify(Array.from(prevSeenSpecies)));
+  localStorage.setItem('prevSeenItems', JSON.stringify(Array.from(prevSeenItems)));
+
   localStorage.setItem('pokeball', getPokeball());
   localStorage.setItem('pokeballHidden', document.getElementById('pokeballDiv').hidden);
   localStorage.setItem('type', getGuaranteedType());
@@ -3124,6 +3127,9 @@ function load() {
 
   SHOP = JSON.parse(localStorage.getItem('shop'));
   updateShopDiv();
+
+  prevSeenSpecies = new Set(JSON.parse(localStorage.getItem('prevSeenSpecies')));  
+  prevSeenItems = new Set(JSON.parse(localStorage.getItem('prevSeenItems')));  
 
   setPokeball(localStorage.getItem('pokeball'));
   document.getElementById('pokeballDiv').hidden = localStorage.getItem('pokeballHidden') === 'true';
