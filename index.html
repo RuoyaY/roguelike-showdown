@@ -884,6 +884,7 @@ const IDENTICAL_MONS = [
   ['zarude', 'zarudedada'],
   ['keldeo', 'keldeoresolute'],
   ['cherrim', 'cherrimsunshine'],
+  ['genesect', 'genesectdouse', 'genesectshock', 'genesectburn', 'genesectchill'],
   // identical except for hidden ability
   ['squawkabilly', 'squawkabillyblue', 'squawkabillyyellow', 'squawkabillywhite'],
   // identical but for 1 move
@@ -892,9 +893,7 @@ const IDENTICAL_MONS = [
   ['basculin', 'basculinbluestriped', 'basculinwhitestriped'],
   // identical but for Hold Hands/presence of hidden ability
   [...Array(18).fill('vivillon'), 'vivillonfancy', 'vivillonpokeball'],
-  // identical except for Techno Blast's type (and whether it holds an item)
-  ['genesect', 'genesectdouse', 'genesectshock', 'genesectburn', 'genesectchill'],
-  // easily made identical due to changing its held item or ability
+  // identical unless it loses its ability
   ['arceus', 'arceusbug', 'arceusdark', 'arceusdragon', 'arceuselectric', 'arceusfairy', 'arceusfighting', 'arceusfire', 'arceusflying', 'arceusghost', 'arceusgrass', 'arceusground', 'arceusice', 'arceuspoison', 'arceuspsychic', 'arceusrock', 'arceussteel', 'arceuswater'],
   ['silvally', 'silvallybug', 'silvallydark', 'silvallydragon', 'silvallyelectric', 'silvallyfairy', 'silvallyfighting', 'silvallyfire', 'silvallyflying', 'silvallyghost', 'silvallygrass', 'silvallyground', 'silvallyice', 'silvallypoison', 'silvallypsychic', 'silvallyrock', 'silvallysteel', 'silvallywater'],
   // identical except for weight
@@ -923,7 +922,7 @@ const IDENTICAL_MONS = [
   // even if forme change is instantaneous
 ];
 // these items do not transform the base species when given in Showdown
-const FAKE_REQUIRED_ITEMS = ['Adamant Crystal', 'Lustrous Globe', 'Griseous Core', 'Vile Vial'];
+const FAKE_REQUIRED_ITEMS = ['Adamant Crystal', 'Lustrous Globe', 'Griseous Core', 'Vile Vial', 'Douse Drive', 'Shock Drive', 'Burn Drive', 'Chill Drive'];
 
 const POKEBALL_PROMPTS = {
   'Repeat Ball': 'Choose a species you already own.',
@@ -1754,6 +1753,20 @@ function getTypeImageURL(type) {
 }
 
 function getTypesOfPokemon(pokemonStr) {
+  const name = getSpeciesNameOfPokemon(pokemonStr);
+  const ability = getAbilityNameOfPokemon(pokemonStr);
+  let baseSpecies;
+  if (name.startsWith('Arceus') && ability === 'Multitype')
+    baseSpecies = 'Arceus';
+  if (name.startsWith('Silvally') && ability === 'RKS System')
+    baseSpecies = 'Silvally';
+  if (baseSpecies) {
+    const heldItem = getHeldItemNameOfPokemon(pokemonStr);
+    const effectiveForme = Object.values(allSpecies).find(s => s.baseSpecies === baseSpecies 
+              && (s.requiredItems?.includes(heldItem) || s.requiredItem === heldItem));
+    return effectiveForme ? effectiveForme.types : ['Normal'];
+  }
+
   if (isCamomons()) {
     let movesSeen = 0;
     const types = [];
@@ -1770,9 +1783,9 @@ function getTypesOfPokemon(pokemonStr) {
         types.push(type);
     }
     return types;
-  } else {
-    return allSpecies[getSpeciesIdOfPokemon(pokemonStr)].types;
   }
+
+  return allSpecies[getSpeciesIdOfPokemon(pokemonStr)].types;
 }
 
 function matchupNumToStr(matchupNum) {
@@ -2215,14 +2228,13 @@ function randomOfSpecies(speciesName, abilityName, pokeball, level, teraType, ca
     }
   }
 
-  if (species.baseSpecies === 'Arceus') {
-    displayName = species.baseSpecies;
-    heldItemName = species.requiredItems[0];
-  }
-  else if (species.baseSpecies === 'Silvally' || species.baseSpecies === 'Genesect') {
-    displayName = species.baseSpecies;
-    heldItemName = species.requiredItem;
-  }
+  // if (species.baseSpecies === 'Arceus') {
+  //   displayName = species.baseSpecies;
+  //   heldItemName = species.requiredItems[0];
+  // } else if (species.baseSpecies === 'Silvally') {
+  //   displayName = species.baseSpecies;
+  //   heldItemName = species.requiredItem;
+  // }
 
   let pokemonStr = displayName;
   if (gender !== 'N')
@@ -2412,8 +2424,8 @@ function getSpeciesNameOfPokemon(pokemonStr) {
   if (firstLine.includes(' @ ')) {
     let heldItem = firstLine.split(' @ ')[1];
     if (FAKE_REQUIRED_ITEMS.includes(heldItem)
-          || (name === 'Arceus' && getAbilityNameOfPokemon(pokemonStr) !== 'Multitype')
-          || (name === 'Silvally' && getAbilityNameOfPokemon(pokemonStr) !== 'RKS System'))
+          || name.startsWith('Arceus')
+          || name.startsWith('Silvally')) // Arceus and Silvally's required items are also fake (don't cause forme change)
       return name;
     let holdingItemForme = Object.values(allSpecies).find(species => species.baseSpecies === name && 
                       (species.requiredItem === heldItem || species.requiredItems?.includes(heldItem)));
@@ -3318,7 +3330,7 @@ function nextRound() {
         break;
 
       default:
-        // NORMAL_LV_UP, etc
+        // NORMAL_LV_UP (Exp Power: Normal), etc
         for (const type of TYPES) {
           if (keyItem === KEY_ITEMS[type.toUpperCase() + '_LV_UP']) {
             for (const pokeDiv of getPartyPokeDivs()) {
