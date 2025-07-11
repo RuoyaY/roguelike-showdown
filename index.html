@@ -2021,7 +2021,8 @@ function generateSpecificSpecies() {
 
   speciesErrorEle.textContent = '';
 
-  window.scrollTo(0, document.body.scrollHeight);
+  if (screen?.orientation?.type === 'landscape-primary')
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function updateDisabledButtons() {
