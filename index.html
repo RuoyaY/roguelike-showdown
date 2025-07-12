@@ -893,9 +893,10 @@ const IDENTICAL_MONS = [
   ['basculin', 'basculinbluestriped', 'basculinwhitestriped'],
   // identical but for Hold Hands/presence of hidden ability
   [...Array(18).fill('vivillon'), 'vivillonfancy', 'vivillonpokeball'],
-  // identical unless it loses its ability
+  // identical except for TMs offered and if its ability is changed.
   ['arceus', 'arceusbug', 'arceusdark', 'arceusdragon', 'arceuselectric', 'arceusfairy', 'arceusfighting', 'arceusfire', 'arceusflying', 'arceusghost', 'arceusgrass', 'arceusground', 'arceusice', 'arceuspoison', 'arceuspsychic', 'arceusrock', 'arceussteel', 'arceuswater'],
   ['silvally', 'silvallybug', 'silvallydark', 'silvallydragon', 'silvallyelectric', 'silvallyfairy', 'silvallyfighting', 'silvallyfire', 'silvallyflying', 'silvallyghost', 'silvallygrass', 'silvallyground', 'silvallyice', 'silvallypoison', 'silvallypsychic', 'silvallyrock', 'silvallysteel', 'silvallywater'],
+  ['castform', 'castformsunny', 'castformrainy', 'castformsnowy'],
   // identical except for weight
   ['maushold', 'mausholdfour'],
   ['dudunsparce', 'dudunsparcethreesegment'],
@@ -903,8 +904,6 @@ const IDENTICAL_MONS = [
   ['toxtricity', 'toxtricitylowkey'],
   // identical but for the starting type of 1 move
   ['morpeko', 'morpekohangry'],
-  // identical except for TMs offered and if its ability is changed
-  // ['castform', 'castformsunny', 'castformrainy', 'castformsnowy'], ...but abilities change pretty often!
   // identical except for weight and ability possibilities
   ['raticatealola', 'raticatealolatotem'],
   ['marowakalola', 'marowakalolatotem'],
